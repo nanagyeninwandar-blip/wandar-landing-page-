@@ -211,8 +211,8 @@ h3.step-title {
 
 /* Smaller CTA in the nav bar */
 .nav__cta-btn {
-  padding: 13px 18px;
-  font-size: 16px;
+  padding: 10px 12px;
+  font-size: 14px;
 }
 
 /* Log In link in nav */
@@ -340,7 +340,7 @@ h3.step-title {
 
 /* V3: Larger logo */
 .nav__logo-img {
-  height: 80px;
+  height: 70px;
   width: auto;
   object-fit: contain;
   display: block;
@@ -367,7 +367,7 @@ h3.step-title {
 }
 
 .nav__link {
-  font-size: 16px;
+  font-size: 14px;
   font-weight: 500;
   color: var(--text-secondary);
   padding: 8px 12px;
@@ -1791,4 +1791,11 @@ h3.step-title {
   position: absolute; width: 1px; height: 1px;
   padding: 0; margin: -1px; overflow: hidden;
   clip: rect(0,0,0,0); white-space: nowrap; border-width: 0;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
 }
