@@ -1,0 +1,1229 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Wandar — Pricing</title>
+  <meta name="description" content="Two plans for boutique safari operators who want to reach high-intent travellers before anyone else does. No fluff. No volume plays." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="assets/css/main.css" />
+  <script src="https://cdn.lordicon.com/lordicon.js"></script>
+
+  <style>
+    /* ═══════════════════════════════════════════
+       PRICING PAGE — SCOPED STYLES
+       All classes prefixed or unique to avoid
+       conflicts with main.css
+    ═══════════════════════════════════════════ */
+
+    :root {
+      --teal: #2A6B68;
+      --teal-light: #3d8a86;
+      --teal-dark: #1e4f4c;
+      --terra: #B85C1A;
+      --terra-light: #d47035;
+      --cream: #F9F5EE;
+      --cream-dark: #f0e9dc;
+      --dark: #111A19;
+      --dark-mid: #1e2e2c;
+      --text: #2c3a38;
+      --text-soft: #5a6b69;
+      --white: #ffffff;
+      --border: rgba(42,107,104,0.15);
+    }
+
+    /* ── PRICING HERO ────────────────────────── */
+    .pricing-hero {
+      text-align: center;
+      padding: 96px 40px 72px;
+      max-width: 780px;
+      margin: 0 auto;
+      animation: pr-fadeUp 0.6s ease both;
+    }
+    .pricing-hero__badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: rgba(42,107,104,0.08);
+      border: 1px solid rgba(42,107,104,0.2);
+      color: var(--teal);
+      padding: 6px 14px;
+      border-radius: 20px;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.8px;
+      text-transform: uppercase;
+      margin-bottom: 32px;
+    }
+    .pricing-hero__badge-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--teal);
+      display: inline-block;
+      animation: pr-pulse 2s ease infinite;
+    }
+    @keyframes pr-pulse {
+      0%, 100% { opacity: 1; }
+      50%       { opacity: 0.4; }
+    }
+    .pricing-hero h1 {
+      font-size: clamp(28px, 3.8vw, 44px);
+      font-weight: 700;
+      color: var(--dark);
+      line-height: 1.15;
+      margin-bottom: 24px;
+      letter-spacing: -0.02em;
+    }
+    .pricing-hero h1 em {
+      color: var(--teal);
+      font-style: normal;
+      font-size: 0.6em;
+      display: block;
+      font-weight: 500;
+      letter-spacing: 0;
+    }
+    .pricing-hero p {
+      font-size: 17px;
+      font-weight: 400;
+      color: var(--text-soft);
+      line-height: 1.6;
+      max-width: 560px;
+      margin: 0 auto;
+    }
+
+    /* ── BILLING TOGGLE ──────────────────────── */
+    .billing-toggle {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 14px;
+      margin: 44px 0 56px;
+      font-size: 14px;
+      font-weight: 500;
+      color: var(--text-soft);
+    }
+    .toggle-track {
+      width: 44px;
+      height: 24px;
+      background: var(--border);
+      border-radius: 12px;
+      position: relative;
+      cursor: pointer;
+      border: 2px solid rgba(42,107,104,0.2);
+      transition: background 0.2s;
+    }
+    .toggle-thumb {
+      position: absolute;
+      top: 2px;
+      left: 2px;
+      width: 16px;
+      height: 16px;
+      background: var(--teal);
+      border-radius: 50%;
+      transition: transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1);
+    }
+    .toggle-track.on { background: rgba(42,107,104,0.15); }
+    .toggle-track.on .toggle-thumb { transform: translateX(20px); }
+    .save-badge {
+      background: var(--terra);
+      color: white;
+      font-size: 11px;
+      font-weight: 700;
+      padding: 3px 8px;
+      border-radius: 10px;
+      letter-spacing: 0.3px;
+    }
+
+    /* ── PRICING CARDS ───────────────────────── */
+    .pr-cards-wrapper {
+      max-width: 1060px;
+      margin: 0 auto;
+      padding: 0 40px 96px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+      align-items: start;
+    }
+    .pr-card {
+      border-radius: 20px;
+      padding: 44px;
+      position: relative;
+      overflow: hidden;
+      transition: transform 0.25s, box-shadow 0.25s;
+      animation: pr-fadeUp 0.6s ease both;
+    }
+    .pr-card:nth-child(2) { animation-delay: 0.12s; }
+    .pr-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 28px 64px rgba(0,0,0,0.12);
+    }
+
+    .pr-card--social {
+      background: white;
+      border: 1.5px solid var(--border);
+      box-shadow: 0 4px 24px rgba(0,0,0,0.05);
+    }
+    .pr-card--growth {
+      background: var(--dark);
+      border: 1.5px solid rgba(255,255,255,0.06);
+      box-shadow: 0 8px 48px rgba(0,0,0,0.3);
+    }
+    .pr-card--growth::before {
+      content: '';
+      position: absolute;
+      top: -20px; right: -20px;
+      width: 260px; height: 260px;
+      background: radial-gradient(circle, rgba(184,92,26,0.2) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .pr-card--growth::after {
+      content: '';
+      position: absolute;
+      bottom: -40px; left: -40px;
+      width: 200px; height: 200px;
+      background: radial-gradient(circle, rgba(42,107,104,0.12) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .pr-card__tier {
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 1.8px;
+      text-transform: uppercase;
+      margin-bottom: 16px;
+      display: inline-block;
+    }
+    .pr-card--social .pr-card__tier {
+      color: var(--teal);
+      background: rgba(42,107,104,0.08);
+      padding: 4px 10px;
+      border-radius: 6px;
+    }
+    .pr-card--growth .pr-card__tier {
+      color: var(--terra-light);
+      background: rgba(184,92,26,0.15);
+      padding: 4px 10px;
+      border-radius: 6px;
+    }
+
+    .pr-card__popular {
+      position: absolute;
+      top: 20px; right: 20px;
+      background: var(--terra);
+      color: white;
+      font-size: 10px;
+      font-weight: 700;
+      padding: 5px 12px;
+      border-radius: 20px;
+      letter-spacing: 0.4px;
+      text-transform: uppercase;
+    }
+
+    .pr-card__name {
+      font-family: 'Playfair Display', serif;
+      font-size: 30px;
+      font-weight: 700;
+      margin-bottom: 10px;
+      letter-spacing: -0.3px;
+      margin-top: 8px;
+    }
+    .pr-card--social .pr-card__name { color: var(--dark); }
+    .pr-card--growth .pr-card__name { color: var(--white); }
+
+    .pr-card__tagline {
+      font-size: 14px;
+      line-height: 1.6;
+      margin-bottom: 32px;
+    }
+    .pr-card--social .pr-card__tagline { color: var(--text-soft); }
+    .pr-card--growth .pr-card__tagline { color: rgba(255,255,255,0.55); }
+
+    .pr-price-row {
+      display: flex;
+      align-items: flex-end;
+      gap: 6px;
+      margin-bottom: 6px;
+    }
+    .pr-price-amount {
+      font-family: 'Playfair Display', serif;
+      font-size: 54px;
+      font-weight: 700;
+      line-height: 1;
+      letter-spacing: -2px;
+      transition: all 0.2s;
+    }
+    .pr-card--social .pr-price-amount { color: var(--dark); }
+    .pr-card--growth .pr-price-amount { color: var(--white); }
+    .pr-price-currency {
+      font-size: 22px;
+      font-weight: 600;
+      padding-bottom: 8px;
+    }
+    .pr-card--social .pr-price-currency { color: var(--teal); }
+    .pr-card--growth .pr-price-currency { color: var(--terra-light); }
+    .pr-price-period {
+      font-size: 14px;
+      padding-bottom: 10px;
+      font-weight: 400;
+    }
+    .pr-card--social .pr-price-period { color: var(--text-soft); }
+    .pr-card--growth .pr-price-period { color: rgba(255,255,255,0.45); }
+
+    .pr-price-annual {
+      font-size: 13px;
+      margin-bottom: 32px;
+      line-height: 1.5;
+    }
+    .pr-card--social .pr-price-annual { color: var(--text-soft); }
+    .pr-card--growth .pr-price-annual { color: rgba(255,255,255,0.4); }
+
+    .pr-card__cta {
+      width: 100%;
+      padding: 16px;
+      border-radius: 12px;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 15px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.2s;
+      margin-bottom: 12px;
+      border: none;
+      letter-spacing: 0.1px;
+    }
+    .pr-card--social .pr-card__cta {
+      background: var(--teal);
+      color: white;
+    }
+    .pr-card--social .pr-card__cta:hover {
+      background: var(--teal-dark);
+      transform: translateY(-1px);
+      box-shadow: 0 6px 20px rgba(42,107,104,0.3);
+    }
+    .pr-card--growth .pr-card__cta {
+      background: var(--terra);
+      color: white;
+    }
+    .pr-card--growth .pr-card__cta:hover {
+      background: #a0501a;
+      transform: translateY(-1px);
+      box-shadow: 0 6px 20px rgba(184,92,26,0.35);
+    }
+
+    .pr-card__secondary-cta {
+      width: 100%;
+      padding: 14px;
+      border-radius: 12px;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 14px;
+      font-weight: 500;
+      cursor: pointer;
+      background: transparent;
+      margin-bottom: 36px;
+      transition: all 0.2s;
+      letter-spacing: 0.1px;
+    }
+    .pr-card--social .pr-card__secondary-cta { display: none; }
+    .pr-card--growth .pr-card__secondary-cta {
+      border: 1.5px solid rgba(255,255,255,0.15);
+      color: rgba(255,255,255,0.6);
+    }
+    .pr-card--growth .pr-card__secondary-cta:hover {
+      border-color: rgba(255,255,255,0.4);
+      color: white;
+      background: rgba(255,255,255,0.05);
+    }
+
+    .pr-divider {
+      height: 1px;
+      margin-bottom: 32px;
+      margin-top: 24px;
+    }
+    .pr-card--social .pr-divider { background: var(--border); }
+    .pr-card--growth .pr-divider { background: rgba(255,255,255,0.08); }
+
+    .pr-features-label {
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 1.2px;
+      text-transform: uppercase;
+      margin-bottom: 20px;
+    }
+    .pr-card--social .pr-features-label { color: var(--text-soft); }
+    .pr-card--growth .pr-features-label { color: rgba(255,255,255,0.35); }
+
+    .pr-feature-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+    .pr-feature-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      font-size: 14px;
+      line-height: 1.5;
+    }
+    .pr-card--social .pr-feature-item { color: var(--text); }
+    .pr-card--growth .pr-feature-item { color: rgba(255,255,255,0.82); }
+
+    .pr-check {
+      width: 20px;
+      height: 20px;
+      flex-shrink: 0;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-top: 1px;
+      font-size: 10px;
+      font-weight: 800;
+    }
+    .pr-card--social .pr-check {
+      background: rgba(42,107,104,0.1);
+      color: var(--teal);
+    }
+    .pr-card--growth .pr-check {
+      background: rgba(184,92,26,0.2);
+      color: var(--terra-light);
+    }
+
+    .pr-feature-note {
+      font-size: 12px;
+      display: block;
+      margin-top: 3px;
+      font-weight: 400;
+      line-height: 1.55;
+    }
+    .pr-card--social .pr-feature-note { color: var(--text-soft); }
+    .pr-card--growth .pr-feature-note { color: rgba(255,255,255,0.38); }
+
+    .pr-section-label {
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 1.4px;
+      text-transform: uppercase;
+      margin: 32px 0 18px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      color: var(--terra-light);
+    }
+
+    /* ── TRUST STRIP ─────────────────────────── */
+    .pr-trust-strip {
+      background: var(--dark);
+      padding: 44px 40px;
+      text-align: center;
+    }
+    .pr-trust-strip__label {
+      font-size: 11px;
+      color: rgba(255,255,255,0.3);
+      margin-bottom: 20px;
+      font-weight: 600;
+      letter-spacing: 1.2px;
+      text-transform: uppercase;
+    }
+    .pr-trust-items {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 0;
+    }
+    .pr-trust-item {
+      font-size: 13px;
+      color: rgba(255,255,255,0.65);
+      display: flex;
+      align-items: center;
+      padding: 0 24px;
+      border-right: 1px solid rgba(255,255,255,0.08);
+      line-height: 1.4;
+    }
+    .pr-trust-item:last-child { border-right: none; }
+
+    /* ── COMPARISON TABLE ────────────────────── */
+    .pr-compare-section {
+      max-width: 980px;
+      margin: 0 auto;
+      padding: 96px 40px;
+    }
+    .pr-section-header {
+      text-align: center;
+      margin-bottom: 16px;
+    }
+    .pr-section-header h2 {
+      font-size: clamp(26px, 3.2vw, 38px);
+      font-weight: 700;
+      color: var(--dark);
+      margin-bottom: 12px;
+      letter-spacing: -0.3px;
+    }
+    .pr-section-header p {
+      font-size: 16px;
+      color: var(--text-soft);
+      line-height: 1.6;
+      max-width: 520px;
+      margin: 0 auto;
+    }
+    .pr-subheader-note {
+      text-align: center;
+      margin-bottom: 52px;
+      font-size: 14px;
+      color: var(--text-soft);
+    }
+
+    .pr-compare-table {
+      width: 100%;
+      border-collapse: collapse;
+      background: white;
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: 0 4px 24px rgba(0,0,0,0.06);
+    }
+    .pr-compare-table thead th {
+      padding: 22px 28px;
+      text-align: left;
+      font-size: 13px;
+      font-weight: 700;
+    }
+    .pr-compare-table thead th:first-child {
+      background: var(--cream);
+      color: var(--text-soft);
+      font-size: 10px;
+      text-transform: uppercase;
+      letter-spacing: 0.8px;
+    }
+    .pr-compare-table thead th:nth-child(2) {
+      background: var(--teal);
+      color: white;
+      text-align: center;
+      font-size: 14px;
+    }
+    .pr-compare-table thead th:nth-child(3) {
+      background: var(--dark);
+      color: white;
+      text-align: center;
+      font-size: 14px;
+    }
+    .pr-compare-table tbody tr {
+      border-bottom: 1px solid var(--cream-dark);
+      transition: background 0.15s;
+    }
+    .pr-compare-table tbody tr:last-child { border-bottom: none; }
+    .pr-compare-table tbody tr:hover { background: rgba(249,245,238,0.6); }
+    .pr-compare-table tbody td {
+      padding: 16px 28px;
+      font-size: 14px;
+    }
+    .pr-compare-table tbody td:first-child {
+      color: var(--text);
+      font-weight: 500;
+    }
+    .pr-compare-table tbody td:nth-child(2),
+    .pr-compare-table tbody td:nth-child(3) {
+      text-align: center;
+      color: var(--text-soft);
+    }
+    .pr-check-yes   { color: var(--teal);  font-size: 18px; font-weight: 700; }
+    .pr-check-no    { color: #d0d0d0;      font-size: 18px; }
+    .pr-check-terra { color: var(--terra); font-size: 18px; font-weight: 700; }
+    .pr-group-row td {
+      background: var(--cream);
+      font-size: 10px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: var(--text-soft);
+      padding: 12px 28px;
+    }
+
+    /* ── ANIMATIONS ──────────────────────────── */
+    @keyframes pr-fadeUp {
+      from { opacity: 0; transform: translateY(24px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    /* ── RESPONSIVE ──────────────────────────── */
+    @media (max-width: 720px) {
+      .pr-cards-wrapper   { grid-template-columns: 1fr; padding: 0 20px 60px; }
+      .pricing-hero       { padding: 64px 24px 48px; }
+      .pr-compare-section { padding: 60px 20px; }
+      .pr-trust-item      { padding: 8px 16px; border-right: none; border-bottom: 1px solid rgba(255,255,255,0.06); }
+      .pr-trust-items     { flex-direction: column; align-items: center; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ═══════════════════════════════════════════
+     NAVIGATION
+═══════════════════════════════════════════ -->
+<header class="nav" id="nav" role="banner">
+  <div class="container">
+    <div class="nav__inner nav-relative">
+
+      <!-- Logo -->
+      <a href="index.html" class="nav__logo" aria-label="Wandar home">
+        <img src="assets/wandar-logo.png" alt="Wandar" class="nav__logo-img" />
+      </a>
+
+      <!-- Desktop nav links -->
+      <nav aria-label="Main navigation">
+        <ul class="nav__links">
+          <li><a href="index.html" class="nav__link">Home</a></li>
+          <li><a href="index.html#why-wandar"  class="nav__link">Why Wandar</a></li>
+          <li><a href="index.html#how-it-works" class="nav__link">How It Works</a></li>
+          <li><a href="index.html#who-its-for"  class="nav__link">Who It's For</a></li>
+          <li><a href="pricing.html" class="nav__link nav__link--active">Pricing</a></li>
+          <li class="nav-relative">
+            <button class="nav__link nav__link--platforms" id="platforms-btn" aria-expanded="false" aria-haspopup="true">
+              Platforms <span class="chevron" aria-hidden="true">▾</span>
+            </button>
+            <div class="platforms-dropdown" id="platforms-dropdown" role="menu">
+              <div class="platforms-dropdown__grid">
+                <a href="platforms/facebook.html"    class="platform-chip-nav" role="menuitem">
+                  <svg viewBox="0 0 24 24" fill="#1877F2" aria-hidden="true"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+                  Facebook
+                </a>
+                <a href="platforms/bluesky.html"     class="platform-chip-nav" role="menuitem">
+                  <svg viewBox="0 0 24 24" fill="#0085FF" aria-hidden="true"><path d="M12 10.8c-1.087-2.114-4.046-6.053-6.798-7.995C2.566.944 1.561 1.266.902 1.565.139 1.908 0 3.08 0 3.768c0 .69.378 5.65.624 6.479.815 2.736 3.713 3.66 6.383 3.364.136-.02.275-.039.415-.056-.138.022-.276.04-.415.056-3.912.58-7.387 2.005-2.83 7.078 5.013 5.19 6.87-1.113 7.823-4.308.953 3.195 2.05 9.271 7.733 4.308 4.267-4.308 1.172-6.498-2.74-7.078a8.741 8.741 0 0 1-.415-.056c.14.017.279.036.415.056 2.67.297 5.568-.628 6.383-3.364.246-.828.624-5.79.624-6.478 0-.69-.139-1.861-.902-2.204-.659-.299-1.664-.62-4.3 1.24C16.046 4.748 13.087 8.687 12 10.8z"/></svg>
+                  Bluesky
+                </a>
+                <a href="platforms/instagram.html"   class="platform-chip-nav" role="menuitem">
+                  <svg viewBox="0 0 24 24" aria-hidden="true">
+                    <defs><linearGradient id="ig-pr" x1="0%" y1="100%" x2="100%" y2="0%"><stop offset="0%" stop-color="#f09433"/><stop offset="50%" stop-color="#dc2743"/><stop offset="100%" stop-color="#bc1888"/></linearGradient></defs>
+                    <path fill="url(#ig-pr)" d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+                  </svg>
+                  Instagram
+                </a>
+                <a href="platforms/quora.html"       class="platform-chip-nav" role="menuitem">
+                  <svg viewBox="0 0 24 24" fill="#B92B27" aria-hidden="true"><path d="M12.003 0C5.373 0 0 5.372 0 12c0 6.628 5.373 12 12.003 12 6.628 0 11.997-5.372 11.997-12 0-6.628-5.369-12-11.997-12zm-.172 18.95c-.56-.172-1.068-.46-1.526-.857l-1.35 1.37-.983-.962 1.345-1.367c-.594-.858-.938-1.939-.938-3.134 0-2.994 1.96-5.122 4.595-5.122 1.317 0 2.458.5 3.29 1.357l1.073-1.09.984.965-1.061 1.076c.571.848.907 1.908.907 3.093 0 2.995-1.96 5.121-4.594 5.121-.59 0-1.142-.12-1.65-.33l-.092-.12zm1.65-1.47a.64.64 0 0 0 .072-.01c1.46-.31 2.462-1.72 2.462-3.47 0-.86-.24-1.636-.646-2.22l-2.87 2.916.984.963 1.347-1.369.654.643-1.352 1.374c.445.627 1.067 1.027 1.75 1.12l-.4.053zm-1.65-6.16c-1.458.31-2.46 1.72-2.46 3.47 0 .823.22 1.572.6 2.148l2.87-2.915-.984-.963-1.347 1.37-.654-.645 1.352-1.373c-.43-.605-1.04-.998-1.712-1.115l.335-.977z"/></svg>
+                  Quora
+                </a>
+                <a href="platforms/pinterest.html"   class="platform-chip-nav" role="menuitem">
+                  <svg viewBox="0 0 24 24" fill="#E60023" aria-hidden="true"><path d="M12 0C5.373 0 0 5.372 0 12c0 5.084 3.163 9.426 7.627 11.174-.105-.949-.2-2.405.042-3.441.218-.937 1.407-5.965 1.407-5.965s-.359-.719-.359-1.782c0-1.668.967-2.914 2.171-2.914 1.023 0 1.518.769 1.518 1.69 0 1.029-.655 2.568-.994 3.995-.283 1.194.599 2.169 1.777 2.169 2.133 0 3.772-2.249 3.772-5.495 0-2.873-2.064-4.882-5.012-4.882-3.414 0-5.418 2.561-5.418 5.207 0 1.031.397 2.138.893 2.738a.36.36 0 0 1 .083.345l-.333 1.36c-.053.22-.174.267-.402.161-1.499-.698-2.436-2.889-2.436-4.649 0-3.785 2.75-7.262 7.929-7.262 4.163 0 7.398 2.967 7.398 6.931 0 4.136-2.607 7.464-6.227 7.464-1.216 0-2.359-.632-2.75-1.378l-.748 2.853c-.271 1.043-1.002 2.35-1.492 3.146C9.57 23.812 10.763 24 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0z"/></svg>
+                  Pinterest
+                </a>
+                <a href="platforms/reddit.html"      class="platform-chip-nav" role="menuitem">
+                  <svg viewBox="0 0 24 24" fill="#FF4500" aria-hidden="true"><path d="M12 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0zm5.01 4.744c.688 0 1.25.561 1.25 1.249a1.25 1.25 0 0 1-2.498.056l-2.597-.547-.8 3.747c1.824.07 3.48.632 4.674 1.488.308-.309.73-.491 1.207-.491.968 0 1.754.786 1.754 1.754 0 .716-.435 1.333-1.01 1.614a3.111 3.111 0 0 1 .042.52c0 2.694-3.13 4.87-7.004 4.87-3.874 0-7.004-2.176-7.004-4.87 0-.183.015-.366.043-.534A1.748 1.748 0 0 1 4.028 12c0-.968.786-1.754 1.754-1.754.463 0 .898.196 1.207.49 1.207-.883 2.878-1.43 4.744-1.487l.885-4.182a.342.342 0 0 1 .14-.197.35.35 0 0 1 .238-.042l2.906.617a1.214 1.214 0 0 1 1.108-.701zM9.25 12C8.561 12 8 12.562 8 13.25c0 .687.561 1.248 1.25 1.248.687 0 1.248-.561 1.248-1.249 0-.688-.561-1.249-1.249-1.249zm5.5 0c-.687 0-1.248.561-1.248 1.25 0 .687.561 1.248 1.249 1.248.688 0 1.249-.561 1.249-1.249 0-.687-.562-1.249-1.25-1.249zm-5.466 3.99a.327.327 0 0 0-.231.094.33.33 0 0 0 0 .463c.842.842 2.484.913 2.961.913.477 0 2.105-.056 2.961-.913a.361.361 0 0 0 .029-.463.33.33 0 0 0-.464 0c-.547.533-1.684.73-2.512.73-.828 0-1.979-.196-2.512-.73a.326.326 0 0 0-.232-.095z"/></svg>
+                  Reddit
+                </a>
+                <a href="platforms/x-twitter.html"   class="platform-chip-nav" role="menuitem">
+                  <svg viewBox="0 0 24 24" fill="#000000" aria-hidden="true"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.748l7.73-8.835L1.254 2.25H8.08l4.261 5.635 5.903-5.635zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+                  X / Twitter
+                </a>
+                <a href="platforms/tiktok.html"      class="platform-chip-nav" role="menuitem">
+                  <svg viewBox="0 0 24 24" fill="#010101" aria-hidden="true"><path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.99-.32-2.15-.23-3.02.37-.63.41-1.11 1.04-1.36 1.75-.21.51-.15 1.07-.14 1.61.24 1.64 1.82 3.02 3.5 2.87 1.12-.01 2.19-.66 2.77-1.61.19-.33.4-.67.41-1.06.1-1.79.06-3.57.07-5.36.01-4.03-.01-8.05.02-12.07z"/></svg>
+                  TikTok
+                </a>
+                <a href="platforms/tripadvisor.html" class="platform-chip-nav" role="menuitem">
+                  <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                    <circle cx="6.5" cy="12" r="5.8" fill="#34E0A1"/>
+                    <circle cx="6.5" cy="12" r="3.2" fill="white"/>
+                    <circle cx="6.5" cy="12" r="1.8" fill="#34E0A1"/>
+                    <circle cx="17.5" cy="12" r="5.8" fill="#34E0A1"/>
+                    <circle cx="17.5" cy="12" r="3.2" fill="white"/>
+                    <circle cx="17.5" cy="12" r="1.8" fill="#34E0A1"/>
+                    <path d="M12.3 9.8 Q12 9.4 11.7 9.8 L11.2 14 Q12 13.6 12.8 14 Z" fill="#34E0A1"/>
+                  </svg>
+                  TripAdvisor
+                </a>
+              </div>
+            </div>
+          </li>
+        </ul>
+      </nav>
+
+      <!-- Right: CTA + Login + Hamburger -->
+      <div class="nav__right">
+        <a href="#cta-banner" class="btn btn--primary nav__cta-btn" style="display:none" id="nav-cta-desktop">Request Early Access</a>
+        <a href="#" class="nav__login-link" style="display:none" id="nav-login-desktop">Log In</a>
+        <button class="nav__hamburger" id="hamburger" aria-label="Open menu" aria-expanded="false">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+
+      <!-- Mobile panel -->
+      <div class="nav__mobile-panel" id="mobile-panel" aria-label="Mobile navigation">
+        <ul class="nav__mobile-links">
+          <li><a href="index.html" onclick="closeMobileMenu()">Home</a></li>
+          <li><a href="index.html#why-wandar"   onclick="closeMobileMenu()">Why Wandar</a></li>
+          <li><a href="index.html#how-it-works" onclick="closeMobileMenu()">How It Works</a></li>
+          <li><a href="index.html#who-its-for"  onclick="closeMobileMenu()">Who It's For</a></li>
+          <li><a href="pricing.html"            onclick="closeMobileMenu()">Pricing</a></li>
+          <li>
+            <button onclick="toggleMobilePlatforms()" style="display:flex;justify-content:space-between;align-items:center;">
+              Platforms <span>▾</span>
+            </button>
+            <div class="nav__mobile-platforms" id="mobile-platforms">
+              <div class="nav__mobile-platforms-grid">
+                <a href="platforms/facebook.html"    class="platform-chip-nav">Facebook</a>
+                <a href="platforms/bluesky.html"     class="platform-chip-nav">Bluesky</a>
+                <a href="platforms/instagram.html"   class="platform-chip-nav">Instagram</a>
+                <a href="platforms/quora.html"       class="platform-chip-nav">Quora</a>
+                <a href="platforms/pinterest.html"   class="platform-chip-nav">Pinterest</a>
+                <a href="platforms/reddit.html"      class="platform-chip-nav">Reddit</a>
+                <a href="platforms/x-twitter.html"   class="platform-chip-nav">X / Twitter</a>
+                <a href="platforms/tiktok.html"      class="platform-chip-nav">TikTok</a>
+                <a href="platforms/tripadvisor.html" class="platform-chip-nav">TripAdvisor</a>
+              </div>
+            </div>
+          </li>
+        </ul>
+        <a href="#cta-banner" class="btn btn--primary" style="width:100%;justify-content:center;" onclick="closeMobileMenu()">Request Early Access</a>
+      </div>
+
+    </div>
+  </div>
+</header>
+
+
+<!-- ═══════════════════════════════════════════
+     PRICING HERO
+═══════════════════════════════════════════ -->
+<div class="pricing-hero">
+  <div class="pricing-hero__badge">
+    <span class="pricing-hero__badge-dot"></span>
+    Pricing — Built for Safari Operators
+  </div>
+  <h1>Your next client is already out there.<br><em>Pick how fast you find them.</em></h1>
+  <p>Two plans for boutique safari operators who want to reach high-intent travellers before anyone else does. No fluff. No volume plays. Just the right clients, faster.</p>
+</div>
+
+<!-- ═══════════════════════════════════════════
+     BILLING TOGGLE
+═══════════════════════════════════════════ -->
+<div class="billing-toggle">
+  <span>Monthly</span>
+  <div class="toggle-track" id="toggle" onclick="toggleBilling()" role="switch" aria-checked="false" tabindex="0">
+    <div class="toggle-thumb"></div>
+  </div>
+  <span>Annual <span class="save-badge">Save 20%</span></span>
+</div>
+
+<!-- ═══════════════════════════════════════════
+     PRICING CARDS
+═══════════════════════════════════════════ -->
+<div class="pr-cards-wrapper">
+
+  <!-- SOCIAL LISTENING -->
+  <div class="pr-card pr-card--social">
+    <div class="pr-card__tier">The Platform</div>
+    <div class="pr-card__name">Social Listening</div>
+    <p class="pr-card__tagline">Spot high-intent safari travellers the moment they post. You see the lead before your competitors do. You respond first. You win the booking.</p>
+    <div class="pr-price-row">
+      <span class="pr-price-currency">$</span>
+      <span class="pr-price-amount" id="social-price">299</span>
+      <span class="pr-price-period">/ month</span>
+    </div>
+    <p class="pr-price-annual" id="social-annual">Billed monthly. Switch to annual and save $719/yr.</p>
+    <button class="pr-card__cta">Request Early Access</button>
+    <div class="pr-divider"></div>
+    <div class="pr-features-label">What you get from day one</div>
+    <ul class="pr-feature-list">
+      <li class="pr-feature-item">
+        <span class="pr-check">✓</span>
+        <span>Real-time monitoring across 9+ platforms
+          <span class="pr-feature-note">Reddit, TripAdvisor, Quora, Facebook, Instagram, TikTok, X/Twitter, Pinterest, Bluesky</span>
+        </span>
+      </li>
+      <li class="pr-feature-item">
+        <span class="pr-check">✓</span>
+        <span>Intent scoring on every safari mention
+          <span class="pr-feature-note">Scored on dates, budget, destination, group size, and urgency</span>
+        </span>
+      </li>
+      <li class="pr-feature-item">
+        <span class="pr-check">✓</span>
+        <span>Live lead feed dashboard
+          <span class="pr-feature-note">High-intent leads in your dashboard the moment they post</span>
+        </span>
+      </li>
+      <li class="pr-feature-item">
+        <span class="pr-check">✓</span>
+        <span>Booking signal filters
+          <span class="pr-feature-note">Only travellers ready to book reach your dashboard. Not browsers.</span>
+        </span>
+      </li>
+      <li class="pr-feature-item">
+        <span class="pr-check">✓</span>
+        <span>No contracts. No setup fees. Cancel any time.</span>
+      </li>
+    </ul>
+  </div>
+
+  <!-- SOCIAL + STRATEGY -->
+  <div class="pr-card pr-card--growth">
+    <div class="pr-card__popular">Recommended</div>
+    <div class="pr-card__tier">Platform + Expert Support</div>
+    <div class="pr-card__name">Social + Strategy</div>
+    <p class="pr-card__tagline">Everything in Social Listening, plus a strategist in your corner. Finding the lead is one thing. Making sure your response wins the booking every time is another.</p>
+    <div class="pr-price-row">
+      <span class="pr-price-currency">$</span>
+      <span class="pr-price-amount" id="growth-price">599</span>
+      <span class="pr-price-period">/ month</span>
+    </div>
+    <p class="pr-price-annual" id="growth-annual">Billed monthly. Switch to annual and save $1,438/yr.</p>
+    <button class="pr-card__cta">Request Early Access</button>
+    <button class="pr-card__secondary-cta">Book a Free Consultation</button>
+    <div class="pr-divider"></div>
+    <div class="pr-features-label">Everything in Social Listening, plus:</div>
+    <ul class="pr-feature-list">
+      <li class="pr-feature-item">
+        <span class="pr-check">✓</span>
+        <span>All Social Listening features</span>
+      </li>
+    </ul>
+    <div class="pr-section-label">Expert Support — what's added</div>
+    <ul class="pr-feature-list">
+      <li class="pr-feature-item">
+        <span class="pr-check">✓</span>
+        <span>Response strategy session
+          <span class="pr-feature-note">How to show up first in a forum thread and create immediate trust with a traveller who's never heard of you</span>
+        </span>
+      </li>
+      <li class="pr-feature-item">
+        <span class="pr-check">✓</span>
+        <span>Operator positioning review
+          <span class="pr-feature-note">So when a traveller checks you out after your response, they see exactly why you're the right choice</span>
+        </span>
+      </li>
+      <li class="pr-feature-item">
+        <span class="pr-check">✓</span>
+        <span>Monthly lead review
+          <span class="pr-feature-note">What's converting, what's not, and where the next booking opportunity is hiding</span>
+        </span>
+      </li>
+      <li class="pr-feature-item">
+        <span class="pr-check">✓</span>
+        <span>Dedicated account access
+          <span class="pr-feature-note">A real person, not a ticket queue</span>
+        </span>
+      </li>
+    </ul>
+  </div>
+
+</div>
+
+<!-- ═══════════════════════════════════════════
+     TRUST STRIP
+═══════════════════════════════════════════ -->
+<div class="pr-trust-strip">
+  <p class="pr-trust-strip__label">Built exclusively for safari operators</p>
+  <div class="pr-trust-items">
+    <div class="pr-trust-item">No contracts. Cancel any time.</div>
+    <div class="pr-trust-item">No setup fees. Live within days.</div>
+    <div class="pr-trust-item">9+ platforms. Every minute. No gaps.</div>
+    <div class="pr-trust-item">Leads in your dashboard the moment they post.</div>
+    <div class="pr-trust-item">Only travellers ready to book. Not browsers.</div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════
+     COMPARISON TABLE
+═══════════════════════════════════════════ -->
+<div class="pr-compare-section">
+  <div class="pr-section-header">
+    <h2>Which plan is right for you?</h2>
+    <p>If you want leads, start with Social Listening. If you want bookings, start with Social + Strategy.</p>
+  </div>
+
+  <table class="pr-compare-table">
+    <thead>
+      <tr>
+        <th>Feature</th>
+        <th>Social Listening — $299/mo</th>
+        <th>Social + Strategy — $599/mo</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr class="pr-group-row"><td colspan="3">Social Listening — included in both plans</td></tr>
+      <tr>
+        <td>9+ platform monitoring (Reddit, TripAdvisor, Quora &amp; more)</td>
+        <td><span class="pr-check-yes">✓</span></td>
+        <td><span class="pr-check-yes">✓</span></td>
+      </tr>
+      <tr>
+        <td>Real-time intent scoring</td>
+        <td><span class="pr-check-yes">✓</span></td>
+        <td><span class="pr-check-yes">✓</span></td>
+      </tr>
+      <tr>
+        <td>Live lead dashboard</td>
+        <td><span class="pr-check-yes">✓</span></td>
+        <td><span class="pr-check-yes">✓</span></td>
+      </tr>
+      <tr>
+        <td>High-intent filter (budget, dates, destination)</td>
+        <td><span class="pr-check-yes">✓</span></td>
+        <td><span class="pr-check-yes">✓</span></td>
+      </tr>
+      <tr>
+        <td>No contracts. No setup fees.</td>
+        <td><span class="pr-check-yes">✓</span></td>
+        <td><span class="pr-check-yes">✓</span></td>
+      </tr>
+      <tr class="pr-group-row"><td colspan="3">Expert Support — Social + Strategy only</td></tr>
+      <tr>
+        <td>Response strategy session</td>
+        <td><span class="pr-check-no">—</span></td>
+        <td><span class="pr-check-terra">✓</span></td>
+      </tr>
+      <tr>
+        <td>Operator positioning review</td>
+        <td><span class="pr-check-no">—</span></td>
+        <td><span class="pr-check-terra">✓</span></td>
+      </tr>
+      <tr>
+        <td>Monthly lead review</td>
+        <td><span class="pr-check-no">—</span></td>
+        <td><span class="pr-check-terra">✓</span></td>
+      </tr>
+      <tr>
+        <td>Dedicated account access</td>
+        <td><span class="pr-check-no">—</span></td>
+        <td><span class="pr-check-terra">✓</span></td>
+      </tr>
+      <tr>
+        <td>Free consultation</td>
+        <td><span class="pr-check-no">—</span></td>
+        <td><span class="pr-check-terra">✓</span></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+
+<!-- ═══════════════════════════════════════════
+     CTA BANNER
+═══════════════════════════════════════════ -->
+<section class="section--dark cta-banner" id="cta-banner" aria-label="Call to action">
+
+  <div class="cta-watermark cta-watermark--1" aria-hidden="true">
+    <svg viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+  </div>
+  <div class="cta-watermark cta-watermark--2" aria-hidden="true">
+    <svg viewBox="0 0 24 24"><path d="M12 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0zm5.01 4.744c.688 0 1.25.561 1.25 1.249a1.25 1.25 0 0 1-2.498.056l-2.597-.547-.8 3.747c1.824.07 3.48.632 4.674 1.488.308-.309.73-.491 1.207-.491.968 0 1.754.786 1.754 1.754 0 .716-.435 1.333-1.01 1.614a3.111 3.111 0 0 1 .042.52c0 2.694-3.13 4.87-7.004 4.87-3.874 0-7.004-2.176-7.004-4.87 0-.183.015-.366.043-.534A1.748 1.748 0 0 1 4.028 12c0-.968.786-1.754 1.754-1.754.463 0 .898.196 1.207.49 1.207-.883 2.878-1.43 4.744-1.487l.885-4.182a.342.342 0 0 1 .14-.197.35.35 0 0 1 .238-.042l2.906.617a1.214 1.214 0 0 1 1.108-.701zM9.25 12C8.561 12 8 12.562 8 13.25c0 .687.561 1.248 1.25 1.248.687 0 1.248-.561 1.248-1.249 0-.688-.561-1.249-1.249-1.249zm5.5 0c-.687 0-1.248.561-1.248 1.25 0 .687.561 1.248 1.249 1.248.688 0 1.249-.561 1.249-1.249 0-.687-.562-1.249-1.25-1.249z"/></svg>
+  </div>
+  <div class="cta-watermark cta-watermark--3" aria-hidden="true">
+    <svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+  </div>
+  <div class="cta-watermark cta-watermark--4" aria-hidden="true">
+    <svg viewBox="0 0 24 24"><path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.99-.32-2.15-.23-3.02.37-.63.41-1.11 1.04-1.36 1.75-.21.51-.15 1.07-.14 1.61.24 1.64 1.82 3.02 3.5 2.87 1.12-.01 2.19-.66 2.77-1.61.19-.33.4-.67.41-1.06.1-1.79.06-3.57.07-5.36.01-4.03-.01-8.05.02-12.07z"/></svg>
+  </div>
+  <div class="cta-watermark cta-watermark--5" aria-hidden="true">
+    <svg viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.748l7.73-8.835L1.254 2.25H8.08l4.261 5.635 5.903-5.635zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+  </div>
+  <div class="cta-watermark cta-watermark--6" aria-hidden="true">
+    <svg viewBox="0 0 24 24"><path d="M12 0C5.373 0 0 5.372 0 12c0 5.084 3.163 9.426 7.627 11.174-.105-.949-.2-2.405.042-3.441.218-.937 1.407-5.965 1.407-5.965s-.359-.719-.359-1.782c0-1.668.967-2.914 2.171-2.914 1.023 0 1.518.769 1.518 1.69 0 1.029-.655 2.568-.994 3.995-.283 1.194.599 2.169 1.777 2.169 2.133 0 3.772-2.249 3.772-5.495 0-2.873-2.064-4.882-5.012-4.882-3.414 0-5.418 2.561-5.418 5.207 0 1.031.397 2.138.893 2.738a.36.36 0 0 1 .083.345l-.333 1.36c-.053.22-.174.267-.402.161-1.499-.698-2.436-2.889-2.436-4.649 0-3.785 2.75-7.262 7.929-7.262 4.163 0 7.398 2.967 7.398 6.931 0 4.136-2.607 7.464-6.227 7.464-1.216 0-2.359-.632-2.75-1.378l-.748 2.853c-.271 1.043-1.002 2.35-1.492 3.146C9.57 23.812 10.763 24 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0z"/></svg>
+  </div>
+  <div class="cta-watermark cta-watermark--7" aria-hidden="true">
+    <svg viewBox="0 0 24 24"><path d="M12.003 0C5.373 0 0 5.372 0 12c0 6.628 5.373 12 12.003 12 6.628 0 11.997-5.372 11.997-12 0-6.628-5.369-12-11.997-12zm-.172 18.95c-.56-.172-1.068-.46-1.526-.857l-1.35 1.37-.983-.962 1.345-1.367c-.594-.858-.938-1.939-.938-3.134 0-2.994 1.96-5.122 4.595-5.122 1.317 0 2.458.5 3.29 1.357l1.073-1.09.984.965-1.061 1.076c.571.848.907 1.908.907 3.093 0 2.995-1.96 5.121-4.594 5.121-.59 0-1.142-.12-1.65-.33l-.092-.12z"/></svg>
+  </div>
+  <div class="cta-watermark cta-watermark--8" aria-hidden="true">
+    <svg viewBox="0 0 24 24"><path d="M12 10.8c-1.087-2.114-4.046-6.053-6.798-7.995C2.566.944 1.561 1.266.902 1.565.139 1.908 0 3.08 0 3.768c0 .69.378 5.65.624 6.479.815 2.736 3.713 3.66 6.383 3.364.136-.02.275-.039.415-.056-.138.022-.276.04-.415.056-3.912.58-7.387 2.005-2.83 7.078 5.013 5.19 6.87-1.113 7.823-4.308.953 3.195 2.05 9.271 7.733 4.308 4.267-4.308 1.172-6.498-2.74-7.078a8.741 8.741 0 0 1-.415-.056c.14.017.279.036.415.056 2.67.297 5.568-.628 6.383-3.364.246-.828.624-5.79.624-6.478 0-.69-.139-1.861-.902-2.204-.659-.299-1.664-.62-4.3 1.24C16.046 4.748 13.087 8.687 12 10.8z"/></svg>
+  </div>
+  <div class="cta-watermark cta-watermark--9" aria-hidden="true">
+    <svg viewBox="0 0 24 24">
+      <circle cx="6.5" cy="12" r="5.8"/><circle cx="6.5" cy="12" r="3.2" fill="var(--dark-bg)"/><circle cx="6.5" cy="12" r="1.8"/>
+      <circle cx="17.5" cy="12" r="5.8"/><circle cx="17.5" cy="12" r="3.2" fill="var(--dark-bg)"/><circle cx="17.5" cy="12" r="1.8"/>
+    </svg>
+  </div>
+
+  <div class="cta-banner__inner">
+    <h2 class="cta-banner__headline">Your next client just posted.<br>Be the first to reply.</h2>
+    <p class="cta-banner__subhead">Every hour you wait, someone else could be answering them.</p>
+    <div class="btn-group" style="justify-content:center;" role="group">
+      <a href="#" class="btn btn--primary">Request Early Access</a>
+      <a href="#" class="btn btn--ghost-white">Book a Free Consultation</a>
+    </div>
+    <p class="cta-banner__micro">No contracts. No setup fees. Built exclusively for safari operators.</p>
+  </div>
+</section>
+
+
+<!-- ═══════════════════════════════════════════
+     COMMON PRICING QUESTIONS
+═══════════════════════════════════════════ -->
+<section class="section section--offwhite" id="pricing-faq" aria-label="Common pricing questions">
+  <div class="container">
+    <div class="faq">
+      <div class="faq__header">
+        <div>
+          <span class="eyebrow reveal">Common Pricing Questions</span>
+          <h2 class="section-headline reveal reveal--delay-1">The Questions Operators Usually Ask Us</h2>
+        </div>
+        <a href="#cta-banner" class="faq__contact reveal reveal--delay-1">Still have questions? Contact us</a>
+      </div>
+      <div class="faq__grid">
+        <div>
+          <div class="faq__item">
+            <button class="faq__question" aria-expanded="false">Is there a free trial?<span class="faq__chevron" aria-hidden="true">▾</span></button>
+            <div class="faq__answer" role="region"><p class="faq__answer-inner">We're currently in early access. Operators who join now get priority onboarding and founding-member pricing. Request access and we'll walk you through the platform before you commit to anything.</p></div>
+          </div>
+          <div class="faq__item">
+            <button class="faq__question" aria-expanded="false">Do you offer annual billing?<span class="faq__chevron" aria-hidden="true">▾</span></button>
+            <div class="faq__answer" role="region"><p class="faq__answer-inner">Yes. Paying annually saves you 20% — that's $719/yr on Social Listening and $1,438/yr on Social + Strategy. You can switch from monthly to annual at any time.</p></div>
+          </div>
+          <div class="faq__item">
+            <button class="faq__question" aria-expanded="false">Can I switch plans later?<span class="faq__chevron" aria-hidden="true">▾</span></button>
+            <div class="faq__answer" role="region"><p class="faq__answer-inner">Yes. You can upgrade from Social Listening to Social + Strategy at any time. Many operators start on Social Listening to see the lead volume first, then move up once they're ready to work on converting those leads consistently.</p></div>
+          </div>
+        </div>
+        <div>
+          <div class="faq__item">
+            <button class="faq__question" aria-expanded="false">Can I upgrade or downgrade between plans?<span class="faq__chevron" aria-hidden="true">▾</span></button>
+            <div class="faq__answer" role="region"><p class="faq__answer-inner">Yes — in both directions. Upgrade to Social + Strategy when you want expert support, or step back to Social Listening if you'd rather run independently. No penalties, no lock-in.</p></div>
+          </div>
+          <div class="faq__item">
+            <button class="faq__question" aria-expanded="false">What happens if I want to cancel?<span class="faq__chevron" aria-hidden="true">▾</span></button>
+            <div class="faq__answer" role="region"><p class="faq__answer-inner">Cancel any time, no questions asked. There are no contracts and no cancellation fees. If you're on an annual plan, your access runs until the end of your billing period.</p></div>
+          </div>
+          <div class="faq__item">
+            <button class="faq__question" aria-expanded="false">Is there a setup fee or contract?<span class="faq__chevron" aria-hidden="true">▾</span></button>
+            <div class="faq__answer" role="region"><p class="faq__answer-inner">No setup fees. No contracts. You pay month to month and you're free to leave at any time. We'd rather earn your business every month than lock you into something.</p></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══════════════════════════════════════════
+     FOOTER (same as home)
+═══════════════════════════════════════════ -->
+<footer class="footer" id="footer" role="contentinfo">
+  <div class="container">
+
+    <!-- Top row: Brand left | Stay Updated right -->
+    <div class="footer__top">
+
+      <div class="footer__brand">
+        <img src="assets/wandar-logo.png" alt="Wandar" class="footer__logo-img" />
+        <p class="footer__brand-tagline">Social listening built for safari travel</p>
+      </div>
+
+      <div class="footer__newsletter">
+        <h3 class="footer__newsletter-heading">Stay Updated</h3>
+        <p class="footer__newsletter-sub">Get the latest travel insights and features updates.</p>
+        <form onsubmit="handleSubscribe(event)" novalidate>
+          <div class="footer__input-pill">
+            <label for="email-subscribe" class="sr-only">Email address</label>
+            <input type="email" id="email-subscribe" name="email" class="footer__email-input" placeholder="Enter your email" required autocomplete="email" />
+            <button type="submit" class="footer__submit-arrow" aria-label="Subscribe">→</button>
+          </div>
+        </form>
+      </div>
+
+    </div><!-- /footer__top -->
+
+    <!-- Divider -->
+    <div class="footer__divider"></div>
+
+    <!-- 3 columns: Quick Links | For Operators | Connect With Us -->
+    <div class="footer__columns">
+
+      <div class="footer__col">
+        <span class="footer__col-heading">Quick Links</span>
+        <ul class="footer__col-links">
+          <li><a href="index.html"              class="footer__col-link">Home</a></li>
+          <li><a href="index.html#why-wandar"   class="footer__col-link">Why Wandar</a></li>
+          <li><a href="index.html#how-it-works" class="footer__col-link">How It Works</a></li>
+          <li><a href="index.html#who-its-for"  class="footer__col-link">Who It's For</a></li>
+          <li><a href="index.html#cta-banner"   class="footer__col-link">Platforms</a></li>
+        </ul>
+      </div>
+
+      <div class="footer__col">
+        <span class="footer__col-heading">For Operators</span>
+        <ul class="footer__col-links">
+          <li><a href="pricing.html"    class="footer__col-link">Pricing</a></li>
+          <li><a href="#cta-banner"     class="footer__col-link">Free Consultation</a></li>
+          <li><a href="#"               class="footer__col-link">Free Tools</a></li>
+          <li><a href="#"               class="footer__col-link">Free Guides</a></li>
+          <li><a href="#"               class="footer__col-link">Support</a></li>
+        </ul>
+      </div>
+
+      <div class="footer__col">
+        <span class="footer__col-heading">Connect With Us</span>
+        <div class="footer__socials">
+          <!-- LinkedIn -->
+          <a href="#" class="footer__social-link" aria-label="Wandar on LinkedIn">
+            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+          </a>
+          <!-- X -->
+          <a href="#" class="footer__social-link" aria-label="Wandar on X">
+            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.748l7.73-8.835L1.254 2.25H8.08l4.261 5.635 5.903-5.635zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+          </a>
+          <!-- Telegram -->
+          <a href="#" class="footer__social-link" aria-label="Wandar on Telegram">
+            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/></svg>
+          </a>
+          <!-- WhatsApp -->
+          <a href="#" class="footer__social-link" aria-label="Wandar on WhatsApp">
+            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413z"/></svg>
+          </a>
+        </div>
+      </div>
+
+    </div><!-- /footer__columns -->
+
+    <!-- Legal bar -->
+    <div class="footer__legal-bar">
+      <p class="footer__legal-copy">© 2026 Wandar. All rights reserved.</p>
+      <div class="footer__legal-links">
+        <a href="#" class="footer__legal-link">Privacy Policy</a>
+        <a href="#" class="footer__legal-link">Terms of Service</a>
+        <a href="#" class="footer__legal-link">AI Transparency Statement</a>
+      </div>
+    </div>
+
+  </div>
+</footer>
+
+
+<!-- ═══════════════════════════════════════════
+     JAVASCRIPT
+═══════════════════════════════════════════ -->
+<script>
+// ── NAV ──────────────────────────────────────────────────────────
+const nav = document.getElementById('nav');
+const platformsBtn = document.getElementById('platforms-btn');
+const platformsDropdown = document.getElementById('platforms-dropdown');
+const hamburger = document.getElementById('hamburger');
+const mobilePanel = document.getElementById('mobile-panel');
+const navCtaDesktop = document.getElementById('nav-cta-desktop');
+const navLoginDesktop = document.getElementById('nav-login-desktop');
+
+if (navCtaDesktop) navCtaDesktop.style.display = '';
+if (navLoginDesktop) navLoginDesktop.style.display = '';
+
+window.addEventListener('scroll', () => {
+  nav.classList.toggle('scrolled', window.scrollY > 10);
+}, { passive: true });
+
+platformsBtn.addEventListener('click', (e) => {
+  e.stopPropagation();
+  const isOpen = platformsDropdown.classList.contains('open');
+  platformsDropdown.classList.toggle('open');
+  platformsBtn.classList.toggle('open');
+  platformsBtn.setAttribute('aria-expanded', !isOpen);
+});
+
+document.addEventListener('click', (e) => {
+  if (!platformsBtn.contains(e.target) && !platformsDropdown.contains(e.target)) {
+    platformsDropdown.classList.remove('open');
+    platformsBtn.classList.remove('open');
+    platformsBtn.setAttribute('aria-expanded', 'false');
+  }
+});
+
+document.addEventListener('keydown', (e) => {
+  if (e.key === 'Escape') {
+    platformsDropdown.classList.remove('open');
+    platformsBtn.classList.remove('open');
+    mobilePanel.classList.remove('open');
+    hamburger.classList.remove('open');
+    hamburger.setAttribute('aria-expanded', 'false');
+  }
+});
+
+hamburger.addEventListener('click', () => {
+  const isOpen = mobilePanel.classList.contains('open');
+  mobilePanel.classList.toggle('open');
+  hamburger.classList.toggle('open');
+  hamburger.setAttribute('aria-expanded', !isOpen);
+});
+
+function closeMobileMenu() {
+  mobilePanel.classList.remove('open');
+  hamburger.classList.remove('open');
+  hamburger.setAttribute('aria-expanded', 'false');
+}
+
+function toggleMobilePlatforms() {
+  document.getElementById('mobile-platforms').classList.toggle('open');
+}
+
+// ── SCROLL REVEAL ────────────────────────────────────────────────
+const ro = new IntersectionObserver((entries) => {
+  entries.forEach((e) => {
+    if (e.isIntersecting) {
+      e.target.classList.add('visible');
+      ro.unobserve(e.target);
+    }
+  });
+}, { rootMargin: '0px 0px -60px 0px', threshold: 0.1 });
+
+document.querySelectorAll('.reveal').forEach((el) => ro.observe(el));
+
+// ── BILLING TOGGLE ────────────────────────────────────────────────
+let isAnnual = false;
+
+function toggleBilling() {
+  isAnnual = !isAnnual;
+  const track = document.getElementById('toggle');
+  track.classList.toggle('on', isAnnual);
+  track.setAttribute('aria-checked', isAnnual);
+
+  const socialPrice = isAnnual ? Math.round(299 * 0.8) : 299;
+  const growthPrice = isAnnual ? Math.round(599 * 0.8) : 599;
+
+  document.getElementById('social-price').textContent = socialPrice;
+  document.getElementById('growth-price').textContent = growthPrice;
+
+  const socialNote = isAnnual
+    ? `Billed annually ($${socialPrice * 12}/yr). You save $${(299 - socialPrice) * 12}/yr.`
+    : 'Billed monthly. Switch to annual and save $719/yr.';
+  const growthNote = isAnnual
+    ? `Billed annually ($${growthPrice * 12}/yr). You save $${(599 - growthPrice) * 12}/yr.`
+    : 'Billed monthly. Switch to annual and save $1,438/yr.';
+
+  document.getElementById('social-annual').textContent = socialNote;
+  document.getElementById('growth-annual').textContent = growthNote;
+}
+
+document.getElementById('toggle').addEventListener('keydown', (e) => {
+  if (e.key === 'Enter' || e.key === ' ') {
+    e.preventDefault();
+    toggleBilling();
+  }
+});
+
+// ── FOOTER SUBSCRIBE ──────────────────────────────────────────────
+function handleSubscribe(e) {
+  e.preventDefault();
+  const input = document.getElementById('email-subscribe');
+  if (input && input.value) {
+    input.value = '';
+    input.placeholder = 'You\'re on the list!';
+    setTimeout(() => { input.placeholder = 'Enter your email'; }, 3000);
+  }
+}
+
+// ── FAQ ACCORDION ────────────────────────────────────────────────
+document.querySelectorAll('.faq__question').forEach((btn) => {
+  btn.addEventListener('click', () => {
+    const item = btn.closest('.faq__item');
+    const isOpen = btn.getAttribute('aria-expanded') === 'true';
+    document.querySelectorAll('.faq__item').forEach((i) => {
+      i.querySelector('.faq__question').setAttribute('aria-expanded', 'false');
+      i.classList.remove('open');
+    });
+    if (!isOpen) {
+      btn.setAttribute('aria-expanded', 'true');
+      item.classList.add('open');
+    }
+  });
+});
+
+// ── NAV LOADED ────────────────────────────────────────────────────
+window.addEventListener('load', () => document.body.classList.add('hero-loaded'));
+</script>
+</body>
+</html>

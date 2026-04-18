@@ -1,0 +1,914 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Wandar — Social Listening Built for Safari Travel</title>
+  <meta name="description" content="Wandar finds high-intent safari travelers the moment they post a question on social media platforms — and gets them to you before your competitors can respond." />
+  <meta property="og:title" content="Wandar — Social Listening Built for Safari Travel" />
+  <meta property="og:description" content="Find safari leads hiding in plain sight. Score booking intent in real time." />
+  <meta property="og:type" content="website" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="stylesheet" href="assets/css/main.css" />
+  <!-- Lordicon animated icons -->
+  <script src="https://cdn.lordicon.com/lordicon.js"></script>
+</head>
+<body>
+
+<!-- ═══════════════════════════════════════════
+     NAVIGATION
+═══════════════════════════════════════════ -->
+<header class="nav nav--transparent" id="nav" role="banner">
+  <div class="container">
+    <div class="nav__inner nav-relative">
+
+      <!-- Logo -->
+      <a href="/" class="nav__logo" aria-label="Wandar home">
+        <img src="assets/wandar-logo.png" alt="Wandar" class="nav__logo-img" />
+      </a>
+
+      <!-- Desktop nav links -->
+      <nav aria-label="Main navigation">
+        <ul class="nav__links">
+          <li style="display:none"><a href="#hero" class="nav__link">Home</a></li>
+          <li><a href="#why-wandar"  class="nav__link">Why Wandar</a></li>
+          <li><a href="#how-it-works" class="nav__link">How It Works</a></li>
+          <li><a href="#who-its-for"  class="nav__link">Who It's For</a></li>
+          <li><a href="pricing.html" class="nav__link">Pricing</a></li>
+          <li class="nav-relative">
+            <button class="nav__link nav__link--platforms" id="platforms-btn" aria-expanded="false" aria-haspopup="true">
+              Platforms <span class="chevron" aria-hidden="true">▾</span>
+            </button>
+            <div class="platforms-dropdown" id="platforms-dropdown" role="menu">
+              <div class="platforms-dropdown__grid">
+                <a href="platforms/facebook.html"    class="platform-chip-nav" role="menuitem">
+                  <svg viewBox="0 0 24 24" fill="#1877F2" aria-hidden="true"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+                  Facebook
+                </a>
+                <a href="platforms/bluesky.html"     class="platform-chip-nav" role="menuitem">
+                  <svg viewBox="0 0 24 24" fill="#0085FF" aria-hidden="true"><path d="M12 10.8c-1.087-2.114-4.046-6.053-6.798-7.995C2.566.944 1.561 1.266.902 1.565.139 1.908 0 3.08 0 3.768c0 .69.378 5.65.624 6.479.815 2.736 3.713 3.66 6.383 3.364.136-.02.275-.039.415-.056-.138.022-.276.04-.415.056-3.912.58-7.387 2.005-2.83 7.078 5.013 5.19 6.87-1.113 7.823-4.308.953 3.195 2.05 9.271 7.733 4.308 4.267-4.308 1.172-6.498-2.74-7.078a8.741 8.741 0 0 1-.415-.056c.14.017.279.036.415.056 2.67.297 5.568-.628 6.383-3.364.246-.828.624-5.79.624-6.478 0-.69-.139-1.861-.902-2.204-.659-.299-1.664-.62-4.3 1.24C16.046 4.748 13.087 8.687 12 10.8z"/></svg>
+                  Bluesky
+                </a>
+                <a href="platforms/instagram.html"   class="platform-chip-nav" role="menuitem">
+                  <svg viewBox="0 0 24 24" aria-hidden="true">
+                    <defs><linearGradient id="ig-nav" x1="0%" y1="100%" x2="100%" y2="0%"><stop offset="0%" stop-color="#f09433"/><stop offset="50%" stop-color="#dc2743"/><stop offset="100%" stop-color="#bc1888"/></linearGradient></defs>
+                    <path fill="url(#ig-nav)" d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+                  </svg>
+                  Instagram
+                </a>
+                <a href="platforms/quora.html"       class="platform-chip-nav" role="menuitem">
+                  <svg viewBox="0 0 24 24" fill="#B92B27" aria-hidden="true"><path d="M12.003 0C5.373 0 0 5.372 0 12c0 6.628 5.373 12 12.003 12 6.628 0 11.997-5.372 11.997-12 0-6.628-5.369-12-11.997-12zm-.172 18.95c-.56-.172-1.068-.46-1.526-.857l-1.35 1.37-.983-.962 1.345-1.367c-.594-.858-.938-1.939-.938-3.134 0-2.994 1.96-5.122 4.595-5.122 1.317 0 2.458.5 3.29 1.357l1.073-1.09.984.965-1.061 1.076c.571.848.907 1.908.907 3.093 0 2.995-1.96 5.121-4.594 5.121-.59 0-1.142-.12-1.65-.33l-.092-.12zm1.65-1.47a.64.64 0 0 0 .072-.01c1.46-.31 2.462-1.72 2.462-3.47 0-.86-.24-1.636-.646-2.22l-2.87 2.916.984.963 1.347-1.369.654.643-1.352 1.374c.445.627 1.067 1.027 1.75 1.12l-.4.053zm-1.65-6.16c-1.458.31-2.46 1.72-2.46 3.47 0 .823.22 1.572.6 2.148l2.87-2.915-.984-.963-1.347 1.37-.654-.645 1.352-1.373c-.43-.605-1.04-.998-1.712-1.115l.335-.977z"/></svg>
+                  Quora
+                </a>
+                <a href="platforms/pinterest.html"   class="platform-chip-nav" role="menuitem">
+                  <svg viewBox="0 0 24 24" fill="#E60023" aria-hidden="true"><path d="M12 0C5.373 0 0 5.372 0 12c0 5.084 3.163 9.426 7.627 11.174-.105-.949-.2-2.405.042-3.441.218-.937 1.407-5.965 1.407-5.965s-.359-.719-.359-1.782c0-1.668.967-2.914 2.171-2.914 1.023 0 1.518.769 1.518 1.69 0 1.029-.655 2.568-.994 3.995-.283 1.194.599 2.169 1.777 2.169 2.133 0 3.772-2.249 3.772-5.495 0-2.873-2.064-4.882-5.012-4.882-3.414 0-5.418 2.561-5.418 5.207 0 1.031.397 2.138.893 2.738a.36.36 0 0 1 .083.345l-.333 1.36c-.053.22-.174.267-.402.161-1.499-.698-2.436-2.889-2.436-4.649 0-3.785 2.75-7.262 7.929-7.262 4.163 0 7.398 2.967 7.398 6.931 0 4.136-2.607 7.464-6.227 7.464-1.216 0-2.359-.632-2.75-1.378l-.748 2.853c-.271 1.043-1.002 2.35-1.492 3.146C9.57 23.812 10.763 24 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0z"/></svg>
+                  Pinterest
+                </a>
+                <a href="platforms/reddit.html"      class="platform-chip-nav" role="menuitem">
+                  <svg viewBox="0 0 24 24" fill="#FF4500" aria-hidden="true"><path d="M12 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0zm5.01 4.744c.688 0 1.25.561 1.25 1.249a1.25 1.25 0 0 1-2.498.056l-2.597-.547-.8 3.747c1.824.07 3.48.632 4.674 1.488.308-.309.73-.491 1.207-.491.968 0 1.754.786 1.754 1.754 0 .716-.435 1.333-1.01 1.614a3.111 3.111 0 0 1 .042.52c0 2.694-3.13 4.87-7.004 4.87-3.874 0-7.004-2.176-7.004-4.87 0-.183.015-.366.043-.534A1.748 1.748 0 0 1 4.028 12c0-.968.786-1.754 1.754-1.754.463 0 .898.196 1.207.49 1.207-.883 2.878-1.43 4.744-1.487l.885-4.182a.342.342 0 0 1 .14-.197.35.35 0 0 1 .238-.042l2.906.617a1.214 1.214 0 0 1 1.108-.701zM9.25 12C8.561 12 8 12.562 8 13.25c0 .687.561 1.248 1.25 1.248.687 0 1.248-.561 1.248-1.249 0-.688-.561-1.249-1.249-1.249zm5.5 0c-.687 0-1.248.561-1.248 1.25 0 .687.561 1.248 1.249 1.248.688 0 1.249-.561 1.249-1.249 0-.687-.562-1.249-1.25-1.249zm-5.466 3.99a.327.327 0 0 0-.231.094.33.33 0 0 0 0 .463c.842.842 2.484.913 2.961.913.477 0 2.105-.056 2.961-.913a.361.361 0 0 0 .029-.463.33.33 0 0 0-.464 0c-.547.533-1.684.73-2.512.73-.828 0-1.979-.196-2.512-.73a.326.326 0 0 0-.232-.095z"/></svg>
+                  Reddit
+                </a>
+                <a href="platforms/x-twitter.html"   class="platform-chip-nav" role="menuitem">
+                  <svg viewBox="0 0 24 24" fill="#000000" aria-hidden="true"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.748l7.73-8.835L1.254 2.25H8.08l4.261 5.635 5.903-5.635zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+                  X / Twitter
+                </a>
+                <a href="platforms/tiktok.html"      class="platform-chip-nav" role="menuitem">
+                  <svg viewBox="0 0 24 24" fill="#010101" aria-hidden="true"><path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.99-.32-2.15-.23-3.02.37-.63.41-1.11 1.04-1.36 1.75-.21.51-.15 1.07-.14 1.61.24 1.64 1.82 3.02 3.5 2.87 1.12-.01 2.19-.66 2.77-1.61.19-.33.4-.67.41-1.06.1-1.79.06-3.57.07-5.36.01-4.03-.01-8.05.02-12.07z"/></svg>
+                  TikTok
+                </a>
+                <a href="platforms/tripadvisor.html" class="platform-chip-nav" role="menuitem">
+                  <!-- TripAdvisor owl icon -->
+                  <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                    <circle cx="6.5" cy="12" r="5.8" fill="#34E0A1"/>
+                    <circle cx="6.5" cy="12" r="3.2" fill="white"/>
+                    <circle cx="6.5" cy="12" r="1.8" fill="#34E0A1"/>
+                    <circle cx="17.5" cy="12" r="5.8" fill="#34E0A1"/>
+                    <circle cx="17.5" cy="12" r="3.2" fill="white"/>
+                    <circle cx="17.5" cy="12" r="1.8" fill="#34E0A1"/>
+                    <path d="M12.3 9.8 Q12 9.4 11.7 9.8 L11.2 14 Q12 13.6 12.8 14 Z" fill="#34E0A1"/>
+                  </svg>
+                  TripAdvisor
+                </a>
+              </div>
+            </div>
+          </li>
+        </ul>
+      </nav>
+
+      <!-- Right: CTA + Login + Hamburger -->
+      <div class="nav__right">
+        <a href="#cta-banner" class="btn btn--primary nav__cta-btn" style="display:none" id="nav-cta-desktop">Request Early Access</a>
+        <a href="#" class="nav__login-link" style="display:none" id="nav-login-desktop">Log In</a>
+        <button class="nav__hamburger" id="hamburger" aria-label="Open menu" aria-expanded="false">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+
+      <!-- Mobile panel -->
+      <div class="nav__mobile-panel" id="mobile-panel" aria-label="Mobile navigation">
+        <ul class="nav__mobile-links">
+          <li style="display:none"><a href="#hero" onclick="closeMobileMenu()">Home</a></li>
+          <li><a href="#why-wandar"   onclick="closeMobileMenu()">Why Wandar</a></li>
+          <li><a href="#how-it-works" onclick="closeMobileMenu()">How It Works</a></li>
+          <li><a href="#who-its-for"  onclick="closeMobileMenu()">Who It's For</a></li>
+          <li>
+            <button onclick="toggleMobilePlatforms()" style="display:flex;justify-content:space-between;align-items:center;">
+              Platforms <span>▾</span>
+            </button>
+            <div class="nav__mobile-platforms" id="mobile-platforms">
+              <div class="nav__mobile-platforms-grid">
+                <a href="platforms/facebook.html"    class="platform-chip-nav">Facebook</a>
+                <a href="platforms/bluesky.html"     class="platform-chip-nav">Bluesky</a>
+                <a href="platforms/instagram.html"   class="platform-chip-nav">Instagram</a>
+                <a href="platforms/quora.html"       class="platform-chip-nav">Quora</a>
+                <a href="platforms/pinterest.html"   class="platform-chip-nav">Pinterest</a>
+                <a href="platforms/reddit.html"      class="platform-chip-nav">Reddit</a>
+                <a href="platforms/x-twitter.html"   class="platform-chip-nav">X / Twitter</a>
+                <a href="platforms/tiktok.html"      class="platform-chip-nav">TikTok</a>
+                <a href="platforms/tripadvisor.html" class="platform-chip-nav">TripAdvisor</a>
+              </div>
+            </div>
+          </li>
+        </ul>
+        <a href="#cta-banner" class="btn btn--primary" style="width:100%;justify-content:center;" onclick="closeMobileMenu()">Request Early Access</a>
+      </div>
+
+    </div>
+  </div>
+</header>
+
+
+<!-- ═══════════════════════════════════════════
+     SECTION 1 · HERO
+═══════════════════════════════════════════ -->
+<section class="hero" id="hero" aria-label="Hero">
+
+  <!-- Floating background cards -->
+  <div class="hero__floating-cards" aria-hidden="true">
+    <div class="float-card float-card-1">
+      <div class="float-card__platform">
+        <svg class="float-card__platform-icon" viewBox="0 0 24 24" fill="#FF4500"><path d="M12 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0zm5.01 4.744c.688 0 1.25.561 1.25 1.249a1.25 1.25 0 0 1-2.498.056l-2.597-.547-.8 3.747c1.824.07 3.48.632 4.674 1.488.308-.309.73-.491 1.207-.491.968 0 1.754.786 1.754 1.754 0 .716-.435 1.333-1.01 1.614a3.111 3.111 0 0 1 .042.52c0 2.694-3.13 4.87-7.004 4.87-3.874 0-7.004-2.176-7.004-4.87 0-.183.015-.366.043-.534A1.748 1.748 0 0 1 4.028 12c0-.968.786-1.754 1.754-1.754.463 0 .898.196 1.207.49 1.207-.883 2.878-1.43 4.744-1.487l.885-4.182a.342.342 0 0 1 .14-.197.35.35 0 0 1 .238-.042l2.906.617a1.214 1.214 0 0 1 1.108-.701zM9.25 12C8.561 12 8 12.562 8 13.25c0 .687.561 1.248 1.25 1.248.687 0 1.248-.561 1.248-1.249 0-.688-.561-1.249-1.249-1.249zm5.5 0c-.687 0-1.248.561-1.248 1.25 0 .687.561 1.248 1.249 1.248.688 0 1.249-.561 1.249-1.249 0-.687-.562-1.249-1.25-1.249z"/></svg>
+        <span class="float-card__platform-name">r/solotravel</span>
+      </div>
+      <p class="float-card__text">"Planning Kenya safari October, $12K budget, 2 couples. Any recommendations?"</p>
+      <p class="float-card__time">2 min ago</p>
+    </div>
+
+    <div class="float-card float-card-2">
+      <div class="float-card__platform">
+        <svg class="float-card__platform-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="6.5" cy="12" r="5.8" fill="#34E0A1"/><circle cx="6.5" cy="12" r="3.2" fill="white"/><circle cx="6.5" cy="12" r="1.8" fill="#34E0A1"/>
+          <circle cx="17.5" cy="12" r="5.8" fill="#34E0A1"/><circle cx="17.5" cy="12" r="3.2" fill="white"/><circle cx="17.5" cy="12" r="1.8" fill="#34E0A1"/>
+        </svg>
+        <span class="float-card__platform-name">TripAdvisor</span>
+      </div>
+      <p class="float-card__text">"Looking for a luxury operator in the Okavango Delta for July"</p>
+      <p class="float-card__time">8 min ago</p>
+    </div>
+
+    <div class="float-card float-card-3">
+      <div class="float-card__platform">
+        <svg class="float-card__platform-icon" viewBox="0 0 24 24" fill="#B92B27"><path d="M12.003 0C5.373 0 0 5.372 0 12c0 6.628 5.373 12 12.003 12 6.628 0 11.997-5.372 11.997-12 0-6.628-5.369-12-11.997-12zm-.172 18.95c-.56-.172-1.068-.46-1.526-.857l-1.35 1.37-.983-.962 1.345-1.367c-.594-.858-.938-1.939-.938-3.134 0-2.994 1.96-5.122 4.595-5.122 1.317 0 2.458.5 3.29 1.357l1.073-1.09.984.965-1.061 1.076c.571.848.907 1.908.907 3.093 0 2.995-1.96 5.121-4.594 5.121-.59 0-1.142-.12-1.65-.33l-.092-.12z"/></svg>
+        <span class="float-card__platform-name">Quora</span>
+      </div>
+      <p class="float-card__text">"Best gorilla trekking operators in Rwanda vs Uganda?"</p>
+      <p class="float-card__time">15 min ago</p>
+    </div>
+
+    <div class="float-card float-card-4">
+      <div class="float-card__platform">
+        <svg class="float-card__platform-icon" viewBox="0 0 24 24" fill="#FF4500"><path d="M12 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0zm5.01 4.744c.688 0 1.25.561 1.25 1.249a1.25 1.25 0 0 1-2.498.056l-2.597-.547-.8 3.747c1.824.07 3.48.632 4.674 1.488.308-.309.73-.491 1.207-.491.968 0 1.754.786 1.754 1.754 0 .716-.435 1.333-1.01 1.614a3.111 3.111 0 0 1 .042.52c0 2.694-3.13 4.87-7.004 4.87-3.874 0-7.004-2.176-7.004-4.87 0-.183.015-.366.043-.534A1.748 1.748 0 0 1 4.028 12c0-.968.786-1.754 1.754-1.754.463 0 .898.196 1.207.49 1.207-.883 2.878-1.43 4.744-1.487l.885-4.182a.342.342 0 0 1 .14-.197.35.35 0 0 1 .238-.042l2.906.617a1.214 1.214 0 0 1 1.108-.701zM9.25 12C8.561 12 8 12.562 8 13.25c0 .687.561 1.248 1.25 1.248.687 0 1.248-.561 1.248-1.249 0-.688-.561-1.249-1.249-1.249zm5.5 0c-.687 0-1.248.561-1.248 1.25 0 .687.561 1.248 1.249 1.248.688 0 1.249-.561 1.249-1.249 0-.687-.562-1.249-1.25-1.249z"/></svg>
+        <span class="float-card__platform-name">r/travel</span>
+      </div>
+      <p class="float-card__text">"First safari, Masai Mara or Serengeti? Budget ~$8K per person"</p>
+      <p class="float-card__time">23 min ago</p>
+    </div>
+
+    <div class="float-card float-card-5">
+      <div class="float-card__platform">
+        <svg class="float-card__platform-icon" viewBox="0 0 24 24" fill="#1877F2"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+        <span class="float-card__platform-name">Facebook</span>
+      </div>
+      <p class="float-card__text">"Anyone done a Zambia walking safari? Who did you book with?"</p>
+      <p class="float-card__time">41 min ago</p>
+    </div>
+  </div>
+
+  <div class="container">
+    <div class="hero__inner">
+      <div class="hero__content">
+        <!-- V3: Logo-font badge, no caps tracking -->
+        <div class="hero__badge">
+          <span class="hero__badge-dot" aria-hidden="true"></span>
+          Social Listening Built for Safari Travel
+        </div>
+        <!-- V3: Gradient headline, no underline on 'right now' -->
+        <h1 class="hero__headline hero-headline">
+          Your next client is asking for a safari right now. You just don't know about it yet.
+        </h1>
+        <!-- V3: Updated subheadline text -->
+        <p class="hero__subhead">
+          Wandar finds high-intent safari travelers the moment they post a question or ask for help on social media platforms and gets them to you before your competitors can respond.
+        </p>
+        <div class="hero__cta-group">
+          <a href="#cta-banner" class="btn btn--primary">Request Early Access</a>
+          <a href="#how-it-works" class="btn btn--ghost">
+            <span>▶</span> See How It Works
+          </a>
+        </div>
+      </div>
+
+      <!-- Product UI Mockup -->
+      <div class="hero__mockup-wrapper">
+        <div class="hero__mockup" role="img" aria-label="Wandar lead feed dashboard showing scored safari leads">
+          <div class="mockup__topbar">
+            <span class="mockup__topbar-title">WANDAR · Lead Feed</span>
+            <span class="mockup__live">
+              <span class="mockup__live-dot"></span> Live
+            </span>
+          </div>
+          <div class="mockup__body">
+            <div class="mockup-lead">
+              <div class="mockup-lead__icon" style="background:#FFF0E5;">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="#FF4500"><path d="M12 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0zm5.01 4.744c.688 0 1.25.561 1.25 1.249a1.25 1.25 0 0 1-2.498.056l-2.597-.547-.8 3.747c1.824.07 3.48.632 4.674 1.488.308-.309.73-.491 1.207-.491.968 0 1.754.786 1.754 1.754 0 .716-.435 1.333-1.01 1.614a3.111 3.111 0 0 1 .042.52c0 2.694-3.13 4.87-7.004 4.87-3.874 0-7.004-2.176-7.004-4.87 0-.183.015-.366.043-.534A1.748 1.748 0 0 1 4.028 12c0-.968.786-1.754 1.754-1.754.463 0 .898.196 1.207.49 1.207-.883 2.878-1.43 4.744-1.487l.885-4.182a.342.342 0 0 1 .14-.197.35.35 0 0 1 .238-.042l2.906.617a1.214 1.214 0 0 1 1.108-.701zM9.25 12C8.561 12 8 12.562 8 13.25c0 .687.561 1.248 1.25 1.248.687 0 1.248-.561 1.248-1.249 0-.688-.561-1.249-1.249-1.249zm5.5 0c-.687 0-1.248.561-1.248 1.25 0 .687.561 1.248 1.249 1.248.688 0 1.249-.561 1.249-1.249 0-.687-.562-1.249-1.25-1.249z"/></svg>
+              </div>
+              <div class="mockup-lead__content">
+                <div class="mockup-lead__source">r/solotravel</div>
+                <p class="mockup-lead__excerpt">"Planning a Kenya safari for September, budget $8,000–$12,000 for two. Who should I contact?"</p>
+              </div>
+              <div class="mockup-lead__score mockup-lead__score--high">9</div>
+            </div>
+            <div class="mockup-lead">
+              <div class="mockup-lead__icon" style="background:#E6F4F4;">
+                <svg width="16" height="16" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                  <circle cx="6.5" cy="12" r="5.2" fill="#34E0A1"/><circle cx="6.5" cy="12" r="2.8" fill="white"/><circle cx="6.5" cy="12" r="1.5" fill="#34E0A1"/>
+                  <circle cx="17.5" cy="12" r="5.2" fill="#34E0A1"/><circle cx="17.5" cy="12" r="2.8" fill="white"/><circle cx="17.5" cy="12" r="1.5" fill="#34E0A1"/>
+                </svg>
+              </div>
+              <div class="mockup-lead__content">
+                <div class="mockup-lead__source">TripAdvisor Forum</div>
+                <p class="mockup-lead__excerpt">"Luxury Okavango operator for July — $15K budget confirmed, 2 adults"</p>
+              </div>
+              <div class="mockup-lead__score mockup-lead__score--high">8</div>
+            </div>
+            <div class="mockup-lead">
+              <div class="mockup-lead__icon" style="background:#FEF9E7;">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="#B92B27"><path d="M12.003 0C5.373 0 0 5.372 0 12c0 6.628 5.373 12 12.003 12 6.628 0 11.997-5.372 11.997-12 0-6.628-5.369-12-11.997-12zm.175 18.99c-.59 0-1.142-.12-1.65-.33l-.092-.12-.56-.17-1.35 1.37-.983-.962 1.345-1.367c-.594-.858-.938-1.939-.938-3.134 0-2.994 1.96-5.122 4.595-5.122 2.634 0 4.594 2.128 4.594 5.122 0 2.995-1.96 5.121-4.594 5.121l-.367-.508z"/></svg>
+              </div>
+              <div class="mockup-lead__content">
+                <div class="mockup-lead__source">Quora</div>
+                <p class="mockup-lead__excerpt">"Gorilla trekking Rwanda or Uganda — which operator for October?"</p>
+              </div>
+              <div class="mockup-lead__score mockup-lead__score--med" style="background:#b8860b;">7</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+  <div style="height: 80px; background: var(--off-white);"></div>
+</section>
+
+
+<!-- ═══════════════════════════════════════════
+     SECTION 1B · THE PROBLEM WE SOLVE
+═══════════════════════════════════════════ -->
+<section class="section section--offwhite" id="why-wandar" aria-label="The problem we solve">
+  <div class="container">
+    <span class="eyebrow reveal">The Problem We Solve</span>
+    <h2 class="section-headline reveal reveal--delay-1">Safari leads exist. You just can't see them.</h2>
+    <p class="body-text reveal reveal--delay-2">
+      Every day, high-intent travelers post their safari plans publicly on social media platforms. They name their budget, their dates, their destination. Then they wait for someone knowledgeable to respond. That someone should be you.
+    </p>
+
+    <!-- V3: Colored cards with Lordicon animated icons -->
+    <div class="problem-cards">
+
+      <div class="problem-card problem-card--teal reveal reveal--delay-1">
+        <div class="problem-card__icon">
+          <lord-icon
+            src="https://cdn.lordicon.com/msoeawqm.json"
+            trigger="hover"
+            colors="primary:#1a7373,secondary:#156060"
+            style="width:52px;height:52px;">
+          </lord-icon>
+        </div>
+        <h3 class="problem-card__title">Operators miss leads hiding in plain sight</h3>
+        <p class="problem-card__body">Travelers post in r/travel, r/solotravel, TripAdvisor forums, Quora, Pinterest and many others — operators never see it</p>
+      </div>
+
+      <div class="problem-card problem-card--orange reveal reveal--delay-2">
+        <div class="problem-card__icon">
+          <!-- Lightning bolt: speed / response time -->
+          <svg class="problem-icon" width="52" height="52" viewBox="0 0 52 52" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M31 5L12 29h17l-8 18 21-26H25L31 5z" stroke="#c45911" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </div>
+        <h3 class="problem-card__title">Response speed wins bookings</h3>
+        <p class="problem-card__body">First credible response in a forum often captures the lead. Every hour without Wandar is a missed opportunity</p>
+      </div>
+
+      <div class="problem-card problem-card--green reveal reveal--delay-1">
+        <div class="problem-card__icon">
+          <!-- Robot head: automation / manual work that doesn't scale -->
+          <svg class="problem-icon" width="52" height="52" viewBox="0 0 52 52" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect x="13" y="18" width="26" height="21" rx="4" stroke="#2d5016" stroke-width="2.4"/>
+            <circle cx="21" cy="27" r="3.5" stroke="#2d5016" stroke-width="2.2"/>
+            <circle cx="31" cy="27" r="3.5" stroke="#2d5016" stroke-width="2.2"/>
+            <path d="M22 33h8" stroke="#2d5016" stroke-width="2.2" stroke-linecap="round"/>
+            <path d="M26 18v-7" stroke="#2d5016" stroke-width="2.4" stroke-linecap="round"/>
+            <circle cx="26" cy="8" r="2.5" stroke="#2d5016" stroke-width="2"/>
+            <path d="M8 27h5M39 27h5" stroke="#2d5016" stroke-width="2.4" stroke-linecap="round"/>
+          </svg>
+        </div>
+        <h3 class="problem-card__title">Manual monitoring doesn't scale</h3>
+        <p class="problem-card__body">No operator can monitor 5+ platforms × 10+ subreddits 24/7 — it's humanly impossible without automation</p>
+      </div>
+
+      <div class="problem-card problem-card--gold reveal reveal--delay-2">
+        <div class="problem-card__icon">
+          <!-- Target with slash: wrong tool for the job -->
+          <svg class="problem-icon" width="52" height="52" viewBox="0 0 52 52" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="26" cy="26" r="18" stroke="#b8860b" stroke-width="2.4"/>
+            <circle cx="26" cy="26" r="10" stroke="#b8860b" stroke-width="2.2"/>
+            <circle cx="26" cy="26" r="3" fill="#b8860b"/>
+            <path d="M11 11L41 41" stroke="#b8860b" stroke-width="2.4" stroke-linecap="round"/>
+          </svg>
+        </div>
+        <h3 class="problem-card__title">Existing tools built for brand monitoring, not lead gen</h3>
+        <p class="problem-card__body">Mention, Brand24 etc. catch mentions of your brand — useless if traveler hasn't heard of you yet</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══════════════════════════════════════════
+     SECTION 2 · VALUE PROP — Platform Breadth
+═══════════════════════════════════════════ -->
+<section class="section section--white" aria-label="Where Wandar listens">
+  <div class="container">
+    <div class="two-col two-col--60-40">
+      <div>
+        <span class="eyebrow reveal">Where Wandar Listens</span>
+        <h2 class="section-headline reveal reveal--delay-1">Every safari conversation. Every platform. In real time.</h2>
+        <p class="body-text reveal reveal--delay-2">
+          Travelers don't call you first. They ask Reddit. They post on TripAdvisor. They question Quora. Wandar monitors all of it, 24/7, and surfaces every mention of safari planning before it disappears into someone else's inbox.
+        </p>
+      </div>
+      <div>
+        <!-- V3: Platform chips with enhanced hover effects -->
+        <div class="platform-chips" id="platform-chips-grid">
+          <a href="platforms/facebook.html"    class="platform-chip reveal" style="transition-delay:0.05s">
+            <svg viewBox="0 0 24 24" fill="#1877F2" aria-hidden="true"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+            Facebook
+          </a>
+          <a href="platforms/instagram.html"   class="platform-chip reveal" style="transition-delay:0.13s">
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <defs><linearGradient id="ig-chips" x1="0%" y1="100%" x2="100%" y2="0%"><stop offset="0%" stop-color="#f09433"/><stop offset="100%" stop-color="#bc1888"/></linearGradient></defs>
+              <path fill="url(#ig-chips)" d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0 10.838a3 3 0 1 0 0 5.999 3 3 0 0 0 0-5.999z"/>
+            </svg>
+            Instagram
+          </a>
+          <a href="platforms/tiktok.html"      class="platform-chip reveal" style="transition-delay:0.21s">
+            <svg viewBox="0 0 24 24" fill="#010101" aria-hidden="true"><path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.99-.32-2.15-.23-3.02.37-.63.41-1.11 1.04-1.36 1.75-.21.51-.15 1.07-.14 1.61.24 1.64 1.82 3.02 3.5 2.87 1.12-.01 2.19-.66 2.77-1.61.19-.33.4-.67.41-1.06.1-1.79.06-3.57.07-5.36.01-4.03-.01-8.05.02-12.07z"/></svg>
+            TikTok
+          </a>
+          <a href="platforms/x-twitter.html"   class="platform-chip reveal" style="transition-delay:0.29s">
+            <svg viewBox="0 0 24 24" fill="#000000" aria-hidden="true"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.748l7.73-8.835L1.254 2.25H8.08l4.261 5.635 5.903-5.635zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+            X / Twitter
+          </a>
+          <a href="platforms/reddit.html"      class="platform-chip reveal" style="transition-delay:0.37s">
+            <svg viewBox="0 0 24 24" fill="#FF4500" aria-hidden="true"><path d="M12 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0zm5.01 4.744c.688 0 1.25.561 1.25 1.249a1.25 1.25 0 0 1-2.498.056l-2.597-.547-.8 3.747c1.824.07 3.48.632 4.674 1.488.308-.309.73-.491 1.207-.491.968 0 1.754.786 1.754 1.754 0 .716-.435 1.333-1.01 1.614a3.111 3.111 0 0 1 .042.52c0 2.694-3.13 4.87-7.004 4.87-3.874 0-7.004-2.176-7.004-4.87 0-.183.015-.366.043-.534A1.748 1.748 0 0 1 4.028 12c0-.968.786-1.754 1.754-1.754.463 0 .898.196 1.207.49 1.207-.883 2.878-1.43 4.744-1.487l.885-4.182a.342.342 0 0 1 .14-.197.35.35 0 0 1 .238-.042l2.906.617a1.214 1.214 0 0 1 1.108-.701zM9.25 12C8.561 12 8 12.562 8 13.25c0 .687.561 1.248 1.25 1.248.687 0 1.248-.561 1.248-1.249 0-.688-.561-1.249-1.249-1.249zm5.5 0c-.687 0-1.248.561-1.248 1.25 0 .687.561 1.248 1.249 1.248.688 0 1.249-.561 1.249-1.249 0-.687-.562-1.249-1.25-1.249z"/></svg>
+            Reddit
+          </a>
+          <a href="platforms/pinterest.html"   class="platform-chip reveal" style="transition-delay:0.45s">
+            <svg viewBox="0 0 24 24" fill="#E60023" aria-hidden="true"><path d="M12 0C5.373 0 0 5.372 0 12c0 5.084 3.163 9.426 7.627 11.174-.105-.949-.2-2.405.042-3.441.218-.937 1.407-5.965 1.407-5.965s-.359-.719-.359-1.782c0-1.668.967-2.914 2.171-2.914 1.023 0 1.518.769 1.518 1.69 0 1.029-.655 2.568-.994 3.995-.283 1.194.599 2.169 1.777 2.169 2.133 0 3.772-2.249 3.772-5.495 0-2.873-2.064-4.882-5.012-4.882-3.414 0-5.418 2.561-5.418 5.207 0 1.031.397 2.138.893 2.738a.36.36 0 0 1 .083.345l-.333 1.36c-.053.22-.174.267-.402.161-1.499-.698-2.436-2.889-2.436-4.649 0-3.785 2.75-7.262 7.929-7.262 4.163 0 7.398 2.967 7.398 6.931 0 4.136-2.607 7.464-6.227 7.464-1.216 0-2.359-.632-2.75-1.378l-.748 2.853c-.271 1.043-1.002 2.35-1.492 3.146C9.57 23.812 10.763 24 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0z"/></svg>
+            Pinterest
+          </a>
+          <a href="platforms/quora.html"       class="platform-chip reveal" style="transition-delay:0.53s">
+            <svg viewBox="0 0 24 24" fill="#B92B27" aria-hidden="true"><path d="M12.003 0C5.373 0 0 5.372 0 12c0 6.628 5.373 12 12.003 12 6.628 0 11.997-5.372 11.997-12 0-6.628-5.369-12-11.997-12zm-.172 18.95c-.56-.172-1.068-.46-1.526-.857l-1.35 1.37-.983-.962 1.345-1.367c-.594-.858-.938-1.939-.938-3.134 0-2.994 1.96-5.122 4.595-5.122 1.317 0 2.458.5 3.29 1.357l1.073-1.09.984.965-1.061 1.076c.571.848.907 1.908.907 3.093 0 2.995-1.96 5.121-4.594 5.121-.59 0-1.142-.12-1.65-.33l-.092-.12z"/></svg>
+            Quora
+          </a>
+          <a href="platforms/bluesky.html"     class="platform-chip reveal" style="transition-delay:0.61s">
+            <svg viewBox="0 0 24 24" fill="#0085FF" aria-hidden="true"><path d="M12 10.8c-1.087-2.114-4.046-6.053-6.798-7.995C2.566.944 1.561 1.266.902 1.565.139 1.908 0 3.08 0 3.768c0 .69.378 5.65.624 6.479.815 2.736 3.713 3.66 6.383 3.364.136-.02.275-.039.415-.056-.138.022-.276.04-.415.056-3.912.58-7.387 2.005-2.83 7.078 5.013 5.19 6.87-1.113 7.823-4.308.953 3.195 2.05 9.271 7.733 4.308 4.267-4.308 1.172-6.498-2.74-7.078a8.741 8.741 0 0 1-.415-.056c.14.017.279.036.415.056 2.67.297 5.568-.628 6.383-3.364.246-.828.624-5.79.624-6.478 0-.69-.139-1.861-.902-2.204-.659-.299-1.664-.62-4.3 1.24C16.046 4.748 13.087 8.687 12 10.8z"/></svg>
+            Bluesky
+          </a>
+          <a href="platforms/tripadvisor.html" class="platform-chip reveal" style="transition-delay:0.69s">
+            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+              <circle cx="6.5" cy="12" r="5.8" fill="#34E0A1"/><circle cx="6.5" cy="12" r="3.2" fill="white"/><circle cx="6.5" cy="12" r="1.8" fill="#34E0A1"/>
+              <circle cx="17.5" cy="12" r="5.8" fill="#34E0A1"/><circle cx="17.5" cy="12" r="3.2" fill="white"/><circle cx="17.5" cy="12" r="1.8" fill="#34E0A1"/>
+            </svg>
+            TripAdvisor
+          </a>
+        </div>
+        <div class="stat-callout reveal reveal--delay-1">
+          <div class="stat-callout__number">9+</div>
+          <div class="stat-callout__label">platforms monitored continuously</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══════════════════════════════════════════
+     SECTION 3 · HOW INTENT SCORING WORKS
+═══════════════════════════════════════════ -->
+<section class="section section--offwhite" aria-label="How intent scoring works">
+  <div class="container">
+    <div class="two-col">
+      <div>
+        <span class="eyebrow reveal">Intent Scoring</span>
+        <h2 class="section-headline reveal reveal--delay-1">Not every post is a lead. Wandar knows the difference.</h2>
+        <p class="body-text mb-40 reveal reveal--delay-2">
+          We score every safari mention based on booking signals, budget mentioned, travel dates, group size, urgency. You only see the travelers who are actually ready to book.
+        </p>
+        <div class="steps">
+          <div class="step reveal reveal--delay-1">
+            <div class="step__number">1</div>
+            <div class="step__content">
+              <h3 class="step-title">Detect Safari Intent</h3>
+              <p class="body-text" style="max-width:none;">Wandar scans posts for safari-specific booking signals: dates, destinations, budget language, booking questions, trip context, pain signals, questions and recommendations.</p>
+            </div>
+          </div>
+          <div class="step reveal reveal--delay-2">
+            <div class="step__number">2</div>
+            <div class="step__content">
+              <h3 class="step-title">Score Booking Readiness</h3>
+              <p class="body-text" style="max-width:none;">Each post is scored. High scores mean the traveler has shown strong intent to book — not just browse.</p>
+            </div>
+          </div>
+          <div class="step reveal reveal--delay-3">
+            <div class="step__number">3</div>
+            <div class="step__content">
+              <h3 class="step-title">Deliver in Real Time</h3>
+              <p class="body-text" style="max-width:none;">High-intent leads appear in your dashboard the moment they're posted. You respond first, create value for the traveler. You win the booking.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div style="display:flex;align-items:center;justify-content:center;">
+        <div class="lead-card reveal reveal--delay-2" id="lead-card-demo">
+          <div class="lead-card__header">
+            <div class="lead-card__source">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="#FF4500" aria-hidden="true"><path d="M12 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0zm5.01 4.744c.688 0 1.25.561 1.25 1.249a1.25 1.25 0 0 1-2.498.056l-2.597-.547-.8 3.747c1.824.07 3.48.632 4.674 1.488.308-.309.73-.491 1.207-.491.968 0 1.754.786 1.754 1.754 0 .716-.435 1.333-1.01 1.614a3.111 3.111 0 0 1 .042.52c0 2.694-3.13 4.87-7.004 4.87-3.874 0-7.004-2.176-7.004-4.87 0-.183.015-.366.043-.534A1.748 1.748 0 0 1 4.028 12c0-.968.786-1.754 1.754-1.754.463 0 .898.196 1.207.49 1.207-.883 2.878-1.43 4.744-1.487l.885-4.182a.342.342 0 0 1 .14-.197.35.35 0 0 1 .238-.042l2.906.617a1.214 1.214 0 0 1 1.108-.701zM9.25 12C8.561 12 8 12.562 8 13.25c0 .687.561 1.248 1.25 1.248.687 0 1.248-.561 1.248-1.249 0-.688-.561-1.249-1.249-1.249zm5.5 0c-.687 0-1.248.561-1.248 1.25 0 .687.561 1.248 1.249 1.248.688 0 1.249-.561 1.249-1.249 0-.687-.562-1.249-1.25-1.249z"/></svg>
+              r/solotravel
+            </div>
+            <div class="lead-card__score" id="score-badge" aria-label="Intent score: 9 out of 10">0</div>
+          </div>
+          <div class="lead-card__excerpt">
+            "Planning a Kenya safari for September, budget $8,000–$12,000 for two. Who should I contact?"
+          </div>
+          <div class="lead-card__badges">
+            <span class="badge badge--high">High Intent</span>
+            <span class="badge badge--dates">Dates Confirmed</span>
+            <span class="badge badge--budget">Budget Stated</span>
+          </div>
+          <div class="lead-card__cta">
+            <a href="#cta-banner" class="btn btn--primary btn--sm">Respond Now →</a>
+          </div>
+          <p class="score-label meta-text">Intent score: <strong>9/10</strong></p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══════════════════════════════════════════
+     SECTION 4 · WHO IT'S FOR
+═══════════════════════════════════════════ -->
+<section class="section section--white" id="who-its-for" aria-label="Who it's for">
+  <div class="container">
+    <span class="eyebrow reveal">Who It's For</span>
+    <h2 class="section-headline reveal reveal--delay-1">Luxury boutique safari operators tired of weak leads</h2>
+
+    <!-- V3: Bold split-color cards, no Signal Detected widget -->
+    <div class="icp-cards">
+
+      <div class="icp-card icp-card--teal reveal reveal--delay-1">
+        <div class="icp-card__icon-wrap">
+          <!-- Binoculars: spot the traveler before anyone else -->
+          <svg class="icp-icon" width="56" height="56" viewBox="0 0 56 56" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="16" cy="33" r="11" stroke="white" stroke-width="2.4"/>
+            <circle cx="40" cy="33" r="11" stroke="white" stroke-width="2.4"/>
+            <circle cx="16" cy="33" r="5" stroke="white" stroke-width="2"/>
+            <circle cx="40" cy="33" r="5" stroke="white" stroke-width="2"/>
+            <path d="M27 33h2" stroke="white" stroke-width="2.4" stroke-linecap="round"/>
+            <path d="M16 22v-5a4 4 0 014-4h2" stroke="white" stroke-width="2.4" stroke-linecap="round"/>
+            <path d="M40 22v-5a4 4 0 00-4-4h-2" stroke="white" stroke-width="2.4" stroke-linecap="round"/>
+          </svg>
+        </div>
+        <h3 class="icp-card__title">Your Next Customer Posted</h3>
+        <p class="icp-card__body">
+          Your next booking just asked for recommendations on Reddit. Someone else answered first. Wandar flips the model — you find the traveler before they find anyone else.
+        </p>
+        <ul class="check-list">
+          <li>Intent scored in real time</li>
+          <li>Destination &amp; budget confirmed</li>
+          <li>Respond before competitors see it</li>
+        </ul>
+      </div>
+
+      <div class="icp-card icp-card--terracotta reveal reveal--delay-2">
+        <div class="icp-card__icon-wrap">
+          <!-- Hourglass with urgency lines: the window is hours, not days -->
+          <svg class="icp-icon" width="56" height="56" viewBox="0 0 56 56" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M18 10h20M18 46h20" stroke="white" stroke-width="2.4" stroke-linecap="round"/>
+            <path d="M20 10c0 10 8 14 8 18s-8 8-8 18" stroke="white" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M36 10c0 10-8 14-8 18s8 8 8 18" stroke="white" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M23 36c1.5 2 3 3 5 4 2-1 3.5-2 5-4" stroke="white" stroke-width="2" stroke-linecap="round"/>
+            <path d="M42 24h4M44 20l-2 4 2 4" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </div>
+        <h3 class="icp-card__title">The Window Is Hours, Not Days</h3>
+        <p class="icp-card__body">
+          The first credible response in a forum usually wins. Travelers in active planning mode respond to whoever shows up first with genuine knowledge. Every day without Wandar is a day your competitor could be answering your future client.
+        </p>
+        <ul class="check-list">
+          <li>Average booking window: hours to a few days</li>
+          <li>First-mover advantage is real and measurable</li>
+          <li>No outbound cold calling required</li>
+        </ul>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══════════════════════════════════════════
+     SECTION 5 · HOW IT WORKS
+═══════════════════════════════════════════ -->
+<section class="section section--offwhite" id="how-it-works" aria-label="How it works">
+  <div class="container">
+    <h2 class="section-headline section-headline--center reveal">Three steps to your next booking.</h2>
+    <div style="display:flex;justify-content:center;margin-top:56px;">
+      <div class="steps">
+        <div class="step reveal reveal--delay-1">
+          <div class="step__number">1</div>
+          <div class="step__content">
+            <h3 class="step-title">Detect Safari Demand 24/7</h3>
+            <p class="body-text" style="max-width:none;">Wandar continuously scans Reddit, TripAdvisor, Quora, and social platforms for travelers actively discussing safaris. Every minute. Every hour. Every day. Without you lifting a finger.</p>
+          </div>
+        </div>
+        <div class="step reveal reveal--delay-2">
+          <div class="step__number">2</div>
+          <div class="step__content">
+            <h3 class="step-title">Score Booking Intent</h3>
+            <p class="body-text" style="max-width:none;">Each mention is automatically scored based on buying signals: travel dates, budget, destination, group size, and urgency. Only genuinely high-intent travelers make it to your dashboard.</p>
+          </div>
+        </div>
+        <div class="step reveal reveal--delay-3">
+          <div class="step__number">3</div>
+          <div class="step__content">
+            <h3 class="step-title">Win Bookings Before Competitors</h3>
+            <p class="body-text" style="max-width:none;">The moment a high-intent traveler is detected, you get notified. You respond first. You establish the relationship before any other operator even knows the lead exists.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══════════════════════════════════════════
+     SECTION 6 · CTA BANNER
+═══════════════════════════════════════════ -->
+<section class="section--dark cta-banner" id="cta-banner" aria-label="Call to action">
+
+  <!-- V3: Scattered social platform icon watermarks in Safari Gold -->
+  <div class="cta-watermark cta-watermark--1" aria-hidden="true">
+    <svg viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+  </div>
+  <div class="cta-watermark cta-watermark--2" aria-hidden="true">
+    <svg viewBox="0 0 24 24"><path d="M12 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0zm5.01 4.744c.688 0 1.25.561 1.25 1.249a1.25 1.25 0 0 1-2.498.056l-2.597-.547-.8 3.747c1.824.07 3.48.632 4.674 1.488.308-.309.73-.491 1.207-.491.968 0 1.754.786 1.754 1.754 0 .716-.435 1.333-1.01 1.614a3.111 3.111 0 0 1 .042.52c0 2.694-3.13 4.87-7.004 4.87-3.874 0-7.004-2.176-7.004-4.87 0-.183.015-.366.043-.534A1.748 1.748 0 0 1 4.028 12c0-.968.786-1.754 1.754-1.754.463 0 .898.196 1.207.49 1.207-.883 2.878-1.43 4.744-1.487l.885-4.182a.342.342 0 0 1 .14-.197.35.35 0 0 1 .238-.042l2.906.617a1.214 1.214 0 0 1 1.108-.701zM9.25 12C8.561 12 8 12.562 8 13.25c0 .687.561 1.248 1.25 1.248.687 0 1.248-.561 1.248-1.249 0-.688-.561-1.249-1.249-1.249zm5.5 0c-.687 0-1.248.561-1.248 1.25 0 .687.561 1.248 1.249 1.248.688 0 1.249-.561 1.249-1.249 0-.687-.562-1.249-1.25-1.249z"/></svg>
+  </div>
+  <div class="cta-watermark cta-watermark--3" aria-hidden="true">
+    <svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+  </div>
+  <div class="cta-watermark cta-watermark--4" aria-hidden="true">
+    <svg viewBox="0 0 24 24"><path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.99-.32-2.15-.23-3.02.37-.63.41-1.11 1.04-1.36 1.75-.21.51-.15 1.07-.14 1.61.24 1.64 1.82 3.02 3.5 2.87 1.12-.01 2.19-.66 2.77-1.61.19-.33.4-.67.41-1.06.1-1.79.06-3.57.07-5.36.01-4.03-.01-8.05.02-12.07z"/></svg>
+  </div>
+  <div class="cta-watermark cta-watermark--5" aria-hidden="true">
+    <svg viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.748l7.73-8.835L1.254 2.25H8.08l4.261 5.635 5.903-5.635zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+  </div>
+  <div class="cta-watermark cta-watermark--6" aria-hidden="true">
+    <svg viewBox="0 0 24 24"><path d="M12 0C5.373 0 0 5.372 0 12c0 5.084 3.163 9.426 7.627 11.174-.105-.949-.2-2.405.042-3.441.218-.937 1.407-5.965 1.407-5.965s-.359-.719-.359-1.782c0-1.668.967-2.914 2.171-2.914 1.023 0 1.518.769 1.518 1.69 0 1.029-.655 2.568-.994 3.995-.283 1.194.599 2.169 1.777 2.169 2.133 0 3.772-2.249 3.772-5.495 0-2.873-2.064-4.882-5.012-4.882-3.414 0-5.418 2.561-5.418 5.207 0 1.031.397 2.138.893 2.738a.36.36 0 0 1 .083.345l-.333 1.36c-.053.22-.174.267-.402.161-1.499-.698-2.436-2.889-2.436-4.649 0-3.785 2.75-7.262 7.929-7.262 4.163 0 7.398 2.967 7.398 6.931 0 4.136-2.607 7.464-6.227 7.464-1.216 0-2.359-.632-2.75-1.378l-.748 2.853c-.271 1.043-1.002 2.35-1.492 3.146C9.57 23.812 10.763 24 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0z"/></svg>
+  </div>
+  <div class="cta-watermark cta-watermark--7" aria-hidden="true">
+    <svg viewBox="0 0 24 24"><path d="M12.003 0C5.373 0 0 5.372 0 12c0 6.628 5.373 12 12.003 12 6.628 0 11.997-5.372 11.997-12 0-6.628-5.369-12-11.997-12zm-.172 18.95c-.56-.172-1.068-.46-1.526-.857l-1.35 1.37-.983-.962 1.345-1.367c-.594-.858-.938-1.939-.938-3.134 0-2.994 1.96-5.122 4.595-5.122 1.317 0 2.458.5 3.29 1.357l1.073-1.09.984.965-1.061 1.076c.571.848.907 1.908.907 3.093 0 2.995-1.96 5.121-4.594 5.121-.59 0-1.142-.12-1.65-.33l-.092-.12z"/></svg>
+  </div>
+  <div class="cta-watermark cta-watermark--8" aria-hidden="true">
+    <svg viewBox="0 0 24 24"><path d="M12 10.8c-1.087-2.114-4.046-6.053-6.798-7.995C2.566.944 1.561 1.266.902 1.565.139 1.908 0 3.08 0 3.768c0 .69.378 5.65.624 6.479.815 2.736 3.713 3.66 6.383 3.364.136-.02.275-.039.415-.056-.138.022-.276.04-.415.056-3.912.58-7.387 2.005-2.83 7.078 5.013 5.19 6.87-1.113 7.823-4.308.953 3.195 2.05 9.271 7.733 4.308 4.267-4.308 1.172-6.498-2.74-7.078a8.741 8.741 0 0 1-.415-.056c.14.017.279.036.415.056 2.67.297 5.568-.628 6.383-3.364.246-.828.624-5.79.624-6.478 0-.69-.139-1.861-.902-2.204-.659-.299-1.664-.62-4.3 1.24C16.046 4.748 13.087 8.687 12 10.8z"/></svg>
+  </div>
+  <div class="cta-watermark cta-watermark--9" aria-hidden="true">
+    <svg viewBox="0 0 24 24">
+      <circle cx="6.5" cy="12" r="5.8"/><circle cx="6.5" cy="12" r="3.2" fill="var(--dark-bg)"/><circle cx="6.5" cy="12" r="1.8"/>
+      <circle cx="17.5" cy="12" r="5.8"/><circle cx="17.5" cy="12" r="3.2" fill="var(--dark-bg)"/><circle cx="17.5" cy="12" r="1.8"/>
+    </svg>
+  </div>
+
+  <div class="cta-banner__inner">
+    <h2 class="cta-banner__headline reveal">Your next client just posted on social media.<br>Be the first to reply.</h2>
+    <p class="cta-banner__subhead reveal reveal--delay-1">Every hour you wait, someone else could be answering them.</p>
+    <div class="btn-group" style="justify-content:center;" role="group">
+      <a href="#" class="btn btn--primary reveal reveal--delay-2">Request Early Access</a>
+      <a href="#" class="btn btn--ghost-white reveal reveal--delay-2">Book a Consultation</a>
+    </div>
+    <p class="cta-banner__micro reveal reveal--delay-3">No contracts. No setup fees. Built exclusively for safari operators.</p>
+  </div>
+</section>
+
+
+<!-- ═══════════════════════════════════════════
+     SECTION 7 · FAQ
+═══════════════════════════════════════════ -->
+<section class="section section--offwhite" id="faq" aria-label="Frequently asked questions">
+  <div class="container">
+    <div class="faq">
+      <div class="faq__header">
+        <div>
+          <span class="eyebrow reveal">Common Questions</span>
+          <h2 class="section-headline reveal reveal--delay-1">Frequently Asked Questions</h2>
+        </div>
+        <a href="#cta-banner" class="faq__contact reveal reveal--delay-1">Still have questions? Contact us</a>
+      </div>
+      <div class="faq__grid">
+        <div>
+          <div class="faq__item">
+            <button class="faq__question" aria-expanded="false">What makes Wandar different from Brand24 or Mention?<span class="faq__chevron" aria-hidden="true">▾</span></button>
+            <div class="faq__answer" role="region"><p class="faq__answer-inner">Mention and Brand24 track mentions of your brand. That means someone already has to know you exist. Wandar finds travelers who've never heard of you — people actively asking for safari recommendations right now. It's the difference between brand monitoring and lead generation.</p></div>
+          </div>
+          <div class="faq__item">
+            <button class="faq__question" aria-expanded="false">Which platforms does Wandar monitor?<span class="faq__chevron" aria-hidden="true">▾</span></button>
+            <div class="faq__answer" role="region"><p class="faq__answer-inner">Reddit (including r/travel, r/solotravel, r/africa, and destination-specific subreddits), TripAdvisor forums, Quora, and select social platforms. We focus on the channels where high-intent safari travelers actually ask questions.</p></div>
+          </div>
+          <div class="faq__item">
+            <button class="faq__question" aria-expanded="false">How fast will I see leads after signing up?<span class="faq__chevron" aria-hidden="true">▾</span></button>
+            <div class="faq__answer" role="region"><p class="faq__answer-inner">Leads are delivered in real time as they're detected. You can expect your first leads within hours of setup — not days.</p></div>
+          </div>
+        </div>
+        <div>
+          <div class="faq__item">
+            <button class="faq__question" aria-expanded="false">Who is Wandar for?<span class="faq__chevron" aria-hidden="true">▾</span></button>
+            <div class="faq__answer" role="region"><p class="faq__answer-inner">Wandar is built for luxury safari operators across East and Southern Africa targeting high-value international travelers in US,Canada,Australia,UK,Europe and Rest of the world. It’s especially valuable for boutique, high-touch operators who rely on inbound demand and need qualified leads—not just mentions.
+
+These travelers don’t browse casually—they plan deliberately, leave signals across the web, and expect fast, relevant responses. Wandar helps you identify and act on that intent early.</p></div>
+          </div>
+          <div class="faq__item">
+            <button class="faq__question" aria-expanded="false">How do I know a lead is real and not noise?<span class="faq__chevron" aria-hidden="true">▾</span></button>
+            <div class="faq__answer" role="region"><p class="faq__answer-inner">Every post is scored based on safari-specific intent signals. Only leads worth surfacing reach your dashboard. We filter out casual browsers, vague posts, and off-topic mentions so your feed stays clean.</p></div>
+          </div>
+          <div class="faq__item">
+            <button class="faq__question" aria-expanded="false">Do you integrate with my CRM or booking system?<span class="faq__chevron" aria-hidden="true">▾</span></button>
+            <div class="faq__answer" role="region"><p class="faq__answer-inner">We're building integrations — tell us what tools you use when you sign up. Early access operators help shape what gets built first.</p></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══════════════════════════════════════════
+     SECTION 8 · FOOTER V3
+═══════════════════════════════════════════ -->
+<footer class="footer" id="footer" role="contentinfo">
+  <div class="container">
+
+    <!-- Top row: Brand left | Stay Updated right -->
+    <div class="footer__top">
+
+      <div class="footer__brand">
+        <img src="assets/wandar-logo.png" alt="Wandar" class="footer__logo-img" />
+        <p class="footer__brand-tagline">Social listening built for safari travel</p>
+      </div>
+
+      <div class="footer__newsletter">
+        <h3 class="footer__newsletter-heading">Stay Updated</h3>
+        <p class="footer__newsletter-sub">Get the latest travel insights and features updates.</p>
+        <form onsubmit="handleSubscribe(event)" novalidate>
+          <div class="footer__input-pill">
+            <label for="email-subscribe" class="sr-only">Email address</label>
+            <input type="email" id="email-subscribe" name="email" class="footer__email-input" placeholder="Enter your email" required autocomplete="email" />
+            <button type="submit" class="footer__submit-arrow" aria-label="Subscribe">→</button>
+          </div>
+        </form>
+      </div>
+
+    </div><!-- /footer__top -->
+
+    <!-- Divider -->
+    <div class="footer__divider"></div>
+
+    <!-- 3 columns: Quick Links | For Operators | Connect With Us -->
+    <div class="footer__columns">
+
+      <div class="footer__col">
+        <span class="footer__col-heading">Quick Links</span>
+        <ul class="footer__col-links">
+          <li><a href="index.html"              class="footer__col-link">Home</a></li>
+          <li><a href="index.html#why-wandar"   class="footer__col-link">Why Wandar</a></li>
+          <li><a href="index.html#how-it-works" class="footer__col-link">How It Works</a></li>
+          <li><a href="index.html#who-its-for"  class="footer__col-link">Who It's For</a></li>
+          <li><a href="index.html#cta-banner"   class="footer__col-link">Platforms</a></li>
+        </ul>
+      </div>
+
+      <div class="footer__col">
+        <span class="footer__col-heading">For Operators</span>
+        <ul class="footer__col-links">
+          <li><a href="pricing.html" class="footer__col-link">Pricing</a></li>
+          <li><a href="#cta-banner" class="footer__col-link">Free Consultation</a></li>
+          <li><a href="#"           class="footer__col-link">Free Tools</a></li>
+          <li><a href="#"           class="footer__col-link">Free Guides</a></li>
+          <li><a href="#"           class="footer__col-link">Support</a></li>
+        </ul>
+      </div>
+
+      <div class="footer__col">
+        <span class="footer__col-heading">Connect With Us</span>
+        <div class="footer__socials">
+          <!-- LinkedIn -->
+          <a href="#" class="footer__social-link" aria-label="Wandar on LinkedIn">
+            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+          </a>
+          <!-- X -->
+          <a href="#" class="footer__social-link" aria-label="Wandar on X">
+            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.748l7.73-8.835L1.254 2.25H8.08l4.261 5.635 5.903-5.635zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+          </a>
+          <!-- Telegram -->
+          <a href="#" class="footer__social-link" aria-label="Wandar on Telegram">
+            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/></svg>
+          </a>
+          <!-- WhatsApp -->
+          <a href="#" class="footer__social-link" aria-label="Wandar on WhatsApp">
+            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413z"/></svg>
+          </a>
+        </div>
+      </div>
+
+    </div><!-- /footer__columns -->
+
+    <!-- Legal bar -->
+    <div class="footer__legal-bar">
+      <p class="footer__legal-copy">© 2026 Wandar. All rights reserved.</p>
+      <div class="footer__legal-links">
+        <a href="#" class="footer__legal-link">Privacy Policy</a>
+        <a href="#" class="footer__legal-link">Terms of Service</a>
+        <a href="#" class="footer__legal-link">AI Transparency Statement</a>
+      </div>
+    </div>
+
+  </div>
+</footer>
+
+
+<!-- ═══════════════════════════════════════════
+     JAVASCRIPT
+═══════════════════════════════════════════ -->
+<script>
+// ── NAV ──────────────────────────────────────────────────────────
+const nav = document.getElementById('nav');
+const platformsBtn = document.getElementById('platforms-btn');
+const platformsDropdown = document.getElementById('platforms-dropdown');
+const hamburger = document.getElementById('hamburger');
+const mobilePanel = document.getElementById('mobile-panel');
+const navCtaDesktop = document.getElementById('nav-cta-desktop');
+const navLoginDesktop = document.getElementById('nav-login-desktop');
+
+if (navCtaDesktop) navCtaDesktop.style.display = '';
+if (navLoginDesktop) navLoginDesktop.style.display = '';
+
+window.addEventListener('scroll', () => {
+  nav.classList.toggle('scrolled', window.scrollY > 10);
+}, { passive: true });
+
+platformsBtn.addEventListener('click', (e) => {
+  e.stopPropagation();
+  const isOpen = platformsDropdown.classList.contains('open');
+  platformsDropdown.classList.toggle('open');
+  platformsBtn.classList.toggle('open');
+  platformsBtn.setAttribute('aria-expanded', !isOpen);
+});
+
+document.addEventListener('click', (e) => {
+  if (!platformsBtn.contains(e.target) && !platformsDropdown.contains(e.target)) {
+    platformsDropdown.classList.remove('open');
+    platformsBtn.classList.remove('open');
+    platformsBtn.setAttribute('aria-expanded', 'false');
+  }
+});
+
+document.addEventListener('keydown', (e) => {
+  if (e.key === 'Escape') {
+    platformsDropdown.classList.remove('open');
+    platformsBtn.classList.remove('open');
+    mobilePanel.classList.remove('open');
+    hamburger.classList.remove('open');
+    hamburger.setAttribute('aria-expanded', 'false');
+  }
+});
+
+hamburger.addEventListener('click', () => {
+  const isOpen = mobilePanel.classList.contains('open');
+  mobilePanel.classList.toggle('open');
+  hamburger.classList.toggle('open');
+  hamburger.setAttribute('aria-expanded', !isOpen);
+});
+
+function closeMobileMenu() {
+  mobilePanel.classList.remove('open');
+  hamburger.classList.remove('open');
+  hamburger.setAttribute('aria-expanded', 'false');
+}
+
+function toggleMobilePlatforms() {
+  document.getElementById('mobile-platforms').classList.toggle('open');
+}
+
+// ── HERO LOADED ───────────────────────────────────────────────────
+window.addEventListener('load', () => document.body.classList.add('hero-loaded'));
+
+// ── SCROLL REVEAL ────────────────────────────────────────────────
+const ro = new IntersectionObserver((entries) => {
+  entries.forEach((e) => {
+    if (e.isIntersecting) {
+      e.target.classList.add('visible');
+      ro.unobserve(e.target);
+    }
+  });
+}, { rootMargin: '0px 0px -60px 0px', threshold: 0.1 });
+
+document.querySelectorAll('.reveal').forEach((el) => ro.observe(el));
+
+// ── SCORE COUNTER ANIMATION ──────────────────────────────────────
+const scoreBadge = document.getElementById('score-badge');
+if (scoreBadge) {
+  const scoreObserver = new IntersectionObserver((entries) => {
+    if (entries[0].isIntersecting) {
+      let count = 0;
+      const target = 9;
+      const timer = setInterval(() => {
+        count++;
+        scoreBadge.textContent = count;
+        if (count >= target) clearInterval(timer);
+      }, 80);
+      scoreObserver.unobserve(scoreBadge);
+    }
+  }, { threshold: 0.5 });
+  scoreObserver.observe(scoreBadge);
+}
+
+// ── FAQ ACCORDION ────────────────────────────────────────────────
+document.querySelectorAll('.faq__question').forEach((btn) => {
+  btn.addEventListener('click', () => {
+    const item = btn.closest('.faq__item');
+    const isOpen = item.classList.contains('open');
+    document.querySelectorAll('.faq__item').forEach((i) => {
+      i.classList.remove('open');
+      i.querySelector('.faq__question').setAttribute('aria-expanded', 'false');
+    });
+    if (!isOpen) {
+      item.classList.add('open');
+      btn.setAttribute('aria-expanded', 'true');
+    }
+  });
+});
+
+// ── NEWSLETTER SUBSCRIBE ─────────────────────────────────────────
+function handleSubscribe(e) {
+  e.preventDefault();
+  const input = e.target.querySelector('input');
+  const btn   = e.target.querySelector('button');
+  if (input.value && input.validity.valid) {
+    btn.textContent = '✓';
+    btn.style.background = '#2d5016';
+    input.value = '';
+    input.disabled = true;
+    btn.disabled = true;
+  }
+}
+
+// ── ACTIVE NAV LINK ──────────────────────────────────────────────
+const sections = document.querySelectorAll('section[id]');
+const navLinks = document.querySelectorAll('.nav__link[data-section]');
+const navObserver = new IntersectionObserver((entries) => {
+  entries.forEach((e) => {
+    if (e.isIntersecting) {
+      navLinks.forEach((l) => l.classList.remove('active'));
+      const link = document.querySelector(`.nav__link[data-section="${e.target.id}"]`);
+      if (link) link.classList.add('active');
+    }
+  });
+}, { rootMargin: '-40% 0px -40% 0px' });
+sections.forEach((s) => navObserver.observe(s));
+</script>
+</body>
+</html>
