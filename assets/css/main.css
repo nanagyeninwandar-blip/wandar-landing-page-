@@ -547,7 +547,7 @@ h3.step-title {
 }
 
 .nav__mobile-platforms .nav__mobile-platforms-grid {
-  grid-template-columns: 1fr;
+  grid-template-columns: 1fr 1fr;
   gap: 0;
   margin-top: 8px;
 }
