@@ -843,7 +843,7 @@ h3.step-title {
 
 @media (max-width: 767px) {
   .nav__login-link { display: none !important; }
-  .nav__logo-img { height: auto; max-height: 40px; width: auto; max-width: 160px; }
+  .nav__logo-img { height: auto; max-height: 40px; width: auto; max-width: 160px; filter: none; }
   .nav__right .btn--primary { display: none !important; }
 }
 
