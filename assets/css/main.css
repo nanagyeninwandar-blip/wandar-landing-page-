@@ -546,6 +546,27 @@ h3.step-title {
   margin-top: 12px;
 }
 
+.nav__mobile-platforms .nav__mobile-platforms-grid {
+  grid-template-columns: 1fr;
+  gap: 0;
+  margin-top: 8px;
+}
+
+.nav__mobile-platforms .platform-chip-nav {
+  border: none;
+  background: transparent;
+  padding: 6px 0;
+  border-radius: 0;
+  font-size: 14px;
+}
+.nav__mobile-platforms .platform-chip-nav svg { display: none; }
+.nav__mobile-platforms .platform-chip-nav:hover {
+  background: transparent;
+  box-shadow: none;
+  transform: none;
+  color: var(--safari-primary);
+}
+
 .nav-relative { position: relative; }
 
 /* ── HERO SECTION ────────────────────────────────────────────── */
@@ -822,7 +843,7 @@ h3.step-title {
 
 @media (max-width: 767px) {
   .nav__login-link { display: none !important; }
-  .nav__logo-img { height: 52px; }
+  .nav__logo-img { height: 64px; }
   .nav__right .btn--primary { display: none !important; }
 }
 
