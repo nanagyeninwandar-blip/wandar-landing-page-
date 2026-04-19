@@ -1,3 +1,3 @@
 User-agent: *
 Allow: /
-Sitemap: https://wandar.io/sitemap.xml
+Sitemap: https://www.getwandar.com/sitemap.xml
