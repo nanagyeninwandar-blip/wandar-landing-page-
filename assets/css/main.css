@@ -823,6 +823,14 @@ h3.step-title {
 @media (max-width: 767px) {
   .nav__login-link { display: none !important; }
   .nav__logo-img { height: 52px; }
+  .nav__right .btn--primary { display: none !important; }
+}
+
+.nav__mobile-cta {
+  width: 100%;
+  justify-content: center;
+  padding: 11px 20px;
+  font-size: 14px;
 }
 
 @media (max-width: 767px) {

@@ -657,31 +657,55 @@
       <!-- Mobile panel -->
       <div class="nav__mobile-panel" id="mobile-panel" aria-label="Mobile navigation">
         <ul class="nav__mobile-links">
-          <li><a href="index.html" onclick="closeMobileMenu()">Home</a></li>
-          <li><a href="index.html#why-wandar"   onclick="closeMobileMenu()">Why Wandar</a></li>
-          <li><a href="index.html#how-it-works" onclick="closeMobileMenu()">How It Works</a></li>
-          <li><a href="index.html#who-its-for"  onclick="closeMobileMenu()">Who It's For</a></li>
-          <li><a href="pricing.html"            onclick="closeMobileMenu()">Pricing</a></li>
+          <li><a href="pricing.html" onclick="closeMobileMenu()">Pricing</a></li>
           <li>
             <button onclick="toggleMobilePlatforms()" style="display:flex;justify-content:space-between;align-items:center;">
               Platforms <span>▾</span>
             </button>
             <div class="nav__mobile-platforms" id="mobile-platforms">
               <div class="nav__mobile-platforms-grid">
-                <a href="platforms/facebook.html"    class="platform-chip-nav">Facebook</a>
-                <a href="platforms/bluesky.html"     class="platform-chip-nav">Bluesky</a>
-                <a href="platforms/instagram.html"   class="platform-chip-nav">Instagram</a>
-                <a href="platforms/quora.html"       class="platform-chip-nav">Quora</a>
-                <a href="platforms/pinterest.html"   class="platform-chip-nav">Pinterest</a>
-                <a href="platforms/reddit.html"      class="platform-chip-nav">Reddit</a>
-                <a href="platforms/x-twitter.html"   class="platform-chip-nav">X / Twitter</a>
-                <a href="platforms/tiktok.html"      class="platform-chip-nav">TikTok</a>
-                <a href="platforms/tripadvisor.html" class="platform-chip-nav">TripAdvisor</a>
+                <a href="platforms/facebook.html" class="platform-chip-nav">
+                  <svg viewBox="0 0 24 24" fill="#1877F2" aria-hidden="true"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+                  Facebook
+                </a>
+                <a href="platforms/bluesky.html" class="platform-chip-nav">
+                  <svg viewBox="0 0 24 24" fill="#0085FF" aria-hidden="true"><path d="M12 10.8c-1.087-2.114-4.046-6.053-6.798-7.995C2.566.944 1.561 1.266.902 1.565.139 1.908 0 3.08 0 3.768c0 .69.378 5.65.624 6.479.815 2.736 3.713 3.66 6.383 3.364.136-.02.275-.039.415-.056-.138.022-.276.04-.415.056-3.912.58-7.387 2.005-2.83 7.078 5.013 5.19 6.87-1.113 7.823-4.308.953 3.195 2.05 9.271 7.733 4.308 4.267-4.308 1.172-6.498-2.74-7.078a8.741 8.741 0 0 1-.415-.056c.14.017.279.036.415.056 2.67.297 5.568-.628 6.383-3.364.246-.828.624-5.79.624-6.478 0-.69-.139-1.861-.902-2.204-.659-.299-1.664-.62-4.3 1.24C16.046 4.748 13.087 8.687 12 10.8z"/></svg>
+                  Bluesky
+                </a>
+                <a href="platforms/instagram.html" class="platform-chip-nav">
+                  <svg viewBox="0 0 24 24" aria-hidden="true"><defs><linearGradient id="ig-pricing" x1="0%" y1="100%" x2="100%" y2="0%"><stop offset="0%" stop-color="#f09433"/><stop offset="50%" stop-color="#dc2743"/><stop offset="100%" stop-color="#bc1888"/></linearGradient></defs><path fill="url(#ig-pricing)" d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+                  Instagram
+                </a>
+                <a href="platforms/quora.html" class="platform-chip-nav">
+                  <svg viewBox="0 0 24 24" fill="#B92B27" aria-hidden="true"><path d="M12.003 0C5.373 0 0 5.372 0 12c0 6.628 5.373 12 12.003 12 6.628 0 11.997-5.372 11.997-12 0-6.628-5.369-12-11.997-12zm-.172 18.95c-.56-.172-1.068-.46-1.526-.857l-1.35 1.37-.983-.962 1.345-1.367c-.594-.858-.938-1.939-.938-3.134 0-2.994 1.96-5.122 4.595-5.122 1.317 0 2.458.5 3.29 1.357l1.073-1.09.984.965-1.061 1.076c.571.848.907 1.908.907 3.093 0 2.995-1.96 5.121-4.594 5.121-.59 0-1.142-.12-1.65-.33l-.092-.12zm1.65-1.47a.64.64 0 0 0 .072-.01c1.46-.31 2.462-1.72 2.462-3.47 0-.86-.24-1.636-.646-2.22l-2.87 2.916.984.963 1.347-1.369.654.643-1.352 1.374c.445.627 1.067 1.027 1.75 1.12l-.4.053zm-1.65-6.16c-1.458.31-2.46 1.72-2.46 3.47 0 .823.22 1.572.6 2.148l2.87-2.915-.984-.963-1.347 1.37-.654-.645 1.352-1.373c-.43-.605-1.04-.998-1.712-1.115l.335-.977z"/></svg>
+                  Quora
+                </a>
+                <a href="platforms/pinterest.html" class="platform-chip-nav">
+                  <svg viewBox="0 0 24 24" fill="#E60023" aria-hidden="true"><path d="M12 0C5.373 0 0 5.372 0 12c0 5.084 3.163 9.426 7.627 11.174-.105-.949-.2-2.405.042-3.441.218-.937 1.407-5.965 1.407-5.965s-.359-.719-.359-1.782c0-1.668.967-2.914 2.171-2.914 1.023 0 1.518.769 1.518 1.69 0 1.029-.655 2.568-.994 3.995-.283 1.194.599 2.169 1.777 2.169 2.133 0 3.772-2.249 3.772-5.495 0-2.873-2.064-4.882-5.012-4.882-3.414 0-5.418 2.561-5.418 5.207 0 1.031.397 2.138.893 2.738a.36.36 0 0 1 .083.345l-.333 1.36c-.053.22-.174.267-.402.161-1.499-.698-2.436-2.889-2.436-4.649 0-3.785 2.75-7.262 7.929-7.262 4.163 0 7.398 2.967 7.398 6.931 0 4.136-2.607 7.464-6.227 7.464-1.216 0-2.359-.632-2.75-1.378l-.748 2.853c-.271 1.043-1.002 2.35-1.492 3.146C9.57 23.812 10.763 24 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0z"/></svg>
+                  Pinterest
+                </a>
+                <a href="platforms/reddit.html" class="platform-chip-nav">
+                  <svg viewBox="0 0 24 24" fill="#FF4500" aria-hidden="true"><path d="M12 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0zm5.01 4.744c.688 0 1.25.561 1.25 1.249a1.25 1.25 0 0 1-2.498.056l-2.597-.547-.8 3.747c1.824.07 3.48.632 4.674 1.488.308-.309.73-.491 1.207-.491.968 0 1.754.786 1.754 1.754 0 .716-.435 1.333-1.01 1.614a3.111 3.111 0 0 1 .042.52c0 2.694-3.13 4.87-7.004 4.87-3.874 0-7.004-2.176-7.004-4.87 0-.183.015-.366.043-.534A1.748 1.748 0 0 1 4.028 12c0-.968.786-1.754 1.754-1.754.463 0 .898.196 1.207.49 1.207-.883 2.878-1.43 4.744-1.487l.885-4.182a.342.342 0 0 1 .14-.197.35.35 0 0 1 .238-.042l2.906.617a1.214 1.214 0 0 1 1.108-.701zM9.25 12C8.561 12 8 12.562 8 13.25c0 .687.561 1.248 1.25 1.248.687 0 1.248-.561 1.248-1.249 0-.688-.561-1.249-1.249-1.249zm5.5 0c-.687 0-1.248.561-1.248 1.25 0 .687.561 1.248 1.249 1.248.688 0 1.249-.561 1.249-1.249 0-.687-.562-1.249-1.25-1.249z"/></svg>
+                  Reddit
+                </a>
+                <a href="platforms/x-twitter.html" class="platform-chip-nav">
+                  <svg viewBox="0 0 24 24" fill="#000000" aria-hidden="true"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.748l7.73-8.835L1.254 2.25H8.08l4.261 5.635 5.903-5.635zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+                  X / Twitter
+                </a>
+                <a href="platforms/tiktok.html" class="platform-chip-nav">
+                  <svg viewBox="0 0 24 24" fill="#010101" aria-hidden="true"><path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.99-.32-2.15-.23-3.02.37-.63.41-1.11 1.04-1.36 1.75-.21.51-.15 1.07-.14 1.61.24 1.64 1.82 3.02 3.5 2.87 1.12-.01 2.19-.66 2.77-1.61.19-.33.4-.67.41-1.06.1-1.79.06-3.57.07-5.36.01-4.03-.01-8.05.02-12.07z"/></svg>
+                  TikTok
+                </a>
+                <a href="platforms/tripadvisor.html" class="platform-chip-nav">
+                  <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><circle cx="6.5" cy="12" r="5.8" fill="#34E0A1"/><circle cx="6.5" cy="12" r="3.2" fill="white"/><circle cx="6.5" cy="12" r="1.8" fill="#34E0A1"/><circle cx="17.5" cy="12" r="5.8" fill="#34E0A1"/><circle cx="17.5" cy="12" r="3.2" fill="white"/><circle cx="17.5" cy="12" r="1.8" fill="#34E0A1"/><path d="M12.3 9.8 Q12 9.4 11.7 9.8 L11.2 14 Q12 13.6 12.8 14 Z" fill="#34E0A1"/></svg>
+                  TripAdvisor
+                </a>
               </div>
             </div>
           </li>
+          <li><a href="#" onclick="closeMobileMenu()">Log In</a></li>
         </ul>
-        <a href="#" onclick="openModal('early-access');closeMobileMenu();return false;" class="btn btn--primary" style="width:100%;justify-content:center;">Request Early Access</a>
+        <a href="#" onclick="closeMobileMenu();openModal('early-access');return false;" class="btn btn--primary nav__mobile-cta">Request Early Access</a>
       </div>
 
     </div>
