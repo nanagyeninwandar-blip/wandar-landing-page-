@@ -821,6 +821,11 @@ h3.step-title {
 }
 
 @media (max-width: 767px) {
+  .nav__login-link { display: none !important; }
+  .nav__logo-img { height: 52px; }
+}
+
+@media (max-width: 767px) {
   .float-card { opacity: 0.45; }
   .float-card-2,
   .float-card-4,
