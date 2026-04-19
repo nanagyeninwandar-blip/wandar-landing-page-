@@ -65,6 +65,7 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   overflow-x: hidden;
+  padding-top: 72px;
 }
 
 img {
@@ -287,8 +288,10 @@ h3.step-title {
 
 /* ── NAVIGATION ──────────────────────────────────────────────── */
 .nav {
-  position: sticky;
+  position: fixed;
   top: 0;
+  left: 0;
+  right: 0;
   z-index: 1000;
   background: var(--white);
   border-bottom: 1px solid var(--border);
