@@ -23,6 +23,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link rel="stylesheet" href="../assets/css/main.css" />
   <script src="https://cdn.lordicon.com/lordicon.js" defer></script>
+  <script src="../assets/js/modals.js"></script>
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -86,208 +87,291 @@
   }
   </script>
   <style>
-    .guide-hero { background: var(--off-white); padding: 80px 0 60px; }
-    .guide-hero__badge { display: inline-flex; align-items: center; font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; color: white; background: var(--safari-primary); border-radius: var(--radius-pill); padding: 4px 14px; margin-bottom: 16px; }
-    .guide-hero__h1 { font-size: clamp(28px, 3.5vw, 48px); font-weight: 800; color: var(--text-primary); line-height: 1.12; max-width: 800px; margin-bottom: 20px; }
-    .guide-hero__meta { font-size: 14px; color: var(--text-muted); }
-    .guide-toc { background: var(--primary-light); border-radius: var(--radius-md); padding: 28px 32px; margin-bottom: 48px; }
-    .guide-toc h2 { font-size: 14px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; color: var(--safari-primary); margin-bottom: 12px; }
-    .guide-toc ol { margin: 0 0 0 20px; }
-    .guide-toc li { font-size: 14px; line-height: 1.9; color: var(--text-secondary); }
-    .guide-toc a { color: var(--safari-primary); text-decoration: none; }
-    .guide-toc a:hover { text-decoration: underline; }
-    .guide-body { max-width: 800px; margin: 0 auto; padding: 64px 24px; }
-    .guide-body h2 { font-size: clamp(20px, 2.4vw, 28px); font-weight: 700; color: var(--text-primary); margin: 56px 0 16px; padding-top: 16px; border-top: 2px solid var(--border); }
-    .guide-body h3 { font-size: 19px; font-weight: 600; color: var(--text-primary); margin: 32px 0 12px; }
-    .guide-body p { font-size: 16px; line-height: 1.8; color: var(--text-secondary); margin-bottom: 20px; }
-    .guide-body ul, .guide-body ol { margin: 0 0 20px 24px; }
-    .guide-body li { font-size: 16px; line-height: 1.8; color: var(--text-secondary); margin-bottom: 8px; }
-    .guide-body a { color: var(--safari-primary); text-decoration: underline; text-underline-offset: 3px; }
-    .guide-faq { background: var(--off-white); border-radius: var(--radius-lg); padding: 40px; margin: 56px 0; }
-    .guide-faq__title { font-size: 22px; font-weight: 700; color: var(--text-primary); margin-bottom: 28px; }
-    .guide-faq__item { border-bottom: 1px solid var(--border); padding: 20px 0; }
-    .guide-faq__item:last-child { border-bottom: none; }
-    .guide-faq__q { font-size: 16px; font-weight: 600; color: var(--text-primary); margin-bottom: 10px; }
-    .guide-faq__a { font-size: 15px; line-height: 1.7; color: var(--text-secondary); }
-    .guide-cta { background: var(--dark-bg); border-radius: var(--radius-lg); padding: 48px; text-align: center; margin: 56px 0 0; }
-    .guide-cta h3 { color: white; font-size: 22px; font-weight: 700; margin-bottom: 12px; }
-    .guide-cta p { color: #9CA3AF; font-size: 15px; margin-bottom: 28px; }
+    /* ── Reading progress bar ── */
+    .reading-progress { position:fixed;top:0;left:0;height:3px;width:0%;background:var(--safari-primary);z-index:300;transition:width 60ms linear; }
+
+    /* ── Article hero ── */
+    .article-hero { background:var(--off-white);padding:96px 0 64px;border-bottom:1px solid var(--border); }
+    .article-hero__badge { display:inline-block;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:0.12em;color:var(--safari-primary);background:rgba(26,115,115,0.1);border-radius:100px;padding:5px 14px;margin-bottom:20px; }
+    .article-hero__h1 { font-size:clamp(30px,4vw,52px);font-weight:900;color:var(--text-primary);line-height:1.1;max-width:820px;margin-bottom:20px;letter-spacing:-0.02em; }
+    .article-hero__deck { font-size:18px;color:var(--text-secondary);line-height:1.6;max-width:640px;margin-bottom:24px; }
+    .article-hero__meta { font-size:14px;color:var(--text-muted);display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin-bottom:32px; }
+    .article-hero__sep { color:var(--border); }
+    .article-hero__actions { display:flex;gap:12px;flex-wrap:wrap; }
+
+    /* ── Two-column layout ── */
+    .article-layout { display:grid;grid-template-columns:1fr 260px;gap:72px;align-items:start;padding:72px 0 80px; }
+    .article-sidebar { position:sticky;top:88px; }
+    @media (max-width:1023px) {
+      .article-layout { grid-template-columns:1fr; }
+      .article-sidebar { display:none; }
+    }
+
+    /* ── TOC ── */
+    .toc { background:var(--off-white);border-radius:12px;padding:24px;border:1px solid var(--border); }
+    .toc__label { font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:0.1em;color:var(--text-muted);margin-bottom:14px;display:block; }
+    .toc__list { list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:2px; }
+    .toc__link { font-size:13px;color:var(--text-secondary);text-decoration:none;padding:7px 10px;border-radius:6px;display:block;line-height:1.4;border-left:2px solid transparent;transition:all 100ms; }
+    .toc__link:hover { color:var(--safari-primary);background:rgba(26,115,115,0.06); }
+    .toc__link.active { color:var(--safari-primary);background:rgba(26,115,115,0.08);border-left-color:var(--safari-primary);font-weight:600; }
+
+    /* ── Article body typography ── */
+    .article-body { font-size:17px;line-height:1.85;color:var(--text-secondary); }
+    .article-body h2 { font-size:clamp(22px,2.4vw,28px);font-weight:800;color:var(--text-primary);margin:60px 0 18px;letter-spacing:-0.01em; }
+    .article-body h3 { font-size:20px;font-weight:700;color:var(--text-primary);margin:40px 0 14px; }
+    .article-body p { margin-bottom:24px; }
+    .article-body ul,.article-body ol { margin:0 0 24px 24px; }
+    .article-body li { margin-bottom:10px; }
+    .article-body a { color:var(--safari-primary);text-underline-offset:3px; }
+    .article-body strong { color:var(--text-primary);font-weight:700; }
+
+    /* ── Callout box ── */
+    .callout { background:rgba(26,115,115,0.07);border-left:3px solid var(--safari-primary);border-radius:0 10px 10px 0;padding:20px 26px;margin:36px 0; }
+    .callout p { font-size:16px;line-height:1.7;color:var(--text-primary);margin:0;font-style:italic; }
+
+    /* ── FAQ ── */
+    .guide-faq { margin:64px 0 40px;border-top:1px solid var(--border);padding-top:40px; }
+    .guide-faq__title { font-size:26px;font-weight:800;color:var(--text-primary);margin-bottom:28px; }
+    .guide-faq__item { border-bottom:1px solid var(--border);padding:22px 0; }
+    .guide-faq__item:last-child { border-bottom:none; }
+    .guide-faq__q { font-size:16px;font-weight:700;color:var(--text-primary);margin:0 0 10px; }
+    .guide-faq__a { font-size:15px;color:var(--text-secondary);line-height:1.75;margin:0; }
+
+    /* ── Explore section ── */
+    .explore-more { background:#fff;padding:80px 0; }
+    .explore-more__heading { font-size:clamp(22px,2.5vw,30px);font-weight:800;color:var(--text-primary);margin-bottom:8px; }
+    .explore-more__sub { font-size:15px;color:var(--text-muted);margin-bottom:40px; }
+    .explore-more__grid { display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:28px; }
+
+    /* ── Download modal ── */
+    .dl-overlay { position:fixed;inset:0;background:rgba(0,0,0,0.55);display:flex;align-items:center;justify-content:center;z-index:1000;padding:24px; }
+    .dl-modal { background:#fff;border-radius:18px;max-width:460px;width:100%;box-shadow:0 24px 64px rgba(0,0,0,0.18);animation:dlIn 180ms ease; }
+    @keyframes dlIn { from{opacity:0;transform:translateY(14px) scale(0.97)} to{opacity:1;transform:none} }
+    .dl-modal__body { padding:40px 40px 36px;position:relative; }
+    .dl-modal__close { position:absolute;top:16px;right:20px;background:none;border:none;font-size:18px;color:var(--text-muted);cursor:pointer;padding:4px;line-height:1; }
+    .dl-modal__close:hover { color:var(--text-primary); }
+    .dl-modal__badge { display:inline-block;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:0.1em;color:var(--safari-primary);background:rgba(26,115,115,0.1);border-radius:100px;padding:4px 12px;margin-bottom:14px; }
+    .dl-modal__title { font-size:21px;font-weight:800;color:var(--text-primary);line-height:1.25;margin-bottom:10px; }
+    .dl-modal__sub { font-size:14px;color:var(--text-secondary);line-height:1.6;margin-bottom:24px; }
+    .dl-modal__field { margin-bottom:14px; }
+    .dl-modal__label { display:block;font-size:13px;font-weight:600;color:var(--text-primary);margin-bottom:6px; }
+    .dl-modal__input { width:100%;padding:11px 14px;border:1px solid var(--border);border-radius:8px;font-size:15px;color:var(--text-primary);box-sizing:border-box;outline:none;font-family:inherit; }
+    .dl-modal__input:focus { border-color:var(--safari-primary);box-shadow:0 0 0 3px rgba(26,115,115,0.12); }
+    .dl-modal__privacy { font-size:12px;color:var(--text-muted);margin-top:12px;line-height:1.5; }
   </style>
 </head>
 <body>
 
-<header class="nav nav--transparent" id="nav" role="banner">
+<div class="reading-progress" id="reading-progress" role="progressbar" aria-hidden="true"></div>
+
+<header class="nav scrolled" id="nav" role="banner" style="position:sticky;top:0;z-index:200;">
   <div class="container">
-    <div class="nav__inner nav-relative">
+    <div class="nav__inner" style="justify-content:space-between;align-items:center;">
       <a href="../index.html" class="nav__logo" aria-label="Wandar home">
         <img src="../assets/wandar-logo.png" alt="Wandar" class="nav__logo-img" />
       </a>
-      <nav aria-label="Main navigation">
-        <ul class="nav__links">
-          <li><a href="../index.html#why-wandar" class="nav__link">Why Wandar</a></li>
-          <li><a href="../index.html#how-it-works" class="nav__link">How It Works</a></li>
-          <li><a href="../pricing.html" class="nav__link">Pricing</a></li>
-          <li><a href="../guides/" class="nav__link">Guides</a></li>
-          <li><a href="../blog/" class="nav__link">Blog</a></li>
-        </ul>
-      </nav>
-      <div class="nav__right">
-        <button class="nav__hamburger" id="hamburger" aria-label="Open menu" aria-expanded="false">
-          <span></span><span></span><span></span>
-        </button>
-      </div>
-      <div class="nav__mobile-panel" id="mobile-panel" aria-label="Mobile navigation">
-        <ul class="nav__mobile-links">
-          <li><a href="../pricing.html">Pricing</a></li>
-          <li><a href="../guides/">Guides</a></li>
-          <li><a href="../blog/">Blog</a></li>
-        </ul>
-      </div>
+      <a href="#" onclick="openModal('early-access');return false;" class="btn btn--primary" style="font-size:13px;padding:9px 20px;">Request Early Access</a>
     </div>
   </div>
 </header>
 
-<section class="guide-hero">
+<section class="article-hero">
   <div class="container">
-    <span class="guide-hero__badge">Strategy Guide</span>
-    <h1 class="guide-hero__h1">How Safari Operators Can Beat Competitors and Win More Bookings Online</h1>
-    <p class="guide-hero__meta">By Wandar Team · April 25, 2026 · 20 min read</p>
+    <span class="article-hero__badge">Strategy Guide</span>
+    <h1 class="article-hero__h1">How Safari Operators Can Beat Competitors and Win More Bookings Online</h1>
+    <p class="article-hero__deck">The modern safari traveler journey, first-mover advantage in forums, how to position your operator profile, and what top-performing operators do differently.</p>
+    <div class="article-hero__meta">
+      <span>By Wandar Team</span>
+      <span class="article-hero__sep">·</span>
+      <span>April 2026</span>
+      <span class="article-hero__sep">·</span>
+      <span>20 min read</span>
+    </div>
+    <div class="article-hero__actions">
+      <button class="btn btn--primary" onclick="openDownloadModal()">↓ Download Free Guide</button>
+      <a href="#article-body" class="btn btn--ghost" style="color:var(--text-secondary);border-color:var(--border);">Read Online ↓</a>
+    </div>
   </div>
 </section>
 
-<main class="guide-body">
+<div class="container" id="article-body">
+  <div class="article-layout">
 
-  <div class="guide-toc">
-    <h2>In this guide</h2>
-    <ol>
-      <li><a href="#traveler-journey">How do safari travelers make booking decisions today?</a></li>
-      <li><a href="#speed">Why is speed of response the #1 booking factor?</a></li>
-      <li><a href="#first-mover">What is the first-mover advantage in forum conversations?</a></li>
-      <li><a href="#positioning">How do you position your operator profile to convert after a response?</a></li>
-      <li><a href="#system">How do you build a repeatable system for finding and winning leads?</a></li>
-      <li><a href="#top-operators">What do top-performing safari operators do differently?</a></li>
-      <li><a href="#faq">Frequently asked questions</a></li>
-    </ol>
+    <article class="article-body">
+
+      <h2 id="traveler-journey">How Do Safari Travelers Make Booking Decisions Today?</h2>
+
+      <p>The path from "I want to go on a safari" to "I've booked with this operator" looks very different today than it did a decade ago. Understanding this journey is the foundation of every competitive advantage described in this guide.</p>
+
+      <p>The modern journey typically begins with inspiration — a documentary, a friend's Instagram photos, a magazine article. The traveler moves from inspiration to research, and this research phase is where operators win or lose the booking before the traveler ever contacts anyone directly.</p>
+
+      <p>During research, travelers seek advice from communities they trust. They post on Reddit asking for destination recommendations. They read TripAdvisor forum threads from previous visitors. They ask questions on Quora and read detailed answers from experienced travelers and operators. They're building a mental model of what they want — and, crucially, which operators seem credible and knowledgeable.</p>
+
+      <p>By the time a traveler submits a direct inquiry, their preferences are often substantially formed. They may be comparing two or three operators they've already identified as credible through their forum research. The operators who participated in that research phase — who were present, helpful, and expert in the communities the traveler trusted — have a massive advantage over operators who only appear when someone hits the "contact us" button.</p>
+
+      <h2 id="speed">Why Is Speed of Response the #1 Booking Factor?</h2>
+
+      <p>Multiple analyses of forum-based travel booking conversions point to the same finding: response time is the strongest predictor of whether a forum engagement converts to a booking. Not price. Not brand reputation. Not marketing budget. Speed of response.</p>
+
+      <p>This isn't surprising when you understand how forum threads work. A traveler posts a question and then checks the thread over the next few hours for responses. They read the first few carefully. They may reply to one or two. By the time the thread is a day old, most travelers have formed their shortlist and moved on — even if the thread continues to receive responses for weeks.</p>
+
+      <p>Operators who respond within 2–4 hours of a post going live are operating in a fundamentally different competitive environment than operators who respond 12 or 24 hours later. The early responders are having a conversation with the traveler. The late responders are adding to a thread the traveler has already moved on from.</p>
+
+      <p>This is why the monitoring problem — knowing about high-intent posts in real time — is so foundational. If you don't know a post exists within hours of it going live, your response time advantage disappears regardless of how good your content is.</p>
+
+      <div class="callout">
+        <p>Forum threads move fast. The traveler forms their shortlist in the first few hours after posting — operators who respond within 2–4 hours convert at significantly higher rates than those who respond the next day.</p>
+      </div>
+
+      <h2 id="first-mover">What Is the First-Mover Advantage in Forum Conversations?</h2>
+
+      <p>First-mover advantage in forum conversations goes beyond just being read first. When you respond early with specific, credible information, you:</p>
+
+      <ul>
+        <li><strong>Shape the frame:</strong> Your answer becomes the reference point that subsequent responses are measured against. If you name specific camps, describe seasonal considerations, or address the traveler's particular requirements, you've established a standard of expertise that generic late responses can't easily match.</li>
+        <li><strong>Gain community endorsement:</strong> In well-moderated forums, early helpful responses tend to get upvoted or cited by other community members. This social proof amplifies your credibility to the original poster and to anyone else who reads the thread later.</li>
+        <li><strong>Start a direct dialogue:</strong> Travelers often reply to the first response they find genuinely helpful. That reply opens a public dialogue that's visible to everyone in the thread — and every thoughtful exchange increases your authority in the eyes of all readers, not just the original poster.</li>
+        <li><strong>Build long-term search visibility:</strong> On platforms like TripAdvisor and Quora, threads rank in Google. A well-placed early response in a high-ranking thread continues generating visibility long after the original conversation ended.</li>
+      </ul>
+
+      <h2 id="positioning">How Do You Position Your Operator Profile to Convert After a Response?</h2>
+
+      <p>When a forum response generates interest, the traveler will typically visit your website or public profiles to evaluate you further. This transition — from forum thread to your owned channels — is where many operators lose leads they've worked hard to find.</p>
+
+      <p>Your website and public profiles need to do three things immediately:</p>
+
+      <h3>Communicate your specific niche clearly</h3>
+      <p>A traveler who found you through a response about luxury Botswana safaris should land on a page that immediately reinforces your specialisation. Generic "we operate in all of Africa" messaging signals that you're not the specialist they're looking for.</p>
+
+      <h3>Make contact frictionless</h3>
+      <p>High-intent travelers who visit your site after a forum response are warm leads. Any friction — hard-to-find contact form, slow loading, confusing navigation — causes drop-off. Your primary CTA should be immediately visible and require minimal effort to act on.</p>
+
+      <h3>Show evidence of experience</h3>
+      <p>Reviews, trip galleries, and detailed destination knowledge on your website convert curious visitors into inquiries. A traveler who can read detailed itineraries or previous client experiences feels more confident initiating contact.</p>
+
+      <h2 id="system">How Do You Build a Repeatable System for Finding and Winning Leads?</h2>
+
+      <p>The operators who consistently outperform competitors in online bookings aren't doing extraordinary things. They've built ordinary processes and execute them consistently. The system has four components:</p>
+
+      <h3>1. Real-time monitoring</h3>
+      <p>An automated tool that watches all relevant platforms 24/7 and surfaces qualified leads without requiring manual search. This is the foundation that makes everything else possible at scale. Tools like <a href="https://www.getwandar.com">Wandar</a> handle this with safari-specific intent scoring across 9+ platforms.</p>
+
+      <h3>2. A defined response process</h3>
+      <p>Who is responsible for responding? What's the target response time? What level of review is required before posting? Having clear answers to these questions prevents the "someone else will handle it" failure mode that kills response time.</p>
+
+      <h3>3. A follow-up sequence</h3>
+      <p>When a forum engagement generates direct contact, what happens next? A defined process for moving from initial contact to proposal to booking — with clear timelines at each stage — dramatically improves conversion rates compared to ad hoc handling.</p>
+
+      <h3>4. Performance tracking</h3>
+      <p>Log which forum engagements generate inquiries and which generate bookings. Over time, this data tells you which platforms yield the highest-value leads for your specific business, which types of posts convert best, and where to focus your response effort.</p>
+
+      <h2 id="top-operators">What Do Top-Performing Safari Operators Do Differently?</h2>
+
+      <p>The operators who consistently win online have a few things in common:</p>
+
+      <ul>
+        <li>They treat forum engagement as a core marketing activity — not something that happens when they have spare time</li>
+        <li>They're present in forums with helpful, specific content year-round, not just when they need bookings</li>
+        <li>They respond to high-intent posts within hours, every time — through automation and clear internal process</li>
+        <li>They track results and double down on what works, rather than treating all platforms equally</li>
+        <li>They follow up quickly and personally when a forum engagement generates interest</li>
+        <li>They use tools to handle the monitoring so their team's time is spent on expert responses and relationship building</li>
+      </ul>
+
+      <p>None of these advantages require a large team or a big marketing budget. They require a consistent process and the right tools.</p>
+
+      <div class="guide-faq" id="faq">
+        <h2 class="guide-faq__title">Frequently Asked Questions</h2>
+
+        <div class="guide-faq__item">
+          <p class="guide-faq__q">How do safari travelers make booking decisions today?</p>
+          <p class="guide-faq__a">They research extensively in trusted communities before contacting operators. Forum participation and peer advice heavily influence which operators make their shortlist — often before they've visited any operator's website directly.</p>
+        </div>
+
+        <div class="guide-faq__item">
+          <p class="guide-faq__q">Why is response speed more important than price in safari bookings?</p>
+          <p class="guide-faq__a">Forum threads move quickly. The traveler forms their shortlist in the first few hours after posting. Operators who respond fast with specific expertise become preferred options before price comparison even begins. Price competitiveness matters most among operators who've already earned consideration — speed gets you into that set.</p>
+        </div>
+
+        <div class="guide-faq__item">
+          <p class="guide-faq__q">How much does automation help with safari lead generation?</p>
+          <p class="guide-faq__a">Significantly. Automation solves the monitoring problem — knowing about high-intent posts within minutes of them going live — which is the prerequisite for fast response. Without automation, you're dependent on manual checks that routinely miss the response window. With automation, your team is always operating on fresh leads.</p>
+        </div>
+
+        <div class="guide-faq__item">
+          <p class="guide-faq__q">How do I get more safari bookings without increasing my marketing budget?</p>
+          <p class="guide-faq__a">Focus on demand capture rather than demand creation. Luxury safari demand already exists, expressed in forum posts and social conversations every day. Monitoring those conversations and responding quickly is a significantly more capital-efficient path to bookings than generating new demand through advertising.</p>
+        </div>
+
+        <div class="guide-faq__item">
+          <p class="guide-faq__q">What is the most effective way to respond to a safari forum post?</p>
+          <p class="guide-faq__a">Answer the question first, with specific expertise relevant to their exact situation. Demonstrate genuine knowledge of the destination, season, or traveler profile they mentioned. After providing value, briefly introduce yourself as an operator in that space. Keep the promotional element to one sentence — you're opening a door, not pitching a sale.</p>
+        </div>
+      </div>
+
+      <p>For the monitoring side of this process, read our <a href="social-listening-safari-operators-guide.html">complete social listening playbook</a>. For a broader overview of the lead generation opportunity, see our <a href="safari-lead-generation-complete-guide.html">complete guide to safari lead generation</a>.</p>
+
+      <p>Related blog reading: <a href="../blog/how-to-get-more-safari-bookings.html">how to get more safari bookings</a>, <a href="../blog/how-safari-operators-find-leads-online.html">how safari operators find leads online</a>, and <a href="../blog/social-listening-for-safari-operators.html">social listening for safari operators</a>.</p>
+
+    </article>
+
+    <aside class="article-sidebar" aria-label="Table of contents">
+      <div class="toc">
+        <span class="toc__label">In this guide</span>
+        <ul class="toc__list" id="toc-list"></ul>
+      </div>
+    </aside>
+
   </div>
+</div>
 
-  <h2 id="traveler-journey">How Do Safari Travelers Make Booking Decisions Today?</h2>
-
-  <p>The path from "I want to go on a safari" to "I've booked with this operator" looks very different today than it did a decade ago. Understanding this journey is the foundation of every competitive advantage described in this guide.</p>
-
-  <p>The modern journey typically begins with inspiration — a documentary, a friend's Instagram photos, a magazine article. The traveler moves from inspiration to research, and this research phase is where operators win or lose the booking before the traveler ever contacts anyone directly.</p>
-
-  <p>During research, travelers seek advice from communities they trust. They post on Reddit asking for destination recommendations. They read TripAdvisor forum threads from previous visitors. They ask questions on Quora and read detailed answers from experienced travelers and operators. They're building a mental model of what they want — and, crucially, which operators seem credible and knowledgeable.</p>
-
-  <p>By the time a traveler submits a direct inquiry, their preferences are often substantially formed. They may be comparing two or three operators they've already identified as credible through their forum research. The operators who participated in that research phase — who were present, helpful, and expert in the communities the traveler trusted — have a massive advantage over operators who only appear when someone hits the "contact us" button.</p>
-
-  <h2 id="speed">Why Is Speed of Response the #1 Booking Factor?</h2>
-
-  <p>Multiple analyses of forum-based travel booking conversions point to the same finding: response time is the strongest predictor of whether a forum engagement converts to a booking. Not price. Not brand reputation. Not marketing budget. Speed of response.</p>
-
-  <p>This isn't surprising when you understand how forum threads work. A traveler posts a question and then checks the thread over the next few hours for responses. They read the first few carefully. They may reply to one or two. By the time the thread is a day old, most travelers have formed their shortlist and moved on — even if the thread continues to receive responses for weeks.</p>
-
-  <p>Operators who respond within 2–4 hours of a post going live are operating in a fundamentally different competitive environment than operators who respond 12 or 24 hours later. The early responders are having a conversation with the traveler. The late responders are adding to a thread the traveler has already moved on from.</p>
-
-  <p>This is why the monitoring problem — knowing about high-intent posts in real time — is so foundational. If you don't know a post exists within hours of it going live, your response time advantage disappears regardless of how good your content is.</p>
-
-  <h2 id="first-mover">What Is the First-Mover Advantage in Forum Conversations?</h2>
-
-  <p>First-mover advantage in forum conversations goes beyond just being read first. When you respond early with specific, credible information, you:</p>
-
-  <ul>
-    <li><strong>Shape the frame:</strong> Your answer becomes the reference point that subsequent responses are measured against. If you name specific camps, describe seasonal considerations, or address the traveler's particular requirements, you've established a standard of expertise that generic late responses can't easily match.</li>
-    <li><strong>Gain community endorsement:</strong> In well-moderated forums, early helpful responses tend to get upvoted or cited by other community members. This social proof amplifies your credibility to the original poster and to anyone else who reads the thread later.</li>
-    <li><strong>Start a direct dialogue:</strong> Travelers often reply to the first response they find genuinely helpful. That reply opens a public dialogue that's visible to everyone in the thread — and every thoughtful exchange increases your authority in the eyes of all readers, not just the original poster.</li>
-    <li><strong>Build long-term search visibility:</strong> On platforms like TripAdvisor and Quora, threads rank in Google. A well-placed early response in a high-ranking thread continues generating visibility long after the original conversation ended.</li>
-  </ul>
-
-  <h2 id="positioning">How Do You Position Your Operator Profile to Convert After a Response?</h2>
-
-  <p>When a forum response generates interest, the traveler will typically visit your website or public profiles to evaluate you further. This transition — from forum thread to your owned channels — is where many operators lose leads they've worked hard to find.</p>
-
-  <p>Your website and public profiles need to do three things immediately:</p>
-
-  <h3>Communicate your specific niche clearly</h3>
-  <p>A traveler who found you through a response about luxury Botswana safaris should land on a page that immediately reinforces your specialisation. Generic "we operate in all of Africa" messaging signals that you're not the specialist they're looking for.</p>
-
-  <h3>Make contact frictionless</h3>
-  <p>High-intent travelers who visit your site after a forum response are warm leads. Any friction — hard-to-find contact form, slow loading, confusing navigation — causes drop-off. Your primary CTA should be immediately visible and require minimal effort to act on.</p>
-
-  <h3>Show evidence of experience</h3>
-  <p>Reviews, trip galleries, and detailed destination knowledge on your website convert curious visitors into inquiries. A traveler who can read detailed itineraries or previous client experiences feels more confident initiating contact.</p>
-
-  <h2 id="system">How Do You Build a Repeatable System for Finding and Winning Leads?</h2>
-
-  <p>The operators who consistently outperform competitors in online bookings aren't doing extraordinary things. They've built ordinary processes and execute them consistently. The system has four components:</p>
-
-  <h3>1. Real-time monitoring</h3>
-  <p>An automated tool that watches all relevant platforms 24/7 and surfaces qualified leads without requiring manual search. This is the foundation that makes everything else possible at scale. Tools like <a href="https://www.getwandar.com">Wandar</a> handle this with safari-specific intent scoring across 9+ platforms.</p>
-
-  <h3>2. A defined response process</h3>
-  <p>Who is responsible for responding? What's the target response time? What level of review is required before posting? Having clear answers to these questions prevents the "someone else will handle it" failure mode that kills response time.</p>
-
-  <h3>3. A follow-up sequence</h3>
-  <p>When a forum engagement generates direct contact, what happens next? A defined process for moving from initial contact to proposal to booking — with clear timelines at each stage — dramatically improves conversion rates compared to ad hoc handling.</p>
-
-  <h3>4. Performance tracking</h3>
-  <p>Log which forum engagements generate inquiries and which generate bookings. Over time, this data tells you which platforms yield the highest-value leads for your specific business, which types of posts convert best, and where to focus your response effort.</p>
-
-  <h2 id="top-operators">What Do Top-Performing Safari Operators Do Differently?</h2>
-
-  <p>The operators who consistently win online have a few things in common:</p>
-
-  <ul>
-    <li>They treat forum engagement as a core marketing activity — not something that happens when they have spare time</li>
-    <li>They're present in forums with helpful, specific content year-round, not just when they need bookings</li>
-    <li>They respond to high-intent posts within hours, every time — through automation and clear internal process</li>
-    <li>They track results and double down on what works, rather than treating all platforms equally</li>
-    <li>They follow up quickly and personally when a forum engagement generates interest</li>
-    <li>They use tools to handle the monitoring so their team's time is spent on expert responses and relationship building</li>
-  </ul>
-
-  <p>None of these advantages require a large team or a big marketing budget. They require a consistent process and the right tools.</p>
-
-  <div class="guide-faq" id="faq">
-    <h2 class="guide-faq__title">Frequently Asked Questions</h2>
-
-    <div class="guide-faq__item">
-      <p class="guide-faq__q">How do safari travelers make booking decisions today?</p>
-      <p class="guide-faq__a">They research extensively in trusted communities before contacting operators. Forum participation and peer advice heavily influence which operators make their shortlist — often before they've visited any operator's website directly.</p>
+<!-- CTA Banner -->
+<section class="section--dark cta-banner" aria-label="Call to action">
+  <div class="cta-watermark cta-watermark--1" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg></div>
+  <div class="cta-watermark cta-watermark--2" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0zm5.01 4.744c.688 0 1.25.561 1.25 1.249a1.25 1.25 0 0 1-2.498.056l-2.597-.547-.8 3.747c1.824.07 3.48.632 4.674 1.488.308-.309.73-.491 1.207-.491.968 0 1.754.786 1.754 1.754 0 .716-.435 1.333-1.01 1.614a3.111 3.111 0 0 1 .042.52c0 2.694-3.13 4.87-7.004 4.87-3.874 0-7.004-2.176-7.004-4.87 0-.183.015-.366.043-.534A1.748 1.748 0 0 1 4.028 12c0-.968.786-1.754 1.754-1.754.463 0 .898.196 1.207.49 1.207-.883 2.878-1.43 4.744-1.487l.885-4.182a.342.342 0 0 1 .14-.197.35.35 0 0 1 .238-.042l2.906.617a1.214 1.214 0 0 1 1.108-.701zM9.25 12C8.561 12 8 12.562 8 13.25c0 .687.561 1.248 1.25 1.248.687 0 1.248-.561 1.248-1.249 0-.688-.561-1.249-1.249-1.249zm5.5 0c-.687 0-1.248.561-1.248 1.25 0 .687.561 1.248 1.249 1.248.688 0 1.249-.561 1.249-1.249 0-.687-.562-1.249-1.25-1.249z"/></svg></div>
+  <div class="cta-watermark cta-watermark--3" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg></div>
+  <div class="cta-watermark cta-watermark--4" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.99-.32-2.15-.23-3.02.37-.63.41-1.11 1.04-1.36 1.75-.21.51-.15 1.07-.14 1.61.24 1.64 1.82 3.02 3.5 2.87 1.12-.01 2.19-.66 2.77-1.61.19-.33.4-.67.41-1.06.1-1.79.06-3.57.07-5.36.01-4.03-.01-8.05.02-12.07z"/></svg></div>
+  <div class="cta-watermark cta-watermark--5" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.748l7.73-8.835L1.254 2.25H8.08l4.261 5.635 5.903-5.635zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg></div>
+  <div class="cta-watermark cta-watermark--6" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 0C5.373 0 0 5.372 0 12c0 5.084 3.163 9.426 7.627 11.174-.105-.949-.2-2.405.042-3.441.218-.937 1.407-5.965 1.407-5.965s-.359-.719-.359-1.782c0-1.668.967-2.914 2.171-2.914 1.023 0 1.518.769 1.518 1.69 0 1.029-.655 2.568-.994 3.995-.283 1.194.599 2.169 1.777 2.169 2.133 0 3.772-2.249 3.772-5.495 0-2.873-2.064-4.882-5.012-4.882-3.414 0-5.418 2.561-5.418 5.207 0 1.031.397 2.138.893 2.738a.36.36 0 0 1 .083.345l-.333 1.36c-.053.22-.174.267-.402.161-1.499-.698-2.436-2.889-2.436-4.649 0-3.785 2.75-7.262 7.929-7.262 4.163 0 7.398 2.967 7.398 6.931 0 4.136-2.607 7.464-6.227 7.464-1.216 0-2.359-.632-2.75-1.378l-.748 2.853c-.271 1.043-1.002 2.35-1.492 3.146C9.57 23.812 10.763 24 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0z"/></svg></div>
+  <div class="cta-watermark cta-watermark--7" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12.003 0C5.373 0 0 5.372 0 12c0 6.628 5.373 12 12.003 12 6.628 0 11.997-5.372 11.997-12 0-6.628-5.369-12-11.997-12zm-.172 18.95c-.56-.172-1.068-.46-1.526-.857l-1.35 1.37-.983-.962 1.345-1.367c-.594-.858-.938-1.939-.938-3.134 0-2.994 1.96-5.122 4.595-5.122 1.317 0 2.458.5 3.29 1.357l1.073-1.09.984.965-1.061 1.076c.571.848.907 1.908.907 3.093 0 2.995-1.96 5.121-4.594 5.121-.59 0-1.142-.12-1.65-.33l-.092-.12z"/></svg></div>
+  <div class="cta-watermark cta-watermark--8" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 10.8c-1.087-2.114-4.046-6.053-6.798-7.995C2.566.944 1.561 1.266.902 1.565.139 1.908 0 3.08 0 3.768c0 .69.378 5.65.624 6.479.815 2.736 3.713 3.66 6.383 3.364.136-.02.275-.039.415-.056-.138.022-.276.04-.415.056-3.912.58-7.387 2.005-2.83 7.078 5.013 5.19 6.87-1.113 7.823-4.308.953 3.195 2.05 9.271 7.733 4.308 4.267-4.308 1.172-6.498-2.74-7.078a8.741 8.741 0 0 1-.415-.056c.14.017.279.036.415.056 2.67.297 5.568-.628 6.383-3.364.246-.828.624-5.79.624-6.478 0-.69-.139-1.861-.902-2.204-.659-.299-1.664-.62-4.3 1.24C16.046 4.748 13.087 8.687 12 10.8z"/></svg></div>
+  <div class="cta-watermark cta-watermark--9" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="6.5" cy="12" r="5.8"/><circle cx="6.5" cy="12" r="3.2" fill="var(--dark-bg)"/><circle cx="6.5" cy="12" r="1.8"/><circle cx="17.5" cy="12" r="5.8"/><circle cx="17.5" cy="12" r="3.2" fill="var(--dark-bg)"/><circle cx="17.5" cy="12" r="1.8"/></svg></div>
+  <div class="cta-banner__inner">
+    <h2 class="cta-banner__headline">Your next client just posted on social media.<br>Be the first to reply.</h2>
+    <p class="cta-banner__subhead">Every hour you wait, someone else could be answering them.</p>
+    <div class="btn-group" style="justify-content:center;" role="group">
+      <a href="#" onclick="openModal('early-access');return false;" class="btn btn--primary">Request Early Access</a>
+      <a href="#" onclick="openModal('consultation');return false;" class="btn btn--ghost-white">Book a Consultation</a>
     </div>
+    <p class="cta-banner__micro">No contracts. No setup fees. Built exclusively for safari operators.</p>
+  </div>
+</section>
 
-    <div class="guide-faq__item">
-      <p class="guide-faq__q">Why is response speed more important than price in safari bookings?</p>
-      <p class="guide-faq__a">Forum threads move quickly. The traveler forms their shortlist in the first few hours after posting. Operators who respond fast with specific expertise become preferred options before price comparison even begins. Price competitiveness matters most among operators who've already earned consideration — speed gets you into that set.</p>
-    </div>
-
-    <div class="guide-faq__item">
-      <p class="guide-faq__q">How much does automation help with safari lead generation?</p>
-      <p class="guide-faq__a">Significantly. Automation solves the monitoring problem — knowing about high-intent posts within minutes of them going live — which is the prerequisite for fast response. Without automation, you're dependent on manual checks that routinely miss the response window. With automation, your team is always operating on fresh leads.</p>
-    </div>
-
-    <div class="guide-faq__item">
-      <p class="guide-faq__q">How do I get more safari bookings without increasing my marketing budget?</p>
-      <p class="guide-faq__a">Focus on demand capture rather than demand creation. Luxury safari demand already exists, expressed in forum posts and social conversations every day. Monitoring those conversations and responding quickly is a significantly more capital-efficient path to bookings than generating new demand through advertising.</p>
-    </div>
-
-    <div class="guide-faq__item">
-      <p class="guide-faq__q">What is the most effective way to respond to a safari forum post?</p>
-      <p class="guide-faq__a">Answer the question first, with specific expertise relevant to their exact situation. Demonstrate genuine knowledge of the destination, season, or traveler profile they mentioned. After providing value, briefly introduce yourself as an operator in that space. Keep the promotional element to one sentence — you're opening a door, not pitching a sale.</p>
+<!-- Explore More Guides -->
+<section class="explore-more">
+  <div class="container">
+    <h2 class="explore-more__heading">Explore More Guides</h2>
+    <p class="explore-more__sub">More free resources for safari operators.</p>
+    <div class="explore-more__grid">
+      <article class="guide-card">
+        <span class="guide-card__badge">Complete Guide</span>
+        <h3 class="guide-card__title">The Complete Guide to Safari Lead Generation (2026)</h3>
+        <p class="guide-card__desc">Everything luxury safari operators need to know about finding high-intent travelers online — platforms, intent scoring, and response strategy.</p>
+        <p class="guide-card__meta">20 min read · 1,800 words</p>
+        <a href="safari-lead-generation-complete-guide.html" class="guide-card__link">Read the guide →</a>
+      </article>
+      <article class="guide-card">
+        <span class="guide-card__badge">Playbook</span>
+        <h3 class="guide-card__title">Social Listening for Safari Operators: The Complete Playbook</h3>
+        <p class="guide-card__desc">Step-by-step walkthrough of every platform safari travelers use to research trips and how to set up your monitoring system.</p>
+        <p class="guide-card__meta">22 min read · 2,000 words</p>
+        <a href="social-listening-safari-operators-guide.html" class="guide-card__link">Read the guide →</a>
+      </article>
     </div>
   </div>
+</section>
 
-  <p>For the monitoring side of this process, read our <a href="social-listening-safari-operators-guide.html">complete social listening playbook</a>. For a broader overview of the lead generation opportunity, see our <a href="safari-lead-generation-complete-guide.html">complete guide to safari lead generation</a>.</p>
-
-  <p>Related blog reading: <a href="../blog/how-to-get-more-safari-bookings.html">how to get more safari bookings</a>, <a href="../blog/how-safari-operators-find-leads-online.html">how safari operators find leads online</a>, and <a href="../blog/social-listening-for-safari-operators.html">social listening for safari operators</a>.</p>
-
-  <div class="guide-cta">
-    <h3>Be first to every high-intent lead</h3>
-    <p>Wandar monitors 9+ platforms 24/7 and delivers intent-scored safari leads to your dashboard the moment they appear — so you can respond before competitors even see the post.</p>
-    <a href="https://www.getwandar.com" class="btn btn--primary">Get Early Access to Wandar</a>
-  </div>
-
-</main>
-
+<!-- Footer -->
 <footer class="footer" id="footer" role="contentinfo">
   <div class="container">
     <div class="footer__top">
@@ -295,51 +379,395 @@
         <img src="../assets/wandar-logo.png" alt="Wandar" class="footer__logo-img" loading="lazy" />
         <p class="footer__brand-tagline">Social listening built for safari travel</p>
       </div>
+      <div class="footer__newsletter">
+        <h3 class="footer__newsletter-heading">Stay Updated</h3>
+        <p class="footer__newsletter-sub">Get the latest travel insights and feature updates.</p>
+        <form onsubmit="handleSubscribe(event)" novalidate>
+          <div class="footer__input-pill">
+            <label for="email-subscribe" class="sr-only">Email address</label>
+            <input type="email" id="email-subscribe" name="email" class="footer__email-input" placeholder="Enter your email" required autocomplete="email" />
+            <button type="submit" class="footer__submit-arrow" aria-label="Subscribe">→</button>
+          </div>
+        </form>
+      </div>
     </div>
     <div class="footer__divider"></div>
     <div class="footer__columns">
       <div class="footer__col">
-        <span class="footer__col-heading">All Guides</span>
-        <ul class="footer__col-links">
-          <li><a href="safari-lead-generation-complete-guide.html" class="footer__col-link">Safari Lead Generation Guide</a></li>
-          <li><a href="social-listening-safari-operators-guide.html" class="footer__col-link">Social Listening Playbook</a></li>
-          <li><a href="beating-competitors-safari-bookings.html" class="footer__col-link">Beat Competitors Guide</a></li>
-        </ul>
-      </div>
-      <div class="footer__col">
-        <span class="footer__col-heading">Blog Articles</span>
-        <ul class="footer__col-links">
-          <li><a href="../blog/how-safari-operators-find-leads-online.html" class="footer__col-link">Find Leads Online</a></li>
-          <li><a href="../blog/social-listening-for-safari-operators.html" class="footer__col-link">Social Listening</a></li>
-          <li><a href="../blog/how-to-get-more-safari-bookings.html" class="footer__col-link">Get More Bookings</a></li>
-        </ul>
-      </div>
-      <div class="footer__col">
         <span class="footer__col-heading">Quick Links</span>
         <ul class="footer__col-links">
           <li><a href="../index.html" class="footer__col-link">Home</a></li>
-          <li><a href="../pricing.html" class="footer__col-link">Pricing</a></li>
-          <li><a href="../guides/" class="footer__col-link">All Guides</a></li>
+          <li><a href="../index.html#why-wandar" class="footer__col-link">Why Wandar</a></li>
+          <li><a href="../index.html#how-it-works" class="footer__col-link">How It Works</a></li>
+          <li><a href="../index.html#who-its-for" class="footer__col-link">Who It's For</a></li>
         </ul>
+      </div>
+      <div class="footer__col">
+        <span class="footer__col-heading">For Operators</span>
+        <ul class="footer__col-links">
+          <li><a href="../pricing.html" class="footer__col-link">Pricing</a></li>
+          <li><a href="#" onclick="openModal('consultation');return false;" class="footer__col-link">Free Consultation</a></li>
+          <li><span class="footer__col-link footer__col-link--disabled">Free Tools</span></li>
+          <li><a href="../guides/" class="footer__col-link">Guides</a></li>
+          <li><a href="../blog/" class="footer__col-link">Blog</a></li>
+          <li><a href="#" onclick="openModal('contact');return false;" class="footer__col-link">Support</a></li>
+        </ul>
+      </div>
+      <div class="footer__col">
+        <span class="footer__col-heading">Connect With Us</span>
+        <div class="footer__socials">
+          <a href="https://www.linkedin.com/company/getwandar/" target="_blank" rel="noopener" class="footer__social-link" aria-label="Wandar on LinkedIn">
+            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+          </a>
+          <a href="https://x.com/GetWandar" target="_blank" rel="noopener" class="footer__social-link" aria-label="Wandar on X">
+            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.748l7.73-8.835L1.254 2.25H8.08l4.261 5.635 5.903-5.635zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+          </a>
+          <a href="https://www.instagram.com/getwandar?igsh=MXBucmsybGhpbDhjeg%3D%3D&utm_source=qr" target="_blank" rel="noopener" class="footer__social-link" aria-label="Wandar on Instagram">
+            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 1 0 0 12.324 6.162 6.162 0 0 0 0-12.324zM12 16a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm6.406-11.845a1.44 1.44 0 1 0 0 2.881 1.44 1.44 0 0 0 0-2.881z"/></svg>
+          </a>
+          <a href="https://t.me/+WtB9Mrj09sZlODky" target="_blank" rel="noopener" class="footer__social-link" aria-label="Wandar on Telegram">
+            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/></svg>
+          </a>
+          <a href="https://chat.whatsapp.com/DvUMSctiasiG8DduHR9eVm?mode=gi_t" target="_blank" rel="noopener" class="footer__social-link" aria-label="Wandar on WhatsApp">
+            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413z"/></svg>
+          </a>
+        </div>
       </div>
     </div>
     <div class="footer__legal-bar">
       <p class="footer__legal-copy">© 2026 Wandar. All rights reserved.</p>
+      <div class="footer__legal-links">
+        <span class="footer__legal-link">Privacy Policy</span>
+        <span class="footer__legal-link">Terms of Service</span>
+        <span class="footer__legal-link">AI Transparency Statement</span>
+      </div>
     </div>
   </div>
 </footer>
 
+<!-- Modal: Early Access -->
+<div class="modal-overlay" id="modal-early-access" aria-modal="true" role="dialog" aria-labelledby="mea-title">
+  <div class="modal-card modal-card--teal-top">
+    <button class="modal-close" onclick="closeModal('early-access')" aria-label="Close">×</button>
+    <div class="modal-hd">
+      <div class="modal-hd-icon modal-hd-icon--teal">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#1a7373" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4.5 16.5c-1.5 1.26-2 5-2 5s3.74-.5 5-2c.71-.84.7-2.13-.09-2.91a2.18 2.18 0 0 0-2.91-.09z"/><path d="M12 15l-3-3a22 22 0 0 1 2-3.95A12.88 12.88 0 0 1 22 2c0 2.72-.78 7.5-6 11a22.35 22.35 0 0 1-4 2z"/><path d="M9 12H4s.55-3.03 2-4c1.62-1.08 5 0 5 0"/><path d="M12 15v5s3.03-.55 4-2c1.08-1.62 0-5 0-5"/></svg>
+      </div>
+      <h2 class="modal-h2" id="mea-title">Request Early Access</h2>
+      <p class="modal-sub">Be among the first safari operators to access Wandar.</p>
+    </div>
+    <div class="modal-bd">
+      <div class="mf-form" id="mf-form-a">
+        <div class="mf-grid-2">
+          <div class="mf-field">
+            <label class="mf-label" for="ma-email">Work email <span class="mf-req-teal">*</span></label>
+            <input type="email" id="ma-email" class="mf-input" placeholder="you@safarico.com" autocomplete="email" />
+            <span class="mf-err" id="merr-a-email"></span>
+          </div>
+          <div class="mf-field">
+            <label class="mf-label" for="ma-company">Company name <span class="mf-req-teal">*</span></label>
+            <input type="text" id="ma-company" class="mf-input" placeholder="Acacia Expeditions" autocomplete="organization" />
+            <span class="mf-err" id="merr-a-company"></span>
+          </div>
+        </div>
+        <div class="mf-grid-2">
+          <div class="mf-field">
+            <label class="mf-label" for="ma-role">Your role <span class="mf-req-teal">*</span></label>
+            <select id="ma-role" class="mf-select">
+              <option value="">Select your role</option>
+              <option>Owner / Founder</option>
+              <option>Sales &amp; Bookings</option>
+              <option>Marketing</option>
+              <option>Operations</option>
+              <option>Other</option>
+            </select>
+            <span class="mf-err" id="merr-a-role"></span>
+          </div>
+          <div class="mf-field">
+            <label class="mf-label" for="ma-goal">Biggest challenge right now <span class="mf-req-teal">*</span></label>
+            <select id="ma-goal" class="mf-select" style="font-size:12px" onchange="mHandleGoal('ma-goal','ma-goal-other')">
+              <option value="">Select one</option>
+              <option>Leads exist but I never see them in time</option>
+              <option>A competitor always replies before I do</option>
+              <option>I don't know where my next booking will come from</option>
+              <option>I'm spending on ads but can't tell if they work</option>
+              <option>Enquiries come in but don't convert to bookings</option>
+              <option value="other">Something else</option>
+            </select>
+            <div class="mf-reveal" id="ma-goal-other">
+              <input class="mf-input" type="text" placeholder="Tell us in your own words..." />
+            </div>
+            <span class="mf-err" id="merr-a-goal"></span>
+          </div>
+        </div>
+        <button class="mf-submit mf-submit--teal" onclick="mSubmitA()">
+          Submit
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </button>
+        <div class="mf-trust">
+          <span><span class="mf-trust-dot"></span>No contracts or setup fees</span>
+          <span><span class="mf-trust-dot"></span>Built exclusively for safari operators</span>
+        </div>
+      </div>
+      <div class="mf-success" id="mf-success-a" aria-live="polite">
+        <div class="mf-success-ring mf-success-ring--teal">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#1a7373" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg>
+        </div>
+        <h2>You're on the list.</h2>
+        <p>Here's what happens next.</p>
+        <div class="mf-steps">
+          <div class="mf-step"><div class="mf-step-num mf-step-num--teal">1</div><span class="mf-step-text">We'll review your details and reach out within 48 hours.</span></div>
+          <div class="mf-step"><div class="mf-step-num mf-step-num--teal">2</div><span class="mf-step-text">You'll get a personal note — not an automated sequence.</span></div>
+          <div class="mf-step"><div class="mf-step-num mf-step-num--teal">3</div><span class="mf-step-text">When private beta opens, you'll be among the first operators in.</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Modal: Consultation -->
+<div class="modal-overlay" id="modal-consultation" aria-modal="true" role="dialog" aria-labelledby="mc-title">
+  <div class="modal-card modal-card--amber-top">
+    <button class="modal-close" onclick="closeModal('consultation')" aria-label="Close">×</button>
+    <div class="modal-hd">
+      <div class="modal-hd-icon modal-hd-icon--amber">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#c45911" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.32A2 2 0 0 1 3.58 1h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.5a16 16 0 0 0 6 6l.92-.92a2 2 0 0 1 2.1-.45c.91.339 1.853.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+      </div>
+      <h2 class="modal-h2" id="mc-title">Book a Free Consultation</h2>
+      <p class="modal-sub">We want to understand your operation before we recommend anything.</p>
+    </div>
+    <div class="modal-bd">
+      <div class="mf-form" id="mf-form-b">
+        <div class="mf-field">
+          <label class="mf-label" for="mb-email">Work email <span class="mf-req-amber">*</span></label>
+          <input type="email" id="mb-email" class="mf-input" placeholder="you@safarico.com" autocomplete="email" />
+          <span class="mf-err" id="merr-b-email"></span>
+        </div>
+        <div class="mf-grid-2">
+          <div class="mf-field">
+            <label class="mf-label" for="mb-company">Company name <span class="mf-req-amber">*</span></label>
+            <input type="text" id="mb-company" class="mf-input" placeholder="Acacia Expeditions" autocomplete="organization" />
+            <span class="mf-err" id="merr-b-company"></span>
+          </div>
+          <div class="mf-field">
+            <label class="mf-label" for="mb-role">Your role <span class="mf-req-amber">*</span></label>
+            <select id="mb-role" class="mf-select">
+              <option value="">Select your role</option>
+              <option>Owner / Founder</option>
+              <option>Sales &amp; Bookings</option>
+              <option>Marketing</option>
+              <option>Operations</option>
+              <option>Other</option>
+            </select>
+            <span class="mf-err" id="merr-b-role"></span>
+          </div>
+        </div>
+        <div class="mf-field">
+          <label class="mf-label" for="mb-goal">What do you most want to solve? <span class="mf-req-amber">*</span></label>
+          <select id="mb-goal" class="mf-select" onchange="mHandleBGoal()">
+            <option value="">Select one</option>
+            <option>Leads exist but I never see them in time</option>
+            <option>A competitor always replies before I do</option>
+            <option>I don't know where my next booking will come from</option>
+            <option>I'm spending on ads but can't tell if they work</option>
+            <option>Enquiries come in but don't convert to bookings</option>
+            <option value="other">Something else</option>
+          </select>
+          <div class="mf-reveal" id="mb-goal-other">
+            <input class="mf-input" type="text" placeholder="Tell us in your own words..." />
+          </div>
+          <span class="mf-err" id="merr-b-goal"></span>
+        </div>
+        <div id="mb-more-wrap" style="display:none">
+          <div class="mf-field">
+            <label class="mf-label" for="mb-more">Tell us more <span style="font-weight:400;color:#9ca3af">— optional</span></label>
+            <textarea id="mb-more" class="mf-ta" placeholder="e.g. We get enquiries from Reddit but by the time I see them, someone else has already replied..."></textarea>
+          </div>
+        </div>
+        <button class="mf-submit mf-submit--amber" onclick="mSubmitB()">
+          Submit
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </button>
+        <div class="mf-trust">
+          <span><span class="mf-trust-dot"></span>No commitment required</span>
+          <span><span class="mf-trust-dot"></span>20 minutes — we listen, you talk</span>
+        </div>
+      </div>
+      <div class="mf-success" id="mf-success-b" aria-live="polite">
+        <div class="mf-success-ring mf-success-ring--amber">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#c45911" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+        </div>
+        <h2>Call request received.</h2>
+        <p>We'll review what you shared and reach out within 24 hours to confirm a time.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Modal: Contact -->
+<div class="modal-overlay" id="modal-contact" aria-modal="true" role="dialog" aria-labelledby="mct-title">
+  <div class="modal-card modal-card--teal-top">
+    <button class="modal-close" onclick="closeModal('contact')" aria-label="Close">×</button>
+    <div class="modal-hd">
+      <div class="modal-hd-icon modal-hd-icon--teal">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#1a7373" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M2 7l10 7 10-7"/></svg>
+      </div>
+      <h2 class="modal-h2" id="mct-title">Have a question or need help?</h2>
+    </div>
+    <div class="modal-bd">
+      <div class="mf-form" id="mf-form-c">
+        <div class="mf-grid-2">
+          <div class="mf-field">
+            <label class="mf-label" for="mc-name">Your name <span class="mf-req-teal">*</span></label>
+            <input type="text" id="mc-name" class="mf-input" placeholder="Jane Doe" autocomplete="given-name" />
+            <span class="mf-err" id="merr-c-name"></span>
+          </div>
+          <div class="mf-field">
+            <label class="mf-label" for="mc-company">Company name <span class="mf-req-teal">*</span></label>
+            <input type="text" id="mc-company" class="mf-input" placeholder="Acacia Expeditions" autocomplete="organization" />
+            <span class="mf-err" id="merr-c-company"></span>
+          </div>
+        </div>
+        <div class="mf-grid-2">
+          <div class="mf-field">
+            <label class="mf-label" for="mc-email">Work email <span class="mf-req-teal">*</span></label>
+            <input type="email" id="mc-email" class="mf-input" placeholder="you@safarico.com" autocomplete="email" />
+            <span class="mf-err" id="merr-c-email"></span>
+          </div>
+          <div class="mf-field">
+            <label class="mf-label" for="mc-intent">What best describes you? <span class="mf-req-teal">*</span></label>
+            <select id="mc-intent" class="mf-select" onchange="mHandleContactIntent()">
+              <option value="">Select one</option>
+              <option value="operator">I'm a safari operator with a question</option>
+              <option value="partner">I'm interested in partnering or integrating</option>
+              <option value="press">Press or media enquiry</option>
+              <option value="other">Something else</option>
+            </select>
+            <span class="mf-err" id="merr-c-intent"></span>
+            <div class="mf-nested" id="mc-intent-other">
+              <input type="text" id="mc-intent-other-text" class="mf-input" placeholder="Tell us a bit more…" />
+            </div>
+          </div>
+        </div>
+        <div class="mf-field">
+          <label class="mf-label" for="mc-message">Your message <span class="mf-req-teal">*</span></label>
+          <textarea id="mc-message" class="mf-ta" placeholder="Tell us how we can help..." style="min-height:110px;"></textarea>
+          <span class="mf-err" id="merr-c-message"></span>
+        </div>
+        <button class="mf-submit mf-submit--teal" onclick="mSubmitC()">
+          Send message
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </button>
+      </div>
+      <div class="mf-success" id="mf-success-c" aria-live="polite">
+        <div class="mf-success-ring mf-success-ring--teal">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#1a7373" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg>
+        </div>
+        <h2 id="mc-success-title">Message sent.</h2>
+        <p id="mc-success-body">We'll get back to you as soon as possible.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Download Guide Modal -->
+<div class="dl-overlay" id="dl-overlay" role="dialog" aria-modal="true" aria-labelledby="dl-title" style="display:none;">
+  <div class="dl-modal">
+    <div class="dl-modal__body" id="dl-default">
+      <button class="dl-modal__close" onclick="closeDownloadModal()" aria-label="Close">✕</button>
+      <span class="dl-modal__badge">Free Guide</span>
+      <h2 class="dl-modal__title" id="dl-title">How Safari Operators Can Beat Competitors and Win More Bookings Online</h2>
+      <p class="dl-modal__sub">Get the full strategy guide delivered to your inbox — including the first-mover advantage framework and response system templates.</p>
+      <form name="guide-download" method="POST" data-netlify="true" netlify-honeypot="bot-field" onsubmit="handleDownloadSubmit(event)">
+        <input type="hidden" name="form-name" value="guide-download" />
+        <input type="hidden" name="guide" value="Beat Competitors and Win More Bookings Guide" />
+        <p style="display:none"><input name="bot-field" /></p>
+        <div class="dl-modal__field">
+          <label for="dl-name" class="dl-modal__label">First name</label>
+          <input type="text" id="dl-name" name="name" class="dl-modal__input" placeholder="Your name" autocomplete="given-name" />
+        </div>
+        <div class="dl-modal__field">
+          <label for="dl-email" class="dl-modal__label">Work email <span style="color:#e53e3e">*</span></label>
+          <input type="email" id="dl-email" name="email" class="dl-modal__input" placeholder="you@company.com" required autocomplete="email" />
+        </div>
+        <button type="submit" class="btn btn--primary" style="width:100%;justify-content:center;margin-top:8px;">Get the Free Guide →</button>
+        <p class="dl-modal__privacy">No spam. Unsubscribe anytime.</p>
+      </form>
+    </div>
+    <div class="dl-modal__body" id="dl-success" style="display:none;text-align:center;">
+      <div style="font-size:48px;margin-bottom:16px;color:var(--safari-primary)">✓</div>
+      <h2 class="dl-modal__title">You're all set!</h2>
+      <p class="dl-modal__sub">We'll send the guide to your inbox shortly. In the meantime, keep reading below.</p>
+      <button class="btn btn--primary" onclick="closeDownloadModal()" style="margin-top:20px;">Continue Reading →</button>
+    </div>
+  </div>
+</div>
+
 <script>
-  document.getElementById('hamburger').addEventListener('click', function() {
-    var panel = document.getElementById('mobile-panel');
-    var expanded = this.getAttribute('aria-expanded') === 'true';
-    this.setAttribute('aria-expanded', !expanded);
-    panel.classList.toggle('open');
+// Reading progress bar
+window.addEventListener('scroll', function() {
+  var d = document.documentElement;
+  var pct = (d.scrollTop / (d.scrollHeight - d.clientHeight)) * 100;
+  document.getElementById('reading-progress').style.width = Math.min(pct, 100) + '%';
+}, { passive: true });
+
+// TOC auto-build + active section highlight
+document.addEventListener('DOMContentLoaded', function() {
+  var headings = document.querySelectorAll('.article-body h2[id]');
+  var list = document.getElementById('toc-list');
+  if (!list || !headings.length) return;
+  headings.forEach(function(h) {
+    var li = document.createElement('li');
+    var a = document.createElement('a');
+    a.href = '#' + h.id;
+    a.className = 'toc__link';
+    a.textContent = h.textContent;
+    li.appendChild(a);
+    list.appendChild(li);
   });
-  var navEl = document.getElementById('nav');
-  window.addEventListener('scroll', function() {
-    navEl.classList.toggle('scrolled', window.scrollY > 20);
+  var links = list.querySelectorAll('.toc__link');
+  var observer = new IntersectionObserver(function(entries) {
+    entries.forEach(function(entry) {
+      if (entry.isIntersecting) {
+        links.forEach(function(l) { l.classList.remove('active'); });
+        var active = list.querySelector('a[href="#' + entry.target.id + '"]');
+        if (active) active.classList.add('active');
+      }
+    });
+  }, { rootMargin: '-20% 0px -70% 0px' });
+  headings.forEach(function(h) { observer.observe(h); });
+});
+
+// Newsletter subscribe
+function handleSubscribe(e) {
+  e.preventDefault();
+  var el = document.getElementById('email-subscribe');
+  if (el && el.value) { el.value = ''; alert('Thanks! We\'ll be in touch.'); }
+}
+
+// Download guide modal
+function openDownloadModal() {
+  document.getElementById('dl-overlay').style.display = 'flex';
+  document.body.style.overflow = 'hidden';
+  setTimeout(function() { var el = document.getElementById('dl-email'); if (el) el.focus(); }, 50);
+}
+function closeDownloadModal() {
+  document.getElementById('dl-overlay').style.display = 'none';
+  document.body.style.overflow = '';
+}
+function handleDownloadSubmit(e) {
+  e.preventDefault();
+  var data = new FormData(e.target);
+  fetch('/', { method: 'POST', headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+    body: new URLSearchParams(data).toString()
+  }).finally(function() {
+    document.getElementById('dl-default').style.display = 'none';
+    document.getElementById('dl-success').style.display = 'block';
   });
+}
+document.getElementById('dl-overlay').addEventListener('click', function(e) {
+  if (e.target === this) closeDownloadModal();
+});
 </script>
 </body>
 </html>

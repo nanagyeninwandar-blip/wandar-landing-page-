@@ -23,6 +23,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link rel="stylesheet" href="../assets/css/main.css" />
   <script src="https://cdn.lordicon.com/lordicon.js" defer></script>
+  <script src="../assets/js/modals.js"></script>
   <style>
     .blog-hero { background: var(--off-white); padding: 80px 0 60px; }
     .blog-hero__eyebrow { font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.12em; color: var(--safari-primary); margin-bottom: 16px; }
@@ -40,33 +41,13 @@
 </head>
 <body>
 
-<header class="nav nav--transparent" id="nav" role="banner">
+<header class="nav scrolled" id="nav" role="banner" style="position:sticky;top:0;z-index:200;">
   <div class="container">
-    <div class="nav__inner nav-relative">
+    <div class="nav__inner" style="justify-content:space-between;align-items:center;">
       <a href="../index.html" class="nav__logo" aria-label="Wandar home">
         <img src="../assets/wandar-logo.png" alt="Wandar" class="nav__logo-img" />
       </a>
-      <nav aria-label="Main navigation">
-        <ul class="nav__links">
-          <li><a href="../index.html#why-wandar" class="nav__link">Why Wandar</a></li>
-          <li><a href="../index.html#how-it-works" class="nav__link">How It Works</a></li>
-          <li><a href="../pricing.html" class="nav__link">Pricing</a></li>
-          <li><a href="../guides/" class="nav__link">Guides</a></li>
-          <li><a href="../blog/" class="nav__link" aria-current="page">Blog</a></li>
-        </ul>
-      </nav>
-      <div class="nav__right">
-        <button class="nav__hamburger" id="hamburger" aria-label="Open menu" aria-expanded="false">
-          <span></span><span></span><span></span>
-        </button>
-      </div>
-      <div class="nav__mobile-panel" id="mobile-panel" aria-label="Mobile navigation">
-        <ul class="nav__mobile-links">
-          <li><a href="../pricing.html">Pricing</a></li>
-          <li><a href="../guides/">Guides</a></li>
-          <li><a href="../blog/">Blog</a></li>
-        </ul>
-      </div>
+      <a href="#" onclick="openModal('early-access');return false;" class="btn btn--primary" style="font-size:13px;padding:9px 20px;">Request Early Access</a>
     </div>
   </div>
 </header>
@@ -108,23 +89,46 @@
   </div>
 </section>
 
+<!-- CTA Banner -->
 <section class="section--dark cta-banner" aria-label="Call to action">
-  <div class="container" style="text-align:center; position:relative; z-index:1;">
+  <div class="cta-watermark cta-watermark--1" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg></div>
+  <div class="cta-watermark cta-watermark--2" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0zm5.01 4.744c.688 0 1.25.561 1.25 1.249a1.25 1.25 0 0 1-2.498.056l-2.597-.547-.8 3.747c1.824.07 3.48.632 4.674 1.488.308-.309.73-.491 1.207-.491.968 0 1.754.786 1.754 1.754 0 .716-.435 1.333-1.01 1.614a3.111 3.111 0 0 1 .042.52c0 2.694-3.13 4.87-7.004 4.87-3.874 0-7.004-2.176-7.004-4.87 0-.183.015-.366.043-.534A1.748 1.748 0 0 1 4.028 12c0-.968.786-1.754 1.754-1.754.463 0 .898.196 1.207.49 1.207-.883 2.878-1.43 4.744-1.487l.885-4.182a.342.342 0 0 1 .14-.197.35.35 0 0 1 .238-.042l2.906.617a1.214 1.214 0 0 1 1.108-.701zM9.25 12C8.561 12 8 12.562 8 13.25c0 .687.561 1.248 1.25 1.248.687 0 1.248-.561 1.248-1.249 0-.688-.561-1.249-1.249-1.249zm5.5 0c-.687 0-1.248.561-1.248 1.25 0 .687.561 1.248 1.249 1.248.688 0 1.249-.561 1.249-1.249 0-.687-.562-1.249-1.25-1.249z"/></svg></div>
+  <div class="cta-watermark cta-watermark--3" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg></div>
+  <div class="cta-watermark cta-watermark--4" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.99-.32-2.15-.23-3.02.37-.63.41-1.11 1.04-1.36 1.75-.21.51-.15 1.07-.14 1.61.24 1.64 1.82 3.02 3.5 2.87 1.12-.01 2.19-.66 2.77-1.61.19-.33.4-.67.41-1.06.1-1.79.06-3.57.07-5.36.01-4.03-.01-8.05.02-12.07z"/></svg></div>
+  <div class="cta-watermark cta-watermark--5" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.748l7.73-8.835L1.254 2.25H8.08l4.261 5.635 5.903-5.635zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg></div>
+  <div class="cta-watermark cta-watermark--6" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 0C5.373 0 0 5.372 0 12c0 5.084 3.163 9.426 7.627 11.174-.105-.949-.2-2.405.042-3.441.218-.937 1.407-5.965 1.407-5.965s-.359-.719-.359-1.782c0-1.668.967-2.914 2.171-2.914 1.023 0 1.518.769 1.518 1.69 0 1.029-.655 2.568-.994 3.995-.283 1.194.599 2.169 1.777 2.169 2.133 0 3.772-2.249 3.772-5.495 0-2.873-2.064-4.882-5.012-4.882-3.414 0-5.418 2.561-5.418 5.207 0 1.031.397 2.138.893 2.738a.36.36 0 0 1 .083.345l-.333 1.36c-.053.22-.174.267-.402.161-1.499-.698-2.436-2.889-2.436-4.649 0-3.785 2.75-7.262 7.929-7.262 4.163 0 7.398 2.967 7.398 6.931 0 4.136-2.607 7.464-6.227 7.464-1.216 0-2.359-.632-2.75-1.378l-.748 2.853c-.271 1.043-1.002 2.35-1.492 3.146C9.57 23.812 10.763 24 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0z"/></svg></div>
+  <div class="cta-watermark cta-watermark--7" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12.003 0C5.373 0 0 5.372 0 12c0 6.628 5.373 12 12.003 12 6.628 0 11.997-5.372 11.997-12 0-6.628-5.369-12-11.997-12zm-.172 18.95c-.56-.172-1.068-.46-1.526-.857l-1.35 1.37-.983-.962 1.345-1.367c-.594-.858-.938-1.939-.938-3.134 0-2.994 1.96-5.122 4.595-5.122 1.317 0 2.458.5 3.29 1.357l1.073-1.09.984.965-1.061 1.076c.571.848.907 1.908.907 3.093 0 2.995-1.96 5.121-4.594 5.121-.59 0-1.142-.12-1.65-.33l-.092-.12z"/></svg></div>
+  <div class="cta-watermark cta-watermark--8" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 10.8c-1.087-2.114-4.046-6.053-6.798-7.995C2.566.944 1.561 1.266.902 1.565.139 1.908 0 3.08 0 3.768c0 .69.378 5.65.624 6.479.815 2.736 3.713 3.66 6.383 3.364.136-.02.275-.039.415-.056-.138.022-.276.04-.415.056-3.912.58-7.387 2.005-2.83 7.078 5.013 5.19 6.87-1.113 7.823-4.308.953 3.195 2.05 9.271 7.733 4.308 4.267-4.308 1.172-6.498-2.74-7.078a8.741 8.741 0 0 1-.415-.056c.14.017.279.036.415.056 2.67.297 5.568-.628 6.383-3.364.246-.828.624-5.79.624-6.478 0-.69-.139-1.861-.902-2.204-.659-.299-1.664-.62-4.3 1.24C16.046 4.748 13.087 8.687 12 10.8z"/></svg></div>
+  <div class="cta-watermark cta-watermark--9" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="6.5" cy="12" r="5.8"/><circle cx="6.5" cy="12" r="3.2" fill="var(--dark-bg)"/><circle cx="6.5" cy="12" r="1.8"/><circle cx="17.5" cy="12" r="5.8"/><circle cx="17.5" cy="12" r="3.2" fill="var(--dark-bg)"/><circle cx="17.5" cy="12" r="1.8"/></svg></div>
+  <div class="cta-banner__inner">
     <h2 class="cta-banner__headline">Your next client just posted on social media.<br>Be the first to reply.</h2>
-    <p class="cta-banner__subhead" style="margin: 16px auto 32px; max-width:560px;">Wandar monitors 9+ platforms 24/7 and delivers high-intent safari leads straight to your dashboard.</p>
-    <div class="btn-group" style="justify-content:center;">
-      <a href="https://www.getwandar.com/#cta-banner" class="btn btn--primary">Get Early Access</a>
-      <a href="../pricing.html" class="btn btn--ghost-white">View Pricing</a>
+    <p class="cta-banner__subhead">Every hour you wait, someone else could be answering them.</p>
+    <div class="btn-group" style="justify-content:center;" role="group">
+      <a href="#" onclick="openModal('early-access');return false;" class="btn btn--primary">Request Early Access</a>
+      <a href="#" onclick="openModal('consultation');return false;" class="btn btn--ghost-white">Book a Consultation</a>
     </div>
+    <p class="cta-banner__micro">No contracts. No setup fees. Built exclusively for safari operators.</p>
   </div>
 </section>
 
+<!-- Footer -->
 <footer class="footer" id="footer" role="contentinfo">
   <div class="container">
     <div class="footer__top">
       <div class="footer__brand">
         <img src="../assets/wandar-logo.png" alt="Wandar" class="footer__logo-img" loading="lazy" />
         <p class="footer__brand-tagline">Social listening built for safari travel</p>
+      </div>
+      <div class="footer__newsletter">
+        <h3 class="footer__newsletter-heading">Stay Updated</h3>
+        <p class="footer__newsletter-sub">Get the latest travel insights and feature updates.</p>
+        <form onsubmit="handleSubscribe(event)" novalidate>
+          <div class="footer__input-pill">
+            <label for="email-subscribe" class="sr-only">Email address</label>
+            <input type="email" id="email-subscribe" name="email" class="footer__email-input" placeholder="Enter your email" required autocomplete="email" />
+            <button type="submit" class="footer__submit-arrow" aria-label="Subscribe">→</button>
+          </div>
+        </form>
       </div>
     </div>
     <div class="footer__divider"></div>
@@ -133,37 +137,285 @@
         <span class="footer__col-heading">Quick Links</span>
         <ul class="footer__col-links">
           <li><a href="../index.html" class="footer__col-link">Home</a></li>
-          <li><a href="../pricing.html" class="footer__col-link">Pricing</a></li>
-          <li><a href="../guides/" class="footer__col-link">Guides</a></li>
-          <li><a href="../blog/" class="footer__col-link">Blog</a></li>
+          <li><a href="../index.html#why-wandar" class="footer__col-link">Why Wandar</a></li>
+          <li><a href="../index.html#how-it-works" class="footer__col-link">How It Works</a></li>
+          <li><a href="../index.html#who-its-for" class="footer__col-link">Who It's For</a></li>
         </ul>
       </div>
       <div class="footer__col">
-        <span class="footer__col-heading">Guides</span>
+        <span class="footer__col-heading">For Operators</span>
         <ul class="footer__col-links">
-          <li><a href="../guides/safari-lead-generation-complete-guide.html" class="footer__col-link">Safari Lead Generation Guide</a></li>
-          <li><a href="../guides/social-listening-safari-operators-guide.html" class="footer__col-link">Social Listening Playbook</a></li>
-          <li><a href="../guides/beating-competitors-safari-bookings.html" class="footer__col-link">Beat Competitors Guide</a></li>
+          <li><a href="../pricing.html" class="footer__col-link">Pricing</a></li>
+          <li><a href="#" onclick="openModal('consultation');return false;" class="footer__col-link">Free Consultation</a></li>
+          <li><span class="footer__col-link footer__col-link--disabled">Free Tools</span></li>
+          <li><a href="../guides/" class="footer__col-link">Guides</a></li>
+          <li><a href="../blog/" class="footer__col-link">Blog</a></li>
+          <li><a href="#" onclick="openModal('contact');return false;" class="footer__col-link">Support</a></li>
         </ul>
+      </div>
+      <div class="footer__col">
+        <span class="footer__col-heading">Connect With Us</span>
+        <div class="footer__socials">
+          <a href="https://www.linkedin.com/company/getwandar/" target="_blank" rel="noopener" class="footer__social-link" aria-label="Wandar on LinkedIn">
+            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+          </a>
+          <a href="https://x.com/GetWandar" target="_blank" rel="noopener" class="footer__social-link" aria-label="Wandar on X">
+            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.748l7.73-8.835L1.254 2.25H8.08l4.261 5.635 5.903-5.635zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+          </a>
+          <a href="https://www.instagram.com/getwandar?igsh=MXBucmsybGhpbDhjeg%3D%3D&utm_source=qr" target="_blank" rel="noopener" class="footer__social-link" aria-label="Wandar on Instagram">
+            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 1 0 0 12.324 6.162 6.162 0 0 0 0-12.324zM12 16a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm6.406-11.845a1.44 1.44 0 1 0 0 2.881 1.44 1.44 0 0 0 0-2.881z"/></svg>
+          </a>
+          <a href="https://t.me/+WtB9Mrj09sZlODky" target="_blank" rel="noopener" class="footer__social-link" aria-label="Wandar on Telegram">
+            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/></svg>
+          </a>
+          <a href="https://chat.whatsapp.com/DvUMSctiasiG8DduHR9eVm?mode=gi_t" target="_blank" rel="noopener" class="footer__social-link" aria-label="Wandar on WhatsApp">
+            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413z"/></svg>
+          </a>
+        </div>
       </div>
     </div>
     <div class="footer__legal-bar">
       <p class="footer__legal-copy">© 2026 Wandar. All rights reserved.</p>
+      <div class="footer__legal-links">
+        <span class="footer__legal-link">Privacy Policy</span>
+        <span class="footer__legal-link">Terms of Service</span>
+        <span class="footer__legal-link">AI Transparency Statement</span>
+      </div>
     </div>
   </div>
 </footer>
 
+<!-- Modal: Early Access -->
+<div class="modal-overlay" id="modal-early-access" aria-modal="true" role="dialog" aria-labelledby="mea-title">
+  <div class="modal-card modal-card--teal-top">
+    <button class="modal-close" onclick="closeModal('early-access')" aria-label="Close">×</button>
+    <div class="modal-hd">
+      <div class="modal-hd-icon modal-hd-icon--teal">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#1a7373" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4.5 16.5c-1.5 1.26-2 5-2 5s3.74-.5 5-2c.71-.84.7-2.13-.09-2.91a2.18 2.18 0 0 0-2.91-.09z"/><path d="M12 15l-3-3a22 22 0 0 1 2-3.95A12.88 12.88 0 0 1 22 2c0 2.72-.78 7.5-6 11a22.35 22.35 0 0 1-4 2z"/><path d="M9 12H4s.55-3.03 2-4c1.62-1.08 5 0 5 0"/><path d="M12 15v5s3.03-.55 4-2c1.08-1.62 0-5 0-5"/></svg>
+      </div>
+      <h2 class="modal-h2" id="mea-title">Request Early Access</h2>
+      <p class="modal-sub">Be among the first safari operators to access Wandar.</p>
+    </div>
+    <div class="modal-bd">
+      <div class="mf-form" id="mf-form-a">
+        <div class="mf-grid-2">
+          <div class="mf-field">
+            <label class="mf-label" for="ma-email">Work email <span class="mf-req-teal">*</span></label>
+            <input type="email" id="ma-email" class="mf-input" placeholder="you@safarico.com" autocomplete="email" />
+            <span class="mf-err" id="merr-a-email"></span>
+          </div>
+          <div class="mf-field">
+            <label class="mf-label" for="ma-company">Company name <span class="mf-req-teal">*</span></label>
+            <input type="text" id="ma-company" class="mf-input" placeholder="Acacia Expeditions" autocomplete="organization" />
+            <span class="mf-err" id="merr-a-company"></span>
+          </div>
+        </div>
+        <div class="mf-grid-2">
+          <div class="mf-field">
+            <label class="mf-label" for="ma-role">Your role <span class="mf-req-teal">*</span></label>
+            <select id="ma-role" class="mf-select">
+              <option value="">Select your role</option>
+              <option>Owner / Founder</option>
+              <option>Sales &amp; Bookings</option>
+              <option>Marketing</option>
+              <option>Operations</option>
+              <option>Other</option>
+            </select>
+            <span class="mf-err" id="merr-a-role"></span>
+          </div>
+          <div class="mf-field">
+            <label class="mf-label" for="ma-goal">Biggest challenge right now <span class="mf-req-teal">*</span></label>
+            <select id="ma-goal" class="mf-select" style="font-size:12px" onchange="mHandleGoal('ma-goal','ma-goal-other')">
+              <option value="">Select one</option>
+              <option>Leads exist but I never see them in time</option>
+              <option>A competitor always replies before I do</option>
+              <option>I don't know where my next booking will come from</option>
+              <option>I'm spending on ads but can't tell if they work</option>
+              <option>Enquiries come in but don't convert to bookings</option>
+              <option value="other">Something else</option>
+            </select>
+            <div class="mf-reveal" id="ma-goal-other">
+              <input class="mf-input" type="text" placeholder="Tell us in your own words..." />
+            </div>
+            <span class="mf-err" id="merr-a-goal"></span>
+          </div>
+        </div>
+        <button class="mf-submit mf-submit--teal" onclick="mSubmitA()">
+          Submit
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </button>
+        <div class="mf-trust">
+          <span><span class="mf-trust-dot"></span>No contracts or setup fees</span>
+          <span><span class="mf-trust-dot"></span>Built exclusively for safari operators</span>
+        </div>
+      </div>
+      <div class="mf-success" id="mf-success-a" aria-live="polite">
+        <div class="mf-success-ring mf-success-ring--teal">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#1a7373" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg>
+        </div>
+        <h2>You're on the list.</h2>
+        <p>Here's what happens next.</p>
+        <div class="mf-steps">
+          <div class="mf-step"><div class="mf-step-num mf-step-num--teal">1</div><span class="mf-step-text">We'll review your details and reach out within 48 hours.</span></div>
+          <div class="mf-step"><div class="mf-step-num mf-step-num--teal">2</div><span class="mf-step-text">You'll get a personal note — not an automated sequence.</span></div>
+          <div class="mf-step"><div class="mf-step-num mf-step-num--teal">3</div><span class="mf-step-text">When private beta opens, you'll be among the first operators in.</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Modal: Consultation -->
+<div class="modal-overlay" id="modal-consultation" aria-modal="true" role="dialog" aria-labelledby="mc-title">
+  <div class="modal-card modal-card--amber-top">
+    <button class="modal-close" onclick="closeModal('consultation')" aria-label="Close">×</button>
+    <div class="modal-hd">
+      <div class="modal-hd-icon modal-hd-icon--amber">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#c45911" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.32A2 2 0 0 1 3.58 1h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.5a16 16 0 0 0 6 6l.92-.92a2 2 0 0 1 2.1-.45c.91.339 1.853.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+      </div>
+      <h2 class="modal-h2" id="mc-title">Book a Free Consultation</h2>
+      <p class="modal-sub">We want to understand your operation before we recommend anything.</p>
+    </div>
+    <div class="modal-bd">
+      <div class="mf-form" id="mf-form-b">
+        <div class="mf-field">
+          <label class="mf-label" for="mb-email">Work email <span class="mf-req-amber">*</span></label>
+          <input type="email" id="mb-email" class="mf-input" placeholder="you@safarico.com" autocomplete="email" />
+          <span class="mf-err" id="merr-b-email"></span>
+        </div>
+        <div class="mf-grid-2">
+          <div class="mf-field">
+            <label class="mf-label" for="mb-company">Company name <span class="mf-req-amber">*</span></label>
+            <input type="text" id="mb-company" class="mf-input" placeholder="Acacia Expeditions" autocomplete="organization" />
+            <span class="mf-err" id="merr-b-company"></span>
+          </div>
+          <div class="mf-field">
+            <label class="mf-label" for="mb-role">Your role <span class="mf-req-amber">*</span></label>
+            <select id="mb-role" class="mf-select">
+              <option value="">Select your role</option>
+              <option>Owner / Founder</option>
+              <option>Sales &amp; Bookings</option>
+              <option>Marketing</option>
+              <option>Operations</option>
+              <option>Other</option>
+            </select>
+            <span class="mf-err" id="merr-b-role"></span>
+          </div>
+        </div>
+        <div class="mf-field">
+          <label class="mf-label" for="mb-goal">What do you most want to solve? <span class="mf-req-amber">*</span></label>
+          <select id="mb-goal" class="mf-select" onchange="mHandleBGoal()">
+            <option value="">Select one</option>
+            <option>Leads exist but I never see them in time</option>
+            <option>A competitor always replies before I do</option>
+            <option>I don't know where my next booking will come from</option>
+            <option>I'm spending on ads but can't tell if they work</option>
+            <option>Enquiries come in but don't convert to bookings</option>
+            <option value="other">Something else</option>
+          </select>
+          <div class="mf-reveal" id="mb-goal-other">
+            <input class="mf-input" type="text" placeholder="Tell us in your own words..." />
+          </div>
+          <span class="mf-err" id="merr-b-goal"></span>
+        </div>
+        <div id="mb-more-wrap" style="display:none">
+          <div class="mf-field">
+            <label class="mf-label" for="mb-more">Tell us more <span style="font-weight:400;color:#9ca3af">— optional</span></label>
+            <textarea id="mb-more" class="mf-ta" placeholder="e.g. We get enquiries from Reddit but by the time I see them, someone else has already replied..."></textarea>
+          </div>
+        </div>
+        <button class="mf-submit mf-submit--amber" onclick="mSubmitB()">
+          Submit
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </button>
+        <div class="mf-trust">
+          <span><span class="mf-trust-dot"></span>No commitment required</span>
+          <span><span class="mf-trust-dot"></span>20 minutes — we listen, you talk</span>
+        </div>
+      </div>
+      <div class="mf-success" id="mf-success-b" aria-live="polite">
+        <div class="mf-success-ring mf-success-ring--amber">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#c45911" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+        </div>
+        <h2>Call request received.</h2>
+        <p>We'll review what you shared and reach out within 24 hours to confirm a time.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Modal: Contact -->
+<div class="modal-overlay" id="modal-contact" aria-modal="true" role="dialog" aria-labelledby="mct-title">
+  <div class="modal-card modal-card--teal-top">
+    <button class="modal-close" onclick="closeModal('contact')" aria-label="Close">×</button>
+    <div class="modal-hd">
+      <div class="modal-hd-icon modal-hd-icon--teal">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#1a7373" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M2 7l10 7 10-7"/></svg>
+      </div>
+      <h2 class="modal-h2" id="mct-title">Have a question or need help?</h2>
+    </div>
+    <div class="modal-bd">
+      <div class="mf-form" id="mf-form-c">
+        <div class="mf-grid-2">
+          <div class="mf-field">
+            <label class="mf-label" for="mc-name">Your name <span class="mf-req-teal">*</span></label>
+            <input type="text" id="mc-name" class="mf-input" placeholder="Jane Doe" autocomplete="given-name" />
+            <span class="mf-err" id="merr-c-name"></span>
+          </div>
+          <div class="mf-field">
+            <label class="mf-label" for="mc-company">Company name <span class="mf-req-teal">*</span></label>
+            <input type="text" id="mc-company" class="mf-input" placeholder="Acacia Expeditions" autocomplete="organization" />
+            <span class="mf-err" id="merr-c-company"></span>
+          </div>
+        </div>
+        <div class="mf-grid-2">
+          <div class="mf-field">
+            <label class="mf-label" for="mc-email">Work email <span class="mf-req-teal">*</span></label>
+            <input type="email" id="mc-email" class="mf-input" placeholder="you@safarico.com" autocomplete="email" />
+            <span class="mf-err" id="merr-c-email"></span>
+          </div>
+          <div class="mf-field">
+            <label class="mf-label" for="mc-intent">What best describes you? <span class="mf-req-teal">*</span></label>
+            <select id="mc-intent" class="mf-select" onchange="mHandleContactIntent()">
+              <option value="">Select one</option>
+              <option value="operator">I'm a safari operator with a question</option>
+              <option value="partner">I'm interested in partnering or integrating</option>
+              <option value="press">Press or media enquiry</option>
+              <option value="other">Something else</option>
+            </select>
+            <span class="mf-err" id="merr-c-intent"></span>
+            <div class="mf-nested" id="mc-intent-other">
+              <input type="text" id="mc-intent-other-text" class="mf-input" placeholder="Tell us a bit more…" />
+            </div>
+          </div>
+        </div>
+        <div class="mf-field">
+          <label class="mf-label" for="mc-message">Your message <span class="mf-req-teal">*</span></label>
+          <textarea id="mc-message" class="mf-ta" placeholder="Tell us how we can help..." style="min-height:110px;"></textarea>
+          <span class="mf-err" id="merr-c-message"></span>
+        </div>
+        <button class="mf-submit mf-submit--teal" onclick="mSubmitC()">
+          Send message
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </button>
+      </div>
+      <div class="mf-success" id="mf-success-c" aria-live="polite">
+        <div class="mf-success-ring mf-success-ring--teal">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#1a7373" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg>
+        </div>
+        <h2 id="mc-success-title">Message sent.</h2>
+        <p id="mc-success-body">We'll get back to you as soon as possible.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
 <script>
-  document.getElementById('hamburger').addEventListener('click', function() {
-    var panel = document.getElementById('mobile-panel');
-    var expanded = this.getAttribute('aria-expanded') === 'true';
-    this.setAttribute('aria-expanded', !expanded);
-    panel.classList.toggle('open');
-  });
-  var navEl = document.getElementById('nav');
-  window.addEventListener('scroll', function() {
-    navEl.classList.toggle('scrolled', window.scrollY > 20);
-  });
+function handleSubscribe(e) {
+  e.preventDefault();
+  var el = document.getElementById('email-subscribe');
+  if (el && el.value) { el.value = ''; alert('Thanks! We\'ll be in touch.'); }
+}
 </script>
 </body>
 </html>
