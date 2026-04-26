@@ -1407,15 +1407,15 @@ h3.step-title {
 .cta-banner__inner {
   position: relative;
   z-index: 2;
-  padding: 80px 24px;
+  padding: 52px 24px;
 }
 
 @media (min-width: 1024px) {
-  .cta-banner__inner { padding: 120px 80px; }
+  .cta-banner__inner { padding: 80px 56px; }
 }
 
 .cta-banner__headline {
-  font-size: clamp(26px, 3.5vw, 44px);
+  font-size: clamp(20px, 2.4vw, 32px);
   font-weight: 800;
   color: var(--white);
   line-height: 1.15;
@@ -2051,6 +2051,7 @@ h3.step-title {
   flex-direction: column;
   background: var(--white);
   border: 1px solid var(--border);
+  border-left: 3px solid var(--safari-secondary);
   border-radius: var(--radius-lg);
   overflow: hidden;
   text-decoration: none;
@@ -2106,5 +2107,34 @@ h3.step-title {
 .explore-card__cta {
   font-size: 13px;
   font-weight: 600;
+  color: var(--safari-secondary);
+}
+
+/* ── CTA Banner Card (contained variant) ───────────────────── */
+.cta-banner--card {
+  border-radius: var(--radius-lg);
+  box-shadow:
+    0 0 0 1px rgba(184,134,11,0.35),
+    0 24px 64px rgba(0,0,0,0.26),
+    0 0 48px rgba(184,134,11,0.1);
+}
+
+/* ── Inline offer CTA — plain text link ─────────────────────── */
+.inline-offer__btn.btn {
+  background: none;
+  border: none;
+  padding: 0;
   color: var(--safari-primary);
+  font-size: 14px;
+  font-weight: 600;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  box-shadow: none;
+  white-space: nowrap;
+}
+.inline-offer__btn.btn:hover {
+  background: none;
+  color: var(--primary-hover);
+  transform: none;
+  box-shadow: none;
 }
