@@ -1,5 +1,5 @@
 // Shared nav interactivity — used by index.html and all guide/blog pages
-(function() {
+document.addEventListener('DOMContentLoaded', function() {
   var platformsBtn  = document.getElementById('platforms-btn');
   var platformsDrop = document.getElementById('platforms-dropdown');
   var resourcesBtn  = document.getElementById('resources-btn');
@@ -15,7 +15,6 @@
       platformsDrop.classList.toggle('open');
       platformsBtn.classList.toggle('open');
       platformsBtn.setAttribute('aria-expanded', !isOpen);
-      // close resources if open
       if (resourcesDrop) { resourcesDrop.classList.remove('open'); }
       if (resourcesBtn)  { resourcesBtn.classList.remove('open'); resourcesBtn.setAttribute('aria-expanded', 'false'); }
     });
@@ -29,7 +28,6 @@
       resourcesDrop.classList.toggle('open');
       resourcesBtn.classList.toggle('open');
       resourcesBtn.setAttribute('aria-expanded', !isOpen);
-      // close platforms if open
       if (platformsDrop) { platformsDrop.classList.remove('open'); }
       if (platformsBtn)  { platformsBtn.classList.remove('open'); platformsBtn.setAttribute('aria-expanded', 'false'); }
     });
@@ -89,4 +87,4 @@
     var mr = document.getElementById('mobile-resources');
     if (mr) mr.classList.toggle('open');
   };
-})();
+});
