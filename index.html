@@ -1307,17 +1307,14 @@ These travelers don’t browse casually—they plan deliberately, leave signals 
 
 <!-- Shared modal JS -->
 <script src="assets/js/modals.js"></script>
+<script src="assets/js/nav.js"></script>
 
 <!-- ═══════════════════════════════════════════
      JAVASCRIPT
 ═══════════════════════════════════════════ -->
 <script>
-// ── NAV ──────────────────────────────────────────────────────────
+// ── NAV SCROLL (homepage only) ────────────────────────────────────
 const nav = document.getElementById('nav');
-const platformsBtn = document.getElementById('platforms-btn');
-const platformsDropdown = document.getElementById('platforms-dropdown');
-const hamburger = document.getElementById('hamburger');
-const mobilePanel = document.getElementById('mobile-panel');
 const navCtaDesktop = document.getElementById('nav-cta-desktop');
 const navLoginDesktop = document.getElementById('nav-login-desktop');
 
@@ -1327,52 +1324,6 @@ if (navLoginDesktop) navLoginDesktop.style.display = '';
 window.addEventListener('scroll', () => {
   nav.classList.toggle('scrolled', window.scrollY > 10);
 }, { passive: true });
-
-platformsBtn.addEventListener('click', (e) => {
-  e.stopPropagation();
-  const isOpen = platformsDropdown.classList.contains('open');
-  platformsDropdown.classList.toggle('open');
-  platformsBtn.classList.toggle('open');
-  platformsBtn.setAttribute('aria-expanded', !isOpen);
-});
-
-document.addEventListener('click', (e) => {
-  if (!platformsBtn.contains(e.target) && !platformsDropdown.contains(e.target)) {
-    platformsDropdown.classList.remove('open');
-    platformsBtn.classList.remove('open');
-    platformsBtn.setAttribute('aria-expanded', 'false');
-  }
-});
-
-document.addEventListener('keydown', (e) => {
-  if (e.key === 'Escape') {
-    platformsDropdown.classList.remove('open');
-    platformsBtn.classList.remove('open');
-    mobilePanel.classList.remove('open');
-    hamburger.classList.remove('open');
-    hamburger.setAttribute('aria-expanded', 'false');
-    closeModal('early-access');
-    closeModal('consultation');
-    closeModal('contact');
-  }
-});
-
-hamburger.addEventListener('click', () => {
-  const isOpen = mobilePanel.classList.contains('open');
-  mobilePanel.classList.toggle('open');
-  hamburger.classList.toggle('open');
-  hamburger.setAttribute('aria-expanded', !isOpen);
-});
-
-function closeMobileMenu() {
-  mobilePanel.classList.remove('open');
-  hamburger.classList.remove('open');
-  hamburger.setAttribute('aria-expanded', 'false');
-}
-
-function toggleMobilePlatforms() {
-  document.getElementById('mobile-platforms').classList.toggle('open');
-}
 
 // ── HERO LOADED ───────────────────────────────────────────────────
 window.addEventListener('load', () => document.body.classList.add('hero-loaded'));
