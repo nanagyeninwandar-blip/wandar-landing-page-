@@ -879,6 +879,7 @@
       </form>
     </div>
     <div class="dl-modal__body" id="dl-success" style="display:none;text-align:center;">
+      <button class="dl-modal__close" onclick="closeDownloadModal()" aria-label="Close">✕</button>
       <div style="font-size:48px;margin-bottom:16px;color:var(--safari-primary)">✓</div>
       <h2 class="dl-modal__title">Your guide is ready.</h2>
       <p class="dl-modal__sub">Your PDF is downloading now. We'll also send a copy to your inbox.</p>
@@ -1007,7 +1008,7 @@ function buildAndDownloadPDF(filename) {
     });
   }
   var wrap = document.createElement('div');
-  wrap.style.cssText = 'position:fixed;left:-9999px;top:0;width:180mm;background:#fff;font-family:\'Plus Jakarta Sans\',sans-serif;';
+  wrap.style.cssText = 'position:absolute;top:0;left:0;width:794px;background:#fff;font-family:\'Plus Jakarta Sans\',sans-serif;z-index:-9999;';
   wrap.innerHTML = cover + '<div style="padding-top:4px;">'+body+'</div>';
   document.body.appendChild(wrap);
   var opts = {
