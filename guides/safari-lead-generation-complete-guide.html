@@ -961,84 +961,152 @@ function handleDownloadSubmit(e) {
 function buildAndDownloadPDF(filename) {
   var titleEl = document.querySelector('.article-hero__h1');
   var deckEl  = document.querySelector('.article-hero__deck');
-  var title = titleEl ? titleEl.textContent.trim() : '';
-  var deck  = deckEl  ? deckEl.textContent.trim()  : '';
-  function esc(s) {
-    return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+  var title   = titleEl ? titleEl.textContent.trim() : 'Wandar Guide';
+  var deck    = deckEl  ? deckEl.textContent.trim()  : '';
+  var jsPDF   = window.jspdf.jsPDF;
+  var doc     = new jsPDF({ unit:'mm', format:'a4', orientation:'portrait' });
+  var W=210, H=297, mL=22, mR=22, cW=166;
+
+  /* ── COVER PAGE ── */
+  doc.setFillColor(26,115,115);
+  doc.rect(0,0,W,H,'F');
+  doc.setFont('helvetica','bold');
+  doc.setFontSize(20);
+  doc.setTextColor(255,255,255);
+  doc.text('WANDAR', mL, 36);
+  doc.setFont('helvetica','normal');
+  doc.setFontSize(8);
+  doc.setTextColor(160,210,210);
+  doc.text('getwandar.com', mL, 43);
+
+  var bY = H-130;
+  doc.setDrawColor(200,230,230);
+  doc.setLineWidth(0.3);
+  doc.roundedRect(mL, bY, 32, 7.5, 3, 3, 'S');
+  doc.setFont('helvetica','bold');
+  doc.setFontSize(7.5);
+  doc.setTextColor(210,240,240);
+  doc.text('FREE GUIDE', mL+4.8, bY+4.8);
+
+  doc.setFont('helvetica','bold');
+  doc.setFontSize(28);
+  doc.setTextColor(255,255,255);
+  var tLn = doc.splitTextToSize(title, cW);
+  var tY  = bY+16;
+  doc.text(tLn, mL, tY);
+  var tEnd = tY + tLn.length*11.5;
+
+  doc.setFont('helvetica','normal');
+  doc.setFontSize(12);
+  doc.setTextColor(180,225,225);
+  var dLn = doc.splitTextToSize(deck, cW);
+  doc.text(dLn, mL, tEnd+7);
+
+  doc.setDrawColor(120,180,180);
+  doc.setLineWidth(0.25);
+  doc.line(mL, H-22, W-mR, H-22);
+  doc.setFontSize(8);
+  doc.setTextColor(140,195,195);
+  doc.setFont('helvetica','normal');
+  doc.text('May 2026', mL, H-14);
+  doc.text('getwandar.com', W-mR, H-14, {align:'right'});
+
+  /* ── INTERIOR PAGES ── */
+  doc.addPage();
+  var y = 24;
+
+  function hdr() {
+    doc.setDrawColor(26,115,115); doc.setLineWidth(0.5);
+    doc.line(mL, 9, W-mR, 9);
+    doc.setFont('helvetica','bold'); doc.setFontSize(8); doc.setTextColor(26,115,115);
+    doc.text('Wandar', mL, 14);
+    var s = title.length>48 ? title.slice(0,45)+'…' : title;
+    doc.setFont('helvetica','normal'); doc.setFontSize(7); doc.setTextColor(130,130,130);
+    doc.text(s, W-mR, 14, {align:'right'});
+    y = 24;
   }
-  var cover =
-    '<div style="width:100%;min-height:250mm;background:#1a7373;display:flex;flex-direction:column;padding:44px;box-sizing:border-box;page-break-after:always;">'
-    +'<div style="margin-bottom:auto;">'
-      +'<div style="font-family:Righteous,cursive;color:#fff;font-size:24px;letter-spacing:.06em;font-weight:400;line-height:1;margin-bottom:4px;">WANDAR</div>'
-      +'<div style="color:rgba(255,255,255,.5);font-size:10px;letter-spacing:.03em;">getwandar.com</div>'
-    +'</div>'
-    +'<div>'
-      +'<span style="display:inline-block;border:1.5px solid rgba(255,255,255,.4);color:rgba(255,255,255,.85);font-size:9px;font-weight:700;letter-spacing:.13em;text-transform:uppercase;padding:4px 13px;border-radius:100px;margin-bottom:22px;">Free Guide</span>'
-      +'<div style="color:#fff;font-size:34px;font-weight:800;line-height:1.2;margin:0 0 15px;font-family:\'Plus Jakarta Sans\',sans-serif;">'+esc(title)+'</div>'
-      +'<div style="color:rgba(255,255,255,.75);font-size:14px;line-height:1.65;margin:0 0 48px;font-family:\'Plus Jakarta Sans\',sans-serif;">'+esc(deck)+'</div>'
-    +'</div>'
-    +'<div style="border-top:1px solid rgba(255,255,255,.2);padding-top:16px;display:flex;justify-content:space-between;">'
-      +'<span style="color:rgba(255,255,255,.5);font-size:9px;">May 2026</span>'
-      +'<span style="color:rgba(255,255,255,.5);font-size:9px;">getwandar.com</span>'
-    +'</div>'
-  +'</div>';
-  var articleBody = document.querySelector('.article-body');
-  var faqEl = articleBody && articleBody.querySelector('.guide-faq');
-  var body = '';
-  if (articleBody) {
-    articleBody.querySelectorAll('h2,h3,p,.callout,ul').forEach(function(n) {
-      if (faqEl && faqEl.contains(n)) return;
-      if (n.tagName !== 'DIV' && n.parentElement && n.parentElement.closest && n.parentElement.closest('.callout')) return;
-      var txt = (n.textContent || '').trim();
+
+  function room(n) {
+    if (y+n > H-18-10) { doc.addPage(); hdr(); }
+  }
+
+  hdr();
+
+  var ab  = document.querySelector('.article-body');
+  var faq = ab && ab.querySelector('.guide-faq');
+
+  if (ab) {
+    ab.querySelectorAll('h2,h3,p,.callout,ul').forEach(function(nd) {
+      if (faq && faq.contains(nd)) return;
+      if (nd.tagName!=='DIV' && nd.parentElement && nd.parentElement.closest && nd.parentElement.closest('.callout')) return;
+      var txt = (nd.textContent||'').trim();
       if (!txt) return;
-      var t = n.tagName.toLowerCase();
-      if (t === 'h2') {
-        body += '<h2 style="font-size:15px;font-weight:800;color:#1a7373;margin:28px 0 8px;padding-bottom:5px;border-bottom:2px solid #e6f4f4;font-family:\'Plus Jakarta Sans\',sans-serif;">'+esc(txt)+'</h2>';
-      } else if (t === 'h3') {
-        body += '<h3 style="font-size:12px;font-weight:700;color:#1a1a1a;margin:16px 0 6px;font-family:\'Plus Jakarta Sans\',sans-serif;">'+esc(txt)+'</h3>';
-      } else if (n.classList.contains('callout')) {
-        body += '<div style="border-left:4px solid #1a7373;background:#e6f4f4;padding:10px 15px;margin:14px 0;font-size:10.5px;font-style:italic;color:#1a1a1a;line-height:1.7;">'+esc(txt)+'</div>';
-      } else if (t === 'ul') {
-        var li = '';
-        n.querySelectorAll('li').forEach(function(item){ li += '<li style="margin-bottom:4px;">'+esc((item.textContent||'').trim())+'</li>'; });
-        body += '<ul style="font-size:10.5px;color:#1a1a1a;line-height:1.75;margin:6px 0 10px;padding-left:18px;">'+li+'</ul>';
-      } else if (t === 'p') {
-        body += '<p style="font-size:10.5px;color:#1a1a1a;line-height:1.75;margin:0 0 9px;font-family:\'Plus Jakarta Sans\',sans-serif;">'+esc(txt)+'</p>';
+      var t = nd.tagName.toLowerCase();
+
+      if (t==='h2') {
+        y += 4; room(15);
+        doc.setFont('helvetica','bold'); doc.setFontSize(14); doc.setTextColor(26,115,115);
+        var ln = doc.splitTextToSize(txt, cW);
+        doc.text(ln, mL, y);
+        y += ln.length*6.5+1;
+        doc.setDrawColor(220,240,240); doc.setLineWidth(0.35);
+        doc.line(mL, y, W-mR, y);
+        y += 5;
+
+      } else if (t==='h3') {
+        y += 2; room(10);
+        doc.setFont('helvetica','bold'); doc.setFontSize(11); doc.setTextColor(26,26,26);
+        var ln = doc.splitTextToSize(txt, cW);
+        doc.text(ln, mL, y);
+        y += ln.length*5.5+3;
+
+      } else if (nd.classList.contains('callout')) {
+        var ln = doc.splitTextToSize(txt, cW-10);
+        var bh = ln.length*5+8;
+        room(bh+4); y += 2;
+        doc.setFillColor(230,244,244); doc.rect(mL, y, cW, bh, 'F');
+        doc.setFillColor(26,115,115);  doc.rect(mL, y, 3.5, bh, 'F');
+        doc.setFont('helvetica','italic'); doc.setFontSize(10); doc.setTextColor(40,40,40);
+        doc.text(ln, mL+7, y+4.5);
+        y += bh+5;
+
+      } else if (t==='ul') {
+        nd.querySelectorAll('li').forEach(function(li) {
+          var lt = (li.textContent||'').trim(); if (!lt) return;
+          var ll = doc.splitTextToSize(lt, cW-9);
+          room(ll.length*5+3);
+          doc.setFont('helvetica','normal'); doc.setFontSize(10); doc.setTextColor(30,30,30);
+          doc.setFillColor(26,115,115); doc.circle(mL+2.5, y-1.5, 0.8, 'F');
+          doc.text(ll, mL+7, y);
+          y += ll.length*5+2;
+        });
+        y += 3;
+
+      } else if (t==='p') {
+        var ln = doc.splitTextToSize(txt, cW);
+        room(ln.length*5+4);
+        doc.setFont('helvetica','normal'); doc.setFontSize(10); doc.setTextColor(30,30,30);
+        doc.text(ln, mL, y);
+        y += ln.length*5+4;
       }
     });
   }
-  var wrap = document.createElement('div');
-  wrap.style.cssText = 'position:absolute;top:0;left:0;width:794px;background:#fff;font-family:\'Plus Jakarta Sans\',sans-serif;z-index:-9999;';
-  wrap.innerHTML = cover + '<div style="padding-top:4px;">'+body+'</div>';
-  document.body.appendChild(wrap);
-  var opts = {
-    margin: [20,15,18,15],
-    filename: filename,
-    image: { type:'jpeg', quality:0.98 },
-    html2canvas: { scale:2, useCORS:true, logging:false },
-    jsPDF: { unit:'mm', format:'a4', orientation:'portrait' }
-  };
-  html2pdf().set(opts).from(wrap).toPdf().get('pdf').then(function(pdf) {
-    var W = pdf.internal.pageSize.getWidth();
-    var H = pdf.internal.pageSize.getHeight();
-    var total = pdf.internal.getNumberOfPages();
-    for (var i = 2; i <= total; i++) {
-      pdf.setPage(i);
-      pdf.setDrawColor(26,115,115); pdf.setLineWidth(0.4); pdf.line(15,8,W-15,8);
-      pdf.setFontSize(8); pdf.setTextColor(26,115,115); pdf.text('Wandar',15,13.5);
-      pdf.setFontSize(7); pdf.setTextColor(115,115,115);
-      pdf.text(title.length>52?title.slice(0,49)+'…':title, W-15, 13.5, {align:'right'});
-      pdf.text('getwandar.com', 15, H-8);
-      pdf.text((i-1)+' / '+(total-1), W-15, H-8, {align:'right'});
-    }
-  }).save().then(function() {
-    if (wrap.parentNode) document.body.removeChild(wrap);
-  });
+
+  /* ── FOOTERS ── */
+  var tot = doc.internal.getNumberOfPages()-1;
+  for (var pg=2; pg<=doc.internal.getNumberOfPages(); pg++) {
+    doc.setPage(pg);
+    doc.setFont('helvetica','normal'); doc.setFontSize(7); doc.setTextColor(160,160,160);
+    doc.text('getwandar.com', mL, H-9);
+    doc.text((pg-1)+' / '+tot, W-mR, H-9, {align:'right'});
+  }
+
+  doc.save(filename);
 }
 document.getElementById('dl-overlay').addEventListener('click', function(e) {
   if (e.target === this) closeDownloadModal();
 });
 </script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
 </body>
 </html>
