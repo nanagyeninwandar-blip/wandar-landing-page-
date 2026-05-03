@@ -879,7 +879,7 @@
     </div>
     <div class="dl-modal__body" id="dl-success" style="display:none;text-align:center;">
       <div style="font-size:48px;margin-bottom:16px;color:var(--safari-primary)">✓</div>
-      <h2 class="dl-modal__title">Your guide is downloading.</h2>
+      <h2 class="dl-modal__title">Your guide is ready.</h2>
       <p class="dl-modal__sub">Check your downloads folder. We'll also send a copy to your inbox.</p>
       <button class="btn btn--primary" onclick="closeDownloadModal()" style="margin-top:20px;">Continue Reading →</button>
     </div>
@@ -938,7 +938,6 @@ function closeDownloadModal() {
   document.getElementById('dl-overlay').style.display = 'none';
   document.body.style.overflow = '';
 }
-var GUIDE_PDF = '../assets/pdfs/social-listening-safari-operators-guide.pdf';
 function handleDownloadSubmit(e) {
   e.preventDefault();
   var email = document.getElementById('dl-email').value.trim();
@@ -952,14 +951,10 @@ function handleDownloadSubmit(e) {
     headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
     body: new URLSearchParams(data).toString()
   }).finally(function() {
-    var a = document.createElement('a');
-    a.href = GUIDE_PDF;
-    a.download = GUIDE_PDF.split('/').pop();
-    document.body.appendChild(a);
-    a.click();
-    document.body.removeChild(a);
     document.getElementById('dl-default').style.display = 'none';
     document.getElementById('dl-success').style.display = 'block';
+    closeDownloadModal();
+    window.print();
   });
 }
 document.getElementById('dl-overlay').addEventListener('click', function(e) {
