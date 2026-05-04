@@ -1012,35 +1012,16 @@ async function buildAndDownloadPDF(filename) {
   doc.setLineWidth(0.15);
   doc.line(mL, 37, panelW - 8, 37);
 
-  doc.setFillColor(196, 89, 17);
-  doc.roundedRect(mL, 48, 30, 7, 2.5, 2.5, 'F');
-  doc.setFont('helvetica', 'bold');
-  doc.setFontSize(6.5);
-  doc.setTextColor(255, 255, 255);
-  doc.text('FREE GUIDE', mL + 3.5, 53.5);
-
   var tLn = doc.splitTextToSize(title, panelW - mL - 6);
   doc.setFont('helvetica', 'bold');
-  doc.setFontSize(22);
+  doc.setFontSize(26);
   doc.setTextColor(255, 255, 255);
-  doc.text(tLn, mL, 64);
-  var tEnd = 64 + tLn.length * 9.5;
-
-  var dLn = doc.splitTextToSize(deck, panelW - mL - 6);
-  doc.setFont('helvetica', 'normal');
-  doc.setFontSize(10);
-  doc.setTextColor(160, 210, 210);
-  doc.text(dLn, mL, tEnd + 6);
-
-  doc.setDrawColor(184, 134, 11);
-  doc.setLineWidth(0.6);
-  doc.line(mL, H - 28, panelW - 8, H - 28);
+  doc.text(tLn, mL, 90);
 
   doc.setFont('helvetica', 'normal');
-  doc.setFontSize(7.5);
-  doc.setTextColor(120, 170, 170);
-  doc.text('May 2026', mL, H - 10);
-  doc.text('getwandar.com', panelW - 8, H - 10, { align: 'right' });
+  doc.setFontSize(8);
+  doc.setTextColor(140, 185, 185);
+  doc.text('getwandar.com', mL, H - 10);
 
   /* ── PAGE 2: TOC PLACEHOLDER (back-filled after content) ── */
   doc.addPage();
@@ -1096,20 +1077,17 @@ async function buildAndDownloadPDF(filename) {
         room(38);
         sectionPages.push(curPage);
 
-        doc.setFillColor(196, 89, 17);
-        doc.rect(mL, y - 5.5, 14, 10, 'F');
         doc.setFont('helvetica', 'bold');
-        doc.setFontSize(10);
-        doc.setTextColor(255, 255, 255);
-        doc.text(String(sectionNum).padStart(2, '0'), mL + 2, y + 1.5);
-
+        doc.setFontSize(9);
+        doc.setTextColor(26, 115, 115);
+        doc.text(String(sectionNum).padStart(2, '0'), mL, y);
         doc.setDrawColor(26, 115, 115);
-        doc.setLineWidth(0.5);
-        doc.line(mL + 17, y, W - mR, y);
-        y += 11;
+        doc.setLineWidth(0.4);
+        doc.line(mL + 9, y - 1, W - mR, y - 1);
+        y += 9;
 
         doc.setFont('helvetica', 'bold');
-        doc.setFontSize(20);
+        doc.setFontSize(22);
         doc.setTextColor(13, 30, 46);
         var ln = doc.splitTextToSize(txt, cW);
         doc.text(ln, mL, y);
