@@ -957,76 +957,143 @@ function handleDownloadSubmit(e) {
     buildAndDownloadPDF('social-listening-playbook-2026.pdf');
   });
 }
-function buildAndDownloadPDF(filename) {
-  var titleEl = document.querySelector('.article-hero__h1');
-  var deckEl  = document.querySelector('.article-hero__deck');
-  var title   = titleEl ? titleEl.textContent.trim() : 'Wandar Guide';
-  var deck    = deckEl  ? deckEl.textContent.trim()  : '';
-  var jsPDF   = window.jspdf.jsPDF;
-  var doc     = new jsPDF({ unit:'mm', format:'a4', orientation:'portrait' });
-  var W=210, H=297, mL=22, mR=22, cW=166;
+function loadImageAsData(imgEl, format, quality) {
+  if (!imgEl || !imgEl.src) return Promise.resolve(null);
+  return new Promise(function(resolve) {
+    var canvas = document.createElement('canvas');
+    var img = new Image();
+    img.crossOrigin = 'anonymous';
+    img.onload = function() {
+      canvas.width  = img.naturalWidth  || 800;
+      canvas.height = img.naturalHeight || 600;
+      canvas.getContext('2d').drawImage(img, 0, 0);
+      try {
+        var data = format === 'png'
+          ? canvas.toDataURL('image/png')
+          : canvas.toDataURL('image/jpeg', quality || 0.82);
+        resolve(data);
+      } catch(e) { resolve(null); }
+    };
+    img.onerror = function() { resolve(null); };
+    img.src = imgEl.src;
+  });
+}
+function loadHeroImageData() {
+  var el = document.querySelector('.article-hero img, .guide-hero img, [class*="hero"] img, .hero img, article img');
+  return loadImageAsData(el, 'jpeg', 0.82);
+}
+function loadLogoImageData() {
+  var el = document.querySelector(
+    'nav img[alt*="Wandar"], nav img[alt*="wandar"], ' +
+    '.nav__logo img, .navbar__logo img, header .logo img, ' +
+    'a[class*="logo"] img, img[class*="logo"]'
+  );
+  return loadImageAsData(el, 'png', 1);
+}
+async function buildAndDownloadPDF(filename) {
+  var results  = await Promise.all([loadHeroImageData(), loadLogoImageData()]);
+  var imgData  = results[0];
+  var logoData = results[1];
 
-  /* ── COVER PAGE ── */
-  doc.setFillColor(26,115,115);
-  doc.rect(0,0,W,H,'F');
-  doc.setFont('helvetica','bold');
-  doc.setFontSize(20);
-  doc.setTextColor(255,255,255);
-  doc.text('WANDAR', mL, 36);
-  doc.setFont('helvetica','normal');
-  doc.setFontSize(8);
-  doc.setTextColor(160,210,210);
-  doc.text('getwandar.com', mL, 43);
+  var title  = (document.querySelector('.article-hero__h1')  || {textContent: ''}).textContent.trim() || 'Wandar Guide';
+  var deck   = (document.querySelector('.article-hero__deck') || {textContent: ''}).textContent.trim() || '';
+  var ab     = document.querySelector('.article-body');
+  var faq    = ab && ab.querySelector('.guide-faq');
+  var tocH2s = ab
+    ? Array.from(ab.querySelectorAll('h2'))
+        .filter(function(h) { return !faq || !faq.contains(h); })
+        .slice(0, 8)
+    : [];
 
-  var bY = H-130;
-  doc.setDrawColor(200,230,230);
-  doc.setLineWidth(0.3);
-  doc.roundedRect(mL, bY, 32, 7.5, 3, 3, 'S');
-  doc.setFont('helvetica','bold');
+  var jsPDF  = window.jspdf.jsPDF;
+  var doc    = new jsPDF({ unit: 'mm', format: 'a4', orientation: 'portrait' });
+  var W=210, H=297, mL=18, mR=18, cW=174, panelW=90;
+
+  /* ── PAGE 1: COVER ── */
+  if (imgData) {
+    doc.addImage(imgData, 'JPEG', panelW, 0, W - panelW, H);
+  } else {
+    doc.setFillColor(20, 90, 90);
+    doc.rect(panelW, 0, W - panelW, H, 'F');
+  }
+  doc.setFillColor(17, 24, 22);
+  doc.rect(0, 0, panelW, H, 'F');
+
+  if (logoData) {
+    doc.addImage(logoData, 'PNG', mL, 18, 44, 14);
+  } else {
+    doc.setFont('helvetica', 'bold');
+    doc.setFontSize(14);
+    doc.setTextColor(255, 255, 255);
+    doc.text('WANDAR', mL, 30);
+  }
+
+  doc.setDrawColor(255, 255, 255);
+  doc.setLineWidth(0.15);
+  doc.line(mL, 37, panelW - 8, 37);
+
+  doc.setFillColor(196, 89, 17);
+  doc.roundedRect(mL, 48, 30, 7, 2.5, 2.5, 'F');
+  doc.setFont('helvetica', 'bold');
+  doc.setFontSize(6.5);
+  doc.setTextColor(255, 255, 255);
+  doc.text('FREE GUIDE', mL + 3.5, 53.5);
+
+  var tLn = doc.splitTextToSize(title, panelW - mL - 6);
+  doc.setFont('helvetica', 'bold');
+  doc.setFontSize(22);
+  doc.setTextColor(255, 255, 255);
+  doc.text(tLn, mL, 64);
+  var tEnd = 64 + tLn.length * 9.5;
+
+  var dLn = doc.splitTextToSize(deck, panelW - mL - 6);
+  doc.setFont('helvetica', 'normal');
+  doc.setFontSize(10);
+  doc.setTextColor(160, 210, 210);
+  doc.text(dLn, mL, tEnd + 6);
+
+  doc.setDrawColor(184, 134, 11);
+  doc.setLineWidth(0.6);
+  doc.line(mL, H - 28, panelW - 8, H - 28);
+
+  doc.setFont('helvetica', 'normal');
   doc.setFontSize(7.5);
-  doc.setTextColor(210,240,240);
-  doc.text('FREE GUIDE', mL+4.8, bY+4.8);
+  doc.setTextColor(120, 170, 170);
+  doc.text('May 2026', mL, H - 10);
+  doc.text('getwandar.com', panelW - 8, H - 10, { align: 'right' });
 
-  doc.setFont('helvetica','bold');
-  doc.setFontSize(28);
-  doc.setTextColor(255,255,255);
-  var tLn = doc.splitTextToSize(title, cW);
-  var tY  = bY+16;
-  doc.text(tLn, mL, tY);
-  var tEnd = tY + tLn.length*11.5;
-
-  doc.setFont('helvetica','normal');
-  doc.setFontSize(12);
-  doc.setTextColor(180,225,225);
-  var dLn = doc.splitTextToSize(deck, cW);
-  doc.text(dLn, mL, tEnd+7);
-
-  doc.setDrawColor(120,180,180);
-  doc.setLineWidth(0.25);
-  doc.line(mL, H-22, W-mR, H-22);
-  doc.setFontSize(8);
-  doc.setTextColor(140,195,195);
-  doc.setFont('helvetica','normal');
-  doc.text('May 2026', mL, H-14);
-  doc.text('getwandar.com', W-mR, H-14, {align:'right'});
-
-  /* ── INTERIOR PAGES ── */
+  /* ── PAGE 2: TOC PLACEHOLDER (back-filled after content) ── */
   doc.addPage();
-  var y = 24;
+
+  /* ── PAGE 3+: CONTENT ── */
+  doc.addPage();
+  var y = 26;
+  var curPage = 3;
+  var sectionPages = [];
+  var sectionNum = 0;
+  var isFirstPara = true;
 
   function hdr() {
-    doc.setDrawColor(26,115,115); doc.setLineWidth(0.5);
-    doc.line(mL, 9, W-mR, 9);
-    doc.setFont('helvetica','bold'); doc.setFontSize(8); doc.setTextColor(26,115,115);
-    doc.text('Wandar', mL, 14);
-    var s = title.length>48 ? title.slice(0,45)+'…' : title;
-    doc.setFont('helvetica','normal'); doc.setFontSize(7); doc.setTextColor(130,130,130);
-    doc.text(s, W-mR, 14, {align:'right'});
-    y = 24;
+    doc.setFillColor(26, 115, 115);
+    doc.rect(0, 0, W, 15, 'F');
+    doc.setFont('helvetica', 'bold');
+    doc.setFontSize(8);
+    doc.setTextColor(255, 255, 255);
+    doc.text('WANDAR', mL, 10);
+    var s = title.length > 55 ? title.slice(0, 52) + '…' : title;
+    doc.setFont('helvetica', 'normal');
+    doc.setFontSize(7);
+    doc.setTextColor(200, 235, 235);
+    doc.text(s, W - mR, 10, { align: 'right' });
+    y = 26;
   }
 
   function room(n) {
-    if (y+n > H-18-10) { doc.addPage(); hdr(); }
+    if (y + n > H - 20) {
+      doc.addPage();
+      curPage++;
+      hdr();
+    }
   }
 
   hdr();
@@ -1037,68 +1104,217 @@ function buildAndDownloadPDF(filename) {
   if (ab) {
     ab.querySelectorAll('h2,h3,p,.callout,ul').forEach(function(nd) {
       if (faq && faq.contains(nd)) return;
-      if (nd.tagName!=='DIV' && nd.parentElement && nd.parentElement.closest && nd.parentElement.closest('.callout')) return;
-      var txt = (nd.textContent||'').trim();
+      if (nd.tagName !== 'DIV' && nd.parentElement && nd.parentElement.closest && nd.parentElement.closest('.callout')) return;
+      var txt = (nd.textContent || '').trim();
       if (!txt) return;
       var t = nd.tagName.toLowerCase();
 
-      if (t==='h2') {
-        y += 4; room(15);
-        doc.setFont('helvetica','bold'); doc.setFontSize(14); doc.setTextColor(26,115,115);
+      if (t === 'h2') {
+        sectionNum++;
+        isFirstPara = true;
+        y += 8;
+        room(38);
+        sectionPages.push(curPage);
+
+        doc.setFillColor(196, 89, 17);
+        doc.rect(mL, y - 5.5, 14, 10, 'F');
+        doc.setFont('helvetica', 'bold');
+        doc.setFontSize(10);
+        doc.setTextColor(255, 255, 255);
+        doc.text(String(sectionNum).padStart(2, '0'), mL + 2, y + 1.5);
+
+        doc.setDrawColor(26, 115, 115);
+        doc.setLineWidth(0.5);
+        doc.line(mL + 17, y, W - mR, y);
+        y += 11;
+
+        doc.setFont('helvetica', 'bold');
+        doc.setFontSize(20);
+        doc.setTextColor(13, 30, 46);
         var ln = doc.splitTextToSize(txt, cW);
         doc.text(ln, mL, y);
-        y += ln.length*6.5+1;
-        doc.setDrawColor(220,240,240); doc.setLineWidth(0.35);
-        doc.line(mL, y, W-mR, y);
-        y += 5;
+        y += ln.length * 8.5 + 4;
 
-      } else if (t==='h3') {
-        y += 2; room(10);
-        doc.setFont('helvetica','bold'); doc.setFontSize(11); doc.setTextColor(26,26,26);
+      } else if (t === 'h3') {
+        y += 4;
+        room(14);
+        doc.setFont('helvetica', 'bold');
+        doc.setFontSize(12);
+        doc.setTextColor(45, 80, 22);
         var ln = doc.splitTextToSize(txt, cW);
         doc.text(ln, mL, y);
-        y += ln.length*5.5+3;
+        y += ln.length * 6 + 3;
 
-      } else if (nd.classList.contains('callout')) {
-        var ln = doc.splitTextToSize(txt, cW-10);
-        var bh = ln.length*5+8;
-        room(bh+4); y += 2;
-        doc.setFillColor(230,244,244); doc.rect(mL, y, cW, bh, 'F');
-        doc.setFillColor(26,115,115);  doc.rect(mL, y, 3.5, bh, 'F');
-        doc.setFont('helvetica','italic'); doc.setFontSize(10); doc.setTextColor(40,40,40);
-        doc.text(ln, mL+7, y+4.5);
-        y += bh+5;
+      } else if (nd.classList && nd.classList.contains('callout')) {
+        var ln = doc.splitTextToSize(txt, cW - 14);
+        var bh = ln.length * 5.2 + 14;
+        room(bh + 6);
+        y += 4;
+        doc.setFillColor(253, 248, 240);
+        doc.rect(mL, y, cW, bh, 'F');
+        doc.setFillColor(184, 134, 11);
+        doc.rect(mL, y, 4, bh, 'F');
+        doc.setFont('helvetica', 'bold');
+        doc.setFontSize(6.5);
+        doc.setTextColor(26, 115, 115);
+        doc.text('KEY INSIGHT', mL + 8, y + 6);
+        doc.setFont('helvetica', 'italic');
+        doc.setFontSize(10.5);
+        doc.setTextColor(26, 26, 26);
+        doc.text(ln, mL + 8, y + 11);
+        y += bh + 6;
 
-      } else if (t==='ul') {
-        nd.querySelectorAll('li').forEach(function(li) {
-          var lt = (li.textContent||'').trim(); if (!lt) return;
-          var ll = doc.splitTextToSize(lt, cW-9);
-          room(ll.length*5+3);
-          doc.setFont('helvetica','normal'); doc.setFontSize(10); doc.setTextColor(30,30,30);
-          doc.setFillColor(26,115,115); doc.circle(mL+2.5, y-1.5, 0.8, 'F');
-          doc.text(ll, mL+7, y);
-          y += ll.length*5+2;
-        });
-        y += 3;
+      } else if (t === 'ul') {
+        var liNodes = Array.from(nd.querySelectorAll('li'));
+        var avgLen = liNodes.reduce(function(s, li) {
+          return s + li.textContent.trim().length;
+        }, 0) / (liNodes.length || 1);
 
-      } else if (t==='p') {
-        var ln = doc.splitTextToSize(txt, cW);
-        room(ln.length*5+4);
-        doc.setFont('helvetica','normal'); doc.setFontSize(10); doc.setTextColor(30,30,30);
-        doc.text(ln, mL, y);
-        y += ln.length*5+4;
+        if (avgLen < 90 && liNodes.length >= 2 && liNodes.length <= 6) {
+          y += 4;
+          liNodes.forEach(function(li) {
+            var lt = li.textContent.trim();
+            if (!lt) return;
+            var splitIdx = lt.search(/[.—]/);
+            var boldPart = splitIdx > 5 ? lt.slice(0, splitIdx) : lt;
+            var bodyPart = splitIdx > 5 ? lt.slice(splitIdx + 1).trim() : '';
+            room(bodyPart ? 24 : 14);
+            y += 2;
+            doc.setFillColor(26, 115, 115);
+            doc.circle(mL + 4.5, y - 1.5, 4.5, 'F');
+            doc.setFont('helvetica', 'bold');
+            doc.setFontSize(7);
+            doc.setTextColor(255, 255, 255);
+            doc.text(boldPart.charAt(0).toUpperCase(), mL + 3, y + 0.5);
+            doc.setFont('helvetica', 'bold');
+            doc.setFontSize(10.5);
+            doc.setTextColor(13, 30, 46);
+            var bl = doc.splitTextToSize(boldPart, cW - 14);
+            doc.text(bl, mL + 13, y);
+            y += bl.length * 5.5;
+            if (bodyPart) {
+              doc.setFont('helvetica', 'normal');
+              doc.setFontSize(9.5);
+              doc.setTextColor(70, 85, 85);
+              var rl = doc.splitTextToSize(bodyPart, cW - 14);
+              doc.text(rl, mL + 13, y);
+              y += rl.length * 4.8;
+            }
+            y += 5;
+          });
+          y += 3;
+        } else {
+          liNodes.forEach(function(li) {
+            var lt = li.textContent.trim();
+            if (!lt) return;
+            var ll = doc.splitTextToSize(lt, cW - 9);
+            room(ll.length * 5.2 + 3);
+            doc.setFillColor(26, 115, 115);
+            doc.circle(mL + 2.5, y - 1.5, 0.9, 'F');
+            doc.setFont('helvetica', 'normal');
+            doc.setFontSize(10.5);
+            doc.setTextColor(26, 26, 26);
+            doc.text(ll, mL + 8, y);
+            y += ll.length * 5.2 + 2;
+          });
+          y += 4;
+        }
+
+      } else if (t === 'p') {
+        if (isFirstPara) {
+          var ln = doc.splitTextToSize(txt, cW);
+          room(ln.length * 6 + 4);
+          doc.setFont('helvetica', 'italic');
+          doc.setFontSize(11.5);
+          doc.setTextColor(40, 80, 80);
+          doc.text(ln, mL, y);
+          y += ln.length * 6 + 5;
+          isFirstPara = false;
+        } else {
+          var ln = doc.splitTextToSize(txt, cW);
+          room(ln.length * 5.2 + 4);
+          doc.setFont('helvetica', 'normal');
+          doc.setFontSize(10.5);
+          doc.setTextColor(26, 26, 26);
+          doc.text(ln, mL, y);
+          y += ln.length * 5.2 + 4;
+        }
       }
     });
   }
 
-  /* ── FOOTERS ── */
-  var tot = doc.internal.getNumberOfPages()-1;
-  for (var pg=2; pg<=doc.internal.getNumberOfPages(); pg++) {
+  /* ── FOOTERS (pages 3+) ── */
+  var tot = doc.internal.getNumberOfPages() - 2;
+  for (var pg = 3; pg <= doc.internal.getNumberOfPages(); pg++) {
     doc.setPage(pg);
-    doc.setFont('helvetica','normal'); doc.setFontSize(7); doc.setTextColor(160,160,160);
-    doc.text('getwandar.com', mL, H-9);
-    doc.text((pg-1)+' / '+tot, W-mR, H-9, {align:'right'});
+    var guideTitle = title.length > 52 ? title.slice(0, 49) + '…' : title;
+    doc.setFont('helvetica', 'normal');
+    doc.setFontSize(7);
+    doc.setTextColor(140, 160, 160);
+    doc.text(guideTitle, mL, H - 8);
+    doc.text('Wandar  |  ' + (pg - 2) + ' / ' + tot, W - mR, H - 8, { align: 'right' });
   }
+
+  /* ── PAGE 2: TOC (back-filled) ── */
+  doc.setPage(2);
+  doc.setFillColor(26, 115, 115);
+  doc.rect(0, 0, W, 15, 'F');
+  doc.setFont('helvetica', 'bold');
+  doc.setFontSize(8);
+  doc.setTextColor(255, 255, 255);
+  doc.text('WANDAR', mL, 10);
+  var tocTitleShort = title.length > 55 ? title.slice(0, 52) + '…' : title;
+  doc.setFont('helvetica', 'normal');
+  doc.setFontSize(7);
+  doc.setTextColor(200, 235, 235);
+  doc.text(tocTitleShort, W - mR, 10, { align: 'right' });
+
+  doc.setFont('helvetica', 'bold');
+  doc.setFontSize(14);
+  doc.setTextColor(26, 115, 115);
+  doc.text("WHAT'S INSIDE", mL, 35);
+  doc.setDrawColor(26, 115, 115);
+  doc.setLineWidth(0.5);
+  doc.line(mL, 38, W - mR, 38);
+
+  tocH2s.forEach(function(h2, i) {
+    var entryY  = 50 + i * 14;
+    var num     = String(i + 1).padStart(2, '0');
+    var label   = h2.textContent.trim();
+    var pageNum = sectionPages[i] != null ? String(sectionPages[i] - 2) : '';
+
+    doc.setFont('helvetica', 'bold');
+    doc.setFontSize(11);
+    doc.setTextColor(196, 89, 17);
+    doc.text(num, mL, entryY);
+
+    doc.setFont('helvetica', 'normal');
+    doc.setFontSize(11);
+    doc.setTextColor(26, 26, 26);
+    doc.text(label, mL + 14, entryY);
+
+    var dotStart = mL + 14 + doc.getTextWidth(label) + 3;
+    var dotEnd   = W - mR - doc.getTextWidth(pageNum) - 4;
+    if (dotEnd > dotStart + 5) {
+      doc.setDrawColor(200, 200, 200);
+      doc.setLineWidth(0.25);
+      doc.setLineDashPattern([0.5, 2], 0);
+      doc.line(dotStart, entryY - 1.5, dotEnd, entryY - 1.5);
+      doc.setLineDashPattern([], 0);
+    }
+
+    doc.setFont('helvetica', 'normal');
+    doc.setFontSize(11);
+    doc.setTextColor(26, 115, 115);
+    doc.text(pageNum, W - mR, entryY, { align: 'right' });
+  });
+
+  doc.setFont('helvetica', 'normal');
+  doc.setFontSize(7);
+  doc.setTextColor(140, 160, 160);
+  var tocFooter = title.length > 52 ? title.slice(0, 49) + '…' : title;
+  doc.text(tocFooter, mL, H - 8);
+  doc.text('Wandar  |  TOC', W - mR, H - 8, { align: 'right' });
 
   doc.save(filename);
 }
