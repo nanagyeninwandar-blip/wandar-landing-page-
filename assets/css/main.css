@@ -938,7 +938,7 @@ h3.step-title {
 
 @media (prefers-reduced-motion: no-preference) {
   .float-card-1 {
-    top: 10%;  left: -2%;
+    top: 10%;  left: 16px;
     animation: float-a 10s ease-in-out infinite;
   }
   .float-card-2 {
