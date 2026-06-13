@@ -944,7 +944,7 @@ h3.step-title {
     animation: float-a 10s ease-in-out infinite;
   }
   .float-card-2 {
-    top: 55%;  right: 55%;
+    top: 72%;  right: 55%;
     animation: float-b 12s ease-in-out infinite;
     animation-delay: 2s;
   }
