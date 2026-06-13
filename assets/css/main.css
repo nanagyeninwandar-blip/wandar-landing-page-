@@ -753,8 +753,8 @@ h3.step-title {
 .hero__mockup-wrapper {
   position: relative;
   padding-top: 0;
-  margin-right: -24px;
-  width: calc(100% + 24px);
+  margin-right: 0;
+  width: 100%;
 }
 
 @media (min-width: 768px) {
@@ -765,15 +765,15 @@ h3.step-title {
 
 @media (min-width: 1024px) {
   .hero__mockup-wrapper {
-    margin-right: -80px;
-    width: calc(100% + 80px);
+    margin-right: 0;
+    width: 100%;
   }
 }
 
 @media (min-width: 1200px) {
   .hero__mockup-wrapper {
-    margin-right: -500px;
-    width: calc(100% + 500px);
+    margin-right: 0;
+    width: 100%;
   }
 }
 
@@ -792,7 +792,7 @@ h3.step-title {
   display: block;
   width: 100%;
   height: auto;
-  border-radius: 16px 0 0 16px;
+  border-radius: 16px;
   box-shadow: none;
   overflow: hidden;
   position: relative;
