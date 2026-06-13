@@ -896,8 +896,8 @@ h3.step-title {
   border: 1px solid var(--border);
   border-radius: 8px;
   box-shadow: 0 4px 16px rgba(0,0,0,0.08);
-  padding: 7px 10px;
-  max-width: 160px;
+  padding: 10px 16px;
+  width: 240px;
   opacity: 0.75;
 }
 
