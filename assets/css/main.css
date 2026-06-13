@@ -177,7 +177,7 @@ h3.step-title {
 }
 
 @media (min-width: 768px) {
-  .container { padding: 0 16px; }
+  .container { padding: 0 32px; }
 }
 
 @media (min-width: 1024px) {
