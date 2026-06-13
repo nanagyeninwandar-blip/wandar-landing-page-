@@ -176,6 +176,10 @@ h3.step-title {
   padding: 0 24px;
 }
 
+@media (min-width: 768px) {
+  .container { padding: 0 16px; }
+}
+
 @media (min-width: 1024px) {
   .container { padding: 0 40px; }
 }
