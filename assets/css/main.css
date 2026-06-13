@@ -772,8 +772,8 @@ h3.step-title {
 
 @media (min-width: 1200px) {
   .hero__mockup-wrapper {
-    margin-right: calc(-1 * ((100vw - 1200px) / 2 + 80px));
-    width: calc(100% + (100vw - 1200px) / 2 + 80px);
+    margin-right: -500px;
+    width: calc(100% + 500px);
   }
 }
 
