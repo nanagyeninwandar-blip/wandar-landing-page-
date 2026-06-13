@@ -735,6 +735,7 @@ h3.step-title {
 /* V3: Slightly smaller subheadline */
 .hero__subhead {
   font-size: 16px;
+  font-weight: 700;
   line-height: 1.6;
   color: var(--text-secondary);
   max-width: 520px;
@@ -1029,9 +1030,9 @@ h3.step-title {
   border: 1px solid rgba(196,89,17,0.30);
   border-radius: var(--radius-pill);
   color: var(--safari-secondary);
-  font-family: var(--font-logo);
+  font-family: var(--font-primary);
   font-size: 13px;
-  font-weight: 400;
+  font-weight: 700;
   letter-spacing: 0.05em;
   margin-bottom: 20px;
   align-self: flex-start;
