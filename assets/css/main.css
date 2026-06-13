@@ -772,15 +772,15 @@ h3.step-title {
 
 @media (min-width: 1024px) {
   .hero__mockup-wrapper {
-    margin-right: -60px;
-    width: calc(100% + 60px);
+    margin-right: -140px;
+    width: calc(100% + 140px);
   }
 }
 
 @media (min-width: 1200px) {
   .hero__mockup-wrapper {
-    margin-right: -120px;
-    width: calc(100% + 120px);
+    margin-right: -220px;
+    width: calc(100% + 220px);
   }
 }
 
@@ -879,12 +879,32 @@ h3.step-title {
   width: 100%;
 }
 
+@media (min-width: 768px) {
+  .intent-mockup-wrap {
+    margin-right: -140px;
+    width: calc(100% + 140px);
+  }
+}
+
+@media (min-width: 1200px) {
+  .intent-mockup-wrap {
+    margin-right: -220px;
+    width: calc(100% + 220px);
+  }
+}
+
 .intent-mockup {
   display: block;
   width: 100%;
   height: auto;
   border-radius: 16px;
   box-shadow: 0 8px 40px rgba(0,0,0,0.12);
+}
+
+@media (min-width: 768px) {
+  .intent-mockup {
+    border-radius: 16px 0 0 16px;
+  }
 }
 
 .hero__mockup {
