@@ -108,7 +108,7 @@ h1, h2, h3, h4 {
 
 /* V3: Hero headline with gradient */
 .hero-headline {
-  font-size: clamp(22px, 2.4vw, 32px);
+  font-size: clamp(28px, 3vw, 40px);
   font-weight: 800;
   line-height: 1.1;
   letter-spacing: -0.02em;
@@ -676,12 +676,20 @@ h3.step-title {
   position: relative;
   overflow: hidden;
   background: var(--white);
-  padding: 40px 0 0;
+  padding: 40px 0 48px;
 }
 
 @media (min-width: 1024px) {
-  .hero { padding: 56px 0 0; }
+  .hero { padding: 56px 0 64px; }
   .hero .container { padding-left: 32px; }
+}
+
+.aeo-answer-first {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
 }
 
 .hero__inner {
@@ -721,8 +729,8 @@ h3.step-title {
 
 /* V3: Slightly smaller subheadline */
 .hero__subhead {
-  font-size: 17px;
-  line-height: 1.6;
+  font-size: 18px;
+  line-height: 1.65;
   color: var(--text-secondary);
   max-width: 520px;
   margin-bottom: 36px;
