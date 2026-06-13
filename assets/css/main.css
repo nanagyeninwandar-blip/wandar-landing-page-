@@ -730,11 +730,6 @@ h3.step-title {
 .hero__mockup-wrapper {
   position: relative;
   width: 100%;
-  margin-bottom: -80px;
-}
-
-@media (min-width: 768px) {
-  .hero__mockup-wrapper { margin-bottom: -120px; }
 }
 
 .hero__mockup {
