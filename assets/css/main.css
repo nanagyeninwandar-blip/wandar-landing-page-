@@ -707,9 +707,9 @@ h3.step-title {
 
 @media (min-width: 768px) {
   .hero__inner {
-    grid-template-columns: 46fr 54fr;
+    grid-template-columns: 43fr 57fr;
     gap: 40px;
-    align-items: center;
+    align-items: flex-start;
   }
 }
 
@@ -750,6 +750,7 @@ h3.step-title {
 /* Hero mockup */
 .hero__mockup-wrapper {
   position: relative;
+  padding-top: 190px;
 }
 
 .hero__mockup {
@@ -933,7 +934,7 @@ h3.step-title {
     animation-delay: 2s;
   }
   .float-card-3 {
-    top: 25%;  right: -2%;
+    top: 5%;  right: 3%;
     animation: float-a 9s ease-in-out infinite;
     animation-delay: 4s;
   }
@@ -943,8 +944,8 @@ h3.step-title {
     animation-delay: 1s;
   }
   .float-card-5 {
-    bottom: 10%; right: 3%;
-    animation: float-a 13s ease-in-out infinite;
+    top: 18%;  right: 28%;
+    animation: float-b 13s ease-in-out infinite;
     animation-delay: 3s;
   }
 
