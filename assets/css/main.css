@@ -1137,11 +1137,18 @@ h3.step-title {
   border-radius: var(--radius-pill);
   color: var(--safari-secondary);
   font-family: var(--font-primary);
-  font-size: 13px;
+  font-size: 11px;
   font-weight: 700;
-  letter-spacing: 0.05em;
+  letter-spacing: 0.04em;
   margin-bottom: 20px;
   align-self: flex-start;
+}
+
+@media (min-width: 768px) {
+  .hero__badge {
+    font-size: 13px;
+    letter-spacing: 0.05em;
+  }
 }
 
 .hero__badge-dot {
