@@ -108,7 +108,7 @@ h1, h2, h3, h4 {
 
 /* V3: Hero headline with gradient */
 .hero-headline {
-  font-size: clamp(28px, 3vw, 40px);
+  font-size: clamp(24px, 2.6vw, 34px);
   font-weight: 800;
   line-height: 1.1;
   letter-spacing: -0.02em;
@@ -680,7 +680,7 @@ h3.step-title {
   min-height: calc(100vh - 72px);
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: flex-start;
 }
 
 @media (min-width: 1024px) {
@@ -733,8 +733,8 @@ h3.step-title {
 
 /* V3: Slightly smaller subheadline */
 .hero__subhead {
-  font-size: 18px;
-  line-height: 1.65;
+  font-size: 16px;
+  line-height: 1.6;
   color: var(--text-secondary);
   max-width: 520px;
   margin-bottom: 36px;
