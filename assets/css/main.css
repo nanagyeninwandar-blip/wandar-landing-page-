@@ -89,13 +89,20 @@ ul, ol { list-style: none; }
 
 /* ── TYPOGRAPHY ─────────────────────────────────────────────── */
 .eyebrow {
-  font-size: 10px;
+  font-size: 9px;
   font-weight: 700;
-  letter-spacing: 0.12em;
+  letter-spacing: 0.08em;
   text-transform: uppercase;
   color: var(--safari-primary);
   display: block;
   margin-bottom: 16px;
+}
+
+@media (min-width: 768px) {
+  .eyebrow {
+    font-size: 10px;
+    letter-spacing: 0.12em;
+  }
 }
 
 .eyebrow--secondary { color: var(--safari-secondary); }
@@ -786,6 +793,13 @@ h3.step-title {
   height: 6px;
   background: var(--white);
   z-index: 4;
+  display: none;
+}
+
+@media (min-width: 768px) {
+  .hero__mockup-wrapper::before {
+    display: block;
+  }
 }
 
 .hero__mockup {
