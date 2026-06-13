@@ -173,7 +173,7 @@ h3.step-title {
   width: 100%;
   max-width: var(--max-width);
   margin: 0 auto;
-  padding: 0 8px;
+  padding: 0 24px;
 }
 
 @media (min-width: 1024px) {
