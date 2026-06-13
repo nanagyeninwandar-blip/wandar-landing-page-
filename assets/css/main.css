@@ -772,15 +772,15 @@ h3.step-title {
 
 @media (min-width: 1024px) {
   .hero__mockup-wrapper {
-    margin-right: -140px;
-    width: calc(100% + 140px);
+    margin-right: -60px;
+    width: calc(100% + 60px);
   }
 }
 
 @media (min-width: 1200px) {
   .hero__mockup-wrapper {
-    margin-right: -220px;
-    width: calc(100% + 220px);
+    margin-right: -120px;
+    width: calc(100% + 120px);
   }
 }
 
