@@ -755,6 +755,17 @@ h3.step-title {
   width: calc(100% + 80px);
 }
 
+.hero__mockup-wrapper::before {
+  content: '';
+  position: absolute;
+  top: 190px;
+  left: 0;
+  right: 0;
+  height: 6px;
+  background: var(--white);
+  z-index: 4;
+}
+
 .hero__mockup {
   display: block;
   width: 100%;
