@@ -357,8 +357,8 @@
 
       <!-- Right: CTA + Login + Hamburger -->
       <div class="nav__right">
-        <a href="#" onclick="openModal('early-access');return false;" class="btn btn--primary nav__cta-btn" style="display:none" id="nav-cta-desktop">Request Early Access</a>
         <a href="#" class="nav__login-link" style="display:none" id="nav-login-desktop">Log In</a>
+        <a href="#" onclick="openModal('early-access');return false;" class="btn btn--primary nav__cta-btn" style="display:none" id="nav-cta-desktop">Request Early Access</a>
         <button class="nav__hamburger" id="hamburger" aria-label="Open menu" aria-expanded="false">
           <span></span><span></span><span></span>
         </button>
@@ -440,14 +440,6 @@
 
   <!-- Floating background cards -->
   <div class="hero__floating-cards" aria-hidden="true">
-    <div class="float-card float-card-1">
-      <div class="float-card__platform">
-        <svg class="float-card__platform-icon" viewBox="0 0 24 24" fill="#FF4500"><path d="M12 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0zm5.01 4.744c.688 0 1.25.561 1.25 1.249a1.25 1.25 0 0 1-2.498.056l-2.597-.547-.8 3.747c1.824.07 3.48.632 4.674 1.488.308-.309.73-.491 1.207-.491.968 0 1.754.786 1.754 1.754 0 .716-.435 1.333-1.01 1.614a3.111 3.111 0 0 1 .042.52c0 2.694-3.13 4.87-7.004 4.87-3.874 0-7.004-2.176-7.004-4.87 0-.183.015-.366.043-.534A1.748 1.748 0 0 1 4.028 12c0-.968.786-1.754 1.754-1.754.463 0 .898.196 1.207.49 1.207-.883 2.878-1.43 4.744-1.487l.885-4.182a.342.342 0 0 1 .14-.197.35.35 0 0 1 .238-.042l2.906.617a1.214 1.214 0 0 1 1.108-.701zM9.25 12C8.561 12 8 12.562 8 13.25c0 .687.561 1.248 1.25 1.248.687 0 1.248-.561 1.248-1.249 0-.688-.561-1.249-1.249-1.249zm5.5 0c-.687 0-1.248.561-1.248 1.25 0 .687.561 1.248 1.249 1.248.688 0 1.249-.561 1.249-1.249 0-.687-.562-1.249-1.25-1.249z"/></svg>
-        <span class="float-card__platform-name">r/solotravel</span>
-      </div>
-      <p class="float-card__text">"Planning Kenya safari October, $12K budget, 2 couples. Any recommendations?"</p>
-      <p class="float-card__time">2 min ago</p>
-    </div>
 
     <div class="float-card float-card-2">
       <div class="float-card__platform">
@@ -509,7 +501,7 @@
         </p>
         <div class="hero__cta-group">
           <a href="#" onclick="openModal('early-access');return false;" class="btn btn--primary">Request Early Access</a>
-          <a href="#how-it-works" class="btn btn--ghost">
+          <a href="#" onclick="return false;" class="btn btn--ghost">
             <span>▶</span> Watch Demo
           </a>
         </div>
@@ -861,7 +853,7 @@
     <p class="cta-banner__subhead reveal reveal--delay-1">Every hour you wait, someone else could be answering them.</p>
     <div class="btn-group" style="justify-content:center;" role="group">
       <a href="#" onclick="openModal('early-access');return false;" class="btn btn--primary reveal reveal--delay-2">Request Early Access</a>
-      <a href="#" onclick="openModal('consultation');return false;" class="btn btn--ghost-white reveal reveal--delay-2">Book a Consultation</a>
+      <a href="#" onclick="openModal('consultation');return false;" class="btn btn--ghost-white reveal reveal--delay-2">Book a Call</a>
     </div>
     <p class="cta-banner__micro reveal reveal--delay-3">No contracts. No setup fees. Built exclusively for safari operators.</p>
   </div>
@@ -1037,7 +1029,7 @@ These travelers don’t browse casually. They plan deliberately, leave signals a
         <span class="footer__col-heading">For Operators</span>
         <ul class="footer__col-links">
           <li><a href="pricing.html" class="footer__col-link">Pricing</a></li>
-          <li><a href="#" onclick="openModal('consultation');return false;" class="footer__col-link">Free Consultation</a></li>
+          <li><a href="#" onclick="openModal('consultation');return false;" class="footer__col-link">Book a Call</a></li>
           <li><span class="footer__col-link footer__col-link--disabled">Free Tools</span></li>
           <li><a href="/guides/" class="footer__col-link">Guides</a></li>
           <li><a href="/blog/" class="footer__col-link">Blog</a></li>
@@ -1247,8 +1239,7 @@ These travelers don’t browse casually. They plan deliberately, leave signals a
       <div class="modal-hd-icon modal-hd-icon--amber">
         <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#c45911" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.32A2 2 0 0 1 3.58 1h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.5a16 16 0 0 0 6 6l.92-.92a2 2 0 0 1 2.1-.45c.91.339 1.853.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
       </div>
-      <h2 class="modal-h2" id="mc-title">Book a Free Consultation</h2>
-      <p class="modal-sub">We want to understand your operation before we recommend anything.</p>
+      <h2 class="modal-h2" id="mc-title">Book a Call</h2>
     </div>
     <div class="modal-bd">
 
@@ -1314,7 +1305,6 @@ These travelers don’t browse casually. They plan deliberately, leave signals a
         </button>
         <div class="mf-trust">
           <span><span class="mf-trust-dot"></span>No commitment required</span>
-          <span><span class="mf-trust-dot"></span>20 minutes. We listen, you talk.</span>
         </div>
 
       </div><!-- /mf-form-b -->

@@ -173,11 +173,11 @@ h3.step-title {
   width: 100%;
   max-width: var(--max-width);
   margin: 0 auto;
-  padding: 0 24px;
+  padding: 0 8px;
 }
 
 @media (min-width: 1024px) {
-  .container { padding: 0 80px; }
+  .container { padding: 0 40px; }
 }
 
 .section {
@@ -220,16 +220,20 @@ h3.step-title {
 
 /* Smaller CTA in the nav bar */
 .nav__cta-btn {
-  padding: 10px 12px;
+  padding: 10px 20px;
   font-size: 14px;
+  border-radius: var(--radius-pill);
 }
 
 /* Log In link in nav */
 .nav__login-link {
-  font-size: 14px;
-  font-weight: 500;
-  color: var(--text-secondary);
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--text-primary);
   text-decoration: none;
+  background: var(--nature-light);
+  border-radius: var(--radius-pill);
+  padding: 8px 16px;
   padding: 10px 12px;
   border-radius: var(--radius-sm);
   transition: color 150ms ease;
@@ -693,7 +697,7 @@ h3.step-title {
 
 @media (min-width: 1024px) {
   .hero { padding: 56px 0 64px; }
-  .hero .container { padding-left: 32px; }
+  .hero .container { padding-left: 16px; }
 }
 
 .aeo-answer-first {
@@ -741,7 +745,7 @@ h3.step-title {
 
 /* V3: Slightly smaller subheadline */
 .hero__subhead {
-  font-size: 16px;
+  font-size: 18px;
   font-weight: 700;
   line-height: 1.6;
   color: var(--text-secondary);
