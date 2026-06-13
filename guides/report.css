@@ -745,7 +745,7 @@ p.body:last-child { margin-bottom: 0; }
   letter-spacing: 0.18em; text-transform: uppercase;
 }
 .reading-foot__label { color: var(--text-secondary); font-weight: 600; }
-.reading-foot__url   { color: var(--safari-secondary); font-weight: 700; }
+.reading-foot__url   { color: var(--safari-secondary); font-weight: 700; text-transform: none; letter-spacing: 0.02em; }
 
 /* ── ROI stat row ─────────────────────────────────── */
 .roi-row { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin: 16px 0; }
