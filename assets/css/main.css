@@ -89,7 +89,7 @@ ul, ol { list-style: none; }
 
 /* ── TYPOGRAPHY ─────────────────────────────────────────────── */
 .eyebrow {
-  font-size: 12px;
+  font-size: 10px;
   font-weight: 700;
   letter-spacing: 0.12em;
   text-transform: uppercase;
