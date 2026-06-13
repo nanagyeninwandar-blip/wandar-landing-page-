@@ -694,13 +694,16 @@ h3.step-title {
 
 @media (min-width: 768px) {
   .hero__inner {
-    grid-template-columns: 60fr 40fr;
-    gap: 64px;
+    grid-template-columns: 44fr 56fr;
+    gap: 48px;
     min-height: 560px;
+    align-items: center;
   }
 }
 
-.hero__content { }
+.hero__content {
+  padding-right: 16px;
+}
 
 .hero__headline {
   margin-bottom: 24px;
@@ -740,9 +743,11 @@ h3.step-title {
 }
 
 .hero__mockup {
-  background: var(--white);
+  display: block;
+  width: 100%;
+  height: auto;
   border-radius: 16px;
-  box-shadow: 0 20px 60px rgba(0,0,0,0.15), 0 0 0 1px rgba(0,0,0,0.05);
+  box-shadow: 0 20px 60px rgba(0,0,0,0.15), 0 0 0 1px rgba(0,0,0,0.06);
   overflow: hidden;
   position: relative;
   z-index: 2;
