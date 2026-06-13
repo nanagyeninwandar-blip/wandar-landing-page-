@@ -677,6 +677,10 @@ h3.step-title {
   overflow: hidden;
   background: var(--white);
   padding: 40px 0 48px;
+  min-height: calc(100vh - 72px);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
 @media (min-width: 1024px) {
