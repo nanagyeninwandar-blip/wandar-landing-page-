@@ -108,10 +108,11 @@ h1, h2, h3, h4 {
 
 /* V3: Hero headline with gradient */
 .hero-headline {
-  font-size: clamp(24px, 2.6vw, 34px);
+  font-size: clamp(28px, 3.2vw, 42px);
   font-weight: 800;
-  line-height: 1.1;
+  line-height: 1.15;
   letter-spacing: -0.02em;
+  padding-bottom: 0.1em;
   background: linear-gradient(100deg, #1a7373 0%, #b8860b 50%, #c45911 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
