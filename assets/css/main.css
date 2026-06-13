@@ -684,23 +684,19 @@ h3.step-title {
 }
 
 .hero__inner {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 48px;
+  display: flex;
+  flex-direction: column;
   align-items: center;
+  gap: 48px;
   position: relative;
   z-index: 2;
 }
 
-@media (min-width: 768px) {
-  .hero__inner {
-    grid-template-columns: 60fr 40fr;
-    gap: 64px;
-    min-height: 560px;
-  }
+.hero__content {
+  max-width: 760px;
+  width: 100%;
+  text-align: center;
 }
-
-.hero__content { }
 
 .hero__headline {
   margin-bottom: 24px;
@@ -719,12 +715,13 @@ h3.step-title {
   line-height: 1.6;
   color: var(--text-secondary);
   max-width: 520px;
-  margin-bottom: 36px;
+  margin: 0 auto 36px;
 }
 
 .hero__cta-group {
   display: flex;
   align-items: center;
+  justify-content: center;
   gap: 16px;
   flex-wrap: wrap;
 }
@@ -732,6 +729,7 @@ h3.step-title {
 /* Hero mockup */
 .hero__mockup-wrapper {
   position: relative;
+  width: 100%;
   margin-bottom: -80px;
 }
 
