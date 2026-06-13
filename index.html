@@ -516,8 +516,18 @@
       </div>
 
       <!-- Product UI Mockup -->
-      <div class="hero__mockup-wrapper">
+      <div class="hero__mockup-wrapper" id="mockup-trigger">
         <img src="assets/Platform_home page.jpeg" alt="Wandar platform dashboard showing scored safari leads" class="hero__mockup">
+        <div class="mockup-expand-hint" aria-hidden="true">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 3 21 3 21 9"/><polyline points="9 21 3 21 3 15"/><line x1="21" y1="3" x2="14" y2="10"/><line x1="3" y1="21" x2="10" y2="14"/></svg>
+          Tap to expand
+        </div>
+      </div>
+
+      <!-- Mockup Lightbox (mobile) -->
+      <div id="mockup-lightbox" class="mockup-lightbox" role="dialog" aria-modal="true" aria-label="Wandar platform screenshot">
+        <button class="mockup-lightbox__close" id="mockup-lightbox-close" aria-label="Close">&times;</button>
+        <img src="assets/Platform_home page.jpeg" alt="Wandar platform dashboard" class="mockup-lightbox__img">
       </div>
 
     </div>
@@ -1442,6 +1452,29 @@ window.addEventListener('scroll', () => {
 
 // ── HERO LOADED ───────────────────────────────────────────────────
 window.addEventListener('load', () => document.body.classList.add('hero-loaded'));
+
+// ── MOCKUP LIGHTBOX (mobile) ──────────────────────────────────────
+(function () {
+  const trigger = document.getElementById('mockup-trigger');
+  const lightbox = document.getElementById('mockup-lightbox');
+  const closeBtn = document.getElementById('mockup-lightbox-close');
+  if (!trigger || !lightbox) return;
+
+  function open() {
+    if (window.innerWidth >= 768) return;
+    lightbox.classList.add('is-open');
+    document.body.style.overflow = 'hidden';
+  }
+  function close() {
+    lightbox.classList.remove('is-open');
+    document.body.style.overflow = '';
+  }
+
+  trigger.addEventListener('click', open);
+  closeBtn.addEventListener('click', function (e) { e.stopPropagation(); close(); });
+  lightbox.addEventListener('click', function (e) { if (e.target === lightbox) close(); });
+  document.addEventListener('keydown', function (e) { if (e.key === 'Escape') close(); });
+})();
 
 // ── SCROLL REVEAL ────────────────────────────────────────────────
 const ro = new IntersectionObserver((entries) => {
