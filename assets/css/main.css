@@ -676,11 +676,11 @@ h3.step-title {
   position: relative;
   overflow: hidden;
   background: var(--white);
-  padding: 80px 0 60px;
+  padding: 80px 0 0;
 }
 
 @media (min-width: 1024px) {
-  .hero { padding: 120px 0 80px; }
+  .hero { padding: 120px 0 0; }
 }
 
 .hero__inner {
@@ -730,28 +730,12 @@ h3.step-title {
 .hero__mockup-wrapper {
   position: relative;
   width: 100%;
-  border-radius: 16px 16px 0 0;
-  overflow: hidden;
-  box-shadow: 0 0 0 1px rgba(0,0,0,0.06);
-}
-
-.hero__mockup-wrapper::after {
-  content: '';
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  height: 20%;
-  background: linear-gradient(to bottom, transparent 20%, var(--white) 85%);
-  pointer-events: none;
-  z-index: 3;
 }
 
 .hero__mockup {
-  display: block;
-  width: 100%;
-  border-radius: 0;
-  box-shadow: none;
+  background: var(--white);
+  border-radius: 16px;
+  box-shadow: 0 20px 60px rgba(0,0,0,0.15), 0 0 0 1px rgba(0,0,0,0.05);
   overflow: hidden;
   position: relative;
   z-index: 2;
