@@ -874,6 +874,19 @@ h3.step-title {
   z-index: 10000;
 }
 
+/* Intent scoring section mockup */
+.intent-mockup-wrap {
+  width: 100%;
+}
+
+.intent-mockup {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: 16px;
+  box-shadow: 0 8px 40px rgba(0,0,0,0.12);
+}
+
 .hero__mockup {
   display: block;
   width: 100%;
