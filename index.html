@@ -706,8 +706,11 @@
         </div>
       </div>
 
-      <div class="intent-mockup-wrap reveal reveal--delay-2">
+      <div class="intent-mockup-wrap reveal reveal--delay-2" id="intent-mockup-trigger">
         <img src="assets/Platform_intent page.jpeg" alt="Wandar intent scoring dashboard" class="intent-mockup">
+        <div class="mockup-expand-hint" aria-hidden="true">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 3 21 3 21 9"/><polyline points="9 21 3 21 3 15"/><line x1="21" y1="3" x2="14" y2="10"/><line x1="3" y1="21" x2="10" y2="14"/></svg>
+        </div>
       </div>
     </div>
   </div>
@@ -1424,13 +1427,13 @@ window.addEventListener('load', () => document.body.classList.add('hero-loaded')
 
 // ── MOCKUP LIGHTBOX (mobile) ──────────────────────────────────────
 (function () {
-  const trigger = document.getElementById('mockup-trigger');
   const lightbox = document.getElementById('mockup-lightbox');
+  const lightboxImg = lightbox.querySelector('.mockup-lightbox__img');
   const closeBtn = document.getElementById('mockup-lightbox-close');
-  if (!trigger || !lightbox) return;
 
-  function open() {
+  function open(src) {
     if (window.innerWidth >= 768) return;
+    lightboxImg.src = src;
     lightbox.classList.add('is-open');
     document.body.style.overflow = 'hidden';
   }
@@ -1439,7 +1442,16 @@ window.addEventListener('load', () => document.body.classList.add('hero-loaded')
     document.body.style.overflow = '';
   }
 
-  trigger.addEventListener('click', open);
+  var triggers = [
+    { id: 'mockup-trigger',        src: 'assets/Platform_home page.jpeg' },
+    { id: 'intent-mockup-trigger', src: 'assets/Platform_intent page.jpeg' }
+  ];
+
+  triggers.forEach(function (t) {
+    var el = document.getElementById(t.id);
+    if (el) el.addEventListener('click', function () { open(t.src); });
+  });
+
   closeBtn.addEventListener('click', function (e) { e.stopPropagation(); close(); });
   lightbox.addEventListener('click', function (e) { if (e.target === lightbox) close(); });
   document.addEventListener('keydown', function (e) { if (e.key === 'Escape') close(); });

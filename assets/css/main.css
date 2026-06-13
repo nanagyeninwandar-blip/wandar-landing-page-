@@ -881,6 +881,11 @@ h3.step-title {
 /* Intent scoring section mockup */
 .intent-mockup-wrap {
   width: 100%;
+  position: relative;
+}
+
+@media (max-width: 767px) {
+  #intent-mockup-trigger { cursor: zoom-in; }
 }
 
 @media (min-width: 768px) {
