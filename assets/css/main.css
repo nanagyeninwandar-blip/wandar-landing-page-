@@ -741,7 +741,7 @@ h3.step-title {
   bottom: 0;
   left: 0;
   right: 0;
-  height: 25%;
+  height: 12%;
   background: linear-gradient(to bottom, transparent, var(--white));
   pointer-events: none;
   z-index: 3;
