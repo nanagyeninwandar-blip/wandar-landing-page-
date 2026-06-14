@@ -134,6 +134,11 @@ h1, h2, h3, h4 {
   margin-bottom: 20px;
 }
 
+h2 em, .section-headline em, .whofor__headline em {
+  font-style: normal !important;
+  color: var(--safari-secondary);
+}
+
 .section-headline--center { text-align: center; }
 
 h2.sub-headline {
@@ -1231,6 +1236,7 @@ section[aria-label="How intent scoring works"] {
   .reveal--delay-1 { transition-delay: 0.1s; }
   .reveal--delay-2 { transition-delay: 0.2s; }
   .reveal--delay-3 { transition-delay: 0.3s; }
+  .reveal--delay-4 { transition-delay: 0.4s; }
 }
 
 /* ── PROBLEM CARDS (V3) ──────────────────────────────────────── */
@@ -1577,6 +1583,105 @@ section[aria-label="How intent scoring works"] {
   flex-direction: column;
   gap: 10px;
 }
+
+/* ── WHO IT'S FOR (V5 — from design file) ─────────────────────── */
+.whofor {
+  padding: 72px 0 96px;
+  background: var(--white);
+}
+@media (min-width: 1024px) {
+  .whofor { padding: 112px 0 128px; }
+}
+.whofor__container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+@media (min-width: 1024px) {
+  .whofor__container { padding: 0 80px; }
+}
+.whofor__eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--safari-primary);
+  margin-bottom: 22px;
+}
+.whofor__eyebrow::before {
+  display: none;
+}
+.whofor__headline {
+  font-size: clamp(26px, 3.2vw, 38px);
+  font-weight: 700;
+  line-height: 1.15;
+  letter-spacing: -0.015em;
+  color: var(--text-primary);
+  max-width: 34ch;
+  text-wrap: balance;
+}
+.whofor__grid {
+  margin-top: 56px;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 22px;
+}
+@media (min-width: 760px) {
+  .whofor__grid { grid-template-columns: 1fr 1fr; gap: 24px; }
+}
+.pain {
+  --accent: var(--safari-primary);
+  --accent-tint: var(--primary-light);
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 34px 34px 32px;
+  overflow: hidden;
+  transition: transform .28s cubic-bezier(.2,.7,.2,1), box-shadow .28s ease, border-color .28s ease;
+}
+.pain::before {
+  content: "";
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 3px;
+  background: var(--accent);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform .4s cubic-bezier(.2,.7,.2,1);
+}
+.pain:hover { transform: translateY(-5px); box-shadow: 0 22px 50px -22px rgba(26,40,38,0.28); border-color: transparent; }
+.pain:hover::before { transform: scaleX(1); }
+.pain__top { display: flex; align-items: center; margin-bottom: 22px; }
+.pain__icon {
+  width: 56px;
+  height: 56px;
+  border-radius: 14px;
+  background: var(--accent-tint);
+  color: var(--accent);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+.pain__icon svg { display: block; }
+.pain__title { font-size: 21px; font-weight: 700; line-height: 1.24; color: var(--text-primary); margin-bottom: 12px; letter-spacing: -0.01em; }
+.pain__problem { font-size: 15px; line-height: 1.62; color: var(--text-secondary); margin-bottom: 22px; }
+.pain__fix { display: flex; gap: 12px; align-items: flex-start; margin-top: auto; padding-top: 20px; border-top: 1px solid var(--border); }
+.pain__arrow { flex-shrink: 0; width: 26px; height: 26px; border-radius: 50%; background: var(--accent); color: var(--white); display: flex; align-items: center; justify-content: center; margin-top: 1px; }
+.pain__arrow svg { display: block; }
+.pain__fix p { font-size: 14.5px; line-height: 1.55; color: var(--text-primary); font-weight: 500; }
+.pain__fix b { color: var(--accent); font-weight: 700; }
+.pain--teal       { --accent: #1a7373; --accent-tint: #e6f4f4; }
+.pain--terracotta { --accent: #c45911; --accent-tint: #ffeee0; }
+.pain--gold       { --accent: #a9760a; --accent-tint: #fff4d6; }
+.pain--nature     { --accent: #3a6418; --accent-tint: #e8f3df; }
 
 .icp-card .check-list li::before {
   content: '';
