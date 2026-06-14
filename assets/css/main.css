@@ -893,7 +893,7 @@ h3.step-title {
   #intent-mockup-trigger { cursor: zoom-in; }
 }
 
-@media (min-width: 1200px) {
+@media (min-width: 1440px) {
   .intent-mockup-wrap {
     margin-right: -220px;
     width: calc(100% + 220px);
