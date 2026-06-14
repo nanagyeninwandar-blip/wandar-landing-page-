@@ -917,13 +917,13 @@ section[aria-label="How intent scoring works"] {
   height: auto;
   border-radius: 16px;
   box-shadow: 0 8px 40px rgba(0,0,0,0.12);
-  clip-path: inset(8px 0 0 0 round 16px);
+  clip-path: inset(4px 0 0 0 round 16px);
 }
 
 @media (min-width: 1440px) {
   .intent-mockup {
     border-radius: 16px 0 0 16px;
-    clip-path: inset(8px 0 0 0 round 16px 0 0 16px);
+    clip-path: inset(4px 0 0 0 round 16px 0 0 16px);
   }
 }
 
