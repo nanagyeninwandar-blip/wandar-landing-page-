@@ -892,14 +892,26 @@ section[aria-label="How intent scoring works"] {
   position: relative;
 }
 
+.intent-mockup-wrap::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 14px;
+  background: var(--off-white);
+  z-index: 2;
+  pointer-events: none;
+}
+
 @media (max-width: 767px) {
   #intent-mockup-trigger { cursor: zoom-in; }
 }
 
 @media (min-width: 768px) {
   .intent-mockup-wrap {
-    margin-right: -130px;
-    width: calc(100% + 130px);
+    margin-right: -90px;
+    width: calc(100% + 90px);
   }
 }
 
