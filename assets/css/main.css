@@ -888,6 +888,12 @@ h3.step-title {
   position: relative;
 }
 
+@media (min-width: 768px) and (max-width: 1199px) {
+  .intent-mockup-wrap {
+    width: 85%;
+  }
+}
+
 @media (max-width: 767px) {
   #intent-mockup-trigger { cursor: zoom-in; }
 }
