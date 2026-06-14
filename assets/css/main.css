@@ -192,9 +192,9 @@ h3.step-title {
   .section { padding: 120px 0; }
 }
 
-.section--white    { background: var(--white); }
-.section--offwhite { background: var(--off-white); }
-.section--dark     { background: var(--dark-bg); }
+.section--white    { background: var(--white); overflow: hidden; }
+.section--offwhite { background: var(--off-white); overflow: hidden; }
+.section--dark     { background: var(--dark-bg); overflow: hidden; }
 
 .two-col {
   display: grid;
