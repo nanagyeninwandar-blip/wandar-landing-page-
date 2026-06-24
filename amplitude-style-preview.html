@@ -28,6 +28,10 @@
     filter:blur(2px);opacity:0.92;transform:rotate(-8deg);}
   .ahero__wave::after{content:"";position:absolute;inset:0;background:radial-gradient(circle at 30% 40%,rgba(253,248,240,0.5),transparent 60%);border-radius:inherit;}
   .ahero__title{position:relative;font-size:clamp(44px,7vw,84px);font-weight:800;letter-spacing:-0.03em;color:var(--text-primary);line-height:1;margin-bottom:40px;}
+  /* guides hero: keep existing brand text, chips below */
+  .ghero__eyebrow{position:relative;font-size:13px;font-weight:700;text-transform:uppercase;letter-spacing:0.12em;color:var(--safari-primary);margin-bottom:20px;}
+  .ghero__headline{position:relative;font-size:clamp(34px,4.4vw,56px);font-weight:800;color:var(--text-primary);line-height:1.1;margin-bottom:22px;max-width:820px;letter-spacing:-0.02em;}
+  .ghero__sub{position:relative;font-size:19px;line-height:1.6;color:var(--text-secondary);max-width:640px;margin-bottom:36px;}
   .ahero__bar{position:relative;display:flex;align-items:center;justify-content:space-between;gap:24px;flex-wrap:wrap;padding-bottom:8px;}
   .chips{display:flex;gap:10px;flex-wrap:wrap;}
   .chip{font-size:13.5px;font-weight:600;color:var(--text-primary);background:var(--white);border:1px solid var(--border);border-radius:var(--radius-pill);padding:9px 18px;cursor:pointer;transition:all 140ms ease;}
@@ -79,15 +83,15 @@
   .bcard:hover{transform:translateY(-3px);box-shadow:0 16px 40px rgba(0,0,0,0.10);}
   .bcard--lead{border-left:4px solid var(--safari-primary);}
   .bcard--bookings{border-left:4px solid var(--safari-secondary);}
-  .bcard__media{position:relative;min-height:360px;display:flex;align-items:center;justify-content:center;padding:36px;}
-  .bcard__body{position:relative;padding:44px 52px;display:flex;flex-direction:column;justify-content:center;}
-  .bcard__eyebrow{font-size:12px;font-weight:800;letter-spacing:0.14em;text-transform:uppercase;margin-bottom:16px;}
-  .bcard__title{font-size:28px;line-height:1.18;font-weight:800;color:var(--text-primary);letter-spacing:-0.02em;margin-bottom:16px;}
-  .bcard__excerpt{font-size:16px;line-height:1.65;color:var(--text-secondary);margin-bottom:24px;max-width:30em;}
+  .bcard__media{position:relative;min-height:284px;display:flex;align-items:center;justify-content:center;padding:28px;}
+  .bcard__body{position:relative;padding:32px 40px;display:flex;flex-direction:column;justify-content:center;}
+  .bcard__eyebrow{font-size:11.5px;font-weight:800;letter-spacing:0.14em;text-transform:uppercase;margin-bottom:13px;}
+  .bcard__title{font-size:23px;line-height:1.2;font-weight:800;color:var(--text-primary);letter-spacing:-0.02em;margin-bottom:13px;}
+  .bcard__excerpt{font-size:15px;line-height:1.6;color:var(--text-secondary);margin-bottom:20px;max-width:32em;}
   .bcard__link{font-size:15px;font-weight:700;color:var(--safari-primary);text-decoration:none;display:inline-flex;align-items:center;gap:8px;transition:gap 150ms;}
   .bcard__link:hover{gap:12px;}
   .bcard--bookings .bcard__link{color:var(--safari-secondary);}
-  .bcard__readtime{position:absolute;top:30px;right:38px;display:inline-flex;align-items:center;gap:7px;font-size:11px;font-weight:700;letter-spacing:0.08em;color:var(--text-muted);background:var(--off-white);border:1px solid var(--border);border-radius:var(--radius-pill);padding:7px 14px;text-transform:uppercase;}
+  .bcard__readtime{position:absolute;top:24px;right:30px;display:inline-flex;align-items:center;gap:7px;font-size:11px;font-weight:700;letter-spacing:0.08em;color:var(--text-muted);background:var(--off-white);border:1px solid var(--border);border-radius:var(--radius-pill);padding:7px 14px;text-transform:uppercase;}
   .bcard__readtime svg{width:13px;height:13px;}
   .media--savanna{background:linear-gradient(160deg,#f6c66b 0%,#e89a4d 38%,#c06a35 70%,#7d4327 100%);}
   .media--savanna::after{content:"";position:absolute;inset:0;background:radial-gradient(circle at 22% 30%,rgba(255,236,180,0.55),transparent 42%),radial-gradient(circle at 80% 85%,rgba(60,30,15,0.35),transparent 55%);}
@@ -99,6 +103,11 @@
   .lead-card__head{display:flex;align-items:center;justify-content:space-between;margin-bottom:12px;}
   .lead-card__head h4{font-size:15px;font-weight:800;color:var(--text-primary);}
   .pill-intent{font-size:10px;font-weight:700;color:#0f7a4f;background:#e3f6ec;border-radius:var(--radius-pill);padding:4px 9px;}
+  .lead-card__src{display:flex;align-items:center;gap:8px;margin-bottom:10px;}
+  .lead-card__src .ic{width:22px;height:22px;border-radius:50%;display:flex;align-items:center;justify-content:center;background:#FF4500;flex:none;}
+  .lead-card__src .ic svg{width:14px;height:14px;}
+  .lead-card__src .nm{font-size:12px;font-weight:700;color:var(--text-primary);line-height:1.1;}
+  .lead-card__src .sub{font-size:11px;color:var(--text-muted);}
   .lead-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px;margin-top:12px;}
   .lead-cell{border:1px solid var(--border);border-radius:8px;padding:8px 9px;}
   .lead-cell .k{font-size:9px;font-weight:700;letter-spacing:0.05em;text-transform:uppercase;color:var(--text-muted);margin-bottom:3px;}
@@ -106,11 +115,17 @@
   .lead-cell--score{border-color:var(--safari-primary);background:rgba(26,115,115,0.06);}
   .lead-cell--score .v{color:var(--safari-primary);}
   .lead-q{font-size:13px;line-height:1.5;color:var(--text-secondary);}
-  .listen{display:grid;grid-template-columns:auto 1fr;gap:18px;align-items:center;width:100%;}
-  .plat{display:flex;align-items:center;gap:8px;background:rgba(255,255,255,0.07);border:1px solid rgba(255,255,255,0.12);border-radius:8px;padding:7px 12px;margin-bottom:8px;}
-  .plat span{font-size:12px;font-weight:600;color:#dcecea;}
-  .plat b{width:18px;height:18px;border-radius:50%;flex:none;}
-  .detect{background:rgba(255,255,255,0.04);border:1px solid rgba(38,166,154,0.35);border-radius:12px;padding:16px;text-align:center;}
+  .listen{display:grid;grid-template-columns:auto 1fr auto;gap:18px;align-items:center;width:100%;}
+  .listen__plats{display:flex;flex-direction:column;gap:9px;}
+  .plat{display:flex;align-items:center;gap:8px;background:rgba(255,255,255,0.07);border:1px solid rgba(255,255,255,0.12);border-radius:8px;padding:6px 11px 6px 8px;}
+  .plat span{font-size:11.5px;font-weight:600;color:#dcecea;white-space:nowrap;}
+  .plat .ic{width:18px;height:18px;border-radius:50%;display:flex;align-items:center;justify-content:center;flex:none;}
+  .plat .ic svg{width:12px;height:12px;}
+  .listen__msgs{display:flex;flex-direction:column;gap:9px;}
+  .msg{background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.1);border-radius:10px;padding:8px 11px;}
+  .msg p{font-size:11.5px;color:#eaf3f1;line-height:1.4;}
+  .msg time{font-size:9.5px;color:#7fa8a4;}
+  .detect{background:rgba(255,255,255,0.04);border:1px solid rgba(38,166,154,0.35);border-radius:12px;padding:14px 12px;text-align:center;width:140px;}
   .detect__title{font-size:11px;font-weight:700;color:#bfe3df;margin-bottom:10px;}
   .radar{width:84px;height:84px;border-radius:50%;margin:0 auto 12px;position:relative;background:radial-gradient(circle,rgba(38,166,154,0.18),transparent 70%);border:1px solid rgba(38,166,154,0.4);overflow:hidden;}
   .radar::before,.radar::after{content:"";position:absolute;border:1px solid rgba(38,166,154,0.35);border-radius:50%;}
@@ -133,6 +148,7 @@
   .pcell--final{border-color:var(--safari-secondary);background:rgba(196,89,17,0.05);}
   .score-badge{display:inline-block;font-size:12px;font-weight:800;color:#0f7a4f;background:#e3f6ec;border-radius:6px;padding:3px 8px;margin-bottom:5px;}
   .stars{font-size:11px;color:var(--safari-secondary);letter-spacing:1px;}
+  .pintent{display:inline-block;font-size:8px;font-weight:700;color:var(--safari-primary);background:rgba(26,115,115,0.1);border-radius:4px;padding:2px 6px;margin-top:4px;}
   .pipe__foot{margin-top:14px;padding-top:12px;border-top:1px dashed var(--border);text-align:center;font-size:11px;font-weight:700;color:var(--text-primary);}
 
   @media(max-width:900px){
@@ -151,7 +167,7 @@
   <strong>PREVIEW ONLY — not committed, not deployed.</strong>
   Amplitude blog layout cloned for both pages, kept on Wandar's cream background.
   Authors, dates &amp; read times are placeholders. Featured visuals + the two photo backgrounds use gradients (no photos in repo).
-  Scroll: <strong>BLOG</strong> first, then <strong>GUIDES</strong> (with the rich cards routed here).
+  Scroll: <strong>BLOG</strong> first, then <strong>GUIDES</strong>. Guides now keeps its existing brand text with the Amplitude chips/search <em>below</em> it, and the rich cards are sized down with the full mockups.
 </div>
 
 <!-- ══════════════════════════════ BLOG ══════════════════════════════ -->
@@ -254,7 +270,11 @@
 <section class="ahero">
   <div class="ahero__wave" aria-hidden="true"></div>
   <div class="container">
-    <h1 class="ahero__title">Guides</h1>
+    <!-- Existing Wandar guides text -->
+    <p class="ghero__eyebrow">Free Guides</p>
+    <h1 class="ghero__headline">Resources for Luxury Safari Operators</h1>
+    <p class="ghero__sub">In-depth guides on finding online leads, monitoring social platforms, and beating competitors to win more safari bookings.</p>
+    <!-- Amplitude-style chips + search, below the text -->
     <div class="ahero__bar">
       <div class="chips">
         <span class="chip chip--active">All</span>
@@ -270,15 +290,22 @@
     </div>
 
     <div class="rich-grid">
-      <!-- Guide 1 -->
+      <!-- Guide 1 · Complete lead card mockup -->
       <article class="bcard bcard--lead">
         <div class="bcard__media media--savanna">
           <div class="lead-card">
             <div class="lead-card__head"><h4>New Lead Found</h4><span class="pill-intent">High intent</span></div>
-            <p class="lead-q">"Planning a 7 day safari in Tanzania in August. Looking for a reliable operator. Budget ~ $4k per person."</p>
+            <div class="lead-card__src">
+              <span class="ic"><svg viewBox="0 0 24 24" fill="#fff"><path d="M12 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0zm5.01 4.744c.688 0 1.25.561 1.25 1.249a1.25 1.25 0 0 1-2.498.056l-2.597-.547-.8 3.747c1.824.07 3.48.632 4.674 1.488.308-.309.73-.491 1.207-.491.968 0 1.754.786 1.754 1.754 0 .716-.435 1.333-1.01 1.614a3.111 3.111 0 0 1 .042.52c0 2.694-3.13 4.87-7.004 4.87-3.874 0-7.004-2.176-7.004-4.87 0-.183.015-.366.043-.534A1.748 1.748 0 0 1 4.028 12c0-.968.786-1.754 1.754-1.754.463 0 .898.196 1.207.49 1.207-.883 2.878-1.43 4.744-1.487l.885-4.182a.342.342 0 0 1 .14-.197.35.35 0 0 1 .238-.042l2.906.617a1.214 1.214 0 0 1 1.108-.701z"/></svg></span>
+              <div><div class="nm">Reddit</div><div class="sub">r/travel</div></div>
+            </div>
+            <p class="lead-q">Planning a 7 day safari in Tanzania in August. Looking for a reliable operator. Budget ~ $4k per person.</p>
             <div class="lead-grid">
               <div class="lead-cell"><div class="k">Destination</div><div class="v">Tanzania</div></div>
+              <div class="lead-cell"><div class="k">Dates</div><div class="v">Aug 10–17</div></div>
               <div class="lead-cell"><div class="k">Budget</div><div class="v">$4,000 pp</div></div>
+              <div class="lead-cell"><div class="k">Group size</div><div class="v">2 adults</div></div>
+              <div class="lead-cell"><div class="k">Trip type</div><div class="v">Safari</div></div>
               <div class="lead-cell lead-cell--score"><div class="k">Lead score</div><div class="v">92/100</div></div>
             </div>
           </div>
@@ -292,15 +319,21 @@
         </div>
       </article>
 
-      <!-- Guide 2 -->
+      <!-- Guide 2 · Full social-listening mockup -->
       <article class="bcard bcard--listen">
         <div class="bcard__media media--dark">
           <div class="listen">
-            <div>
-              <div class="plat"><b style="background:#FF4500;"></b><span>Reddit</span></div>
-              <div class="plat"><b style="background:#34E0A1;"></b><span>TripAdvisor</span></div>
-              <div class="plat"><b style="background:#B92B27;"></b><span>Quora</span></div>
-              <div class="plat" style="margin-bottom:0;"><b style="background:#1877F2;"></b><span>Facebook</span></div>
+            <div class="listen__plats">
+              <div class="plat"><span class="ic" style="background:#FF4500;"><svg viewBox="0 0 24 24" fill="#fff"><path d="M12 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0zm5.01 4.744c.688 0 1.25.561 1.25 1.249a1.25 1.25 0 0 1-2.498.056l-2.597-.547-.8 3.747c1.824.07 3.48.632 4.674 1.488.308-.309.73-.491 1.207-.491.968 0 1.754.786 1.754 1.754 0 .716-.435 1.333-1.01 1.614a3.111 3.111 0 0 1 .042.52c0 2.694-3.13 4.87-7.004 4.87-3.874 0-7.004-2.176-7.004-4.87 0-.183.015-.366.043-.534A1.748 1.748 0 0 1 4.028 12c0-.968.786-1.754 1.754-1.754.463 0 .898.196 1.207.49 1.207-.883 2.878-1.43 4.744-1.487l.885-4.182a.342.342 0 0 1 .14-.197.35.35 0 0 1 .238-.042l2.906.617a1.214 1.214 0 0 1 1.108-.701z"/></svg></span><span>Reddit</span></div>
+              <div class="plat"><span class="ic" style="background:#34E0A1;"><svg viewBox="0 0 24 24"><circle cx="6.5" cy="12" r="5.8" fill="#fff"/><circle cx="6.5" cy="12" r="2.6" fill="#34E0A1"/><circle cx="17.5" cy="12" r="5.8" fill="#fff"/><circle cx="17.5" cy="12" r="2.6" fill="#34E0A1"/></svg></span><span>TripAdvisor</span></div>
+              <div class="plat"><span class="ic" style="background:#B92B27;"><svg viewBox="0 0 24 24" fill="#fff"><path d="M12 0C5.373 0 0 5.372 0 12c0 6.628 5.373 12 12 12 6.628 0 12-5.372 12-12 0-6.628-5.372-12-12-12zm0 4.5c2.9 0 5.05 2.34 5.05 5.63 0 1.3-.38 2.49-1 3.43l.72.73-1.08 1.06-.72-.71c-.92.63-2.02 1-3.23 1H12c-2.9 0-5.05-2.34-5.05-5.63S9.1 4.5 12 4.5z"/></svg></span><span>Quora</span></div>
+              <div class="plat"><span class="ic" style="background:#1877F2;"><svg viewBox="0 0 24 24" fill="#fff"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg></span><span>Facebook</span></div>
+              <div class="plat"><span class="ic" style="background:#000;"><svg viewBox="0 0 24 24" fill="#fff"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg></span><span>X (Twitter)</span></div>
+            </div>
+            <div class="listen__msgs">
+              <div class="msg"><p>Serengeti in June – any recommendations?</p><time>2m ago</time></div>
+              <div class="msg"><p>Best safari operator for first-time visitors?</p><time>5m ago</time></div>
+              <div class="msg"><p>Family safari in Tanzania – need advice</p><time>8m ago</time></div>
             </div>
             <div class="detect">
               <div class="detect__title">Wandar Detection</div>
@@ -320,16 +353,16 @@
         </div>
       </article>
 
-      <!-- Guide 3 -->
+      <!-- Guide 3 · Full booking pipeline mockup -->
       <article class="bcard bcard--bookings">
         <div class="bcard__media media--dusk">
           <div class="pipe">
             <div class="pipe__row">
-              <div class="pstep"><div class="pstep__hd"><span class="pstep__n">1</span><span class="pstep__lbl">Enquiry</span></div><div class="pcell"><div class="t">Safari in Kenya</div><div class="s">2 adults · Aug</div></div></div>
-              <div class="pstep"><div class="pstep__hd"><span class="pstep__n">2</span><span class="pstep__lbl">Drafted</span></div><div class="pcell"><div class="t">AI draft ready</div><div class="s">Reply created ✓</div></div></div>
-              <div class="pstep"><div class="pstep__hd"><span class="pstep__n">3</span><span class="pstep__lbl">Proposal</span></div><div class="pcell"><div class="t">7 Day Safari</div><div class="s">Maasai Mara</div></div></div>
-              <div class="pstep"><div class="pstep__hd"><span class="pstep__n">4</span><span class="pstep__lbl">Follow-up</span></div><div class="pcell"><div class="t">In 2 days</div><div class="s">Reminder set</div></div></div>
-              <div class="pstep pstep--final"><div class="pstep__hd"><span class="pstep__n">$</span><span class="pstep__lbl">Booking</span></div><div class="pcell pcell--final"><span class="score-badge">96/100</span><div class="stars">★★★★☆</div></div></div>
+              <div class="pstep"><div class="pstep__hd"><span class="pstep__n">1</span><span class="pstep__lbl">Enquiry Received</span></div><div class="pcell"><div class="t">Safari in Kenya</div><div class="s">2 adults · Aug</div><span class="pintent">High intent</span></div></div>
+              <div class="pstep"><div class="pstep__hd"><span class="pstep__n">2</span><span class="pstep__lbl">Response Drafted</span></div><div class="pcell"><div class="t">AI draft ready</div><div class="s">Personalized reply created ✓</div></div></div>
+              <div class="pstep"><div class="pstep__hd"><span class="pstep__n">3</span><span class="pstep__lbl">Proposal Sent</span></div><div class="pcell"><div class="t">7 Day Safari</div><div class="s">Maasai Mara</div><div class="s" style="margin-top:6px;">📄 PDF</div></div></div>
+              <div class="pstep"><div class="pstep__hd"><span class="pstep__n">4</span><span class="pstep__lbl">Follow-up Scheduled</span></div><div class="pcell"><div class="t">Follow up in 2 days</div><div class="s">Reminder set</div></div></div>
+              <div class="pstep pstep--final"><div class="pstep__hd"><span class="pstep__n">$</span><span class="pstep__lbl">Booking Opportunity</span></div><div class="pcell pcell--final"><div class="s" style="margin-bottom:4px;">Score</div><span class="score-badge">96/100</span><div class="stars">★★★★☆</div></div></div>
             </div>
             <div class="pipe__foot">From inquiry to booking. Faster.</div>
           </div>
