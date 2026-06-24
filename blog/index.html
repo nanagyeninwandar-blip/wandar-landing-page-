@@ -27,10 +27,11 @@
   <script src="../assets/js/modals.js"></script>
   <script src="../assets/js/nav.js"></script>
   <style>
-    .blog-hero { background: var(--off-white); padding: 80px 0 60px; }
-    .blog-hero__eyebrow { font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.12em; color: var(--safari-primary); margin-bottom: 16px; }
-    .blog-hero__headline { font-size: clamp(28px, 3.5vw, 44px); font-weight: 800; color: var(--text-primary); line-height: 1.15; margin-bottom: 16px; }
-    .blog-hero__sub { font-size: 17px; color: var(--text-secondary); max-width: 560px; }
+    .blog-hero { background: var(--off-white); padding: 152px 0 104px; }
+    .blog-hero__eyebrow { font-size: 13px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.12em; color: var(--safari-primary); margin-bottom: 20px; }
+    .blog-hero__headline { font-size: clamp(34px, 4.4vw, 56px); font-weight: 800; color: var(--text-primary); line-height: 1.1; margin-bottom: 22px; max-width: 820px; }
+    .blog-hero__sub { font-size: 19px; line-height: 1.6; color: var(--text-secondary); max-width: 640px; }
+    @media (max-width: 640px) { .blog-hero { padding: 116px 0 72px; } }
     .blog-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 32px; padding: 80px 0; }
     .blog-card { background: var(--white); border: 1px solid var(--border); border-left: 3px solid var(--safari-secondary); border-radius: var(--radius-lg); padding: 32px; display: flex; flex-direction: column; transition: transform 150ms ease, box-shadow 150ms ease; }
     .blog-card:hover { transform: translateY(-4px); box-shadow: 0 12px 32px rgba(0,0,0,0.09); }
