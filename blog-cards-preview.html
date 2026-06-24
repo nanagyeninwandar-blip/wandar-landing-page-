@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Blog Cards — Preview (NOT deployed)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap" rel="stylesheet" />
+<style>
+  :root{
+    --safari-primary:#1a7373;
+    --safari-secondary:#c45911;
+    --text-primary:#1a1a1a;
+    --text-secondary:#525252;
+    --text-muted:#737373;
+    --off-white:#FDF8F0;
+    --white:#ffffff;
+    --border:#E5E7EB;
+    --radius-md:12px;
+    --radius-lg:16px;
+    --radius-pill:999px;
+    --font:'Plus Jakarta Sans',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  body{font-family:var(--font);background:var(--off-white);color:var(--text-secondary);-webkit-font-smoothing:antialiased;padding:64px 24px;}
+  .preview-note{max-width:1180px;margin:0 auto 40px;font-size:13px;color:var(--text-muted);background:#fff8e6;border:1px solid #f0d98a;border-radius:8px;padding:12px 16px;}
+  .preview-note strong{color:#92660a;}
+  .wrap{max-width:1180px;margin:0 auto;display:flex;flex-direction:column;gap:32px;}
+
+  /* ── Card shell ── */
+  .bcard{
+    display:grid;grid-template-columns:46% 54%;
+    background:var(--white);border:1px solid var(--border);
+    border-radius:var(--radius-lg);overflow:hidden;
+    box-shadow:0 4px 20px rgba(0,0,0,0.04);
+    transition:transform 160ms ease,box-shadow 160ms ease;
+  }
+  .bcard:hover{transform:translateY(-3px);box-shadow:0 16px 40px rgba(0,0,0,0.10);}
+  .bcard__media{position:relative;min-height:360px;display:flex;align-items:center;justify-content:center;padding:36px;}
+  .bcard__body{position:relative;padding:48px 56px;display:flex;flex-direction:column;justify-content:center;}
+  .bcard__eyebrow{font-size:12px;font-weight:800;letter-spacing:0.14em;text-transform:uppercase;margin-bottom:18px;}
+  .bcard__title{font-size:32px;line-height:1.18;font-weight:800;color:var(--text-primary);letter-spacing:-0.02em;margin-bottom:18px;}
+  .bcard__excerpt{font-size:16px;line-height:1.65;color:var(--text-secondary);margin-bottom:26px;max-width:30em;}
+  .bcard__link{font-size:15px;font-weight:700;color:var(--safari-primary);text-decoration:none;display:inline-flex;align-items:center;gap:8px;}
+  .bcard__link:hover{gap:12px;}
+  .bcard--bookings .bcard__link{color:var(--safari-secondary);}
+  .bcard__readtime{position:absolute;top:32px;right:40px;display:inline-flex;align-items:center;gap:7px;font-size:11px;font-weight:700;letter-spacing:0.08em;color:var(--text-muted);background:var(--off-white);border:1px solid var(--border);border-radius:var(--radius-pill);padding:7px 14px;text-transform:uppercase;}
+  .bcard__readtime svg{width:13px;height:13px;}
+
+  /* accent edge bars */
+  .bcard--lead{border-left:4px solid var(--safari-primary);}
+  .bcard--bookings{border-left:4px solid var(--safari-secondary);}
+
+  /* ── Media backgrounds ── */
+  .media--savanna{background:linear-gradient(160deg,#f6c66b 0%,#e89a4d 38%,#c06a35 70%,#7d4327 100%);}
+  .media--savanna::after{content:"";position:absolute;inset:0;background:
+     radial-gradient(circle at 22% 30%,rgba(255,236,180,0.55),transparent 42%),
+     radial-gradient(circle at 80% 85%,rgba(60,30,15,0.35),transparent 55%);}
+  .media--dusk{background:linear-gradient(160deg,#e7a85a 0%,#c9743a 42%,#8a4a28 72%,#3b2317 100%);}
+  .media--dusk::after{content:"";position:absolute;inset:0;background:radial-gradient(circle at 30% 25%,rgba(255,225,160,0.5),transparent 45%);}
+  .media--dark{background:radial-gradient(circle at 70% 50%,#0e3b3b 0%,#082a2a 55%,#041c1c 100%);}
+  .bcard__media > *{position:relative;z-index:2;}
+
+  /* ════ MOCKUP 1 · New Lead Found ════ */
+  .lead-card{width:100%;max-width:380px;background:#fff;border-radius:14px;box-shadow:0 18px 40px rgba(0,0,0,0.22);padding:18px 18px 20px;}
+  .lead-card__head{display:flex;align-items:center;justify-content:space-between;margin-bottom:14px;}
+  .lead-card__head h4{font-size:15px;font-weight:800;color:var(--text-primary);}
+  .pill-intent{font-size:10px;font-weight:700;color:#0f7a4f;background:#e3f6ec;border-radius:var(--radius-pill);padding:4px 9px;}
+  .lead-card__src{display:flex;align-items:center;gap:8px;margin-bottom:10px;}
+  .lead-card__src .ic{width:22px;height:22px;border-radius:50%;display:flex;align-items:center;justify-content:center;background:#FF4500;flex:none;}
+  .lead-card__src .ic svg{width:14px;height:14px;}
+  .lead-card__src .nm{font-size:12px;font-weight:700;color:var(--text-primary);line-height:1.1;}
+  .lead-card__src .sub{font-size:11px;color:var(--text-muted);}
+  .lead-card__quote{font-size:13px;line-height:1.5;color:var(--text-secondary);margin-bottom:14px;}
+  .lead-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px;}
+  .lead-cell{border:1px solid var(--border);border-radius:8px;padding:8px 9px;}
+  .lead-cell .k{font-size:9px;font-weight:700;letter-spacing:0.05em;text-transform:uppercase;color:var(--text-muted);margin-bottom:3px;}
+  .lead-cell .v{font-size:12px;font-weight:700;color:var(--text-primary);}
+  .lead-cell--score{border-color:var(--safari-primary);background:rgba(26,115,115,0.06);}
+  .lead-cell--score .v{color:var(--safari-primary);}
+
+  /* ════ MOCKUP 2 · Social listening / detection ════ */
+  .listen{display:grid;grid-template-columns:auto 1fr auto;gap:22px;align-items:center;width:100%;}
+  .listen__plats{display:flex;flex-direction:column;gap:10px;}
+  .plat{display:flex;align-items:center;gap:8px;background:rgba(255,255,255,0.07);border:1px solid rgba(255,255,255,0.12);border-radius:8px;padding:7px 12px 7px 9px;}
+  .plat .ic{width:20px;height:20px;border-radius:50%;display:flex;align-items:center;justify-content:center;flex:none;}
+  .plat .ic svg{width:13px;height:13px;}
+  .plat span{font-size:12px;font-weight:600;color:#dcecea;white-space:nowrap;}
+  .listen__msgs{display:flex;flex-direction:column;gap:10px;}
+  .msg{background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.1);border-radius:10px;padding:9px 12px;}
+  .msg p{font-size:12px;color:#eaf3f1;line-height:1.4;}
+  .msg time{font-size:10px;color:#7fa8a4;}
+  .detect{background:rgba(255,255,255,0.04);border:1px solid rgba(38,166,154,0.35);border-radius:12px;padding:16px 14px;text-align:center;width:150px;}
+  .detect__title{font-size:11px;font-weight:700;color:#bfe3df;margin-bottom:10px;}
+  .radar{width:84px;height:84px;border-radius:50%;margin:0 auto 12px;position:relative;background:radial-gradient(circle,rgba(38,166,154,0.18),transparent 70%);border:1px solid rgba(38,166,154,0.4);overflow:hidden;}
+  .radar::before,.radar::after{content:"";position:absolute;border:1px solid rgba(38,166,154,0.35);border-radius:50%;}
+  .radar::before{inset:20px;}
+  .radar::after{inset:34px;}
+  .radar__sweep{position:absolute;inset:0;background:conic-gradient(from 0deg,rgba(52,224,161,0.55),transparent 90deg);border-radius:50%;animation:spin 3s linear infinite;}
+  .radar__blip{position:absolute;top:26%;right:24%;width:7px;height:7px;border-radius:50%;background:#34e0a1;box-shadow:0 0 8px #34e0a1;z-index:2;}
+  @keyframes spin{to{transform:rotate(360deg);}}
+  .detect__hi{font-size:11px;font-weight:700;color:#fff;margin-bottom:2px;}
+  .detect__sub{font-size:10px;color:#8fbdb8;margin-bottom:12px;}
+  .detect__btn{display:inline-block;font-size:11px;font-weight:700;color:#04201f;background:#34e0a1;border-radius:var(--radius-pill);padding:7px 14px;}
+
+  /* ════ MOCKUP 3 · Booking pipeline ════ */
+  .pipe{width:100%;max-width:430px;background:#fff;border-radius:14px;box-shadow:0 18px 40px rgba(0,0,0,0.25);padding:16px;}
+  .pipe__row{display:grid;grid-template-columns:repeat(5,1fr);gap:7px;}
+  .pstep{text-align:left;}
+  .pstep__hd{display:flex;align-items:center;gap:5px;margin-bottom:8px;}
+  .pstep__n{width:15px;height:15px;border-radius:50%;background:var(--off-white);border:1px solid var(--border);font-size:9px;font-weight:700;color:var(--text-muted);display:flex;align-items:center;justify-content:center;flex:none;}
+  .pstep--final .pstep__n{background:var(--safari-secondary);color:#fff;border-color:var(--safari-secondary);}
+  .pstep__lbl{font-size:8.5px;font-weight:700;color:var(--text-primary);line-height:1.15;}
+  .pcell{border:1px solid var(--border);border-radius:7px;padding:7px 6px;min-height:74px;}
+  .pcell .t{font-size:9px;font-weight:700;color:var(--text-primary);line-height:1.25;margin-bottom:3px;}
+  .pcell .s{font-size:8px;color:var(--text-muted);line-height:1.3;}
+  .pcell--final{border-color:var(--safari-secondary);background:rgba(196,89,17,0.05);}
+  .score-badge{display:inline-block;font-size:12px;font-weight:800;color:#0f7a4f;background:#e3f6ec;border-radius:6px;padding:3px 8px;margin-bottom:5px;}
+  .stars{font-size:11px;color:var(--safari-secondary);letter-spacing:1px;}
+  .pintent{display:inline-block;font-size:8px;font-weight:700;color:var(--safari-primary);background:rgba(26,115,115,0.1);border-radius:4px;padding:2px 6px;margin-top:4px;}
+  .pipe__foot{margin-top:14px;padding-top:12px;border-top:1px dashed var(--border);text-align:center;font-size:11px;font-weight:700;color:var(--text-primary);}
+
+  /* responsive */
+  @media(max-width:860px){
+    .bcard{grid-template-columns:1fr;}
+    .bcard__media{min-height:300px;}
+    .bcard__body{padding:36px 28px;}
+    .bcard__title{font-size:25px;}
+    .bcard__readtime{position:static;margin-bottom:16px;align-self:flex-start;}
+    .listen{grid-template-columns:1fr;gap:14px;}
+    .detect{width:100%;}
+  }
+</style>
+</head>
+<body>
+
+<div class="preview-note">
+  <strong>PREVIEW ONLY — not committed, not deployed.</strong>
+  Recreated from your screenshot. The two photo backgrounds use a savanna-sunset gradient as a stand-in (no safari photos in the repo yet — easy to swap for real images later). Read times are placeholders (6/7/8 min). Review, then tell me to apply &amp; deploy.
+</div>
+
+<div class="wrap">
+
+  <!-- ════════ CARD 1 · LEAD GENERATION ════════ -->
+  <article class="bcard bcard--lead">
+    <div class="bcard__media media--savanna">
+      <div class="lead-card">
+        <div class="lead-card__head">
+          <h4>New Lead Found</h4>
+          <span class="pill-intent">High intent</span>
+        </div>
+        <div class="lead-card__src">
+          <span class="ic"><svg viewBox="0 0 24 24" fill="#fff"><path d="M12 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0zm5.01 4.744c.688 0 1.25.561 1.25 1.249a1.25 1.25 0 0 1-2.498.056l-2.597-.547-.8 3.747c1.824.07 3.48.632 4.674 1.488.308-.309.73-.491 1.207-.491.968 0 1.754.786 1.754 1.754 0 .716-.435 1.333-1.01 1.614a3.111 3.111 0 0 1 .042.52c0 2.694-3.13 4.87-7.004 4.87-3.874 0-7.004-2.176-7.004-4.87 0-.183.015-.366.043-.534A1.748 1.748 0 0 1 4.028 12c0-.968.786-1.754 1.754-1.754.463 0 .898.196 1.207.49 1.207-.883 2.878-1.43 4.744-1.487l.885-4.182a.342.342 0 0 1 .14-.197.35.35 0 0 1 .238-.042l2.906.617a1.214 1.214 0 0 1 1.108-.701zM9.25 12C8.561 12 8 12.562 8 13.25c0 .687.561 1.248 1.25 1.248.687 0 1.248-.561 1.248-1.249 0-.688-.561-1.249-1.249-1.249zm5.5 0c-.687 0-1.248.561-1.248 1.25 0 .687.561 1.248 1.249 1.248.688 0 1.249-.561 1.249-1.249 0-.687-.562-1.249-1.25-1.249z"/></svg></span>
+          <div><div class="nm">Reddit</div><div class="sub">r/travel</div></div>
+        </div>
+        <p class="lead-card__quote">Planning a 7 day safari in Tanzania in August. Looking for a reliable operator. Budget ~ $4k per person.</p>
+        <div class="lead-grid">
+          <div class="lead-cell"><div class="k">Destination</div><div class="v">Tanzania</div></div>
+          <div class="lead-cell"><div class="k">Dates</div><div class="v">Aug 10–17</div></div>
+          <div class="lead-cell"><div class="k">Budget</div><div class="v">$4,000 pp</div></div>
+          <div class="lead-cell"><div class="k">Group size</div><div class="v">2 adults</div></div>
+          <div class="lead-cell"><div class="k">Trip type</div><div class="v">Safari</div></div>
+          <div class="lead-cell lead-cell--score"><div class="k">Lead score</div><div class="v">92/100</div></div>
+        </div>
+      </div>
+    </div>
+    <div class="bcard__body">
+      <span class="bcard__readtime"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>6 min read</span>
+      <p class="bcard__eyebrow" style="color:var(--safari-primary);">Lead Generation</p>
+      <h2 class="bcard__title">How Safari Operators Can Find High-Quality Leads Online</h2>
+      <p class="bcard__excerpt">High-intent safari travelers are posting questions on Reddit, TripAdvisor, and Quora right now. Here's how to find them before your competitors do and turn those conversations into bookings.</p>
+      <a href="blog/how-safari-operators-find-leads-online.html" class="bcard__link">Read article →</a>
+    </div>
+  </article>
+
+  <!-- ════════ CARD 2 · SOCIAL LISTENING ════════ -->
+  <article class="bcard bcard--listen">
+    <div class="bcard__media media--dark">
+      <div class="listen">
+        <div class="listen__plats">
+          <div class="plat"><span class="ic" style="background:#FF4500;"><svg viewBox="0 0 24 24" fill="#fff"><path d="M12 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0zm5.01 4.744c.688 0 1.25.561 1.25 1.249a1.25 1.25 0 0 1-2.498.056l-2.597-.547-.8 3.747c1.824.07 3.48.632 4.674 1.488.308-.309.73-.491 1.207-.491.968 0 1.754.786 1.754 1.754 0 .716-.435 1.333-1.01 1.614a3.111 3.111 0 0 1 .042.52c0 2.694-3.13 4.87-7.004 4.87-3.874 0-7.004-2.176-7.004-4.87 0-.183.015-.366.043-.534A1.748 1.748 0 0 1 4.028 12c0-.968.786-1.754 1.754-1.754.463 0 .898.196 1.207.49 1.207-.883 2.878-1.43 4.744-1.487l.885-4.182a.342.342 0 0 1 .14-.197.35.35 0 0 1 .238-.042l2.906.617a1.214 1.214 0 0 1 1.108-.701z"/></svg></span><span>Reddit</span></div>
+          <div class="plat"><span class="ic" style="background:#34E0A1;"><svg viewBox="0 0 24 24"><circle cx="6.5" cy="12" r="5.8" fill="#fff"/><circle cx="6.5" cy="12" r="2.6" fill="#34E0A1"/><circle cx="17.5" cy="12" r="5.8" fill="#fff"/><circle cx="17.5" cy="12" r="2.6" fill="#34E0A1"/></svg></span><span>TripAdvisor</span></div>
+          <div class="plat"><span class="ic" style="background:#B92B27;"><svg viewBox="0 0 24 24" fill="#fff"><path d="M12 0C5.373 0 0 5.372 0 12c0 6.628 5.373 12 12 12 6.628 0 12-5.372 12-12 0-6.628-5.372-12-12-12zm0 4.5c2.9 0 5.05 2.34 5.05 5.63 0 1.3-.38 2.49-1 3.43l.72.73-1.08 1.06-.72-.71c-.92.63-2.02 1-3.23 1H12c-2.9 0-5.05-2.34-5.05-5.63S9.1 4.5 12 4.5z"/></svg></span><span>Quora</span></div>
+          <div class="plat"><span class="ic" style="background:#1877F2;"><svg viewBox="0 0 24 24" fill="#fff"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg></span><span>Facebook</span></div>
+          <div class="plat"><span class="ic" style="background:#000;"><svg viewBox="0 0 24 24" fill="#fff"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg></span><span>X (Twitter)</span></div>
+        </div>
+        <div class="listen__msgs">
+          <div class="msg"><p>Serengeti in June – any recommendations?</p><time>2m ago</time></div>
+          <div class="msg"><p>Best safari operator for first-time visitors?</p><time>5m ago</time></div>
+          <div class="msg"><p>Family safari in Tanzania – need advice</p><time>8m ago</time></div>
+        </div>
+        <div class="detect">
+          <div class="detect__title">Wandar Detection</div>
+          <div class="radar"><div class="radar__sweep"></div><div class="radar__blip"></div></div>
+          <div class="detect__hi">High intent detected</div>
+          <div class="detect__sub">3 new opportunities</div>
+          <span class="detect__btn">View Leads →</span>
+        </div>
+      </div>
+    </div>
+    <div class="bcard__body">
+      <span class="bcard__readtime"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>7 min read</span>
+      <p class="bcard__eyebrow" style="color:var(--safari-primary);">Social Listening</p>
+      <h2 class="bcard__title">Social Listening for Safari Operators: How to Find Travelers Before They Find You</h2>
+      <p class="bcard__excerpt">What social listening actually means for safari businesses, which platforms matter most, and why automated monitoring beats manual searching every time.</p>
+      <a href="blog/social-listening-for-safari-operators.html" class="bcard__link">Read article →</a>
+    </div>
+  </article>
+
+  <!-- ════════ CARD 3 · BOOKINGS ════════ -->
+  <article class="bcard bcard--bookings">
+    <div class="bcard__media media--dusk">
+      <div class="pipe">
+        <div class="pipe__row">
+          <div class="pstep">
+            <div class="pstep__hd"><span class="pstep__n">1</span><span class="pstep__lbl">Enquiry Received</span></div>
+            <div class="pcell"><div class="t">Safari in Kenya</div><div class="s">2 adults · Aug</div><span class="pintent">High intent</span></div>
+          </div>
+          <div class="pstep">
+            <div class="pstep__hd"><span class="pstep__n">2</span><span class="pstep__lbl">Response Drafted</span></div>
+            <div class="pcell"><div class="t">AI draft ready</div><div class="s">Personalized reply created ✓</div></div>
+          </div>
+          <div class="pstep">
+            <div class="pstep__hd"><span class="pstep__n">3</span><span class="pstep__lbl">Proposal Sent</span></div>
+            <div class="pcell"><div class="t">7 Day Safari</div><div class="s">Maasai Mara</div><div class="s" style="margin-top:6px;">📄 PDF</div></div>
+          </div>
+          <div class="pstep">
+            <div class="pstep__hd"><span class="pstep__n">4</span><span class="pstep__lbl">Follow-up Scheduled</span></div>
+            <div class="pcell"><div class="t">Follow up in 2 days</div><div class="s">Reminder set</div></div>
+          </div>
+          <div class="pstep pstep--final">
+            <div class="pstep__hd"><span class="pstep__n">$</span><span class="pstep__lbl">Booking Opportunity</span></div>
+            <div class="pcell pcell--final"><div class="s" style="margin-bottom:4px;">Score</div><span class="score-badge">96/100</span><div class="stars">★★★★☆</div></div>
+          </div>
+        </div>
+        <div class="pipe__foot">From inquiry to booking. Faster.</div>
+      </div>
+    </div>
+    <div class="bcard__body">
+      <span class="bcard__readtime"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>8 min read</span>
+      <p class="bcard__eyebrow" style="color:var(--safari-secondary);">Bookings</p>
+      <h2 class="bcard__title">How to Get More Safari Bookings: The Modern Operator's Playbook</h2>
+      <p class="bcard__excerpt">The modern safari traveler's research journey has changed. Being the first to respond to an inquiry, not the biggest advertiser, is now the #1 booking factor.</p>
+      <a href="blog/how-to-get-more-safari-bookings.html" class="bcard__link">Read article →</a>
+    </div>
+  </article>
+
+</div>
+</body>
+</html>
