@@ -129,6 +129,31 @@
   .lead-cell--score{border-color:var(--safari-primary);background:rgba(26,115,115,0.06);}
   .lead-cell--score .v{color:var(--safari-primary);}
 
+  /* social-listening detection mockup (dark) */
+  .media--dark{background:radial-gradient(circle at 70% 50%,#0e3b3b 0%,#082a2a 55%,#041c1c 100%);}
+  .listen{display:grid;grid-template-columns:auto 1fr auto;gap:18px;align-items:center;width:100%;}
+  .listen__plats{display:flex;flex-direction:column;gap:9px;}
+  .plat{display:flex;align-items:center;gap:8px;background:rgba(255,255,255,0.07);border:1px solid rgba(255,255,255,0.12);border-radius:8px;padding:6px 11px 6px 8px;}
+  .plat span{font-size:11.5px;font-weight:600;color:#dcecea;white-space:nowrap;}
+  .plat .ic{width:18px;height:18px;border-radius:50%;display:flex;align-items:center;justify-content:center;flex:none;}
+  .plat .ic svg{width:12px;height:12px;}
+  .listen__msgs{display:flex;flex-direction:column;gap:9px;}
+  .msg{background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.1);border-radius:10px;padding:8px 11px;}
+  .msg p{font-size:11.5px;color:#eaf3f1;line-height:1.4;}
+  .msg time{font-size:9.5px;color:#7fa8a4;}
+  .detect{background:rgba(255,255,255,0.04);border:1px solid rgba(38,166,154,0.35);border-radius:12px;padding:14px 12px;text-align:center;width:140px;}
+  .detect__title{font-size:11px;font-weight:700;color:#bfe3df;margin-bottom:10px;}
+  .radar{width:80px;height:80px;border-radius:50%;margin:0 auto 12px;position:relative;background:radial-gradient(circle,rgba(38,166,154,0.18),transparent 70%);border:1px solid rgba(38,166,154,0.4);overflow:hidden;}
+  .radar::before,.radar::after{content:"";position:absolute;border:1px solid rgba(38,166,154,0.35);border-radius:50%;}
+  .radar::before{inset:18px;} .radar::after{inset:32px;}
+  .radar__sweep{position:absolute;inset:0;background:conic-gradient(from 0deg,rgba(52,224,161,0.55),transparent 90deg);border-radius:50%;animation:spin 3s linear infinite;}
+  .radar__blip{position:absolute;top:26%;right:24%;width:7px;height:7px;border-radius:50%;background:#34e0a1;box-shadow:0 0 8px #34e0a1;}
+  @keyframes spin{to{transform:rotate(360deg);}}
+  .detect__hi{font-size:11px;font-weight:700;color:#fff;}
+  .detect__sub{font-size:10px;color:#8fbdb8;margin-bottom:10px;}
+  .detect__btn{display:inline-block;font-size:11px;font-weight:700;color:#04201f;background:#34e0a1;border-radius:var(--radius-pill);padding:7px 14px;}
+  .featured__media--dark{background:radial-gradient(circle at 70% 50%,#0e3b3b 0%,#082a2a 55%,#041c1c 100%);padding:28px;}
+
   /* pipeline mockup */
   .pipe{width:100%;max-width:430px;background:#fff;border-radius:14px;box-shadow:0 18px 40px rgba(0,0,0,0.25);padding:16px;}
   .pipe__row{display:grid;grid-template-columns:repeat(5,1fr);gap:7px;}
@@ -160,7 +185,7 @@
 <div class="preview-note">
   <strong>PREVIEW ONLY — Guides page (separate from Blog), not committed/deployed.</strong>
   Order: Guides eyebrow → header text → chips/search → Featured (Social Listening Playbook) → Latest guides → Main rich cards.
-  The Social Listening rich-card cover is a <em>placeholder recreation</em> of your image 4 (no logo) — send me the real file and I'll drop it in.
+  The Social Listening visuals use the dark detection mockup (the previous image). Send the real illustration file anytime and I'll swap it in.
 </div>
 
 <section class="ghero">
@@ -188,14 +213,26 @@
 
     <!-- 4 · Featured: Social Listening Playbook -->
     <article class="featured">
-      <div class="featured__media">
-        <!-- placeholder recreation of image 4 (no logo) -->
-        <div class="sl-cover">
-          <div class="sl-cover__title">Social Listening <em>for</em> Safari Operators: <em>the</em> Complete Playbook</div>
-          <div class="sl-cover__flow">
-            <div class="sl-step"><span class="sl-step__ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 18v-6a9 9 0 0 1 18 0v6"/><path d="M21 19a2 2 0 0 1-2 2h-1a2 2 0 0 1-2-2v-3a2 2 0 0 1 2-2h3zM3 19a2 2 0 0 0 2 2h1a2 2 0 0 0 2-2v-3a2 2 0 0 0-2-2H3z"/></svg></span><span class="sl-step__box"><span class="sl-step__n">1.</span>Detect safari demand 24/7</span></div>
-            <div class="sl-step"><span class="sl-step__ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="4"/><circle cx="12" cy="12" r="0.5" fill="currentColor"/></svg></span><span class="sl-step__box"><span class="sl-step__n">2.</span>Score booking intent</span></div>
-            <div class="sl-step sl-step--win"><span class="sl-step__ic" style="background:var(--safari-secondary);"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 17h2l1.5-4h11L19 17h2"/><circle cx="7.5" cy="18.5" r="1.5"/><circle cx="16.5" cy="18.5" r="1.5"/></svg></span><span class="sl-step__box"><span class="sl-step__n">3.</span>Win booking</span></div>
+      <div class="featured__media featured__media--dark">
+        <div class="listen">
+          <div class="listen__plats">
+            <div class="plat"><span class="ic" style="background:#FF4500;"><svg viewBox="0 0 24 24" fill="#fff"><path d="M12 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0zm5.01 4.744c.688 0 1.25.561 1.25 1.249a1.25 1.25 0 0 1-2.498.056l-2.597-.547-.8 3.747c1.824.07 3.48.632 4.674 1.488.308-.309.73-.491 1.207-.491.968 0 1.754.786 1.754 1.754 0 .716-.435 1.333-1.01 1.614a3.111 3.111 0 0 1 .042.52c0 2.694-3.13 4.87-7.004 4.87-3.874 0-7.004-2.176-7.004-4.87 0-.183.015-.366.043-.534A1.748 1.748 0 0 1 4.028 12c0-.968.786-1.754 1.754-1.754.463 0 .898.196 1.207.49 1.207-.883 2.878-1.43 4.744-1.487l.885-4.182a.342.342 0 0 1 .14-.197.35.35 0 0 1 .238-.042l2.906.617a1.214 1.214 0 0 1 1.108-.701z"/></svg></span><span>Reddit</span></div>
+            <div class="plat"><span class="ic" style="background:#34E0A1;"><svg viewBox="0 0 24 24"><circle cx="6.5" cy="12" r="5.8" fill="#fff"/><circle cx="6.5" cy="12" r="2.6" fill="#34E0A1"/><circle cx="17.5" cy="12" r="5.8" fill="#fff"/><circle cx="17.5" cy="12" r="2.6" fill="#34E0A1"/></svg></span><span>TripAdvisor</span></div>
+            <div class="plat"><span class="ic" style="background:#B92B27;"><svg viewBox="0 0 24 24" fill="#fff"><path d="M12 0C5.373 0 0 5.372 0 12c0 6.628 5.373 12 12 12 6.628 0 12-5.372 12-12 0-6.628-5.372-12-12-12zm0 4.5c2.9 0 5.05 2.34 5.05 5.63 0 1.3-.38 2.49-1 3.43l.72.73-1.08 1.06-.72-.71c-.92.63-2.02 1-3.23 1H12c-2.9 0-5.05-2.34-5.05-5.63S9.1 4.5 12 4.5z"/></svg></span><span>Quora</span></div>
+            <div class="plat"><span class="ic" style="background:#1877F2;"><svg viewBox="0 0 24 24" fill="#fff"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg></span><span>Facebook</span></div>
+            <div class="plat"><span class="ic" style="background:#000;"><svg viewBox="0 0 24 24" fill="#fff"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg></span><span>X (Twitter)</span></div>
+          </div>
+          <div class="listen__msgs">
+            <div class="msg"><p>Serengeti in June – any recommendations?</p><time>2m ago</time></div>
+            <div class="msg"><p>Best safari operator for first-time visitors?</p><time>5m ago</time></div>
+            <div class="msg"><p>Family safari in Tanzania – need advice</p><time>8m ago</time></div>
+          </div>
+          <div class="detect">
+            <div class="detect__title">Wandar Detection</div>
+            <div class="radar"><div class="radar__sweep"></div><div class="radar__blip"></div></div>
+            <div class="detect__hi">High intent detected</div>
+            <div class="detect__sub">3 new opportunities</div>
+            <span class="detect__btn">View Leads →</span>
           </div>
         </div>
         <span class="featured__media-label">Featured guide</span>
@@ -281,15 +318,28 @@
         </div>
       </article>
 
-      <!-- Social listening guide · cover replaced with illustration (no logo) -->
+      <!-- Social listening guide · dark detection mockup -->
       <article class="bcard bcard--listen">
-        <div class="bcard__media bcard__media--cover">
-          <div class="sl-cover">
-            <div class="sl-cover__title">Social Listening <em>for</em> Safari Operators: <em>the</em> Complete Playbook</div>
-            <div class="sl-cover__flow">
-              <div class="sl-step"><span class="sl-step__ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 18v-6a9 9 0 0 1 18 0v6"/><path d="M21 19a2 2 0 0 1-2 2h-1a2 2 0 0 1-2-2v-3a2 2 0 0 1 2-2h3zM3 19a2 2 0 0 0 2 2h1a2 2 0 0 0 2-2v-3a2 2 0 0 0-2-2H3z"/></svg></span><span class="sl-step__box"><span class="sl-step__n">1.</span>Detect safari demand 24/7</span></div>
-              <div class="sl-step"><span class="sl-step__ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="4"/></svg></span><span class="sl-step__box"><span class="sl-step__n">2.</span>Score booking intent</span></div>
-              <div class="sl-step sl-step--win"><span class="sl-step__ic" style="background:var(--safari-secondary);"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 17h2l1.5-4h11L19 17h2"/><circle cx="7.5" cy="18.5" r="1.5"/><circle cx="16.5" cy="18.5" r="1.5"/></svg></span><span class="sl-step__box"><span class="sl-step__n">3.</span>Win booking</span></div>
+        <div class="bcard__media media--dark">
+          <div class="listen">
+            <div class="listen__plats">
+              <div class="plat"><span class="ic" style="background:#FF4500;"><svg viewBox="0 0 24 24" fill="#fff"><path d="M12 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0zm5.01 4.744c.688 0 1.25.561 1.25 1.249a1.25 1.25 0 0 1-2.498.056l-2.597-.547-.8 3.747c1.824.07 3.48.632 4.674 1.488.308-.309.73-.491 1.207-.491.968 0 1.754.786 1.754 1.754 0 .716-.435 1.333-1.01 1.614a3.111 3.111 0 0 1 .042.52c0 2.694-3.13 4.87-7.004 4.87-3.874 0-7.004-2.176-7.004-4.87 0-.183.015-.366.043-.534A1.748 1.748 0 0 1 4.028 12c0-.968.786-1.754 1.754-1.754.463 0 .898.196 1.207.49 1.207-.883 2.878-1.43 4.744-1.487l.885-4.182a.342.342 0 0 1 .14-.197.35.35 0 0 1 .238-.042l2.906.617a1.214 1.214 0 0 1 1.108-.701z"/></svg></span><span>Reddit</span></div>
+              <div class="plat"><span class="ic" style="background:#34E0A1;"><svg viewBox="0 0 24 24"><circle cx="6.5" cy="12" r="5.8" fill="#fff"/><circle cx="6.5" cy="12" r="2.6" fill="#34E0A1"/><circle cx="17.5" cy="12" r="5.8" fill="#fff"/><circle cx="17.5" cy="12" r="2.6" fill="#34E0A1"/></svg></span><span>TripAdvisor</span></div>
+              <div class="plat"><span class="ic" style="background:#B92B27;"><svg viewBox="0 0 24 24" fill="#fff"><path d="M12 0C5.373 0 0 5.372 0 12c0 6.628 5.373 12 12 12 6.628 0 12-5.372 12-12 0-6.628-5.372-12-12-12zm0 4.5c2.9 0 5.05 2.34 5.05 5.63 0 1.3-.38 2.49-1 3.43l.72.73-1.08 1.06-.72-.71c-.92.63-2.02 1-3.23 1H12c-2.9 0-5.05-2.34-5.05-5.63S9.1 4.5 12 4.5z"/></svg></span><span>Quora</span></div>
+              <div class="plat"><span class="ic" style="background:#1877F2;"><svg viewBox="0 0 24 24" fill="#fff"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg></span><span>Facebook</span></div>
+              <div class="plat"><span class="ic" style="background:#000;"><svg viewBox="0 0 24 24" fill="#fff"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg></span><span>X (Twitter)</span></div>
+            </div>
+            <div class="listen__msgs">
+              <div class="msg"><p>Serengeti in June – any recommendations?</p><time>2m ago</time></div>
+              <div class="msg"><p>Best safari operator for first-time visitors?</p><time>5m ago</time></div>
+              <div class="msg"><p>Family safari in Tanzania – need advice</p><time>8m ago</time></div>
+            </div>
+            <div class="detect">
+              <div class="detect__title">Wandar Detection</div>
+              <div class="radar"><div class="radar__sweep"></div><div class="radar__blip"></div></div>
+              <div class="detect__hi">High intent detected</div>
+              <div class="detect__sub">3 new opportunities</div>
+              <span class="detect__btn">View Leads →</span>
             </div>
           </div>
         </div>
