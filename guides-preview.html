@@ -25,10 +25,11 @@
   .gbanner__wave{position:absolute;top:-30%;right:-6%;width:60%;height:160%;
     background:conic-gradient(from 210deg at 60% 40%,rgba(42,165,165,0.0),rgba(120,220,210,0.55),rgba(255,255,255,0.35),rgba(196,89,17,0.45),rgba(42,165,165,0.0));
     border-radius:0 0 0 55%;filter:blur(6px);opacity:0.85;transform:rotate(-6deg);pointer-events:none;}
-  .gbanner__inner{position:relative;z-index:2;}
-  .gbanner__eyebrow{font-size:13px;font-weight:700;text-transform:uppercase;letter-spacing:0.16em;color:rgba(255,255,255,0.75);margin-bottom:16px;}
-  .gbanner__title{font-size:clamp(52px,7.5vw,92px);font-weight:800;letter-spacing:-0.03em;line-height:1;color:#fff;margin-bottom:18px;}
-  .gbanner__sub{font-size:18px;line-height:1.55;color:rgba(255,255,255,0.82);max-width:600px;}
+  .gbanner__grid{position:relative;z-index:2;display:grid;grid-template-columns:1fr minmax(260px,360px);gap:48px;align-items:center;}
+  .gbanner__title{font-size:clamp(52px,7.5vw,92px);font-weight:800;letter-spacing:-0.03em;line-height:1;color:#fff;margin-bottom:14px;}
+  .gbanner__subtitle{font-size:clamp(19px,2.3vw,27px);font-weight:600;line-height:1.2;color:rgba(255,255,255,0.9);}
+  .gbanner__desc{font-size:17px;line-height:1.6;color:rgba(255,255,255,0.82);}
+  @media(max-width:760px){.gbanner__grid{grid-template-columns:1fr;gap:20px;}}
 
   /* ════ Filter bar (cream, below banner) ════ */
   .filterbar{background:var(--off-white);padding:28px 0 8px;}
@@ -172,10 +173,14 @@
 <section class="gbanner">
   <div class="gbanner__wave" aria-hidden="true"></div>
   <div class="container">
-    <div class="gbanner__inner">
-      <p class="gbanner__eyebrow">Resources for Luxury Safari Operators</p>
-      <h1 class="gbanner__title">Guides</h1>
-      <p class="gbanner__sub">In-depth guides on finding online leads, monitoring social platforms, and beating competitors to win more safari bookings.</p>
+    <div class="gbanner__grid">
+      <div class="gbanner__left">
+        <h1 class="gbanner__title">Guides</h1>
+        <p class="gbanner__subtitle">Resources for Luxury Safari Operators</p>
+      </div>
+      <div class="gbanner__right">
+        <p class="gbanner__desc">In-depth guides on finding online leads, monitoring social platforms, and beating competitors to win more safari bookings.</p>
+      </div>
     </div>
   </div>
 </section>
