@@ -4,7 +4,7 @@
    ============================================================ */
 
 /* ── GOOGLE FONTS ───────────────────────────────────────────── */
-@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400&family=Righteous&display=swap');
+/* Font loaded via <link> in HTML — @import removed to eliminate render-blocking chain */
 
 /* ── DESIGN TOKENS ──────────────────────────────────────────── */
 :root {
@@ -1204,23 +1204,12 @@ section[aria-label="How intent scoring works"] {
   .float-card-3 { right: -10px; top: 30%; }
 }
 
-/* Hero scroll-in animations */
+/* Hero mockup wrapper entrance — text is always visible; only the product screenshot animates in */
 @media (prefers-reduced-motion: no-preference) {
-  .hero__content > * {
-    opacity: 0;
-    transform: translateY(20px);
-    transition: opacity 0.5s ease, transform 0.5s ease;
-  }
-
-  body.hero-loaded .hero__content .hero__badge    { opacity: 1; transform: none; transition-delay: 0.1s; }
-  body.hero-loaded .hero__content .hero__headline { opacity: 1; transform: none; transition-delay: 0.25s; }
-  body.hero-loaded .hero__content .hero__subhead  { opacity: 1; transform: none; transition-delay: 0.4s; }
-  body.hero-loaded .hero__content .hero__cta-group{ opacity: 1; transform: none; transition-delay: 0.55s; }
-
   .hero__mockup-wrapper {
     opacity: 0;
     transform: translateY(24px);
-    transition: opacity 0.6s ease 0.5s, transform 0.6s ease 0.5s;
+    transition: opacity 0.6s ease 0.3s, transform 0.6s ease 0.3s;
   }
   body.hero-loaded .hero__mockup-wrapper {
     opacity: 1;
