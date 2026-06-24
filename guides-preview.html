@@ -174,15 +174,14 @@
   .explore-demo{background:#fff;border-top:1px solid var(--border);margin-top:24px;padding:64px 0 80px;}
   .explore-demo__heading{font-size:clamp(22px,2.5vw,30px);font-weight:800;color:var(--text-primary);margin-bottom:8px;}
   .explore-demo__sub{font-size:15px;color:var(--text-muted);margin-bottom:40px;}
-  .vgrid{display:grid;grid-template-columns:repeat(4,1fr);gap:24px;}
+  .vgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;}
   .vcard{background:#fff;border-radius:14px;overflow:hidden;display:flex;flex-direction:column;text-decoration:none;box-shadow:0 1px 4px rgba(0,0,0,0.07);transition:transform 160ms ease,box-shadow 160ms ease;}
   .vcard:hover{transform:translateY(-5px);box-shadow:0 16px 36px rgba(0,0,0,0.12);}
-  .vcard__img{height:170px;position:relative;overflow:hidden;}
-  .vcard__img::after{content:"";position:absolute;inset:0;background:radial-gradient(circle at 30% 30%,rgba(255,255,255,0.18),transparent 60%);}
-  .vimg--ops{background:linear-gradient(150deg,#1a7373,#0e3b3b);}
-  .vimg--sales{background:linear-gradient(150deg,#c45911,#7d4327);}
-  .vimg--tech{background:linear-gradient(150deg,#2563a8,#0e2a4a);}
-  .vimg--listen{background:linear-gradient(150deg,#0e3b3b,#041c1c);}
+  .vcard__img{height:184px;position:relative;overflow:hidden;display:flex;align-items:center;justify-content:center;}
+  .vcover{position:relative;z-index:2;transform-origin:center;}
+  .vcover--lead{transform:scale(0.5);}
+  .vcover--listen{transform:scale(0.56);}
+  .vcover--pipe{transform:scale(0.52);}
   .vcard__body{padding:18px 18px 22px;display:flex;flex-direction:column;flex:1;}
   .vcard__cat{font-size:12px;font-weight:700;margin-bottom:9px;letter-spacing:0.01em;}
   .vcat--ops{color:var(--safari-primary);}
@@ -213,7 +212,7 @@
 <div class="preview-note">
   <strong>PREVIEW ONLY — Guides page (separate from Blog), not committed/deployed.</strong>
   Order: Guides eyebrow → header text → chips/search → Featured (Social Listening Playbook) → Latest guides → Main rich cards.
-  The Social Listening visuals use the dark detection mockup (the previous image). Send the real illustration file anytime and I'll swap it in.
+  Latest guides shows ONLY the 3 real guides (April 2026, real read times) — in production: ordered by publication date, latest 5. The "Explore More Guides" block at the very bottom is a guide-detail-page section (not the index), with covers reusing the rich-card mockups.
 </div>
 
 <section class="ghero">
@@ -275,7 +274,7 @@
           <div><div class="byline__name">Wandar Team</div><div class="byline__role">Safari Growth, Wandar</div></div>
         </div>
         <div class="metarow">
-          <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>Jun 20, 2026</span>
+          <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>April 2026</span>
           <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>22 min read</span>
         </div>
         <a href="guides/social-listening-safari-operators-guide.html" class="readlink">Read the guide →</a>
@@ -287,29 +286,30 @@
       <h2>Latest guides</h2>
       <a href="guides/" class="viewall">View all →</a>
     </div>
+    <!-- Only the guides that actually exist. In production: ordered by publication date, latest 5. -->
     <div class="latest-grid">
       <a href="guides/safari-lead-generation-complete-guide.html" class="pcard">
-        <span class="cat cat--primary">Complete Guide</span>
+        <span class="cat cat--primary">Lead Generation</span>
         <h3 class="pcard__title">The Complete Guide to Safari Lead Generation (2026)</h3>
         <div class="pcard__meta">
-          <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>Jun 15, 2026</span>
+          <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>April 2026</span>
           <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>20 min</span>
+        </div>
+      </a>
+      <a href="guides/social-listening-safari-operators-guide.html" class="pcard">
+        <span class="cat cat--primary">Social Listening</span>
+        <h3 class="pcard__title">Social Listening for Safari Operators: The Complete Playbook</h3>
+        <div class="pcard__meta">
+          <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>April 2026</span>
+          <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>22 min</span>
         </div>
       </a>
       <a href="guides/beating-competitors-safari-bookings.html" class="pcard">
-        <span class="cat cat--secondary">Strategy Guide</span>
+        <span class="cat cat--secondary">Safari Sales</span>
         <h3 class="pcard__title">How Safari Operators Can Beat Competitors and Win More Bookings Online</h3>
         <div class="pcard__meta">
-          <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>Jun 11, 2026</span>
+          <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>April 2026</span>
           <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>20 min</span>
-        </div>
-      </a>
-      <a href="guides/safari-lead-generation-report.html" class="pcard">
-        <span class="cat cat--primary">Report</span>
-        <h3 class="pcard__title">Safari Lead Generation Report: What the Data Shows</h3>
-        <div class="pcard__meta">
-          <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>Jun 06, 2026</span>
-          <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>12 min</span>
         </div>
       </a>
     </div>
@@ -412,49 +412,100 @@
 <section class="explore-demo">
   <div class="container">
     <h2 class="explore-demo__heading">Explore More Guides</h2>
-    <p class="explore-demo__sub">↑ This is the vertical card style for the "Explore More Guides" section on each guide page (after the CTA).</p>
+    <p class="explore-demo__sub">↑ Shown here for review only. This section appears ONLY on a guide detail page (when you click to read), after the CTA — never on this index. Covers reuse the same mockups as the rich cards above.</p>
+    <!-- Covers reuse the same mockup visuals as the rich cards on the guides page -->
     <div class="vgrid">
+      <!-- Lead gen · savanna + lead card -->
       <a href="guides/safari-lead-generation-complete-guide.html" class="vcard">
-        <div class="vcard__img vimg--ops"></div>
+        <div class="vcard__img media--savanna">
+          <div class="vcover vcover--lead">
+            <div class="lead-card">
+              <div class="lead-card__head"><h4>New Lead Found</h4><span class="pill-intent">High intent</span></div>
+              <div class="lead-card__src">
+                <span class="ic"><svg viewBox="0 0 24 24" fill="#fff"><path d="M12 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0zm5.01 4.744c.688 0 1.25.561 1.25 1.249a1.25 1.25 0 0 1-2.498.056l-2.597-.547-.8 3.747c1.824.07 3.48.632 4.674 1.488.308-.309.73-.491 1.207-.491.968 0 1.754.786 1.754 1.754 0 .716-.435 1.333-1.01 1.614a3.111 3.111 0 0 1 .042.52c0 2.694-3.13 4.87-7.004 4.87-3.874 0-7.004-2.176-7.004-4.87 0-.183.015-.366.043-.534A1.748 1.748 0 0 1 4.028 12c0-.968.786-1.754 1.754-1.754.463 0 .898.196 1.207.49 1.207-.883 2.878-1.43 4.744-1.487l.885-4.182a.342.342 0 0 1 .14-.197.35.35 0 0 1 .238-.042l2.906.617a1.214 1.214 0 0 1 1.108-.701z"/></svg></span>
+                <div><div class="nm">Reddit</div><div class="sub">r/travel</div></div>
+              </div>
+              <p class="lead-q">Planning a 7 day safari in Tanzania in August. Looking for a reliable operator. Budget ~ $4k per person.</p>
+              <div class="lead-grid">
+                <div class="lead-cell"><div class="k">Destination</div><div class="v">Tanzania</div></div>
+                <div class="lead-cell"><div class="k">Dates</div><div class="v">Aug 10–17</div></div>
+                <div class="lead-cell"><div class="k">Budget</div><div class="v">$4,000 pp</div></div>
+                <div class="lead-cell"><div class="k">Group size</div><div class="v">2 adults</div></div>
+                <div class="lead-cell"><div class="k">Trip type</div><div class="v">Safari</div></div>
+                <div class="lead-cell lead-cell--score"><div class="k">Lead score</div><div class="v">92/100</div></div>
+              </div>
+            </div>
+          </div>
+        </div>
         <div class="vcard__body">
           <span class="vcard__cat vcat--ops">Lead Generation</span>
           <h3 class="vcard__title">The Complete Guide to Safari Lead Generation (2026)</h3>
           <div class="vcard__meta">
-            <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>Jun 15, 2026</span>
+            <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>April 2026</span>
             <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>20 min read</span>
           </div>
         </div>
       </a>
+
+      <!-- Social listening · dark + detection -->
       <a href="guides/social-listening-safari-operators-guide.html" class="vcard">
-        <div class="vcard__img vimg--listen"></div>
+        <div class="vcard__img media--dark">
+          <div class="vcover vcover--listen">
+            <div class="listen">
+              <div class="listen__plats">
+                <div class="plat"><span class="ic" style="background:#FF4500;"><svg viewBox="0 0 24 24" fill="#fff"><path d="M12 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0zm5.01 4.744c.688 0 1.25.561 1.25 1.249a1.25 1.25 0 0 1-2.498.056l-2.597-.547-.8 3.747c1.824.07 3.48.632 4.674 1.488.308-.309.73-.491 1.207-.491.968 0 1.754.786 1.754 1.754 0 .716-.435 1.333-1.01 1.614a3.111 3.111 0 0 1 .042.52c0 2.694-3.13 4.87-7.004 4.87-3.874 0-7.004-2.176-7.004-4.87 0-.183.015-.366.043-.534A1.748 1.748 0 0 1 4.028 12c0-.968.786-1.754 1.754-1.754.463 0 .898.196 1.207.49z"/></svg></span><span>Reddit</span></div>
+                <div class="plat"><span class="ic" style="background:#34E0A1;"><svg viewBox="0 0 24 24"><circle cx="6.5" cy="12" r="5.8" fill="#fff"/><circle cx="6.5" cy="12" r="2.6" fill="#34E0A1"/><circle cx="17.5" cy="12" r="5.8" fill="#fff"/><circle cx="17.5" cy="12" r="2.6" fill="#34E0A1"/></svg></span><span>TripAdvisor</span></div>
+                <div class="plat"><span class="ic" style="background:#B92B27;"><svg viewBox="0 0 24 24" fill="#fff"><path d="M12 0C5.373 0 0 5.372 0 12c0 6.628 5.373 12 12 12 6.628 0 12-5.372 12-12 0-6.628-5.372-12-12-12zm0 4.5c2.9 0 5.05 2.34 5.05 5.63 0 1.3-.38 2.49-1 3.43l.72.73-1.08 1.06-.72-.71c-.92.63-2.02 1-3.23 1H12c-2.9 0-5.05-2.34-5.05-5.63S9.1 4.5 12 4.5z"/></svg></span><span>Quora</span></div>
+                <div class="plat"><span class="ic" style="background:#1877F2;"><svg viewBox="0 0 24 24" fill="#fff"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg></span><span>Facebook</span></div>
+                <div class="plat"><span class="ic" style="background:#000;"><svg viewBox="0 0 24 24" fill="#fff"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg></span><span>X (Twitter)</span></div>
+              </div>
+              <div class="listen__msgs">
+                <div class="msg"><p>Serengeti in June – any recommendations?</p><time>2m ago</time></div>
+                <div class="msg"><p>Best safari operator for first-time visitors?</p><time>5m ago</time></div>
+                <div class="msg"><p>Family safari in Tanzania – need advice</p><time>8m ago</time></div>
+              </div>
+              <div class="detect">
+                <div class="detect__title">Wandar Detection</div>
+                <div class="radar"><div class="radar__sweep"></div><div class="radar__blip"></div></div>
+                <div class="detect__hi">High intent detected</div>
+                <div class="detect__sub">3 new opportunities</div>
+                <span class="detect__btn">View Leads →</span>
+              </div>
+            </div>
+          </div>
+        </div>
         <div class="vcard__body">
           <span class="vcard__cat vcat--listen">Social Listening</span>
           <h3 class="vcard__title">Social Listening for Safari Operators: The Complete Playbook</h3>
           <div class="vcard__meta">
-            <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>Jun 20, 2026</span>
+            <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>April 2026</span>
             <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>22 min read</span>
           </div>
         </div>
       </a>
+
+      <!-- Competitors · dusk + pipeline -->
       <a href="guides/beating-competitors-safari-bookings.html" class="vcard">
-        <div class="vcard__img vimg--sales"></div>
+        <div class="vcard__img media--dusk">
+          <div class="vcover vcover--pipe">
+            <div class="pipe">
+              <div class="pipe__row">
+                <div class="pstep"><div class="pstep__hd"><span class="pstep__n">1</span><span class="pstep__lbl">Enquiry Received</span></div><div class="pcell"><div class="t">Safari in Kenya</div><div class="s">2 adults · Aug</div><span class="pintent">High intent</span></div></div>
+                <div class="pstep"><div class="pstep__hd"><span class="pstep__n">2</span><span class="pstep__lbl">Response Drafted</span></div><div class="pcell"><div class="t">AI draft ready</div><div class="s">Personalized reply created ✓</div></div></div>
+                <div class="pstep"><div class="pstep__hd"><span class="pstep__n">3</span><span class="pstep__lbl">Proposal Sent</span></div><div class="pcell"><div class="t">7 Day Safari</div><div class="s">Maasai Mara</div><div class="s" style="margin-top:6px;">📄 PDF</div></div></div>
+                <div class="pstep"><div class="pstep__hd"><span class="pstep__n">4</span><span class="pstep__lbl">Follow-up Scheduled</span></div><div class="pcell"><div class="t">Follow up in 2 days</div><div class="s">Reminder set</div></div></div>
+                <div class="pstep pstep--final"><div class="pstep__hd"><span class="pstep__n">$</span><span class="pstep__lbl">Booking Opportunity</span></div><div class="pcell pcell--final"><div class="s" style="margin-bottom:4px;">Score</div><span class="score-badge">96/100</span><div class="stars">★★★★☆</div></div></div>
+              </div>
+              <div class="pipe__foot">From inquiry to booking. Faster.</div>
+            </div>
+          </div>
+        </div>
         <div class="vcard__body">
           <span class="vcard__cat vcat--sales">Safari Sales</span>
           <h3 class="vcard__title">How Safari Operators Can Beat Competitors and Win More Bookings Online</h3>
           <div class="vcard__meta">
-            <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>Jun 11, 2026</span>
+            <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>April 2026</span>
             <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>20 min read</span>
-          </div>
-        </div>
-      </a>
-      <a href="guides/safari-lead-generation-report.html" class="vcard">
-        <div class="vcard__img vimg--tech"></div>
-        <div class="vcard__body">
-          <span class="vcard__cat vcat--tech">Travel Tech</span>
-          <h3 class="vcard__title">Safari Lead Generation Report: What the Data Shows</h3>
-          <div class="vcard__meta">
-            <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>Jun 06, 2026</span>
-            <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>12 min read</span>
           </div>
         </div>
       </a>
