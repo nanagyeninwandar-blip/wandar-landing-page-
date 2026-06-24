@@ -1,8 +1,15 @@
 // Shared modal JS — used by index.html and all guide/blog pages
 
 // ── NETLIFY FORM SUBMIT ───────────────────────────────────────────
+var _mfDivIds = { 'early-access': 'mf-form-a', 'consultation': 'mf-form-b', 'contact': 'mf-form-c' };
 function netlifySubmit(formName, data) {
-  const body = new URLSearchParams({ 'form-name': formName, ...data });
+  var divId = _mfDivIds[formName];
+  var botEl = divId ? document.querySelector('#' + divId + ' [name="bot-field"]') : null;
+  const body = new URLSearchParams({
+    'form-name': formName,
+    'bot-field': botEl ? botEl.value : '',
+    ...data
+  });
   return fetch('/', {
     method: 'POST',
     headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
@@ -61,6 +68,17 @@ function mSetErr(id, msg) {
 }
 function mValidEmail(v) { return /\S+@\S+\.\S+/.test(v); }
 
+// ── SUBMIT HELPERS ────────────────────────────────────────────────
+function mBtnLoading(btn) {
+  btn.disabled = true;
+  btn._origHTML = btn.innerHTML;
+  btn.innerHTML = 'Submitting…';
+}
+function mBtnReset(btn) {
+  btn.disabled = false;
+  btn.innerHTML = btn._origHTML;
+}
+
 // ── MODAL FORM SUBMISSIONS ────────────────────────────────────────
 function mSubmitA() {
   let ok = true;
@@ -69,6 +87,12 @@ function mSubmitA() {
   ok = mSetErr('a-role',    !mg('ma-role').value                        ? 'Please select a role' : '') & ok;
   ok = mSetErr('a-goal',    !mg('ma-goal').value                        ? 'Please select one'    : '') & ok;
   if (!ok) return;
+
+  const btn = mg('ma-submit-btn');
+  if (btn.disabled) return;
+  mBtnLoading(btn);
+  mg('mf-submit-err-a').textContent = '';
+
   const goalSel   = mg('ma-goal').value;
   const goalOther = mg('ma-goal-other') ? mg('ma-goal-other').querySelector('input') : null;
   const goalVal   = goalSel === 'other' && goalOther ? goalOther.value.trim() : goalSel;
@@ -83,16 +107,23 @@ function mSubmitA() {
   const bookSel   = mg('ma-booking-sel');
   const bookOther = mg('ma-booking-other') ? mg('ma-booking-other').querySelector('input') : null;
   if (bookSel && bookSel.value) toolsSelected.push('Booking: ' + (bookSel.value === 'other' && bookOther ? bookOther.value.trim() : bookSel.value));
+
   netlifySubmit('early-access', {
     email:   mg('ma-email').value.trim(),
     company: mg('ma-company').value.trim(),
     role:    mg('ma-role').value,
     goal:    goalVal,
     tools:   toolsSelected.join(', ')
-  }).finally(() => {
-    mg('mf-form-a').classList.add('hidden');
-    mg('mf-success-a').classList.add('visible');
-  });
+  })
+    .then(function(res) {
+      if (!res.ok) throw new Error('Network response was not ok');
+      mg('mf-form-a').classList.add('hidden');
+      mg('mf-success-a').classList.add('visible');
+    })
+    .catch(function() {
+      mBtnReset(btn);
+      mg('mf-submit-err-a').textContent = 'Something went wrong. Please try again.';
+    });
 }
 
 function mSubmitB() {
@@ -102,19 +133,32 @@ function mSubmitB() {
   ok = mSetErr('b-role',    !mg('mb-role').value                        ? 'Please select a role' : '') & ok;
   ok = mSetErr('b-goal',    !mg('mb-goal').value                        ? 'Please select one'    : '') & ok;
   if (!ok) return;
+
+  const btn = mg('mb-submit-btn');
+  if (btn.disabled) return;
+  mBtnLoading(btn);
+  mg('mf-submit-err-b').textContent = '';
+
   const goalSel   = mg('mb-goal').value;
   const goalOther = mg('mb-goal-other') ? mg('mb-goal-other').querySelector('input') : null;
   const goalVal   = goalSel === 'other' && goalOther ? goalOther.value.trim() : goalSel;
+
   netlifySubmit('consultation', {
     email:   mg('mb-email').value.trim(),
     company: mg('mb-company').value.trim(),
     role:    mg('mb-role').value,
     goal:    goalVal,
     more:    mg('mb-more').value.trim()
-  }).finally(() => {
-    mg('mf-form-b').classList.add('hidden');
-    mg('mf-success-b').classList.add('visible');
-  });
+  })
+    .then(function(res) {
+      if (!res.ok) throw new Error('Network response was not ok');
+      mg('mf-form-b').classList.add('hidden');
+      mg('mf-success-b').classList.add('visible');
+    })
+    .catch(function() {
+      mBtnReset(btn);
+      mg('mf-submit-err-b').textContent = 'Something went wrong. Please try again.';
+    });
 }
 
 const mContactHints = {
@@ -149,18 +193,31 @@ function mSubmitC() {
   ok = mSetErr('c-intent',  !mg('mc-intent').value                      ? 'Please select one'    : '') & ok;
   ok = mSetErr('c-message', !mg('mc-message').value.trim()              ? 'Required'             : '') & ok;
   if (!ok) return;
+
+  const btn = mg('mc-submit-btn');
+  if (btn.disabled) return;
+  mBtnLoading(btn);
+  mg('mf-submit-err-c').textContent = '';
+
   const intent = mg('mc-intent').value;
   const s = mContactSuccess[intent] || mContactSuccess['other'];
+
   netlifySubmit('contact', {
     name:    mg('mc-name').value.trim(),
     company: mg('mc-company').value.trim(),
     email:   mg('mc-email').value.trim(),
     intent:  intent,
     message: mg('mc-message').value.trim()
-  }).finally(() => {
-    mg('mc-success-title').textContent = s.title;
-    mg('mc-success-body').textContent  = s.body;
-    mg('mf-form-c').classList.add('hidden');
-    mg('mf-success-c').classList.add('visible');
-  });
+  })
+    .then(function(res) {
+      if (!res.ok) throw new Error('Network response was not ok');
+      mg('mc-success-title').textContent = s.title;
+      mg('mc-success-body').textContent  = s.body;
+      mg('mf-form-c').classList.add('hidden');
+      mg('mf-success-c').classList.add('visible');
+    })
+    .catch(function() {
+      mBtnReset(btn);
+      mg('mf-submit-err-c').textContent = 'Something went wrong. Please try again.';
+    });
 }

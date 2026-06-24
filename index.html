@@ -378,6 +378,23 @@
                   <a href="#" class="res-col__see-all">See all tools →</a>
                 </div>
               </div>
+              <div class="res-col-divider" aria-hidden="true"></div>
+              <!-- Webinars column -->
+              <div class="res-col">
+                <div class="res-col__header">
+                  <div class="res-col__hicon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                      <polygon points="23 7 16 12 23 17 23 7"/>
+                      <rect x="1" y="5" width="15" height="14" rx="2" ry="2"/>
+                    </svg>
+                  </div>
+                  <span class="res-col__label">Webinars</span>
+                </div>
+                <a href="resources/webinar.html" class="resource-item resource-item--tools" role="menuitem" style="color:var(--safari-primary);font-weight:600;">AI for Safari Operations <span class="resource-badge" style="background:var(--safari-primary);">Free</span></a>
+                <div class="res-col__footer">
+                  <a href="resources/webinar.html" class="res-col__see-all">Join the series →</a>
+                </div>
+              </div>
             </div>
           </li>
         </ul>
@@ -449,6 +466,7 @@
               <a href="#" onclick="closeMobileMenu()">Free Tools</a>
               <a href="guides/" onclick="closeMobileMenu()">Guides</a>
               <a href="blog/" onclick="closeMobileMenu()">Blog</a>
+              <a href="resources/webinar.html" onclick="closeMobileMenu()">Webinar Series</a>
             </div>
           </li>
           <li><a href="#" onclick="closeMobileMenu()">Log In</a></li>
@@ -1178,12 +1196,12 @@ These travelers don’t browse casually. They plan deliberately, leave signals a
         <div class="mf-grid-2">
           <div class="mf-field">
             <label class="mf-label" for="ma-email">Work email <span class="mf-req-teal">*</span></label>
-            <input type="email" id="ma-email" class="mf-input" placeholder="you@safarico.com" autocomplete="email" />
+            <input type="email" id="ma-email" name="email" class="mf-input" placeholder="you@safarico.com" autocomplete="email" />
             <span class="mf-err" id="merr-a-email"></span>
           </div>
           <div class="mf-field">
             <label class="mf-label" for="ma-company">Company name <span class="mf-req-teal">*</span></label>
-            <input type="text" id="ma-company" class="mf-input" placeholder="Acacia Expeditions" autocomplete="organization" />
+            <input type="text" id="ma-company" name="company" class="mf-input" placeholder="Acacia Expeditions" autocomplete="organization" />
             <span class="mf-err" id="merr-a-company"></span>
           </div>
         </div>
@@ -1192,7 +1210,7 @@ These travelers don’t browse casually. They plan deliberately, leave signals a
         <div class="mf-grid-2">
           <div class="mf-field">
             <label class="mf-label" for="ma-role">Your role <span class="mf-req-teal">*</span></label>
-            <select id="ma-role" class="mf-select">
+            <select id="ma-role" name="role" class="mf-select" autocomplete="off">
               <option value="">Select your role</option>
               <option>Owner / Founder</option>
               <option>Sales &amp; Bookings</option>
@@ -1204,7 +1222,7 @@ These travelers don’t browse casually. They plan deliberately, leave signals a
           </div>
           <div class="mf-field">
             <label class="mf-label" for="ma-goal">Biggest challenge right now <span class="mf-req-teal">*</span></label>
-            <select id="ma-goal" class="mf-select" style="font-size:12px" onchange="mHandleGoal('ma-goal','ma-goal-other')">
+            <select id="ma-goal" name="goal" class="mf-select" style="font-size:12px" autocomplete="off" onchange="mHandleGoal('ma-goal','ma-goal-other')">
               <option value="">Select one</option>
               <option>Leads exist but I never see them in time</option>
               <option>A competitor always replies before I do</option>
@@ -1214,26 +1232,26 @@ These travelers don’t browse casually. They plan deliberately, leave signals a
               <option value="other">Something else</option>
             </select>
             <div class="mf-reveal" id="ma-goal-other">
-              <input class="mf-input" type="text" placeholder="Tell us in your own words..." />
+              <input class="mf-input" type="text" placeholder="Tell us in your own words..." autocomplete="off" />
             </div>
             <span class="mf-err" id="merr-a-goal"></span>
           </div>
         </div>
 
         <!-- Tools — full width -->
-        <div class="mf-field">
-          <label class="mf-label">Tools you currently use</label>
+        <fieldset style="border:none;padding:0;margin:0 0 14px">
+          <legend class="mf-label">Tools you currently use</legend>
           <div class="mf-checklist mf-checklist-grid">
 
             <!-- CRM -->
             <div class="mf-check-item">
               <label class="mf-check-row">
-                <input type="checkbox" id="ma-chk-crm" onchange="mToggleNested('ma','crm')" />
+                <input type="checkbox" id="ma-chk-crm" name="tool-crm" onchange="mToggleNested('ma','crm')" />
                 <span class="mf-check-label">CRM</span>
               </label>
               <div class="mf-check-nested" id="ma-nest-crm">
                 <div class="mf-nested-label">Which CRM?</div>
-                <select id="ma-crm-sel" class="mf-select" onchange="mHandleOther('ma-crm-sel','ma-crm-other')">
+                <select id="ma-crm-sel" class="mf-select" autocomplete="off" onchange="mHandleOther('ma-crm-sel','ma-crm-other')">
                   <option value="">Select one</option>
                   <option>Salesforce</option>
                   <option>HubSpot</option>
@@ -1242,7 +1260,7 @@ These travelers don’t browse casually. They plan deliberately, leave signals a
                   <option value="other">Other</option>
                 </select>
                 <div class="mf-other-reveal" id="ma-crm-other">
-                  <input type="text" class="mf-input" placeholder="Type your CRM..." style="margin-top:8px" />
+                  <input type="text" class="mf-input" placeholder="Type your CRM..." style="margin-top:8px" autocomplete="off" />
                 </div>
               </div>
             </div>
@@ -1250,12 +1268,12 @@ These travelers don’t browse casually. They plan deliberately, leave signals a
             <!-- Booking system -->
             <div class="mf-check-item">
               <label class="mf-check-row">
-                <input type="checkbox" id="ma-chk-booking" onchange="mToggleNested('ma','booking')" />
+                <input type="checkbox" id="ma-chk-booking" name="tool-booking" onchange="mToggleNested('ma','booking')" />
                 <span class="mf-check-label">Booking system</span>
               </label>
               <div class="mf-check-nested" id="ma-nest-booking">
                 <div class="mf-nested-label">Which booking system?</div>
-                <select id="ma-booking-sel" class="mf-select" onchange="mHandleOther('ma-booking-sel','ma-booking-other')">
+                <select id="ma-booking-sel" class="mf-select" autocomplete="off" onchange="mHandleOther('ma-booking-sel','ma-booking-other')">
                   <option value="">Select one</option>
                   <option>Rezdy</option>
                   <option>FareHarbor</option>
@@ -1265,23 +1283,25 @@ These travelers don’t browse casually. They plan deliberately, leave signals a
                   <option value="other">Other</option>
                 </select>
                 <div class="mf-other-reveal" id="ma-booking-other">
-                  <input type="text" class="mf-input" placeholder="Type your booking system..." style="margin-top:8px" />
+                  <input type="text" class="mf-input" placeholder="Type your booking system..." style="margin-top:8px" autocomplete="off" />
                 </div>
               </div>
             </div>
 
-            <div class="mf-check-item"><label class="mf-check-row"><input type="checkbox" /><span class="mf-check-label">Google Alerts</span></label></div>
-            <div class="mf-check-item"><label class="mf-check-row"><input type="checkbox" /><span class="mf-check-label">Meta Ads</span></label></div>
-            <div class="mf-check-item"><label class="mf-check-row"><input type="checkbox" /><span class="mf-check-label">Email newsletter</span></label></div>
-            <div class="mf-check-item"><label class="mf-check-row"><input type="checkbox" /><span class="mf-check-label">Spreadsheet tracking</span></label></div>
+            <div class="mf-check-item"><label class="mf-check-row"><input type="checkbox" id="ma-chk-google-alerts" name="tool-google-alerts" /><span class="mf-check-label">Google Alerts</span></label></div>
+            <div class="mf-check-item"><label class="mf-check-row"><input type="checkbox" id="ma-chk-meta-ads" name="tool-meta-ads" /><span class="mf-check-label">Meta Ads</span></label></div>
+            <div class="mf-check-item"><label class="mf-check-row"><input type="checkbox" id="ma-chk-email-newsletter" name="tool-email-newsletter" /><span class="mf-check-label">Email newsletter</span></label></div>
+            <div class="mf-check-item"><label class="mf-check-row"><input type="checkbox" id="ma-chk-spreadsheet" name="tool-spreadsheet" /><span class="mf-check-label">Spreadsheet tracking</span></label></div>
 
           </div>
-        </div>
+        </fieldset>
 
-        <button class="mf-submit mf-submit--teal" onclick="mSubmitA()">
+        <input type="text" name="bot-field" style="display:none" aria-hidden="true" tabindex="-1" autocomplete="off" />
+        <button id="ma-submit-btn" class="mf-submit mf-submit--teal" onclick="mSubmitA()">
           Submit
           <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
         </button>
+        <span class="mf-err" id="mf-submit-err-a" role="alert" style="display:block;text-align:center;margin-top:6px"></span>
         <div class="mf-trust">
           <span><span class="mf-trust-dot"></span>No contracts or setup fees</span>
           <span><span class="mf-trust-dot"></span>Built exclusively for safari operators</span>
@@ -1326,7 +1346,7 @@ These travelers don’t browse casually. They plan deliberately, leave signals a
         <!-- Work email — full width -->
         <div class="mf-field">
           <label class="mf-label" for="mb-email">Work email <span class="mf-req-amber">*</span></label>
-          <input type="email" id="mb-email" class="mf-input" placeholder="you@safarico.com" autocomplete="email" />
+          <input type="email" id="mb-email" name="email" class="mf-input" placeholder="you@safarico.com" autocomplete="email" />
           <span class="mf-err" id="merr-b-email"></span>
         </div>
 
@@ -1334,12 +1354,12 @@ These travelers don’t browse casually. They plan deliberately, leave signals a
         <div class="mf-grid-2">
           <div class="mf-field">
             <label class="mf-label" for="mb-company">Company name <span class="mf-req-amber">*</span></label>
-            <input type="text" id="mb-company" class="mf-input" placeholder="Acacia Expeditions" autocomplete="organization" />
+            <input type="text" id="mb-company" name="company" class="mf-input" placeholder="Acacia Expeditions" autocomplete="organization" />
             <span class="mf-err" id="merr-b-company"></span>
           </div>
           <div class="mf-field">
             <label class="mf-label" for="mb-role">Your role <span class="mf-req-amber">*</span></label>
-            <select id="mb-role" class="mf-select">
+            <select id="mb-role" name="role" class="mf-select" autocomplete="off">
               <option value="">Select your role</option>
               <option>Owner / Founder</option>
               <option>Sales &amp; Bookings</option>
@@ -1354,7 +1374,7 @@ These travelers don’t browse casually. They plan deliberately, leave signals a
         <!-- Goal — full width -->
         <div class="mf-field">
           <label class="mf-label" for="mb-goal">What do you most want to solve? <span class="mf-req-amber">*</span></label>
-          <select id="mb-goal" class="mf-select" onchange="mHandleBGoal()">
+          <select id="mb-goal" name="goal" class="mf-select" autocomplete="off" onchange="mHandleBGoal()">
             <option value="">Select one</option>
             <option>Leads exist but I never see them in time</option>
             <option>A competitor always replies before I do</option>
@@ -1364,7 +1384,7 @@ These travelers don’t browse casually. They plan deliberately, leave signals a
             <option value="other">Something else</option>
           </select>
           <div class="mf-reveal" id="mb-goal-other">
-            <input class="mf-input" type="text" placeholder="Tell us in your own words..." />
+            <input class="mf-input" type="text" placeholder="Tell us in your own words..." autocomplete="off" />
           </div>
           <span class="mf-err" id="merr-b-goal"></span>
         </div>
@@ -1373,14 +1393,16 @@ These travelers don’t browse casually. They plan deliberately, leave signals a
         <div id="mb-more-wrap" style="display:none">
           <div class="mf-field">
             <label class="mf-label" for="mb-more">Tell us more <span style="font-weight:400;text-transform:none;letter-spacing:0;color:#9ca3af">(optional)</span></label>
-            <textarea id="mb-more" class="mf-ta" placeholder="e.g. We get enquiries from Reddit but by the time I see them, someone else has already replied. Happens at least twice a week…"></textarea>
+            <textarea id="mb-more" name="more" class="mf-ta" autocomplete="off" placeholder="e.g. We get enquiries from Reddit but by the time I see them, someone else has already replied. Happens at least twice a week…"></textarea>
           </div>
         </div>
 
-        <button class="mf-submit mf-submit--amber" onclick="mSubmitB()">
+        <input type="text" name="bot-field" style="display:none" aria-hidden="true" tabindex="-1" autocomplete="off" />
+        <button id="mb-submit-btn" class="mf-submit mf-submit--amber" onclick="mSubmitB()">
           Submit
           <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
         </button>
+        <span class="mf-err" id="mf-submit-err-b" role="alert" style="display:block;text-align:center;margin-top:6px"></span>
         <div class="mf-trust">
           <span><span class="mf-trust-dot"></span>No commitment required</span>
         </div>
@@ -1423,24 +1445,24 @@ These travelers don’t browse casually. They plan deliberately, leave signals a
         <div class="mf-grid-2">
           <div class="mf-field">
             <label class="mf-label" for="mc-name">Your name <span class="mf-req-teal">*</span></label>
-            <input type="text" id="mc-name" class="mf-input" placeholder="Jane Doe" autocomplete="given-name" />
+            <input type="text" id="mc-name" name="name" class="mf-input" placeholder="Jane Doe" autocomplete="given-name" />
             <span class="mf-err" id="merr-c-name"></span>
           </div>
           <div class="mf-field">
             <label class="mf-label" for="mc-company">Company name <span class="mf-req-teal">*</span></label>
-            <input type="text" id="mc-company" class="mf-input" placeholder="Acacia Expeditions" autocomplete="organization" />
+            <input type="text" id="mc-company" name="company" class="mf-input" placeholder="Acacia Expeditions" autocomplete="organization" />
             <span class="mf-err" id="merr-c-company"></span>
           </div>
         </div>
         <div class="mf-grid-2">
           <div class="mf-field">
             <label class="mf-label" for="mc-email">Work email <span class="mf-req-teal">*</span></label>
-            <input type="email" id="mc-email" class="mf-input" placeholder="you@safarico.com" autocomplete="email" />
+            <input type="email" id="mc-email" name="email" class="mf-input" placeholder="you@safarico.com" autocomplete="email" />
             <span class="mf-err" id="merr-c-email"></span>
           </div>
           <div class="mf-field">
             <label class="mf-label" for="mc-intent">What best describes you? <span class="mf-req-teal">*</span></label>
-            <select id="mc-intent" class="mf-select" onchange="mHandleContactIntent()">
+            <select id="mc-intent" name="intent" class="mf-select" autocomplete="off" onchange="mHandleContactIntent()">
               <option value="">Select one</option>
               <option value="operator">I'm a safari operator with a question</option>
               <option value="partner">I'm interested in partnering or integrating</option>
@@ -1449,19 +1471,21 @@ These travelers don’t browse casually. They plan deliberately, leave signals a
             </select>
             <span class="mf-err" id="merr-c-intent"></span>
             <div class="mf-nested" id="mc-intent-other">
-              <input type="text" id="mc-intent-other-text" class="mf-input" placeholder="Tell us a bit more…" />
+              <input type="text" id="mc-intent-other-text" name="intent-other" class="mf-input" placeholder="Tell us a bit more…" autocomplete="off" />
             </div>
           </div>
         </div>
         <div class="mf-field">
           <label class="mf-label" for="mc-message">Your message <span class="mf-req-teal">*</span></label>
-          <textarea id="mc-message" class="mf-ta" placeholder="Tell us how we can help..." style="min-height:110px;"></textarea>
+          <textarea id="mc-message" name="message" class="mf-ta" autocomplete="off" placeholder="Tell us how we can help..." style="min-height:110px;"></textarea>
           <span class="mf-err" id="merr-c-message"></span>
         </div>
-        <button class="mf-submit mf-submit--teal" onclick="mSubmitC()">
+        <input type="text" name="bot-field" style="display:none" aria-hidden="true" tabindex="-1" autocomplete="off" />
+        <button id="mc-submit-btn" class="mf-submit mf-submit--teal" onclick="mSubmitC()">
           Send message
           <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
         </button>
+        <span class="mf-err" id="mf-submit-err-c" role="alert" style="display:block;text-align:center;margin-top:6px"></span>
       </div><!-- /mf-form-c -->
 
       <div class="mf-success" id="mf-success-c" aria-live="polite">
