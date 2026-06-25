@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Blog page — self-contained preview (NOT deployed)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap" rel="stylesheet" />
+<style>
+  :root{
+    --safari-primary:#1a7373; --safari-secondary:#c45911; --safari-gold:#b8860b;
+    --text-primary:#1a1a1a; --text-secondary:#525252; --text-muted:#737373;
+    --off-white:#FDF8F0; --white:#fff; --border:#E5E7EB;
+    --radius-md:12px; --radius-lg:16px; --radius-pill:999px;
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  body{font-family:'Plus Jakarta Sans',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;background:var(--off-white);color:var(--text-secondary);-webkit-font-smoothing:antialiased;}
+  .container{max-width:1180px;margin:0 auto;padding:0 24px;}
+  .note{font-size:13px;color:#92660a;background:#fff8e6;border:1px solid #f0d98a;border-radius:8px;padding:12px 16px;margin:16px auto;max-width:1180px;}
+  /* banner has 128px top padding for the site nav; trimmed here since nav is omitted */
+  .gbanner{padding-top:56px !important;}
+
+    /* teal banner */
+    .gbanner{position:relative;overflow:hidden;background:linear-gradient(115deg,#06302f 0%,#0e3b3b 30%,#1a7373 68%,#2aa5a5 100%);padding:128px 0 72px;}
+    .gbanner__wave{position:absolute;top:-30%;right:-6%;width:60%;height:160%;background:conic-gradient(from 210deg at 60% 40%,rgba(42,165,165,0.0),rgba(120,220,210,0.55),rgba(255,255,255,0.35),rgba(196,89,17,0.45),rgba(42,165,165,0.0));border-radius:0 0 0 55%;filter:blur(6px);opacity:0.85;transform:rotate(-6deg);pointer-events:none;}
+    .gbanner__grid{position:relative;z-index:2;display:grid;grid-template-columns:1fr minmax(260px,360px);gap:48px;align-items:center;}
+    .gbanner__title{font-size:clamp(52px,7.5vw,92px);font-weight:800;letter-spacing:-0.03em;line-height:1;color:#fff;margin-bottom:14px;}
+    .gbanner__subtitle{font-size:clamp(19px,2.3vw,27px);font-weight:600;line-height:1.2;color:rgba(255,255,255,0.9);}
+    .gbanner__desc{font-size:17px;line-height:1.6;color:rgba(255,255,255,0.82);}
+    @media (max-width:760px){.gbanner{padding:104px 0 56px;}.gbanner__grid{grid-template-columns:1fr;gap:20px;}}
+    /* filter bar */
+    .filterbar{background:var(--off-white);padding:28px 0 0;}
+    .ghero__bar{display:flex;align-items:center;justify-content:space-between;gap:24px;flex-wrap:wrap;}
+    .chips{display:flex;gap:10px;flex-wrap:wrap;}
+    .chip{font-size:13.5px;font-weight:600;color:var(--text-primary);background:var(--white);border:1px solid var(--border);border-radius:var(--radius-pill);padding:9px 18px;cursor:pointer;transition:all 140ms ease;}
+    .chip:hover{border-color:var(--safari-primary);color:var(--safari-primary);}
+    .chip--active{background:var(--safari-primary);border-color:var(--safari-primary);color:#fff;}
+    .gsearch{position:relative;}
+    .gsearch input{font-family:inherit;font-size:14px;color:var(--text-primary);background:var(--white);border:1px solid var(--border);border-radius:var(--radius-pill);padding:11px 42px 11px 18px;width:280px;outline:none;}
+    .gsearch input::placeholder{color:var(--text-muted);}
+    .gsearch input:focus{border-color:var(--safari-primary);}
+    .gsearch svg{position:absolute;right:16px;top:50%;transform:translateY(-50%);width:16px;height:16px;color:var(--text-muted);}
+    /* featured */
+    .featured{display:grid;grid-template-columns:1.05fr 1fr;gap:48px;align-items:center;padding:56px 0 24px;}
+    .featured__media{position:relative;min-height:320px;border-radius:var(--radius-lg);overflow:hidden;display:flex;align-items:center;justify-content:center;padding:26px;}
+    .featured__media>*{position:relative;z-index:2;}
+    .featured__media-label{position:absolute;bottom:14px;left:16px;font-size:11px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:rgba(255,255,255,0.85);z-index:3;}
+    .fcat{font-size:12px;font-weight:800;letter-spacing:0.1em;text-transform:uppercase;color:var(--safari-primary);}
+    .featured__title{font-size:32px;font-weight:800;line-height:1.18;letter-spacing:-0.02em;color:var(--text-primary);margin:14px 0 14px;}
+    .featured__excerpt{font-size:16px;line-height:1.6;color:var(--text-secondary);margin-bottom:22px;max-width:34em;}
+    .byline{display:flex;align-items:center;gap:12px;margin-bottom:18px;}
+    .avatar{width:40px;height:40px;border-radius:50%;background:var(--safari-primary);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:14px;flex:none;}
+    .byline__name{font-size:13px;font-weight:700;color:var(--text-primary);line-height:1.2;}
+    .byline__role{font-size:12px;color:var(--text-muted);}
+    .metarow{display:flex;align-items:center;gap:18px;font-size:13px;color:var(--text-muted);margin-bottom:22px;}
+    .metarow span{display:inline-flex;align-items:center;gap:6px;}
+    .metarow svg{width:14px;height:14px;}
+    .readlink{font-size:15px;font-weight:700;color:var(--text-primary);text-decoration:none;display:inline-flex;align-items:center;gap:8px;transition:gap 140ms;}
+    .readlink:hover{gap:13px;color:var(--safari-primary);}
+    /* latest */
+    .latest-head{display:flex;align-items:center;justify-content:space-between;padding:40px 0 24px;}
+    .latest-head h2{font-size:28px;font-weight:800;letter-spacing:-0.02em;color:var(--text-primary);}
+    .viewall{font-size:14px;font-weight:700;color:var(--text-primary);text-decoration:none;border:1px solid var(--border);border-radius:var(--radius-pill);padding:10px 20px;display:inline-flex;align-items:center;gap:8px;}
+    .viewall:hover{border-color:var(--safari-primary);color:var(--safari-primary);}
+    .latest-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;padding-bottom:24px;}
+    .pcard{background:var(--white);border:1px solid var(--border);border-left:3px solid var(--safari-secondary);border-radius:var(--radius-lg);padding:24px;display:flex;flex-direction:column;min-height:200px;text-decoration:none;transition:transform 150ms ease,box-shadow 150ms ease;}
+    .pcard:hover{transform:translateY(-4px);box-shadow:0 12px 32px rgba(0,0,0,0.09);}
+    .pcat{font-size:12px;font-weight:800;letter-spacing:0.1em;text-transform:uppercase;color:var(--safari-secondary);}
+    .pcard__title{font-size:17px;font-weight:700;color:var(--text-primary);line-height:1.3;margin:12px 0 auto;}
+    .pcard__meta{display:flex;gap:16px;font-size:12px;color:var(--text-muted);margin-top:16px;}
+    .pcard__meta span{display:inline-flex;align-items:center;gap:5px;}
+    .pcard__meta svg{width:12px;height:12px;}
+    /* rich cards (all teal) */
+    .rich-head{padding:48px 0 8px;}
+    .rich-head h2{font-size:28px;font-weight:800;letter-spacing:-0.02em;color:var(--text-primary);}
+    .blog-grid{display:flex;flex-direction:column;gap:32px;padding:24px 0 8px;}
+    .bcard{display:grid;grid-template-columns:46% 54%;background:var(--white);border:1px solid var(--border);border-left:4px solid var(--safari-primary);border-radius:var(--radius-lg);overflow:hidden;box-shadow:0 4px 20px rgba(0,0,0,0.04);transition:transform 160ms ease,box-shadow 160ms ease;}
+    .bcard:hover{transform:translateY(-3px);box-shadow:0 16px 40px rgba(0,0,0,0.10);}
+    .bcard__media{position:relative;min-height:300px;display:flex;align-items:center;justify-content:center;padding:26px;overflow:hidden;}
+    .bcard__media>*{position:relative;z-index:2;}
+    .bcard__body{position:relative;padding:36px 48px;display:flex;flex-direction:column;justify-content:center;}
+    .bcard__eyebrow{font-size:12px;font-weight:800;letter-spacing:0.14em;text-transform:uppercase;margin-bottom:14px;color:var(--safari-primary);}
+    .bcard__title{font-size:clamp(22px,2vw,26px);line-height:1.2;font-weight:800;color:var(--text-primary);letter-spacing:-0.02em;margin-bottom:14px;}
+    .bcard__excerpt{font-size:15px;line-height:1.65;color:var(--text-secondary);margin-bottom:22px;max-width:34em;}
+    .bcard__link{font-size:15px;font-weight:700;color:var(--safari-primary);text-decoration:none;display:inline-flex;align-items:center;gap:8px;transition:gap 150ms;}
+    .bcard__link:hover{gap:12px;}
+    .bcard__readtime{position:absolute;top:28px;right:36px;display:inline-flex;align-items:center;gap:7px;font-size:11px;font-weight:700;letter-spacing:0.08em;color:var(--safari-primary);background:rgba(26,115,115,0.08);border:1px solid rgba(26,115,115,0.25);border-radius:var(--radius-pill);padding:7px 14px;text-transform:uppercase;}
+    .bcard__readtime svg{width:13px;height:13px;}
+    .m-warm{background:linear-gradient(150deg,#f4ead6 0%,#ecd9b6 55%,#e2c79b 100%);}
+    .m-dark{background:radial-gradient(circle at 60% 40%,#0f3330 0%,#0a221f 60%,#061613 100%);}
+    /* bm1 leads dashboard */
+    .dash{width:100%;max-width:380px;background:#fff;border-radius:13px;box-shadow:0 18px 44px rgba(0,0,0,0.18);overflow:hidden;}
+    .dash__hd{display:flex;align-items:center;justify-content:space-between;padding:13px 15px;border-bottom:1px solid var(--border);}
+    .dash__ttl{font-size:13px;font-weight:800;color:var(--text-primary);}
+    .dash__sub{font-size:9.5px;color:var(--text-muted);margin-top:2px;}
+    .dash__filter{font-size:9px;font-weight:700;color:var(--text-secondary);border:1px solid var(--border);border-radius:6px;padding:4px 8px;}
+    .lrow{display:flex;align-items:center;gap:9px;padding:10px 15px;border-bottom:1px solid #f1efe9;}
+    .lrow:last-child{border-bottom:none;}
+    .lrow__ic{width:22px;height:22px;border-radius:50%;display:flex;align-items:center;justify-content:center;flex:none;}
+    .lrow__ic svg{width:13px;height:13px;}
+    .lrow__main{flex:1;min-width:0;}
+    .lrow__src{font-size:10px;font-weight:700;color:var(--text-primary);}
+    .lrow__q{font-size:10.5px;color:var(--text-secondary);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+    .lrow__hi{font-size:8px;font-weight:700;color:#0f7a4f;background:#e3f6ec;border-radius:5px;padding:2px 6px;margin-top:3px;display:inline-block;}
+    .lrow__score{text-align:center;flex:none;}
+    .lrow__score b{font-size:15px;font-weight:800;color:var(--safari-primary);display:block;line-height:1;}
+    .lrow__score span{font-size:8px;color:var(--text-muted);}
+    /* bm2 listening dashboard */
+    .ld{width:100%;max-width:440px;display:grid;grid-template-columns:0.85fr 1.3fr 0.95fr;gap:10px;background:rgba(255,255,255,0.03);border:1px solid rgba(120,200,180,0.18);border-radius:13px;padding:13px;box-shadow:0 18px 44px rgba(0,0,0,0.3);}
+    .ld__h{font-size:9px;font-weight:800;letter-spacing:0.06em;text-transform:uppercase;color:#8fc4ba;margin-bottom:8px;}
+    .ld__src{display:flex;align-items:center;gap:7px;margin-bottom:7px;}
+    .ld__src .ic{width:16px;height:16px;border-radius:50%;display:flex;align-items:center;justify-content:center;flex:none;}
+    .ld__src .ic svg{width:10px;height:10px;}
+    .ld__src span{font-size:10px;color:#d7e6e2;}
+    .ld__src .dot{margin-left:auto;width:6px;height:6px;border-radius:50%;background:#34e0a1;}
+    .conv{display:flex;align-items:flex-start;gap:7px;padding:6px 0;border-bottom:1px solid rgba(255,255,255,0.06);}
+    .conv:last-child{border-bottom:none;}
+    .conv .ic{width:16px;height:16px;border-radius:50%;flex:none;}
+    .conv__t{font-size:9.5px;font-weight:600;color:#eef5f3;line-height:1.25;}
+    .conv__m{font-size:8px;color:#7fa8a4;}
+    .conv__hi{font-size:7.5px;font-weight:700;color:#9ff0c6;background:rgba(52,224,161,0.14);border-radius:4px;padding:1px 5px;margin-top:2px;display:inline-block;}
+    .stat{background:rgba(255,255,255,0.04);border:1px solid rgba(120,200,180,0.14);border-radius:8px;padding:8px 9px;margin-bottom:7px;}
+    .stat__n{font-size:16px;font-weight:800;color:#fff;line-height:1;}
+    .stat__l{font-size:8px;color:#8fc4ba;margin-top:2px;}
+    .stat__up{font-size:8px;font-weight:700;color:#34e0a1;}
+    /* bm3 booking journey */
+    .jrny{width:100%;max-width:470px;}
+    .jrny__ttl{font-size:11px;font-weight:800;color:var(--text-primary);margin-bottom:10px;}
+    .jrny__row{display:grid;grid-template-columns:repeat(4,1fr);gap:6px;align-items:stretch;}
+    .jstep{position:relative;background:#fff;border-radius:9px;box-shadow:0 6px 18px rgba(0,0,0,0.12);padding:11px 8px 10px;text-align:center;}
+    .jstep__n{position:absolute;top:-7px;left:8px;width:17px;height:17px;border-radius:50%;background:var(--safari-secondary);color:#fff;font-size:9px;font-weight:800;display:flex;align-items:center;justify-content:center;}
+    .jstep__ic{width:24px;height:24px;margin:2px auto 7px;color:var(--safari-primary);}
+    .jstep__ic svg{width:100%;height:100%;}
+    .jstep__t{font-size:9.5px;font-weight:800;color:var(--text-primary);margin-bottom:4px;}
+    .jstep__s{font-size:8px;color:var(--text-muted);line-height:1.3;}
+    .jstep__hi{font-size:7.5px;font-weight:700;color:var(--safari-secondary);background:rgba(196,89,17,0.1);border-radius:4px;padding:2px 6px;margin-top:6px;display:inline-block;}
+    .jstep__ok{font-size:7.5px;font-weight:700;color:#0f7a4f;background:#e3f6ec;border-radius:4px;padding:2px 6px;margin-top:6px;display:inline-block;}
+    .jrny__foot{display:flex;align-items:center;gap:8px;margin-top:14px;font-size:10px;font-weight:700;color:var(--text-primary);}
+    .jrny__foot::before,.jrny__foot::after{content:"";flex:1;height:2px;background:linear-gradient(90deg,var(--safari-secondary),rgba(196,89,17,0.2));border-radius:2px;}
+    @media (max-width: 900px){
+      .featured{grid-template-columns:1fr;gap:28px;}
+      .latest-grid{grid-template-columns:1fr;}
+      .ghero__bar{flex-direction:column;align-items:flex-start;}
+      .gsearch input{width:100%;}
+    }
+    @media (max-width: 860px) {
+      .bcard { grid-template-columns: 1fr; }
+      .bcard__media { min-height: 240px; }
+      .bcard__body { padding: 28px 28px 32px; }
+      .bcard__readtime { position: static; margin-bottom: 16px; align-self: flex-start; }
+    }
+  </style>
+</head>
+<body>
+<div class="note"><strong>Self-contained preview of the new Blog page</strong> (site nav &amp; footer omitted so it renders on its own). This is exactly what goes live, just without the shared header/footer.</div>
+<section class="gbanner">
+  <div class="gbanner__wave" aria-hidden="true"></div>
+  <div class="container">
+    <div class="gbanner__grid">
+      <div class="gbanner__left">
+        <h1 class="gbanner__title">Blog</h1>
+        <p class="gbanner__subtitle">Safari Marketing &amp; Lead Generation Insights</p>
+      </div>
+      <div class="gbanner__right">
+        <p class="gbanner__desc">Expert insights for luxury safari operators on lead generation, social listening, and winning more bookings online.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="filterbar">
+  <div class="container">
+    <div class="ghero__bar">
+      <div class="chips">
+        <span class="chip chip--active">All</span>
+        <span class="chip">Safari Operations</span>
+        <span class="chip">Safari Sales</span>
+        <span class="chip">Travel Tech</span>
+        <span class="chip">Social Listening</span>
+        <span class="chip">Lead Generation</span>
+      </div>
+      <div class="gsearch">
+        <input type="text" placeholder="Search the blog" aria-label="Search the blog" />
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="container">
+
+    <!-- Featured post -->
+    <article class="featured">
+      <div class="featured__media m-dark">
+        <div class="ld">
+          <div class="ld__col">
+            <div class="ld__h">Sources</div>
+            <div class="ld__src"><span class="ic" style="background:#FF4500;"><svg viewBox="0 0 24 24" fill="#fff"><path d="M12 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0zm5.01 4.744c.688 0 1.25.561 1.25 1.249a1.25 1.25 0 0 1-2.498.056l-2.597-.547-.8 3.747c1.824.07 3.48.632 4.674 1.488.308-.309.73-.491 1.207-.491.968 0 1.754.786 1.754 1.754 0 .716-.435 1.333-1.01 1.614a3.111 3.111 0 0 1 .042.52c0 2.694-3.13 4.87-7.004 4.87-3.874 0-7.004-2.176-7.004-4.87 0-.183.015-.366.043-.534A1.748 1.748 0 0 1 4.028 12c0-.968.786-1.754 1.754-1.754.463 0 .898.196 1.207.49z"/></svg></span><span>Reddit</span><span class="dot"></span></div>
+            <div class="ld__src"><span class="ic" style="background:#34E0A1;"><svg viewBox="0 0 24 24"><circle cx="6.5" cy="12" r="5.8" fill="#fff"/><circle cx="6.5" cy="12" r="2.6" fill="#34E0A1"/><circle cx="17.5" cy="12" r="5.8" fill="#fff"/><circle cx="17.5" cy="12" r="2.6" fill="#34E0A1"/></svg></span><span>TripAdvisor</span><span class="dot"></span></div>
+            <div class="ld__src"><span class="ic" style="background:#B92B27;"><svg viewBox="0 0 24 24" fill="#fff"><path d="M12 0C5.373 0 0 5.372 0 12c0 6.628 5.373 12 12 12 6.628 0 12-5.372 12-12 0-6.628-5.372-12-12-12zm0 4.5c2.9 0 5.05 2.34 5.05 5.63 0 1.3-.38 2.49-1 3.43l.72.73-1.08 1.06-.72-.71c-.92.63-2.02 1-3.23 1H12c-2.9 0-5.05-2.34-5.05-5.63S9.1 4.5 12 4.5z"/></svg></span><span>Quora</span><span class="dot"></span></div>
+            <div class="ld__src"><span class="ic" style="background:#1877F2;"><svg viewBox="0 0 24 24" fill="#fff"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg></span><span>Facebook</span><span class="dot"></span></div>
+            <div class="ld__src"><span class="ic" style="background:#000;"><svg viewBox="0 0 24 24" fill="#fff"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg></span><span>X (Twitter)</span><span class="dot"></span></div>
+          </div>
+          <div class="ld__col">
+            <div class="ld__h">Recent conversations</div>
+            <div class="conv"><span class="ic" style="background:#FF4500;"></span><div><div class="conv__t">Best time to visit Serengeti in June?</div><div class="conv__m">r/travel · 2h ago</div><span class="conv__hi">High intent</span></div></div>
+            <div class="conv"><span class="ic" style="background:#34E0A1;"></span><div><div class="conv__t">Safari company recommendations?</div><div class="conv__m">Safari Lover · 3h ago</div><span class="conv__hi">High intent</span></div></div>
+            <div class="conv"><span class="ic" style="background:#B92B27;"></span><div><div class="conv__t">Family safari in Tanzania – advice?</div><div class="conv__m">Quora · 5h ago</div><span class="conv__hi">High intent</span></div></div>
+          </div>
+          <div class="ld__col">
+            <div class="ld__h">Summary</div>
+            <div class="stat"><div class="stat__n">128</div><div class="stat__l">New conversations</div><div class="stat__up">↑ +18%</div></div>
+            <div class="stat"><div class="stat__n">36</div><div class="stat__l">High-intent mentions</div><div class="stat__up">↑ +22%</div></div>
+            <div class="stat"><div class="stat__l">Sentiment</div><div class="stat__n" style="font-size:13px;color:#34e0a1;">Positive 72%</div></div>
+          </div>
+        </div>
+        <span class="featured__media-label">Featured post</span>
+      </div>
+      <div class="featured__body">
+        <span class="fcat">Social Listening</span>
+        <h2 class="featured__title">Social Listening for Safari Operators: How to Find Travelers Before They Find You</h2>
+        <p class="featured__excerpt">What social listening actually means for safari businesses, which platforms matter most, and why automated monitoring beats manual searching every time.</p>
+        <div class="byline">
+          <span class="avatar">WT</span>
+          <div><div class="byline__name">Wandar Team</div><div class="byline__role">Safari Growth, Wandar</div></div>
+        </div>
+        <div class="metarow">
+          <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>April 2026</span>
+          <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>7 min read</span>
+        </div>
+        <a href="social-listening-for-safari-operators.html" class="readlink">Read article →</a>
+      </div>
+    </article>
+
+    <!-- Latest posts -->
+    <div class="latest-head">
+      <h2>Latest posts</h2>
+      <a href="./" class="viewall">View all →</a>
+    </div>
+    <div class="latest-grid">
+      <a href="how-safari-operators-find-leads-online.html" class="pcard">
+        <span class="pcat">Lead Generation</span>
+        <h3 class="pcard__title">How Safari Operators Can Find High-Quality Leads Online</h3>
+        <div class="pcard__meta">
+          <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>April 2026</span>
+          <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>8 min</span>
+        </div>
+      </a>
+      <a href="social-listening-for-safari-operators.html" class="pcard">
+        <span class="pcat">Social Listening</span>
+        <h3 class="pcard__title">Social Listening for Safari Operators: How to Find Travelers Before They Find You</h3>
+        <div class="pcard__meta">
+          <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>April 2026</span>
+          <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>7 min</span>
+        </div>
+      </a>
+      <a href="how-to-get-more-safari-bookings.html" class="pcard">
+        <span class="pcat">Bookings</span>
+        <h3 class="pcard__title">How to Get More Safari Bookings: The Modern Operator's Playbook</h3>
+        <div class="pcard__meta">
+          <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>April 2026</span>
+          <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>7 min</span>
+        </div>
+      </a>
+    </div>
+
+    <!-- All articles -->
+    <div class="rich-head"><h2>All articles</h2></div>
+    <div class="blog-grid">
+
+      <article class="bcard bcard--lead">
+        <div class="bcard__media m-warm">
+          <div class="dash">
+            <div class="dash__hd">
+              <div><div class="dash__ttl">High-Intent Leads Discovered</div><div class="dash__sub">Real travelers looking for safari experiences</div></div>
+              <span class="dash__filter">Filter</span>
+            </div>
+            <div class="lrow">
+              <span class="lrow__ic" style="background:#FF4500;"><svg viewBox="0 0 24 24" fill="#fff"><path d="M12 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0zm5.01 4.744c.688 0 1.25.561 1.25 1.249a1.25 1.25 0 0 1-2.498.056l-2.597-.547-.8 3.747c1.824.07 3.48.632 4.674 1.488.308-.309.73-.491 1.207-.491.968 0 1.754.786 1.754 1.754 0 .716-.435 1.333-1.01 1.614a3.111 3.111 0 0 1 .042.52c0 2.694-3.13 4.87-7.004 4.87-3.874 0-7.004-2.176-7.004-4.87 0-.183.015-.366.043-.534A1.748 1.748 0 0 1 4.028 12c0-.968.786-1.754 1.754-1.754.463 0 .898.196 1.207.49z"/></svg></span>
+              <div class="lrow__main"><div class="lrow__src">Reddit</div><div class="lrow__q">Best time to visit Serengeti in June?</div><span class="lrow__hi">High intent</span></div>
+              <div class="lrow__score"><b>92</b><span>High</span></div>
+            </div>
+            <div class="lrow">
+              <span class="lrow__ic" style="background:#34E0A1;"><svg viewBox="0 0 24 24"><circle cx="6.5" cy="12" r="5.8" fill="#fff"/><circle cx="6.5" cy="12" r="2.6" fill="#34E0A1"/><circle cx="17.5" cy="12" r="5.8" fill="#fff"/><circle cx="17.5" cy="12" r="2.6" fill="#34E0A1"/></svg></span>
+              <div class="lrow__main"><div class="lrow__src">TripAdvisor</div><div class="lrow__q">Private safari guide in Kenya?</div><span class="lrow__hi">High intent</span></div>
+              <div class="lrow__score"><b>89</b><span>High</span></div>
+            </div>
+            <div class="lrow">
+              <span class="lrow__ic" style="background:#B92B27;"><svg viewBox="0 0 24 24" fill="#fff"><path d="M12 0C5.373 0 0 5.372 0 12c0 6.628 5.373 12 12 12 6.628 0 12-5.372 12-12 0-6.628-5.372-12-12-12zm0 4.5c2.9 0 5.05 2.34 5.05 5.63 0 1.3-.38 2.49-1 3.43l.72.73-1.08 1.06-.72-.71c-.92.63-2.02 1-3.23 1H12c-2.9 0-5.05-2.34-5.05-5.63S9.1 4.5 12 4.5z"/></svg></span>
+              <div class="lrow__main"><div class="lrow__src">Quora</div><div class="lrow__q">Family safari in Tanzania — advice?</div><span class="lrow__hi">High intent</span></div>
+              <div class="lrow__score"><b>87</b><span>High</span></div>
+            </div>
+          </div>
+        </div>
+        <div class="bcard__body">
+          <span class="bcard__readtime"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>8 min read</span>
+          <p class="bcard__eyebrow">Lead Generation</p>
+          <h2 class="bcard__title">How Safari Operators Can Find High-Quality Leads Online</h2>
+          <p class="bcard__excerpt">High-intent safari travelers are posting questions on Reddit, TripAdvisor, and Quora right now. Here's how to find them before your competitors do and turn those conversations into bookings.</p>
+          <a href="how-safari-operators-find-leads-online.html" class="bcard__link">Read article →</a>
+        </div>
+      </article>
+
+      <article class="bcard bcard--listen">
+        <div class="bcard__media m-dark">
+          <div class="ld">
+            <div class="ld__col">
+              <div class="ld__h">Sources</div>
+              <div class="ld__src"><span class="ic" style="background:#FF4500;"><svg viewBox="0 0 24 24" fill="#fff"><path d="M12 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0zm5.01 4.744c.688 0 1.25.561 1.25 1.249a1.25 1.25 0 0 1-2.498.056l-2.597-.547-.8 3.747c1.824.07 3.48.632 4.674 1.488.308-.309.73-.491 1.207-.491.968 0 1.754.786 1.754 1.754 0 .716-.435 1.333-1.01 1.614a3.111 3.111 0 0 1 .042.52c0 2.694-3.13 4.87-7.004 4.87-3.874 0-7.004-2.176-7.004-4.87 0-.183.015-.366.043-.534A1.748 1.748 0 0 1 4.028 12c0-.968.786-1.754 1.754-1.754.463 0 .898.196 1.207.49z"/></svg></span><span>Reddit</span><span class="dot"></span></div>
+              <div class="ld__src"><span class="ic" style="background:#34E0A1;"><svg viewBox="0 0 24 24"><circle cx="6.5" cy="12" r="5.8" fill="#fff"/><circle cx="6.5" cy="12" r="2.6" fill="#34E0A1"/><circle cx="17.5" cy="12" r="5.8" fill="#fff"/><circle cx="17.5" cy="12" r="2.6" fill="#34E0A1"/></svg></span><span>TripAdvisor</span><span class="dot"></span></div>
+              <div class="ld__src"><span class="ic" style="background:#B92B27;"><svg viewBox="0 0 24 24" fill="#fff"><path d="M12 0C5.373 0 0 5.372 0 12c0 6.628 5.373 12 12 12 6.628 0 12-5.372 12-12 0-6.628-5.372-12-12-12zm0 4.5c2.9 0 5.05 2.34 5.05 5.63 0 1.3-.38 2.49-1 3.43l.72.73-1.08 1.06-.72-.71c-.92.63-2.02 1-3.23 1H12c-2.9 0-5.05-2.34-5.05-5.63S9.1 4.5 12 4.5z"/></svg></span><span>Quora</span><span class="dot"></span></div>
+              <div class="ld__src"><span class="ic" style="background:#1877F2;"><svg viewBox="0 0 24 24" fill="#fff"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg></span><span>Facebook</span><span class="dot"></span></div>
+              <div class="ld__src"><span class="ic" style="background:#000;"><svg viewBox="0 0 24 24" fill="#fff"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg></span><span>X (Twitter)</span><span class="dot"></span></div>
+            </div>
+            <div class="ld__col">
+              <div class="ld__h">Recent conversations</div>
+              <div class="conv"><span class="ic" style="background:#FF4500;"></span><div><div class="conv__t">Best time to visit Serengeti in June?</div><div class="conv__m">r/travel · 2h ago</div><span class="conv__hi">High intent</span></div></div>
+              <div class="conv"><span class="ic" style="background:#34E0A1;"></span><div><div class="conv__t">Safari company recommendations?</div><div class="conv__m">Safari Lover · 3h ago</div><span class="conv__hi">High intent</span></div></div>
+              <div class="conv"><span class="ic" style="background:#B92B27;"></span><div><div class="conv__t">Family safari in Tanzania – advice?</div><div class="conv__m">Quora · 5h ago</div><span class="conv__hi">High intent</span></div></div>
+            </div>
+            <div class="ld__col">
+              <div class="ld__h">Summary</div>
+              <div class="stat"><div class="stat__n">128</div><div class="stat__l">New conversations</div><div class="stat__up">↑ +18%</div></div>
+              <div class="stat"><div class="stat__n">36</div><div class="stat__l">High-intent mentions</div><div class="stat__up">↑ +22%</div></div>
+              <div class="stat"><div class="stat__l">Sentiment</div><div class="stat__n" style="font-size:13px;color:#34e0a1;">Positive 72%</div></div>
+            </div>
+          </div>
+        </div>
+        <div class="bcard__body">
+          <span class="bcard__readtime"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>7 min read</span>
+          <p class="bcard__eyebrow">Social Listening</p>
+          <h2 class="bcard__title">Social Listening for Safari Operators: How to Find Travelers Before They Find You</h2>
+          <p class="bcard__excerpt">What social listening actually means for safari businesses, which platforms matter most, and why automated monitoring beats manual searching every time.</p>
+          <a href="social-listening-for-safari-operators.html" class="bcard__link">Read article →</a>
+        </div>
+      </article>
+
+      <article class="bcard bcard--bookings">
+        <div class="bcard__media m-warm">
+          <div class="jrny">
+            <div class="jrny__ttl">Booking journey</div>
+            <div class="jrny__row">
+              <div class="jstep"><span class="jstep__n">1</span><div class="jstep__ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg></div><div class="jstep__t">Enquiry Received</div><div class="jstep__s">Safari in Kenya<br>2 adults · Aug 12</div><span class="jstep__hi">High intent</span></div>
+              <div class="jstep"><span class="jstep__n">2</span><div class="jstep__ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 11.5a8.38 8.38 0 0 1-9 8.34 8.5 8.5 0 0 1-3.8-.9L3 20l1.06-5.2A8.5 8.5 0 1 1 21 11.5z"/></svg></div><div class="jstep__t">Response Drafted</div><div class="jstep__s">Personalized reply created</div><span class="jstep__ok">✓ Ready</span></div>
+              <div class="jstep"><span class="jstep__n">3</span><div class="jstep__ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/></svg></div><div class="jstep__t">Proposal Sent</div><div class="jstep__s">7 Day Safari<br>Masai Mara</div><span class="jstep__hi">PDF</span></div>
+              <div class="jstep"><span class="jstep__n">4</span><div class="jstep__ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg></div><div class="jstep__t">Booking Confirmed</div><div class="jstep__s">Deposit received<br>ID: B-2487</div><span class="jstep__ok">Confirmed</span></div>
+            </div>
+            <div class="jrny__foot">From enquiry to booking. Faster.</div>
+          </div>
+        </div>
+        <div class="bcard__body">
+          <span class="bcard__readtime"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>7 min read</span>
+          <p class="bcard__eyebrow">Bookings</p>
+          <h2 class="bcard__title">How to Get More Safari Bookings: The Modern Operator's Playbook</h2>
+          <p class="bcard__excerpt">The modern safari traveler's research journey has changed. Being the first to respond to an inquiry, not the biggest advertiser, is now the #1 booking factor.</p>
+          <a href="how-to-get-more-safari-bookings.html" class="bcard__link">Read article →</a>
+        </div>
+      </article>
+
+    </div>
+  </div>
+</section>
+</body>
+</html>
