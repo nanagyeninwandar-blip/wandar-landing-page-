@@ -858,5 +858,48 @@ function handleSubscribe(e) {
 })();
 </script>
 
+<script>
+/* Mobile: fit coded mockup covers to width (no cropping / squishing) */
+(function(){
+  var DW={'lg-card':360,'listen':480,'pipe':430,'dash':380,'ld':440,'jrny':470};
+  function fit(){
+    var mobile = window.innerWidth <= 860;
+    var boxes = document.querySelectorAll('.bcard__media, .featured__media, .vcard__img');
+    [].forEach.call(boxes, function(box){
+      var mock = box.querySelector('.lg-card,.listen,.pipe,.dash,.ld,.jrny');
+      if(!mock) return;
+      var isV = box.classList.contains('vcard__img');
+      var target = isV ? (mock.closest('.vcover')||mock) : mock;
+      var dw=360; for(var k in DW){ if(mock.classList.contains(k)){ dw=DW[k]; break; } }
+      if(!mobile){
+        mock.style.width=''; mock.style.maxWidth='';
+        target.style.transform=''; target.style.transformOrigin='';
+        box.style.height=''; box.style.minHeight='';
+        return;
+      }
+      mock.style.width = dw+'px'; mock.style.maxWidth='none';
+      target.style.transform='none';
+      var natW = target.offsetWidth, natH = target.offsetHeight;
+      if(!natW) return;
+      var inset = 28;
+      var avail = box.clientWidth - inset;
+      var s = Math.min(1, avail/natW);
+      target.style.transformOrigin='center center';
+      target.style.transform = 'scale('+s+')';
+      box.style.minHeight='0';
+      box.style.height = Math.ceil(natH*s + inset) + 'px';
+    });
+  }
+  var t;
+  function deb(){ clearTimeout(t); t=setTimeout(fit, 100); }
+  window.addEventListener('resize', deb);
+  window.addEventListener('load', fit);
+  if(document.readyState!=='loading') fit(); else document.addEventListener('DOMContentLoaded', fit);
+  // re-fit after filtering changes which cards are visible
+  document.querySelectorAll('.chip').forEach(function(c){ c.addEventListener('click', function(){ setTimeout(fit,60); }); });
+  var srch=document.querySelector('.gsearch input'); if(srch) srch.addEventListener('input', function(){ setTimeout(fit,60); });
+})();
+</script>
+
 </body>
 </html>
