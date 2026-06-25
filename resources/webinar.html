@@ -1,0 +1,1382 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Practical AI Use Across Safari Operations | Webinar Series | Wandar</title>
+  <meta name="description" content="A free 4-part webinar series for safari operators. Use AI to reduce admin, respond to enquiries faster, and build reusable workflows your team can use from day one." />
+  <meta name="robots" content="index, follow" />
+  <link rel="canonical" href="https://www.getwandar.com/resources/webinar.html" />
+  <link rel="icon" type="image/svg+xml" href="../assets/favicon.svg" />
+  <link rel="icon" href="../assets/wandar-logo-blkbg.jpg" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="stylesheet" href="../assets/css/main.css" />
+  <script src="https://cdn.lordicon.com/lordicon.js" defer></script>
+  <script src="../assets/js/modals.js"></script>
+  <script src="../assets/js/nav.js"></script>
+
+  <style>
+    /* ── Hero ── */
+    .wb-hero {
+      background: var(--dark-bg);
+      padding: 88px 0 72px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .wb-hero::before {
+      content: '';
+      position: absolute; inset: 0;
+      background: radial-gradient(ellipse 72% 50% at 50% 0%, rgba(26,115,115,.2) 0%, transparent 68%);
+      pointer-events: none;
+    }
+    .wb-hero-inner { max-width: 760px; margin: 0 auto; padding: 0 24px; position: relative; }
+
+    .wb-live-badge {
+      display: inline-flex; align-items: center; gap: 7px;
+      background: rgba(196,89,17,.14); border: 1px solid rgba(196,89,17,.38);
+      color: #f5a56e;
+      font-size: 11px; font-weight: 700; letter-spacing: .13em; text-transform: uppercase;
+      padding: 5px 14px; border-radius: var(--radius-pill); margin-bottom: 22px;
+    }
+    .wb-live-dot {
+      width: 7px; height: 7px; background: #ff4444; border-radius: 50%;
+      animation: wbPulse 1.4s ease-in-out infinite;
+    }
+    @keyframes wbPulse { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:.35;transform:scale(.7)} }
+
+    .wb-series-line {
+      font-size: 12px; font-weight: 700; letter-spacing: .13em; text-transform: uppercase;
+      color: var(--safari-primary); margin-bottom: 20px;
+    }
+    .wb-hero h1 {
+      font-size: clamp(2rem, 5vw, 3.1rem);
+      font-weight: 800; color: var(--white); line-height: 1.15; margin-bottom: 20px;
+    }
+    .wb-hero h1 em { font-style: normal; color: var(--safari-secondary); }
+    .wb-hero-sub {
+      font-size: 1.07rem; color: rgba(255,255,255,.65);
+      max-width: 600px; margin: 0 auto 40px; line-height: 1.65;
+    }
+
+    /* Countdown */
+    .wb-cd-wrap {
+      background: rgba(255,255,255,.05); border: 1px solid rgba(255,255,255,.09);
+      border-radius: var(--radius-lg); padding: 26px 36px;
+      display: inline-flex; flex-direction: column; align-items: center; gap: 10px;
+      margin-bottom: 28px;
+    }
+    .wb-cd-label {
+      font-size: 11px; font-weight: 700; letter-spacing: .16em; text-transform: uppercase;
+      color: rgba(255,255,255,.38);
+    }
+    .wb-cd-digits { display: flex; align-items: center; gap: 6px; }
+    .wb-cd-unit { display: flex; flex-direction: column; align-items: center; min-width: 68px; }
+    .wb-cd-num {
+      font-size: clamp(2rem, 5vw, 2.8rem); font-weight: 800;
+      color: var(--white); font-variant-numeric: tabular-nums; line-height: 1;
+      background: rgba(26,115,115,.22); border: 1px solid rgba(26,115,115,.42);
+      border-radius: var(--radius-md); padding: 10px 14px; min-width: 74px; text-align: center;
+    }
+    .wb-cd-name {
+      font-size: 10px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase;
+      color: rgba(255,255,255,.35); margin-top: 7px;
+    }
+    .wb-cd-sep { font-size: 2.2rem; font-weight: 800; color: rgba(255,255,255,.22); margin-bottom: 18px; line-height: 1; }
+
+    /* Sections */
+    .wb-section { padding: 72px 0; }
+    .wb-eyebrow {
+      font-size: 11px; font-weight: 700; letter-spacing: .15em; text-transform: uppercase;
+      color: var(--safari-primary); text-align: center; margin-bottom: 10px;
+    }
+    .wb-eyebrow--light { color: rgba(255,255,255,.45); }
+    .wb-h2 {
+      font-size: clamp(1.45rem, 3vw, 2.1rem); font-weight: 800;
+      color: var(--text-primary); text-align: center; line-height: 1.25; margin-bottom: 44px;
+    }
+    .wb-h2--light { color: var(--white); }
+
+    /* Learn cards — fixed 3×2 */
+    .wb-learn-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+    }
+    @media (max-width: 860px) { .wb-learn-grid { grid-template-columns: repeat(2, 1fr); } }
+    @media (max-width: 520px)  { .wb-learn-grid { grid-template-columns: 1fr; } }
+
+    .wb-learn-card {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 28px 24px;
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+      transition: box-shadow .2s, transform .2s;
+    }
+    .wb-learn-card:hover { box-shadow: 0 8px 28px rgba(26,115,115,.1); transform: translateY(-2px); }
+    .wb-learn-card-top { display: flex; align-items: center; gap: 14px; margin-bottom: 14px; }
+    .wb-learn-icon {
+      width: 44px; height: 44px; border-radius: 12px;
+      background: linear-gradient(135deg, rgba(26,115,115,.12) 0%, rgba(26,115,115,.06) 100%);
+      border: 1px solid rgba(26,115,115,.18);
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0; font-size: 1.2rem;
+    }
+    .wb-learn-card h3 { font-size: 15px; font-weight: 800; color: var(--text-primary); line-height: 1.25; }
+    .wb-learn-card p { font-size: 13.5px; color: var(--text-muted); line-height: 1.6; }
+
+    /* Who section — 2-col role cards */
+    .wb-who { background: var(--dark-bg); padding: 72px 0; }
+    .wb-who-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 14px;
+    }
+    @media (max-width: 640px) { .wb-who-grid { grid-template-columns: 1fr; } }
+
+    .wb-who-card {
+      background: rgba(255,255,255,.04);
+      border: 1px solid rgba(255,255,255,.08);
+      border-left: 3px solid var(--safari-primary);
+      border-radius: var(--radius-lg);
+      padding: 20px 22px;
+      display: flex; flex-direction: column; gap: 5px;
+      transition: background .18s, border-color .18s;
+    }
+    .wb-who-card:hover { background: rgba(26,115,115,.1); border-left-color: #2aacac; }
+    .wb-who-role {
+      font-size: 15px; font-weight: 700; color: var(--white); line-height: 1.2;
+    }
+    .wb-who-desc {
+      font-size: 13px; color: rgba(255,255,255,.48); line-height: 1.5;
+    }
+
+    /* Sessions — 4 in a row */
+    .wb-sessions {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 20px;
+    }
+    @media (max-width: 900px) { .wb-sessions { grid-template-columns: repeat(2, 1fr); } }
+    @media (max-width: 540px) { .wb-sessions { grid-template-columns: 1fr; } }
+
+    .wb-session-card {
+      background: var(--white); border: 1px solid var(--border);
+      border-top: 3px solid var(--safari-primary);
+      border-radius: var(--radius-lg); padding: 26px 22px;
+      display: flex; flex-direction: column;
+    }
+    .wb-session-num {
+      font-size: 11px; font-weight: 800; letter-spacing: .12em; text-transform: uppercase;
+      color: var(--safari-primary); margin-bottom: 10px;
+    }
+    .wb-session-card h3 { font-size: 15px; font-weight: 800; color: var(--text-primary); line-height: 1.3; margin-bottom: 10px; }
+    .wb-session-card p { font-size: 13px; color: var(--text-secondary); line-height: 1.6; margin-bottom: 14px; flex: 1; }
+    .wb-session-takes {
+      font-size: 11px; font-weight: 800; letter-spacing: .1em; text-transform: uppercase;
+      color: var(--safari-secondary); margin-bottom: 8px;
+    }
+    .wb-session-list { list-style: none; padding: 0; margin: 0; }
+    .wb-session-list li {
+      font-size: 13px; color: var(--text-muted); padding: 3px 0;
+      display: flex; gap: 7px; align-items: flex-start;
+    }
+    .wb-session-list li::before { content: '→'; color: var(--safari-primary); font-weight: 700; flex-shrink: 0; }
+
+    /* CTA strip */
+    .wb-cta-strip {
+      background: var(--off-white);
+      border-top: 1px solid var(--border);
+      padding: 80px 0; text-align: center;
+    }
+    .wb-cta-strip h2 { font-size: clamp(1.35rem,3vw,2rem); font-weight: 800; color: var(--text-primary); margin-bottom: 10px; }
+    .wb-cta-strip p { color: var(--text-muted); margin-bottom: 32px; max-width: 500px; margin-left: auto; margin-right: auto; font-size: 15px; }
+
+    /* ── Fix 1: Hero session preview strip ── */
+    .wb-hero-preview {
+      display: flex; gap: 10px; justify-content: center; flex-wrap: wrap;
+      margin-top: 44px; padding-top: 36px;
+      border-top: 1px solid rgba(255,255,255,.08);
+    }
+    .wb-preview-pip {
+      background: rgba(255,255,255,.05); border: 1px solid rgba(255,255,255,.1);
+      border-radius: var(--radius-md); padding: 12px 18px;
+      display: flex; align-items: flex-start; gap: 12px; text-align: left; max-width: 220px;
+      transition: background .18s, border-color .18s;
+    }
+    .wb-preview-pip:hover { background: rgba(26,115,115,.14); border-color: rgba(26,115,115,.4); }
+    .wb-pip-num {
+      font-size: 10px; font-weight: 800; letter-spacing: .14em; text-transform: uppercase;
+      color: var(--safari-primary); white-space: nowrap; margin-top: 2px;
+    }
+    .wb-pip-title { font-size: 12px; font-weight: 600; color: rgba(255,255,255,.6); line-height: 1.4; }
+
+    /* ── Fix 2: Learn card hover accent ── */
+    .wb-learn-card:hover { border-color: rgba(26,115,115,.25); }
+
+    /* ── Fix 3: Session card elevation ── */
+    .wb-session-card { position: relative; overflow: hidden; }
+    .wb-session-card:hover { box-shadow: 0 8px 32px rgba(26,115,115,.12); transform: translateY(-2px); transition: box-shadow .2s, transform .2s; }
+    .wb-session-meta {
+      display: flex; align-items: center; gap: 7px; margin-bottom: 14px; flex-wrap: wrap;
+    }
+    .wb-session-chip {
+      font-size: 10px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase;
+      padding: 3px 10px; border-radius: var(--radius-pill);
+    }
+    .wb-session-chip--live {
+      background: rgba(26,115,115,.12); color: var(--safari-primary);
+      border: 1px solid rgba(26,115,115,.22);
+    }
+    .wb-session-chip--dur {
+      background: #f4f4f5; color: var(--text-muted);
+    }
+
+    /* ── Fix 4: CTA 2-col layout ── */
+    .wb-cta-inner {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 56px; align-items: center;
+      text-align: left;
+    }
+    @media (max-width: 768px) { .wb-cta-inner { grid-template-columns: 1fr; gap: 36px; text-align: center; } }
+    .wb-cta-strip h2 { margin-bottom: 10px; }
+    .wb-cta-strip p { margin-left: 0; margin-right: 0; max-width: 100%; }
+    .wb-cta-card {
+      background: var(--white); border: 1px solid var(--border);
+      border-radius: var(--radius-lg); padding: 28px 26px;
+      box-shadow: 0 4px 20px rgba(0,0,0,.06);
+    }
+    .wb-cta-card-title {
+      font-size: 11px; font-weight: 800; letter-spacing: .14em; text-transform: uppercase;
+      color: var(--safari-primary); margin-bottom: 16px;
+    }
+    .wb-cta-checklist { list-style: none; padding: 0; margin: 0 0 22px; display: flex; flex-direction: column; gap: 11px; }
+    .wb-cta-checklist li {
+      display: flex; gap: 11px; align-items: flex-start;
+      font-size: 14px; color: var(--text-primary); font-weight: 500; line-height: 1.45;
+    }
+    .wb-cta-check {
+      width: 20px; height: 20px; border-radius: 50%; background: var(--safari-primary);
+      display: flex; align-items: center; justify-content: center; flex-shrink: 0; margin-top: 1px;
+    }
+    .wb-cta-check svg { width: 10px; height: 10px; fill: none; stroke: #fff; stroke-width: 2.5; }
+    .wb-cta-note { font-size: 12px; color: var(--text-muted); }
+
+    /* Modal */
+    .wb-modal-overlay {
+      position: fixed; inset: 0; z-index: 999;
+      background: rgba(0,0,0,.58); backdrop-filter: blur(4px);
+      display: flex; align-items: center; justify-content: center; padding: 16px;
+      opacity: 0; pointer-events: none; transition: opacity .22s;
+    }
+    .wb-modal-overlay.open { opacity: 1; pointer-events: auto; }
+    .wb-modal {
+      background: var(--white); border-radius: 20px;
+      width: 100%; max-width: 520px;
+      box-shadow: 0 24px 72px rgba(0,0,0,.32);
+      transform: translateY(18px) scale(.97);
+      transition: transform .26s cubic-bezier(.34,1.56,.64,1);
+      overflow: hidden;
+    }
+    .wb-modal-overlay.open .wb-modal { transform: translateY(0) scale(1); }
+    .wb-modal-stripe { height: 4px; background: linear-gradient(90deg, var(--safari-primary), #2aacac); }
+    .wb-modal-hd { padding: 26px 28px 0; text-align: center; position: relative; }
+    .wb-modal-icon {
+      width: 52px; height: 52px; border-radius: 50%;
+      background: var(--primary-light);
+      display: flex; align-items: center; justify-content: center; margin: 0 auto 14px;
+    }
+    .wb-modal-icon svg { width: 24px; height: 24px; }
+    .wb-modal-close {
+      position: absolute; top: 14px; right: 14px;
+      width: 30px; height: 30px; border-radius: 50%;
+      background: #f4f4f5; border: none; cursor: pointer;
+      font-size: 14px; font-weight: 700; color: #555;
+      display: flex; align-items: center; justify-content: center; transition: background .2s;
+    }
+    .wb-modal-close:hover { background: #e4e4e7; }
+    .wb-modal-hd h2 { font-size: 1.2rem; font-weight: 800; color: var(--text-primary); margin-bottom: 5px; }
+    .wb-modal-hd .wb-modal-sub { font-size: 14px; color: var(--text-muted); }
+    .wb-date-pill {
+      display: flex; align-items: center; justify-content: space-between;
+      background: #f4f4f5; border-radius: var(--radius-pill);
+      padding: 10px 16px; margin-top: 14px;
+      font-size: 14px; color: var(--text-secondary); font-weight: 500;
+    }
+    .wb-date-pill .wb-dots { color: var(--text-muted); letter-spacing: .1em; }
+    .wb-modal-divider { height: 1px; background: var(--border); margin: 20px 0; }
+    .wb-modal-bd { padding: 0 28px 26px; }
+
+    /* 2x2 grid */
+    .wb-field-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+    @media (max-width: 420px) { .wb-field-grid { grid-template-columns: 1fr; } }
+    .wb-field { display: flex; flex-direction: column; gap: 5px; }
+    .wb-field label {
+      font-size: 11px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase;
+      color: var(--text-secondary);
+    }
+    .wb-field label .req { color: var(--safari-primary); margin-left: 2px; }
+    .wb-control {
+      background: #f4f4f5; border: 1.5px solid transparent; border-radius: var(--radius-sm);
+      padding: 10px 13px; font-family: var(--font-primary); font-size: 14px; color: var(--text-primary);
+      outline: none; width: 100%; transition: border-color .18s, background .18s;
+    }
+    .wb-control::placeholder { color: #a3a3a3; }
+    .wb-control:focus { border-color: var(--safari-primary); background: var(--white); }
+    select.wb-control {
+      appearance: none; cursor: pointer;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='11' height='7'%3E%3Cpath d='M1 1l4.5 4.5L10 1' stroke='%23737373' stroke-width='1.6' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
+      background-repeat: no-repeat; background-position: right 12px center;
+    }
+    .wb-modal-submit {
+      display: flex; align-items: center; justify-content: center; gap: 8px;
+      width: 100%;
+      background: var(--safari-primary); color: var(--white);
+      font-family: var(--font-primary); font-size: 14px; font-weight: 700;
+      letter-spacing: .04em; text-transform: uppercase;
+      padding: 13px 24px; border: none; border-radius: var(--radius-sm); cursor: pointer;
+      margin-top: 16px; transition: background .2s, transform .14s;
+    }
+    .wb-modal-submit:hover { background: var(--primary-hover); transform: translateY(-1px); }
+    .wb-modal-submit:disabled { opacity: .6; cursor: not-allowed; transform: none; }
+
+    /* Success */
+    .wb-modal-success { padding: 46px 28px 34px; text-align: center; display: none; }
+    .wb-success-ring {
+      width: 62px; height: 62px; border-radius: 50%; background: #d1fae5;
+      display: flex; align-items: center; justify-content: center; margin: 0 auto 16px;
+    }
+    .wb-success-ring svg { width: 26px; height: 26px; }
+    .wb-modal-success h3 { font-size: 1.2rem; font-weight: 800; color: var(--text-primary); margin-bottom: 7px; }
+    .wb-modal-success p { font-size: 14px; color: var(--text-muted); margin-bottom: 3px; }
+    .wb-success-email { font-weight: 700; color: var(--safari-primary); }
+    .wb-success-tag {
+      display: inline-block; background: var(--primary-light); color: var(--safari-primary);
+      font-size: 13px; font-weight: 700; padding: 7px 18px;
+      border-radius: var(--radius-pill); margin: 14px 0 20px;
+    }
+    .wb-btn-done {
+      background: var(--safari-primary); color: var(--white);
+      font-family: var(--font-primary); font-size: 14px; font-weight: 700;
+      padding: 11px 28px; border: none; border-radius: var(--radius-sm); cursor: pointer;
+      transition: background .2s;
+    }
+    .wb-btn-done:hover { background: var(--primary-hover); }
+
+    @media (max-width: 560px) {
+      .wb-cd-wrap { padding: 20px 16px; }
+      .wb-cd-num { font-size: 1.75rem; min-width: 56px; padding: 8px 10px; }
+      .wb-cd-unit { min-width: 52px; }
+    }
+
+    /* ── Curriculum visual rows ── */
+    .wb-curr-grid { display: flex; flex-direction: column; gap: 24px; }
+    .wb-curr-row {
+      display: grid; grid-template-columns: 1fr 1.15fr;
+      border-radius: var(--radius-lg); overflow: hidden;
+      box-shadow: 0 4px 28px rgba(0,0,0,.08); border: 1px solid var(--border);
+    }
+    .wb-curr-row--rev { grid-template-columns: 1.15fr 1fr; }
+    .wb-curr-visual {
+      position: relative; overflow: hidden;
+      display: flex; align-items: center; justify-content: center;
+      padding: 44px 36px; min-height: 300px;
+    }
+    .wb-curr-visual--1 { background: linear-gradient(145deg, #0b3d3d 0%, #1a7373 58%, #23a0a0 100%); }
+    .wb-curr-visual--2 { background: linear-gradient(145deg, #142808 0%, #2d5016 58%, #3c6a1c 100%); }
+    .wb-curr-visual--3 { background: linear-gradient(145deg, #5c1f00 0%, #c45911 58%, #da7a3a 100%); }
+    .wb-curr-visual--4 { background: linear-gradient(145deg, #3f2c00 0%, #b8860b 58%, #d4a020 100%); }
+    .wb-curr-dots {
+      position: absolute; inset: 0;
+      background-image: radial-gradient(circle, rgba(255,255,255,.09) 1.5px, transparent 1.5px);
+      background-size: 26px 26px; pointer-events: none;
+    }
+    @media (max-width: 840px) {
+      .wb-curr-row, .wb-curr-row--rev { grid-template-columns: 1fr; }
+      .wb-curr-row--rev .wb-curr-visual { order: -1; }
+      .wb-curr-row--rev .wb-curr-body { order: 1; }
+      .wb-curr-visual { min-height: 200px; padding: 32px 28px; }
+    }
+    .wb-curr-body {
+      background: var(--white); padding: 40px 38px;
+      display: flex; flex-direction: column; justify-content: center; gap: 16px;
+    }
+    @media (max-width: 480px) { .wb-curr-body { padding: 28px 22px; } }
+    .wb-curr-body h3 {
+      font-size: clamp(1.1rem, 2.5vw, 1.4rem);
+      font-weight: 800; color: var(--text-primary); line-height: 1.25; margin: 0;
+    }
+    .wb-curr-body > p { font-size: 14px; color: var(--text-secondary); line-height: 1.65; margin: 0; }
+    .wb-curr-takes {
+      font-size: 10px; font-weight: 800; letter-spacing: .13em; text-transform: uppercase;
+      color: var(--safari-secondary); margin: 0 0 6px;
+    }
+    .wb-curr-list { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 7px; }
+    .wb-curr-list li {
+      display: flex; gap: 9px; align-items: flex-start;
+      font-size: 13.5px; color: var(--text-muted); line-height: 1.5;
+    }
+    .wb-curr-list li::before { content: '→'; color: var(--safari-primary); font-weight: 700; flex-shrink: 0; }
+
+    /* ── Why This Exists ── */
+    .wb-why-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; }
+    @media (max-width: 640px) { .wb-why-grid { grid-template-columns: 1fr; } }
+    .wb-why-card {
+      background: var(--white); border: 1px solid var(--border);
+      border-radius: var(--radius-lg); padding: 28px 26px;
+      transition: box-shadow .2s, transform .2s;
+    }
+    .wb-why-card:hover { box-shadow: 0 6px 24px rgba(0,0,0,.07); transform: translateY(-2px); }
+    .wb-why-icon {
+      width: 52px; height: 52px; border-radius: 14px;
+      display: flex; align-items: center; justify-content: center; margin-bottom: 18px;
+    }
+    .wb-why-icon--teal   { background: rgba(26,115,115,.1);  color: var(--safari-primary); }
+    .wb-why-icon--orange { background: rgba(196,89,17,.1);   color: var(--safari-secondary); }
+    .wb-why-icon--green  { background: rgba(45,80,22,.1);    color: var(--safari-nature); }
+    .wb-why-icon--gold   { background: rgba(184,134,11,.1);  color: var(--safari-gold); }
+    .wb-why-card h3 { font-size: 15px; font-weight: 800; color: var(--text-primary); margin-bottom: 8px; line-height: 1.3; }
+    .wb-why-card p  { font-size: 13.5px; color: var(--text-muted); line-height: 1.6; margin: 0; }
+
+    /* ── How It Works ── */
+    .wb-hiw-steps { max-width: 580px; margin: 0 auto; display: flex; flex-direction: column; }
+    .wb-hiw-step  { display: flex; gap: 24px; position: relative; }
+    .wb-hiw-step:not(:last-child)::after {
+      content: ''; position: absolute; left: 19px; top: 44px; bottom: -4px; width: 2px;
+      background: repeating-linear-gradient(to bottom, rgba(26,115,115,.35) 0, rgba(26,115,115,.35) 6px, transparent 6px, transparent 12px);
+    }
+    .wb-hiw-num {
+      width: 40px; height: 40px; border-radius: 50%; flex-shrink: 0;
+      background: var(--safari-primary); color: var(--white);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 16px; font-weight: 800; margin-top: 2px;
+    }
+    .wb-hiw-body { padding-bottom: 44px; }
+    .wb-hiw-step:last-child .wb-hiw-body { padding-bottom: 0; }
+    .wb-hiw-body h3 { font-size: 17px; font-weight: 800; color: var(--text-primary); margin-bottom: 8px; }
+    .wb-hiw-body p  { font-size: 14px; color: var(--text-secondary); line-height: 1.65; margin: 0; }
+
+    /* ── Why Wandar ── */
+    .wb-wandar-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; }
+    @media (max-width: 640px) { .wb-wandar-grid { grid-template-columns: 1fr; } }
+    .wb-wandar-card {
+      background: var(--white); border: 1px solid var(--border);
+      border-radius: var(--radius-lg); padding: 28px 26px;
+    }
+    .wb-wandar-card h3 { font-size: 15px; font-weight: 800; color: var(--text-primary); margin-bottom: 10px; line-height: 1.3; }
+    .wb-wc-problem { font-size: 13.5px; color: var(--text-muted); line-height: 1.6; margin: 0 0 18px; }
+    .wb-wc-divider { height: 1px; background: var(--border); margin-bottom: 16px; }
+    .wb-wc-solution { display: flex; gap: 11px; align-items: flex-start; font-size: 13.5px; color: var(--text-secondary); line-height: 1.55; }
+    .wb-wc-badge {
+      width: 26px; height: 26px; border-radius: 50%; flex-shrink: 0; margin-top: 1px;
+      background: var(--safari-secondary); color: var(--white);
+      display: flex; align-items: center; justify-content: center;
+    }
+    .wb-wc-badge svg { width: 11px; height: 11px; }
+    .wb-wc-solution strong { color: var(--safari-secondary); font-weight: 700; }
+
+    /* ── FAQ ── */
+    .wb-faq-list { max-width: 720px; margin: 0 auto; }
+    .wb-faq-item { border-bottom: 1px solid var(--border); }
+    .wb-faq-item:first-child { border-top: 1px solid var(--border); }
+    .wb-faq-btn {
+      width: 100%; display: flex; align-items: center; justify-content: space-between; gap: 16px;
+      padding: 20px 0; background: none; border: none; cursor: pointer;
+      text-align: left; font-family: var(--font-primary);
+    }
+    .wb-faq-q { font-size: 15px; font-weight: 700; color: var(--text-primary); line-height: 1.35; }
+    .wb-faq-chevron {
+      width: 28px; height: 28px; border-radius: 50%; border: 1.5px solid var(--border); flex-shrink: 0;
+      display: flex; align-items: center; justify-content: center;
+      transition: background .18s, border-color .18s;
+    }
+    .wb-faq-btn[aria-expanded="true"] .wb-faq-chevron { background: var(--safari-primary); border-color: var(--safari-primary); }
+    .wb-faq-btn[aria-expanded="true"] .wb-faq-chevron svg { stroke: white; transform: rotate(45deg); }
+    .wb-faq-chevron svg { transition: transform .22s; }
+    .wb-faq-ans {
+      max-height: 0; overflow: hidden; transition: max-height .3s ease, padding-bottom .3s ease;
+      font-size: 14px; color: var(--text-secondary); line-height: 1.7;
+    }
+    .wb-faq-ans.open { max-height: 400px; padding-bottom: 20px; }
+  </style>
+</head>
+<body>
+
+<!-- ══════════════════════════════════
+     NAV — same as guides/index.html
+══════════════════════════════════ -->
+<header class="nav scrolled" id="nav" role="banner">
+  <div class="container">
+    <div class="nav__inner nav-relative">
+      <a href="../index.html" class="nav__logo" aria-label="Wandar home">
+        <picture>
+          <source media="(max-width: 767px)" srcset="../assets/Banner_whtbg.png" />
+          <img src="../assets/wandar-logo.png" alt="Wandar" class="nav__logo-img" />
+        </picture>
+      </a>
+      <nav aria-label="Main navigation">
+        <ul class="nav__links">
+          <li><a href="../index.html" class="nav__link">Home</a></li>
+          <li><a href="../index.html#why-wandar" class="nav__link">Why Wandar</a></li>
+          <li><a href="../index.html#how-it-works" class="nav__link">How It Works</a></li>
+          <li><a href="../pricing.html" class="nav__link">Pricing</a></li>
+          <li class="nav-relative">
+            <button class="nav__link nav__link--platforms" id="platforms-btn" aria-expanded="false" aria-haspopup="true">Platforms</button>
+            <div class="platforms-dropdown" id="platforms-dropdown" role="menu">
+              <div class="platforms-dropdown__grid">
+                <a href="../platforms/facebook.html" class="platform-chip-nav" role="menuitem"><svg viewBox="0 0 24 24" fill="#1877F2" aria-hidden="true"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>Facebook</a>
+                <a href="../platforms/bluesky.html" class="platform-chip-nav" role="menuitem"><svg viewBox="0 0 24 24" fill="#0085FF" aria-hidden="true"><path d="M12 10.8c-1.087-2.114-4.046-6.053-6.798-7.995C2.566.944 1.561 1.266.902 1.565.139 1.908 0 3.08 0 3.768c0 .69.378 5.65.624 6.479.815 2.736 3.713 3.66 6.383 3.364.136-.02.275-.039.415-.056-.138.022-.276.04-.415.056-3.912.58-7.387 2.005-2.83 7.078 5.013 5.19 6.87-1.113 7.823-4.308.953 3.195 2.05 9.271 7.733 4.308 4.267-4.308 1.172-6.498-2.74-7.078a8.741 8.741 0 0 1-.415-.056c.14.017.279.036.415.056 2.67.297 5.568-.628 6.383-3.364.246-.828.624-5.79.624-6.478 0-.69-.139-1.861-.902-2.204-.659-.299-1.664-.62-4.3 1.24C16.046 4.748 13.087 8.687 12 10.8z"/></svg>Bluesky</a>
+                <a href="../platforms/instagram.html" class="platform-chip-nav" role="menuitem"><svg viewBox="0 0 24 24" aria-hidden="true"><defs><linearGradient id="ig-nav-wb" x1="0%" y1="100%" x2="100%" y2="0%"><stop offset="0%" stop-color="#f09433"/><stop offset="50%" stop-color="#dc2743"/><stop offset="100%" stop-color="#bc1888"/></linearGradient></defs><path fill="url(#ig-nav-wb)" d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>Instagram</a>
+                <a href="../platforms/quora.html" class="platform-chip-nav" role="menuitem"><svg viewBox="0 0 24 24" fill="#B92B27" aria-hidden="true"><path d="M12.003 0C5.373 0 0 5.372 0 12c0 6.628 5.373 12 12.003 12 6.628 0 11.997-5.372 11.997-12 0-6.628-5.369-12-11.997-12zm-.172 18.95c-.56-.172-1.068-.46-1.526-.857l-1.35 1.37-.983-.962 1.345-1.367c-.594-.858-.938-1.939-.938-3.134 0-2.994 1.96-5.122 4.595-5.122 1.317 0 2.458.5 3.29 1.357l1.073-1.09.984.965-1.061 1.076c.571.848.907 1.908.907 3.093 0 2.995-1.96 5.121-4.594 5.121-.59 0-1.142-.12-1.65-.33l-.092-.12zm1.65-1.47a.64.64 0 0 0 .072-.01c1.46-.31 2.462-1.72 2.462-3.47 0-.86-.24-1.636-.646-2.22l-2.87 2.916.984.963 1.347-1.369.654.643-1.352 1.374c.445.627 1.067 1.027 1.75 1.12l-.4.053zm-1.65-6.16c-1.458.31-2.46 1.72-2.46 3.47 0 .823.22 1.572.6 2.148l2.87-2.915-.984-.963-1.347 1.37-.654-.645 1.352-1.373c-.43-.605-1.04-.998-1.712-1.115l.335-.977z"/></svg>Quora</a>
+                <a href="../platforms/pinterest.html" class="platform-chip-nav" role="menuitem"><svg viewBox="0 0 24 24" fill="#E60023" aria-hidden="true"><path d="M12 0C5.373 0 0 5.372 0 12c0 5.084 3.163 9.426 7.627 11.174-.105-.949-.2-2.405.042-3.441.218-.937 1.407-5.965 1.407-5.965s-.359-.719-.359-1.782c0-1.668.967-2.914 2.171-2.914 1.023 0 1.518.769 1.518 1.69 0 1.029-.655 2.568-.994 3.995-.283 1.194.599 2.169 1.777 2.169 2.133 0 3.772-2.249 3.772-5.495 0-2.873-2.064-4.882-5.012-4.882-3.414 0-5.418 2.561-5.418 5.207 0 1.031.397 2.138.893 2.738a.36.36 0 0 1 .083.345l-.333 1.36c-.053.22-.174.267-.402.161-1.499-.698-2.436-2.889-2.436-4.649 0-3.785 2.75-7.262 7.929-7.262 4.163 0 7.398 2.967 7.398 6.931 0 4.136-2.607 7.464-6.227 7.464-1.216 0-2.359-.632-2.75-1.378l-.748 2.853c-.271 1.043-1.002 2.35-1.492 3.146C9.57 23.812 10.763 24 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0z"/></svg>Pinterest</a>
+                <a href="../platforms/reddit.html" class="platform-chip-nav" role="menuitem"><svg viewBox="0 0 24 24" fill="#FF4500" aria-hidden="true"><path d="M12 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0zm5.01 4.744c.688 0 1.25.561 1.25 1.249a1.25 1.25 0 0 1-2.498.056l-2.597-.547-.8 3.747c1.824.07 3.48.632 4.674 1.488.308-.309.73-.491 1.207-.491.968 0 1.754.786 1.754 1.754 0 .716-.435 1.333-1.01 1.614a3.111 3.111 0 0 1 .042.52c0 2.694-3.13 4.87-7.004 4.87-3.874 0-7.004-2.176-7.004-4.87 0-.183.015-.366.043-.534A1.748 1.748 0 0 1 4.028 12c0-.968.786-1.754 1.754-1.754.463 0 .898.196 1.207.49 1.207-.883 2.878-1.43 4.744-1.487l.885-4.182a.342.342 0 0 1 .14-.197.35.35 0 0 1 .238-.042l2.906.617a1.214 1.214 0 0 1 1.108-.701zM9.25 12C8.561 12 8 12.562 8 13.25c0 .687.561 1.248 1.25 1.248.687 0 1.248-.561 1.248-1.249 0-.688-.561-1.249-1.249-1.249zm5.5 0c-.687 0-1.248.561-1.248 1.25 0 .687.561 1.248 1.249 1.248.688 0 1.249-.561 1.249-1.249 0-.687-.562-1.249-1.25-1.249z"/></svg>Reddit</a>
+                <a href="../platforms/x-twitter.html" class="platform-chip-nav" role="menuitem"><svg viewBox="0 0 24 24" fill="#000" aria-hidden="true"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.748l7.73-8.835L1.254 2.25H8.08l4.261 5.635 5.903-5.635zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>X / Twitter</a>
+                <a href="../platforms/tiktok.html" class="platform-chip-nav" role="menuitem"><svg viewBox="0 0 24 24" fill="#010101" aria-hidden="true"><path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.99-.32-2.15-.23-3.02.37-.63.41-1.11 1.04-1.36 1.75-.21.51-.15 1.07-.14 1.61.24 1.64 1.82 3.02 3.5 2.87 1.12-.01 2.19-.66 2.77-1.61.19-.33.4-.67.41-1.06.1-1.79.06-3.57.07-5.36.01-4.03-.01-8.05.02-12.07z"/></svg>TikTok</a>
+                <a href="../platforms/tripadvisor.html" class="platform-chip-nav" role="menuitem"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="6.5" cy="12" r="5.8" fill="#34E0A1"/><circle cx="6.5" cy="12" r="3.2" fill="white"/><circle cx="6.5" cy="12" r="1.8" fill="#34E0A1"/><circle cx="17.5" cy="12" r="5.8" fill="#34E0A1"/><circle cx="17.5" cy="12" r="3.2" fill="white"/><circle cx="17.5" cy="12" r="1.8" fill="#34E0A1"/><path d="M12.3 9.8 Q12 9.4 11.7 9.8 L11.2 14 Q12 13.6 12.8 14 Z" fill="#34E0A1"/></svg>TripAdvisor</a>
+              </div>
+            </div>
+          </li>
+          <li class="nav-relative">
+            <button class="nav__link nav__link--platforms" id="resources-btn" aria-expanded="false" aria-haspopup="true">Resources</button>
+            <div class="resources-dropdown" id="resources-dropdown" role="menu">
+              <div class="res-col">
+                <div class="res-col__header">
+                  <div class="res-col__hicon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg></div>
+                  <span class="res-col__label">Blogs</span>
+                </div>
+                <a href="../blog/" class="resource-item resource-item--blog" role="menuitem">Lead Generation Articles</a>
+                <a href="../blog/" class="resource-item resource-item--blog" role="menuitem">Social Listening Articles</a>
+                <div class="res-col__footer"><a href="../blog/" class="res-col__see-all">See all blogs →</a></div>
+              </div>
+              <div class="res-col-divider" aria-hidden="true"></div>
+              <div class="res-col">
+                <div class="res-col__header">
+                  <div class="res-col__hicon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg></div>
+                  <span class="res-col__label">Guides</span>
+                </div>
+                <a href="../guides/" class="resource-item resource-item--guides" role="menuitem">Lead Generation Guides</a>
+                <a href="../guides/" class="resource-item resource-item--guides" role="menuitem">Social Listening Playbooks</a>
+                <div class="res-col__footer"><a href="../guides/" class="res-col__see-all">See all guides →</a></div>
+              </div>
+              <div class="res-col-divider" aria-hidden="true"></div>
+              <div class="res-col">
+                <div class="res-col__header">
+                  <div class="res-col__hicon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polygon points="23 7 16 12 23 17 23 7"/><rect x="1" y="5" width="15" height="14" rx="2" ry="2"/></svg></div>
+                  <span class="res-col__label">Webinars</span>
+                </div>
+                <a href="webinar.html" class="resource-item resource-item--tools" role="menuitem" style="color:var(--safari-primary);font-weight:600;">AI for Safari Operations <span class="resource-badge" style="background:var(--safari-primary);">Free</span></a>
+                <div class="res-col__footer"><a href="webinar.html" class="res-col__see-all">Join the series →</a></div>
+              </div>
+            </div>
+          </li>
+        </ul>
+      </nav>
+      <div class="nav__right">
+        <a href="#" onclick="openModal('early-access');return false;" class="btn btn--primary nav__cta-btn" id="nav-cta-desktop">Request Early Access</a>
+        <button class="nav__hamburger" id="hamburger" aria-label="Open menu" aria-expanded="false">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+      <div class="nav__mobile-panel" id="mobile-panel" aria-label="Mobile navigation">
+        <ul class="nav__mobile-links">
+          <li><a href="../index.html" onclick="closeMobileMenu()">Home</a></li>
+          <li><a href="../index.html#why-wandar" onclick="closeMobileMenu()">Why Wandar</a></li>
+          <li><a href="../index.html#how-it-works" onclick="closeMobileMenu()">How It Works</a></li>
+          <li><a href="../pricing.html" onclick="closeMobileMenu()">Pricing</a></li>
+          <li>
+            <button onclick="toggleMobilePlatforms()" style="display:flex;justify-content:space-between;align-items:center;width:100%">Platforms <span>▾</span></button>
+            <div class="nav__mobile-platforms" id="mobile-platforms">
+              <div class="nav__mobile-platforms-grid">
+                <a href="../platforms/facebook.html" class="platform-chip-nav"><svg viewBox="0 0 24 24" fill="#1877F2"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>Facebook</a>
+                <a href="../platforms/instagram.html" class="platform-chip-nav"><svg viewBox="0 0 24 24" aria-hidden="true"><defs><linearGradient id="ig-mob-wb" x1="0%" y1="100%" x2="100%" y2="0%"><stop offset="0%" stop-color="#f09433"/><stop offset="50%" stop-color="#dc2743"/><stop offset="100%" stop-color="#bc1888"/></linearGradient></defs><path fill="url(#ig-mob-wb)" d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>Instagram</a>
+                <a href="../platforms/reddit.html" class="platform-chip-nav"><svg viewBox="0 0 24 24" fill="#FF4500"><path d="M12 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0zm5.01 4.744c.688 0 1.25.561 1.25 1.249a1.25 1.25 0 0 1-2.498.056l-2.597-.547-.8 3.747c1.824.07 3.48.632 4.674 1.488.308-.309.73-.491 1.207-.491.968 0 1.754.786 1.754 1.754 0 .716-.435 1.333-1.01 1.614a3.111 3.111 0 0 1 .042.52c0 2.694-3.13 4.87-7.004 4.87-3.874 0-7.004-2.176-7.004-4.87 0-.183.015-.366.043-.534A1.748 1.748 0 0 1 4.028 12c0-.968.786-1.754 1.754-1.754.463 0 .898.196 1.207.49 1.207-.883 2.878-1.43 4.744-1.487l.885-4.182a.342.342 0 0 1 .14-.197.35.35 0 0 1 .238-.042l2.906.617a1.214 1.214 0 0 1 1.108-.701zM9.25 12C8.561 12 8 12.562 8 13.25c0 .687.561 1.248 1.25 1.248.687 0 1.248-.561 1.248-1.249 0-.688-.561-1.249-1.249-1.249zm5.5 0c-.687 0-1.248.561-1.248 1.25 0 .687.561 1.248 1.249 1.248.688 0 1.249-.561 1.249-1.249 0-.687-.562-1.249-1.25-1.249z"/></svg>Reddit</a>
+                <a href="../platforms/tripadvisor.html" class="platform-chip-nav"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="6.5" cy="12" r="5.8" fill="#34E0A1"/><circle cx="6.5" cy="12" r="3.2" fill="white"/><circle cx="6.5" cy="12" r="1.8" fill="#34E0A1"/><circle cx="17.5" cy="12" r="5.8" fill="#34E0A1"/><circle cx="17.5" cy="12" r="3.2" fill="white"/><circle cx="17.5" cy="12" r="1.8" fill="#34E0A1"/><path d="M12.3 9.8 Q12 9.4 11.7 9.8 L11.2 14 Q12 13.6 12.8 14 Z" fill="#34E0A1"/></svg>TripAdvisor</a>
+              </div>
+            </div>
+          </li>
+          <li>
+            <button onclick="toggleMobileResources()" style="display:flex;justify-content:space-between;align-items:center;width:100%">Resources <span>▾</span></button>
+            <div class="nav__mobile-resources" id="mobile-resources">
+              <a href="#" onclick="closeMobileMenu()">Free Tools</a>
+              <a href="../guides/" onclick="closeMobileMenu()">Guides</a>
+              <a href="../blog/" onclick="closeMobileMenu()">Blog</a>
+              <a href="webinar.html" onclick="closeMobileMenu()">Webinar Series</a>
+            </div>
+          </li>
+        </ul>
+        <a href="#" onclick="closeMobileMenu();openModal('early-access');return false;" class="btn btn--primary nav__mobile-cta">Request Early Access</a>
+      </div>
+    </div>
+  </div>
+</header>
+
+
+<!-- ══════════════════════
+     HERO
+══════════════════════ -->
+<section class="wb-hero">
+  <div class="wb-hero-inner">
+    <div class="wb-live-badge"><span class="wb-live-dot"></span>Free Webinar Series</div>
+    <p class="wb-series-line">4 Sessions &nbsp;·&nbsp; Safari Operators &nbsp;·&nbsp; No Experience Required</p>
+    <h1>Practical <em>AI Use</em> Across<br/>Safari Operations</h1>
+    <p class="wb-hero-sub">Save hours on admin. Respond to enquiries faster. Spend more time on the traveler conversations that drive revenue.</p>
+
+    <div style="display:block;margin-bottom:28px;">
+      <div class="wb-cd-wrap">
+        <span class="wb-cd-label">Session 1 starts in</span>
+        <div class="wb-cd-digits">
+          <div class="wb-cd-unit"><div class="wb-cd-num" id="cd-days">00</div><div class="wb-cd-name">Days</div></div>
+          <div class="wb-cd-sep">:</div>
+          <div class="wb-cd-unit"><div class="wb-cd-num" id="cd-hours">00</div><div class="wb-cd-name">Hours</div></div>
+          <div class="wb-cd-sep">:</div>
+          <div class="wb-cd-unit"><div class="wb-cd-num" id="cd-mins">00</div><div class="wb-cd-name">Mins</div></div>
+          <div class="wb-cd-sep">:</div>
+          <div class="wb-cd-unit"><div class="wb-cd-num" id="cd-secs">00</div><div class="wb-cd-name">Secs</div></div>
+        </div>
+      </div>
+    </div>
+
+    <div style="display:block;">
+      <button class="btn btn--accent" style="border-radius:var(--radius-pill);font-size:1rem;font-weight:800;padding:17px 38px;letter-spacing:.05em;text-transform:uppercase;box-shadow:0 4px 22px rgba(196,89,17,.36);" onclick="wbOpen()">
+        <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polygon points="23 7 16 12 23 17 23 7"/><rect x="1" y="5" width="15" height="14" rx="2" ry="2"/></svg>
+        Claim Your Ticket
+      </button>
+    </div>
+
+  </div>
+</section>
+
+
+<!-- ══════════════════════
+     WHY THIS EXISTS
+══════════════════════ -->
+<section class="wb-section" style="background:var(--off-white);">
+  <div class="container">
+    <p class="wb-eyebrow">Why this exists</p>
+    <h2 class="wb-h2" style="max-width:640px;margin-left:auto;margin-right:auto;">Most AI advice wasn't built for safari work.</h2>
+    <p style="text-align:center;color:var(--text-muted);font-size:15px;max-width:560px;margin:-20px auto 44px;line-height:1.65;">Generic tutorials cover the tool. They don't cover your enquiries, your tone, your admin, or the specific work your team does every day.</p>
+    <div class="wb-why-grid">
+      <div class="wb-why-card">
+        <div class="wb-why-icon wb-why-icon--teal">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+        </div>
+        <h3>Repetitive admin is eating your day</h3>
+        <p>Enquiry drafts, note summaries, follow-ups, handovers. The same work repeating every week with no system to speed it up.</p>
+      </div>
+      <div class="wb-why-card">
+        <div class="wb-why-icon wb-why-icon--orange">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+        </div>
+        <h3>AI gives you generic output by default</h3>
+        <p>Without the right setup, AI doesn't know your tone, your destinations, or your guests. Output sounds like it was written for anyone.</p>
+      </div>
+      <div class="wb-why-card">
+        <div class="wb-why-icon wb-why-icon--green">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+        </div>
+        <h3>No industry playbook exists yet</h3>
+        <p>Most safari operators haven't figured this out. Tutorials online are built for marketers, agencies, or tech teams — not your operation.</p>
+      </div>
+      <div class="wb-why-card">
+        <div class="wb-why-icon wb-why-icon--gold">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="17 1 21 5 17 9"/><path d="M3 11V9a4 4 0 0 1 4-4h14"/><polyline points="7 23 3 19 7 15"/><path d="M21 13v2a4 4 0 0 1-4 4H3"/></svg>
+        </div>
+        <h3>Tips aren't team workflows</h3>
+        <p>One clever prompt solves the problem once. You need a repeatable system your whole team uses consistently across sales, ops, and guest experience.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ══════════════════════
+     WHAT YOU'LL LEARN
+══════════════════════ -->
+<section class="wb-section" style="background:var(--white);">
+  <div class="container">
+    <p class="wb-eyebrow">What you will learn live</p>
+    <h2 class="wb-h2">Use your preferred AI tool to make daily safari work faster, clearer, and more consistent.</h2>
+    <div class="wb-learn-grid">
+      <div class="wb-learn-card" data-num="01">
+        <div class="wb-learn-card-top">
+          <div class="wb-learn-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#1a7373" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><line x1="10" y1="9" x2="8" y2="9"/></svg></div>
+          <h3>Summarize messy notes instantly</h3>
+        </div>
+        <p>Turn rough call notes, enquiry emails, and internal handovers into clean summaries your team can act on.</p>
+      </div>
+      <div class="wb-learn-card" data-num="02">
+        <div class="wb-learn-card-top">
+          <div class="wb-learn-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#1a7373" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></div>
+          <h3>Respond to enquiries faster</h3>
+        </div>
+        <p>Go from a messy guest enquiry to a first reply, follow-up, and proposal starting point without starting from scratch.</p>
+      </div>
+      <div class="wb-learn-card" data-num="03">
+        <div class="wb-learn-card-top">
+          <div class="wb-learn-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#1a7373" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="17 1 21 5 17 9"/><path d="M3 11V9a4 4 0 0 1 4-4h14"/><polyline points="7 23 3 19 7 15"/><path d="M21 13v2a4 4 0 0 1-4 4H3"/></svg></div>
+          <h3>Create reusable team workflows</h3>
+        </div>
+        <p>Turn repeated admin tasks into reusable prompts your whole team can use across sales, reservations, and guest experience.</p>
+      </div>
+      <div class="wb-learn-card" data-num="04">
+        <div class="wb-learn-card-top">
+          <div class="wb-learn-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#1a7373" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg></div>
+          <h3>Turn guest questions into content</h3>
+        </div>
+        <p>The questions your team answers every week become useful marketing content your business can reuse.</p>
+      </div>
+      <div class="wb-learn-card" data-num="05">
+        <div class="wb-learn-card-top">
+          <div class="wb-learn-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#1a7373" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="3"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14M4.93 4.93a10 10 0 0 0 0 14.14"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07M8.46 8.46a5 5 0 0 0 0 7.07"/></svg></div>
+          <h3>Set up AI with your safari context</h3>
+        </div>
+        <p>Make your AI tool sound like your team, not a generic assistant. Give it your tone, rules, and real examples.</p>
+      </div>
+      <div class="wb-learn-card" data-num="06">
+        <div class="wb-learn-card-top">
+          <div class="wb-learn-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#1a7373" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><polyline points="9 12 11 14 15 10"/></svg></div>
+          <h3>Keep human judgment in control</h3>
+        </div>
+        <p>AI speeds up the work. You and your team stay in control of every response, decision, and traveler relationship.</p>
+      </div>
+    </div>
+    <div style="text-align:center;margin-top:44px;">
+      <button class="btn btn--accent" style="border-radius:var(--radius-pill);padding:15px 32px;font-weight:800;letter-spacing:.04em;text-transform:uppercase;" onclick="wbOpen()">Claim Your Ticket →</button>
+    </div>
+  </div>
+</section>
+
+
+<!-- ══════════════════════
+     WHO THIS IS FOR
+══════════════════════ -->
+<section class="wb-who">
+  <div class="container">
+    <p class="wb-eyebrow wb-eyebrow--light">Who this is for</p>
+    <h2 class="wb-h2 wb-h2--light" style="margin-bottom:32px;">Built for the people handling the real work of running a safari business.</h2>
+    <div class="wb-who-grid">
+      <div class="wb-who-card">
+        <span class="wb-who-role">Safari Business Owners</span>
+        <span class="wb-who-desc">Founders and owners who want to work smarter across every part of the operation.</span>
+      </div>
+      <div class="wb-who-card">
+        <span class="wb-who-role">Sales &amp; Reservations Teams</span>
+        <span class="wb-who-desc">Anyone handling enquiries, follow-ups, and proposals who wants to move faster without cutting quality.</span>
+      </div>
+      <div class="wb-who-card">
+        <span class="wb-who-role">Guest Experience Teams</span>
+        <span class="wb-who-desc">Teams managing pre-arrival communication, itinerary updates, and on-trip guest support.</span>
+      </div>
+      <div class="wb-who-card">
+        <span class="wb-who-role">Operations Managers</span>
+        <span class="wb-who-desc">People coordinating guides, partners, and logistics who need cleaner internal handovers.</span>
+      </div>
+      <div class="wb-who-card">
+        <span class="wb-who-role">Small Safari Teams</span>
+        <span class="wb-who-desc">Lean teams where one person covers sales, ops, and marketing and AI needs to pull real weight.</span>
+      </div>
+      <div class="wb-who-card">
+        <span class="wb-who-role">Anyone Tired of Generic AI Advice</span>
+        <span class="wb-who-desc">People who have tried AI tools but want workflows built specifically for safari operations, not generic prompts.</span>
+      </div>
+    </div>
+    <p style="text-align:center;margin-top:28px;font-size:13px;color:rgba(255,255,255,.28);">No technical experience needed &nbsp;·&nbsp; No new tools to install &nbsp;·&nbsp; Bring the real work your team already does</p>
+  </div>
+</section>
+
+
+<!-- ══════════════════════
+     THE 4 SESSIONS (CURRICULUM)
+══════════════════════ -->
+<section class="wb-section" style="background:var(--off-white);">
+  <div class="container">
+    <p class="wb-eyebrow">The webinar series</p>
+    <h2 class="wb-h2">Four practical sessions. One system your team can use from day one.</h2>
+    <div class="wb-curr-grid">
+
+      <!-- ── Session 1 ── -->
+      <div class="wb-curr-row">
+        <div class="wb-curr-visual wb-curr-visual--1">
+          <div class="wb-curr-dots"></div>
+          <svg viewBox="0 0 260 200" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" style="max-width:240px;width:100%;position:relative;z-index:1">
+            <circle cx="130" cy="100" r="78" stroke="rgba(255,255,255,.05)" stroke-width="1" stroke-dasharray="3 7"/>
+            <circle cx="130" cy="100" r="54" stroke="rgba(255,255,255,.08)" stroke-width="1" stroke-dasharray="3 5"/>
+            <line x1="113" y1="84" x2="58" y2="46" stroke="rgba(255,255,255,.24)" stroke-width="1.5" stroke-dasharray="5 3"/>
+            <line x1="147" y1="84" x2="202" y2="46" stroke="rgba(255,255,255,.24)" stroke-width="1.5" stroke-dasharray="5 3"/>
+            <line x1="113" y1="116" x2="58" y2="154" stroke="rgba(255,255,255,.24)" stroke-width="1.5" stroke-dasharray="5 3"/>
+            <line x1="147" y1="116" x2="202" y2="154" stroke="rgba(255,255,255,.24)" stroke-width="1.5" stroke-dasharray="5 3"/>
+            <circle cx="130" cy="100" r="34" fill="rgba(255,255,255,.1)" stroke="rgba(255,255,255,.28)" stroke-width="2"/>
+            <circle cx="130" cy="100" r="22" fill="rgba(255,255,255,.18)" stroke="rgba(255,255,255,.4)" stroke-width="1.5"/>
+            <path d="M134 87L127 103H133L130 116L140 100H134Z" fill="white" opacity=".88"/>
+            <circle cx="46" cy="40" r="20" fill="rgba(0,0,0,.22)" stroke="rgba(255,255,255,.22)" stroke-width="1.5"/>
+            <rect x="36" y="31" width="20" height="17" rx="2.5" fill="rgba(255,255,255,.45)"/>
+            <line x1="40" y1="36" x2="52" y2="36" stroke="rgba(26,115,115,.9)" stroke-width="1.5"/>
+            <line x1="40" y1="40" x2="52" y2="40" stroke="rgba(26,115,115,.9)" stroke-width="1.5"/>
+            <line x1="40" y1="44" x2="47" y2="44" stroke="rgba(26,115,115,.9)" stroke-width="1.5"/>
+            <circle cx="214" cy="40" r="20" fill="rgba(0,0,0,.22)" stroke="rgba(255,255,255,.22)" stroke-width="1.5"/>
+            <rect x="204" y="32" width="20" height="15" rx="2.5" fill="rgba(255,255,255,.45)"/>
+            <polyline points="204,32 214,41 224,32" stroke="rgba(26,115,115,.9)" stroke-width="1.5" fill="none"/>
+            <circle cx="46" cy="160" r="20" fill="rgba(0,0,0,.22)" stroke="rgba(255,255,255,.22)" stroke-width="1.5"/>
+            <path d="M46 148L48.4 154.8H55.6L50 158.7L52.4 165.5L46 161.6L39.6 165.5L42 158.7L36.4 154.8H43.6Z" fill="rgba(255,255,255,.5)"/>
+            <circle cx="214" cy="160" r="20" fill="rgba(0,0,0,.22)" stroke="rgba(255,255,255,.22)" stroke-width="1.5"/>
+            <circle cx="214" cy="152" r="6" fill="rgba(255,255,255,.5)"/>
+            <path d="M204 170Q204 161 214 161Q224 161 224 170" fill="rgba(255,255,255,.5)"/>
+          </svg>
+        </div>
+        <div class="wb-curr-body">
+          <div class="wb-session-meta">
+            <span class="wb-session-chip wb-session-chip--live">Session 1</span>
+            <span class="wb-session-chip wb-session-chip--dur">60 min</span>
+          </div>
+          <h3>Getting Started With Practical AI Use</h3>
+          <p>Find exactly where AI helps most in your safari business across admin, enquiries, guest questions, and content.</p>
+          <div>
+            <p class="wb-curr-takes">You will leave with</p>
+            <ul class="wb-curr-list">
+              <li>AI use case map for your business</li>
+              <li>Prompt for summarizing messy notes</li>
+              <li>Prompt for enquiry replies</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- ── Session 2 (reversed) ── -->
+      <div class="wb-curr-row wb-curr-row--rev">
+        <div class="wb-curr-body">
+          <div class="wb-session-meta">
+            <span class="wb-session-chip wb-session-chip--live">Session 2</span>
+            <span class="wb-session-chip wb-session-chip--dur">60 min</span>
+          </div>
+          <h3>Set Up Your AI Tool for Safari Work</h3>
+          <p>Give your AI tool the right context, tone, examples, and rules so it responds the way your team would. Not generically.</p>
+          <div>
+            <p class="wb-curr-takes">You will leave with</p>
+            <ul class="wb-curr-list">
+              <li>Safari business context template</li>
+              <li>Tone and voice template</li>
+              <li>Business rules template</li>
+            </ul>
+          </div>
+        </div>
+        <div class="wb-curr-visual wb-curr-visual--2">
+          <div class="wb-curr-dots"></div>
+          <svg viewBox="0 0 260 200" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" style="max-width:230px;width:100%;position:relative;z-index:1">
+            <rect x="55" y="18" width="150" height="170" rx="10" fill="rgba(255,255,255,.1)" stroke="rgba(255,255,255,.22)" stroke-width="1.5"/>
+            <rect x="55" y="18" width="150" height="30" rx="10" fill="rgba(255,255,255,.18)"/>
+            <rect x="55" y="36" width="150" height="12" rx="0" fill="rgba(255,255,255,.18)"/>
+            <circle cx="70" cy="33" r="4" fill="rgba(45,80,22,.55)"/>
+            <circle cx="82" cy="33" r="4" fill="rgba(45,80,22,.55)"/>
+            <circle cx="94" cy="33" r="4" fill="rgba(45,80,22,.55)"/>
+            <rect x="68" y="58" width="50" height="6" rx="3" fill="rgba(255,255,255,.3)"/>
+            <rect x="68" y="68" width="124" height="16" rx="4" fill="rgba(255,255,255,.12)" stroke="rgba(255,255,255,.28)" stroke-width="1"/>
+            <rect x="73" y="73" width="80" height="5" rx="2.5" fill="rgba(255,255,255,.58)"/>
+            <rect x="68" y="92" width="62" height="6" rx="3" fill="rgba(255,255,255,.3)"/>
+            <rect x="68" y="102" width="124" height="16" rx="4" fill="rgba(255,255,255,.12)" stroke="rgba(255,255,255,.28)" stroke-width="1"/>
+            <rect x="73" y="107" width="96" height="5" rx="2.5" fill="rgba(255,255,255,.58)"/>
+            <rect x="68" y="126" width="44" height="6" rx="3" fill="rgba(255,255,255,.3)"/>
+            <rect x="68" y="136" width="124" height="36" rx="4" fill="rgba(255,255,255,.12)" stroke="rgba(255,255,255,.28)" stroke-width="1"/>
+            <rect x="73" y="141" width="88" height="5" rx="2.5" fill="rgba(255,255,255,.58)"/>
+            <rect x="73" y="149" width="70" height="4" rx="2" fill="rgba(255,255,255,.42)"/>
+            <rect x="73" y="156" width="44" height="4" rx="2" fill="rgba(255,255,255,.28)"/>
+            <circle cx="191" cy="30" r="15" fill="rgba(61,107,30,.75)" stroke="rgba(255,255,255,.3)" stroke-width="1.5"/>
+            <circle cx="191" cy="30" r="6" stroke="rgba(255,255,255,.8)" stroke-width="2" fill="none"/>
+            <circle cx="191" cy="30" r="2.5" fill="rgba(255,255,255,.9)"/>
+            <rect x="189.8" y="21" width="2.4" height="4" rx="1.2" fill="rgba(255,255,255,.8)"/>
+            <rect x="189.8" y="35" width="2.4" height="4" rx="1.2" fill="rgba(255,255,255,.8)"/>
+            <rect x="182" y="28.8" width="4" height="2.4" rx="1.2" fill="rgba(255,255,255,.8)"/>
+            <rect x="196" y="28.8" width="4" height="2.4" rx="1.2" fill="rgba(255,255,255,.8)"/>
+          </svg>
+        </div>
+      </div>
+
+      <!-- ── Session 3 ── -->
+      <div class="wb-curr-row">
+        <div class="wb-curr-visual wb-curr-visual--3">
+          <div class="wb-curr-dots"></div>
+          <svg viewBox="0 0 260 200" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" style="max-width:240px;width:100%;position:relative;z-index:1">
+            <rect x="24" y="18" width="212" height="168" rx="12" fill="rgba(255,255,255,.1)" stroke="rgba(255,255,255,.2)" stroke-width="1.5"/>
+            <rect x="24" y="18" width="212" height="28" rx="12" fill="rgba(255,255,255,.14)"/>
+            <rect x="24" y="34" width="212" height="12" rx="0" fill="rgba(255,255,255,.14)"/>
+            <rect x="40" y="24" width="55" height="8" rx="4" fill="rgba(255,255,255,.45)"/>
+            <circle cx="214" cy="28" r="8" fill="rgba(196,89,17,.8)"/>
+            <rect x="211" y="26" width="6" height="4" rx="2" fill="white" opacity=".9"/>
+            <rect x="34" y="56" width="192" height="28" rx="6" fill="rgba(255,255,255,.1)" stroke="rgba(255,255,255,.14)" stroke-width="1"/>
+            <circle cx="49" cy="70" r="9" fill="rgba(255,255,255,.24)"/>
+            <rect x="63" y="63" width="85" height="5" rx="2.5" fill="rgba(255,255,255,.4)"/>
+            <rect x="63" y="71" width="55" height="4" rx="2" fill="rgba(255,255,255,.24)"/>
+            <rect x="34" y="90" width="192" height="44" rx="6" fill="rgba(196,89,17,.2)" stroke="rgba(255,255,255,.4)" stroke-width="1.5"/>
+            <circle cx="49" cy="112" r="9" fill="rgba(255,200,100,.5)"/>
+            <rect x="63" y="96" width="110" height="5" rx="2.5" fill="rgba(255,255,255,.65)"/>
+            <rect x="63" y="104" width="135" height="4.5" rx="2" fill="rgba(255,255,255,.45)"/>
+            <rect x="63" y="112" width="92" height="4.5" rx="2" fill="rgba(255,255,255,.35)"/>
+            <rect x="63" y="120" width="62" height="4.5" rx="2" fill="rgba(255,255,255,.22)"/>
+            <circle cx="207" cy="112" r="14" fill="rgba(255,255,255,.12)" stroke="rgba(255,255,255,.3)" stroke-width="1.5"/>
+            <path d="M210 103L205 113H209L207 122L215 111H210Z" fill="rgba(255,200,100,.95)"/>
+            <rect x="34" y="140" width="192" height="24" rx="6" fill="rgba(255,255,255,.06)" stroke="rgba(255,255,255,.1)" stroke-width="1"/>
+            <circle cx="49" cy="152" r="9" fill="rgba(255,255,255,.18)"/>
+            <rect x="63" y="148" width="70" height="5" rx="2.5" fill="rgba(255,255,255,.28)"/>
+            <rect x="63" y="156" width="46" height="4" rx="2" fill="rgba(255,255,255,.18)"/>
+          </svg>
+        </div>
+        <div class="wb-curr-body">
+          <div class="wb-session-meta">
+            <span class="wb-session-chip wb-session-chip--live">Session 3</span>
+            <span class="wb-session-chip wb-session-chip--dur">60 min</span>
+          </div>
+          <h3>Respond Faster Without Sounding Generic</h3>
+          <p>Handle safari enquiries faster while still sounding human, specific, and helpful. From first reply to proposal starting point.</p>
+          <div>
+            <p class="wb-curr-takes">You will leave with</p>
+            <ul class="wb-curr-list">
+              <li>Enquiry breakdown prompt</li>
+              <li>First response prompt</li>
+              <li>Follow-up and proposal prompts</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- ── Session 4 (reversed) ── -->
+      <div class="wb-curr-row wb-curr-row--rev">
+        <div class="wb-curr-body">
+          <div class="wb-session-meta">
+            <span class="wb-session-chip wb-session-chip--live">Session 4</span>
+            <span class="wb-session-chip wb-session-chip--dur">60 min</span>
+          </div>
+          <h3>Turn Daily Knowledge Into Reusable Workflows</h3>
+          <p>Turn the questions and tasks your team repeats every week into reusable workflows across sales, guest experience, and marketing.</p>
+          <div>
+            <p class="wb-curr-takes">You will leave with</p>
+            <ul class="wb-curr-list">
+              <li>Reusable FAQ workflow</li>
+              <li>Admin handover template</li>
+              <li>Marketing content prompt</li>
+            </ul>
+          </div>
+        </div>
+        <div class="wb-curr-visual wb-curr-visual--4">
+          <div class="wb-curr-dots"></div>
+          <svg viewBox="0 0 260 200" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" style="max-width:240px;width:100%;position:relative;z-index:1">
+            <circle cx="130" cy="100" r="82" stroke="rgba(255,255,255,.05)" stroke-width="1" stroke-dasharray="3 7"/>
+            <path d="M86 62 A62 62 0 0 1 174 62" stroke="rgba(255,255,255,.28)" stroke-width="2" fill="none" stroke-linecap="round"/>
+            <path d="M170 57L175 63L167 64" fill="none" stroke="rgba(255,255,255,.28)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M185 78 A62 62 0 0 1 152 168" stroke="rgba(255,255,255,.28)" stroke-width="2" fill="none" stroke-linecap="round"/>
+            <path d="M148 165L153 171L158 164" fill="none" stroke="rgba(255,255,255,.28)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M108 168 A62 62 0 0 1 75 78" stroke="rgba(255,255,255,.28)" stroke-width="2" fill="none" stroke-linecap="round"/>
+            <path d="M72 82L75 74L81 80" fill="none" stroke="rgba(255,255,255,.28)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            <circle cx="130" cy="100" r="24" fill="rgba(255,255,255,.12)" stroke="rgba(255,255,255,.24)" stroke-width="1.5"/>
+            <path d="M121 94 A12 12 0 1 1 119 108" stroke="rgba(255,255,255,.8)" stroke-width="2" stroke-linecap="round" fill="none"/>
+            <path d="M115 104L119 108L123 104" stroke="rgba(255,255,255,.8)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+            <circle cx="78" cy="58" r="24" fill="rgba(0,0,0,.2)" stroke="rgba(255,255,255,.28)" stroke-width="2"/>
+            <rect x="64" y="48" width="18" height="20" rx="2.5" fill="rgba(255,255,255,.35)"/>
+            <rect x="67" y="45" width="18" height="20" rx="2.5" fill="rgba(255,255,255,.28)"/>
+            <rect x="70" y="49" width="14" height="5" rx="2.5" fill="rgba(184,134,11,.85)"/>
+            <line x1="72" y1="57" x2="82" y2="57" stroke="rgba(184,134,11,.65)" stroke-width="1.2"/>
+            <line x1="72" y1="61" x2="80" y2="61" stroke="rgba(184,134,11,.65)" stroke-width="1.2"/>
+            <circle cx="182" cy="58" r="24" fill="rgba(0,0,0,.2)" stroke="rgba(255,255,255,.28)" stroke-width="2"/>
+            <rect x="168" y="49" width="28" height="18" rx="3" fill="rgba(255,255,255,.35)"/>
+            <path d="M173 58H188M183 53L188 58L183 63" stroke="rgba(184,134,11,.95)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+            <circle cx="130" cy="166" r="24" fill="rgba(0,0,0,.2)" stroke="rgba(255,255,255,.28)" stroke-width="2"/>
+            <path d="M118 166L124 160V172Z" fill="rgba(255,255,255,.45)"/>
+            <rect x="114" y="162" width="10" height="8" rx="2" fill="rgba(255,255,255,.45)"/>
+            <path d="M125 161Q133 161 133 166Q133 171 125 171" stroke="rgba(255,255,255,.5)" stroke-width="1.5" fill="none"/>
+            <path d="M125 157Q138 157 138 166Q138 175 125 175" stroke="rgba(255,255,255,.28)" stroke-width="1.2" fill="none"/>
+          </svg>
+        </div>
+      </div>
+
+    </div><!-- /.wb-curr-grid -->
+  </div>
+</section>
+
+
+<!-- ══════════════════════
+     HOW IT WORKS
+══════════════════════ -->
+<section class="wb-section" style="background:var(--white);">
+  <div class="container">
+    <p class="wb-eyebrow">How it works</p>
+    <h2 class="wb-h2">Simple to join. Practical from session one.</h2>
+    <div class="wb-hiw-steps">
+      <div class="wb-hiw-step">
+        <div class="wb-hiw-num">1</div>
+        <div class="wb-hiw-body">
+          <h3>Register once, get access to all four sessions</h3>
+          <p>One registration covers the full series. You'll receive a confirmation with session dates, times, and join links for every live call.</p>
+        </div>
+      </div>
+      <div class="wb-hiw-step">
+        <div class="wb-hiw-num">2</div>
+        <div class="wb-hiw-body">
+          <h3>Join live and work through real safari examples</h3>
+          <p>Each session runs 60 minutes with live examples built around actual safari operations. Bring your own enquiries, notes, or admin tasks to work through in real time.</p>
+        </div>
+      </div>
+      <div class="wb-hiw-step">
+        <div class="wb-hiw-num">3</div>
+        <div class="wb-hiw-body">
+          <h3>Leave with templates and workflows your team can use the same day</h3>
+          <p>Every session ends with downloadable prompts and templates. Recordings are sent after each live date so your full team can watch at their own pace.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ══════════════════════
+     WHY WANDAR
+══════════════════════ -->
+<section class="wb-section" style="background:var(--off-white);">
+  <div class="container">
+    <p class="wb-eyebrow">Why Wandar</p>
+    <h2 class="wb-h2">This isn't a generic AI webinar.</h2>
+    <div class="wb-wandar-grid">
+      <div class="wb-wandar-card">
+        <h3>Most AI content is built for general audiences</h3>
+        <p class="wb-wc-problem">Tutorials cover the same tips: "write better prompts." None of it accounts for how safari enquiries actually arrive or how your team handles them.</p>
+        <div class="wb-wc-divider"></div>
+        <div class="wb-wc-solution">
+          <span class="wb-wc-badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
+          <span><strong>Wandar</strong> covers real safari operations use cases — from first enquiry to guest handover.</span>
+        </div>
+      </div>
+      <div class="wb-wandar-card">
+        <h3>Generic prompts produce generic output</h3>
+        <p class="wb-wc-problem">Without context, AI doesn't know your business, destinations, or voice. Output sounds like it was written for nobody in particular.</p>
+        <div class="wb-wc-divider"></div>
+        <div class="wb-wc-solution">
+          <span class="wb-wc-badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
+          <span><strong>Wandar</strong> teaches you how to give AI your context so every output sounds like your team, not a template.</span>
+        </div>
+      </div>
+      <div class="wb-wandar-card">
+        <h3>Most people don't know which AI tool to use</h3>
+        <p class="wb-wc-problem">ChatGPT, Claude, Gemini — choosing before you understand the differences creates friction before you've even started.</p>
+        <div class="wb-wc-divider"></div>
+        <div class="wb-wc-solution">
+          <span class="wb-wc-badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
+          <span><strong>Wandar</strong> is tool-agnostic. Use whatever you already have. Every workflow works across all of them.</span>
+        </div>
+      </div>
+      <div class="wb-wandar-card">
+        <h3>You can't build a team system from a tip</h3>
+        <p class="wb-wc-problem">A single good prompt is useful once. Without a repeatable structure, your team keeps going back to doing everything manually.</p>
+        <div class="wb-wc-divider"></div>
+        <div class="wb-wc-solution">
+          <span class="wb-wc-badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
+          <span><strong>Wandar</strong> ends with a full library of reusable prompts and templates your whole team can use from day one.</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ══════════════════════
+     FAQ
+══════════════════════ -->
+<section class="wb-section" style="background:var(--white);">
+  <div class="container">
+    <p class="wb-eyebrow">Common questions</p>
+    <h2 class="wb-h2">Frequently asked questions</h2>
+    <div class="wb-faq-list">
+      <div class="wb-faq-item">
+        <button class="wb-faq-btn" aria-expanded="false" onclick="wbFaq(this)">
+          <span class="wb-faq-q">Do I need to use a specific AI tool?</span>
+          <span class="wb-faq-chevron"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#555" stroke-width="2.5" stroke-linecap="round" aria-hidden="true"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span>
+        </button>
+        <div class="wb-faq-ans">No. The webinar is tool-agnostic. Whether you use ChatGPT, Claude, Gemini, or any other AI assistant, the workflows and prompts work across all of them. You just need a free or paid account with whichever tool you prefer.</div>
+      </div>
+      <div class="wb-faq-item">
+        <button class="wb-faq-btn" aria-expanded="false" onclick="wbFaq(this)">
+          <span class="wb-faq-q">Is it free to attend?</span>
+          <span class="wb-faq-chevron"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#555" stroke-width="2.5" stroke-linecap="round" aria-hidden="true"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span>
+        </button>
+        <div class="wb-faq-ans">Yes. All four sessions are completely free. Register once and you're in for the full series. Recordings and downloadable templates are included at no cost.</div>
+      </div>
+      <div class="wb-faq-item">
+        <button class="wb-faq-btn" aria-expanded="false" onclick="wbFaq(this)">
+          <span class="wb-faq-q">What if I can't attend live?</span>
+          <span class="wb-faq-chevron"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#555" stroke-width="2.5" stroke-linecap="round" aria-hidden="true"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span>
+        </button>
+        <div class="wb-faq-ans">Recordings of every session are sent to all registered attendees after each live date. You can watch at your own pace and still download all the templates and prompt libraries.</div>
+      </div>
+      <div class="wb-faq-item">
+        <button class="wb-faq-btn" aria-expanded="false" onclick="wbFaq(this)">
+          <span class="wb-faq-q">Do I need any technical experience?</span>
+          <span class="wb-faq-chevron"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#555" stroke-width="2.5" stroke-linecap="round" aria-hidden="true"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span>
+        </button>
+        <div class="wb-faq-ans">None at all. No coding, no integrations, no software to install. If you can type a message in WhatsApp, you can follow everything in this series. The sessions are designed specifically for people who are new to AI tools.</div>
+      </div>
+      <div class="wb-faq-item">
+        <button class="wb-faq-btn" aria-expanded="false" onclick="wbFaq(this)">
+          <span class="wb-faq-q">What type of safari business is this for?</span>
+          <span class="wb-faq-chevron"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#555" stroke-width="2.5" stroke-linecap="round" aria-hidden="true"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span>
+        </button>
+        <div class="wb-faq-ans">Any safari operation that handles enquiries, manages guest communication, or produces internal documents. Whether you're a small owner-operator or a team of ten, the workflows apply. If your business involves responding to traveler enquiries and managing trip logistics, this is for you.</div>
+      </div>
+      <div class="wb-faq-item">
+        <button class="wb-faq-btn" aria-expanded="false" onclick="wbFaq(this)">
+          <span class="wb-faq-q">How long is each session?</span>
+          <span class="wb-faq-chevron"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#555" stroke-width="2.5" stroke-linecap="round" aria-hidden="true"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span>
+        </button>
+        <div class="wb-faq-ans">Each session runs for 60 minutes. Sessions are focused and practical — no time on theory you can't use. Expect live demonstrations, worked examples, and time for questions at the end.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ══════════════════════
+     CTA STRIP
+══════════════════════ -->
+<section class="wb-cta-strip">
+  <div class="container">
+    <div class="wb-cta-inner">
+      <div>
+        <h2>Ready to make daily safari work faster and more consistent?</h2>
+        <p>Join free. Bring your real work. Leave with workflows your team can use from day one.</p>
+        <button class="btn btn--accent" style="border-radius:var(--radius-pill);font-size:15px;font-weight:800;padding:15px 34px;letter-spacing:.04em;text-transform:uppercase;margin-top:8px;" onclick="wbOpen()">
+          Claim Your Ticket →
+        </button>
+      </div>
+      <div class="wb-cta-card">
+        <p class="wb-cta-card-title">What you take away</p>
+        <ul class="wb-cta-checklist">
+          <li>
+            <span class="wb-cta-check"><svg viewBox="0 0 12 9"><polyline points="1,4.5 4.5,8 11,1"/></svg></span>
+            Prompt templates you can use from the day of each session
+          </li>
+          <li>
+            <span class="wb-cta-check"><svg viewBox="0 0 12 9"><polyline points="1,4.5 4.5,8 11,1"/></svg></span>
+            Reusable workflows built for safari sales, guest experience, and ops
+          </li>
+          <li>
+            <span class="wb-cta-check"><svg viewBox="0 0 12 9"><polyline points="1,4.5 4.5,8 11,1"/></svg></span>
+            A safari-specific AI context template your whole team can use
+          </li>
+          <li>
+            <span class="wb-cta-check"><svg viewBox="0 0 12 9"><polyline points="1,4.5 4.5,8 11,1"/></svg></span>
+            Full recordings of all 4 sessions sent after each live date
+          </li>
+        </ul>
+        <p class="wb-cta-note">Free to attend &nbsp;·&nbsp; All sessions recorded &nbsp;·&nbsp; No technical setup required</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ══════════════════════
+     FOOTER
+══════════════════════ -->
+<footer class="footer" id="footer" role="contentinfo">
+  <div class="container">
+    <div class="footer__top">
+      <div class="footer__brand">
+        <img src="../assets/wandar-logo.png" alt="Wandar" class="footer__logo-img" loading="lazy" />
+        <p class="footer__brand-tagline">Social listening built for safari travel</p>
+      </div>
+      <div class="footer__newsletter">
+        <h3 class="footer__newsletter-heading">Stay Updated</h3>
+        <p class="footer__newsletter-sub">Get the latest travel insights and feature updates.</p>
+        <form onsubmit="handleFooterSubscribe(event)" novalidate>
+          <div class="footer__input-pill">
+            <label for="wb-email-sub" class="sr-only">Email address</label>
+            <input type="email" id="wb-email-sub" name="email" class="footer__email-input" placeholder="Enter your email" required autocomplete="email" />
+            <button type="submit" class="footer__submit-arrow" aria-label="Subscribe">→</button>
+          </div>
+        </form>
+      </div>
+    </div>
+    <div class="footer__divider"></div>
+    <div class="footer__columns">
+      <div class="footer__col">
+        <span class="footer__col-heading">Quick Links</span>
+        <ul class="footer__col-links">
+          <li><a href="../index.html" class="footer__col-link">Home</a></li>
+          <li><a href="../index.html#why-wandar" class="footer__col-link">Why Wandar</a></li>
+          <li><a href="../index.html#how-it-works" class="footer__col-link">How It Works</a></li>
+          <li><a href="../index.html#who-its-for" class="footer__col-link">Who It's For</a></li>
+          <li><a href="../index.html#where-wandar-listens" class="footer__col-link">Platforms</a></li>
+        </ul>
+      </div>
+      <div class="footer__col">
+        <span class="footer__col-heading">For Operators</span>
+        <ul class="footer__col-links">
+          <li><a href="../pricing.html" class="footer__col-link">Pricing</a></li>
+          <li><a href="../guides/" class="footer__col-link">Guides</a></li>
+          <li><a href="../blog/" class="footer__col-link">Blog</a></li>
+          <li><a href="webinar.html" class="footer__col-link">Webinar Series</a></li>
+        </ul>
+      </div>
+      <div class="footer__col">
+        <span class="footer__col-heading">Connect With Us</span>
+        <div class="footer__socials">
+          <a href="https://www.linkedin.com/company/getwandar/" target="_blank" rel="noopener" class="footer__social-link" aria-label="Wandar on LinkedIn"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg></a>
+          <a href="https://x.com/GetWandar" target="_blank" rel="noopener" class="footer__social-link" aria-label="Wandar on X"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.748l7.73-8.835L1.254 2.25H8.08l4.261 5.635 5.903-5.635zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg></a>
+          <a href="https://www.instagram.com/getwandar?igsh=MXBucmsybGhpbDhjeg%3D%3D&utm_source=qr" target="_blank" rel="noopener" class="footer__social-link" aria-label="Wandar on Instagram"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 1 0 0 12.324 6.162 6.162 0 0 0 0-12.324zM12 16a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm6.406-11.845a1.44 1.44 0 1 0 0 2.881 1.44 1.44 0 0 0 0-2.881z"/></svg></a>
+          <a href="https://t.me/+WtB9Mrj09sZlODky" target="_blank" rel="noopener" class="footer__social-link" aria-label="Wandar on Telegram"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/></svg></a>
+        </div>
+      </div>
+    </div>
+    <div class="footer__legal-bar">
+      <p class="footer__legal-copy">© 2026 Wandar. All rights reserved.</p>
+      <div class="footer__legal-links">
+        <span class="footer__legal-link">Privacy Policy</span>
+        <span class="footer__legal-link">Terms of Service</span>
+        <span class="footer__legal-link">AI Transparency Statement</span>
+      </div>
+    </div>
+  </div>
+</footer>
+
+
+<!-- ══════════════════════
+     REGISTRATION MODAL
+══════════════════════ -->
+<div class="wb-modal-overlay" id="wbOverlay" role="dialog" aria-modal="true" aria-labelledby="wb-title">
+  <div class="wb-modal">
+    <div class="wb-modal-stripe"></div>
+    <div class="wb-modal-hd">
+      <button class="wb-modal-close" onclick="wbClose()" aria-label="Close">✕</button>
+      <div class="wb-modal-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="#1a7373" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polygon points="23 7 16 12 23 17 23 7"/><rect x="1" y="5" width="15" height="14" rx="2" ry="2"/></svg>
+      </div>
+      <h2 id="wb-title">Join the Webinar Series</h2>
+      <p class="wb-modal-sub">Practical AI Use Across Safari Operations</p>
+      <div class="wb-date-pill">
+        <span>📅 Session 1 &nbsp;·&nbsp; Friday, July 4, 2026 &nbsp;·&nbsp; 6:00 PM ET</span>
+        <span class="wb-dots">···</span>
+      </div>
+    </div>
+    <div class="wb-modal-bd" id="wbFormWrap">
+      <div class="wb-modal-divider"></div>
+      <form id="wbForm" name="webinar-safari-operations" method="POST" data-netlify="true" netlify-honeypot="bot-field" onsubmit="wbSubmit(event)" novalidate>
+        <input type="hidden" name="form-name" value="webinar-safari-operations" />
+        <input type="hidden" name="series" value="Practical AI Use Across Safari Operations" />
+        <p style="display:none"><label>Skip: <input name="bot-field" /></label></p>
+        <div class="wb-field-grid">
+          <div class="wb-field">
+            <label for="wb-name">Full Name <span class="req">*</span></label>
+            <input class="wb-control" type="text" id="wb-name" name="name" placeholder="Your name" required autocomplete="name" />
+          </div>
+          <div class="wb-field">
+            <label for="wb-email">Work Email <span class="req">*</span></label>
+            <input class="wb-control" type="email" id="wb-email" name="email" placeholder="you@safarico.com" required autocomplete="email" />
+          </div>
+          <div class="wb-field">
+            <label for="wb-role">Your Role <span class="req">*</span></label>
+            <select class="wb-control" id="wb-role" name="role" required>
+              <option value="" disabled selected>Select your role</option>
+              <option>Owner / Founder</option>
+              <option>Sales &amp; Reservations</option>
+              <option>Guest Experience</option>
+              <option>Operations Manager</option>
+              <option>Marketing</option>
+              <option>Other</option>
+            </select>
+          </div>
+          <div class="wb-field">
+            <label for="wb-company">Company Name <span class="req">*</span></label>
+            <input class="wb-control" type="text" id="wb-company" name="company" placeholder="Your safari company" required autocomplete="organization" />
+          </div>
+        </div>
+        <button type="submit" class="wb-modal-submit" id="wbSubmitBtn">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          Submit
+        </button>
+      </form>
+    </div>
+    <div class="wb-modal-success" id="wbSuccess">
+      <div class="wb-success-ring">
+        <svg viewBox="0 0 24 24" fill="none" stroke="#1a7373" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg>
+      </div>
+      <h3>You're registered!</h3>
+      <p>A confirmation has been sent to</p>
+      <p class="wb-success-email" id="wbSuccessEmail"></p>
+      <div class="wb-success-tag">4-Part Series · All Sessions Recorded</div>
+      <p style="font-size:13px;color:var(--text-muted);max-width:290px;margin:0 auto 20px;line-height:1.6;">We will be in touch with session details, recording links, and your downloadable resources.</p>
+      <button class="wb-btn-done" onclick="wbClose()">Done</button>
+    </div>
+  </div>
+</div>
+
+
+<script>
+  /* Countdown: July 4 2026, 6 PM ET = 22:00 UTC */
+  (function () {
+    var target = new Date('2026-07-04T22:00:00Z');
+    function pad(n) { return String(n).padStart(2, '0'); }
+    function tick() {
+      var diff = target - Date.now();
+      if (diff <= 0) {
+        ['days','hours','mins','secs'].forEach(function(u){ document.getElementById('cd-'+u).textContent='00'; });
+        return;
+      }
+      document.getElementById('cd-days').textContent  = pad(Math.floor(diff / 86400000));
+      document.getElementById('cd-hours').textContent = pad(Math.floor((diff % 86400000) / 3600000));
+      document.getElementById('cd-mins').textContent  = pad(Math.floor((diff % 3600000) / 60000));
+      document.getElementById('cd-secs').textContent  = pad(Math.floor((diff % 60000) / 1000));
+    }
+    tick(); setInterval(tick, 1000);
+  })();
+
+  function wbOpen() {
+    document.getElementById('wbOverlay').classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+  function wbClose() {
+    document.getElementById('wbOverlay').classList.remove('open');
+    document.body.style.overflow = '';
+  }
+  document.getElementById('wbOverlay').addEventListener('click', function(e) { if (e.target === this) wbClose(); });
+  document.addEventListener('keydown', function(e) { if (e.key === 'Escape') wbClose(); });
+
+  async function wbSubmit(e) {
+    e.preventDefault();
+    var form = document.getElementById('wbForm');
+    var btn  = document.getElementById('wbSubmitBtn');
+    var email = document.getElementById('wb-email').value;
+    var valid = true;
+    form.querySelectorAll('[required]').forEach(function(el) {
+      el.style.borderColor = '';
+      if (!el.value.trim()) { el.style.borderColor = '#dc2626'; valid = false; }
+    });
+    if (!valid) return;
+    btn.disabled = true; btn.textContent = 'Registering...';
+    try {
+      await fetch('/', { method: 'POST', headers: { 'Content-Type': 'application/x-www-form-urlencoded' }, body: new URLSearchParams(new FormData(form)).toString() });
+    } catch (_) {}
+    document.querySelector('.wb-modal-hd').style.display = 'none';
+    document.getElementById('wbFormWrap').style.display = 'none';
+    document.getElementById('wbSuccessEmail').textContent = email;
+    document.getElementById('wbSuccess').style.display = 'block';
+  }
+
+  function handleFooterSubscribe(e) {
+    e.preventDefault();
+    var input = e.target.querySelector('input[type="email"]');
+    if (input && input.value) { input.value = ''; input.placeholder = 'Thank you!'; }
+  }
+
+  function wbFaq(btn) {
+    var ans = btn.nextElementSibling;
+    var isOpen = btn.getAttribute('aria-expanded') === 'true';
+    document.querySelectorAll('.wb-faq-btn').forEach(function(b) {
+      b.setAttribute('aria-expanded', 'false');
+      b.nextElementSibling.classList.remove('open');
+    });
+    if (!isOpen) {
+      btn.setAttribute('aria-expanded', 'true');
+      ans.classList.add('open');
+    }
+  }
+</script>
+</body>
+</html>

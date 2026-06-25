@@ -1,0 +1,671 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Free Webinar Series — Practical AI Use Across Safari Operations | Wandar</title>
+  <meta name="description" content="A free 4-part webinar series for safari operators. Learn to use AI to reduce admin, respond to enquiries faster, and build reusable workflows across your team." />
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="stylesheet" href="assets/css/main.css" />
+
+  <style>
+    /* ── Page reset ── */
+    body { padding-top: 0; }
+
+    /* ── NAV ── */
+    .wb-nav {
+      position: sticky; top: 0; z-index: 200;
+      background: var(--dark-bg);
+      padding: 0 24px; height: 60px;
+      display: flex; align-items: center; justify-content: space-between;
+      border-bottom: 1px solid rgba(255,255,255,.07);
+    }
+    .wb-logo { font-family: var(--font-logo); font-size: 1.4rem; color: var(--white); letter-spacing: .04em; }
+    .wb-logo span { color: var(--safari-primary); }
+
+    /* ── HERO ── */
+    .wb-hero {
+      background: var(--dark-bg); color: var(--white);
+      padding: 80px 24px 68px; text-align: center;
+      position: relative; overflow: hidden;
+    }
+    .wb-hero::before {
+      content: '';
+      position: absolute; inset: 0;
+      background: radial-gradient(ellipse 72% 50% at 50% 0%, rgba(26,115,115,.2) 0%, transparent 68%);
+      pointer-events: none;
+    }
+    .wb-hero-inner { max-width: 780px; margin: 0 auto; position: relative; }
+
+    .wb-live-badge {
+      display: inline-flex; align-items: center; gap: 7px;
+      background: rgba(196,89,17,.14); border: 1px solid rgba(196,89,17,.38);
+      color: #f5a56e;
+      font-size: .72rem; font-weight: 700; letter-spacing: .13em; text-transform: uppercase;
+      padding: 5px 14px; border-radius: var(--radius-pill); margin-bottom: 22px;
+    }
+    .wb-live-dot {
+      width: 7px; height: 7px; background: #ff4444; border-radius: 50%;
+      animation: wbPulse 1.4s ease-in-out infinite;
+    }
+    @keyframes wbPulse { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:.35;transform:scale(.7)} }
+
+    .wb-series-line {
+      font-size: .78rem; font-weight: 700; letter-spacing: .13em; text-transform: uppercase;
+      color: var(--safari-primary); margin-bottom: 20px;
+    }
+    .wb-hero h1 {
+      font-size: clamp(2rem, 5vw, 3.1rem);
+      font-weight: 800; color: var(--white); line-height: 1.15; margin-bottom: 22px;
+    }
+    .wb-hero h1 em { font-style: normal; color: var(--safari-secondary); }
+    .wb-hero-sub {
+      font-size: 1.07rem; color: rgba(255,255,255,.65);
+      max-width: 620px; margin: 0 auto 40px; line-height: 1.65;
+    }
+
+    /* ── COUNTDOWN ── */
+    .wb-cd-wrap {
+      background: rgba(255,255,255,.05); border: 1px solid rgba(255,255,255,.09);
+      border-radius: var(--radius-lg);
+      padding: 26px 36px;
+      display: inline-flex; flex-direction: column; align-items: center; gap: 10px;
+      margin-bottom: 36px;
+    }
+    .wb-cd-label {
+      font-size: .7rem; font-weight: 700; letter-spacing: .16em; text-transform: uppercase;
+      color: rgba(255,255,255,.38);
+    }
+    .wb-cd-digits { display: flex; align-items: center; gap: 6px; }
+    .wb-cd-unit { display: flex; flex-direction: column; align-items: center; min-width: 68px; }
+    .wb-cd-num {
+      font-size: clamp(2rem, 5vw, 2.8rem); font-weight: 800;
+      color: var(--white); font-variant-numeric: tabular-nums; line-height: 1;
+      background: rgba(26,115,115,.22); border: 1px solid rgba(26,115,115,.42);
+      border-radius: var(--radius-md); padding: 10px 14px; min-width: 74px; text-align: center;
+    }
+    .wb-cd-name {
+      font-size: .62rem; font-weight: 700; letter-spacing: .12em; text-transform: uppercase;
+      color: rgba(255,255,255,.35); margin-top: 7px;
+    }
+    .wb-cd-sep { font-size: 2.2rem; font-weight: 800; color: rgba(255,255,255,.22); margin-bottom: 18px; line-height: 1; }
+
+    /* ── SECTIONS ── */
+    .wb-section { padding: 72px 24px; }
+    .wb-section-inner { max-width: 1100px; margin: 0 auto; }
+    .wb-eyebrow {
+      font-size: .72rem; font-weight: 700; letter-spacing: .15em; text-transform: uppercase;
+      color: var(--safari-primary); text-align: center; margin-bottom: 10px;
+    }
+    .wb-eyebrow--light { color: rgba(255,255,255,.42); }
+    .wb-h2 {
+      font-size: clamp(1.45rem, 3vw, 2.1rem); font-weight: 800;
+      color: var(--text-primary); text-align: center; line-height: 1.25; margin-bottom: 44px;
+    }
+    .wb-h2--light { color: var(--white); }
+
+    /* ── LEARN CARDS ── */
+    .wb-learn-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(256px,1fr)); gap: 18px; }
+    .wb-learn-card {
+      background: var(--off-white); border: 1px solid var(--border);
+      border-radius: var(--radius-lg); padding: 26px 22px;
+      display: flex; gap: 14px; align-items: flex-start;
+    }
+    .wb-learn-icon {
+      width: 38px; height: 38px; border-radius: var(--radius-md);
+      background: var(--primary-light);
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0; font-size: 1.1rem;
+    }
+    .wb-learn-card h3 { font-size: .9rem; font-weight: 700; color: var(--text-primary); margin-bottom: 4px; }
+    .wb-learn-card p { font-size: .83rem; color: var(--text-muted); line-height: 1.5; }
+
+    /* ── WHO SECTION ── */
+    .wb-who { background: var(--dark-bg); padding: 72px 24px; }
+    .wb-who-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px,1fr)); gap: 14px; }
+    .wb-who-card {
+      background: rgba(255,255,255,.05); border: 1px solid rgba(255,255,255,.09);
+      border-radius: var(--radius-lg); padding: 20px 18px;
+      display: flex; gap: 11px; align-items: flex-start;
+    }
+    .wb-who-tick {
+      width: 20px; height: 20px; border-radius: 50%; background: var(--safari-primary);
+      display: flex; align-items: center; justify-content: center; flex-shrink: 0; margin-top: 2px;
+    }
+    .wb-who-tick svg { width: 11px; height: 11px; fill: none; stroke: #fff; stroke-width: 2.5; }
+    .wb-who-card p { font-size: .88rem; color: rgba(255,255,255,.72); font-weight: 500; line-height: 1.45; }
+
+    /* ── SESSIONS — 4 in a row ── */
+    .wb-sessions {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 20px;
+    }
+    @media (max-width: 900px) { .wb-sessions { grid-template-columns: repeat(2, 1fr); } }
+    @media (max-width: 540px) { .wb-sessions { grid-template-columns: 1fr; } }
+
+    .wb-session-card {
+      background: var(--white); border: 1px solid var(--border);
+      border-top: 3px solid var(--safari-primary);
+      border-radius: var(--radius-lg); padding: 26px 22px;
+      display: flex; flex-direction: column;
+    }
+    .wb-session-num {
+      font-size: .68rem; font-weight: 800; letter-spacing: .12em; text-transform: uppercase;
+      color: var(--safari-primary); margin-bottom: 10px;
+    }
+    .wb-session-card h3 { font-size: .97rem; font-weight: 800; color: var(--text-primary); line-height: 1.3; margin-bottom: 10px; }
+    .wb-session-card p { font-size: .83rem; color: var(--text-secondary); line-height: 1.6; margin-bottom: 14px; flex: 1; }
+    .wb-session-takes {
+      font-size: .68rem; font-weight: 800; letter-spacing: .1em; text-transform: uppercase;
+      color: var(--safari-secondary); margin-bottom: 8px;
+    }
+    .wb-session-list { list-style: none; padding: 0; }
+    .wb-session-list li {
+      font-size: .81rem; color: var(--text-muted); padding: 3px 0;
+      display: flex; gap: 7px; align-items: flex-start;
+    }
+    .wb-session-list li::before { content: '→'; color: var(--safari-primary); font-weight: 700; flex-shrink: 0; }
+
+    /* ── CTA STRIP ── */
+    .wb-cta-strip {
+      background: linear-gradient(135deg, var(--safari-primary) 0%, #0f4f4f 100%);
+      padding: 68px 24px; text-align: center;
+    }
+    .wb-cta-strip h2 { font-size: clamp(1.35rem,3vw,1.9rem); font-weight: 800; color: var(--white); margin-bottom: 10px; }
+    .wb-cta-strip p { color: rgba(255,255,255,.7); margin-bottom: 32px; max-width: 500px; margin-left: auto; margin-right: auto; }
+
+    /* ── FOOTER ── */
+    .wb-footer { background: var(--dark-bg); text-align: center; padding: 28px 24px; }
+    .wb-footer-logo { font-family: var(--font-logo); font-size: 1.2rem; color: rgba(255,255,255,.55); letter-spacing: .04em; margin-bottom: 6px; }
+    .wb-footer-logo span { color: var(--safari-primary); }
+    .wb-footer p { font-size: .78rem; color: rgba(255,255,255,.28); }
+    .wb-footer a { color: var(--safari-primary); }
+
+    /* ══════════════════════════════
+       MODAL
+    ══════════════════════════════ */
+    .wb-modal-overlay {
+      position: fixed; inset: 0; z-index: 999;
+      background: rgba(0,0,0,.58); backdrop-filter: blur(4px);
+      display: flex; align-items: center; justify-content: center;
+      padding: 16px;
+      opacity: 0; pointer-events: none; transition: opacity .22s;
+    }
+    .wb-modal-overlay.open { opacity: 1; pointer-events: auto; }
+    .wb-modal {
+      background: var(--white); border-radius: 20px;
+      width: 100%; max-width: 520px;
+      box-shadow: 0 24px 72px rgba(0,0,0,.32);
+      transform: translateY(18px) scale(.97);
+      transition: transform .26s cubic-bezier(.34,1.56,.64,1);
+      overflow: hidden;
+    }
+    .wb-modal-overlay.open .wb-modal { transform: translateY(0) scale(1); }
+
+    .wb-modal-stripe { height: 4px; background: linear-gradient(90deg, var(--safari-primary), #2aacac); }
+
+    .wb-modal-hd {
+      padding: 26px 28px 0; text-align: center; position: relative;
+    }
+    .wb-modal-icon {
+      width: 52px; height: 52px; border-radius: 50%;
+      background: var(--primary-light);
+      display: flex; align-items: center; justify-content: center; margin: 0 auto 14px;
+    }
+    .wb-modal-icon svg { width: 24px; height: 24px; }
+    .wb-modal-close {
+      position: absolute; top: 14px; right: 14px;
+      width: 30px; height: 30px; border-radius: 50%;
+      background: #f4f4f5; border: none; cursor: pointer;
+      font-size: .9rem; font-weight: 700; color: #555;
+      display: flex; align-items: center; justify-content: center; transition: background .2s;
+    }
+    .wb-modal-close:hover { background: #e4e4e7; }
+    .wb-modal-hd h2 { font-size: 1.2rem; font-weight: 800; color: var(--text-primary); margin-bottom: 5px; }
+    .wb-modal-hd .wb-sub { font-size: .85rem; color: var(--text-muted); line-height: 1.5; }
+
+    /* Date pill */
+    .wb-date-pill {
+      display: flex; align-items: center; justify-content: space-between;
+      background: #f4f4f5; border-radius: var(--radius-pill);
+      padding: 10px 16px; margin-top: 14px;
+      font-size: .87rem; color: var(--text-secondary); font-weight: 500;
+    }
+    .wb-date-pill .wb-dots { color: var(--text-muted); font-size: 1rem; letter-spacing: .1em; }
+
+    .wb-modal-divider { height: 1px; background: var(--border); margin: 20px 0; }
+
+    .wb-modal-bd { padding: 0 28px 26px; }
+
+    /* 2x2 grid */
+    .wb-field-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+    @media (max-width: 400px) { .wb-field-grid { grid-template-columns: 1fr; } }
+    .wb-field { display: flex; flex-direction: column; gap: 5px; }
+    .wb-field label {
+      font-size: .7rem; font-weight: 700; letter-spacing: .1em; text-transform: uppercase;
+      color: var(--text-secondary);
+    }
+    .wb-field label .req { color: var(--safari-primary); margin-left: 2px; }
+    .wb-control {
+      background: #f4f4f5; border: 1.5px solid transparent; border-radius: var(--radius-sm);
+      padding: 10px 13px; font-family: var(--font-primary); font-size: .87rem; color: var(--text-primary);
+      outline: none; width: 100%; transition: border-color .18s, background .18s;
+    }
+    .wb-control::placeholder { color: #a3a3a3; }
+    .wb-control:focus { border-color: var(--safari-primary); background: var(--white); }
+    select.wb-control {
+      appearance: none; cursor: pointer;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='11' height='7'%3E%3Cpath d='M1 1l4.5 4.5L10 1' stroke='%23737373' stroke-width='1.6' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
+      background-repeat: no-repeat; background-position: right 12px center;
+    }
+
+    .wb-modal-submit {
+      display: flex; align-items: center; justify-content: center; gap: 8px;
+      width: 100%;
+      background: var(--safari-primary); color: var(--white);
+      font-family: var(--font-primary); font-size: .93rem; font-weight: 700;
+      letter-spacing: .04em; text-transform: uppercase;
+      padding: 14px 24px; border: none; border-radius: var(--radius-sm); cursor: pointer;
+      margin-top: 16px; transition: background .2s, transform .14s;
+    }
+    .wb-modal-submit:hover { background: var(--primary-hover); transform: translateY(-1px); }
+    .wb-modal-submit:disabled { opacity: .6; cursor: not-allowed; transform: none; }
+
+    .wb-modal-trust {
+      display: flex; gap: 18px; justify-content: center;
+      margin-top: 12px; flex-wrap: wrap;
+    }
+    .wb-modal-trust span { font-size: .73rem; color: var(--text-muted); display: flex; align-items: center; gap: 5px; }
+    .wb-trust-dot { width: 5px; height: 5px; background: var(--safari-primary); border-radius: 50%; }
+
+    /* Success */
+    .wb-modal-success { padding: 46px 28px 34px; text-align: center; display: none; }
+    .wb-success-ring {
+      width: 62px; height: 62px; border-radius: 50%; background: #d1fae5;
+      display: flex; align-items: center; justify-content: center; margin: 0 auto 16px;
+    }
+    .wb-success-ring svg { width: 26px; height: 26px; }
+    .wb-modal-success h3 { font-size: 1.2rem; font-weight: 800; color: var(--text-primary); margin-bottom: 7px; }
+    .wb-modal-success p { font-size: .87rem; color: var(--text-muted); margin-bottom: 3px; }
+    .wb-success-email { font-weight: 700; color: var(--safari-primary); }
+    .wb-success-tag {
+      display: inline-block; background: var(--primary-light); color: var(--safari-primary);
+      font-size: .81rem; font-weight: 700; padding: 7px 18px;
+      border-radius: var(--radius-pill); margin: 14px 0 20px;
+    }
+    .wb-btn-done {
+      background: var(--safari-primary); color: var(--white);
+      font-family: var(--font-primary); font-size: .87rem; font-weight: 700;
+      padding: 11px 28px; border: none; border-radius: var(--radius-sm); cursor: pointer;
+      transition: background .2s;
+    }
+    .wb-btn-done:hover { background: var(--primary-hover); }
+
+    @media (max-width: 560px) {
+      .wb-cd-wrap { padding: 20px 16px; }
+      .wb-cd-num { font-size: 1.75rem; min-width: 56px; padding: 8px 10px; }
+      .wb-cd-unit { min-width: 52px; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ── NAV ── -->
+<nav class="wb-nav">
+  <div class="wb-logo">WAN<span>D</span>AR</div>
+  <button class="btn btn--accent" style="border-radius:var(--radius-pill);font-size:.82rem;padding:9px 20px;" onclick="wbOpen()">Claim Your Ticket</button>
+</nav>
+
+
+<!-- ══════════════════════
+     HERO
+══════════════════════ -->
+<section class="wb-hero">
+  <div class="wb-hero-inner">
+    <div class="wb-live-badge"><span class="wb-live-dot"></span>Free Webinar Series</div>
+    <p class="wb-series-line">4 Sessions &nbsp;·&nbsp; Safari Operators &nbsp;·&nbsp; No Experience Required</p>
+    <h1>Practical <em>AI Use</em> Across<br/>Safari Operations</h1>
+    <p class="wb-hero-sub">Save hours on admin. Respond to enquiries faster. Spend more time on the traveler conversations that drive revenue.</p>
+
+    <div style="display:block;margin-bottom:28px;">
+      <div class="wb-cd-wrap">
+        <span class="wb-cd-label">Session 1 starts in</span>
+        <div class="wb-cd-digits">
+          <div class="wb-cd-unit"><div class="wb-cd-num" id="cd-days">00</div><div class="wb-cd-name">Days</div></div>
+          <div class="wb-cd-sep">:</div>
+          <div class="wb-cd-unit"><div class="wb-cd-num" id="cd-hours">00</div><div class="wb-cd-name">Hours</div></div>
+          <div class="wb-cd-sep">:</div>
+          <div class="wb-cd-unit"><div class="wb-cd-num" id="cd-mins">00</div><div class="wb-cd-name">Mins</div></div>
+          <div class="wb-cd-sep">:</div>
+          <div class="wb-cd-unit"><div class="wb-cd-num" id="cd-secs">00</div><div class="wb-cd-name">Secs</div></div>
+        </div>
+      </div>
+    </div>
+
+    <div style="display:block;">
+      <button class="btn btn--accent" style="border-radius:var(--radius-pill);font-size:1rem;font-weight:800;padding:17px 38px;letter-spacing:.05em;text-transform:uppercase;box-shadow:0 4px 22px rgba(196,89,17,.36);" onclick="wbOpen()">
+        <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polygon points="23 7 16 12 23 17 23 7"/><rect x="1" y="5" width="15" height="14" rx="2" ry="2"/></svg>
+        Claim Your Ticket
+      </button>
+    </div>
+  </div>
+</section>
+
+
+<!-- ══════════════════════
+     WHAT YOU'LL LEARN
+══════════════════════ -->
+<section class="wb-section" style="background:var(--white);">
+  <div class="wb-section-inner" style="max-width:880px;">
+    <p class="wb-eyebrow">What you will learn live</p>
+    <h2 class="wb-h2">Use your preferred AI tool to make daily safari work faster, clearer, and more consistent.</h2>
+    <div class="wb-learn-grid">
+      <div class="wb-learn-card">
+        <div class="wb-learn-icon">📋</div>
+        <div>
+          <h3>Summarize messy notes instantly</h3>
+          <p>Turn rough call notes, enquiry emails, and internal handovers into clean summaries your team can act on.</p>
+        </div>
+      </div>
+      <div class="wb-learn-card">
+        <div class="wb-learn-icon">✉️</div>
+        <div>
+          <h3>Respond to enquiries faster</h3>
+          <p>Go from a messy guest enquiry to a first reply, follow-up, and proposal starting point without starting from scratch.</p>
+        </div>
+      </div>
+      <div class="wb-learn-card">
+        <div class="wb-learn-icon">🔁</div>
+        <div>
+          <h3>Create reusable team workflows</h3>
+          <p>Turn repeated admin tasks into reusable prompts your whole team can use across sales, reservations, and guest experience.</p>
+        </div>
+      </div>
+      <div class="wb-learn-card">
+        <div class="wb-learn-icon">❓</div>
+        <div>
+          <h3>Turn guest questions into content</h3>
+          <p>The questions your team answers every week become useful marketing content your business can reuse.</p>
+        </div>
+      </div>
+      <div class="wb-learn-card">
+        <div class="wb-learn-icon">🎯</div>
+        <div>
+          <h3>Set up AI with your safari context</h3>
+          <p>Make your AI tool sound like your team, not a generic assistant. Give it your tone, rules, and real examples.</p>
+        </div>
+      </div>
+      <div class="wb-learn-card">
+        <div class="wb-learn-icon">⚖️</div>
+        <div>
+          <h3>Keep human judgment in control</h3>
+          <p>AI speeds up the work. You and your team stay in control of every response, decision, and traveler relationship.</p>
+        </div>
+      </div>
+    </div>
+    <div style="text-align:center;margin-top:44px;">
+      <button class="btn btn--accent" style="border-radius:var(--radius-pill);font-size:.97rem;font-weight:800;padding:16px 34px;letter-spacing:.04em;text-transform:uppercase;" onclick="wbOpen()">Claim Your Ticket →</button>
+    </div>
+  </div>
+</section>
+
+
+<!-- ══════════════════════
+     WHO THIS IS FOR
+══════════════════════ -->
+<section class="wb-who">
+  <div class="wb-section-inner" style="max-width:880px;">
+    <p class="wb-eyebrow wb-eyebrow--light">Who this is for</p>
+    <h2 class="wb-h2 wb-h2--light" style="margin-bottom:32px;">Built for the people handling the real work of running a safari business.</h2>
+    <div class="wb-who-grid">
+      <div class="wb-who-card"><div class="wb-who-tick"><svg viewBox="0 0 12 9"><polyline points="1,4.5 4.5,8 11,1"/></svg></div><p>Safari operator founders</p></div>
+      <div class="wb-who-card"><div class="wb-who-tick"><svg viewBox="0 0 12 9"><polyline points="1,4.5 4.5,8 11,1"/></svg></div><p>Sales and reservations teams</p></div>
+      <div class="wb-who-card"><div class="wb-who-tick"><svg viewBox="0 0 12 9"><polyline points="1,4.5 4.5,8 11,1"/></svg></div><p>Guest experience teams</p></div>
+      <div class="wb-who-card"><div class="wb-who-tick"><svg viewBox="0 0 12 9"><polyline points="1,4.5 4.5,8 11,1"/></svg></div><p>Operations managers</p></div>
+      <div class="wb-who-card"><div class="wb-who-tick"><svg viewBox="0 0 12 9"><polyline points="1,4.5 4.5,8 11,1"/></svg></div><p>Small teams handling enquiries, proposals, and marketing manually</p></div>
+      <div class="wb-who-card"><div class="wb-who-tick"><svg viewBox="0 0 12 9"><polyline points="1,4.5 4.5,8 11,1"/></svg></div><p>Anyone who wants AI to work for their specific safari business, not a generic template</p></div>
+    </div>
+    <p style="text-align:center;margin-top:26px;font-size:.84rem;color:rgba(255,255,255,.34);">You do not need technical experience &nbsp;·&nbsp; You do not need to switch tools &nbsp;·&nbsp; Bring the real work your team already does</p>
+  </div>
+</section>
+
+
+<!-- ══════════════════════
+     THE 4 SESSIONS
+══════════════════════ -->
+<section class="wb-section" style="background:var(--off-white);">
+  <div class="wb-section-inner">
+    <p class="wb-eyebrow">The webinar series</p>
+    <h2 class="wb-h2">Four practical sessions. One system your team can use from day one.</h2>
+    <div class="wb-sessions">
+
+      <div class="wb-session-card">
+        <p class="wb-session-num">Session 01</p>
+        <h3>Getting Started With Practical AI Use</h3>
+        <p>Find exactly where AI helps most in your safari business across admin, enquiries, guest questions, and content.</p>
+        <p class="wb-session-takes">You will leave with</p>
+        <ul class="wb-session-list">
+          <li>AI use case map for your business</li>
+          <li>Prompt for summarizing messy notes</li>
+          <li>Prompt for enquiry replies</li>
+        </ul>
+      </div>
+
+      <div class="wb-session-card">
+        <p class="wb-session-num">Session 02</p>
+        <h3>Set Up Your AI Tool for Safari Work</h3>
+        <p>Give your AI tool the right context, tone, examples, and rules so it responds the way your team would. Not generically.</p>
+        <p class="wb-session-takes">You will leave with</p>
+        <ul class="wb-session-list">
+          <li>Safari business context template</li>
+          <li>Tone and voice template</li>
+          <li>Business rules template</li>
+        </ul>
+      </div>
+
+      <div class="wb-session-card">
+        <p class="wb-session-num">Session 03</p>
+        <h3>Respond Faster Without Sounding Generic</h3>
+        <p>Handle safari enquiries faster while still sounding human, specific, and helpful. From first reply to proposal starting point.</p>
+        <p class="wb-session-takes">You will leave with</p>
+        <ul class="wb-session-list">
+          <li>Enquiry breakdown prompt</li>
+          <li>First response prompt</li>
+          <li>Follow-up and proposal prompts</li>
+        </ul>
+      </div>
+
+      <div class="wb-session-card">
+        <p class="wb-session-num">Session 04</p>
+        <h3>Turn Daily Knowledge Into Reusable Workflows</h3>
+        <p>Turn the questions and tasks your team repeats every week into reusable workflows across sales, guest experience, and marketing.</p>
+        <p class="wb-session-takes">You will leave with</p>
+        <ul class="wb-session-list">
+          <li>Reusable FAQ workflow</li>
+          <li>Admin handover template</li>
+          <li>Marketing content prompt</li>
+        </ul>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ══════════════════════
+     BOTTOM CTA
+══════════════════════ -->
+<section class="wb-cta-strip">
+  <h2>Ready to make daily safari work faster and more consistent?</h2>
+  <p>Join the free webinar series. Bring your real work. Leave with workflows your team can use from day one.</p>
+  <button class="btn btn--ghost-white" style="border-radius:var(--radius-pill);font-size:.97rem;font-weight:800;padding:15px 34px;letter-spacing:.04em;text-transform:uppercase;" onclick="wbOpen()">
+    Claim Your Ticket →
+  </button>
+</section>
+
+
+<!-- ── FOOTER ── -->
+<footer class="wb-footer">
+  <p class="wb-footer-logo">WAN<span>D</span>AR</p>
+  <p>© 2026 Wandar &nbsp;·&nbsp; <a href="mailto:nanagyenin.wandar@gmail.com">Contact us</a> &nbsp;·&nbsp; <a href="index.html">Back to main site</a></p>
+  <p style="margin-top:4px;">By registering you agree to receive webinar updates. Unsubscribe anytime.</p>
+</footer>
+
+
+<!-- ══════════════════════════════
+     MODAL
+══════════════════════════════ -->
+<div class="wb-modal-overlay" id="wbOverlay" role="dialog" aria-modal="true" aria-labelledby="wb-modal-title">
+  <div class="wb-modal">
+    <div class="wb-modal-stripe"></div>
+
+    <div class="wb-modal-hd">
+      <button class="wb-modal-close" onclick="wbClose()" aria-label="Close">✕</button>
+      <div class="wb-modal-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="#1a7373" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polygon points="23 7 16 12 23 17 23 7"/><rect x="1" y="5" width="15" height="14" rx="2" ry="2"/></svg>
+      </div>
+      <h2 id="wb-modal-title">Join the Webinar Series</h2>
+      <p class="wb-sub">Practical AI Use Across Safari Operations</p>
+      <div class="wb-date-pill">
+        <span>📅 Session 1 &nbsp;·&nbsp; Friday, July 4, 2026 &nbsp;·&nbsp; 6:00 PM ET</span>
+        <span class="wb-dots">···</span>
+      </div>
+    </div>
+
+    <div class="wb-modal-bd" id="wbFormWrap">
+      <div class="wb-modal-divider"></div>
+      <form
+        id="wbForm"
+        name="webinar-safari-operations"
+        method="POST"
+        data-netlify="true"
+        netlify-honeypot="bot-field"
+        onsubmit="wbSubmit(event)"
+        novalidate
+      >
+        <input type="hidden" name="form-name" value="webinar-safari-operations" />
+        <input type="hidden" name="series" value="Practical AI Use Across Safari Operations" />
+        <p style="display:none"><label>Skip: <input name="bot-field" /></label></p>
+
+        <div class="wb-field-grid">
+          <div class="wb-field">
+            <label for="wb-name">Full Name <span class="req">*</span></label>
+            <input class="wb-control" type="text" id="wb-name" name="name" placeholder="Your name" required autocomplete="name" />
+          </div>
+          <div class="wb-field">
+            <label for="wb-email">Work Email <span class="req">*</span></label>
+            <input class="wb-control" type="email" id="wb-email" name="email" placeholder="you@safarico.com" required autocomplete="email" />
+          </div>
+          <div class="wb-field">
+            <label for="wb-role">Your Role <span class="req">*</span></label>
+            <select class="wb-control" id="wb-role" name="role" required>
+              <option value="" disabled selected>Select your role</option>
+              <option>Owner / Founder</option>
+              <option>Sales &amp; Reservations</option>
+              <option>Guest Experience</option>
+              <option>Operations Manager</option>
+              <option>Marketing</option>
+              <option>Other</option>
+            </select>
+          </div>
+          <div class="wb-field">
+            <label for="wb-company">Company Name <span class="req">*</span></label>
+            <input class="wb-control" type="text" id="wb-company" name="company" placeholder="Your safari company" required autocomplete="organization" />
+          </div>
+        </div>
+
+        <button type="submit" class="wb-modal-submit" id="wbSubmitBtn">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          Submit
+        </button>
+      </form>
+
+      <div class="wb-modal-trust">
+        <span><span class="wb-trust-dot"></span>Free to join</span>
+        <span><span class="wb-trust-dot"></span>All sessions recorded</span>
+        <span><span class="wb-trust-dot"></span>Built for safari operators</span>
+      </div>
+    </div>
+
+    <!-- Success -->
+    <div class="wb-modal-success" id="wbSuccess">
+      <div class="wb-success-ring">
+        <svg viewBox="0 0 24 24" fill="none" stroke="#1a7373" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg>
+      </div>
+      <h3>You're registered!</h3>
+      <p>A confirmation has been sent to</p>
+      <p class="wb-success-email" id="wbSuccessEmail"></p>
+      <div class="wb-success-tag">📹 4-Part Series · All Sessions Recorded</div>
+      <p style="font-size:.83rem;color:var(--text-muted);max-width:290px;margin:0 auto 20px;line-height:1.6;">We will be in touch with session details, recording links, and your downloadable resources.</p>
+      <button class="wb-btn-done" onclick="wbClose()">Done</button>
+    </div>
+  </div>
+</div>
+
+
+<script>
+  /* ── Countdown: Session 1 = July 4 2026, 6 PM ET (22:00 UTC) ── */
+  (function () {
+    var target = new Date('2026-07-04T22:00:00Z');
+    function pad(n) { return String(n).padStart(2, '0'); }
+    function tick() {
+      var diff = target - Date.now();
+      if (diff <= 0) {
+        ['days','hours','mins','secs'].forEach(function(u){ document.getElementById('cd-'+u).textContent='00'; });
+        return;
+      }
+      document.getElementById('cd-days').textContent  = pad(Math.floor(diff / 86400000));
+      document.getElementById('cd-hours').textContent = pad(Math.floor((diff % 86400000) / 3600000));
+      document.getElementById('cd-mins').textContent  = pad(Math.floor((diff % 3600000) / 60000));
+      document.getElementById('cd-secs').textContent  = pad(Math.floor((diff % 60000) / 1000));
+    }
+    tick();
+    setInterval(tick, 1000);
+  })();
+
+  /* ── Modal ── */
+  function wbOpen() {
+    document.getElementById('wbOverlay').classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+  function wbClose() {
+    document.getElementById('wbOverlay').classList.remove('open');
+    document.body.style.overflow = '';
+  }
+  document.getElementById('wbOverlay').addEventListener('click', function(e) {
+    if (e.target === this) wbClose();
+  });
+  document.addEventListener('keydown', function(e) { if (e.key === 'Escape') wbClose(); });
+
+  /* ── Submit ── */
+  async function wbSubmit(e) {
+    e.preventDefault();
+    var form  = document.getElementById('wbForm');
+    var btn   = document.getElementById('wbSubmitBtn');
+    var email = document.getElementById('wb-email').value;
+    var valid = true;
+    form.querySelectorAll('[required]').forEach(function(el) {
+      el.style.borderColor = '';
+      if (!el.value.trim()) { el.style.borderColor = '#dc2626'; valid = false; }
+    });
+    if (!valid) return;
+    btn.disabled = true;
+    btn.textContent = 'Registering...';
+    try {
+      await fetch('/', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+        body: new URLSearchParams(new FormData(form)).toString()
+      });
+    } catch (_) {}
+    document.querySelector('.wb-modal-hd').style.display = 'none';
+    document.getElementById('wbFormWrap').style.display = 'none';
+    document.getElementById('wbSuccessEmail').textContent = email;
+    document.getElementById('wbSuccess').style.display = 'block';
+  }
+</script>
+</body>
+</html>
