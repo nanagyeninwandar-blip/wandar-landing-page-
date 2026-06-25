@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>CTA + Recommended Reading — Preview (NOT deployed)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap" rel="stylesheet" />
+<style>
+  :root{
+    --safari-primary:#1a7373; --safari-secondary:#c45911; --safari-gold:#b8860b;
+    --text-primary:#1a1a1a; --text-secondary:#525252; --text-muted:#737373;
+    --off-white:#FDF8F0; --white:#ffffff; --border:#E5E7EB;
+    --radius-md:12px; --radius-lg:16px; --radius-pill:999px;
+    --font:'Plus Jakarta Sans',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  body{font-family:var(--font);background:var(--off-white);color:var(--text-secondary);-webkit-font-smoothing:antialiased;}
+  .container{max-width:1180px;margin:0 auto;padding:0 24px;}
+  .preview-note{font-size:13px;color:#92660a;background:#fff8e6;border:1px solid #f0d98a;border-radius:8px;padding:12px 16px;margin:20px auto;max-width:1180px;}
+
+  /* ════ FULL-WIDTH PREMIUM CTA (dark green, fan gradient, 9-platform watermark) ════ */
+  .cta-full{position:relative;overflow:hidden;text-align:center;padding:96px 24px;
+    background:
+      conic-gradient(from 206deg at 74% 26%, rgba(58,190,178,0.34), rgba(150,224,188,0.10) 20%, rgba(196,89,17,0.16) 40%, rgba(6,40,28,0) 60%),
+      radial-gradient(ellipse at 16% 82%, rgba(26,115,115,0.22), transparent 58%),
+      radial-gradient(circle at 90% 95%, rgba(10,55,40,0.6), transparent 50%),
+      linear-gradient(135deg,#05221a 0%,#0a2e22 48%,#061f18 100%);}
+  .cta-full::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,0.10),transparent 30%,transparent 70%,rgba(0,0,0,0.14));pointer-events:none;z-index:1;}
+  /* premium platform watermarks — uniform size, evenly distributed */
+  .pw{position:absolute;pointer-events:none;z-index:0;color:#e3d8bd;width:56px;height:56px;opacity:0.08;}
+  .pw svg{width:100%;height:100%;fill:currentColor;}
+  .pw--fb  {top:15%;left:8%;transform:rotate(-10deg);}
+  .pw--ig  {top:8%;left:34%;transform:rotate(6deg);}
+  .pw--x   {top:8%;left:58%;transform:rotate(-6deg);}
+  .pw--rd  {top:15%;right:8%;transform:rotate(12deg);}
+  .pw--bsky{top:46%;left:4%;transform:rotate(8deg);}
+  .pw--pin {top:46%;right:4%;transform:rotate(-14deg);}
+  .pw--ta  {bottom:15%;left:12%;transform:rotate(10deg);}
+  .pw--tt  {bottom:9%;left:45%;transform:rotate(-8deg);}
+  .pw--qu  {bottom:13%;right:24%;transform:rotate(-10deg);}
+  .cta-full__inner{position:relative;z-index:2;max-width:760px;margin:0 auto;}
+  .cta-full__headline{font-size:clamp(28px,3.6vw,40px);font-weight:800;letter-spacing:-0.02em;line-height:1.15;color:#fff;margin-bottom:16px;}
+  .cta-full__sub{font-size:17px;line-height:1.55;color:rgba(255,255,255,0.78);margin-bottom:30px;}
+  .cta-full__btns{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;margin-bottom:20px;}
+  .btn{font-family:inherit;font-size:15px;font-weight:700;border-radius:var(--radius-pill);padding:14px 26px;text-decoration:none;cursor:pointer;border:1.5px solid transparent;transition:all 150ms ease;display:inline-block;}
+  .btn--primary{background:var(--safari-secondary);color:#fff;}
+  .btn--primary:hover{background:#a8490d;}
+  .btn--ghost{background:transparent;color:#fff;border-color:rgba(255,255,255,0.5);}
+  .btn--ghost:hover{border-color:#fff;background:rgba(255,255,255,0.08);}
+  .cta-full__micro{font-size:13px;color:rgba(255,255,255,0.55);}
+
+  /* ════ RECOMMENDED READING ════ */
+  .recread{background:var(--off-white);padding:72px 0 88px;}
+  .recread__head{display:flex;align-items:center;justify-content:space-between;margin-bottom:36px;}
+  .recread__head h2{font-size:clamp(26px,3vw,34px);font-weight:800;letter-spacing:-0.02em;color:var(--text-primary);}
+  .viewall{font-size:14px;font-weight:700;color:var(--text-primary);text-decoration:none;border:1px solid var(--border);border-radius:var(--radius-pill);padding:10px 20px;display:inline-flex;align-items:center;gap:8px;}
+  .viewall:hover{border-color:var(--safari-primary);color:var(--safari-primary);}
+  .vgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;}
+  .vcard{background:#fff;border:1px solid var(--border);border-radius:14px;overflow:hidden;display:flex;flex-direction:column;text-decoration:none;box-shadow:0 1px 4px rgba(0,0,0,0.07);transition:transform 160ms ease,box-shadow 160ms ease;}
+  .vcard:hover{transform:translateY(-5px);box-shadow:0 16px 36px rgba(0,0,0,0.12);}
+  .vcard__img{height:184px;position:relative;overflow:hidden;display:flex;align-items:center;justify-content:center;}
+  .vcover{position:relative;z-index:2;transform-origin:center;}
+  .vcover--lead{transform:scale(0.5);}
+  .vcover--listen{transform:scale(0.56);}
+  .vcover--pipe{transform:scale(0.52);}
+  .vcard__body{padding:18px 18px 22px;display:flex;flex-direction:column;flex:1;}
+  .vcard__cat{font-size:12px;font-weight:700;margin-bottom:9px;color:var(--safari-secondary);}
+  .vcard__title{font-size:16.5px;font-weight:700;color:var(--text-primary);line-height:1.3;margin-bottom:auto;}
+  .vcard__meta{display:flex;gap:18px;margin-top:18px;font-size:12.5px;color:var(--text-muted);}
+  .vcard__meta span{display:inline-flex;align-items:center;gap:6px;}
+  .vcard__meta svg{width:13px;height:13px;}
+
+  /* media + mockups */
+  .media--savanna{background:linear-gradient(160deg,#f6c66b 0%,#e89a4d 38%,#c06a35 70%,#7d4327 100%);}
+  .media--savanna::after{content:"";position:absolute;inset:0;background:radial-gradient(circle at 22% 30%,rgba(255,236,180,0.55),transparent 42%),radial-gradient(circle at 80% 85%,rgba(60,30,15,0.35),transparent 55%);}
+  .media--dusk{background:linear-gradient(160deg,#e7a85a 0%,#c9743a 42%,#8a4a28 72%,#3b2317 100%);}
+  .media--dusk::after{content:"";position:absolute;inset:0;background:radial-gradient(circle at 30% 25%,rgba(255,225,160,0.5),transparent 45%);}
+  .media--dark{background:radial-gradient(circle at 70% 50%,#0e3b3b 0%,#082a2a 55%,#041c1c 100%);}
+  .lg-card{width:100%;max-width:360px;background:#fff;border-radius:14px;box-shadow:0 18px 40px rgba(0,0,0,0.22);padding:18px;}
+  .lg-card__head{display:flex;align-items:center;justify-content:space-between;margin-bottom:12px;}
+  .lg-card__head h4{font-size:15px;font-weight:800;color:var(--text-primary);}
+  .pill-intent{font-size:10px;font-weight:700;color:#0f7a4f;background:#e3f6ec;border-radius:var(--radius-pill);padding:4px 9px;}
+  .lg-card__src{display:flex;align-items:center;gap:8px;margin-bottom:10px;}
+  .lg-card__src .ic{width:22px;height:22px;border-radius:50%;display:flex;align-items:center;justify-content:center;background:#FF4500;flex:none;}
+  .lg-card__src .ic svg{width:14px;height:14px;}
+  .lg-card__src .nm{font-size:12px;font-weight:700;color:var(--text-primary);line-height:1.1;}
+  .lg-card__src .sub{font-size:11px;color:var(--text-muted);}
+  .lead-q{font-size:13px;line-height:1.5;color:var(--text-secondary);}
+  .lead-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px;margin-top:12px;}
+  .lead-cell{border:1px solid var(--border);border-radius:8px;padding:8px 9px;}
+  .lead-cell .k{font-size:9px;font-weight:700;letter-spacing:0.05em;text-transform:uppercase;color:var(--text-muted);margin-bottom:3px;}
+  .lead-cell .v{font-size:12px;font-weight:700;color:var(--text-primary);}
+  .lead-cell--score{border-color:var(--safari-primary);background:rgba(26,115,115,0.06);}
+  .lead-cell--score .v{color:var(--safari-primary);}
+  .listen{display:grid;grid-template-columns:auto 1fr auto;gap:18px;align-items:center;width:100%;}
+  .listen__plats{display:flex;flex-direction:column;gap:9px;}
+  .plat{display:flex;align-items:center;gap:8px;background:rgba(255,255,255,0.07);border:1px solid rgba(255,255,255,0.12);border-radius:8px;padding:6px 11px 6px 8px;}
+  .plat span{font-size:11.5px;font-weight:600;color:#dcecea;white-space:nowrap;}
+  .plat .ic{width:18px;height:18px;border-radius:50%;display:flex;align-items:center;justify-content:center;flex:none;}
+  .plat .ic svg{width:12px;height:12px;}
+  .listen__msgs{display:flex;flex-direction:column;gap:9px;}
+  .msg{background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.1);border-radius:10px;padding:8px 11px;}
+  .msg p{font-size:11.5px;color:#eaf3f1;line-height:1.4;}
+  .msg time{font-size:9.5px;color:#7fa8a4;}
+  .detect{background:rgba(255,255,255,0.04);border:1px solid rgba(38,166,154,0.35);border-radius:12px;padding:14px 12px;text-align:center;width:140px;}
+  .detect__title{font-size:11px;font-weight:700;color:#bfe3df;margin-bottom:10px;}
+  .radar{width:80px;height:80px;border-radius:50%;margin:0 auto 12px;position:relative;background:radial-gradient(circle,rgba(38,166,154,0.18),transparent 70%);border:1px solid rgba(38,166,154,0.4);overflow:hidden;}
+  .radar::before,.radar::after{content:"";position:absolute;border:1px solid rgba(38,166,154,0.35);border-radius:50%;}
+  .radar::before{inset:18px;} .radar::after{inset:32px;}
+  .radar__sweep{position:absolute;inset:0;background:conic-gradient(from 0deg,rgba(52,224,161,0.55),transparent 90deg);border-radius:50%;animation:radarspin 3s linear infinite;}
+  .radar__blip{position:absolute;top:26%;right:24%;width:7px;height:7px;border-radius:50%;background:#34e0a1;box-shadow:0 0 8px #34e0a1;}
+  @keyframes radarspin{to{transform:rotate(360deg);}}
+  .detect__hi{font-size:11px;font-weight:700;color:#fff;}
+  .detect__sub{font-size:10px;color:#8fbdb8;margin-bottom:10px;}
+  .detect__btn{display:inline-block;font-size:11px;font-weight:700;color:#04201f;background:#34e0a1;border-radius:var(--radius-pill);padding:7px 14px;}
+  .pipe{width:100%;max-width:430px;background:#fff;border-radius:14px;box-shadow:0 18px 40px rgba(0,0,0,0.25);padding:16px;}
+  .pipe__row{display:grid;grid-template-columns:repeat(5,1fr);gap:7px;}
+  .pstep__hd{display:flex;align-items:center;gap:5px;margin-bottom:8px;}
+  .pstep__n{width:15px;height:15px;border-radius:50%;background:var(--off-white);border:1px solid var(--border);font-size:9px;font-weight:700;color:var(--text-muted);display:flex;align-items:center;justify-content:center;flex:none;}
+  .pstep--final .pstep__n{background:var(--safari-secondary);color:#fff;border-color:var(--safari-secondary);}
+  .pstep__lbl{font-size:8.5px;font-weight:700;color:var(--text-primary);line-height:1.15;}
+  .pcell{border:1px solid var(--border);border-radius:7px;padding:7px 6px;min-height:70px;}
+  .pcell .t{font-size:9px;font-weight:700;color:var(--text-primary);line-height:1.25;margin-bottom:3px;}
+  .pcell .s{font-size:8px;color:var(--text-muted);line-height:1.3;}
+  .pcell--final{border-color:var(--safari-secondary);background:rgba(196,89,17,0.05);}
+  .score-badge{display:inline-block;font-size:12px;font-weight:800;color:#0f7a4f;background:#e3f6ec;border-radius:6px;padding:3px 8px;margin-bottom:5px;}
+  .stars{font-size:11px;color:var(--safari-secondary);letter-spacing:1px;}
+  .pintent{display:inline-block;font-size:8px;font-weight:700;color:var(--safari-primary);background:rgba(26,115,115,0.1);border-radius:4px;padding:2px 6px;margin-top:4px;}
+  .pipe__foot{margin-top:14px;padding-top:12px;border-top:1px dashed var(--border);text-align:center;font-size:11px;font-weight:700;color:var(--text-primary);}
+
+  .fakefooter{background:#0c1512;color:rgba(255,255,255,0.4);text-align:center;padding:28px;font-size:13px;}
+  @media(max-width:900px){ .vgrid{grid-template-columns:1fr;} }
+</style>
+</head>
+<body>
+
+<div class="preview-note">
+  <strong>PREVIEW ONLY — not deployed.</strong> Premium full-width CTA: layered dark-green fan gradient with a soft vignette, and a champagne watermark of all <strong>9 platforms Wandar monitors</strong> (Facebook, Instagram, X, Bluesky, Reddit, TripAdvisor, TikTok, Quora, Pinterest) with varied size/opacity/blur for depth. Below it, the "Recommended Reading" section (Guides page → blog articles; Blog page mirrors with guides).
+</div>
+
+<!-- FULL-WIDTH CTA -->
+<section class="cta-full" aria-label="Call to action">
+  <div class="pw pw--fb" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg></div>
+  <div class="pw pw--bsky" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 10.8c-1.087-2.114-4.046-6.053-6.798-7.995C2.566.944 1.561 1.266.902 1.565.139 1.908 0 3.08 0 3.768c0 .69.378 5.65.624 6.479.815 2.736 3.713 3.66 6.383 3.364.136-.02.275-.039.415-.056-.138.022-.276.04-.415.056-3.912.58-7.387 2.005-2.83 7.078 5.013 5.19 6.87-1.113 7.823-4.308.953 3.195 2.05 9.271 7.733 4.308 4.267-4.308 1.172-6.498-2.74-7.078a8.741 8.741 0 0 1-.415-.056c.14.017.279.036.415.056 2.67.297 5.568-.628 6.383-3.364.246-.828.624-5.79.624-6.478 0-.69-.139-1.861-.902-2.204-.659-.299-1.664-.62-4.3 1.24C16.046 4.748 13.087 8.687 12 10.8z"/></svg></div>
+  <div class="pw pw--ig" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg></div>
+  <div class="pw pw--x" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg></div>
+  <div class="pw pw--ta" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="6.5" cy="12" r="5.8"/><circle cx="6.5" cy="12" r="3.2" fill="#0a2e22"/><circle cx="6.5" cy="12" r="1.5"/><circle cx="17.5" cy="12" r="5.8"/><circle cx="17.5" cy="12" r="3.2" fill="#0a2e22"/><circle cx="17.5" cy="12" r="1.5"/></svg></div>
+  <div class="pw pw--tt" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.99-.32-2.15-.23-3.02.37-.63.41-1.11 1.04-1.36 1.75-.21.51-.15 1.07-.14 1.61.24 1.64 1.82 3.02 3.5 2.87 1.12-.01 2.19-.66 2.77-1.61.19-.33.4-.67.41-1.06.1-1.79.06-3.57.07-5.36.01-4.03-.01-8.05.02-12.07z"/></svg></div>
+  <div class="pw pw--rd" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0zm5.01 4.744c.688 0 1.25.561 1.25 1.249a1.25 1.25 0 0 1-2.498.056l-2.597-.547-.8 3.747c1.824.07 3.48.632 4.674 1.488.308-.309.73-.491 1.207-.491.968 0 1.754.786 1.754 1.754 0 .716-.435 1.333-1.01 1.614a3.111 3.111 0 0 1 .042.52c0 2.694-3.13 4.87-7.004 4.87-3.874 0-7.004-2.176-7.004-4.87 0-.183.015-.366.043-.534A1.748 1.748 0 0 1 4.028 12c0-.968.786-1.754 1.754-1.754.463 0 .898.196 1.207.49 1.207-.883 2.878-1.43 4.744-1.487l.885-4.182a.342.342 0 0 1 .14-.197.35.35 0 0 1 .238-.042l2.906.617a1.214 1.214 0 0 1 1.108-.701z"/></svg></div>
+  <div class="pw pw--qu" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12.003 0C5.373 0 0 5.372 0 12c0 6.628 5.373 12 12.003 12 6.628 0 11.997-5.372 11.997-12 0-6.628-5.369-12-11.997-12zm-.172 18.95c-.56-.172-1.068-.46-1.526-.857l-1.35 1.37-.983-.962 1.345-1.367c-.594-.858-.938-1.939-.938-3.134 0-2.994 1.96-5.122 4.595-5.122 1.317 0 2.458.5 3.29 1.357l1.073-1.09.984.965-1.061 1.076c.571.848.907 1.908.907 3.093 0 2.995-1.96 5.121-4.594 5.121-.59 0-1.142-.12-1.65-.33l-.092-.12z"/></svg></div>
+  <div class="pw pw--pin" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 0C5.373 0 0 5.372 0 12c0 5.084 3.163 9.426 7.627 11.174-.105-.949-.2-2.405.042-3.441.218-.937 1.407-5.965 1.407-5.965s-.359-.719-.359-1.782c0-1.668.967-2.914 2.171-2.914 1.023 0 1.518.769 1.518 1.69 0 1.029-.655 2.568-.994 3.995-.283 1.194.599 2.169 1.777 2.169 2.133 0 3.772-2.249 3.772-5.495 0-2.873-2.064-4.882-5.012-4.882-3.414 0-5.418 2.561-5.418 5.207 0 1.031.397 2.138.893 2.738a.36.36 0 0 1 .083.345l-.333 1.36c-.053.22-.174.267-.402.161-1.499-.698-2.436-2.889-2.436-4.649 0-3.785 2.75-7.262 7.929-7.262 4.163 0 7.398 2.967 7.398 6.931 0 4.136-2.607 7.464-6.227 7.464-1.216 0-2.359-.632-2.75-1.378l-.748 2.853c-.271 1.043-1.002 2.35-1.492 3.146C9.57 23.812 10.763 24 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0z"/></svg></div>
+  <div class="cta-full__inner">
+    <h2 class="cta-full__headline">Your next client just posted on social media.<br>Be the first to reply.</h2>
+    <p class="cta-full__sub">Every hour you wait, someone else could be answering them.</p>
+    <div class="cta-full__btns">
+      <a href="#" class="btn btn--primary">Request Early Access</a>
+      <a href="#" class="btn btn--ghost">Book a Consultation</a>
+    </div>
+    <p class="cta-full__micro">No contracts. No setup fees. Built exclusively for safari operators.</p>
+  </div>
+</section>
+
+<!-- RECOMMENDED READING (on Guides page → blog articles) -->
+<section class="recread">
+  <div class="container">
+    <div class="recread__head">
+      <h2>Recommended Reading</h2>
+      <a href="blog/" class="viewall">Visit the blog →</a>
+    </div>
+    <div class="vgrid">
+
+      <a href="blog/how-safari-operators-find-leads-online.html" class="vcard">
+        <div class="vcard__img media--savanna">
+          <div class="vcover vcover--lead">
+            <div class="lg-card">
+              <div class="lg-card__head"><h4>New Lead Found</h4><span class="pill-intent">High intent</span></div>
+              <div class="lg-card__src"><span class="ic"><svg viewBox="0 0 24 24" fill="#fff"><path d="M12 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0zm5.01 4.744c.688 0 1.25.561 1.25 1.249a1.25 1.25 0 0 1-2.498.056l-2.597-.547-.8 3.747c1.824.07 3.48.632 4.674 1.488.308-.309.73-.491 1.207-.491.968 0 1.754.786 1.754 1.754 0 .716-.435 1.333-1.01 1.614a3.111 3.111 0 0 1 .042.52c0 2.694-3.13 4.87-7.004 4.87-3.874 0-7.004-2.176-7.004-4.87 0-.183.015-.366.043-.534A1.748 1.748 0 0 1 4.028 12c0-.968.786-1.754 1.754-1.754.463 0 .898.196 1.207.49 1.207-.883 2.878-1.43 4.744-1.487l.885-4.182a.342.342 0 0 1 .14-.197.35.35 0 0 1 .238-.042l2.906.617a1.214 1.214 0 0 1 1.108-.701z"/></svg></span><div><div class="nm">Reddit</div><div class="sub">r/travel</div></div></div>
+              <p class="lead-q">Planning a 7 day safari in Tanzania in August. Looking for a reliable operator. Budget ~ $4k per person.</p>
+              <div class="lead-grid">
+                <div class="lead-cell"><div class="k">Destination</div><div class="v">Tanzania</div></div>
+                <div class="lead-cell"><div class="k">Dates</div><div class="v">Aug 10–17</div></div>
+                <div class="lead-cell"><div class="k">Budget</div><div class="v">$4,000 pp</div></div>
+                <div class="lead-cell"><div class="k">Group size</div><div class="v">2 adults</div></div>
+                <div class="lead-cell"><div class="k">Trip type</div><div class="v">Safari</div></div>
+                <div class="lead-cell lead-cell--score"><div class="k">Lead score</div><div class="v">92/100</div></div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="vcard__body">
+          <span class="vcard__cat">Lead Generation</span>
+          <h3 class="vcard__title">How Safari Operators Can Find High-Quality Leads Online</h3>
+          <div class="vcard__meta">
+            <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>April 2026</span>
+            <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>8 min read</span>
+          </div>
+        </div>
+      </a>
+
+      <a href="blog/social-listening-for-safari-operators.html" class="vcard">
+        <div class="vcard__img media--dark">
+          <div class="vcover vcover--listen">
+            <div class="listen">
+              <div class="listen__plats">
+                <div class="plat"><span class="ic" style="background:#FF4500;"><svg viewBox="0 0 24 24" fill="#fff"><path d="M12 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0zm5.01 4.744c.688 0 1.25.561 1.25 1.249a1.25 1.25 0 0 1-2.498.056l-2.597-.547-.8 3.747c1.824.07 3.48.632 4.674 1.488.308-.309.73-.491 1.207-.491.968 0 1.754.786 1.754 1.754 0 .716-.435 1.333-1.01 1.614a3.111 3.111 0 0 1 .042.52c0 2.694-3.13 4.87-7.004 4.87-3.874 0-7.004-2.176-7.004-4.87 0-.183.015-.366.043-.534A1.748 1.748 0 0 1 4.028 12c0-.968.786-1.754 1.754-1.754.463 0 .898.196 1.207.49z"/></svg></span><span>Reddit</span></div>
+                <div class="plat"><span class="ic" style="background:#34E0A1;"><svg viewBox="0 0 24 24"><circle cx="6.5" cy="12" r="5.8" fill="#fff"/><circle cx="6.5" cy="12" r="2.6" fill="#34E0A1"/><circle cx="17.5" cy="12" r="5.8" fill="#fff"/><circle cx="17.5" cy="12" r="2.6" fill="#34E0A1"/></svg></span><span>TripAdvisor</span></div>
+                <div class="plat"><span class="ic" style="background:#B92B27;"><svg viewBox="0 0 24 24" fill="#fff"><path d="M12 0C5.373 0 0 5.372 0 12c0 6.628 5.373 12 12 12 6.628 0 12-5.372 12-12 0-6.628-5.372-12-12-12zm0 4.5c2.9 0 5.05 2.34 5.05 5.63 0 1.3-.38 2.49-1 3.43l.72.73-1.08 1.06-.72-.71c-.92.63-2.02 1-3.23 1H12c-2.9 0-5.05-2.34-5.05-5.63S9.1 4.5 12 4.5z"/></svg></span><span>Quora</span></div>
+                <div class="plat"><span class="ic" style="background:#1877F2;"><svg viewBox="0 0 24 24" fill="#fff"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg></span><span>Facebook</span></div>
+                <div class="plat"><span class="ic" style="background:#000;"><svg viewBox="0 0 24 24" fill="#fff"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg></span><span>X (Twitter)</span></div>
+              </div>
+              <div class="listen__msgs">
+                <div class="msg"><p>Serengeti in June – any recommendations?</p><time>2m ago</time></div>
+                <div class="msg"><p>Best safari operator for first-time visitors?</p><time>5m ago</time></div>
+                <div class="msg"><p>Family safari in Tanzania – need advice</p><time>8m ago</time></div>
+              </div>
+              <div class="detect">
+                <div class="detect__title">Wandar Detection</div>
+                <div class="radar"><div class="radar__sweep"></div><div class="radar__blip"></div></div>
+                <div class="detect__hi">High intent detected</div>
+                <div class="detect__sub">3 new opportunities</div>
+                <span class="detect__btn">View Leads →</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="vcard__body">
+          <span class="vcard__cat">Social Listening</span>
+          <h3 class="vcard__title">Social Listening for Safari Operators: How to Find Travelers Before They Find You</h3>
+          <div class="vcard__meta">
+            <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>April 2026</span>
+            <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>7 min read</span>
+          </div>
+        </div>
+      </a>
+
+      <a href="blog/how-to-get-more-safari-bookings.html" class="vcard">
+        <div class="vcard__img media--dusk">
+          <div class="vcover vcover--pipe">
+            <div class="pipe">
+              <div class="pipe__row">
+                <div class="pstep"><div class="pstep__hd"><span class="pstep__n">1</span><span class="pstep__lbl">Enquiry Received</span></div><div class="pcell"><div class="t">Safari in Kenya</div><div class="s">2 adults · Aug</div><span class="pintent">High intent</span></div></div>
+                <div class="pstep"><div class="pstep__hd"><span class="pstep__n">2</span><span class="pstep__lbl">Response Drafted</span></div><div class="pcell"><div class="t">AI draft ready</div><div class="s">Personalized reply created ✓</div></div></div>
+                <div class="pstep"><div class="pstep__hd"><span class="pstep__n">3</span><span class="pstep__lbl">Proposal Sent</span></div><div class="pcell"><div class="t">7 Day Safari</div><div class="s">Maasai Mara</div><div class="s" style="margin-top:6px;">📄 PDF</div></div></div>
+                <div class="pstep"><div class="pstep__hd"><span class="pstep__n">4</span><span class="pstep__lbl">Follow-up Scheduled</span></div><div class="pcell"><div class="t">Follow up in 2 days</div><div class="s">Reminder set</div></div></div>
+                <div class="pstep pstep--final"><div class="pstep__hd"><span class="pstep__n">$</span><span class="pstep__lbl">Booking Opportunity</span></div><div class="pcell pcell--final"><div class="s" style="margin-bottom:4px;">Score</div><span class="score-badge">96/100</span><div class="stars">★★★★☆</div></div></div>
+              </div>
+              <div class="pipe__foot">From inquiry to booking. Faster.</div>
+            </div>
+          </div>
+        </div>
+        <div class="vcard__body">
+          <span class="vcard__cat">Bookings</span>
+          <h3 class="vcard__title">How to Get More Safari Bookings: The Modern Operator's Playbook</h3>
+          <div class="vcard__meta">
+            <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>April 2026</span>
+            <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>7 min read</span>
+          </div>
+        </div>
+      </a>
+
+    </div>
+  </div>
+</section>
+
+<div class="fakefooter">— footer sits here —</div>
+
+</body>
+</html>
