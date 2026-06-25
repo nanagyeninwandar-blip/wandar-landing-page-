@@ -3021,7 +3021,7 @@ section[aria-label="How intent scoring works"] {
 /* ═══════════════════════════════════════════
    MEGA-MENU (light / cream-pink tray)
 ═══════════════════════════════════════════ */
-:root{ --menu-tray:#FBF2ED; }
+:root{ --menu-tray:#FDF8F0; }
 .platforms-dropdown.mega, .resources-dropdown.mega{
   background:var(--menu-tray);
   border:1px solid rgba(0,0,0,0.05);
@@ -3074,3 +3074,6 @@ section[aria-label="How intent scoring works"] {
 .mega .mfeat__sub{ font-size:12.5px; line-height:1.45; color:var(--text-secondary); margin:8px 0 16px; }
 .mega .mfeat__btn{ display:inline-block; text-align:center; font-size:13.5px; font-weight:700; color:#fff; background:var(--safari-secondary); border-radius:999px; padding:12px 18px; text-decoration:none; transition:background 140ms, transform 140ms; }
 .mega .mfeat__btn:hover{ background:#a8490d; transform:translateY(-1px); }
+
+.nav__chev{ width:11px; height:11px; margin-left:5px; vertical-align:middle; flex:none; transition:transform 200ms ease; }
+.nav-relative.nav-hover .nav__chev{ transform:rotate(180deg); }
