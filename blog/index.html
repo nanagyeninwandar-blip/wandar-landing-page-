@@ -161,6 +161,11 @@
     .recread__head{display:flex;align-items:center;justify-content:space-between;padding:56px 0 28px;}
     .recread__head h2{font-size:clamp(26px,3vw,34px);font-weight:800;letter-spacing:-0.02em;color:var(--text-primary);}
     .recread__grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;}
+    /* fuller covers for recommended reading cards */
+    .recread .vcard__img{height:212px;}
+    .recread .vcover--lead{transform:scale(0.92);}
+    .recread .vcover--listen{transform:scale(0.84);}
+    .recread .vcover--pipe{transform:scale(0.8);}
     @media(max-width:900px){.recread__grid{grid-template-columns:1fr;}}
     /* full-width fan-gradient CTA (no watermarks) */
     .cta-full{position:relative;overflow:hidden;text-align:center;padding:92px 24px;
@@ -573,6 +578,19 @@
   </div>
 </section>
 
+<!-- CTA Banner (full-width, fan gradient, no watermarks) -->
+<section class="cta-full" aria-label="Call to action">
+  <div class="cta-full__inner">
+    <h2 class="cta-full__headline">Your next client just posted on social media.<br>Be the first to reply.</h2>
+    <p class="cta-full__sub">Every hour you wait, someone else could be answering them.</p>
+    <div class="cta-full__btns">
+      <a href="#" onclick="openModal('early-access');return false;" class="cta-full__btn cta-full__btn--primary">Request Early Access</a>
+      <a href="#" onclick="openModal('consultation');return false;" class="cta-full__btn cta-full__btn--ghost">Book a Consultation</a>
+    </div>
+    <p class="cta-full__micro">No contracts. No setup fees. Built exclusively for safari operators.</p>
+  </div>
+</section>
+
 <!-- Recommended Reading (guides) -->
 <section class="recread">
   <div class="container">
@@ -622,19 +640,6 @@
         <div class="vcard__body"><span class="vcard__cat vcat--sales">Safari Sales</span><h3 class="vcard__title">How Safari Operators Can Beat Competitors and Win More Bookings Online</h3><div class="vcard__meta"><span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>April 2026</span><span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>20 min read</span></div></div>
       </a>
     </div>
-  </div>
-</section>
-
-<!-- CTA Banner (full-width, fan gradient, no watermarks) -->
-<section class="cta-full" aria-label="Call to action">
-  <div class="cta-full__inner">
-    <h2 class="cta-full__headline">Your next client just posted on social media.<br>Be the first to reply.</h2>
-    <p class="cta-full__sub">Every hour you wait, someone else could be answering them.</p>
-    <div class="cta-full__btns">
-      <a href="#" onclick="openModal('early-access');return false;" class="cta-full__btn cta-full__btn--primary">Request Early Access</a>
-      <a href="#" onclick="openModal('consultation');return false;" class="cta-full__btn cta-full__btn--ghost">Book a Consultation</a>
-    </div>
-    <p class="cta-full__micro">No contracts. No setup fees. Built exclusively for safari operators.</p>
   </div>
 </section>
 
