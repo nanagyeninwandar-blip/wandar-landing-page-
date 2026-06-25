@@ -82,7 +82,7 @@
     /* rich cards */
     .rich-head{padding:48px 0 8px;}
     .rich-head h2{font-size:28px;font-weight:800;letter-spacing:-0.02em;color:var(--text-primary);}
-    .rich-grid{display:flex;flex-direction:column;gap:32px;padding:24px 0 8px;}
+    .rich-grid{display:flex;flex-direction:column;gap:32px;padding:24px 0 96px;}
     .bcard{display:grid;grid-template-columns:46% 54%;background:var(--white);border:1px solid var(--border);border-radius:var(--radius-lg);overflow:hidden;box-shadow:0 4px 20px rgba(0,0,0,0.04);transition:transform 160ms ease,box-shadow 160ms ease;}
     .bcard:hover{transform:translateY(-3px);box-shadow:0 16px 40px rgba(0,0,0,0.10);}
     .bcard--lead{border-left:4px solid var(--safari-primary);}
@@ -801,5 +801,63 @@ function handleSubscribe(e) {
   if (el && el.value) { el.value = ''; alert('Thanks! We\'ll be in touch.'); }
 }
 </script>
+<script>
+/* Category chips + search filtering for guides/blog listing */
+(function(){
+  function slug(t){return (t||'').toLowerCase().replace(/&/g,' ').trim().replace(/[^a-z0-9]+/g,'-').replace(/^-+|-+$/g,'');}
+  var chips=[].slice.call(document.querySelectorAll('.chip'));
+  var search=document.querySelector('.gsearch input');
+  var cards=[].slice.call(document.querySelectorAll('.bcard, .pcard, .featured'));
+  if(!chips.length || !cards.length) return;
+  cards.forEach(function(c){
+    var cat=c.querySelector('.bcard__eyebrow, .pcat, .fcat');
+    var ttl=c.querySelector('.bcard__title, .pcard__title, .featured__title');
+    c.setAttribute('data-cat', slug(cat?cat.textContent:''));
+    c.setAttribute('data-title', (ttl?ttl.textContent:'').toLowerCase());
+  });
+  var richGrid=document.querySelector('.blog-grid, .rich-grid');
+  var empty=document.createElement('div');
+  empty.style.cssText='display:none;text-align:center;padding:24px 0 96px;color:var(--text-muted);font-size:16px;';
+  empty.textContent='No posts in this category yet — check back soon.';
+  if(richGrid && richGrid.parentNode) richGrid.parentNode.insertBefore(empty, richGrid.nextSibling);
+  var activeCat='all';
+  function headToggle(headSel, grid, cardSel){
+    if(!grid) return;
+    var vis=0;
+    [].forEach.call(grid.querySelectorAll(cardSel), function(c){ if(c.style.display!=='none') vis++; });
+    var head=document.querySelector(headSel);
+    if(head) head.style.display = vis? '' : 'none';
+  }
+  function apply(){
+    var q=((search&&search.value)||'').toLowerCase().trim();
+    var n=0;
+    cards.forEach(function(c){
+      var okC = activeCat==='all' || c.getAttribute('data-cat')===activeCat;
+      var okQ = !q || c.getAttribute('data-title').indexOf(q)!==-1;
+      var show = okC && okQ;
+      c.style.display = show ? '' : 'none';
+      if(show) n++;
+    });
+    empty.style.display = n ? 'none' : 'block';
+    headToggle('.latest-head', document.querySelector('.latest-grid'), '.pcard');
+    headToggle('.rich-head', richGrid, '.bcard');
+  }
+  chips.forEach(function(chip){
+    chip.setAttribute('role','button'); chip.tabIndex=0;
+    function act(){
+      chips.forEach(function(x){ x.classList.remove('chip--active'); });
+      chip.classList.add('chip--active');
+      var t=chip.textContent.trim();
+      activeCat = (t.toLowerCase()==='all') ? 'all' : slug(t);
+      apply();
+      if(activeCat!=='all'){ var tgt=document.querySelector('.latest-head')||document.querySelector('.rich-head'); if(tgt) tgt.scrollIntoView({behavior:'smooth',block:'start'}); }
+    }
+    chip.addEventListener('click', act);
+    chip.addEventListener('keydown', function(e){ if(e.key==='Enter'||e.key===' '){ e.preventDefault(); act(); } });
+  });
+  if(search) search.addEventListener('input', apply);
+})();
+</script>
+
 </body>
 </html>
