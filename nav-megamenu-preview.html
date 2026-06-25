@@ -77,6 +77,16 @@
   .mfeat__play svg{width:18px;height:18px;color:#0a221d;margin-left:3px;}
   .mfeat__date{position:absolute;top:10px;right:10px;font-size:10px;font-weight:800;letter-spacing:0.04em;text-transform:uppercase;color:#fff;background:rgba(0,0,0,0.45);border:1px solid rgba(255,255,255,0.18);border-radius:999px;padding:4px 9px;backdrop-filter:blur(4px);}
   .mfeat__link{font-size:12.5px;font-weight:700;color:var(--mint);margin-top:12px;display:inline-flex;gap:6px;}
+  /* request-early-access CTA card */
+  .mfeat--cta{justify-content:center;text-align:left;background:
+      radial-gradient(circle at 85% 0%, rgba(52,224,161,0.28), transparent 58%),
+      linear-gradient(160deg,#0f3a34,#0a221d);border-color:rgba(42,165,165,0.35);}
+  .mfeat--cta:hover{transform:none;}
+  .mfeat__sub{font-size:12.5px;line-height:1.45;color:#a9c3bc;margin:8px 0 16px;}
+  .mfeat__btn{display:inline-block;text-align:center;font-size:13.5px;font-weight:700;color:#fff;background:var(--orange);border-radius:999px;padding:12px 18px;text-decoration:none;transition:background 140ms,transform 140ms;}
+  .mfeat__btn:hover{background:#a8490d;transform:translateY(-1px);}
+  .mfeat__icon{width:40px;height:40px;border-radius:11px;background:rgba(255,255,255,0.08);border:1px solid var(--line);display:flex;align-items:center;justify-content:center;color:var(--mint);margin-bottom:12px;}
+  .mfeat__icon svg{width:20px;height:20px;}
 
   /* platform chip item */
   .pchip{display:flex;align-items:center;gap:10px;padding:9px 12px;border-radius:10px;text-decoration:none;transition:background 130ms;border-bottom:1px solid var(--line);}
@@ -118,12 +128,13 @@
               <a class="pchip" href="platforms/x-twitter.html"><span class="pchip__ic" style="background:#000"><svg viewBox="0 0 24 24" fill="#fff"><path d="M18.24 2.25h3.31l-7.23 8.26 8.5 11.24H16.17l-5.21-6.82L4.99 21.75H1.68l7.73-8.84L1.25 2.25H8.08l4.71 6.23zm-1.16 17.52h1.83L7.08 4.13H5.12z"/></svg></span><span class="pchip__t">X (Twitter)</span></a>
               <a class="pchip" href="platforms/instagram.html"><span class="pchip__ic" style="background:linear-gradient(45deg,#f09433,#e6683c,#dc2743,#cc2366,#bc1888)"><svg viewBox="0 0 24 24" fill="#fff"><path d="M12 2.16c3.2 0 3.58.01 4.85.07 3.25.15 4.77 1.69 4.92 4.92.06 1.27.07 1.65.07 4.85s-.01 3.58-.07 4.85c-.15 3.23-1.66 4.77-4.92 4.92-1.27.06-1.65.07-4.85.07s-3.58-.01-4.85-.07c-3.26-.15-4.77-1.7-4.92-4.92-.06-1.27-.07-1.65-.07-4.85s.01-3.58.07-4.85C2.38 3.93 3.9 2.38 7.15 2.23 8.42 2.17 8.8 2.16 12 2.16zm0 3.68A6.16 6.16 0 1 0 18.16 12 6.16 6.16 0 0 0 12 5.84zm0 10.16A4 4 0 1 1 16 12a4 4 0 0 1-4 4zm6.4-11.85a1.44 1.44 0 1 0 1.44 1.44 1.44 1.44 0 0 0-1.44-1.44z"/></svg></span><span class="pchip__t">Instagram</span></a>
             </div>
-            <a class="mfeat" href="#">
-              <span class="mfeat__tag">Coverage</span>
-              <div class="mfeat__thumb"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a15 15 0 0 1 0 18M12 3a15 15 0 0 0 0 18"/></svg></div>
-              <div class="mfeat__title">One inbox for every platform your travelers use.</div>
-              <span class="mfeat__link">See all 9 platforms →</span>
-            </a>
+            <div class="mfeat mfeat--cta">
+              <div class="mfeat__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2L3 14h7l-1 8 10-12h-7z"/></svg></div>
+              <span class="mfeat__tag">Get Early Access</span>
+              <div class="mfeat__title" style="font-size:16px;">Catch high-intent travelers across every platform.</div>
+              <p class="mfeat__sub">Be the first to reply when they post — from one inbox.</p>
+              <a href="#" onclick="openModal('early-access');return false;" class="mfeat__btn">Request Early Access</a>
+            </div>
           </div>
         </li>
 
