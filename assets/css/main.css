@@ -3106,7 +3106,7 @@ body.nav-locked{ overflow:hidden; }
 .mnav__group.open > .mnav__acc .mnav__chev{ transform:rotate(180deg); }
 .mnav__sub{ display:none; flex-direction:column; background:var(--off-white); }
 .mnav__group.open > .mnav__sub{ display:flex; }
-.mnav__subhead{ font-size:11px; font-weight:800; letter-spacing:.14em; text-transform:uppercase; color:var(--text-muted); padding:16px 24px 4px; }
+.mnav__subhead{ font-size:11px; font-weight:800; letter-spacing:.14em; text-transform:uppercase; color:var(--safari-primary); padding:16px 24px 4px; }
 .mnav__sub a{ font-size:17px; font-weight:600; color:var(--text-secondary); padding:14px 24px 14px 30px; text-decoration:none; border-bottom:1px solid var(--border); }
 .mnav__sub a:active{ color:var(--safari-primary); }
 .mnav__foot{ display:flex; flex-direction:column; gap:12px; padding:24px; margin-top:auto; }
