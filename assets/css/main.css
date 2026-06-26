@@ -749,7 +749,12 @@ h3.step-title {
 .hero {
   position: relative;
   overflow: hidden;
-  background: #ffffff;
+  background:
+    radial-gradient(58% 52% at 92% 58%, rgba(240,168,108,0.20), transparent 62%),
+    radial-gradient(54% 50% at 4% 64%, rgba(42,165,165,0.15), transparent 62%),
+    radial-gradient(46% 34% at 50% 44%, rgba(184,134,11,0.045), transparent 62%),
+    linear-gradient(180deg, var(--off-white) 0%, #ffffff 22%, #ffffff 100%),
+    #ffffff;
   padding: 40px 0 48px;
   min-height: calc(100vh - 72px);
   display: flex;
@@ -757,9 +762,9 @@ h3.step-title {
   justify-content: flex-start;
 }
 
-/* Slack-style teal arch rising from the bottom of the white hero —
-   same teal as the top of the following Problem section, so the seam
-   disappears and the curve reads as that section sweeping up. */
+/* Soft light-teal arch rising from the bottom of the hero — part of the
+   hero's gentle palette (a pale shade of the brand teal), not the bold
+   teal of the Problem section below it. */
 .hero::after {
   content: '';
   position: absolute;
@@ -767,7 +772,7 @@ h3.step-title {
   right: -15%;
   bottom: -1px;
   height: 200px;
-  background: var(--safari-primary);
+  background: #e3f1ee;
   border-radius: 50% 50% 0 0 / 200px 200px 0 0;
   z-index: 0;
   pointer-events: none;
