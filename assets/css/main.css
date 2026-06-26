@@ -2894,9 +2894,9 @@ section[aria-label="How intent scoring works"] {
   width: 76px;
   height: 76px;
   border-radius: 50%;
-  background: #f0934d;
-  border: none;
-  color: #fff;
+  background: #f8ecdf;
+  border: 1.5px solid rgba(196,89,17,0.30);
+  color: var(--safari-secondary);
   cursor: pointer;
   z-index: 6;
   display: flex;
@@ -2904,11 +2904,11 @@ section[aria-label="How intent scoring works"] {
   justify-content: center;
   opacity: 0;
   visibility: hidden;
-  box-shadow: 0 10px 30px rgba(0,0,0,0.30);
+  box-shadow: 0 10px 28px rgba(0,0,0,0.20);
   transition: opacity 200ms ease, transform 200ms ease, background 150ms ease;
 }
 .hero__play-btn svg { margin-left: 4px; }
-.hero__play-btn:hover { background: #e07d34; }
+.hero__play-btn:hover { background: #f1ddc9; }
 @media (min-width: 768px) {
   .hero__mockup-wrapper:hover .hero__play-btn {
     opacity: 1;
