@@ -739,18 +739,35 @@ h3.step-title {
   position: relative;
   overflow: hidden;
   background:
-    radial-gradient(42% 38% at 10% 16%, rgba(42,165,165,0.28), transparent 62%),
-    radial-gradient(38% 36% at 90% 18%, rgba(52,224,161,0.28), transparent 62%),
-    radial-gradient(40% 40% at 82% 74%, rgba(240,170,110,0.28), transparent 60%),
-    radial-gradient(46% 44% at 16% 86%, rgba(196,89,17,0.14), transparent 62%),
-    radial-gradient(50% 50% at 50% 50%, rgba(184,134,11,0.07), transparent 60%),
-    linear-gradient(180deg, #ffffff 0%, #fdfaf4 100%);
+    radial-gradient(46% 38% at 6% 8%, rgba(42,165,165,0.34), transparent 58%),
+    radial-gradient(42% 34% at 95% 10%, rgba(52,224,161,0.32), transparent 58%),
+    radial-gradient(46% 40% at 90% 38%, rgba(240,170,110,0.28), transparent 58%),
+    radial-gradient(44% 38% at 7% 44%, rgba(26,115,115,0.15), transparent 58%),
+    radial-gradient(40% 30% at 50% 24%, rgba(184,134,11,0.07), transparent 60%),
+    #ffffff;
   padding: 40px 0 48px;
   min-height: calc(100vh - 72px);
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
 }
+
+/* Slack-style off-white arch rising from the bottom of the hero —
+   same --off-white as the following section, so the seam disappears
+   and the curve reads as an intentional sweep. */
+.hero::after {
+  content: '';
+  position: absolute;
+  left: -15%;
+  right: -15%;
+  bottom: -1px;
+  height: 200px;
+  background: var(--off-white);
+  border-radius: 50% 50% 0 0 / 200px 200px 0 0;
+  z-index: 0;
+  pointer-events: none;
+}
+.hero__inner { position: relative; z-index: 1; }
 
 @media (min-width: 1024px) {
   .hero { padding: 56px 0 64px; }
