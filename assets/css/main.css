@@ -3036,7 +3036,7 @@ section[aria-label="How intent scoring works"] {
 .platforms-dropdown.mega{ width:660px; grid-template-columns:1fr 1fr 226px; }
 .platforms-dropdown.mega.open, .resources-dropdown.mega.open{ display:grid; }
 
-.mega .mgroup__label{ font-size:11px; font-weight:800; letter-spacing:0.12em; text-transform:uppercase; color:#a08e80; margin-bottom:4px; padding:0 12px; }
+.mega .mgroup__label{ font-size:11px; font-weight:800; letter-spacing:0.12em; text-transform:uppercase; color:var(--safari-secondary); margin-bottom:4px; padding:0 12px; }
 .mega .mitem{ display:flex; align-items:flex-start; gap:12px; padding:12px; border-radius:12px; text-decoration:none; border-bottom:1px solid rgba(0,0,0,0.06); transition:background 130ms ease; }
 .mega .mitem:last-child{ border-bottom:none; }
 .mega .mitem:hover{ background:rgba(26,115,115,0.09); }
@@ -3045,8 +3045,8 @@ section[aria-label="How intent scoring works"] {
 .mega .mitem__t{ font-size:14.5px; font-weight:700; color:var(--text-primary); display:flex; align-items:center; gap:8px; line-height:1.2; }
 .mega .mitem__d{ font-size:12px; color:var(--text-muted); margin-top:3px; line-height:1.35; }
 .mega .badge{ font-size:9px; font-weight:800; letter-spacing:0.05em; text-transform:uppercase; padding:2px 7px; border-radius:999px; }
-.mega .badge--soon{ background:rgba(0,0,0,0.08); color:#6b6b6b; }
-.mega .badge--free{ background:var(--safari-primary); color:#fff; }
+.mega .badge--soon{ background:rgba(196,89,17,0.12); color:var(--safari-secondary); }
+.mega .badge--free{ background:rgba(196,89,17,0.12); color:var(--safari-secondary); }
 
 .mega .pchip{ display:flex; align-items:center; gap:11px; padding:10px 12px; border-radius:11px; text-decoration:none; transition:background 130ms; border-bottom:1px solid rgba(0,0,0,0.06); }
 .mega .pchip:last-child{ border-bottom:none; }
