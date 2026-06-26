@@ -249,18 +249,17 @@ h3.step-title {
 .nav__login-link {
   font-size: 14.5px;
   font-weight: 600;
-  color: var(--text-primary);
+  color: #fff;
   text-decoration: none;
-  background: var(--nature-light);
-  border-radius: var(--radius-pill);
-  padding: 8px 16px;
-  padding: 10px 12px;
+  background: var(--safari-secondary);
   border-radius: var(--radius-sm);
-  transition: color 150ms ease;
+  padding: 10px 16px;
+  transition: background 150ms ease;
   white-space: nowrap;
 }
 .nav__login-link:hover {
-  color: var(--safari-primary);
+  color: #fff;
+  background: #a8490d;
 }
 
 .btn--primary {
@@ -2886,6 +2885,41 @@ section[aria-label="How intent scoring works"] {
   display: flex;
 }
 
+/* Hover-reveal play button over the hero mockup (desktop) */
+.hero__play-btn {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(0.85);
+  width: 76px;
+  height: 76px;
+  border-radius: 50%;
+  background: var(--safari-secondary);
+  border: none;
+  color: #fff;
+  cursor: pointer;
+  z-index: 6;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  visibility: hidden;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.30);
+  transition: opacity 200ms ease, transform 200ms ease, background 150ms ease;
+}
+.hero__play-btn svg { margin-left: 4px; }
+.hero__play-btn:hover { background: #a8490d; }
+@media (min-width: 768px) {
+  .hero__mockup-wrapper:hover .hero__play-btn {
+    opacity: 1;
+    visibility: visible;
+    transform: translate(-50%, -50%) scale(1);
+  }
+}
+.hero__mockup-wrapper--video .hero__play-btn {
+  display: none;
+}
+
 /* ───────────────────────────────────────────
    Guide mockups + Explore-More vertical cards (shared)
 ─────────────────────────────────────────── */
@@ -3026,10 +3060,10 @@ section[aria-label="How intent scoring works"] {
 .jrny__foot::before,.jrny__foot::after{content:"";flex:1;height:2px;background:linear-gradient(90deg,var(--safari-secondary),rgba(196,89,17,0.2));border-radius:2px;}
 /* full-width fan-gradient CTA (no watermarks) */
 .cta-full{position:relative;overflow:hidden;text-align:center;padding:92px 24px;background:var(--off-white);}
-.cta-full::before{content:"";position:absolute;inset:0;z-index:0;border-radius:0 0 50% 50%/0 0 110px 110px;background:conic-gradient(from 206deg at 74% 26%, rgba(58,190,178,0.34), rgba(150,224,188,0.10) 20%, rgba(196,89,17,0.16) 40%, rgba(6,40,28,0) 60%),radial-gradient(ellipse at 16% 82%, rgba(26,115,115,0.22), transparent 58%),radial-gradient(circle at 90% 95%, rgba(10,55,40,0.6), transparent 50%),linear-gradient(135deg,#05221a 0%,#0a2e22 48%,#061f18 100%);}
-.cta-full::after{content:"";position:absolute;inset:0;z-index:1;border-radius:0 0 50% 50%/0 0 110px 110px;background:linear-gradient(180deg,rgba(0,0,0,0.10),transparent 30%,transparent 70%,rgba(0,0,0,0.14));pointer-events:none;}
+.cta-full::before{content:"";position:absolute;inset:0;z-index:0;border-radius:0 0 50% 50%/0 0 70px 70px;background:conic-gradient(from 206deg at 74% 26%, rgba(58,190,178,0.34), rgba(150,224,188,0.10) 20%, rgba(196,89,17,0.16) 40%, rgba(6,40,28,0) 60%),radial-gradient(ellipse at 16% 82%, rgba(26,115,115,0.22), transparent 58%),radial-gradient(circle at 90% 95%, rgba(10,55,40,0.6), transparent 50%),linear-gradient(135deg,#05221a 0%,#0a2e22 48%,#061f18 100%);}
+.cta-full::after{content:"";position:absolute;inset:0;z-index:1;border-radius:0 0 50% 50%/0 0 70px 70px;background:linear-gradient(180deg,rgba(0,0,0,0.10),transparent 30%,transparent 70%,rgba(0,0,0,0.14));pointer-events:none;}
 .cta-full__inner{position:relative;z-index:2;max-width:760px;margin:0 auto;}
-.cta-full__headline{font-size:clamp(36px,5vw,58px);font-weight:800;letter-spacing:-0.03em;line-height:1.05;color:#fff;margin-bottom:14px;}
+.cta-full__headline{font-size:clamp(30px,4.2vw,48px);font-weight:800;letter-spacing:-0.03em;line-height:1.06;color:#fff;margin-bottom:14px;}
 .cta-full__sub{font-size:clamp(18px,2.2vw,24px);font-weight:800;letter-spacing:-0.02em;line-height:1.3;color:rgba(255,255,255,0.82);margin-bottom:32px;}
 .cta-full__btns{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;margin-bottom:20px;}
 .cta-full__btn{font-family:inherit;font-size:15px;font-weight:700;border-radius:var(--radius-pill);padding:14px 26px;text-decoration:none;cursor:pointer;border:1.5px solid transparent;transition:all 150ms ease;display:inline-block;}
