@@ -3124,3 +3124,9 @@ body.nav-locked{ overflow:hidden; }
 .mnav__webinar-tag{ display:block; font-size:10px; font-weight:800; letter-spacing:.1em; text-transform:uppercase; color:var(--safari-primary); margin-bottom:6px; }
 .mnav__webinar-title{ display:block; font-size:15px; font-weight:700; color:var(--text-primary); line-height:1.3; margin-bottom:10px; }
 .mnav__webinar-link{ display:inline-flex; font-size:13px; font-weight:700; color:var(--safari-secondary); }
+
+/* webinar card image (robust <img> instead of background-image) */
+.mega .mfeat__thumb--img{ position:relative; overflow:hidden; }
+.mega .mfeat__thumb--img .mfeat__img{ position:absolute; inset:0; width:100%; height:100%; object-fit:cover; z-index:0; border-radius:inherit; }
+.mnav__webinar-thumb{ position:relative; overflow:hidden; }
+.mnav__webinar-thumb .mnav__webinar-img{ position:absolute; inset:0; width:100%; height:100%; object-fit:cover; }
