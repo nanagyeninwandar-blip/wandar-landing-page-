@@ -199,6 +199,17 @@ h3.step-title {
 
 .section--white    { background: var(--white); }
 .section--offwhite { background: var(--off-white); }
+
+/* Problem section — teal block that breaks the off-white rhythm (Slack-style).
+   Its top edge matches the hero arch (var(--safari-primary)) so the curve
+   flows straight into this section. Light text; the pastel cards pop on teal. */
+#why-wandar.section--offwhite {
+  background: linear-gradient(180deg, var(--safari-primary) 0%, #145e5e 100%);
+}
+#why-wandar .eyebrow          { color: rgba(255,255,255,0.78); }
+#why-wandar .section-headline { color: #ffffff; }
+#why-wandar .section-headline em { color: #f4a259; }
+#why-wandar .body-text        { color: rgba(255,255,255,0.82); }
 .section--dark     { background: var(--dark-bg); }
 
 .two-col {
@@ -738,12 +749,7 @@ h3.step-title {
 .hero {
   position: relative;
   overflow: hidden;
-  background:
-    radial-gradient(58% 52% at 92% 58%, rgba(240,168,108,0.20), transparent 62%),
-    radial-gradient(54% 50% at 4% 64%, rgba(42,165,165,0.15), transparent 62%),
-    radial-gradient(46% 34% at 50% 44%, rgba(184,134,11,0.045), transparent 62%),
-    linear-gradient(180deg, var(--off-white) 0%, #ffffff 22%, #ffffff 100%),
-    #ffffff;
+  background: #ffffff;
   padding: 40px 0 48px;
   min-height: calc(100vh - 72px);
   display: flex;
@@ -751,9 +757,9 @@ h3.step-title {
   justify-content: flex-start;
 }
 
-/* Slack-style off-white arch rising from the bottom of the hero —
-   same --off-white as the following section, so the seam disappears
-   and the curve reads as an intentional sweep. */
+/* Slack-style teal arch rising from the bottom of the white hero —
+   same teal as the top of the following Problem section, so the seam
+   disappears and the curve reads as that section sweeping up. */
 .hero::after {
   content: '';
   position: absolute;
@@ -761,7 +767,7 @@ h3.step-title {
   right: -15%;
   bottom: -1px;
   height: 200px;
-  background: var(--off-white);
+  background: var(--safari-primary);
   border-radius: 50% 50% 0 0 / 200px 200px 0 0;
   z-index: 0;
   pointer-events: none;
