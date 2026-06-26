@@ -715,6 +715,24 @@
       .wb-curr-num { font-size: 48px; top: 16px; left: 18px; }
       .wb-trust { flex-direction: column; gap: 12px; }
     }
+  
+    /* ═══ Hero → teal gradient (matches Blog/Guides banner) ═══ */
+    .wb-hero{ background: linear-gradient(115deg,#06302f 0%,#0e3b3b 30%,#1a7373 68%,#2aa5a5 100%); }
+    .wb-hero-media{ display:none; }
+    .wb-hero::before{
+      background:
+        radial-gradient(ellipse 55% 62% at 82% 20%, rgba(150,235,220,0.45), transparent 60%),
+        radial-gradient(circle at 95% 6%, rgba(196,89,17,0.30), transparent 45%);
+      opacity:1;
+    }
+    /* ═══ Who-this-is-for → light section (remove dark/polygonal bg) ═══ */
+    .wb-who{ background: var(--off-white); }
+    .wb-who::after{ display:none; }
+    .wb-who-glow{ display:none; }
+    .wb-who .wb-eyebrow--light{ color: var(--safari-primary); }
+    .wb-who .wb-h2--light{ color: var(--text-primary); }
+    .wb-who .wb-who-role{ color: var(--text-primary); }
+    .wb-who .wb-who-desc{ color: var(--text-secondary); }
   </style>
   <script src="../assets/js/modals.js"></script>
   <script src="../assets/js/nav.js"></script>
