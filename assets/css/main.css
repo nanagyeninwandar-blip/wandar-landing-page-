@@ -858,8 +858,8 @@ h3.step-title {
 .hero__mockup-wrapper {
   position: relative;
   padding-top: 0;
-  margin-right: -24px;
-  width: calc(100% + 24px);
+  margin-right: 0;
+  width: 100%;
 }
 
 @media (min-width: 768px) {
@@ -1244,12 +1244,12 @@ section[aria-label="How intent scoring works"] {
 }
 
 @media (max-width: 767px) {
-  .float-card { opacity: 0.45; }
-  .float-card-2,
+  .float-card { opacity: 0.5; width: 175px; }
+  .float-card-1,
   .float-card-4,
   .float-card-5 { display: none; }
-  .float-card-1 { left: -10px; top: 5%; }
-  .float-card-3 { right: -10px; top: 30%; }
+  .float-card-2 { display: block; left: -25px; right: auto; top: 23%; }
+  .float-card-3 { right: -25px; left: auto; top: 34%; }
 }
 
 /* Hero mockup wrapper entrance — text is always visible; only the product screenshot animates in */
