@@ -115,16 +115,20 @@ h1, h2, h3, h4 {
 
 /* V3: Hero headline with gradient */
 .hero-headline {
-  font-size: clamp(28px, 3.2vw, 42px);
+  font-size: clamp(32px, 4.4vw, 56px);
   font-weight: 800;
   line-height: 1.15;
-  letter-spacing: -0.02em;
+  letter-spacing: -0.03em;
   padding-bottom: 0.1em;
-  background: linear-gradient(100deg, #1a7373 0%, #b8860b 50%, #c45911 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-  color: transparent;
+  background: none;
+  -webkit-background-clip: border-box;
+  -webkit-text-fill-color: var(--dark-bg);
+  background-clip: border-box;
+  color: var(--dark-bg);
+}
+.hero-headline .hl-orange {
+  color: var(--safari-secondary);
+  -webkit-text-fill-color: var(--safari-secondary);
 }
 
 .section-headline {
@@ -802,7 +806,7 @@ h3.step-title {
 
 @media (min-width: 768px) {
   .hero__inner {
-    grid-template-columns: 43fr 57fr;
+    grid-template-columns: 58fr 42fr;
     gap: 40px;
     align-items: flex-start;
   }
@@ -831,7 +835,7 @@ h3.step-title {
   font-size: 18px;
   font-weight: 700;
   line-height: 1.6;
-  color: var(--text-secondary);
+  color: var(--safari-primary);
   max-width: 520px;
   margin-bottom: 36px;
 }
@@ -1254,13 +1258,13 @@ section[aria-label="How intent scoring works"] {
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  padding: 6px 16px;
-  background: rgba(196,89,17,0.08);
-  border: 1px solid rgba(196,89,17,0.30);
+  padding: 4px 12px;
+  background: var(--dark-bg);
+  border: 1px solid rgba(255,255,255,0.12);
   border-radius: var(--radius-pill);
   color: var(--safari-secondary);
   font-family: var(--font-primary);
-  font-size: 11px;
+  font-size: 9px;
   font-weight: 700;
   letter-spacing: 0.04em;
   margin-bottom: 20px;
@@ -1269,9 +1273,17 @@ section[aria-label="How intent scoring works"] {
 
 @media (min-width: 768px) {
   .hero__badge {
-    font-size: 13px;
+    font-size: 11px;
     letter-spacing: 0.05em;
   }
+}
+
+.hero__badge-text {
+  background: linear-gradient(100deg, #2fd4bf 0%, #f5c542 50%, #ff7a2f 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  color: transparent;
 }
 
 .hero__badge-dot {
