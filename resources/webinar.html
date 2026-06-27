@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
@@ -388,9 +388,11 @@
     .wb-btn-done:hover { background: var(--primary-hover); }
 
     @media (max-width: 560px) {
-      .wb-cd-wrap { padding: 20px 16px; }
-      .wb-cd-num { font-size: 1.75rem; min-width: 56px; padding: 8px 10px; }
-      .wb-cd-unit { min-width: 52px; }
+      .wb-cd-wrap { padding: 18px 12px; max-width: 100%; box-sizing: border-box; }
+      .wb-cd-digits { gap: 3px; }
+      .wb-cd-num { font-size: 1.5rem; min-width: 44px; padding: 7px 6px; }
+      .wb-cd-unit { min-width: 44px; }
+      .wb-cd-sep { font-size: 1.4rem; margin-bottom: 16px; }
     }
 
     /* ── Curriculum visual rows ── */
@@ -861,7 +863,6 @@
           </div>
         </a>
         <div class="mnav__foot">
-          <a class="mnav__login" href="#" onclick="openModal('consultation');return false;">Book a Call</a>
           <a class="mnav__primary" href="#" onclick="openModal('early-access');return false;">Request Early Access</a>
         </div>
       </div>

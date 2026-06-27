@@ -3248,7 +3248,7 @@ section[aria-label="How intent scoring works"] {
 }
 .nav__mobile-panel.open{ transform:none; display:flex; }
 @media (min-width:861px){ .nav__mobile-panel{ display:none !important; } }
-body.nav-locked{ overflow:hidden; }
+body.nav-locked{ overflow:hidden; position:fixed; left:0; right:0; width:100%; }
 .mnav__top{ display:flex; align-items:center; justify-content:space-between; padding:18px 22px; border-bottom:1px solid var(--border); }
 .mnav__logo img{ height:30px; width:auto; display:block; }
 .mnav__close{ background:none; border:none; color:var(--text-primary); cursor:pointer; padding:8px; margin:-8px; display:flex; }
