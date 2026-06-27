@@ -1426,11 +1426,11 @@ document.body.classList.add('hero-loaded');
     lightbox.classList.add('is-open');
     lbScrollY = window.scrollY || window.pageYOffset || 0;
     document.body.style.top = (-lbScrollY) + 'px';
-    document.body.classList.add('nav-locked');
+    document.body.classList.add('nav-locked', 'lb-open');
   }
   function close() {
     lightbox.classList.remove('is-open');
-    document.body.classList.remove('nav-locked');
+    document.body.classList.remove('nav-locked', 'lb-open');
     document.body.style.top = '';
     if (lbScrollY) { window.scrollTo(0, lbScrollY); lbScrollY = 0; }
   }

@@ -943,7 +943,7 @@ h3.step-title {
   display: none;
   position: fixed;
   inset: 0;
-  background: rgba(0,0,0,0.92);
+  background: #0b0f0e;
   z-index: 9999;
   align-items: center;
   justify-content: center;
@@ -955,6 +955,9 @@ h3.step-title {
 .mockup-lightbox.is-open {
   display: flex;
 }
+
+/* Hide site header while a mockup is in full view — only the image + close button show */
+body.lb-open .nav { display: none; }
 
 .mockup-lightbox__img {
   width: 100%;
