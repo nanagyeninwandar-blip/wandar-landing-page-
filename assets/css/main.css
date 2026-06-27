@@ -948,7 +948,8 @@ h3.step-title {
   align-items: center;
   justify-content: center;
   padding: 16px;
-  overflow-y: auto;
+  overflow: hidden;
+  touch-action: pinch-zoom;
 }
 
 .mockup-lightbox.is-open {
@@ -961,6 +962,7 @@ h3.step-title {
   height: auto;
   border-radius: 12px;
   display: block;
+  touch-action: pinch-zoom;
 }
 
 .mockup-lightbox__close {

@@ -1419,15 +1419,20 @@ document.body.classList.add('hero-loaded');
   const lightboxImg = lightbox.querySelector('.mockup-lightbox__img');
   const closeBtn = document.getElementById('mockup-lightbox-close');
 
+  var lbScrollY = 0;
   function open(src) {
     if (window.innerWidth >= 768) return;
     lightboxImg.src = src;
     lightbox.classList.add('is-open');
-    document.body.style.overflow = 'hidden';
+    lbScrollY = window.scrollY || window.pageYOffset || 0;
+    document.body.style.top = (-lbScrollY) + 'px';
+    document.body.classList.add('nav-locked');
   }
   function close() {
     lightbox.classList.remove('is-open');
-    document.body.style.overflow = '';
+    document.body.classList.remove('nav-locked');
+    document.body.style.top = '';
+    if (lbScrollY) { window.scrollTo(0, lbScrollY); lbScrollY = 0; }
   }
 
   var triggers = [
