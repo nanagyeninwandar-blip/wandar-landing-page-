@@ -64,7 +64,7 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   overflow-x: clip;
-  padding-top: 72px;
+  padding-top: 62px;
 }
 
 img {
@@ -248,20 +248,23 @@ h3.step-title {
 
 /* Smaller CTA in the nav bar */
 .nav__cta-btn {
-  padding: 10px 20px;
+  padding: 10px 14px;
   font-size: 14px;
   border-radius: var(--radius-pill);
 }
 
 /* Log In link in nav */
 .nav__login-link {
-  font-size: 14.5px;
+  display: inline-flex;
+  align-items: center;
+  line-height: 1;
+  font-size: 14px;
   font-weight: 600;
   color: #fff;
   text-decoration: none;
   background: var(--safari-secondary);
   border-radius: var(--radius-sm);
-  padding: 10px 16px;
+  padding: 10px 14px;
   transition: background 150ms ease;
   white-space: nowrap;
 }
@@ -365,7 +368,7 @@ h3.step-title {
 .nav__inner {
   display: flex;
   align-items: center;
-  height: 72px;
+  height: 62px;
   gap: 32px;
 }
 
@@ -382,7 +385,7 @@ h3.step-title {
 
 /* V3: Larger logo */
 .nav__logo-img {
-  height: 70px;
+  height: 60px;
   width: auto;
   object-fit: contain;
   display: block;
@@ -2402,8 +2405,8 @@ section[aria-label="How intent scoring works"] {
 
 @media (max-width: 767px) {
   .footer__columns {
-    grid-template-columns: 1fr;
-    gap: 36px;
+    grid-template-columns: 1fr 1fr;
+    gap: 36px 24px;
     padding: 36px 0 28px;
   }
 }
@@ -3164,7 +3167,7 @@ section[aria-label="How intent scoring works"] {
 
 /* CTA Wide · background-image banner rolled out site-wide */
 .cta-wide{position:relative;overflow:hidden;background:#0f2a21 url('../CTA background.png') center/cover no-repeat;}
-.cta-wide__inner{position:relative;z-index:2;max-width:1200px;margin:0 auto;padding:88px 24px;min-height:430px;display:flex;align-items:center;}
+.cta-wide__inner{position:relative;z-index:2;max-width:1200px;margin:0 auto;padding:53px 24px;min-height:258px;display:flex;align-items:center;}
 .cta-wide__content{max-width:760px;}
 .cta-wide__headline{font-family:var(--font-primary);font-weight:800;font-size:clamp(22px,2.9vw,38.5px);line-height:1.15;letter-spacing:-0.02em;color:#fff;margin:0 0 38px;}
 .cta-wide__dot{color:var(--safari-secondary);}
@@ -3174,7 +3177,7 @@ section[aria-label="How intent scoring works"] {
 .cta-wide__btn--primary:hover{background:#a8490d;}
 .cta-wide__btn--ghost{background:transparent;color:#fff;border-color:rgba(255,255,255,0.4);}
 .cta-wide__btn--ghost:hover{border-color:#fff;background:rgba(255,255,255,0.08);}
-@media (max-width:767px){.cta-wide__inner{padding:56px 22px;min-height:360px;}}
+@media (max-width:767px){.cta-wide__inner{padding:34px 22px;min-height:216px;}}
 
 /* recommended reading */
 .recread{padding:8px 0 96px;}

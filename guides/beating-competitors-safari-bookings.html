@@ -200,10 +200,9 @@
                 <a class="pchip" href="../platforms/tiktok.html" role="menuitem"><span class="pchip__ic" style="background:#000"><svg viewBox="0 0 24 24" fill="#fff"><path d="M12.53.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.99-.32-2.15-.23-3.02.37-.63.41-1.11 1.04-1.36 1.75-.21.51-.15 1.07-.14 1.61.24 1.64 1.82 3.02 3.5 2.87 1.12-.01 2.19-.66 2.77-1.61.19-.33.4-.67.41-1.06.1-1.79.06-3.57.07-5.36.01-4.03-.01-8.05.02-12.07z"/></svg></span><span class="pchip__t">TikTok</span></a>
               </div>
               <div class="mfeat mfeat--cta">
-                <div class="mfeat__icon"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M11 21h-1l1-7H6.74a.5.5 0 0 1-.45-.72L11.2 3.3A.9.9 0 0 1 12 2.8h1.26l-1 7H17a.5.5 0 0 1 .44.74l-5.7 10.16A.9.9 0 0 1 11 21z"/></svg></div>
+                <div class="mfeat__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="4.5"/><circle cx="12" cy="12" r="1" fill="currentColor" stroke="none"/></svg></div>
                 <span class="mfeat__tag">Get Early Access</span>
                 <div class="mfeat__title" style="font-size:16px;">Catch high-intent travelers across every platform.</div>
-                <p class="mfeat__sub">Be the first to reply when they post.</p>
                 <a href="#" onclick="openModal('early-access');return false;" class="mfeat__btn">Request Early Access</a>
               </div>
             </div>
@@ -232,6 +231,7 @@
       </nav>
       <div class="nav__right">
         <a href="#" onclick="openModal('early-access');return false;" class="btn btn--primary nav__cta-btn" id="nav-cta-desktop">Request Early Access</a>
+        <a href="#" class="nav__login-link" id="nav-login-desktop">Log In</a>
         <button class="nav__hamburger" id="hamburger" aria-label="Open menu" aria-expanded="false">
           <span></span><span></span><span></span>
         </button>
@@ -528,8 +528,11 @@
   <div class="container">
     <div class="footer__top">
       <div class="footer__brand">
-        <img src="../assets/wandar-logo.png" alt="Wandar" class="footer__logo-img" loading="lazy" />
-        <p class="footer__brand-tagline">Social listening built for safari travel</p>
+        <div class="footer__lockup">
+          <img src="../assets/wandar-banner-white.png" alt="Wandar" class="footer__lockup-banner" loading="lazy" />
+          <span class="footer__lockup-divider" aria-hidden="true"></span>
+          <span class="footer__lockup-tag">Social Listening<br>for Safari Operators</span>
+        </div>
       </div>
       <div class="footer__newsletter">
         <h3 class="footer__newsletter-heading">Stay Updated</h3>
@@ -559,10 +562,11 @@
         <span class="footer__col-heading">For Operators</span>
         <ul class="footer__col-links">
           <li><a href="../pricing.html" class="footer__col-link">Pricing</a></li>
-          <li><a href="#" onclick="openModal('consultation');return false;" class="footer__col-link">Free Consultation</a></li>
+          <li><a href="#" onclick="openModal('consultation');return false;" class="footer__col-link">Book a Call</a></li>
           <li><span class="footer__col-link footer__col-link--disabled">Free Tools</span></li>
           <li><a href="../guides/" class="footer__col-link">Guides</a></li>
           <li><a href="../blog/" class="footer__col-link">Blog</a></li>
+          <li><a href="../resources/webinar.html" class="footer__col-link">Webinar</a></li>
           <li><a href="#" onclick="openModal('contact');return false;" class="footer__col-link">Support</a></li>
         </ul>
       </div>
