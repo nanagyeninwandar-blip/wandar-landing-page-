@@ -582,6 +582,10 @@
     }
 
     .lcc-scroll { overflow: visible; padding-top: 16px; }
+    .lcc-scrolltop { display: none; }
+    .lcc-scrolltop-bar { height: 1px; }
+    .lcc-scrollhint { display: none; }
+    @keyframes lcc-nudge { 0%, 100% { transform: translateX(0); } 50% { transform: translateX(4px); } }
     .lcc-table {
       width: 100%;
       min-width: 920px;
@@ -614,6 +618,15 @@
       width: 19%;
     }
     .lcc-table tbody td { color: var(--text-soft); }
+
+    /* freeze the row-label column while the rest scrolls */
+    .lcc-table thead th:first-child,
+    .lcc-table tbody td:first-child {
+      position: sticky;
+      left: 0;
+      z-index: 2;
+      background: #fff;
+    }
     .lcc-rl {
       display: flex;
       align-items: flex-start;
@@ -726,6 +739,41 @@
       .pr-compare-section { padding: 60px 20px; }
       .lcc-section        { padding: 60px 20px; }
       .lcc-scroll         { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+      .lcc-table thead th:first-child,
+      .lcc-table tbody td:first-child { box-shadow: 4px 0 6px -3px rgba(0,0,0,0.12); }
+      .lcc-scrolltop {
+        display: block;
+        overflow-x: auto;
+        overflow-y: hidden;
+        margin-bottom: 12px;
+      }
+      .lcc-scrolltop::-webkit-scrollbar { height: 18px; -webkit-appearance: none; }
+      .lcc-scrolltop::-webkit-scrollbar-track { background: rgba(0,0,0,0.07); border-radius: 9px; }
+      .lcc-scrolltop::-webkit-scrollbar-thumb { background: var(--terra); border-radius: 9px; }
+      .lcc-scrolltop { scrollbar-width: auto; scrollbar-color: var(--terra) rgba(0,0,0,0.07); }
+      /* hide the table's own (bottom) scrollbar; the top one drives it */
+      .lcc-scroll::-webkit-scrollbar { display: none; }
+      .lcc-scroll { scrollbar-width: none; -ms-overflow-style: none; }
+      .lcc-scrollhint {
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+        gap: 6px;
+        margin-bottom: 10px;
+        font-size: 12px;
+        font-weight: 600;
+        color: var(--terra);
+      }
+      .lcc-scrollhint svg {
+        width: 16px;
+        height: 16px;
+        fill: none;
+        stroke: currentColor;
+        stroke-width: 2;
+        stroke-linecap: round;
+        stroke-linejoin: round;
+        animation: lcc-nudge 1.2s ease-in-out infinite;
+      }
       .pr-trust-item      { padding: 8px 16px; border-right: none; border-bottom: 1px solid rgba(255,255,255,0.06); }
       .pr-trust-items     { flex-direction: column; align-items: center; }
     }
@@ -1036,6 +1084,11 @@
     <h2>What are you really paying for when you try to find safari leads?</h2>
     <p>Most lead tools only reach a traveler after they've already searched, clicked, or asked for a quote, when they're nearly decided. Wandar reaches them earlier, while they're still asking questions and choosing who to trust.</p>
 
+    <div class="lcc-scrollhint" aria-hidden="true">
+      <span>Swipe to compare all platforms</span>
+      <svg viewBox="0 0 24 24" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+    </div>
+    <div class="lcc-scrolltop" aria-hidden="true"><div class="lcc-scrolltop-bar"></div></div>
     <div class="lcc-scroll">
       <table class="lcc-table">
         <thead>
@@ -1782,6 +1835,22 @@ const mContactHints={operator:"e.g. How does Wandar find posts? Does it work for
 const mContactSuccess={operator:{title:"Message received.",body:"We'll get back to you within 24 hours. Personally, not from a bot."},partner:{title:"Interesting.",body:"Someone from the team will reach out within 48 hours to explore the fit."},press:{title:"Got it.",body:"We'll send over what you need within 24 hours."},other:{title:"Message received.",body:"We'll get back to you within 24 hours."}};
 function mHandleContactIntent(){var val=mg('mc-intent').value;var ta=mg('mc-message');var otherWrap=mg('mc-intent-other');otherWrap.classList.toggle('visible',val==='other');if(val&&mContactHints[val]){ta.placeholder=mContactHints[val];}else{ta.placeholder="Tell us how we can help...";}mSetErr('c-intent','');}
 function mSubmitC(){var ok=true;ok=mSetErr('c-name',!mg('mc-name').value.trim()?'Required':'')&ok;ok=mSetErr('c-company',!mg('mc-company').value.trim()?'Required':'')&ok;ok=mSetErr('c-email',!mValidEmail(mg('mc-email').value.trim())?'Valid email required':'')&ok;ok=mSetErr('c-intent',!mg('mc-intent').value?'Please select one':'')&ok;ok=mSetErr('c-message',!mg('mc-message').value.trim()?'Required':'')&ok;if(!ok)return;var intent=mg('mc-intent').value;var s=mContactSuccess[intent]||mContactSuccess['other'];mg('mc-success-title').textContent=s.title;mg('mc-success-body').textContent=s.body;mg('mf-form-c').classList.add('hidden');mg('mf-success-c').classList.add('visible');}
+
+// ── LEAD COST COMPARISON · top scrollbar synced with table ──────────
+(function(){
+  var scroll = document.querySelector('.lcc-scroll');
+  var top = document.querySelector('.lcc-scrolltop');
+  var bar = document.querySelector('.lcc-scrolltop-bar');
+  var table = scroll ? scroll.querySelector('.lcc-table') : null;
+  if(!scroll || !top || !bar || !table) return;
+  function sizeBar(){ bar.style.width = table.scrollWidth + 'px'; }
+  sizeBar();
+  window.addEventListener('resize', sizeBar);
+  if(window.ResizeObserver){ new ResizeObserver(sizeBar).observe(table); }
+  var lock = false;
+  top.addEventListener('scroll', function(){ if(lock) return; lock = true; scroll.scrollLeft = top.scrollLeft; lock = false; });
+  scroll.addEventListener('scroll', function(){ if(lock) return; lock = true; top.scrollLeft = scroll.scrollLeft; lock = false; });
+})();
 </script>
 <script src="assets/js/section.js"></script>
 <script src="assets/js/nav.js"></script>
