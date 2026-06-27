@@ -117,7 +117,7 @@ h1, h2, h3, h4 {
 .hero-headline {
   font-size: clamp(30px, 4vw, 50px);
   font-weight: 800;
-  line-height: 1.15;
+  line-height: 1.0;
   letter-spacing: -0.03em;
   padding-bottom: 0.1em;
   background: none;
@@ -129,6 +129,10 @@ h1, h2, h3, h4 {
 .hero-headline .hl-orange {
   color: var(--safari-secondary);
   -webkit-text-fill-color: var(--safari-secondary);
+}
+.hero-headline__l2 {
+  display: block;
+  text-align: center;
 }
 
 .section-headline {
@@ -820,7 +824,7 @@ h3.step-title {
 }
 
 .hero__headline {
-  margin-bottom: 24px;
+  margin-bottom: 18px;
   position: relative;
 }
 
@@ -837,12 +841,15 @@ h3.step-title {
   line-height: 1.6;
   color: var(--safari-primary);
   max-width: 520px;
-  margin-bottom: 36px;
+  margin-bottom: 24px;
+  text-align: center;
+  align-self: center;
 }
 
 .hero__cta-group {
   display: flex;
   align-items: center;
+  justify-content: center;
   gap: 16px;
   flex-wrap: wrap;
 }
@@ -858,25 +865,25 @@ h3.step-title {
 @media (min-width: 768px) {
   .hero__mockup-wrapper {
     padding-top: 120px;
-    margin-left: -40px;
+    margin-left: 0;
     margin-right: 0;
-    width: calc(100% + 40px);
+    width: 100%;
   }
 }
 
 @media (min-width: 1024px) {
   .hero__mockup-wrapper {
-    margin-left: -70px;
+    margin-left: 0;
     margin-right: -90px;
-    width: calc(100% + 160px);
+    width: calc(100% + 90px);
   }
 }
 
 @media (min-width: 1440px) {
   .hero__mockup-wrapper {
-    margin-left: -140px;
+    margin-left: 0;
     margin-right: -125px;
-    width: calc(100% + 265px);
+    width: calc(100% + 125px);
   }
 }
 
@@ -2891,7 +2898,7 @@ section[aria-label="How intent scoring works"] {
   overflow: hidden;
 }
 @media (min-width: 768px) {
-  .hero__mockup-frame { transform: scale(0.85); transform-origin: top left; }
+  .hero__mockup-frame { transform: scale(0.97); transform-origin: top left; }
 }
 .hero__video-player {
   display: none;
