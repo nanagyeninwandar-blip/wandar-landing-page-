@@ -1419,6 +1419,11 @@ document.body.classList.add('hero-loaded');
   const lightboxImg = lightbox.querySelector('.mockup-lightbox__img');
   const closeBtn = document.getElementById('mockup-lightbox-close');
 
+  // Move the lightbox to <body> so position:fixed is relative to the viewport.
+  // It was nested under the hero, whose transform made the overlay render
+  // relative to the hero box (covering the nav on home, off-screen on intent).
+  if (lightbox.parentNode !== document.body) document.body.appendChild(lightbox);
+
   var lbScrollY = 0;
   function open(src) {
     if (window.innerWidth >= 768) return;
