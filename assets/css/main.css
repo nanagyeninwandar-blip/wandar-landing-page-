@@ -115,7 +115,7 @@ h1, h2, h3, h4 {
 
 /* V3: Hero headline with gradient */
 .hero-headline {
-  font-size: clamp(32px, 4.4vw, 56px);
+  font-size: clamp(30px, 4vw, 50px);
   font-weight: 800;
   line-height: 1.15;
   letter-spacing: -0.03em;
@@ -806,14 +806,14 @@ h3.step-title {
 
 @media (min-width: 768px) {
   .hero__inner {
-    grid-template-columns: 58fr 42fr;
-    gap: 40px;
+    grid-template-columns: 53fr 47fr;
+    gap: 18px;
     align-items: flex-start;
   }
 }
 
 .hero__content {
-  padding-right: 16px;
+  padding-right: 0;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -857,30 +857,33 @@ h3.step-title {
 
 @media (min-width: 768px) {
   .hero__mockup-wrapper {
-    padding-top: 190px;
+    padding-top: 120px;
+    margin-left: -40px;
     margin-right: 0;
-    width: 100%;
+    width: calc(100% + 40px);
   }
 }
 
 @media (min-width: 1024px) {
   .hero__mockup-wrapper {
-    margin-right: -80px;
-    width: calc(100% + 80px);
+    margin-left: -70px;
+    margin-right: -90px;
+    width: calc(100% + 160px);
   }
 }
 
 @media (min-width: 1440px) {
   .hero__mockup-wrapper {
-    margin-right: -120px;
-    width: calc(100% + 120px);
+    margin-left: -140px;
+    margin-right: -125px;
+    width: calc(100% + 265px);
   }
 }
 
 .hero__mockup-wrapper::before {
   content: '';
   position: absolute;
-  top: 190px;
+  top: 120px;
   left: 0;
   right: 0;
   height: 6px;
@@ -919,8 +922,10 @@ h3.step-title {
   #mockup-trigger { cursor: default; }
 }
 
-#mockup-trigger {
-  cursor: zoom-in;
+@media (max-width: 767px) {
+  #mockup-trigger {
+    cursor: zoom-in;
+  }
 }
 
 /* Mockup lightbox */
@@ -1188,7 +1193,7 @@ section[aria-label="How intent scoring works"] {
     animation: float-a 10s ease-in-out infinite;
   }
   .float-card-2 {
-    top: 72%;  right: 55%;
+    top: 72%;  right: 64%;
     animation: float-b 12s ease-in-out infinite;
     animation-delay: 2s;
   }
@@ -1203,7 +1208,7 @@ section[aria-label="How intent scoring works"] {
     animation-delay: 1s;
   }
   .float-card-5 {
-    top: 18%;  right: 28%;
+    top: 9%;  right: 28%;
     animation: float-b 13s ease-in-out infinite;
     animation-delay: 3s;
   }
@@ -2885,6 +2890,9 @@ section[aria-label="How intent scoring works"] {
   border-radius: 16px 0 0 16px;
   overflow: hidden;
 }
+@media (min-width: 768px) {
+  .hero__mockup-frame { transform: scale(0.85); transform-origin: top left; }
+}
 .hero__video-player {
   display: none;
   position: absolute;
@@ -2929,8 +2937,8 @@ section[aria-label="How intent scoring works"] {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%) scale(0.85);
-  width: 76px;
-  height: 76px;
+  width: 52px;
+  height: 52px;
   border-radius: 50%;
   background: #f8ecdf;
   border: 1.5px solid rgba(196,89,17,0.30);
@@ -3132,6 +3140,21 @@ section[aria-label="How intent scoring works"] {
   .cta2__art{position:relative;width:100%;min-width:0;height:240px;margin-top:36px;right:auto;}
   .cta2__content{max-width:none;}
 }
+
+/* CTA Wide · background-image banner rolled out site-wide */
+.cta-wide{position:relative;overflow:hidden;background:#0f2a21 url('../CTA background.png') center/cover no-repeat;}
+.cta-wide__inner{position:relative;z-index:2;max-width:1200px;margin:0 auto;padding:88px 24px;min-height:430px;display:flex;align-items:center;}
+.cta-wide__content{max-width:760px;}
+.cta-wide__headline{font-family:var(--font-primary);font-weight:800;font-size:clamp(22px,2.9vw,38.5px);line-height:1.15;letter-spacing:-0.02em;color:#fff;margin:0 0 38px;}
+.cta-wide__dot{color:var(--safari-secondary);}
+.cta-wide__btns{display:flex;gap:16px;flex-wrap:wrap;justify-content:center;}
+.cta-wide__btn{display:inline-flex;align-items:center;gap:14px;font-family:var(--font-primary);font-weight:700;font-size:15px;padding:16px 28px;border-radius:var(--radius-pill);text-decoration:none;cursor:pointer;border:1.5px solid transparent;transition:all 150ms ease;}
+.cta-wide__btn--primary{background:var(--safari-secondary);color:#fff;}
+.cta-wide__btn--primary:hover{background:#a8490d;}
+.cta-wide__btn--ghost{background:transparent;color:#fff;border-color:rgba(255,255,255,0.4);}
+.cta-wide__btn--ghost:hover{border-color:#fff;background:rgba(255,255,255,0.08);}
+@media (max-width:767px){.cta-wide__inner{padding:56px 22px;min-height:360px;}}
+
 /* recommended reading */
 .recread{padding:8px 0 96px;}
 .recread__head{display:flex;align-items:center;justify-content:space-between;padding:56px 0 28px;}
