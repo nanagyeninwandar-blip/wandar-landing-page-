@@ -2623,8 +2623,8 @@ section[aria-label="How intent scoring works"] {
   background: rgba(10,10,10,0.55);
   backdrop-filter: blur(4px);
   -webkit-backdrop-filter: blur(4px);
-  display: flex; align-items: center; justify-content: center;
-  z-index: 9000; padding: 16px;
+  display: flex; align-items: flex-start; justify-content: center;
+  z-index: 9000; padding: 4vh 16px 6vh; overflow-y: auto;
   opacity: 0; visibility: hidden;
   transition: opacity 220ms ease, visibility 220ms ease;
 }
@@ -2634,7 +2634,7 @@ section[aria-label="How intent scoring works"] {
   background: #fff;
   border-radius: 20px;
   width: 100%; max-width: 640px;
-  max-height: 92vh; overflow-y: auto; overscroll-behavior: contain;
+  margin: 0 auto; overscroll-behavior: contain;
   position: relative;
   box-shadow: 0 28px 80px rgba(0,0,0,0.22), 0 4px 20px rgba(0,0,0,0.09);
   transform: translateY(20px) scale(0.97); opacity: 0;

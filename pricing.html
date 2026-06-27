@@ -571,8 +571,8 @@
     }
 
     /* --- PRICING LAYOUT --------------------------------------------------- */
-    .pricing-section { padding-top:72px; padding-bottom:96px; }
-    @media (min-width:1024px){ .pricing-section{ padding-top:96px; padding-bottom:120px; } }
+    .pricing-section { padding-top:14px; padding-bottom:64px; }
+    @media (min-width:1024px){ .pricing-section{ padding-top:14px; padding-bottom:80px; } }
 
     .pricing-layout { display:grid; grid-template-columns:1fr; gap:48px; align-items:center; }
     @media (min-width:920px){
@@ -585,16 +585,22 @@
       letter-spacing:-.02em; line-height:1.1; margin-bottom:18px; text-wrap:balance;
     }
     .pricing-intro__lead { font-size:17px; line-height:1.6; color:var(--text-secondary); max-width:460px; margin-bottom:28px; }
-    .pricing-intro .check-list { gap:12px; margin-bottom:28px; }
-    .pricing-intro .check-list li { font-size:15px; color:var(--text-primary); font-weight:500; }
-    .pricing-intro__note { font-size:13px; color:var(--text-muted); display:flex; align-items:center; gap:8px; }
-    .pricing-intro__note-dot { width:8px; height:8px; border-radius:50%; background:var(--safari-nature); flex-shrink:0; animation:pulse-dot 2s ease infinite; }
+    .pricing-intro .check-list { display:flex; flex-direction:column; gap:11px; margin-bottom:22px; }
+    .pricing-intro .check-list li { display:flex; align-items:center; gap:9px; font-size:14px; font-weight:600; color:var(--safari-primary); }
+    .pricing-intro .check-list li::before { display:none; }
+    .pricing-intro .cl-ic { display:flex; align-items:center; justify-content:center; flex-shrink:0; color:var(--safari-primary); }
+    .pricing-intro .cl-ic svg { width:16px; height:16px; }
+    .pricing-intro .cl-txt { color:var(--safari-primary); }
+    .pricing-intro__note { display:inline-flex; align-items:center; gap:9px; margin:0 0 16px; padding:8px 16px 8px 12px; background:var(--dark-bg); border:1px solid rgba(255,255,255,.12); border-radius:999px; }
+    .pricing-intro__note-ic { display:flex; align-items:center; justify-content:center; flex-shrink:0; color:#f5c542; }
+    .pricing-intro__note-ic svg { width:16px; height:16px; }
+    .pricing-intro__note-txt { font-size:14px; font-weight:700; letter-spacing:.01em; background:linear-gradient(100deg,#2fd4bf 0%,#f5c542 50%,#ff7a2f 100%); -webkit-background-clip:text; background-clip:text; -webkit-text-fill-color:transparent; color:transparent; }
 
-    .pricing-card-col { display:flex; flex-direction:column; align-items:center; gap:26px; }
+    .pricing-card-col { display:flex; flex-direction:column; align-items:center; gap:0; }
 
     /* --- BILLING TOGGLE --------------------------------------------------- */
-    .billing-toggle { display:inline-flex; align-items:stretch; gap:4px; padding:5px; background:var(--white); border:1px solid var(--border); border-radius:var(--radius-pill); box-shadow:0 4px 18px rgba(0,0,0,.06); position:relative; }
-    .billing-opt { position:relative; display:inline-flex; flex-direction:column; align-items:center; justify-content:center; gap:1px; padding:11px 20px; border-radius:var(--radius-pill); font-family:var(--font-primary); font-size:14px; font-weight:600; color:var(--text-secondary); background:transparent; border:none; cursor:pointer; white-space:nowrap; transition:color 180ms ease, background 180ms ease; }
+    .billing-toggle { display:flex; width:100%; max-width:380px; margin-bottom:2px; align-items:stretch; gap:4px; padding:5px; background:var(--white); border:1px solid var(--border); border-radius:var(--radius-pill); box-shadow:0 4px 18px rgba(0,0,0,.06); position:relative; }
+    .billing-opt { position:relative; flex:1 1 0; display:inline-flex; flex-direction:column; align-items:center; justify-content:center; gap:1px; padding:10px 8px; border-radius:var(--radius-pill); font-family:var(--font-primary); font-size:13px; font-weight:600; color:var(--text-secondary); background:transparent; border:none; cursor:pointer; white-space:nowrap; transition:color 180ms ease, background 180ms ease; }
     .billing-opt:hover { color:var(--text-primary); }
     .billing-opt__save { font-size:10.5px; font-weight:700; letter-spacing:.02em; color:var(--safari-secondary); line-height:1; }
     .billing-opt.is-active { background:var(--safari-primary); color:var(--white); }
@@ -605,30 +611,38 @@
 
     /* --- GROWTH CARD ------------------------------------------------------ */
     .growth-card {
-      width:100%; max-width:460px; border-radius:22px; padding:44px 40px 40px; position:relative; overflow:hidden; color:var(--white);
+      width:100%; max-width:460px; border-radius:22px; padding:26px 36px 26px; position:relative; overflow:hidden; color:var(--white);
       background:
         radial-gradient(ellipse 70% 55% at 88% 8%, rgba(196,89,17,.42) 0%, rgba(184,134,11,.12) 38%, transparent 68%),
         linear-gradient(165deg,#15463a 0%,#103328 60%,#0c2820 100%);
       box-shadow:0 28px 70px -24px rgba(13,26,20,.65), 0 0 0 1px rgba(255,255,255,.05);
     }
     .growth-card__name { font-family:var(--font-primary); font-size:34px; font-weight:800; letter-spacing:-.02em; color:var(--white); line-height:1.05; margin-bottom:12px; }
-    .growth-card__desc { font-size:15px; line-height:1.55; color:rgba(255,255,255,.62); max-width:300px; margin-bottom:34px; }
+    .growth-card__desc { font-size:15px; line-height:1.55; color:rgba(255,255,255,.62); max-width:300px; margin-bottom:22px; }
     .growth-card__price { display:flex; align-items:flex-start; gap:4px; margin-bottom:8px; }
     .gc-currency { font-size:30px; font-weight:700; color:var(--safari-secondary); line-height:1; margin-top:14px; }
-    .gc-amount { font-size:78px; font-weight:800; line-height:.92; letter-spacing:-.03em; color:var(--white); font-variant-numeric:tabular-nums; }
+    .gc-amount { font-size:62px; font-weight:800; line-height:.92; letter-spacing:-.03em; color:var(--white); font-variant-numeric:tabular-nums; }
     .gc-per { font-size:17px; font-weight:500; color:rgba(255,255,255,.55); align-self:flex-end; margin-bottom:14px; }
-    .growth-card__billed { font-size:14px; color:rgba(255,255,255,.62); margin-bottom:30px; min-height:20px; }
+    .growth-card__billed { font-size:14px; color:rgba(255,255,255,.62); margin-bottom:20px; min-height:20px; }
     .growth-card__billed strong { color:rgba(255,255,255,.92); font-weight:700; }
     .gc-save-pill { display:inline-block; margin-left:4px; color:var(--safari-rating); font-weight:700; }
     .growth-card__cta { display:flex; align-items:center; justify-content:center; width:100%; padding:17px 24px; background:var(--safari-secondary); color:var(--white); font-size:16px; font-weight:700; border-radius:11px; transition:background 160ms ease, transform 160ms ease; box-shadow:0 12px 28px -10px rgba(196,89,17,.6); }
     .growth-card__cta:hover { background:var(--secondary-hover); transform:translateY(-1px); }
     .growth-card__micro { text-align:center; font-size:12.5px; color:rgba(255,255,255,.45); margin-top:14px; }
-    .growth-card__divider { height:1px; background:rgba(255,255,255,.10); margin:28px 0 24px; }
-    .growth-card__incl-label { font-size:11px; font-weight:700; letter-spacing:.16em; text-transform:uppercase; color:var(--safari-rating); margin-bottom:18px; }
-    .growth-card__features { display:flex; flex-direction:column; gap:14px; }
-    .gc-feat { display:flex; align-items:center; gap:12px; font-size:15px; font-weight:500; color:rgba(255,255,255,.9); }
-    .gc-feat__check { width:22px; height:22px; min-width:22px; border-radius:50%; background:rgba(255,255,255,.08); border:1px solid rgba(255,255,255,.14); display:flex; align-items:center; justify-content:center; }
+    .growth-card__divider { height:1px; background:rgba(255,255,255,.10); margin:16px 0 14px; }
+    .growth-card__incl-label { font-size:11px; font-weight:700; letter-spacing:.16em; text-transform:uppercase; color:var(--safari-rating); margin-bottom:12px; }
+    .growth-card__features { display:grid; grid-template-columns:1fr 1fr; gap:11px 16px; }
+    .gc-feat { display:flex; align-items:center; gap:9px; font-size:13.5px; font-weight:500; color:rgba(255,255,255,.9); }
+    .gc-feat__check { width:19px; height:19px; min-width:19px; border-radius:50%; background:rgba(255,255,255,.08); border:1px solid rgba(255,255,255,.14); display:flex; align-items:center; justify-content:center; }
     .gc-feat__check svg { width:12px; height:12px; display:block; }
+
+    /* Standalone "What's included" pills */
+    .incl-card { width:100%; max-width:460px; margin-top:8px; }
+    .incl-card__label { font-size:12px; font-weight:800; letter-spacing:.16em; text-transform:uppercase; color:var(--safari-secondary); margin-bottom:10px; }
+    .incl-pills { display:grid; grid-template-columns:repeat(3, 1fr); gap:8px; }
+    .incl-pill { display:flex; align-items:center; gap:6px; padding:7px 10px 7px 7px; background:var(--white); border:1px solid var(--border); border-radius:999px; font-size:11.5px; font-weight:600; line-height:1.2; color:var(--text-primary); box-shadow:0 2px 8px rgba(0,0,0,.05); }
+    .incl-pill__ic { width:20px; height:20px; min-width:20px; border-radius:50%; background:rgba(26,115,115,.1); color:var(--safari-primary); display:flex; align-items:center; justify-content:center; }
+    .incl-pill__ic svg { width:12px; height:12px; }
 
     .gc-anim { animation:gc-pop 260ms ease; }
     @keyframes gc-pop { 0%{opacity:.35; transform:translateY(4px);} 100%{opacity:1; transform:none;} }
@@ -779,21 +793,21 @@
 
       <!-- Left: intro -->
       <div class="pricing-intro reveal">
+        <p class="pricing-intro__note">
+          <span class="pricing-intro__note-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg></span>
+          <span class="pricing-intro__note-txt">Founding-member pricing locked in for early-access operators.</span>
+        </p>
         <span class="eyebrow eyebrow--secondary">Simple, Transparent Pricing</span>
         <h1>One plan. Every safari lead, the moment it surfaces.</h1>
         <p class="pricing-intro__lead">
-          No tiers to decode, no features held hostage. Every safari operator gets the full platform on one plan. The only decision is how you'd like to pay.
+          Every safari operator gets the full platform on one simple plan. No tiers to compare, no features locked behind upgrades, no setup fees. The only decision left is how often you'd like to pay.
         </p>
         <ul class="check-list">
-          <li>Full platform access from day one</li>
-          <li>14-day free trial, no charge until it ends</li>
-          <li>No contracts, no setup fees</li>
-          <li>Cancel any time</li>
+          <li><span class="cl-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 9.9-1"/></svg></span><span class="cl-txt">Full platform access from day one</span></li>
+          <li><span class="cl-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg></span><span class="cl-txt">14-day free trial, no credit card required</span></li>
+          <li><span class="cl-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg></span><span class="cl-txt">No contracts, no setup fees</span></li>
+          <li><span class="cl-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="15" y1="9" x2="9" y2="15"/><line x1="9" y1="9" x2="15" y2="15"/></svg></span><span class="cl-txt">Cancel any time</span></li>
         </ul>
-        <p class="pricing-intro__note">
-          <span class="pricing-intro__note-dot" aria-hidden="true"></span>
-          Founding-member pricing locked in for early-access operators.
-        </p>
       </div>
 
       <!-- Right: billing toggle + card -->
@@ -832,19 +846,19 @@
           </p>
 
           <a href="#" onclick="openModal('early-access');return false;" class="growth-card__cta">Start 14 Day Free Trial</a>
-          <p class="growth-card__micro">Full access for 14 days. No charge until your trial ends.</p>
+          <p class="growth-card__micro">Full access for 14 days. No credit card required.</p>
+        </div>
 
-          <div class="growth-card__divider"></div>
-
-          <div class="growth-card__incl-label">What's included</div>
-          <div class="growth-card__features">
-            <div class="gc-feat"><span class="gc-feat__check"><svg viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5" stroke="#34E0A1" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg></span>Monitoring across 9+ platforms</div>
-            <div class="gc-feat"><span class="gc-feat__check"><svg viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5" stroke="#34E0A1" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg></span>Booking intent scoring</div>
-            <div class="gc-feat"><span class="gc-feat__check"><svg viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5" stroke="#34E0A1" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg></span>High-intent lead alerts</div>
-            <div class="gc-feat"><span class="gc-feat__check"><svg viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5" stroke="#34E0A1" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg></span>Platform-specific replies</div>
-            <div class="gc-feat"><span class="gc-feat__check"><svg viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5" stroke="#34E0A1" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg></span>Lead follow-up tracking</div>
-            <div class="gc-feat"><span class="gc-feat__check"><svg viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5" stroke="#34E0A1" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg></span>Competitor demand insights</div>
-            <div class="gc-feat"><span class="gc-feat__check"><svg viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5" stroke="#34E0A1" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg></span>5 team members</div>
+        <div class="incl-card">
+          <div class="incl-card__label">What's included</div>
+          <div class="incl-pills">
+            <span class="incl-pill"><span class="incl-pill__ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></span>5 team members</span>
+            <span class="incl-pill"><span class="incl-pill__ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg></span>Monitoring across 9+ platforms</span>
+            <span class="incl-pill"><span class="incl-pill__ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="4"/></svg></span>Booking intent scoring</span>
+            <span class="incl-pill"><span class="incl-pill__ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8a6 6 0 0 0-12 0c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></svg></span>High-intent lead alerts</span>
+            <span class="incl-pill"><span class="incl-pill__ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg></span>Platform-specific replies</span>
+            <span class="incl-pill"><span class="incl-pill__ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12a9 9 0 1 1-6.219-8.56"/><polyline points="22 4 12 14.01 9 11.01"/></svg></span>Lead follow-up tracking</span>
+            <span class="incl-pill"><span class="incl-pill__ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg></span>Competitor demand insights</span>
           </div>
         </div>
       </div>
