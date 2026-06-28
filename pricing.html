@@ -555,6 +555,177 @@
       padding: 12px 28px;
     }
 
+    /* ── LEAD COST COMPARISON ────────────────── */
+    .lcc-wrap { background: #ffffff; }
+    .lcc-section {
+      max-width: 1180px;
+      margin: -5vh auto 0;
+      padding: 40px 40px 88px;
+    }
+    .lcc-section > h2 {
+      text-align: left;
+      font-size: clamp(28px, 3.8vw, 46px);
+      font-weight: 800;
+      color: var(--dark);
+      letter-spacing: -0.5px;
+      line-height: 1.14;
+      max-width: 820px;
+      margin: 0 0 20px;
+    }
+    .lcc-section > p {
+      text-align: left;
+      font-size: 16px;
+      color: var(--text-soft);
+      line-height: 1.65;
+      max-width: 680px;
+      margin: 0 0 52px;
+    }
+
+    .lcc-scroll { overflow: visible; padding-top: 16px; }
+    .lcc-scrolltop { display: none; }
+    .lcc-scrolltop-bar { height: 1px; }
+    .lcc-scrollhint { display: none; }
+    @keyframes lcc-nudge { 0%, 100% { transform: translateX(0); } 50% { transform: translateX(4px); } }
+    .lcc-table {
+      width: 100%;
+      min-width: 920px;
+      border-collapse: separate;
+      border-spacing: 0;
+    }
+    .lcc-table th,
+    .lcc-table td {
+      padding: 15px 18px;
+      font-size: 13.5px;
+      line-height: 1.5;
+      text-align: center;
+      vertical-align: middle;
+      border-bottom: 1px solid var(--cream-dark);
+    }
+    .lcc-table thead th {
+      padding: 22px 18px;
+      font-size: 15px;
+      font-weight: 700;
+      color: var(--dark);
+      vertical-align: bottom;
+    }
+    .lcc-table thead th:first-child,
+    .lcc-table tbody td:first-child {
+      text-align: left;
+    }
+    .lcc-table tbody td:first-child {
+      font-weight: 600;
+      color: var(--safari-secondary);
+      width: 19%;
+    }
+    .lcc-table tbody td { color: var(--text-soft); }
+
+    /* freeze the row-label column while the rest scrolls */
+    .lcc-table thead th:first-child,
+    .lcc-table tbody td:first-child {
+      position: sticky;
+      left: 0;
+      z-index: 2;
+      background: #fff;
+    }
+    .lcc-rl {
+      display: flex;
+      align-items: flex-start;
+      gap: 9px;
+      color: var(--safari-secondary);
+    }
+    .lcc-rl svg {
+      width: 17px;
+      height: 17px;
+      flex: none;
+      margin-top: 1px;
+      stroke: currentColor;
+      stroke-width: 2;
+      fill: none;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+
+    /* Wandar highlight column */
+    .lcc-table th.lcc-wandar,
+    .lcc-table td.lcc-wandar {
+      background: var(--teal-dark);
+      color: var(--white);
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+    }
+    .lcc-table thead th.lcc-wandar {
+      color: var(--white);
+      font-size: 17px;
+      position: relative;
+      border-top-left-radius: 14px;
+      border-top-right-radius: 14px;
+    }
+    .lcc-table tbody tr:last-child td.lcc-wandar {
+      border-bottom: none;
+      border-bottom-left-radius: 14px;
+      border-bottom-right-radius: 14px;
+      font-weight: 700;
+    }
+    .lcc-wandar-badge {
+      position: absolute;
+      top: -14px;
+      left: 50%;
+      transform: translateX(-50%);
+      white-space: nowrap;
+      background: var(--terra);
+      color: var(--white);
+      font-size: 9.5px;
+      font-weight: 700;
+      letter-spacing: 0.9px;
+      text-transform: uppercase;
+      padding: 6px 14px;
+      border-radius: 999px;
+      box-shadow: 0 6px 16px -6px rgba(184,92,26,0.7);
+    }
+
+    .lcc-yes {
+      color: #2d8056;
+      font-weight: 700;
+    }
+    .lcc-wandar .lcc-yes {
+      color: #7fe0a8;
+    }
+
+    /* header brand logos (icon on top, name below) */
+    .lcc-logo {
+      height: 32px;
+      display: flex;
+      align-items: flex-end;
+      justify-content: center;
+      margin: 0 auto 11px;
+    }
+    .lcc-gads { width: 30px; height: 30px; }
+    .lcc-sb-img { height: 22px; width: auto; display: block; border-radius: 2px; }
+    .lcc-b24 {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 30px;
+      height: 30px;
+      background: #161616;
+      color: #fff;
+      font-weight: 800;
+      font-size: 14px;
+      letter-spacing: -0.5px;
+      border-radius: 7px;
+    }
+    .lcc-mention {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 30px;
+      height: 30px;
+      background: #2f6df0;
+      border-radius: 50%;
+    }
+    .lcc-mention svg { width: 16px; height: 16px; }
+    .lcc-wlogo { display: flex; align-items: flex-end; justify-content: center; }
+    .lcc-wlogo img { height: 70px; width: auto; display: block; margin-bottom: -12px; }
+
     /* ── ANIMATIONS ──────────────────────────── */
     @keyframes pr-fadeUp {
       from { opacity: 0; transform: translateY(24px); }
@@ -566,13 +737,50 @@
       .pr-cards-wrapper   { grid-template-columns: 1fr; padding: 0 20px 60px; }
       .pricing-hero       { padding: 64px 24px 48px; }
       .pr-compare-section { padding: 60px 20px; }
+      .lcc-section        { padding: 60px 20px; }
+      .lcc-scroll         { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+      .lcc-table thead th:first-child,
+      .lcc-table tbody td:first-child { box-shadow: 4px 0 6px -3px rgba(0,0,0,0.12); }
+      .lcc-scrolltop {
+        display: block;
+        overflow-x: auto;
+        overflow-y: hidden;
+        margin-bottom: 12px;
+      }
+      .lcc-scrolltop::-webkit-scrollbar { height: 18px; -webkit-appearance: none; }
+      .lcc-scrolltop::-webkit-scrollbar-track { background: rgba(0,0,0,0.07); border-radius: 9px; }
+      .lcc-scrolltop::-webkit-scrollbar-thumb { background: var(--terra); border-radius: 9px; }
+      .lcc-scrolltop { scrollbar-width: auto; scrollbar-color: var(--terra) rgba(0,0,0,0.07); }
+      /* hide the table's own (bottom) scrollbar; the top one drives it */
+      .lcc-scroll::-webkit-scrollbar { display: none; }
+      .lcc-scroll { scrollbar-width: none; -ms-overflow-style: none; }
+      .lcc-scrollhint {
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+        gap: 6px;
+        margin-bottom: 10px;
+        font-size: 12px;
+        font-weight: 600;
+        color: var(--terra);
+      }
+      .lcc-scrollhint svg {
+        width: 16px;
+        height: 16px;
+        fill: none;
+        stroke: currentColor;
+        stroke-width: 2;
+        stroke-linecap: round;
+        stroke-linejoin: round;
+        animation: lcc-nudge 1.2s ease-in-out infinite;
+      }
       .pr-trust-item      { padding: 8px 16px; border-right: none; border-bottom: 1px solid rgba(255,255,255,0.06); }
       .pr-trust-items     { flex-direction: column; align-items: center; }
     }
 
     /* --- PRICING LAYOUT --------------------------------------------------- */
-    .pricing-section { padding-top:72px; padding-bottom:96px; }
-    @media (min-width:1024px){ .pricing-section{ padding-top:96px; padding-bottom:120px; } }
+    .pricing-section { padding-top:0; margin-top:0; padding-bottom:64px; }
+    @media (min-width:1024px){ .pricing-section{ padding-top:0; margin-top:0; padding-bottom:80px; } }
 
     .pricing-layout { display:grid; grid-template-columns:1fr; gap:48px; align-items:center; }
     @media (min-width:920px){
@@ -585,16 +793,22 @@
       letter-spacing:-.02em; line-height:1.1; margin-bottom:18px; text-wrap:balance;
     }
     .pricing-intro__lead { font-size:17px; line-height:1.6; color:var(--text-secondary); max-width:460px; margin-bottom:28px; }
-    .pricing-intro .check-list { gap:12px; margin-bottom:28px; }
-    .pricing-intro .check-list li { font-size:15px; color:var(--text-primary); font-weight:500; }
-    .pricing-intro__note { font-size:13px; color:var(--text-muted); display:flex; align-items:center; gap:8px; }
-    .pricing-intro__note-dot { width:8px; height:8px; border-radius:50%; background:var(--safari-nature); flex-shrink:0; animation:pulse-dot 2s ease infinite; }
+    .pricing-intro .check-list { display:flex; flex-direction:column; gap:11px; margin-bottom:22px; }
+    .pricing-intro .check-list li { display:flex; align-items:center; gap:9px; font-size:14px; font-weight:600; color:var(--safari-primary); }
+    .pricing-intro .check-list li::before { display:none; }
+    .pricing-intro .cl-ic { display:flex; align-items:center; justify-content:center; flex-shrink:0; color:var(--safari-primary); }
+    .pricing-intro .cl-ic svg { width:16px; height:16px; }
+    .pricing-intro .cl-txt { color:var(--safari-primary); }
+    .pricing-intro__note { display:inline-flex; align-items:center; gap:9px; margin:0 0 16px; padding:8px 16px 8px 12px; background:var(--dark-bg); border:1px solid rgba(255,255,255,.12); border-radius:999px; }
+    .pricing-intro__note-ic { display:flex; align-items:center; justify-content:center; flex-shrink:0; color:#f5c542; }
+    .pricing-intro__note-ic svg { width:16px; height:16px; }
+    .pricing-intro__note-txt { font-size:14px; font-weight:700; letter-spacing:.01em; background:linear-gradient(100deg,#2fd4bf 0%,#f5c542 50%,#ff7a2f 100%); -webkit-background-clip:text; background-clip:text; -webkit-text-fill-color:transparent; color:transparent; }
 
-    .pricing-card-col { display:flex; flex-direction:column; align-items:center; gap:26px; }
+    .pricing-card-col { display:flex; flex-direction:column; align-items:center; gap:0; }
 
     /* --- BILLING TOGGLE --------------------------------------------------- */
-    .billing-toggle { display:inline-flex; align-items:stretch; gap:4px; padding:5px; background:var(--white); border:1px solid var(--border); border-radius:var(--radius-pill); box-shadow:0 4px 18px rgba(0,0,0,.06); position:relative; }
-    .billing-opt { position:relative; display:inline-flex; flex-direction:column; align-items:center; justify-content:center; gap:1px; padding:11px 20px; border-radius:var(--radius-pill); font-family:var(--font-primary); font-size:14px; font-weight:600; color:var(--text-secondary); background:transparent; border:none; cursor:pointer; white-space:nowrap; transition:color 180ms ease, background 180ms ease; }
+    .billing-toggle { display:flex; width:100%; max-width:380px; margin-bottom:2px; align-items:stretch; gap:4px; padding:4px; background:var(--white); border:1px solid var(--border); border-radius:var(--radius-pill); box-shadow:0 4px 18px rgba(0,0,0,.06); position:relative; }
+    .billing-opt { position:relative; flex:1 1 0; display:inline-flex; flex-direction:column; align-items:center; justify-content:center; gap:1px; padding:6px 8px; border-radius:var(--radius-pill); font-family:var(--font-primary); font-size:13px; font-weight:600; color:var(--text-secondary); background:transparent; border:none; cursor:pointer; white-space:nowrap; transition:color 180ms ease, background 180ms ease; }
     .billing-opt:hover { color:var(--text-primary); }
     .billing-opt__save { font-size:10.5px; font-weight:700; letter-spacing:.02em; color:var(--safari-secondary); line-height:1; }
     .billing-opt.is-active { background:var(--safari-primary); color:var(--white); }
@@ -605,30 +819,38 @@
 
     /* --- GROWTH CARD ------------------------------------------------------ */
     .growth-card {
-      width:100%; max-width:460px; border-radius:22px; padding:44px 40px 40px; position:relative; overflow:hidden; color:var(--white);
+      width:100%; max-width:460px; border-radius:22px; padding:26px 36px 26px; position:relative; overflow:hidden; color:var(--white);
       background:
         radial-gradient(ellipse 70% 55% at 88% 8%, rgba(196,89,17,.42) 0%, rgba(184,134,11,.12) 38%, transparent 68%),
-        linear-gradient(165deg,#16261f 0%,#102019 60%,#0d1a14 100%);
+        linear-gradient(165deg,#15463a 0%,#103328 60%,#0c2820 100%);
       box-shadow:0 28px 70px -24px rgba(13,26,20,.65), 0 0 0 1px rgba(255,255,255,.05);
     }
     .growth-card__name { font-family:var(--font-primary); font-size:34px; font-weight:800; letter-spacing:-.02em; color:var(--white); line-height:1.05; margin-bottom:12px; }
-    .growth-card__desc { font-size:15px; line-height:1.55; color:rgba(255,255,255,.62); max-width:300px; margin-bottom:34px; }
+    .growth-card__desc { font-size:15px; line-height:1.55; color:rgba(255,255,255,.62); max-width:300px; margin-bottom:22px; }
     .growth-card__price { display:flex; align-items:flex-start; gap:4px; margin-bottom:8px; }
     .gc-currency { font-size:30px; font-weight:700; color:var(--safari-secondary); line-height:1; margin-top:14px; }
-    .gc-amount { font-size:78px; font-weight:800; line-height:.92; letter-spacing:-.03em; color:var(--white); font-variant-numeric:tabular-nums; }
+    .gc-amount { font-size:62px; font-weight:800; line-height:.92; letter-spacing:-.03em; color:var(--white); font-variant-numeric:tabular-nums; }
     .gc-per { font-size:17px; font-weight:500; color:rgba(255,255,255,.55); align-self:flex-end; margin-bottom:14px; }
-    .growth-card__billed { font-size:14px; color:rgba(255,255,255,.62); margin-bottom:30px; min-height:20px; }
+    .growth-card__billed { font-size:14px; color:rgba(255,255,255,.62); margin-bottom:20px; min-height:20px; }
     .growth-card__billed strong { color:rgba(255,255,255,.92); font-weight:700; }
     .gc-save-pill { display:inline-block; margin-left:4px; color:var(--safari-rating); font-weight:700; }
     .growth-card__cta { display:flex; align-items:center; justify-content:center; width:100%; padding:17px 24px; background:var(--safari-secondary); color:var(--white); font-size:16px; font-weight:700; border-radius:11px; transition:background 160ms ease, transform 160ms ease; box-shadow:0 12px 28px -10px rgba(196,89,17,.6); }
     .growth-card__cta:hover { background:var(--secondary-hover); transform:translateY(-1px); }
     .growth-card__micro { text-align:center; font-size:12.5px; color:rgba(255,255,255,.45); margin-top:14px; }
-    .growth-card__divider { height:1px; background:rgba(255,255,255,.10); margin:28px 0 24px; }
-    .growth-card__incl-label { font-size:11px; font-weight:700; letter-spacing:.16em; text-transform:uppercase; color:var(--safari-rating); margin-bottom:18px; }
-    .growth-card__features { display:flex; flex-direction:column; gap:14px; }
-    .gc-feat { display:flex; align-items:center; gap:12px; font-size:15px; font-weight:500; color:rgba(255,255,255,.9); }
-    .gc-feat__check { width:22px; height:22px; min-width:22px; border-radius:50%; background:rgba(255,255,255,.08); border:1px solid rgba(255,255,255,.14); display:flex; align-items:center; justify-content:center; }
+    .growth-card__divider { height:1px; background:rgba(255,255,255,.10); margin:16px 0 14px; }
+    .growth-card__incl-label { font-size:11px; font-weight:700; letter-spacing:.16em; text-transform:uppercase; color:var(--safari-rating); margin-bottom:12px; }
+    .growth-card__features { display:grid; grid-template-columns:1fr 1fr; gap:11px 16px; }
+    .gc-feat { display:flex; align-items:center; gap:9px; font-size:13.5px; font-weight:500; color:rgba(255,255,255,.9); }
+    .gc-feat__check { width:19px; height:19px; min-width:19px; border-radius:50%; background:rgba(255,255,255,.08); border:1px solid rgba(255,255,255,.14); display:flex; align-items:center; justify-content:center; }
     .gc-feat__check svg { width:12px; height:12px; display:block; }
+
+    /* Standalone "What's included" pills */
+    .incl-card { width:100%; max-width:460px; margin-top:8px; }
+    .incl-card__label { font-size:12px; font-weight:800; letter-spacing:.16em; text-transform:uppercase; color:var(--safari-secondary); margin-bottom:10px; }
+    .incl-pills { display:grid; grid-template-columns:repeat(3, 1fr); gap:8px; }
+    .incl-pill { display:flex; align-items:center; gap:6px; padding:7px 10px 7px 7px; background:var(--white); border:1px solid var(--border); border-radius:999px; font-size:11.5px; font-weight:600; line-height:1.2; color:var(--text-primary); box-shadow:0 2px 8px rgba(0,0,0,.05); }
+    .incl-pill__ic { width:20px; height:20px; min-width:20px; border-radius:50%; background:rgba(26,115,115,.1); color:var(--safari-primary); display:flex; align-items:center; justify-content:center; }
+    .incl-pill__ic svg { width:12px; height:12px; }
 
     .gc-anim { animation:gc-pop 260ms ease; }
     @keyframes gc-pop { 0%{opacity:.35; transform:translateY(4px);} 100%{opacity:1; transform:none;} }
@@ -681,10 +903,9 @@
                 <a class="pchip" href="platforms/tiktok.html" role="menuitem"><span class="pchip__ic" style="background:#000"><svg viewBox="0 0 24 24" fill="#fff"><path d="M12.53.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.99-.32-2.15-.23-3.02.37-.63.41-1.11 1.04-1.36 1.75-.21.51-.15 1.07-.14 1.61.24 1.64 1.82 3.02 3.5 2.87 1.12-.01 2.19-.66 2.77-1.61.19-.33.4-.67.41-1.06.1-1.79.06-3.57.07-5.36.01-4.03-.01-8.05.02-12.07z"/></svg></span><span class="pchip__t">TikTok</span></a>
               </div>
               <div class="mfeat mfeat--cta">
-                <div class="mfeat__icon"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M11 21h-1l1-7H6.74a.5.5 0 0 1-.45-.72L11.2 3.3A.9.9 0 0 1 12 2.8h1.26l-1 7H17a.5.5 0 0 1 .44.74l-5.7 10.16A.9.9 0 0 1 11 21z"/></svg></div>
+                <div class="mfeat__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="4.5"/><circle cx="12" cy="12" r="1" fill="currentColor" stroke="none"/></svg></div>
                 <span class="mfeat__tag">Get Early Access</span>
                 <div class="mfeat__title" style="font-size:16px;">Catch high-intent travelers across every platform.</div>
-                <p class="mfeat__sub">Be the first to reply when they post.</p>
                 <a href="#" onclick="openModal('early-access');return false;" class="mfeat__btn">Request Early Access</a>
               </div>
             </div>
@@ -714,8 +935,8 @@
 
       <!-- Right: CTA + Login + Hamburger -->
       <div class="nav__right">
-        <a href="#" onclick="openModal('early-access');return false;" class="btn btn--primary nav__cta-btn" style="display:none" id="nav-cta-desktop">Request Early Access</a>
-        <a href="#" class="nav__login-link" style="display:none" id="nav-login-desktop">Log In</a>
+        <a href="#" onclick="openModal('early-access');return false;" class="btn btn--primary nav__cta-btn" id="nav-cta-desktop">Request Early Access</a>
+        <a href="#" class="nav__login-link" id="nav-login-desktop">Log In</a>
         <button class="nav__hamburger" id="hamburger" aria-label="Open menu" aria-expanded="false">
           <span></span><span></span><span></span>
         </button>
@@ -762,7 +983,6 @@
           </div>
         </a>
         <div class="mnav__foot">
-          <a class="mnav__login" href="#" onclick="openModal('consultation');return false;">Book a Call</a>
           <a class="mnav__primary" href="#" onclick="openModal('early-access');return false;">Request Early Access</a>
         </div>
       </div>
@@ -781,21 +1001,21 @@
 
       <!-- Left: intro -->
       <div class="pricing-intro reveal">
+        <p class="pricing-intro__note">
+          <span class="pricing-intro__note-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg></span>
+          <span class="pricing-intro__note-txt">Founding-member pricing locked in for early-access operators.</span>
+        </p>
         <span class="eyebrow eyebrow--secondary">Simple, Transparent Pricing</span>
         <h1>One plan. Every safari lead, the moment it surfaces.</h1>
         <p class="pricing-intro__lead">
-          No tiers to decode, no features held hostage. Every safari operator gets the full platform on one plan. The only decision is how you'd like to pay.
+          Every safari operator gets the full platform on one simple plan. No tiers to compare, no features locked behind upgrades, no setup fees. The only decision left is how often you'd like to pay.
         </p>
         <ul class="check-list">
-          <li>Full platform access from day one</li>
-          <li>7-day free trial, no charge until it ends</li>
-          <li>No contracts, no setup fees</li>
-          <li>Cancel any time</li>
+          <li><span class="cl-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 9.9-1"/></svg></span><span class="cl-txt">Full platform access from day one</span></li>
+          <li><span class="cl-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg></span><span class="cl-txt">14-day free trial, no credit card required</span></li>
+          <li><span class="cl-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg></span><span class="cl-txt">No contracts, no setup fees</span></li>
+          <li><span class="cl-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="15" y1="9" x2="9" y2="15"/><line x1="9" y1="9" x2="15" y2="15"/></svg></span><span class="cl-txt">Cancel any time</span></li>
         </ul>
-        <p class="pricing-intro__note">
-          <span class="pricing-intro__note-dot" aria-hidden="true"></span>
-          Founding-member pricing locked in for early-access operators.
-        </p>
       </div>
 
       <!-- Right: billing toggle + card -->
@@ -833,20 +1053,20 @@
             <strong>$1,197</strong> billed quarterly <span class="gc-save-pill">· Save 11%</span>
           </p>
 
-          <a href="#cta-banner" class="growth-card__cta">Start 7 Day Free Trial</a>
-          <p class="growth-card__micro">Full access for 7 days. No charge until your trial ends.</p>
+          <a href="#" onclick="openModal('early-access');return false;" class="growth-card__cta">Start 14 Day Free Trial</a>
+          <p class="growth-card__micro">Full access for 14 days. No credit card required.</p>
+        </div>
 
-          <div class="growth-card__divider"></div>
-
-          <div class="growth-card__incl-label">What's included</div>
-          <div class="growth-card__features">
-            <div class="gc-feat"><span class="gc-feat__check"><svg viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5" stroke="#34E0A1" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg></span>Monitoring across 9+ platforms</div>
-            <div class="gc-feat"><span class="gc-feat__check"><svg viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5" stroke="#34E0A1" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg></span>Booking intent scoring</div>
-            <div class="gc-feat"><span class="gc-feat__check"><svg viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5" stroke="#34E0A1" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg></span>High-intent lead alerts</div>
-            <div class="gc-feat"><span class="gc-feat__check"><svg viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5" stroke="#34E0A1" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg></span>Platform-specific replies</div>
-            <div class="gc-feat"><span class="gc-feat__check"><svg viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5" stroke="#34E0A1" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg></span>Lead follow-up tracking</div>
-            <div class="gc-feat"><span class="gc-feat__check"><svg viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5" stroke="#34E0A1" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg></span>Competitor demand insights</div>
-            <div class="gc-feat"><span class="gc-feat__check"><svg viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5" stroke="#34E0A1" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg></span>5 team members</div>
+        <div class="incl-card">
+          <div class="incl-card__label">What's included</div>
+          <div class="incl-pills">
+            <span class="incl-pill"><span class="incl-pill__ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></span>5 team members</span>
+            <span class="incl-pill"><span class="incl-pill__ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg></span>Monitoring across 9+ platforms</span>
+            <span class="incl-pill"><span class="incl-pill__ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="4"/></svg></span>Booking intent scoring</span>
+            <span class="incl-pill"><span class="incl-pill__ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8a6 6 0 0 0-12 0c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></svg></span>High-intent lead alerts</span>
+            <span class="incl-pill"><span class="incl-pill__ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg></span>Platform-specific replies</span>
+            <span class="incl-pill"><span class="incl-pill__ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12a9 9 0 1 1-6.219-8.56"/><polyline points="22 4 12 14.01 9 11.01"/></svg></span>Lead follow-up tracking</span>
+            <span class="incl-pill"><span class="incl-pill__ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg></span>Competitor demand insights</span>
           </div>
         </div>
       </div>
@@ -856,18 +1076,169 @@
 </section>
 
 <!-- ═══════════════════════════════════════════
+     LEAD COST COMPARISON
+═══════════════════════════════════════════ -->
+<section class="section lcc-wrap" aria-label="Lead cost comparison">
+  <div class="lcc-section">
+    <span class="eyebrow">Lead Cost Comparison</span>
+    <h2>What are you really paying for when you try to find safari leads?</h2>
+    <p>Most lead tools only reach a traveler after they've already searched, clicked, or asked for a quote, when they're nearly decided. Wandar reaches them earlier, while they're still asking questions and choosing who to trust.</p>
+
+    <div class="lcc-scrollhint" aria-hidden="true">
+      <span>Swipe to compare all platforms</span>
+      <svg viewBox="0 0 24 24" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+    </div>
+    <div class="lcc-scrolltop" aria-hidden="true"><div class="lcc-scrolltop-bar"></div></div>
+    <div class="lcc-scroll">
+      <table class="lcc-table">
+        <thead>
+          <tr>
+            <th></th>
+            <th>
+              <span class="lcc-logo">
+                <svg class="lcc-gads" viewBox="0 0 24 24" aria-hidden="true">
+                  <rect x="6.6" y="3.5" width="4.8" height="17" rx="2.4" fill="#FBBC04" transform="rotate(18 9 12)"/>
+                  <rect x="12.6" y="3.5" width="4.8" height="17" rx="2.4" fill="#4285F4" transform="rotate(-18 15 12)"/>
+                  <circle cx="7" cy="18.5" r="3" fill="#34A853"/>
+                </svg>
+              </span>
+              Google Ads
+            </th>
+            <th>
+              <span class="lcc-logo"><img class="lcc-sb-img" src="assets/Safaribookings.png" alt="SafariBookings" /></span>
+              SafariBookings
+            </th>
+            <th>
+              <span class="lcc-logo"><span class="lcc-b24">24</span></span>
+              Brand24
+            </th>
+            <th>
+              <span class="lcc-logo"><span class="lcc-mention"><svg viewBox="0 0 24 24" fill="#fff" aria-hidden="true"><path d="M12 2.4l2.84 6.17 6.76.66-5.06 4.5 1.42 6.63L12 17.5l-5.96 3.26 1.42-6.63-5.06-4.5 6.76-.66z"/></svg></span></span>
+              Mention
+            </th>
+            <th class="lcc-wandar">
+              <span class="lcc-wandar-badge">Built for safari operators</span>
+              <span class="lcc-wlogo"><img src="assets/wandar-logo.png" alt="Wandar" /></span>
+            </th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><span class="lcc-rl"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"/><line x1="7" y1="7" x2="7.01" y2="7"/></svg>What you pay for</span></td>
+            <td>Clicks</td>
+            <td>Quote requests</td>
+            <td>Mentions</td>
+            <td>Mentions</td>
+            <td class="lcc-wandar">High-intent safari leads</td>
+          </tr>
+          <tr>
+            <td><span class="lcc-rl"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="1" y="4" width="22" height="16" rx="2"/><line x1="1" y1="10" x2="23" y2="10"/></svg>Pricing model</span></td>
+            <td>Pay per click. Cost per click from $0.75 to $6 (varies by keyword and campaign)</td>
+            <td>1% or 1.5% up to 2.5% of quote request booking value. $50 per quote request example</td>
+            <td>Subscription from $249/month</td>
+            <td>Subscription from $599/month, billed yearly</td>
+            <td class="lcc-wandar">Subscription, $399/month billed quarterly</td>
+          </tr>
+          <tr>
+            <td><span class="lcc-rl"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg>Reach needed per booking</span></td>
+            <td>Varies by campaign performance</td>
+            <td>Five quote requests on average. This varies per tour operator</td>
+            <td>Not designed as a booking channel</td>
+            <td>Not designed as a booking channel</td>
+            <td class="lcc-wandar">Varies by safari demand and operator follow-up</td>
+          </tr>
+          <tr>
+            <td><span class="lcc-rl"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><polyline points="17 11 19 13 23 9"/></svg>Pay per lead</span></td>
+            <td>No</td>
+            <td><span class="lcc-yes">Yes</span></td>
+            <td>No</td>
+            <td>No</td>
+            <td class="lcc-wandar">No</td>
+          </tr>
+          <tr>
+            <td><span class="lcc-rl"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>Pay even if it does not book</span></td>
+            <td>Yes, per click</td>
+            <td>Yes, per quote request</td>
+            <td>Yes, subscription applies</td>
+            <td>Yes, subscription applies</td>
+            <td class="lcc-wandar">Yes, subscription applies</td>
+          </tr>
+          <tr>
+            <td><span class="lcc-rl"><svg viewBox="0 0 24 24" aria-hidden="true"><polygon points="22 3 2 3 10 12.46 10 19 14 21 14 12.46 22 3"/></svg>Lead qualification</span></td>
+            <td>Clicks still need to become enquiries</td>
+            <td>Quote requests still need sales follow-up and conversion</td>
+            <td>Mentions still need to be filtered for safari relevance and intent</td>
+            <td>Mentions still need to be filtered for safari relevance and intent</td>
+            <td class="lcc-wandar">Pre-qualified safari intent, still needs outreach by operator</td>
+          </tr>
+          <tr>
+            <td><span class="lcc-rl"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10"/><polygon points="16.24 7.76 14.12 14.12 7.76 16.24 9.88 9.88 16.24 7.76"/></svg>Built for safari operators</span></td>
+            <td>No</td>
+            <td><span class="lcc-yes">Yes</span></td>
+            <td>No</td>
+            <td>No</td>
+            <td class="lcc-wandar"><span class="lcc-yes">Yes</span></td>
+          </tr>
+          <tr>
+            <td><span class="lcc-rl"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>Surfaces safari planning conversations</span></td>
+            <td>No</td>
+            <td>No</td>
+            <td>Possible with keyword setup</td>
+            <td>Possible with keyword setup</td>
+            <td class="lcc-wandar"><span class="lcc-yes">Yes</span></td>
+          </tr>
+          <tr>
+            <td><span class="lcc-rl"><svg viewBox="0 0 24 24" aria-hidden="true"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>Safari intent scoring</span></td>
+            <td>No</td>
+            <td>No</td>
+            <td>No</td>
+            <td>No</td>
+            <td class="lcc-wandar"><span class="lcc-yes">Yes</span></td>
+          </tr>
+          <tr>
+            <td><span class="lcc-rl"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>Monitors across platforms</span></td>
+            <td>No</td>
+            <td>No</td>
+            <td><span class="lcc-yes">Yes</span></td>
+            <td><span class="lcc-yes">Yes</span></td>
+            <td class="lcc-wandar"><span class="lcc-yes">Yes</span></td>
+          </tr>
+          <tr>
+            <td><span class="lcc-rl"><svg viewBox="0 0 24 24" aria-hidden="true"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>Safari lead response workflow</span></td>
+            <td>No</td>
+            <td>No</td>
+            <td>No</td>
+            <td>No</td>
+            <td class="lcc-wandar"><span class="lcc-yes">Yes</span></td>
+          </tr>
+          <tr>
+            <td><span class="lcc-rl"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>Best fit</span></td>
+            <td>Search traffic</td>
+            <td>Marketplace leads</td>
+            <td>Brand monitoring</td>
+            <td>Social listening</td>
+            <td class="lcc-wandar">Earlier safari lead opportunities</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════
      CTA BANNER
 ═══════════════════════════════════════════ -->
 <!-- CTA Banner (full-width, fan gradient, no watermarks) -->
-<section class="cta-full" aria-label="Call to action" id="cta-banner">
-  <div class="cta-full__inner">
-    <h2 class="cta-full__headline">Your next client just posted.</h2>
-    <p class="cta-full__sub">Start your 7-day free trial and be the first to reply.</p>
-    <div class="cta-full__btns">
-      <a href="#" onclick="openModal('early-access');return false;" class="cta-full__btn cta-full__btn--primary">Request Early Access</a>
-      <a href="#" onclick="openModal('consultation');return false;" class="cta-full__btn cta-full__btn--ghost">Book a Call</a>
+<!-- CTA Banner (site-wide) -->
+<section class="cta-wide" aria-label="Call to action" id="cta-banner">
+  <div class="cta-wide__inner">
+    <div class="cta-wide__content">
+      <h2 class="cta-wide__headline">Find stronger safari lead opportunities earlier with Wandar<span class="cta-wide__dot">.</span></h2>
+      <div class="cta-wide__btns">
+        <a href="#" onclick="openModal('early-access');return false;" class="cta-wide__btn cta-wide__btn--primary">Request Early Access</a>
+        <a href="#" onclick="openModal('consultation');return false;" class="cta-wide__btn cta-wide__btn--ghost">Book a Call</a>
+      </div>
     </div>
-    <p class="cta-full__micro">No contracts. No setup fees. Built exclusively for safari operators.</p>
   </div>
 </section>
 
@@ -889,7 +1260,7 @@
         <div>
           <div class="faq__item">
             <button class="faq__question" aria-expanded="false">Is there a free trial?<span class="faq__chevron" aria-hidden="true">▾</span></button>
-            <div class="faq__answer" role="region"><p class="faq__answer-inner">Yes. Every operator gets a full 7-day free trial — no charge until it ends. You get access to the complete platform from day one so you can see real leads before you spend anything.</p></div>
+            <div class="faq__answer" role="region"><p class="faq__answer-inner">Yes. Every operator gets a full 14-day free trial, no charge until it ends. You get access to the complete platform from day one so you can see real leads before you spend anything.</p></div>
           </div>
           <div class="faq__item">
             <button class="faq__question" aria-expanded="false">Do you offer flexible billing periods?<span class="faq__chevron" aria-hidden="true">▾</span></button>
@@ -897,7 +1268,7 @@
           </div>
           <div class="faq__item">
             <button class="faq__question" aria-expanded="false">What happens at the end of my trial?<span class="faq__chevron" aria-hidden="true">▾</span></button>
-            <div class="faq__answer" role="region"><p class="faq__answer-inner">Nothing happens automatically. When your 7-day trial ends we'll ask you to choose a billing period before your account continues. You won't be charged unless you actively confirm.</p></div>
+            <div class="faq__answer" role="region"><p class="faq__answer-inner">Nothing happens automatically. When your 14-day trial ends we'll ask you to choose a billing period before your account continues. You won't be charged unless you actively confirm.</p></div>
           </div>
         </div>
         <div>
@@ -930,8 +1301,11 @@
     <div class="footer__top">
 
       <div class="footer__brand">
-        <img src="assets/wandar-logo.png" alt="Wandar" class="footer__logo-img" />
-        <p class="footer__brand-tagline">Social listening built for safari travel</p>
+        <div class="footer__lockup">
+          <img src="assets/wandar-banner-white.png" alt="Wandar" class="footer__lockup-banner" loading="lazy" />
+          <span class="footer__lockup-divider" aria-hidden="true"></span>
+          <span class="footer__lockup-tag">Social Listening<br>for Safari Operators</span>
+        </div>
       </div>
 
       <div class="footer__newsletter">
@@ -969,10 +1343,11 @@
         <span class="footer__col-heading">For Operators</span>
         <ul class="footer__col-links">
           <li><a href="pricing.html"    class="footer__col-link">Pricing</a></li>
-          <li><a href="#" onclick="openModal('consultation');return false;" class="footer__col-link">Free Consultation</a></li>
+          <li><a href="#" onclick="openModal('consultation');return false;" class="footer__col-link">Book a Call</a></li>
           <li><span class="footer__col-link footer__col-link--disabled">Free Tools</span></li>
           <li><a href="/guides/" class="footer__col-link">Guides</a></li>
           <li><a href="/blog/" class="footer__col-link">Blog</a></li>
+          <li><a href="resources/webinar.html" class="footer__col-link">Webinar</a></li>
           <li><a href="#" onclick="openModal('contact');return false;" class="footer__col-link">Support</a></li>
         </ul>
       </div>
@@ -1460,6 +1835,22 @@ const mContactHints={operator:"e.g. How does Wandar find posts? Does it work for
 const mContactSuccess={operator:{title:"Message received.",body:"We'll get back to you within 24 hours. Personally, not from a bot."},partner:{title:"Interesting.",body:"Someone from the team will reach out within 48 hours to explore the fit."},press:{title:"Got it.",body:"We'll send over what you need within 24 hours."},other:{title:"Message received.",body:"We'll get back to you within 24 hours."}};
 function mHandleContactIntent(){var val=mg('mc-intent').value;var ta=mg('mc-message');var otherWrap=mg('mc-intent-other');otherWrap.classList.toggle('visible',val==='other');if(val&&mContactHints[val]){ta.placeholder=mContactHints[val];}else{ta.placeholder="Tell us how we can help...";}mSetErr('c-intent','');}
 function mSubmitC(){var ok=true;ok=mSetErr('c-name',!mg('mc-name').value.trim()?'Required':'')&ok;ok=mSetErr('c-company',!mg('mc-company').value.trim()?'Required':'')&ok;ok=mSetErr('c-email',!mValidEmail(mg('mc-email').value.trim())?'Valid email required':'')&ok;ok=mSetErr('c-intent',!mg('mc-intent').value?'Please select one':'')&ok;ok=mSetErr('c-message',!mg('mc-message').value.trim()?'Required':'')&ok;if(!ok)return;var intent=mg('mc-intent').value;var s=mContactSuccess[intent]||mContactSuccess['other'];mg('mc-success-title').textContent=s.title;mg('mc-success-body').textContent=s.body;mg('mf-form-c').classList.add('hidden');mg('mf-success-c').classList.add('visible');}
+
+// ── LEAD COST COMPARISON · top scrollbar synced with table ──────────
+(function(){
+  var scroll = document.querySelector('.lcc-scroll');
+  var top = document.querySelector('.lcc-scrolltop');
+  var bar = document.querySelector('.lcc-scrolltop-bar');
+  var table = scroll ? scroll.querySelector('.lcc-table') : null;
+  if(!scroll || !top || !bar || !table) return;
+  function sizeBar(){ bar.style.width = table.scrollWidth + 'px'; }
+  sizeBar();
+  window.addEventListener('resize', sizeBar);
+  if(window.ResizeObserver){ new ResizeObserver(sizeBar).observe(table); }
+  var lock = false;
+  top.addEventListener('scroll', function(){ if(lock) return; lock = true; scroll.scrollLeft = top.scrollLeft; lock = false; });
+  scroll.addEventListener('scroll', function(){ if(lock) return; lock = true; top.scrollLeft = scroll.scrollLeft; lock = false; });
+})();
 </script>
 <script src="assets/js/section.js"></script>
 <script src="assets/js/nav.js"></script>

@@ -2,6 +2,7 @@ document.addEventListener('DOMContentLoaded', function() {
   var hamburger    = document.getElementById('hamburger');
   var mobilePanel  = document.getElementById('mobile-panel');
   var navRelatives = Array.from(document.querySelectorAll('li.nav-relative'));
+  var scrollLockY  = 0;
 
   // ── Desktop: hover-open mega dropdowns ──
   navRelatives.forEach(function(li) {
@@ -31,6 +32,8 @@ document.addEventListener('DOMContentLoaded', function() {
     if (!mobilePanel) return;
     mobilePanel.classList.add('open');
     if (hamburger) { hamburger.classList.add('open'); hamburger.setAttribute('aria-expanded', 'true'); }
+    scrollLockY = window.scrollY || window.pageYOffset || 0;
+    document.body.style.top = (-scrollLockY) + 'px';
     document.body.classList.add('nav-locked');
   }
   function closeMenu() {
@@ -43,6 +46,8 @@ document.addEventListener('DOMContentLoaded', function() {
     }
     if (hamburger) { hamburger.classList.remove('open'); hamburger.setAttribute('aria-expanded', 'false'); }
     document.body.classList.remove('nav-locked');
+    document.body.style.top = '';
+    if (scrollLockY) { window.scrollTo(0, scrollLockY); scrollLockY = 0; }
   }
   window.closeMobileMenu = closeMenu;
 

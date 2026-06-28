@@ -64,7 +64,7 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   overflow-x: clip;
-  padding-top: 72px;
+  padding-top: 62px;
 }
 
 img {
@@ -115,16 +115,24 @@ h1, h2, h3, h4 {
 
 /* V3: Hero headline with gradient */
 .hero-headline {
-  font-size: clamp(28px, 3.2vw, 42px);
+  font-size: clamp(30px, 4vw, 50px);
   font-weight: 800;
-  line-height: 1.15;
-  letter-spacing: -0.02em;
+  line-height: 1.0;
+  letter-spacing: -0.03em;
   padding-bottom: 0.1em;
-  background: linear-gradient(100deg, #1a7373 0%, #b8860b 50%, #c45911 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-  color: transparent;
+  background: none;
+  -webkit-background-clip: border-box;
+  -webkit-text-fill-color: var(--dark-bg);
+  background-clip: border-box;
+  color: var(--dark-bg);
+}
+.hero-headline .hl-orange {
+  color: var(--safari-secondary);
+  -webkit-text-fill-color: var(--safari-secondary);
+}
+.hero-headline__l2 {
+  display: block;
+  text-align: center;
 }
 
 .section-headline {
@@ -240,20 +248,23 @@ h3.step-title {
 
 /* Smaller CTA in the nav bar */
 .nav__cta-btn {
-  padding: 10px 20px;
+  padding: 10px 14px;
   font-size: 14px;
   border-radius: var(--radius-pill);
 }
 
 /* Log In link in nav */
 .nav__login-link {
-  font-size: 14.5px;
+  display: inline-flex;
+  align-items: center;
+  line-height: 1;
+  font-size: 14px;
   font-weight: 600;
   color: #fff;
   text-decoration: none;
   background: var(--safari-secondary);
   border-radius: var(--radius-sm);
-  padding: 10px 16px;
+  padding: 10px 14px;
   transition: background 150ms ease;
   white-space: nowrap;
 }
@@ -357,7 +368,7 @@ h3.step-title {
 .nav__inner {
   display: flex;
   align-items: center;
-  height: 72px;
+  height: 62px;
   gap: 32px;
 }
 
@@ -374,7 +385,7 @@ h3.step-title {
 
 /* V3: Larger logo */
 .nav__logo-img {
-  height: 70px;
+  height: 60px;
   width: auto;
   object-fit: contain;
   display: block;
@@ -802,21 +813,21 @@ h3.step-title {
 
 @media (min-width: 768px) {
   .hero__inner {
-    grid-template-columns: 43fr 57fr;
-    gap: 40px;
+    grid-template-columns: 53fr 47fr;
+    gap: 18px;
     align-items: flex-start;
   }
 }
 
 .hero__content {
-  padding-right: 16px;
+  padding-right: 0;
   display: flex;
   flex-direction: column;
   justify-content: center;
 }
 
 .hero__headline {
-  margin-bottom: 24px;
+  margin-bottom: 18px;
   position: relative;
 }
 
@@ -831,14 +842,17 @@ h3.step-title {
   font-size: 18px;
   font-weight: 700;
   line-height: 1.6;
-  color: var(--text-secondary);
+  color: var(--safari-primary);
   max-width: 520px;
-  margin-bottom: 36px;
+  margin-bottom: 24px;
+  text-align: center;
+  align-self: center;
 }
 
 .hero__cta-group {
   display: flex;
   align-items: center;
+  justify-content: center;
   gap: 16px;
   flex-wrap: wrap;
 }
@@ -847,13 +861,14 @@ h3.step-title {
 .hero__mockup-wrapper {
   position: relative;
   padding-top: 0;
-  margin-right: -24px;
-  width: calc(100% + 24px);
+  margin-right: 0;
+  width: 100%;
 }
 
 @media (min-width: 768px) {
   .hero__mockup-wrapper {
-    padding-top: 190px;
+    padding-top: 120px;
+    margin-left: 0;
     margin-right: 0;
     width: 100%;
   }
@@ -861,22 +876,24 @@ h3.step-title {
 
 @media (min-width: 1024px) {
   .hero__mockup-wrapper {
-    margin-right: -80px;
-    width: calc(100% + 80px);
+    margin-left: 0;
+    margin-right: -90px;
+    width: calc(100% + 90px);
   }
 }
 
 @media (min-width: 1440px) {
   .hero__mockup-wrapper {
-    margin-right: -120px;
-    width: calc(100% + 120px);
+    margin-left: 0;
+    margin-right: -125px;
+    width: calc(100% + 125px);
   }
 }
 
 .hero__mockup-wrapper::before {
   content: '';
   position: absolute;
-  top: 190px;
+  top: 120px;
   left: 0;
   right: 0;
   height: 6px;
@@ -915,8 +932,10 @@ h3.step-title {
   #mockup-trigger { cursor: default; }
 }
 
-#mockup-trigger {
-  cursor: zoom-in;
+@media (max-width: 767px) {
+  #mockup-trigger {
+    cursor: zoom-in;
+  }
 }
 
 /* Mockup lightbox */
@@ -924,17 +943,21 @@ h3.step-title {
   display: none;
   position: fixed;
   inset: 0;
-  background: rgba(0,0,0,0.92);
+  background: #0b0f0e;
   z-index: 9999;
   align-items: center;
   justify-content: center;
   padding: 16px;
-  overflow-y: auto;
+  overflow: hidden;
+  touch-action: pinch-zoom;
 }
 
 .mockup-lightbox.is-open {
   display: flex;
 }
+
+/* Hide site header while a mockup is in full view — only the image + close button show */
+body.lb-open .nav { display: none; }
 
 .mockup-lightbox__img {
   width: 100%;
@@ -942,6 +965,7 @@ h3.step-title {
   height: auto;
   border-radius: 12px;
   display: block;
+  touch-action: pinch-zoom;
 }
 
 .mockup-lightbox__close {
@@ -1184,7 +1208,7 @@ section[aria-label="How intent scoring works"] {
     animation: float-a 10s ease-in-out infinite;
   }
   .float-card-2 {
-    top: 72%;  right: 55%;
+    top: 72%;  right: 64%;
     animation: float-b 12s ease-in-out infinite;
     animation-delay: 2s;
   }
@@ -1199,7 +1223,7 @@ section[aria-label="How intent scoring works"] {
     animation-delay: 1s;
   }
   .float-card-5 {
-    top: 18%;  right: 28%;
+    top: 9%;  right: 28%;
     animation: float-b 13s ease-in-out infinite;
     animation-delay: 3s;
   }
@@ -1228,12 +1252,12 @@ section[aria-label="How intent scoring works"] {
 }
 
 @media (max-width: 767px) {
-  .float-card { opacity: 0.45; }
-  .float-card-2,
+  .float-card { opacity: 0.5; width: 175px; }
+  .float-card-1,
   .float-card-4,
   .float-card-5 { display: none; }
-  .float-card-1 { left: -10px; top: 5%; }
-  .float-card-3 { right: -10px; top: 30%; }
+  .float-card-2 { display: block; left: -25px; right: auto; top: 23%; }
+  .float-card-3 { right: -25px; left: auto; top: 34%; }
 }
 
 /* Hero mockup wrapper entrance — text is always visible; only the product screenshot animates in */
@@ -1254,24 +1278,32 @@ section[aria-label="How intent scoring works"] {
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  padding: 6px 16px;
-  background: rgba(196,89,17,0.08);
-  border: 1px solid rgba(196,89,17,0.30);
+  padding: 3px 11px;
+  background: var(--dark-bg);
+  border: 1px solid rgba(255,255,255,0.12);
   border-radius: var(--radius-pill);
   color: var(--safari-secondary);
   font-family: var(--font-primary);
-  font-size: 11px;
+  font-size: 8px;
   font-weight: 700;
   letter-spacing: 0.04em;
   margin-bottom: 20px;
-  align-self: flex-start;
+  align-self: center;
 }
 
 @media (min-width: 768px) {
   .hero__badge {
-    font-size: 13px;
+    font-size: 10px;
     letter-spacing: 0.05em;
   }
+}
+
+.hero__badge-text {
+  background: linear-gradient(100deg, #2fd4bf 0%, #f5c542 50%, #ff7a2f 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  color: transparent;
 }
 
 .hero__badge-dot {
@@ -1657,6 +1689,20 @@ section[aria-label="How intent scoring works"] {
   margin-top: 32px;
   padding-top: 32px;
   border-top: 1px solid var(--border);
+}
+
+/* Mobile: show the 9+ stat before the platform chips */
+@media (max-width: 767px) {
+  .two-col--60-40 > div:last-child { display: flex; flex-direction: column; }
+  .two-col--60-40 > div:last-child .stat-callout {
+    order: -1;
+    margin-top: 0;
+    padding-top: 0;
+    border-top: none;
+    margin-bottom: 28px;
+    padding-bottom: 24px;
+    border-bottom: 1px solid var(--border);
+  }
 }
 
 .stat-callout__number {
@@ -2364,8 +2410,8 @@ section[aria-label="How intent scoring works"] {
 
 @media (max-width: 767px) {
   .footer__columns {
-    grid-template-columns: 1fr;
-    gap: 36px;
+    grid-template-columns: 1fr 1fr;
+    gap: 36px 24px;
     padding: 36px 0 28px;
   }
 }
@@ -2577,8 +2623,8 @@ section[aria-label="How intent scoring works"] {
   background: rgba(10,10,10,0.55);
   backdrop-filter: blur(4px);
   -webkit-backdrop-filter: blur(4px);
-  display: flex; align-items: center; justify-content: center;
-  z-index: 9000; padding: 16px;
+  display: flex; align-items: flex-start; justify-content: center;
+  z-index: 9000; padding: 4vh 16px 6vh; overflow-y: auto;
   opacity: 0; visibility: hidden;
   transition: opacity 220ms ease, visibility 220ms ease;
 }
@@ -2588,7 +2634,7 @@ section[aria-label="How intent scoring works"] {
   background: #fff;
   border-radius: 20px;
   width: 100%; max-width: 640px;
-  max-height: 92vh; overflow-y: auto; overscroll-behavior: contain;
+  margin: 0 auto; overscroll-behavior: contain;
   position: relative;
   box-shadow: 0 28px 80px rgba(0,0,0,0.22), 0 4px 20px rgba(0,0,0,0.09);
   transform: translateY(20px) scale(0.97); opacity: 0;
@@ -2873,6 +2919,9 @@ section[aria-label="How intent scoring works"] {
   border-radius: 16px 0 0 16px;
   overflow: hidden;
 }
+@media (min-width: 768px) {
+  .hero__mockup-frame { transform: scale(0.97); transform-origin: top left; }
+}
 .hero__video-player {
   display: none;
   position: absolute;
@@ -2917,8 +2966,8 @@ section[aria-label="How intent scoring works"] {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%) scale(0.85);
-  width: 76px;
-  height: 76px;
+  width: 52px;
+  height: 52px;
   border-radius: 50%;
   background: #f8ecdf;
   border: 1.5px solid rgba(196,89,17,0.30);
@@ -3120,6 +3169,21 @@ section[aria-label="How intent scoring works"] {
   .cta2__art{position:relative;width:100%;min-width:0;height:240px;margin-top:36px;right:auto;}
   .cta2__content{max-width:none;}
 }
+
+/* CTA Wide · background-image banner rolled out site-wide */
+.cta-wide{position:relative;overflow:hidden;background:#0f2a21 url('../CTA background.png') center/cover no-repeat;}
+.cta-wide__inner{position:relative;z-index:2;max-width:1200px;margin:0 auto;padding:53px 24px;min-height:258px;display:flex;align-items:center;}
+.cta-wide__content{max-width:760px;}
+.cta-wide__headline{font-family:var(--font-primary);font-weight:800;font-size:clamp(22px,2.9vw,38.5px);line-height:1.15;letter-spacing:-0.02em;color:#fff;margin:0 0 38px;}
+.cta-wide__dot{color:var(--safari-secondary);}
+.cta-wide__btns{display:flex;gap:16px;flex-wrap:wrap;justify-content:center;}
+.cta-wide__btn{display:inline-flex;align-items:center;gap:14px;font-family:var(--font-primary);font-weight:700;font-size:15px;padding:16px 28px;border-radius:var(--radius-pill);text-decoration:none;cursor:pointer;border:1.5px solid transparent;transition:all 150ms ease;}
+.cta-wide__btn--primary{background:var(--safari-secondary);color:#fff;}
+.cta-wide__btn--primary:hover{background:#a8490d;}
+.cta-wide__btn--ghost{background:transparent;color:#fff;border-color:rgba(255,255,255,0.4);}
+.cta-wide__btn--ghost:hover{border-color:#fff;background:rgba(255,255,255,0.08);}
+@media (max-width:767px){.cta-wide__inner{padding:34px 22px;min-height:216px;}}
+
 /* recommended reading */
 .recread{padding:8px 0 96px;}
 .recread__head{display:flex;align-items:center;justify-content:space-between;padding:56px 0 28px;}
@@ -3206,7 +3270,7 @@ section[aria-label="How intent scoring works"] {
 }
 .nav__mobile-panel.open{ transform:none; display:flex; }
 @media (min-width:861px){ .nav__mobile-panel{ display:none !important; } }
-body.nav-locked{ overflow:hidden; }
+body.nav-locked{ overflow:hidden; position:fixed; left:0; right:0; width:100%; }
 .mnav__top{ display:flex; align-items:center; justify-content:space-between; padding:18px 22px; border-bottom:1px solid var(--border); }
 .mnav__logo img{ height:30px; width:auto; display:block; }
 .mnav__close{ background:none; border:none; color:var(--text-primary); cursor:pointer; padding:8px; margin:-8px; display:flex; }
