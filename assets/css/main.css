@@ -381,15 +381,17 @@ h3.step-title {
   align-items: center;
   text-decoration: none;
   flex-shrink: 0;
+  /* Pull the logo out to the viewport's left edge (where the hero
+     float card sits at left:16px) on screens wider than the container. */
+  margin-left: calc(min(0px, (1200px - 100vw) / 2) + 5vw);
 }
 
 /* V3: Larger logo */
 .nav__logo-img {
-  height: 60px;
+  height: 44px;
   width: auto;
   object-fit: contain;
   display: block;
-  filter: invert(1);
 }
 
 .nav__logo-text {
@@ -403,8 +405,17 @@ h3.step-title {
 .nav__links {
   display: none;
   align-items: center;
+  justify-content: flex-end;
   gap: 8px;
   list-style: none;
+}
+
+/* Vertical line between Request Early Access and Log In */
+.nav__divider {
+  width: 1px;
+  align-self: stretch;
+  margin: 8px 4px;
+  background: rgba(0, 0, 0, 0.15);
 }
 
 @media (min-width: 768px) {
@@ -521,6 +532,15 @@ h3.step-title {
   align-items: center;
   gap: 12px;
   margin-left: auto;
+}
+
+/* Push the nav buttons out to align "Log In" with the hero mock's
+   overhanging right edge (mock uses margin-right:-90px / -125px). */
+@media (min-width: 1024px) {
+  .nav__right { margin-right: -48px; }
+}
+@media (min-width: 1440px) {
+  .nav__right { margin-right: -80px; }
 }
 
 .nav__hamburger {
@@ -1242,6 +1262,7 @@ section[aria-label="How intent scoring works"] {
   .nav__login-link { display: none !important; }
   .nav__logo-img { height: auto; max-height: 40px; width: auto; max-width: 160px; filter: none; }
   .nav__right .btn--primary { display: none !important; }
+  .nav__divider { display: none !important; }
 }
 
 .nav__mobile-cta {
