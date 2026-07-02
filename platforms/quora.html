@@ -102,6 +102,7 @@
   ]
 }
   </script>
+  <link rel="stylesheet" href="/assets/demand/marquee.css">
 </head>
 <body>
 
@@ -249,6 +250,14 @@
     </div>
   </div>
 </div>
+
+<!-- Live demand marquee -->
+<section class="wandar-demand" data-platform="quora">
+  <div class="wandar-demand__head">
+    <p class="wandar-demand__eyebrow">Live demand</p>
+    <h2 class="wandar-demand__title">Real safari demand, surfacing on Quora right now.</h2>
+  </div>
+</section>
 
 <!-- CTA Banner (site-wide) -->
 <section class="cta-wide" aria-label="Call to action" id="cta-banner">
@@ -697,5 +706,7 @@ function mHandleContactIntent(){var val=mg('mc-intent').value;var ta=mg('mc-mess
 function mSubmitC(){var ok=true;ok=mSetErr('c-name',!mg('mc-name').value.trim()?'Required':'')&ok;ok=mSetErr('c-company',!mg('mc-company').value.trim()?'Required':'')&ok;ok=mSetErr('c-email',!mValidEmail(mg('mc-email').value.trim())?'Valid email required':'')&ok;ok=mSetErr('c-intent',!mg('mc-intent').value?'Please select one':'')&ok;ok=mSetErr('c-message',!mg('mc-message').value.trim()?'Required':'')&ok;if(!ok)return;var intent=mg('mc-intent').value;var s=mContactSuccess[intent]||mContactSuccess['other'];mg('mc-success-title').textContent=s.title;mg('mc-success-body').textContent=s.body;mg('mf-form-c').classList.add('hidden');mg('mf-success-c').classList.add('visible');}
 </script>
 <script src="../assets/js/nav.js"></script>
+<script src="/assets/demand/manifest.js"></script>
+<script src="/assets/demand/marquee.js" defer></script>
 </body>
 </html>
