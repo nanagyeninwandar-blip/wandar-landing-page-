@@ -1,0 +1,113 @@
+/* ══════════════════════════════════════════════════════════════
+   Wandar · Live demand marquee
+   Scoped entirely under .wandar-demand — no global styles.
+   Motion: two rows scroll opposite directions, seamless loop
+   (track = group + aria-hidden clone, translateX 0 → -50%),
+   edge gradient mask, pause on hover, reduced-motion fallback.
+   ══════════════════════════════════════════════════════════════ */
+
+.wandar-demand {
+  --w-green: #0e3a33;
+  --w-cream: #f8f0ea;
+  --w-teal:  #2f6b6b;
+  --w-clay:  #c2622f;
+  background: var(--w-cream);
+  padding: 88px 0 96px;
+  overflow: hidden;
+}
+
+/* ── Heading block ── */
+.wandar-demand__head {
+  max-width: 780px;
+  margin: 0 auto 46px;
+  padding: 0 24px;
+  text-align: center;
+}
+.wandar-demand__eyebrow {
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--w-clay);
+  margin: 0 0 14px;
+}
+.wandar-demand__title {
+  font-size: clamp(26px, 3.6vw, 40px);
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  line-height: 1.12;
+  color: var(--w-green);
+  margin: 0;
+}
+.wandar-demand__subhead {
+  font-size: 16px;
+  line-height: 1.6;
+  color: var(--w-teal);
+  margin: 14px 0 0;
+}
+
+/* ── Marquee rows ── */
+.wandar-demand .wc-row {
+  position: relative;
+  overflow: hidden;
+  padding: 14px 0;
+  -webkit-mask-image: linear-gradient(90deg, transparent 0, #000 8%, #000 92%, transparent 100%);
+          mask-image: linear-gradient(90deg, transparent 0, #000 8%, #000 92%, transparent 100%);
+}
+.wandar-demand .wc-track {
+  display: flex;
+  width: max-content;
+  animation: wc-scroll 46s linear infinite;
+  will-change: transform;
+}
+.wandar-demand .wc-row:hover .wc-track { animation-play-state: paused; }
+.wandar-demand .wc-row--reverse .wc-track { animation-direction: reverse; }
+
+/* One group = the repeated card set. Track holds the group + its clone;
+   trailing padding equals the inter-card gap so -50% lands seamlessly. */
+.wandar-demand .wc-group {
+  display: flex;
+  gap: 22px;
+  padding-right: 22px;
+  flex: none;
+}
+
+@keyframes wc-scroll {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+
+/* ── Card: holds a supplied image, nothing else ── */
+.wandar-demand .wc-card {
+  flex: none;
+  width: 340px;
+  height: auto;
+  margin: 0;
+  background: #fff;
+  border: 1px solid #ece3da;
+  border-radius: 16px;
+  box-shadow: 0 10px 28px rgba(14, 58, 51, 0.08);
+  overflow: hidden;
+}
+.wandar-demand .wc-card img {
+  display: block;
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+}
+@media (max-width: 560px) {
+  .wandar-demand .wc-card { width: 290px; }
+}
+
+/* ── Reduced motion: static, horizontally swipeable, clones hidden ── */
+@media (prefers-reduced-motion: reduce) {
+  .wandar-demand .wc-track { animation: none; width: auto; }
+  .wandar-demand .wc-row {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    -webkit-mask-image: none;
+            mask-image: none;
+  }
+  .wandar-demand .wc-group[aria-hidden="true"] { display: none; }
+  .wandar-demand .wc-card[data-dup] { display: none; }
+}
