@@ -3328,6 +3328,7 @@ body.nav-locked{ overflow:hidden; position:fixed; left:0; right:0; width:100%; }
 .opres__bookL-dash{width:34px;height:3px;background:var(--safari-secondary);border-radius:2px;margin:7% 0 9%;}
 .opres__bookL-brand{display:flex;align-items:center;gap:7px;color:#fff;font-size:clamp(11px,1.2vw,15px);font-weight:800;letter-spacing:.01em;}
 .opres__bookL-brand svg{width:1.6em;height:1.6em;}
+.opres__bookL-brand img{height:clamp(15px,1.8vw,22px);width:auto;display:block;}
 .opres__bookL-art{position:absolute;top:-12%;right:-10%;width:58%;height:130%;pointer-events:none;}
 .opres__bookL-art .c{position:absolute;border-radius:50%;overflow:hidden;}
 .opres__bookL-art .c svg{width:100%;height:100%;display:block;}
@@ -3361,6 +3362,7 @@ body.nav-locked{ overflow:hidden; position:fixed; left:0; right:0; width:100%; }
 .opres__thumb--webinar .opres__art i:nth-child(2){width:36%;height:72%;top:-12%;right:30%;background:linear-gradient(160deg,#f6e3a8,#b8860b 70%);clip-path:polygon(0 30%,72% 0,100% 64%,30% 100%);opacity:.92;}
 .opres__book-brand{position:relative;display:flex;align-items:center;gap:5px;font-size:9px;font-weight:700;letter-spacing:.05em;color:rgba(255,255,255,0.9);}
 .opres__book-brand svg{width:12px;height:12px;}
+.opres__book-brand img{height:11px;width:auto;display:block;}
 .opres__mini-label{font-size:11.5px;font-weight:700;letter-spacing:.09em;text-transform:uppercase;color:var(--text-muted);margin:0 0 6px;display:flex;align-items:center;gap:8px;}
 .opres__mini-title{font-size:17.5px;font-weight:700;color:var(--text-primary);letter-spacing:-0.01em;line-height:1.3;margin:0 0 6px;}
 .opres__mini-title:hover{text-decoration:underline;}
