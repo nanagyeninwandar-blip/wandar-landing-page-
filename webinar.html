@@ -31,34 +31,28 @@
 
     /* ── HERO ── */
     .wb-hero {
-      background: var(--dark-bg); color: var(--white);
+      background: #135c5c url('assets/Webinar Hero.png') center/cover no-repeat; color: var(--white);
       padding: 80px 24px 68px; text-align: center;
       position: relative; overflow: hidden;
-    }
-    .wb-hero::before {
-      content: '';
-      position: absolute; inset: 0;
-      background: radial-gradient(ellipse 72% 50% at 50% 0%, rgba(26,115,115,.2) 0%, transparent 68%);
-      pointer-events: none;
     }
     .wb-hero-inner { max-width: 780px; margin: 0 auto; position: relative; }
 
     .wb-live-badge {
       display: inline-flex; align-items: center; gap: 7px;
-      background: rgba(196,89,17,.14); border: 1px solid rgba(196,89,17,.38);
+      background: transparent; border: 1px solid rgba(245,165,110,.55);
       color: #f5a56e;
       font-size: .72rem; font-weight: 700; letter-spacing: .13em; text-transform: uppercase;
-      padding: 5px 14px; border-radius: var(--radius-pill); margin-bottom: 22px;
+      padding: 6px 16px; border-radius: var(--radius-pill); margin-bottom: 22px;
     }
     .wb-live-dot {
-      width: 7px; height: 7px; background: #ff4444; border-radius: 50%;
+      width: 7px; height: 7px; background: #ea7f2e; border-radius: 50%;
       animation: wbPulse 1.4s ease-in-out infinite;
     }
     @keyframes wbPulse { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:.35;transform:scale(.7)} }
 
     .wb-series-line {
       font-size: .78rem; font-weight: 700; letter-spacing: .13em; text-transform: uppercase;
-      color: var(--safari-primary); margin-bottom: 20px;
+      color: #d9a441; margin-bottom: 20px;
     }
     .wb-hero h1 {
       font-size: clamp(2rem, 5vw, 3.1rem);
@@ -66,33 +60,34 @@
     }
     .wb-hero h1 em { font-style: normal; color: var(--safari-secondary); }
     .wb-hero-sub {
-      font-size: 1.07rem; color: rgba(255,255,255,.65);
+      font-size: 1.07rem; color: rgba(255,255,255,.8);
       max-width: 620px; margin: 0 auto 40px; line-height: 1.65;
     }
 
     /* ── COUNTDOWN ── */
     .wb-cd-wrap {
-      background: rgba(255,255,255,.05); border: 1px solid rgba(255,255,255,.09);
+      background: rgba(255,255,255,.08); border: 1px solid rgba(255,255,255,.14);
       border-radius: var(--radius-lg);
+      backdrop-filter: blur(6px); -webkit-backdrop-filter: blur(6px);
       padding: 26px 36px;
       display: inline-flex; flex-direction: column; align-items: center; gap: 10px;
       margin-bottom: 36px;
     }
     .wb-cd-label {
       font-size: .7rem; font-weight: 700; letter-spacing: .16em; text-transform: uppercase;
-      color: rgba(255,255,255,.38);
+      color: rgba(255,255,255,.75);
     }
     .wb-cd-digits { display: flex; align-items: center; gap: 6px; }
     .wb-cd-unit { display: flex; flex-direction: column; align-items: center; min-width: 68px; }
     .wb-cd-num {
       font-size: clamp(2rem, 5vw, 2.8rem); font-weight: 800;
       color: var(--white); font-variant-numeric: tabular-nums; line-height: 1;
-      background: rgba(26,115,115,.22); border: 1px solid rgba(26,115,115,.42);
+      background: rgba(255,255,255,.09); border: 1px solid rgba(255,255,255,.16);
       border-radius: var(--radius-md); padding: 10px 14px; min-width: 74px; text-align: center;
     }
     .wb-cd-name {
       font-size: .62rem; font-weight: 700; letter-spacing: .12em; text-transform: uppercase;
-      color: rgba(255,255,255,.35); margin-top: 7px;
+      color: rgba(255,255,255,.6); margin-top: 7px;
     }
     .wb-cd-sep { font-size: 2.2rem; font-weight: 800; color: rgba(255,255,255,.22); margin-bottom: 18px; line-height: 1; }
 

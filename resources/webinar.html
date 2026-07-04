@@ -34,13 +34,13 @@
 
     .wb-live-badge {
       display: inline-flex; align-items: center; gap: 7px;
-      background: rgba(196,89,17,.14); border: 1px solid rgba(196,89,17,.38);
+      background: transparent; border: 1px solid rgba(245,165,110,.55);
       color: #f5a56e;
       font-size: 11px; font-weight: 700; letter-spacing: .13em; text-transform: uppercase;
-      padding: 5px 14px; border-radius: var(--radius-pill); margin-bottom: 6px;
+      padding: 6px 16px; border-radius: var(--radius-pill); margin-bottom: 6px;
     }
     .wb-live-dot {
-      width: 7px; height: 7px; background: #ff4444; border-radius: 50%;
+      width: 7px; height: 7px; background: #ea7f2e; border-radius: 50%;
       animation: wbPulse 1.4s ease-in-out infinite;
     }
     @keyframes wbPulse { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:.35;transform:scale(.7)} }
@@ -55,7 +55,7 @@
     }
     .wb-hero h1 em { font-style: normal; color: var(--safari-secondary); }
     .wb-hero-sub {
-      font-size: 1.07rem; color: rgba(255,255,255,.65);
+      font-size: 1.07rem; color: rgba(255,255,255,.82);
       max-width: 600px; margin: 0 auto 16px; line-height: 1.65;
     }
 
@@ -68,7 +68,7 @@
     }
     .wb-cd-label {
       font-size: 11px; font-weight: 700; letter-spacing: .16em; text-transform: uppercase;
-      color: rgba(255,255,255,.38);
+      color: rgba(255,255,255,.75);
     }
     .wb-cd-digits { display: flex; align-items: center; gap: 6px; }
     .wb-cd-unit { display: flex; flex-direction: column; align-items: center; min-width: 68px; }
@@ -80,7 +80,7 @@
     }
     .wb-cd-name {
       font-size: 10px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase;
-      color: rgba(255,255,255,.35); margin-top: 7px;
+      color: rgba(255,255,255,.6); margin-top: 7px;
     }
     .wb-cd-sep { font-size: 2.2rem; font-weight: 800; color: rgba(255,255,255,.22); margin-bottom: 18px; line-height: 1; }
 
@@ -610,8 +610,8 @@
     .wb-hero-inner { padding-top: 40px; padding-bottom: 56px; z-index: 2; }
 
     .wb-live-badge {
-      background: rgba(196,89,17,.18); backdrop-filter: blur(8px);
-      box-shadow: 0 2px 14px rgba(196,89,17,.22);
+      background: transparent; backdrop-filter: blur(8px);
+      box-shadow: none;
     }
 
     /* Glass countdown */
@@ -732,15 +732,10 @@
       .wb-trust { flex-direction: column; gap: 12px; }
     }
   
-    /* ═══ Hero → teal gradient (matches Blog/Guides banner) ═══ */
-    .wb-hero{ background: linear-gradient(115deg,#06302f 0%,#0e3b3b 30%,#1a7373 68%,#2aa5a5 100%); }
+    /* ═══ Hero → Webinar Hero artwork ═══ */
+    .wb-hero{ background: #135c5c url('../assets/Webinar Hero.png') center/cover no-repeat; }
     .wb-hero-media{ display:none; }
-    .wb-hero::before{
-      background:
-        radial-gradient(ellipse 55% 62% at 82% 20%, rgba(150,235,220,0.45), transparent 60%),
-        radial-gradient(circle at 95% 6%, rgba(196,89,17,0.30), transparent 45%);
-      opacity:1;
-    }
+    .wb-hero::before{ background: none; }
     /* ═══ Who-this-is-for → light section (remove dark/polygonal bg) ═══ */
     .wb-who{ background: var(--off-white); }
     .wb-who::after{ display:none; }
@@ -814,7 +809,7 @@
                 <div class="mgroup__label">Learn</div>
                 <a class="mitem" href="../blog/" role="menuitem"><span class="mitem__ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg></span><span><span class="mitem__t">Blog</span><span class="mitem__d">Lead gen, social listening &amp; booking insights</span></span></a>
                 <a class="mitem" href="../guides/" role="menuitem"><span class="mitem__ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg></span><span><span class="mitem__t">Guides</span><span class="mitem__d">In-depth playbooks for operators</span></span></a>
-                <a class="mitem" href="../resources/webinar.html" role="menuitem"><span class="mitem__ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="23 7 16 12 23 17 23 7"/><rect x="1" y="5" width="15" height="14" rx="2"/></svg></span><span><span class="mitem__t">Webinar <span class="badge badge--free">Free</span></span><span class="mitem__d">Practical AI Use Across Safari Operations</span></span></a>
+                <a class="mitem" href="../resources/webinar.html" role="menuitem"><span class="mitem__ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="23 7 16 12 23 17 23 7"/><rect x="1" y="5" width="15" height="14" rx="2"/></svg></span><span><span class="mitem__t">Webinar</span><span class="mitem__d">Practical AI Use Across Safari Operations</span></span></a>
               </div>
               <div class="mgroup">
                 <div class="mgroup__label">Free Tools</div>
@@ -897,7 +892,7 @@
     <div class="wb-hero-glow wb-hero-glow--b"></div>
   </div>
   <div class="wb-hero-inner">
-    <div class="wb-live-badge"><span class="wb-live-dot"></span>Free Webinar Series</div>
+    <div class="wb-live-badge"><span class="wb-live-dot"></span>Webinar Series</div>
     <p class="wb-series-line">4 Sessions &nbsp;·&nbsp; Safari Operators &nbsp;·&nbsp; No Experience Required</p>
     <h1>Practical <em>AI Use</em> Across<br/>Safari Operations</h1>
     <p class="wb-hero-sub">Save hours on admin. Respond to enquiries faster. Spend more time on the traveler conversations that drive revenue.</p>
