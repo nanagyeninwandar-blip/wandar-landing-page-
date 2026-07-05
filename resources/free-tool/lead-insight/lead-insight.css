@@ -183,8 +183,10 @@
 .li-why__callout { display: flex; gap: 8px; align-items: flex-start; margin-top: 10px; font-size: 11.5px; font-weight: 600; color: #9a3412; background: var(--secondary-light); border-radius: var(--radius-sm); padding: 8px 10px; line-height: 1.45; }
 .li-why__callout svg { width: 13px; height: 13px; flex: none; margin-top: 1px; color: var(--safari-secondary); }
 
-/* White stripe separating the webinar strip from the footer. */
-.li-stripe { height: 72px; background: var(--white); }
+/* Cream stripe separating the webinar strip from the footer, matching
+   the featured-resources section so the tone runs through the page. */
+.li-stripe { height: 144px; background: var(--off-white); }
+.opres { background: var(--off-white); }
 
 /* ---------- webinar strip ---------- */
 .li-webinar { background: linear-gradient(115deg, #06302f 0%, #0e3b3b 30%, #1a7373 70%, #2aa5a5 100%); position: relative; overflow: hidden; padding: 72px 0; }
