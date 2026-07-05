@@ -38,24 +38,22 @@ export const SOURCE_LABELS = {
   marketplace: "Marketplace lead",
 };
 
-// One tip per loading stage. Safari operator economics, not filler.
 export const LOADING_STAGES = [
-  {
-    label: "Reading the enquiry",
-    tip: "A proper safari quote takes hours of route, lodge, and flight work. Strong operators triage before they build.",
-  },
-  {
-    label: "Detecting the five signals",
-    tip: "Five signals decide whether a lead is quote-ready: destination, dates, budget, group, and urgency.",
-  },
-  {
-    label: "Classifying signal strength",
-    tip: "'Luxury' spans $500 to $3,000 a night. A budget number beats any adjective, even a rough one.",
-  },
-  {
-    label: "Scoring intent",
-    tip: "Never send a full itinerary to an unqualified lead. One good question filters dreamers from bookers.",
-  },
+  { label: "Reading the enquiry" },
+  { label: "Detecting the five signals" },
+  { label: "Classifying signal strength" },
+  { label: "Scoring intent" },
+];
+
+// Wandar's worldview. One line per loading stage, drawn at random each run.
+export const WORLDVIEW_TIPS = [
+  "Safari operators do not just need more leads. They need stronger lead opportunities earlier.",
+  "A quote request is not always a strong lead.",
+  "A social mention is not always demand.",
+  "A traveler asking detailed questions in public may reveal more intent than a weak form submission.",
+  "Trust often starts before the traveler sends an enquiry.",
+  "Operators who only wait for inbound quote requests may enter the buying journey too late.",
+  "Better timing, better context, and stronger intent signals can help operators respond smarter and build trust earlier.",
 ];
 
 // Missing-information copy: short, mockup-style phrases.

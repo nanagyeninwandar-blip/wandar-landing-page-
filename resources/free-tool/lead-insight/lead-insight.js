@@ -11,6 +11,7 @@ import { score, ALL_SIGNALS } from "./scoring.js";
 import {
   buildResultCopy,
   LOADING_STAGES,
+  WORLDVIEW_TIPS,
   SIGNAL_LABELS,
   STATE_LABELS,
   SOURCE_LABELS,
@@ -91,6 +92,17 @@ function showError(code) {
 
 /* ---------- loading view ---------- */
 
+let runTips = WORLDVIEW_TIPS.slice(0, LOADING_STAGES.length);
+
+function shuffledTips() {
+  const pool = [...WORLDVIEW_TIPS];
+  for (let i = pool.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [pool[i], pool[j]] = [pool[j], pool[i]];
+  }
+  return pool.slice(0, LOADING_STAGES.length);
+}
+
 function setStage(index) {
   const steps = document.querySelectorAll(".li-step");
   steps.forEach((step, i) => {
@@ -98,11 +110,12 @@ function setStage(index) {
     step.classList.toggle("li-step--active", i === index);
   });
   $("li-stage-label").textContent = LOADING_STAGES[index].label;
-  $("li-tip-text").textContent = LOADING_STAGES[index].tip;
+  $("li-tip-text").textContent = runTips[index];
   $("li-rail-fill").style.width = `${(index / (LOADING_STAGES.length - 1)) * 100}%`;
 }
 
 function startLoading() {
+  runTips = shuffledTips(); // fresh random draw every run, no repeats within one
   loading.classList.add("li-loading--active");
   document.body.style.overflow = "hidden";
   let stage = 0;
