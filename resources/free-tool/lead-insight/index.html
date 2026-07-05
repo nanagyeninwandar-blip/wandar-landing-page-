@@ -1,0 +1,706 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Free Lead Insight Generator for Safari Operators | Wandar</title>
+  <meta name="description" content="Paste a traveller enquiry and instantly see whether to quote, qualify, or follow up — with the intent score, missing details, and ready-to-send questions. Free, no signup." />
+  <meta name="robots" content="index, follow" />
+  <meta property="og:title" content="Free Lead Insight Generator for Safari Operators | Wandar" />
+  <meta property="og:description" content="Know whether a safari enquiry is worth quoting before you build an itinerary. Free, instant, no signup." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://www.getwandar.com/resources/free-tool/lead-insight/" />
+  <meta property="og:image" content="https://www.getwandar.com/assets/og-card.jpg" />
+  <meta property="og:site_name" content="Wandar" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Free Lead Insight Generator for Safari Operators | Wandar" />
+  <meta name="twitter:description" content="Know whether a safari enquiry is worth quoting before you build an itinerary. Free, instant, no signup." />
+  <meta name="twitter:image" content="https://www.getwandar.com/assets/og-card.jpg" />
+  <link rel="canonical" href="https://www.getwandar.com/resources/free-tool/lead-insight/" />
+  <link rel="icon" type="image/svg+xml" href="../../../assets/favicon.svg" />
+  <link rel="icon" href="../../../assets/wandar-logo-blkbg.jpg" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&family=Righteous&display=swap" />
+  <link rel="stylesheet" href="../../../assets/css/main.css" />
+  <link rel="stylesheet" href="lead-insight.css" />
+  <script src="../../../assets/js/modals.js"></script>
+  <script src="../../../assets/js/nav.js"></script>
+</head>
+<body>
+
+<header class="nav scrolled" id="nav" role="banner">
+  <div class="container">
+    <div class="nav__inner nav-relative">
+      <a href="../../../index.html" class="nav__logo" aria-label="Wandar home">
+        <picture>
+          <source media="(max-width: 767px)" srcset="../../../assets/banner-nav-320.png" />
+          <img src="../../../assets/banner-nav-320.png" alt="Wandar" class="nav__logo-img" width="320" height="80" />
+        </picture>
+      </a>
+      <nav aria-label="Main navigation">
+        <ul class="nav__links">
+          <li><a href="../../../index.html" class="nav__link">Home</a></li>
+          <li><a href="../../../index.html#why-wandar" class="nav__link">Why Wandar</a></li>
+          <li><a href="../../../index.html#how-it-works" class="nav__link">How It Works</a></li>
+          <li><a href="../../../pricing.html" class="nav__link">Pricing</a></li>
+          <li class="nav-relative">
+            <button class="nav__link nav__link--platforms" id="platforms-btn" aria-expanded="false" aria-haspopup="true">
+              Platforms <span class="chevron" aria-hidden="true">▾</span>
+            </button>
+            <div class="platforms-dropdown mega" id="platforms-dropdown" role="menu">
+              <div class="mgroup">
+                <div class="mgroup__label">Forum</div>
+                <a class="pchip" href="../../../platforms/reddit.html" role="menuitem"><span class="pchip__ic" style="background:#FF4500"><svg viewBox="0 0 24 24" fill="#fff"><path d="M12 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0zm5 4.7c.7 0 1.3.6 1.3 1.3a1.3 1.3 0 0 1-2.5.1l-2.6-.6-.8 3.8c1.8.1 3.5.6 4.7 1.5.3-.3.7-.5 1.2-.5 1 0 1.8.8 1.8 1.8 0 .7-.4 1.3-1 1.6 0 .2 0 .4 0 .5 0 2.7-3.1 4.9-7 4.9s-7-2.2-7-4.9c0-.2 0-.4 0-.5a1.7 1.7 0 0 1 .8-3.2c.5 0 .9.2 1.2.5 1.2-.9 2.9-1.4 4.7-1.5l.9-4.2 2.9.6a1.2 1.2 0 0 1 1.1-.7z"/></svg></span><span class="pchip__t">Reddit</span></a>
+                <a class="pchip" href="../../../platforms/quora.html" role="menuitem"><span class="pchip__ic" style="background:#B92B27"><svg viewBox="0 0 24 24" fill="#fff"><path d="M12 0C5.4 0 0 5.4 0 12s5.4 12 12 12 12-5.4 12-12S18.6 0 12 0zm0 4.5c2.9 0 5 2.3 5 5.6 0 1.3-.4 2.5-1 3.4l.7.7-1 1-.7-.7c-.9.6-2 1-3.2 1-2.9 0-5-2.3-5-5.6S9.1 4.5 12 4.5z"/></svg></span><span class="pchip__t">Quora</span></a>
+                <a class="pchip" href="../../../platforms/tripadvisor.html" role="menuitem"><span class="pchip__ic" style="background:#34E0A1"><svg viewBox="0 0 24 24"><circle cx="6.5" cy="12" r="5.6" fill="#fff"/><circle cx="6.5" cy="12" r="2.5" fill="#34E0A1"/><circle cx="17.5" cy="12" r="5.6" fill="#fff"/><circle cx="17.5" cy="12" r="2.5" fill="#34E0A1"/></svg></span><span class="pchip__t">TripAdvisor</span></a>
+              </div>
+              <div class="mgroup">
+                <div class="mgroup__label">Social</div>
+                <a class="pchip" href="../../../platforms/facebook.html" role="menuitem"><span class="pchip__ic" style="background:#1877F2"><svg viewBox="0 0 24 24" fill="#fff"><path d="M24 12.07C24 5.44 18.63.07 12 .07S0 5.44 0 12.07c0 6 4.39 10.95 10.13 11.85v-8.38H7.08v-3.47h3.05V9.43c0-3 1.79-4.67 4.53-4.67 1.31 0 2.69.24 2.69.24v2.95h-1.52c-1.49 0-1.96.93-1.96 1.87v2.25h3.33l-.53 3.47h-2.8v8.38C19.61 23.02 24 18.07 24 12.07z"/></svg></span><span class="pchip__t">Facebook</span></a>
+                <a class="pchip" href="../../../platforms/x-twitter.html" role="menuitem"><span class="pchip__ic" style="background:#000"><svg viewBox="0 0 24 24" fill="#fff"><path d="M18.24 2.25h3.31l-7.23 8.26 8.5 11.24H16.17l-5.21-6.82L4.99 21.75H1.68l7.73-8.84L1.25 2.25H8.08l4.71 6.23zm-1.16 17.52h1.83L7.08 4.13H5.12z"/></svg></span><span class="pchip__t">X (Twitter)</span></a>
+                <a class="pchip" href="../../../platforms/instagram.html" role="menuitem"><span class="pchip__ic" style="background:linear-gradient(45deg,#f09433,#dc2743,#bc1888)"><svg viewBox="0 0 24 24" fill="#fff"><path d="M12 2.16c3.2 0 3.58.01 4.85.07 3.25.15 4.77 1.69 4.92 4.92.06 1.27.07 1.65.07 4.85s-.01 3.58-.07 4.85c-.15 3.23-1.66 4.77-4.92 4.92-1.27.06-1.65.07-4.85.07s-3.58-.01-4.85-.07c-3.26-.15-4.77-1.7-4.92-4.92-.06-1.27-.07-1.65-.07-4.85s.01-3.58.07-4.85C2.38 3.93 3.9 2.38 7.15 2.23 8.42 2.17 8.8 2.16 12 2.16zm0 3.68A6.16 6.16 0 1 0 18.16 12 6.16 6.16 0 0 0 12 5.84zm0 10.16A4 4 0 1 1 16 12a4 4 0 0 1-4 4zm6.4-11.85a1.44 1.44 0 1 0 1.44 1.44 1.44 1.44 0 0 0-1.44-1.44z"/></svg></span><span class="pchip__t">Instagram</span></a>
+                <a class="pchip" href="../../../platforms/bluesky.html" role="menuitem"><span class="pchip__ic" style="background:#0085FF"><svg viewBox="0 0 24 24" fill="#fff"><path d="M12 10.8c-1.09-2.11-4.05-6.05-6.8-8C2.57.94 1.56 1.27.9 1.57.14 1.9 0 3.08 0 3.77c0 .69.38 5.65.62 6.48.82 2.74 3.71 3.66 6.38 3.36-3.91.58-7.39 2-2.83 7.08 5.01 5.19 6.87-1.11 7.83-4.31.95 3.2 2.05 9.27 7.73 4.31 4.27-4.31 1.17-6.5-2.74-7.08 2.67.3 5.57-.62 6.38-3.36.25-.83.62-5.79.62-6.48 0-.69-.14-1.86-.9-2.2-.66-.3-1.66-.62-4.3 1.24-2.75 1.95-5.71 5.89-6.8 8z"/></svg></span><span class="pchip__t">Bluesky</span></a>
+                <a class="pchip" href="../../../platforms/pinterest.html" role="menuitem"><span class="pchip__ic" style="background:#E60023"><svg viewBox="0 0 24 24" fill="#fff"><path d="M12 0C5.4 0 0 5.4 0 12c0 5.1 3.2 9.4 7.6 11.2-.1-.95-.2-2.4 0-3.44l1.4-5.96s-.36-.72-.36-1.78c0-1.67.97-2.91 2.17-2.91 1.02 0 1.52.77 1.52 1.69 0 1.03-.66 2.57-.99 4-.28 1.19.6 2.17 1.78 2.17 2.13 0 3.77-2.25 3.77-5.5 0-2.87-2.06-4.88-5-4.88-3.42 0-5.42 2.56-5.42 5.2 0 1.04.4 2.14.9 2.74.1.12.1.22.08.35l-.33 1.36c-.05.22-.17.27-.4.16-1.5-.7-2.44-2.89-2.44-4.65 0-3.78 2.75-7.26 7.93-7.26 4.16 0 7.4 2.97 7.4 6.93 0 4.14-2.61 7.46-6.23 7.46-1.21 0-2.36-.63-2.75-1.38l-.75 2.85c-.27 1.04-1 2.35-1.49 3.15C9.57 23.8 10.76 24 12 24c6.6 0 12-5.4 12-12S18.6 0 12 0z"/></svg></span><span class="pchip__t">Pinterest</span></a>
+                <a class="pchip" href="../../../platforms/tiktok.html" role="menuitem"><span class="pchip__ic" style="background:#000"><svg viewBox="0 0 24 24" fill="#fff"><path d="M12.53.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.99-.32-2.15-.23-3.02.37-.63.41-1.11 1.04-1.36 1.75-.21.51-.15 1.07-.14 1.61.24 1.64 1.82 3.02 3.5 2.87 1.12-.01 2.19-.66 2.77-1.61.19-.33.4-.67.41-1.06.1-1.79.06-3.57.07-5.36.01-4.03-.01-8.05.02-12.07z"/></svg></span><span class="pchip__t">TikTok</span></a>
+              </div>
+              <div class="mfeat mfeat--cta">
+                <div class="mfeat__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="4.5"/><circle cx="12" cy="12" r="1" fill="currentColor" stroke="none"/></svg></div>
+                <span class="mfeat__tag">Get Early Access</span>
+                <div class="mfeat__title" style="font-size:16px;">Catch high-intent travelers across every platform.</div>
+                <a href="#" onclick="openModal('early-access');return false;" class="mfeat__btn">Request Early Access</a>
+              </div>
+            </div>
+          <li class="nav-relative">
+            <button class="nav__link nav__link--platforms" id="resources-btn" aria-expanded="false" aria-haspopup="true">Resources <svg class="nav__chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></button>
+            <div class="resources-dropdown mega" id="resources-dropdown" role="menu">
+              <div class="mgroup">
+                <div class="mgroup__label">Learn</div>
+                <a class="mitem" href="../../../blog/" role="menuitem"><span class="mitem__ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg></span><span><span class="mitem__t">Blog</span><span class="mitem__d">Lead gen, social listening &amp; booking insights</span></span></a>
+                <a class="mitem" href="../../../guides/" role="menuitem"><span class="mitem__ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg></span><span><span class="mitem__t">Guides</span><span class="mitem__d">In-depth playbooks for operators</span></span></a>
+                <a class="mitem" href="../webinar.html" role="menuitem"><span class="mitem__ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="23 7 16 12 23 17 23 7"/><rect x="1" y="5" width="15" height="14" rx="2"/></svg></span><span><span class="mitem__t">Webinar</span><span class="mitem__d">Practical AI Use Across Safari Operations</span></span></a>
+              </div>
+              <div class="mgroup">
+                <div class="mgroup__label">Free Tools</div>
+                <a class="mitem" href="./" role="menuitem" aria-current="page"><span class="mitem__ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3a9 9 0 1 0 9 9"/><path d="M21 3l-9 9"/><path d="M16 3h5v5"/></svg></span><span><span class="mitem__t">Lead Insight Generator</span><span class="mitem__d">Score your inbound safari leads</span></span></a>
+              </div>
+              <a class="mfeat" href="../webinar.html" role="menuitem">
+                <span class="mfeat__tag">Upcoming Webinar</span>
+                <div class="mfeat__thumb mfeat__thumb--img"><img class="mfeat__img" src="../../../assets/session-1-thumb.jpg" alt="" loading="lazy" width="640" height="427" /></div>
+                <div class="mfeat__title">Practical AI Use Across Safari Operations</div>
+                <span class="mfeat__link">Save your seat →</span>
+              </a>
+            </div>
+          </li>
+          </li>
+        </ul>
+      </nav>
+      <div class="nav__right">
+        <span class="nav__divider" aria-hidden="true"></span>
+        <a href="#" onclick="openModal('early-access');return false;" class="btn btn--primary nav__cta-btn" id="nav-cta-desktop">Request Access</a>
+        <a href="#" class="nav__login-link" id="nav-login-desktop">Log In</a>
+        <button class="nav__hamburger" id="hamburger" aria-label="Open menu" aria-expanded="false">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+      <div class="nav__mobile-panel" id="mobile-panel" aria-label="Mobile navigation">
+        <div class="mnav__top">
+          <a class="mnav__logo" href="../../../index.html" aria-label="Wandar home"><picture><source media="(max-width:767px)" srcset="../../../assets/banner-nav-320.png" /><img src="../../../assets/wandar-logo-128.png" alt="Wandar" width="128" height="128" /></picture></a>
+          <button class="mnav__close" aria-label="Close menu"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"/></svg></button>
+        </div>
+        <a class="mnav__item" href="../../../pricing.html">Pricing</a>
+        <div class="mnav__group">
+          <button class="mnav__acc" aria-expanded="false">Platforms <svg class="mnav__chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></button>
+          <div class="mnav__sub">
+            <span class="mnav__subhead">Forum</span>
+                <a href="../../../platforms/reddit.html">Reddit</a>
+                <a href="../../../platforms/quora.html">Quora</a>
+                <a href="../../../platforms/tripadvisor.html">TripAdvisor</a>
+            <span class="mnav__subhead">Social</span>
+                <a href="../../../platforms/facebook.html">Facebook</a>
+                <a href="../../../platforms/x-twitter.html">X (Twitter)</a>
+                <a href="../../../platforms/instagram.html">Instagram</a>
+                <a href="../../../platforms/bluesky.html">Bluesky</a>
+                <a href="../../../platforms/pinterest.html">Pinterest</a>
+                <a href="../../../platforms/tiktok.html">TikTok</a>
+          </div>
+        </div>
+        <div class="mnav__group">
+          <button class="mnav__acc" aria-expanded="false">Resources <svg class="mnav__chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></button>
+          <div class="mnav__sub">
+            <a href="../../../blog/">Blog</a>
+            <a href="../../../guides/">Guides</a>
+            <a href="../webinar.html">Webinar</a>
+            <a href="./" aria-current="page">Lead Insight Generator</a>
+          </div>
+        </div>
+        <a class="mnav__webinar" href="../webinar.html">
+          <div class="mnav__webinar-thumb"><img class="mnav__webinar-img" src="../../../assets/session-1-thumb.jpg" alt="" loading="lazy" width="640" height="427" /></div>
+          <div class="mnav__webinar-body">
+            <span class="mnav__webinar-tag">Upcoming Webinar</span>
+            <span class="mnav__webinar-title">Practical AI Use Across Safari Operations</span>
+            <span class="mnav__webinar-link">Save your seat →</span>
+          </div>
+        </a>
+        <div class="mnav__foot">
+          <a class="mnav__primary" href="#" onclick="openModal('early-access');return false;">Request Early Access</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<div class="li-crumbs">
+  <div class="container">
+    <div class="li-crumbs__row">
+      <a href="../../../index.html">Home</a><span aria-hidden="true">/</span>
+      <span>Resources</span><span aria-hidden="true">/</span>
+      <span>Free Tools</span><span aria-hidden="true">/</span>
+      <span class="li-crumbs__here">Lead Insight Generator</span>
+    </div>
+  </div>
+</div>
+
+<!-- ============================== INPUT VIEW ============================== -->
+<main id="li-view-input" class="li-view li-view--active">
+  <section class="li-hero">
+    <div class="container">
+      <div class="li-hero__grid">
+        <div>
+          <div class="li-eyebrow">Free Tool</div>
+          <div class="li-hero__kicker">Lead Insight Generator</div>
+          <h1 class="li-hero__title">Know whether to quote, qualify, or follow up before you build an itinerary.</h1>
+          <p class="li-hero__sub">Paste a traveller enquiry and get the key trip details, missing information, intent level, and recommended next step — before you spend hours building an itinerary.</p>
+          <div class="li-badges">
+            <div class="li-badge">
+              <span class="li-badge__ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="M9 12l2 2 4-4"/></svg></span>
+              <span><span class="li-badge__t">100% free to use</span><br /><span class="li-badge__d">No signup required</span></span>
+            </div>
+            <div class="li-badge">
+              <span class="li-badge__ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg></span>
+              <span><span class="li-badge__t">We don't store your enquiry</span><br /><span class="li-badge__d">Analysed and discarded</span></span>
+            </div>
+          </div>
+        </div>
+        <div class="li-card">
+          <div class="li-card__head">
+            <span class="li-card__head-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg></span>
+            <span><span class="li-card__head-t">Paste the traveller enquiry</span><br /><span class="li-card__head-d">Add the message exactly as it arrived — we'll handle the rest.</span></span>
+          </div>
+          <div class="li-ta-wrap">
+            <label for="li-enquiry" class="sr-only">Traveller enquiry</label>
+            <textarea id="li-enquiry" class="li-ta" maxlength="5000" placeholder="Paste the traveller's message here…"></textarea>
+            <span class="li-count" id="li-count">0 / 5000</span>
+          </div>
+          <div class="li-src">
+            <div class="li-src__label">Enquiry source <span>(optional)</span></div>
+            <div class="li-chips">
+              <button type="button" class="li-chip" data-source="email"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M2 7l10 7 10-7"/></svg>Email</button>
+              <button type="button" class="li-chip" data-source="whatsapp"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413z"/></svg>WhatsApp</button>
+              <button type="button" class="li-chip" data-source="website"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>Website enquiry</button>
+              <button type="button" class="li-chip" data-source="marketplace"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><path d="M3 6h18M16 10a4 4 0 0 1-8 0"/></svg>Marketplace lead</button>
+            </div>
+          </div>
+          <button type="button" class="li-submit" id="li-submit" disabled>
+            <svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2l1.9 5.7L19.6 9.6l-5.7 1.9L12 17.2l-1.9-5.7L4.4 9.6l5.7-1.9zM19 15l.9 2.6L22.5 18.5l-2.6.9L19 22l-.9-2.6-2.6-.9 2.6-.9zM5 15l.7 2 2 .7-2 .7L5 20.4l-.7-2-2-.7 2-.7z"/></svg>
+            Generate Lead Insight
+          </button>
+          <div class="li-reassure">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="M9 12l2 2 4-4"/></svg>
+            You'll get a summary, missing details, intent level, and next steps.
+          </div>
+          <div class="li-error" id="li-error" role="alert">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 8v4M12 16h.01"/></svg>
+            <span id="li-error-text"></span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="li-feats">
+    <div class="container">
+      <div class="li-feats__grid">
+        <div class="li-feat li-feat--move">
+          <span class="li-feat__ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polygon points="16.24 7.76 14.12 14.12 7.76 16.24 9.88 9.88 16.24 7.76"/></svg></span>
+          <div class="li-feat__t">Know the next move</div>
+          <div class="li-feat__d">Get a clear recommendation on whether to quote, qualify further, or follow up — with the exact steps to take.</div>
+        </div>
+        <div class="li-feat li-feat--catch">
+          <span class="li-feat__ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><path d="M12 18h.01M12 11a2 2 0 1 1 2 2c-1 0-2 .5-2 2"/></svg></span>
+          <div class="li-feat__t">Catch missing details</div>
+          <div class="li-feat__d">See what's missing — with ready-to-send questions so you can qualify the lead before investing time.</div>
+        </div>
+        <div class="li-feat li-feat--avoid">
+          <span class="li-feat__ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 7v5l3 2"/></svg></span>
+          <div class="li-feat__t">Avoid weak itinerary work</div>
+          <div class="li-feat__d">Focus on enquiries worth your time and stop building itineraries that were never going to convert.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<!-- ============================= LOADING VIEW ============================= -->
+<div id="li-loading" class="li-loading" role="status" aria-live="polite">
+  <div class="li-loading__blob li-loading__blob--tr" aria-hidden="true"></div>
+  <div class="li-loading__blob li-loading__blob--bl" aria-hidden="true"></div>
+  <div class="li-loading__inner">
+    <div class="li-loading__art" aria-hidden="true">
+      <svg viewBox="0 0 220 130" fill="none">
+        <path d="M12 38l6-8M6 46l9-4M20 30l2-10" stroke="#c45911" stroke-width="3" stroke-linecap="round"/>
+        <path d="M52 18h56l16 16v76a4 4 0 0 1-4 4H52a4 4 0 0 1-4-4V22a4 4 0 0 1 4-4z" stroke="#fff" stroke-width="3" stroke-linejoin="round"/>
+        <path d="M108 18v16h16" stroke="#fff" stroke-width="3" stroke-linejoin="round"/>
+        <rect x="60" y="30" width="30" height="8" rx="3" fill="#FDF8F0"/>
+        <path d="M62 52l4 4 7-8" stroke="#7bb661" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M80 54h32" stroke="#fff" stroke-width="3" stroke-linecap="round"/>
+        <path d="M62 72l4 4 7-8" stroke="#7bb661" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M80 74h32" stroke="#fff" stroke-width="3" stroke-linecap="round"/>
+        <path d="M80 94h24" stroke="#fff" stroke-width="3" stroke-linecap="round"/>
+        <path d="M124 96c8 8 18 4 24-2" stroke="#fff" stroke-width="2.5" stroke-linecap="round" stroke-dasharray="1 7"/>
+        <circle cx="168" cy="64" r="26" stroke="#fff" stroke-width="3.5"/>
+        <path d="M158 60h20M158 68h14" stroke="#7bb661" stroke-width="3" stroke-linecap="round"/>
+        <path d="M186 82l14 14" stroke="#c45911" stroke-width="8" stroke-linecap="round"/>
+        <path d="M204 34l-2 10M212 44l-9 2M198 28l-6 7" stroke="#7bb661" stroke-width="3" stroke-linecap="round"/>
+      </svg>
+    </div>
+    <div class="li-loading__stage" id="li-stage-label">Reading the enquiry</div>
+    <div class="li-rail">
+      <div class="li-rail__fill" id="li-rail-fill"></div>
+      <div class="li-step li-step--active">
+        <span class="li-step__dot"></span>
+        <span class="li-step__ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg></span>
+      </div>
+      <div class="li-step">
+        <span class="li-step__dot"></span>
+        <span class="li-step__ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg></span>
+      </div>
+      <div class="li-step">
+        <span class="li-step__dot"></span>
+        <span class="li-step__ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"/><line x1="7" y1="7" x2="7.01" y2="7"/></svg></span>
+      </div>
+      <div class="li-step">
+        <span class="li-step__dot"></span>
+        <span class="li-step__ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg></span>
+      </div>
+    </div>
+    <div class="li-tip"><b>Operator tip:</b> <span id="li-tip-text"></span></div>
+  </div>
+</div>
+
+<!-- ============================= RESULT VIEW ============================== -->
+<section id="li-view-result" class="li-view li-result">
+  <div class="container">
+    <div class="li-result__grid">
+      <aside class="li-side">
+        <div class="li-side__label">Lead Insight Score</div>
+        <div class="li-gauge">
+          <svg viewBox="0 0 190 190" aria-hidden="true">
+            <circle class="li-gauge__track" cx="95" cy="95" r="84"></circle>
+            <circle class="li-gauge__arc" id="li-gauge-arc" cx="95" cy="95" r="84" stroke-dasharray="527.8" stroke-dashoffset="527.8"></circle>
+          </svg>
+          <div class="li-gauge__num">
+            <span class="li-gauge__score" id="li-gauge-score">0.0</span>
+            <span class="li-gauge__of">/10</span>
+          </div>
+        </div>
+        <span class="li-pill" id="li-pill">High Intent</span>
+        <div class="li-side__rows">
+          <div class="li-side__row li-side__row--decision">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M9 12l2 2 4-4"/></svg>
+            <span id="li-decision">Decision:</span>
+          </div>
+          <div class="li-side__row li-side__row--star">
+            <svg viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            <span id="li-star"></span>
+          </div>
+        </div>
+        <div class="li-break">
+          <div class="li-break__label">Intent Breakdown</div>
+          <div id="li-breakdown"></div>
+        </div>
+        <button type="button" class="li-reset" id="li-reset">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="1 4 1 10 7 10"/><path d="M3.51 15a9 9 0 1 0 2.13-9.36L1 10"/></svg>
+          Analyze another enquiry
+        </button>
+      </aside>
+
+      <div class="li-main">
+        <div class="li-main__eyebrow">
+          <span class="li-main__eyebrow-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg></span>
+          <span>Your Next Steps</span>
+        </div>
+        <h2 class="li-headline" id="li-headline"></h2>
+        <p class="li-subline" id="li-subline"></p>
+
+        <div class="li-check" id="li-checklist"></div>
+
+        <div class="li-questions" id="li-questions">
+          <div class="li-questions__head">
+            <span class="li-questions__title">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+              Ready-to-send qualifying questions
+            </span>
+            <button type="button" class="li-copybtn" id="li-copy-questions">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+              Copy questions
+            </button>
+          </div>
+          <div class="li-questions__list" id="li-questions-list"></div>
+        </div>
+
+        <div class="li-cards">
+          <div class="li-rcard li-rcard--summary">
+            <span class="li-rcard__ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg></span>
+            <div class="li-rcard__t">Enquiry Summary</div>
+            <div class="li-sum" id="li-summary"></div>
+          </div>
+          <div class="li-rcard li-rcard--missing">
+            <span class="li-rcard__ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><path d="M12 17h.01"/></svg></span>
+            <div class="li-rcard__t">Missing Information</div>
+            <div class="li-miss" id="li-missing"></div>
+          </div>
+          <div class="li-rcard li-rcard--why">
+            <span class="li-rcard__ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4M12 8h.01"/></svg></span>
+            <div class="li-rcard__t">Why this matters</div>
+            <div class="li-why" id="li-why-body"></div>
+            <div class="li-why__callout">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 8v4M12 16h.01"/></svg>
+              <span id="li-why-callout-text"></span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA Banner (site-wide) -->
+<section class="cta-wide" aria-label="Call to action" id="cta-banner">
+  <div class="cta-wide__inner">
+    <div class="cta-wide__content">
+      <h2 class="cta-wide__headline">Wandar scores every enquiry like this automatically, the moment it arrives<span class="cta-wide__dot">.</span></h2>
+      <p class="cta-wide__sub">Stop triaging by hand. See every high-intent safari lead the moment it appears — scored, summarised, and ready to act on.</p>
+      <div class="cta-wide__btns">
+        <a href="#" onclick="openModal('early-access');return false;" class="cta-wide__btn cta-wide__btn--primary">Request Early Access</a>
+        <a href="#" onclick="openModal('consultation');return false;" class="cta-wide__btn cta-wide__btn--ghost">Book a Demo</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer class="footer" id="footer" role="contentinfo">
+  <div class="container">
+    <div class="footer__top">
+      <div class="footer__brand">
+        <div class="footer__lockup">
+          <img src="../../../assets/wandar-banner-white-320.png" alt="Wandar" class="footer__lockup-banner" loading="lazy" width="320" height="80" />
+          <span class="footer__lockup-divider" aria-hidden="true"></span>
+          <span class="footer__lockup-tag">Social Listening<br>for Safari Operators</span>
+        </div>
+      </div>
+      <div class="footer__newsletter">
+        <h3 class="footer__newsletter-heading">Stay Updated</h3>
+        <p class="footer__newsletter-sub">Get product updates, safari demand insights, and practical ideas for finding stronger lead opportunities before travelers decide who to trust.</p>
+        <form onsubmit="handleSubscribe(event)" novalidate>
+          <div class="footer__input-pill">
+            <label for="email-subscribe" class="sr-only">Email address</label>
+            <input type="email" id="email-subscribe" name="email" class="footer__email-input" placeholder="Enter your email" required autocomplete="email" />
+            <button type="submit" class="footer__submit-arrow" aria-label="Subscribe">→</button>
+          </div>
+        </form>
+      </div>
+    </div>
+    <div class="footer__divider"></div>
+    <div class="footer__columns">
+      <div class="footer__col">
+        <span class="footer__col-heading">Quick Links</span>
+        <ul class="footer__col-links">
+          <li><a href="../../../index.html" class="footer__col-link">Home</a></li>
+          <li><a href="../../../index.html#why-wandar" class="footer__col-link">Why Wandar</a></li>
+          <li><a href="../../../index.html#how-it-works" class="footer__col-link">How It Works</a></li>
+          <li><a href="../../../index.html#who-its-for" class="footer__col-link">Who It's For</a></li>
+          <li><a href="../../../index.html#where-wandar-listens" class="footer__col-link">Platforms</a></li>
+        </ul>
+      </div>
+      <div class="footer__col">
+        <span class="footer__col-heading">For Operators</span>
+        <ul class="footer__col-links">
+          <li><a href="../../../pricing.html" class="footer__col-link">Pricing</a></li>
+          <li><a href="#" onclick="openModal('consultation');return false;" class="footer__col-link">Book a Demo</a></li>
+          <li><a href="./" class="footer__col-link" aria-current="page">Lead Insight Generator</a></li>
+          <li><a href="../../../guides/" class="footer__col-link">Guides</a></li>
+          <li><a href="../../../blog/" class="footer__col-link">Blog</a></li>
+          <li><a href="../webinar.html" class="footer__col-link">Webinar</a></li>
+          <li><a href="#" onclick="openModal('contact');return false;" class="footer__col-link">Support</a></li>
+        </ul>
+      </div>
+      <div class="footer__col">
+        <span class="footer__col-heading">Connect With Us</span>
+        <div class="footer__socials">
+          <a href="https://www.linkedin.com/company/getwandar/" target="_blank" rel="noopener" class="footer__social-link" aria-label="Wandar on LinkedIn">
+            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+          </a>
+          <a href="https://x.com/GetWandar" target="_blank" rel="noopener" class="footer__social-link" aria-label="Wandar on X">
+            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.748l7.73-8.835L1.254 2.25H8.08l4.261 5.635 5.903-5.635zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+          </a>
+          <a href="https://www.instagram.com/getwandar?igsh=MXBucmsybGhpbDhjeg%3D%3D&utm_source=qr" target="_blank" rel="noopener" class="footer__social-link" aria-label="Wandar on Instagram">
+            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 1 0 0 12.324 6.162 6.162 0 0 0 0-12.324zM12 16a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm6.406-11.845a1.44 1.44 0 1 0 0 2.881 1.44 1.44 0 0 0 0-2.881z"/></svg>
+          </a>
+          <a href="https://t.me/+WtB9Mrj09sZlODky" target="_blank" rel="noopener" class="footer__social-link" aria-label="Wandar on Telegram">
+            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/></svg>
+          </a>
+          <a href="https://chat.whatsapp.com/DvUMSctiasiG8DduHR9eVm?mode=gi_t" target="_blank" rel="noopener" class="footer__social-link" aria-label="Wandar on WhatsApp">
+            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413z"/></svg>
+          </a>
+        </div>
+      </div>
+    </div>
+    <div class="footer__legal-bar">
+      <p class="footer__legal-copy">© 2026 Wandar. All rights reserved.</p>
+      <div class="footer__legal-links">
+        <span class="footer__legal-link">Privacy Policy</span>
+        <span class="footer__legal-link">Terms of Service</span>
+        <span class="footer__legal-link">AI Transparency Statement</span>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<!-- Modal: Early Access -->
+<div class="modal-overlay" id="modal-early-access" aria-modal="true" role="dialog" aria-labelledby="mea-title">
+  <div class="modal-card modal-card--teal-top">
+    <button class="modal-close" onclick="closeModal('early-access')" aria-label="Close">×</button>
+    <div class="modal-hd">
+      <div class="modal-hd-icon modal-hd-icon--teal">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#1a7373" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4.5 16.5c-1.5 1.26-2 5-2 5s3.74-.5 5-2c.71-.84.7-2.13-.09-2.91a2.18 2.18 0 0 0-2.91-.09z"/><path d="M12 15l-3-3a22 22 0 0 1 2-3.95A12.88 12.88 0 0 1 22 2c0 2.72-.78 7.5-6 11a22.35 22.35 0 0 1-4 2z"/><path d="M9 12H4s.55-3.03 2-4c1.62-1.08 5 0 5 0"/><path d="M12 15v5s3.03-.55 4-2c1.08-1.62 0-5 0-5"/></svg>
+      </div>
+      <h2 class="modal-h2" id="mea-title">Request Early Access</h2>
+      <p class="modal-sub">Be among the first safari operators to access Wandar.</p>
+    </div>
+    <div class="modal-bd">
+      <div class="mf-form" id="mf-form-a">
+        <div class="mf-grid-2">
+          <div class="mf-field">
+            <label class="mf-label" for="ma-email">Work email <span class="mf-req-teal">*</span></label>
+            <input type="email" id="ma-email" class="mf-input" placeholder="you@safarico.com" autocomplete="email" />
+            <span class="mf-err" id="merr-a-email"></span>
+          </div>
+          <div class="mf-field">
+            <label class="mf-label" for="ma-company">Company name <span class="mf-req-teal">*</span></label>
+            <input type="text" id="ma-company" class="mf-input" placeholder="Acacia Expeditions" autocomplete="organization" />
+            <span class="mf-err" id="merr-a-company"></span>
+          </div>
+        </div>
+        <div class="mf-grid-2">
+          <div class="mf-field">
+            <label class="mf-label" for="ma-role">Your role <span class="mf-req-teal">*</span></label>
+            <select id="ma-role" class="mf-select">
+              <option value="">Select your role</option>
+              <option>Owner / Founder</option>
+              <option>Sales &amp; Bookings</option>
+              <option>Marketing</option>
+              <option>Operations</option>
+              <option>Other</option>
+            </select>
+            <span class="mf-err" id="merr-a-role"></span>
+          </div>
+          <div class="mf-field">
+            <label class="mf-label" for="ma-goal">Biggest challenge right now <span class="mf-req-teal">*</span></label>
+            <select id="ma-goal" class="mf-select" style="font-size:12px" onchange="mHandleGoal('ma-goal','ma-goal-other')">
+              <option value="">Select one</option>
+              <option>Leads exist but I never see them in time</option>
+              <option>A competitor always replies before I do</option>
+              <option>I don't know where my next booking will come from</option>
+              <option>I'm spending on ads but can't tell if they work</option>
+              <option>Enquiries come in but don't convert to bookings</option>
+              <option value="other">Something else</option>
+            </select>
+            <div class="mf-reveal" id="ma-goal-other">
+              <input class="mf-input" type="text" placeholder="Tell us in your own words..." />
+            </div>
+            <span class="mf-err" id="merr-a-goal"></span>
+          </div>
+        </div>
+        <button class="mf-submit mf-submit--teal" onclick="mSubmitA()">
+          Submit
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </button>
+        <div class="mf-trust">
+          <span><span class="mf-trust-dot"></span>No contracts or setup fees</span>
+          <span><span class="mf-trust-dot"></span>Built exclusively for safari operators</span>
+        </div>
+      </div>
+      <div class="mf-success" id="mf-success-a" aria-live="polite">
+        <div class="mf-success-ring mf-success-ring--teal">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#1a7373" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg>
+        </div>
+        <h2>You're on the list.</h2>
+        <p>Here's what happens next.</p>
+        <div class="mf-steps">
+          <div class="mf-step"><div class="mf-step-num mf-step-num--teal">1</div><span class="mf-step-text">We'll review your details and reach out within 48 hours.</span></div>
+          <div class="mf-step"><div class="mf-step-num mf-step-num--teal">2</div><span class="mf-step-text">You'll get a personal note. Not an automated sequence.</span></div>
+          <div class="mf-step"><div class="mf-step-num mf-step-num--teal">3</div><span class="mf-step-text">When private beta opens, you'll be among the first operators in.</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Modal: Consultation -->
+<div class="modal-overlay" id="modal-consultation" aria-modal="true" role="dialog" aria-labelledby="mc-title">
+  <div class="modal-card modal-card--amber-top">
+    <button class="modal-close" onclick="closeModal('consultation')" aria-label="Close">×</button>
+    <div class="modal-hd">
+      <div class="modal-hd-icon modal-hd-icon--amber">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#c45911" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+      </div>
+      <h2 class="modal-h2" id="mc-title">Book a Demo</h2>
+      <p class="modal-sub">We want to understand your operation before we recommend anything.</p>
+    </div>
+    <div class="modal-bd">
+      <div class="mf-form" id="mf-form-b">
+        <div class="mf-field">
+          <label class="mf-label" for="mb-email">Work email <span class="mf-req-amber">*</span></label>
+          <input type="email" id="mb-email" class="mf-input" placeholder="you@safarico.com" autocomplete="email" />
+          <span class="mf-err" id="merr-b-email"></span>
+        </div>
+        <div class="mf-grid-2">
+          <div class="mf-field">
+            <label class="mf-label" for="mb-company">Company name <span class="mf-req-amber">*</span></label>
+            <input type="text" id="mb-company" class="mf-input" placeholder="Acacia Expeditions" autocomplete="organization" />
+            <span class="mf-err" id="merr-b-company"></span>
+          </div>
+          <div class="mf-field">
+            <label class="mf-label" for="mb-role">Your role <span class="mf-req-amber">*</span></label>
+            <select id="mb-role" class="mf-select">
+              <option value="">Select your role</option>
+              <option>Owner / Founder</option>
+              <option>Sales &amp; Bookings</option>
+              <option>Marketing</option>
+              <option>Operations</option>
+              <option>Other</option>
+            </select>
+            <span class="mf-err" id="merr-b-role"></span>
+          </div>
+        </div>
+        <div class="mf-field">
+          <label class="mf-label" for="mb-goal">What do you most want to solve? <span class="mf-req-amber">*</span></label>
+          <select id="mb-goal" class="mf-select" onchange="mHandleBGoal()">
+            <option value="">Select one</option>
+            <option>Leads exist but I never see them in time</option>
+            <option>A competitor always replies before I do</option>
+            <option>I don't know where my next booking will come from</option>
+            <option>I'm spending on ads but can't tell if they work</option>
+            <option>Enquiries come in but don't convert to bookings</option>
+            <option value="other">Something else</option>
+          </select>
+          <div class="mf-reveal" id="mb-goal-other">
+            <input class="mf-input" type="text" placeholder="Tell us in your own words..." />
+          </div>
+          <span class="mf-err" id="merr-b-goal"></span>
+        </div>
+        <div id="mb-more-wrap" style="display:none">
+          <div class="mf-field">
+            <label class="mf-label" for="mb-more">Tell us more <span style="font-weight:400;color:#9ca3af">(optional)</span></label>
+            <textarea id="mb-more" class="mf-ta" placeholder="e.g. We get enquiries from Reddit but by the time I see them, someone else has already replied..."></textarea>
+          </div>
+        </div>
+        <button class="mf-submit mf-submit--amber" onclick="mSubmitB()">
+          Submit
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </button>
+        <div class="mf-trust">
+          <span><span class="mf-trust-dot"></span>No commitment required</span>
+          <span><span class="mf-trust-dot"></span>20 minutes. We listen, you talk.</span>
+        </div>
+      </div>
+      <div class="mf-success" id="mf-success-b" aria-live="polite">
+        <div class="mf-success-ring mf-success-ring--amber">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#c45911" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+        </div>
+        <h2>Call request received.</h2>
+        <p>We'll review what you shared and reach out within 24 hours to confirm a time.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Modal: Contact -->
+<div class="modal-overlay" id="modal-contact" aria-modal="true" role="dialog" aria-labelledby="mct-title">
+  <div class="modal-card modal-card--teal-top">
+    <button class="modal-close" onclick="closeModal('contact')" aria-label="Close">×</button>
+    <div class="modal-hd">
+      <div class="modal-hd-icon modal-hd-icon--teal">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#1a7373" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M2 7l10 7 10-7"/></svg>
+      </div>
+      <h2 class="modal-h2" id="mct-title">Have a question or need help?</h2>
+    </div>
+    <div class="modal-bd">
+      <div class="mf-form" id="mf-form-c">
+        <div class="mf-grid-2">
+          <div class="mf-field">
+            <label class="mf-label" for="mc-name">Your name <span class="mf-req-teal">*</span></label>
+            <input type="text" id="mc-name" class="mf-input" placeholder="Jane Doe" autocomplete="given-name" />
+            <span class="mf-err" id="merr-c-name"></span>
+          </div>
+          <div class="mf-field">
+            <label class="mf-label" for="mc-company">Company name <span class="mf-req-teal">*</span></label>
+            <input type="text" id="mc-company" class="mf-input" placeholder="Acacia Expeditions" autocomplete="organization" />
+            <span class="mf-err" id="merr-c-company"></span>
+          </div>
+        </div>
+        <div class="mf-grid-2">
+          <div class="mf-field">
+            <label class="mf-label" for="mc-email">Work email <span class="mf-req-teal">*</span></label>
+            <input type="email" id="mc-email" class="mf-input" placeholder="you@safarico.com" autocomplete="email" />
+            <span class="mf-err" id="merr-c-email"></span>
+          </div>
+          <div class="mf-field">
+            <label class="mf-label" for="mc-intent">What best describes you? <span class="mf-req-teal">*</span></label>
+            <select id="mc-intent" class="mf-select" onchange="mHandleContactIntent()">
+              <option value="">Select one</option>
+              <option value="operator">I'm a safari operator with a question</option>
+              <option value="partner">I'm interested in partnering or integrating</option>
+              <option value="press">Press or media enquiry</option>
+              <option value="other">Something else</option>
+            </select>
+            <span class="mf-err" id="merr-c-intent"></span>
+            <div class="mf-nested" id="mc-intent-other">
+              <input type="text" id="mc-intent-other-text" class="mf-input" placeholder="Tell us a bit more…" />
+            </div>
+          </div>
+        </div>
+        <div class="mf-field">
+          <label class="mf-label" for="mc-message">Your message <span class="mf-req-teal">*</span></label>
+          <textarea id="mc-message" class="mf-ta" placeholder="Tell us how we can help..." style="min-height:110px;"></textarea>
+          <span class="mf-err" id="merr-c-message"></span>
+        </div>
+        <button class="mf-submit mf-submit--teal" onclick="mSubmitC()">
+          Send message
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </button>
+      </div>
+      <div class="mf-success" id="mf-success-c" aria-live="polite">
+        <div class="mf-success-ring mf-success-ring--teal">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#1a7373" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg>
+        </div>
+        <h2 id="mc-success-title">Message sent.</h2>
+        <p id="mc-success-body">We'll get back to you as soon as possible.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+function handleSubscribe(e) {
+  e.preventDefault();
+  var el = document.getElementById('email-subscribe');
+  if (el && el.value) { el.value = ''; alert('Thanks! We\'ll be in touch.'); }
+}
+</script>
+<script type="module" src="lead-insight.js"></script>
+
+</body>
+</html>
