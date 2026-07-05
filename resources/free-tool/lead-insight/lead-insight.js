@@ -197,6 +197,7 @@ async function generate() {
       stopLoading();
       views.input.classList.remove("li-view--active");
       views.result.classList.add("li-view--active");
+      document.querySelector(".li-reset-top")?.classList.add("li-reset-top--show");
       window.scrollTo({ top: 0, behavior: "instant" });
     }, Math.min(600, remaining + 400));
   }, remaining);
@@ -379,6 +380,7 @@ $("li-copy-questions").addEventListener("click", async () => {
 function resetTool() {
   views.result.classList.remove("li-view--active");
   views.input.classList.add("li-view--active");
+  document.querySelector(".li-reset-top")?.classList.remove("li-reset-top--show");
   ta.value = "";
   document.querySelectorAll(".li-chip").forEach((c) => c.classList.remove("li-chip--active"));
   selectedSource = null;

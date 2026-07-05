@@ -7,9 +7,10 @@
 
 /* ---------- breadcrumb ---------- */
 .li-crumbs { background: var(--white); border-bottom: 1px solid var(--border); padding: 92px 0 14px; }
-.li-crumbs__row { display: flex; align-items: center; gap: 8px; font-size: 13px; color: var(--text-muted); flex-wrap: wrap; }
-.li-crumbs__row a { color: var(--text-muted); text-decoration: none; }
-.li-crumbs__row a:hover { color: var(--safari-primary); }
+.li-crumbs__row { display: flex; align-items: center; justify-content: space-between; gap: 16px; flex-wrap: wrap; }
+.li-crumbs__path { display: flex; align-items: center; gap: 8px; font-size: 13px; color: var(--text-muted); flex-wrap: wrap; }
+.li-crumbs__path a { color: var(--text-muted); text-decoration: none; }
+.li-crumbs__path a:hover { color: var(--safari-primary); }
 .li-crumbs__here { color: var(--safari-secondary); font-weight: 600; }
 
 /* ---------- input view ---------- */
@@ -136,12 +137,12 @@
 .li-reset svg { width: 13px; height: 13px; }
 
 .li-main { padding-top: 16px; }
-.li-main__top { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin-bottom: 10px; flex-wrap: wrap; }
-.li-main__eyebrow { display: flex; align-items: center; gap: 9px; }
+.li-main__eyebrow { display: flex; align-items: center; gap: 9px; margin-bottom: 10px; }
 .li-main__eyebrow-ic { width: 28px; height: 28px; border-radius: 8px; background: var(--nature-light); color: var(--safari-nature); display: flex; align-items: center; justify-content: center; }
 .li-main__eyebrow-ic svg { width: 15px; height: 15px; }
 .li-main__eyebrow span { font-size: 11px; font-weight: 800; letter-spacing: 0.13em; text-transform: uppercase; color: var(--safari-nature); }
-.li-reset-top { display: inline-flex; align-items: center; gap: 7px; font-family: inherit; font-size: 12px; font-weight: 700; color: #fff; background: var(--safari-primary); border: none; border-radius: var(--radius-pill); padding: 8px 15px; cursor: pointer; transition: background 140ms ease; white-space: nowrap; }
+.li-reset-top { display: none; align-items: center; gap: 7px; font-family: inherit; font-size: 12px; font-weight: 700; color: #fff; background: var(--safari-primary); border: none; border-radius: var(--radius-pill); padding: 8px 15px; cursor: pointer; transition: background 140ms ease; white-space: nowrap; }
+.li-reset-top--show { display: inline-flex; }
 .li-reset-top:hover { background: var(--primary-hover); }
 .li-reset-top svg { width: 13px; height: 13px; }
 .li-headline { font-size: 16px; font-weight: 800; letter-spacing: -0.01em; line-height: 1.35; color: var(--text-primary); margin-bottom: 6px; }

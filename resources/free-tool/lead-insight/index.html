@@ -153,10 +153,16 @@
 <div class="li-crumbs">
   <div class="container">
     <div class="li-crumbs__row">
-      <a href="../../../index.html">Home</a><span aria-hidden="true">/</span>
-      <span>Resources</span><span aria-hidden="true">/</span>
-      <span>Free Tools</span><span aria-hidden="true">/</span>
-      <span class="li-crumbs__here">Lead Insight Generator</span>
+      <div class="li-crumbs__path">
+        <a href="../../../index.html">Home</a><span aria-hidden="true">/</span>
+        <span>Resources</span><span aria-hidden="true">/</span>
+        <span>Free Tools</span><span aria-hidden="true">/</span>
+        <span class="li-crumbs__here">Lead Insight Generator</span>
+      </div>
+      <button type="button" class="li-reset-top js-li-reset">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="1 4 1 10 7 10"/><path d="M3.51 15a9 9 0 1 0 2.13-9.36L1 10"/></svg>
+        Analyze another enquiry
+      </button>
     </div>
   </div>
 </div>
@@ -339,15 +345,9 @@
       </div>
 
       <div class="li-main">
-        <div class="li-main__top">
-          <div class="li-main__eyebrow">
-            <span class="li-main__eyebrow-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg></span>
-            <span>Your Next Steps</span>
-          </div>
-          <button type="button" class="li-reset-top js-li-reset">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="1 4 1 10 7 10"/><path d="M3.51 15a9 9 0 1 0 2.13-9.36L1 10"/></svg>
-            Analyze another enquiry
-          </button>
+        <div class="li-main__eyebrow">
+          <span class="li-main__eyebrow-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg></span>
+          <span>Your Next Steps</span>
         </div>
         <h2 class="li-headline" id="li-headline"></h2>
         <p class="li-subline" id="li-subline"></p>
