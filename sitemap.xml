@@ -56,6 +56,16 @@
     <priority>0.7</priority>
   </url>
   <url>
+    <loc>https://www.getwandar.com/resources/webinar.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.getwandar.com/guides/safari-lead-generation-report.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
     <loc>https://www.getwandar.com/guides/</loc>
     <lastmod>2026-04-25</lastmod>
     <changefreq>monthly</changefreq>

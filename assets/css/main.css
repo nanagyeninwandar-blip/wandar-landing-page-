@@ -1281,6 +1281,11 @@ section[aria-label="How intent scoring works"] {
   .float-card-3 { right: -25px; left: auto; top: 34%; }
 }
 
+/* Narrow tablets: card 5 sits over the hero subheadline text — hide it */
+@media (min-width: 768px) and (max-width: 1099px) {
+  .float-card-5 { display: none; }
+}
+
 /* Hero mockup wrapper entrance — text is always visible; only the product screenshot animates in */
 @media (prefers-reduced-motion: no-preference) {
   .hero__mockup-wrapper {
@@ -2528,7 +2533,7 @@ section[aria-label="How intent scoring works"] {
 
 /* ── PLATFORM PAGE — HERO ────────────────────────────────────── */
 .platform-hero {
-  background: #f8efdc url('../Platfrom hero.png') center/cover no-repeat;
+  background: #f8efdc url('../platform-hero-bg.jpg') center/cover no-repeat;
   padding: 96px 0 80px;
   text-align: center;
 }
@@ -3192,7 +3197,7 @@ section[aria-label="How intent scoring works"] {
 }
 
 /* CTA Wide · background-image banner rolled out site-wide */
-.cta-wide{position:relative;overflow:hidden;background:#145f5f url('../CTA banner.png') center/cover no-repeat;}
+.cta-wide{position:relative;overflow:hidden;background:#145f5f url('../cta-banner.jpg') center/cover no-repeat;}
 .cta-wide--solid{background-image:none;}
 .cta-wide--solid::after{content:'';position:absolute;top:0;right:0;bottom:0;width:50%;background-image:radial-gradient(rgba(255,255,255,.14) 1.5px,transparent 1.6px);background-size:26px 26px;pointer-events:none;}
 .cta-wide--solid .cta-wide__inner{padding:clamp(40px,5.5vw,90px) clamp(28px,5vw,90px);}

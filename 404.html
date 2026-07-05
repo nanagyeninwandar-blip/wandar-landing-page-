@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Page Not Found | Wandar</title>
+  <meta name="robots" content="noindex, follow" />
+  <link rel="icon" type="image/svg+xml" href="/assets/favicon.svg" />
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: 'Plus Jakarta Sans', -apple-system, 'Segoe UI', sans-serif;
+      background: #FDF8F0;
+      color: #1a1a1a;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 24px;
+    }
+    .nf { max-width: 480px; }
+    .nf__lockup { display: flex; align-items: center; justify-content: center; gap: 12px; margin-bottom: 32px; }
+    .nf__lockup svg { width: 44px; height: 44px; }
+    .nf__wordmark { font-size: 30px; font-weight: 800; letter-spacing: -.02em; color: #1a1a1a; }
+    .nf__code { font-size: 15px; font-weight: 700; letter-spacing: .12em; color: #c45911; margin-bottom: 12px; }
+    h1 { font-size: clamp(28px, 6vw, 40px); font-weight: 800; letter-spacing: -.02em; margin-bottom: 14px; }
+    p { font-size: 16px; line-height: 1.6; color: #4a4a4a; margin-bottom: 28px; }
+    .nf__actions { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
+    .nf__btn {
+      display: inline-block; padding: 13px 26px; border-radius: 10px;
+      font-size: 15px; font-weight: 700; text-decoration: none;
+      background: #1a7373; color: #fff; transition: opacity 160ms ease;
+    }
+    .nf__btn:hover { opacity: .9; }
+    .nf__btn--ghost { background: transparent; color: #1a7373; border: 1.5px solid #1a7373; }
+  </style>
+</head>
+<body>
+  <div class="nf">
+    <div class="nf__lockup" aria-label="Wandar">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" aria-hidden="true">
+        <circle cx="50" cy="50" r="50" fill="#000"/>
+        <path d="M18,52 A33,33 0 0,1 82,52" fill="none" stroke="white" stroke-width="6" stroke-linecap="round"/>
+        <path d="M25,61 A26,26 0 0,1 75,61" fill="none" stroke="white" stroke-width="6" stroke-linecap="round"/>
+        <path d="M33,70 A18,18 0 0,1 67,70" fill="none" stroke="white" stroke-width="6" stroke-linecap="round"/>
+        <line x1="22" y1="78" x2="78" y2="78" stroke="white" stroke-width="5" stroke-linecap="round"/>
+        <line x1="28" y1="87" x2="72" y2="87" stroke="white" stroke-width="5" stroke-linecap="round"/>
+      </svg>
+      <span class="nf__wordmark">Wandar</span>
+    </div>
+    <div class="nf__code">404 — PAGE NOT FOUND</div>
+    <h1>This page wandered off.</h1>
+    <p>The page you're looking for doesn't exist or has moved. The leads, however, are still out there.</p>
+    <div class="nf__actions">
+      <a class="nf__btn" href="/">Back to home</a>
+      <a class="nf__btn nf__btn--ghost" href="/guides/">Browse guides</a>
+    </div>
+  </div>
+</body>
+</html>
