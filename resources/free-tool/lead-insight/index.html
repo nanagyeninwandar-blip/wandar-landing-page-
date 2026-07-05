@@ -150,23 +150,6 @@
   </div>
 </header>
 
-<div class="li-crumbs">
-  <div class="container">
-    <div class="li-crumbs__row">
-      <div class="li-crumbs__path">
-        <a href="../../../index.html">Home</a><span aria-hidden="true">/</span>
-        <span>Resources</span><span aria-hidden="true">/</span>
-        <span>Free Tools</span><span aria-hidden="true">/</span>
-        <span class="li-crumbs__here">Lead Insight Generator</span>
-      </div>
-      <button type="button" class="li-reset-top js-li-reset">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="1 4 1 10 7 10"/><path d="M3.51 15a9 9 0 1 0 2.13-9.36L1 10"/></svg>
-        Analyze another enquiry
-      </button>
-    </div>
-  </div>
-</div>
-
 <!-- ============================== INPUT VIEW ============================== -->
 <main id="li-view-input" class="li-view li-view--active">
   <section class="li-hero">
@@ -177,11 +160,6 @@
           <div class="li-hero__kicker">Lead Insight Generator</div>
           <h1 class="li-hero__title">Know whether to quote, qualify, or follow up before you build an itinerary.</h1>
           <p class="li-hero__sub">Paste a traveler enquiry and get the key trip details, missing information, intent level, and recommended next step before you spend hours building an itinerary.</p>
-          <div class="li-hero__pills">
-            <span class="li-hpill li-hpill--teal"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 7v5l3 2"/></svg>Score out of 10 in seconds</span>
-            <span class="li-hpill li-hpill--green"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="M9 12l2 2 4-4"/></svg>100% free · No account</span>
-            <span class="li-hpill li-hpill--orange"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>Ready-to-send questions</span>
-          </div>
           <div class="li-minifeats">
             <div class="li-mf li-mf--move">
               <span class="li-mf__ic"><svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 3v26"/><path d="M13 29h6"/><path d="M16 6h9.5l3 2.75-3 2.75H16z" fill="currentColor" fill-opacity="0.14"/><path d="M16 14.5H6.5l-3 2.75 3 2.75H16z" fill="currentColor" fill-opacity="0.14"/><path d="M19 8.75h3M9 17.25h4"/></svg></span>
@@ -273,6 +251,12 @@
 <!-- ============================= RESULT VIEW ============================== -->
 <section id="li-view-result" class="li-view li-result">
   <div class="container">
+    <div class="li-result__topbar">
+      <button type="button" class="li-reset-top js-li-reset">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="1 4 1 10 7 10"/><path d="M3.51 15a9 9 0 1 0 2.13-9.36L1 10"/></svg>
+        Analyze another enquiry
+      </button>
+    </div>
     <div class="li-result__grid">
       <aside class="li-side">
         <div class="li-side__label">Lead Insight Score</div>
