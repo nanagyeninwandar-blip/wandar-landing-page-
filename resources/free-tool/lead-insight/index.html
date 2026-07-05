@@ -246,27 +246,7 @@
 
 <!-- ============================= LOADING VIEW ============================= -->
 <div id="li-loading" class="li-loading" role="status" aria-live="polite">
-  <div class="li-loading__blob li-loading__blob--tr" aria-hidden="true"></div>
-  <div class="li-loading__blob li-loading__blob--bl" aria-hidden="true"></div>
-  <div class="li-loading__inner">
-    <div class="li-loading__art" aria-hidden="true">
-      <svg viewBox="0 0 220 130" fill="none">
-        <path d="M12 38l6-8M6 46l9-4M20 30l2-10" stroke="#c45911" stroke-width="3" stroke-linecap="round"/>
-        <path d="M52 18h56l16 16v76a4 4 0 0 1-4 4H52a4 4 0 0 1-4-4V22a4 4 0 0 1 4-4z" stroke="#fff" stroke-width="3" stroke-linejoin="round"/>
-        <path d="M108 18v16h16" stroke="#fff" stroke-width="3" stroke-linejoin="round"/>
-        <rect x="60" y="30" width="30" height="8" rx="3" fill="#FDF8F0"/>
-        <path d="M62 52l4 4 7-8" stroke="#7bb661" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
-        <path d="M80 54h32" stroke="#fff" stroke-width="3" stroke-linecap="round"/>
-        <path d="M62 72l4 4 7-8" stroke="#7bb661" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
-        <path d="M80 74h32" stroke="#fff" stroke-width="3" stroke-linecap="round"/>
-        <path d="M80 94h24" stroke="#fff" stroke-width="3" stroke-linecap="round"/>
-        <path d="M124 96c8 8 18 4 24-2" stroke="#fff" stroke-width="2.5" stroke-linecap="round" stroke-dasharray="1 7"/>
-        <circle cx="168" cy="64" r="26" stroke="#fff" stroke-width="3.5"/>
-        <path d="M158 60h20M158 68h14" stroke="#7bb661" stroke-width="3" stroke-linecap="round"/>
-        <path d="M186 82l14 14" stroke="#c45911" stroke-width="8" stroke-linecap="round"/>
-        <path d="M204 34l-2 10M212 44l-9 2M198 28l-6 7" stroke="#7bb661" stroke-width="3" stroke-linecap="round"/>
-      </svg>
-    </div>
+  <div class="li-loading__top">
     <div class="li-loading__stage" id="li-stage-label">Reading the enquiry</div>
     <div class="li-rail">
       <div class="li-rail__fill" id="li-rail-fill"></div>
@@ -287,7 +267,9 @@
         <span class="li-step__ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg></span>
       </div>
     </div>
-    <div class="li-tip"><b>Operator tip:</b> <span id="li-tip-text"></span></div>
+  </div>
+  <div class="li-loading__center">
+    <div class="li-tip"><b>Operator tip</b><span id="li-tip-text"></span></div>
   </div>
 </div>
 
