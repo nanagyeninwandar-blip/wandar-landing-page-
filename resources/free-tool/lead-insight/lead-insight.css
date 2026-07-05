@@ -143,7 +143,7 @@
 .li-action { display: flex; align-items: flex-start; gap: 11px; background: var(--primary-light); border: 1px solid rgba(26, 115, 115, 0.28); border-left: 3px solid var(--safari-primary); border-radius: var(--radius-md); padding: 12px 14px; margin-bottom: 12px; }
 .li-action__ic { flex: none; width: 28px; height: 28px; border-radius: 50%; background: var(--white); color: var(--safari-primary); display: flex; align-items: center; justify-content: center; box-shadow: 0 2px 6px rgba(0, 0, 0, 0.07); }
 .li-action__ic svg { width: 15px; height: 15px; }
-.li-headline { font-size: 13px; font-weight: 700; line-height: 1.5; color: var(--text-primary); margin-bottom: 2px; }
+.li-headline { font-size: 13px; font-weight: 700; line-height: 1.5; color: var(--safari-secondary); margin-bottom: 2px; }
 .li-subline { font-size: 12px; line-height: 1.5; color: var(--text-secondary); margin-bottom: 0; }
 .li-check { background: var(--white); border: 1px solid var(--border); border-radius: var(--radius-md); padding: 4px 16px; margin-bottom: 12px; }
 .li-check__item { display: flex; align-items: flex-start; gap: 10px; padding: 9px 0; border-bottom: 1px solid var(--border); font-size: 12px; line-height: 1.45; color: var(--text-primary); }
