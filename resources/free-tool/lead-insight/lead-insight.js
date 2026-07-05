@@ -109,7 +109,6 @@ function setStage(index) {
     step.classList.toggle("li-step--done", i < index);
     step.classList.toggle("li-step--active", i === index);
   });
-  $("li-stage-label").textContent = LOADING_STAGES[index].label;
   $("li-tip-text").textContent = runTips[index];
   $("li-rail-fill").style.width = `${(index / (LOADING_STAGES.length - 1)) * 100}%`;
 }
