@@ -363,7 +363,7 @@ $("li-copy-questions").addEventListener("click", async () => {
 
 /* ---------- reset ---------- */
 
-$("li-reset").addEventListener("click", () => {
+function resetTool() {
   views.result.classList.remove("li-view--active");
   views.input.classList.add("li-view--active");
   ta.value = "";
@@ -372,6 +372,7 @@ $("li-reset").addEventListener("click", () => {
   refreshInput();
   window.scrollTo({ top: 0, behavior: "instant" });
   ta.focus();
-});
+}
+document.querySelectorAll(".js-li-reset").forEach((btn) => btn.addEventListener("click", resetTool));
 
 refreshInput();
