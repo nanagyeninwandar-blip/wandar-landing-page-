@@ -33,17 +33,36 @@ const counter = $("li-count");
 const submitBtn = $("li-submit");
 const errorBox = $("li-error");
 const errorText = $("li-error-text");
+const emailInput = $("li-email-input");
+
+const EMAIL_RE = /\S+@\S+\.\S+/; // same rule as the site's modal forms
+const EMAIL_STORE_KEY = "wandar-li-email";
 
 let selectedSource = null;
 let stageTimer = null;
 
 /* ---------- input view ---------- */
 
+function emailValid() {
+  return EMAIL_RE.test(emailInput.value.trim());
+}
+
 function refreshInput() {
   counter.textContent = `${ta.value.length} / ${MAX_CHARS}`;
-  submitBtn.disabled = ta.value.trim().length === 0;
+  submitBtn.disabled = ta.value.trim().length === 0 || !emailValid();
+  emailInput.classList.toggle(
+    "li-email__input--invalid",
+    emailInput.value.trim().length > 0 && !emailValid()
+  );
 }
 ta.addEventListener("input", refreshInput);
+emailInput.addEventListener("input", refreshInput);
+
+// Returning operators shouldn't retype their email.
+try {
+  const saved = localStorage.getItem(EMAIL_STORE_KEY);
+  if (saved) emailInput.value = saved;
+} catch { /* storage unavailable — fine */ }
 
 document.querySelectorAll(".li-chip").forEach((chip) => {
   chip.addEventListener("click", () => {
@@ -102,10 +121,31 @@ function stopLoading() {
 
 /* ---------- submit ---------- */
 
+/** Lead capture via Netlify Forms — fire-and-forget, never blocks the analysis. */
+function captureLead(email) {
+  try {
+    localStorage.setItem(EMAIL_STORE_KEY, email);
+  } catch { /* storage unavailable — fine */ }
+  const body = new URLSearchParams({
+    "form-name": "lead-insight-tool",
+    "bot-field": "",
+    email,
+    source: selectedSource || "",
+  });
+  fetch("/", {
+    method: "POST",
+    headers: { "content-type": "application/x-www-form-urlencoded" },
+    body: body.toString(),
+  }).catch(() => { /* capture is best-effort */ });
+}
+
 async function generate() {
   const enquiry = ta.value.trim();
-  if (!enquiry) return;
+  const email = emailInput.value.trim();
+  if (!enquiry || !EMAIL_RE.test(email)) return;
   errorBox.classList.remove("li-error--show");
+
+  captureLead(email);
 
   const startedAt = Date.now();
   startLoading();
