@@ -487,9 +487,9 @@ function buildPdf(JsPDF, logo) {
     setFont(9.5, TEXT, false);
     doc.text(SIGNAL_LABELS[key], M, y);
     doc.setFillColor(...STATE[state]);
-    doc.circle(W - M - 28, y - 1.1, 1.1, "F");
+    doc.circle(M + 42, y - 1.1, 1.1, "F");
     setFont(9.5, STATE[state], true);
-    doc.text(STATE_LABELS[state], W - M, y, { align: "right" });
+    doc.text(STATE_LABELS[state], M + 46, y);
     y += 5.6;
   }
 
