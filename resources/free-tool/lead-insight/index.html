@@ -21,7 +21,7 @@
   <link rel="icon" href="../../../assets/wandar-logo-blkbg.jpg" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&family=Lora:wght@500;600;700&family=Righteous&display=swap" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&family=Righteous&display=swap" />
   <link rel="stylesheet" href="../../../assets/css/main.css" />
   <link rel="stylesheet" href="lead-insight.css" />
   <script src="../../../assets/js/modals.js"></script>
@@ -310,6 +310,34 @@
         </button>
       </aside>
 
+      <div class="li-cards">
+        <div class="li-rcard li-rcard--summary">
+          <div class="li-rcard__head">
+            <span class="li-rcard__ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg></span>
+            <span class="li-rcard__t">Enquiry Summary</span>
+          </div>
+          <div class="li-sum" id="li-summary"></div>
+        </div>
+        <div class="li-rcard li-rcard--missing">
+          <div class="li-rcard__head">
+            <span class="li-rcard__ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><path d="M12 17h.01"/></svg></span>
+            <span class="li-rcard__t">Missing Information</span>
+          </div>
+          <div class="li-miss" id="li-missing"></div>
+        </div>
+        <div class="li-rcard li-rcard--why">
+          <div class="li-rcard__head">
+            <span class="li-rcard__ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4M12 8h.01"/></svg></span>
+            <span class="li-rcard__t">Why this matters</span>
+          </div>
+          <div class="li-why" id="li-why-body"></div>
+          <div class="li-why__callout">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 8v4M12 16h.01"/></svg>
+            <span id="li-why-callout-text"></span>
+          </div>
+        </div>
+      </div>
+
       <div class="li-main">
         <div class="li-main__eyebrow">
           <span class="li-main__eyebrow-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg></span>
@@ -332,28 +360,6 @@
             </button>
           </div>
           <div class="li-questions__list" id="li-questions-list"></div>
-        </div>
-
-        <div class="li-cards">
-          <div class="li-rcard li-rcard--summary">
-            <span class="li-rcard__ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg></span>
-            <div class="li-rcard__t">Enquiry Summary</div>
-            <div class="li-sum" id="li-summary"></div>
-          </div>
-          <div class="li-rcard li-rcard--missing">
-            <span class="li-rcard__ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><path d="M12 17h.01"/></svg></span>
-            <div class="li-rcard__t">Missing Information</div>
-            <div class="li-miss" id="li-missing"></div>
-          </div>
-          <div class="li-rcard li-rcard--why">
-            <span class="li-rcard__ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4M12 8h.01"/></svg></span>
-            <div class="li-rcard__t">Why this matters</div>
-            <div class="li-why" id="li-why-body"></div>
-            <div class="li-why__callout">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 8v4M12 16h.01"/></svg>
-              <span id="li-why-callout-text"></span>
-            </div>
-          </div>
         </div>
       </div>
     </div>
