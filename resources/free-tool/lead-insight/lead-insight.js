@@ -81,6 +81,7 @@ function showError(code) {
   const messages = {
     rate_limited: "Easy on the throttle — a few too many requests at once. Give it a minute and try again.",
     enquiry_too_long: `That enquiry is over ${MAX_CHARS.toLocaleString()} characters. Trim it to the traveller's message and try again.`,
+    not_configured: "The analysis service isn't configured yet (missing API key on the server). Your text is untouched.",
     offline: "We couldn't reach the analysis service. Check your connection and try again.",
     default: "Something went wrong while analysing the enquiry. Your text is untouched — please try again.",
   };
