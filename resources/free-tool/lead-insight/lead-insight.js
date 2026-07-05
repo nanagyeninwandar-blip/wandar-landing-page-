@@ -261,6 +261,7 @@ function iconSpan(svg) {
 
 function renderResult(classification, scored) {
   const copy = buildResultCopy(classification.signals, scored);
+  lastReport = { classification, scored, copy, source: selectedSource };
   const result = $("li-view-result");
   result.className = `li-view li-result li-result--${scored.tier}`;
 
@@ -382,12 +383,9 @@ function renderResult(classification, scored) {
   });
 }
 
-/* ---------- direct download: self-contained HTML report ---------- */
+/* ---------- direct download: real PDF report (jsPDF, lazy-loaded) ---------- */
 
-// Brand tokens the report needs (mirrors main.css :root).
-const REPORT_TOKENS = `:root{--safari-primary:#1a7373;--safari-secondary:#c45911;--safari-nature:#2d5016;--safari-gold:#b8860b;--text-primary:#1a1a1a;--text-secondary:#525252;--text-muted:#737373;--dark-bg:#111816;--off-white:#FDF8F0;--white:#fff;--border:#E5E7EB;--primary-hover:#156060;--secondary-hover:#a34b0e;--primary-light:#e6f4f4;--nature-light:#e8f3df;--secondary-light:#ffeee0;--gold-light:#fff9e6;--font-primary:'Plus Jakarta Sans',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;--radius-sm:6px;--radius-md:12px;--radius-lg:16px;--radius-pill:999px}`;
-
-const REPORT_EXTRAS = `*{box-sizing:border-box;margin:0;padding:0}body{font-family:var(--font-primary);background:var(--off-white);color:var(--text-primary);padding:28px 16px}.container{max-width:1080px;margin:0 auto}.li-print-head{display:flex!important;align-items:center;gap:12px;border-bottom:2px solid var(--safari-primary);padding-bottom:10px;margin-bottom:16px}.li-print-head__logo{height:28px;width:auto}.li-print-head__title{font-size:13px;font-weight:700}.li-print-head__meta{margin-left:auto;font-size:11px;color:var(--text-muted)}.li-result{padding:0!important;min-height:0!important}`;
+let lastReport = null; // set by renderResult
 
 async function toDataUrl(url) {
   const blob = await (await fetch(url)).blob();
@@ -399,48 +397,195 @@ async function toDataUrl(url) {
   });
 }
 
+function ensureJsPdf() {
+  if (window.jspdf?.jsPDF) return Promise.resolve(window.jspdf.jsPDF);
+  return new Promise((resolve, reject) => {
+    const script = document.createElement("script");
+    script.src = "jspdf.umd.min.js";
+    script.onload = () => resolve(window.jspdf.jsPDF);
+    script.onerror = () => reject(new Error("pdf engine failed to load"));
+    document.head.appendChild(script);
+  });
+}
+
+function buildPdf(JsPDF, logo) {
+  const { classification, scored, copy, source } = lastReport;
+  const doc = new JsPDF({ unit: "mm", format: "a4" });
+  const W = 210;
+  const M = 16;
+  const CW = W - M * 2;
+  const TEXT = [26, 26, 26];
+  const MUTED = [115, 115, 115];
+  const TEAL = [26, 115, 115];
+  const ORANGE = [196, 89, 17];
+  const TIER = { high: [47, 191, 113], mid: [232, 161, 60], low: [224, 112, 38], very_low: [213, 84, 79] };
+  const STATE = {
+    specific: [29, 122, 76], very_specific: [29, 122, 76],
+    vague: [176, 119, 20], absent: [179, 84, 30],
+  };
+  let y = 18;
+
+  const ensure = (need) => {
+    if (y + need > 282) { doc.addPage(); y = 18; }
+  };
+  const setFont = (size, color, bold) => {
+    doc.setFontSize(size);
+    doc.setTextColor(...color);
+    doc.setFont("helvetica", bold ? "bold" : "normal");
+  };
+  const para = (text, size, color, { bold = false, indent = 0, gap = 2.5, width = CW } = {}) => {
+    setFont(size, color, bold);
+    const lines = doc.splitTextToSize(text, width - indent);
+    const height = lines.length * size * 0.42;
+    ensure(height + gap);
+    doc.text(lines, M + indent, y);
+    y += height + gap;
+  };
+  const sectionLabel = (label) => {
+    ensure(10);
+    y += 3;
+    setFont(8.5, TEAL, true);
+    doc.text(label.toUpperCase(), M, y);
+    y += 5;
+  };
+
+  // Header: logo, title, date, teal rule.
+  if (logo) doc.addImage(logo, "PNG", M, y - 6.2, 25, 6.3);
+  setFont(11, TEXT, true);
+  doc.text("Lead Insight Report", M + (logo ? 30 : 0), y - 1);
+  setFont(9, MUTED, false);
+  doc.text($("li-print-date").textContent, W - M, y - 1, { align: "right" });
+  doc.setDrawColor(...TEAL);
+  doc.setLineWidth(0.8);
+  doc.line(M, y + 2, W - M, y + 2);
+  y += 12;
+
+  // Score block: big number, intent pill, decision lines.
+  setFont(8.5, MUTED, true);
+  doc.text("LEAD INSIGHT SCORE", M, y);
+  setFont(30, TEXT, true);
+  doc.text(scored.score.toFixed(1), M, y + 14);
+  const scoreWidth = doc.getTextWidth(scored.score.toFixed(1));
+  setFont(11, MUTED, false);
+  doc.text("/10", M + scoreWidth + 2, y + 14);
+  const pill = TIER[scored.tier] || TIER.mid;
+  doc.setFillColor(...pill);
+  doc.roundedRect(M, y + 18, 34, 7, 3.5, 3.5, "F");
+  setFont(9, [255, 255, 255], true);
+  doc.text(copy.intentLabel, M + 17, y + 22.7, { align: "center" });
+  setFont(11, TEXT, true);
+  doc.text(`Decision: ${copy.decision}`, M + 75, y + 6);
+  setFont(9.5, MUTED, false);
+  doc.text(copy.star, M + 75, y + 12);
+  y += 31;
+
+  // Intent breakdown.
+  sectionLabel("Intent breakdown");
+  for (const key of ALL_SIGNALS) {
+    const state = classification.signals[key].state;
+    ensure(6);
+    setFont(9.5, TEXT, false);
+    doc.text(SIGNAL_LABELS[key], M, y);
+    doc.setFillColor(...STATE[state]);
+    doc.circle(W - M - 28, y - 1.1, 1.1, "F");
+    setFont(9.5, STATE[state], true);
+    doc.text(STATE_LABELS[state], W - M, y, { align: "right" });
+    y += 5.6;
+  }
+
+  // Next steps.
+  sectionLabel("Your next steps");
+  para(copy.headline, 11.5, ORANGE, { bold: true, gap: 1.5 });
+  para(copy.subline, 9, MUTED, { gap: 4 });
+  for (const item of copy.checklist) {
+    setFont(9.5, TEXT, false);
+    const lines = doc.splitTextToSize(item, CW - 8);
+    const height = lines.length * 9.5 * 0.42;
+    ensure(height + 3.4);
+    doc.setDrawColor(150, 150, 150);
+    doc.setLineWidth(0.3);
+    doc.rect(M, y - 3, 3.4, 3.4, "S");
+    doc.text(lines, M + 6.5, y);
+    y += height + 3.4;
+  }
+
+  // Ready-to-send questions.
+  if (copy.questions.length > 0) {
+    sectionLabel("Ready-to-send qualifying questions");
+    for (const question of copy.questions) {
+      setFont(9.5, TEXT, false);
+      const lines = doc.splitTextToSize(question, CW - 10);
+      const height = lines.length * 9.5 * 0.42 + 5.5;
+      ensure(height + 3);
+      doc.setFillColor(230, 244, 244);
+      doc.setDrawColor(...TEAL);
+      doc.setLineWidth(0.25);
+      doc.roundedRect(M, y - 4, CW, height, 1.5, 1.5, "FD");
+      doc.text(lines, M + 5, y);
+      y += height + 3;
+    }
+  }
+
+  // Enquiry summary.
+  const summaryRows = [];
+  for (const key of ALL_SIGNALS) {
+    const entry = classification.signals[key];
+    if ((entry.state === "specific" || entry.state === "very_specific") && entry.value) {
+      summaryRows.push(`${SIGNAL_LABELS[key]}: ${entry.value}`);
+    }
+  }
+  for (const detail of classification.notable_details.slice(0, 4)) summaryRows.push(detail);
+  if (source && SOURCE_LABELS[source]) summaryRows.push(`Came in via ${SOURCE_LABELS[source]}`);
+  if (summaryRows.length > 0) {
+    sectionLabel("Enquiry summary");
+    for (const row of summaryRows) para(`•  ${row}`, 9.5, TEXT, { gap: 1.8 });
+  }
+
+  // Missing information.
+  if (copy.gaps.length > 0) {
+    sectionLabel("Missing information");
+    for (const gap of copy.gaps) para(`•  ${gap.text}`, 9.5, [179, 84, 30], { gap: 1.8 });
+  }
+
+  // Why this matters.
+  sectionLabel("Why this matters");
+  para(copy.why, 9.5, [82, 82, 82], { gap: 3 });
+  {
+    setFont(9, [154, 52, 18], true);
+    const lines = doc.splitTextToSize(copy.callout, CW - 10);
+    const height = lines.length * 9 * 0.42 + 5.5;
+    ensure(height + 4);
+    doc.setFillColor(255, 238, 224);
+    doc.roundedRect(M, y - 4, CW, height, 1.5, 1.5, "F");
+    doc.text(lines, M + 5, y);
+    y += height + 4;
+  }
+
+  // Footer on every page.
+  const pages = doc.getNumberOfPages();
+  for (let i = 1; i <= pages; i++) {
+    doc.setPage(i);
+    setFont(7.5, MUTED, false);
+    doc.text("Generated by the Wandar Lead Insight Generator  ·  getwandar.com", W / 2, 291, { align: "center" });
+  }
+  return doc;
+}
+
 async function downloadReport() {
+  if (!lastReport) return;
   const btn = $("li-download");
   btn.disabled = true;
   try {
-    const [css, logo] = await Promise.all([
-      fetch("lead-insight.css").then((r) => r.text()),
+    const [JsPDF, logo] = await Promise.all([
+      ensureJsPdf(),
       toDataUrl("../../../assets/banner-nav-320.png").catch(() => null),
     ]);
-
-    // Snapshot the rendered result and strip the interactive bits.
-    const section = $("li-view-result").cloneNode(true);
-    section.querySelector(".li-result__topbar")?.remove();
-    section.querySelectorAll(".li-copybtn, .li-reset").forEach((el) => el.remove());
-    section.querySelectorAll("input[type=checkbox]").forEach((box) => box.setAttribute("disabled", ""));
-    const logoImg = section.querySelector("#li-print-logo");
-    if (logoImg && logo) logoImg.src = logo;
-
-    const title = `Wandar Lead Insight ${$("li-gauge-score").textContent} - ${$("li-pill").textContent}`;
-    const html = `<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="utf-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>${title}</title>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap" />
-<style>${REPORT_TOKENS}</style>
-<style>${css}</style>
-<style>${REPORT_EXTRAS}</style>
-</head>
-<body>
-${section.outerHTML}
-</body>
-</html>`;
-
-    const url = URL.createObjectURL(new Blob([html], { type: "text/html" }));
-    const link = document.createElement("a");
-    link.href = url;
-    link.download = `${title}.html`;
-    document.body.appendChild(link);
-    link.click();
-    link.remove();
-    setTimeout(() => URL.revokeObjectURL(url), 4000);
+    const doc = buildPdf(JsPDF, logo);
+    doc.save(`Wandar Lead Insight ${lastReport.scored.score.toFixed(1)} - ${lastReport.copy.intentLabel}.pdf`);
+  } catch {
+    const label = btn.innerHTML;
+    btn.innerHTML = "Download failed. Try again";
+    setTimeout(() => { btn.innerHTML = label; }, 2500);
   } finally {
     btn.disabled = false;
   }
