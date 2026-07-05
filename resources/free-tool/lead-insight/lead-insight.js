@@ -382,15 +382,71 @@ function renderResult(classification, scored) {
   });
 }
 
-/* ---------- download as PDF (browser print) ---------- */
+/* ---------- direct download: self-contained HTML report ---------- */
 
-$("li-download").addEventListener("click", () => {
-  const previousTitle = document.title;
-  // The browser uses the title as the default PDF filename.
-  document.title = `Wandar Lead Insight ${$("li-gauge-score").textContent} - ${$("li-pill").textContent}`;
-  window.print();
-  document.title = previousTitle;
-});
+// Brand tokens the report needs (mirrors main.css :root).
+const REPORT_TOKENS = `:root{--safari-primary:#1a7373;--safari-secondary:#c45911;--safari-nature:#2d5016;--safari-gold:#b8860b;--text-primary:#1a1a1a;--text-secondary:#525252;--text-muted:#737373;--dark-bg:#111816;--off-white:#FDF8F0;--white:#fff;--border:#E5E7EB;--primary-hover:#156060;--secondary-hover:#a34b0e;--primary-light:#e6f4f4;--nature-light:#e8f3df;--secondary-light:#ffeee0;--gold-light:#fff9e6;--font-primary:'Plus Jakarta Sans',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;--radius-sm:6px;--radius-md:12px;--radius-lg:16px;--radius-pill:999px}`;
+
+const REPORT_EXTRAS = `*{box-sizing:border-box;margin:0;padding:0}body{font-family:var(--font-primary);background:var(--off-white);color:var(--text-primary);padding:28px 16px}.container{max-width:1080px;margin:0 auto}.li-print-head{display:flex!important;align-items:center;gap:12px;border-bottom:2px solid var(--safari-primary);padding-bottom:10px;margin-bottom:16px}.li-print-head__logo{height:28px;width:auto}.li-print-head__title{font-size:13px;font-weight:700}.li-print-head__meta{margin-left:auto;font-size:11px;color:var(--text-muted)}.li-result{padding:0!important;min-height:0!important}`;
+
+async function toDataUrl(url) {
+  const blob = await (await fetch(url)).blob();
+  return new Promise((resolve, reject) => {
+    const reader = new FileReader();
+    reader.onload = () => resolve(reader.result);
+    reader.onerror = reject;
+    reader.readAsDataURL(blob);
+  });
+}
+
+async function downloadReport() {
+  const btn = $("li-download");
+  btn.disabled = true;
+  try {
+    const [css, logo] = await Promise.all([
+      fetch("lead-insight.css").then((r) => r.text()),
+      toDataUrl("../../../assets/banner-nav-320.png").catch(() => null),
+    ]);
+
+    // Snapshot the rendered result and strip the interactive bits.
+    const section = $("li-view-result").cloneNode(true);
+    section.querySelector(".li-result__topbar")?.remove();
+    section.querySelectorAll(".li-copybtn, .li-reset").forEach((el) => el.remove());
+    section.querySelectorAll("input[type=checkbox]").forEach((box) => box.setAttribute("disabled", ""));
+    const logoImg = section.querySelector("#li-print-logo");
+    if (logoImg && logo) logoImg.src = logo;
+
+    const title = `Wandar Lead Insight ${$("li-gauge-score").textContent} - ${$("li-pill").textContent}`;
+    const html = `<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>${title}</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap" />
+<style>${REPORT_TOKENS}</style>
+<style>${css}</style>
+<style>${REPORT_EXTRAS}</style>
+</head>
+<body>
+${section.outerHTML}
+</body>
+</html>`;
+
+    const url = URL.createObjectURL(new Blob([html], { type: "text/html" }));
+    const link = document.createElement("a");
+    link.href = url;
+    link.download = `${title}.html`;
+    document.body.appendChild(link);
+    link.click();
+    link.remove();
+    setTimeout(() => URL.revokeObjectURL(url), 4000);
+  } finally {
+    btn.disabled = false;
+  }
+}
+
+$("li-download").addEventListener("click", downloadReport);
 
 /* ---------- copy questions ---------- */
 

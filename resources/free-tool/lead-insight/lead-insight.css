@@ -215,8 +215,8 @@
   #li-loading, #li-view-input { display: none !important; }
 
   .li-result { padding: 0; min-height: 0; background: #fff; }
-  .li-print-head { display: flex; align-items: baseline; gap: 12px; border-bottom: 2px solid var(--safari-primary); padding-bottom: 8px; margin-bottom: 14px; }
-  .li-print-head__brand { font-family: var(--font-logo); font-size: 20px; color: var(--safari-primary); }
+  .li-print-head { display: flex; align-items: center; gap: 12px; border-bottom: 2px solid var(--safari-primary); padding-bottom: 8px; margin-bottom: 14px; }
+  .li-print-head__logo { height: 26px; width: auto; }
   .li-print-head__title { font-size: 13px; font-weight: 700; color: var(--text-primary); }
   .li-print-head__meta { margin-left: auto; font-size: 11px; color: var(--text-muted); }
 
