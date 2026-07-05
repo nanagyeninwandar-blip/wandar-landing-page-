@@ -6,7 +6,7 @@
 .li-view--active { display: block; }
 
 /* ---------- input view ---------- */
-.li-hero { background: var(--off-white); padding: 104px 0 28px; }
+.li-hero { background: var(--off-white); padding: 82px 0 28px; }
 .li-hero__grid { display: grid; grid-template-columns: 1fr 1.05fr; gap: 56px; align-items: start; }
 .li-eyebrow { display: inline-block; font-size: 11px; font-weight: 800; letter-spacing: 0.14em; text-transform: uppercase; color: #fff; background: var(--safari-secondary); border-radius: var(--radius-pill); padding: 5px 13px; margin-bottom: 14px; }
 .li-hero__kicker { font-size: clamp(20px, 2.2vw, 26px); font-weight: 800; color: var(--safari-primary); margin-bottom: 10px; }
@@ -191,7 +191,7 @@
   .li-cards { order: 3; padding-top: 0; }
 }
 @media (max-width: 760px) {
-  .li-hero { padding-top: 88px; }
+  .li-hero { padding-top: 74px; }
   .li-result { padding-top: 66px; }
   .li-step__ic svg { width: 17px; height: 17px; }
   .li-tip { font-size: 22px; }
