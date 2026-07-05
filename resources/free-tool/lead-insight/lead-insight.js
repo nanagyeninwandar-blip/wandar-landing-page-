@@ -218,6 +218,7 @@ async function generate() {
       views.input.classList.remove("li-view--active");
       views.result.classList.add("li-view--active");
       document.querySelector(".li-reset-top")?.classList.add("li-reset-top--show");
+      document.body.classList.add("li-result-open"); // hide CTA/resources/footer: result is the whole view
       window.scrollTo({ top: 0, behavior: "instant" });
     }, Math.min(600, remaining + 400));
   }, remaining);
@@ -401,6 +402,7 @@ function resetTool() {
   views.result.classList.remove("li-view--active");
   views.input.classList.add("li-view--active");
   document.querySelector(".li-reset-top")?.classList.remove("li-reset-top--show");
+  document.body.classList.remove("li-result-open");
   ta.value = "";
   document.querySelectorAll(".li-chip").forEach((c) => c.classList.remove("li-chip--active"));
   selectedSource = null;
