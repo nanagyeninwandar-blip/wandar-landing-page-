@@ -373,7 +373,24 @@ function renderResult(classification, scored) {
   // Why this matters.
   $("li-why-body").textContent = copy.why;
   $("li-why-callout-text").textContent = copy.callout;
+
+  // Print report header date.
+  $("li-print-date").textContent = new Date().toLocaleDateString(undefined, {
+    year: "numeric",
+    month: "long",
+    day: "numeric",
+  });
 }
+
+/* ---------- download as PDF (browser print) ---------- */
+
+$("li-download").addEventListener("click", () => {
+  const previousTitle = document.title;
+  // The browser uses the title as the default PDF filename.
+  document.title = `Wandar Lead Insight ${$("li-gauge-score").textContent} - ${$("li-pill").textContent}`;
+  window.print();
+  document.title = previousTitle;
+});
 
 /* ---------- copy questions ---------- */
 

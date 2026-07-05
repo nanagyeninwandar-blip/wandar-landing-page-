@@ -251,10 +251,19 @@
 <section id="li-view-result" class="li-view li-result">
   <div class="container">
     <div class="li-result__topbar">
+      <button type="button" class="li-download" id="li-download">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+        Download result
+      </button>
       <button type="button" class="li-reset-top js-li-reset">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="1 4 1 10 7 10"/><path d="M3.51 15a9 9 0 1 0 2.13-9.36L1 10"/></svg>
         Analyze another enquiry
       </button>
+    </div>
+    <div class="li-print-head" aria-hidden="true">
+      <span class="li-print-head__brand">Wandar</span>
+      <span class="li-print-head__title">Lead Insight Report</span>
+      <span class="li-print-head__meta" id="li-print-date"></span>
     </div>
     <div class="li-result__grid">
       <aside class="li-side">

@@ -90,7 +90,11 @@
 
 /* ---------- result view (3-column, fits the fold) ---------- */
 .li-result { background: var(--off-white); padding: 70px 0 14px; min-height: 100vh; }
-.li-result__topbar { display: flex; justify-content: flex-end; padding: 4px 0 6px; }
+.li-result__topbar { display: flex; justify-content: flex-end; gap: 8px; padding: 4px 0 6px; }
+.li-download { display: inline-flex; align-items: center; gap: 7px; font-family: inherit; font-size: 12px; font-weight: 700; color: var(--safari-primary); background: var(--white); border: 1.5px solid var(--safari-primary); border-radius: var(--radius-pill); padding: 7px 14px; cursor: pointer; transition: background 140ms ease; white-space: nowrap; }
+.li-download:hover { background: var(--primary-light); }
+.li-download svg { width: 13px; height: 13px; }
+.li-print-head { display: none; }
 .li-result__grid { display: grid; grid-template-columns: 250px 1fr 1.22fr; gap: 18px; align-items: start; }
 .li-side { background: #0d302d; border-radius: var(--radius-lg); padding: 16px 18px 14px; color: #fff; }
 .li-side__label { font-size: 10px; font-weight: 800; letter-spacing: 0.14em; text-transform: uppercase; color: rgba(255, 255, 255, 0.65); text-align: center; margin-bottom: 10px; }
@@ -203,6 +207,47 @@
 .li-webinar__check { width: 20px; height: 20px; border-radius: 50%; background: var(--safari-primary); display: flex; align-items: center; justify-content: center; flex-shrink: 0; margin-top: 1px; }
 .li-webinar__check svg { width: 10px; height: 10px; fill: none; stroke: #fff; stroke-width: 2.5; }
 .li-webinar__note { font-size: 12px; color: var(--text-muted); }
+
+/* ---------- print: clean one-page Lead Insight report ---------- */
+@media print {
+  .nav, .nav__mobile-panel, .li-result__topbar, .li-reset, .li-copybtn,
+  .cta-wide, .opres, .li-webinar, .li-stripe, .footer, .modal-overlay,
+  #li-loading, #li-view-input { display: none !important; }
+
+  .li-result { padding: 0; min-height: 0; background: #fff; }
+  .li-print-head { display: flex; align-items: baseline; gap: 12px; border-bottom: 2px solid var(--safari-primary); padding-bottom: 8px; margin-bottom: 14px; }
+  .li-print-head__brand { font-family: var(--font-logo); font-size: 20px; color: var(--safari-primary); }
+  .li-print-head__title { font-size: 13px; font-weight: 700; color: var(--text-primary); }
+  .li-print-head__meta { margin-left: auto; font-size: 11px; color: var(--text-muted); }
+
+  .li-result__grid { display: flex; flex-direction: column; gap: 12px; }
+  .li-side { order: 1; }
+  .li-main { order: 2; padding-top: 0; }
+  .li-cards { order: 3; padding-top: 0; }
+
+  .li-side { background: #fff !important; color: var(--text-primary); border: 1px solid #ccc; border-radius: 8px; }
+  .li-side__label, .li-break__label { color: var(--text-muted); }
+  .li-gauge__score { color: var(--text-primary); }
+  .li-gauge__of { color: var(--text-muted); }
+  .li-gauge__track { stroke: #e5e5e5; }
+  .li-side__row { color: var(--text-primary); }
+  .li-side__row--decision svg { color: var(--safari-primary); }
+  .li-break__sig { color: var(--text-primary); }
+  .li-break__sig svg { color: var(--text-muted); }
+  .li-side__rows, .li-break { border-top-color: #e5e5e5; }
+  .li-pill { background: transparent !important; color: var(--text-primary) !important; border: 1.5px solid #999; }
+  .li-state--specific, .li-state--very_specific { color: #1d7a4c; }
+  .li-state--vague { color: #b07714; }
+  .li-state--absent { color: #b3541e; }
+
+  .li-action { background: #fff !important; border: 1px solid #ccc; }
+  .li-action__ic { box-shadow: none; border: 1px solid #ddd; }
+  .li-questions { background: #fff !important; border: 1px solid #ccc; }
+  .li-q { border-color: #ddd; border-left-color: var(--safari-primary); }
+  .li-rcard, .li-check { border-color: #ccc; }
+  .li-why__callout { background: #fff !important; border: 1px solid #ddd; }
+  .li-mf, .li-rcard, .li-check, .li-questions, .li-action, .li-side { break-inside: avoid; }
+}
 
 /* ---------- responsive ---------- */
 @media (max-width: 1020px) {
