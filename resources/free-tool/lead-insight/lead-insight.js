@@ -18,8 +18,8 @@ import {
 } from "./copy.js";
 
 const MAX_CHARS = 5000;
-const STAGE_MS = 1300;
-const MIN_LOADING_MS = 4200;
+const STAGE_MS = 2600; // per stage: long enough to actually read a worldview line
+const MIN_LOADING_MS = 11000; // 4 stages get their full beat even when the API is fast
 
 const $ = (id) => document.getElementById(id);
 
