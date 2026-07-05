@@ -1,4 +1,4 @@
-/* Lead Insight Generator — page styles, layered over assets/css/main.css.
+/* Lead Insight Generator, page styles, layered over assets/css/main.css.
    Uses the site's tokens (--safari-*, --radius-*, fonts) and BEM naming. */
 
 /* ---------- view switching ---------- */
@@ -146,7 +146,7 @@
 .li-main__eyebrow-ic { width: 40px; height: 40px; border-radius: var(--radius-md); background: var(--nature-light); color: var(--safari-nature); display: flex; align-items: center; justify-content: center; }
 .li-main__eyebrow-ic svg { width: 20px; height: 20px; }
 .li-main__eyebrow span { font-size: 12.5px; font-weight: 800; letter-spacing: 0.13em; text-transform: uppercase; color: var(--safari-nature); }
-.li-headline { font-size: clamp(26px, 3vw, 38px); font-weight: 800; letter-spacing: -0.02em; line-height: 1.15; color: var(--text-primary); margin-bottom: 12px; }
+.li-headline { font-family: "Lora", Georgia, serif; font-size: clamp(27px, 3.1vw, 40px); font-weight: 600; letter-spacing: -0.01em; line-height: 1.22; color: var(--text-primary); margin-bottom: 12px; max-width: 21em; }
 .li-subline { font-size: 16px; line-height: 1.6; color: var(--text-secondary); margin-bottom: 26px; }
 .li-check { background: var(--white); border: 1px solid var(--border); border-radius: var(--radius-lg); padding: 8px 22px; margin-bottom: 22px; }
 .li-check__item { display: flex; align-items: flex-start; gap: 14px; padding: 15px 0; border-bottom: 1px solid var(--border); font-size: 15px; line-height: 1.5; color: var(--text-primary); }
@@ -171,7 +171,7 @@
 .li-rcard--summary .li-rcard__ic { background: var(--primary-light); color: var(--safari-primary); }
 .li-rcard--missing .li-rcard__ic { background: var(--secondary-light); color: var(--safari-secondary); }
 .li-rcard--why .li-rcard__ic { background: var(--gold-light); color: var(--safari-gold); }
-.li-rcard__t { font-size: 16.5px; font-weight: 800; color: var(--text-primary); margin-bottom: 13px; }
+.li-rcard__t { font-family: "Lora", Georgia, serif; font-size: 18px; font-weight: 600; color: var(--text-primary); margin-bottom: 13px; }
 .li-sum { display: flex; flex-direction: column; gap: 10px; }
 .li-sum__row { display: flex; align-items: flex-start; gap: 10px; font-size: 13.5px; line-height: 1.45; color: var(--text-primary); }
 .li-sum__row svg { width: 15px; height: 15px; flex: none; margin-top: 2px; color: var(--safari-primary); }

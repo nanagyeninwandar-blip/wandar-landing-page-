@@ -1,8 +1,9 @@
-/* Lead Insight Generator — deterministic copy banks.
+/* Lead Insight Generator - deterministic copy banks.
  *
  * Everything the operator reads on the result screen is produced here by
  * pure code from the classification + score. No LLM involvement: templates
  * only ever slot-fill values the classifier extracted verbatim.
+ * House rule: no em dashes anywhere in this tool's copy.
  */
 
 // Priority order for naming missing signals and picking questions.
@@ -37,11 +38,11 @@ export const SOURCE_LABELS = {
   marketplace: "Marketplace lead",
 };
 
-// One tip per loading stage — safari operator economics, not filler.
+// One tip per loading stage. Safari operator economics, not filler.
 export const LOADING_STAGES = [
   {
     label: "Reading the enquiry",
-    tip: "A proper safari quote takes hours — route, lodges, internal flights, permits. Strong operators triage before they build.",
+    tip: "A proper safari quote takes hours of route, lodge, and flight work. Strong operators triage before they build.",
   },
   {
     label: "Detecting the five signals",
@@ -49,7 +50,7 @@ export const LOADING_STAGES = [
   },
   {
     label: "Classifying signal strength",
-    tip: "‘Luxury’ spans $500 to $3,000 a night. A budget number — even a rough one — beats any adjective.",
+    tip: "'Luxury' spans $500 to $3,000 a night. A budget number beats any adjective, even a rough one.",
   },
   {
     label: "Scoring intent",
@@ -57,38 +58,38 @@ export const LOADING_STAGES = [
   },
 ];
 
-// Missing-information copy: every entry says WHY it matters to a quote.
+// Missing-information copy: short, mockup-style phrases.
 const MISSING_INFO = {
   budget: {
-    absent: "Budget range, even approximate — it decides lodge tier, routing, and whether internal flights fit.",
-    vague: "A budget number, even rough — ‘luxury’ spans $500 to $3,000 a night.",
+    absent: "Budget range, even approximate",
+    vague: "A budget figure, not just 'luxury'",
   },
   travel_dates: {
-    absent: "Travel month and year — seasonality drives pricing, wildlife, and availability.",
-    vague: "The exact month and year — green vs dry season changes the whole itinerary.",
+    absent: "Travel month and year",
+    vague: "Exact dates or date range",
   },
   group_size: {
-    absent: "Who’s travelling — adults, children and their ages.",
-    vague: "Exact party size and children’s ages — many lodges and activities have minimum-age rules.",
+    absent: "Who's travelling, and children's ages",
+    vague: "Exact party size and children's ages",
   },
   destination: {
-    absent: "Where in Africa — a country, park, or region to build a route around.",
-    vague: "Which countries or parks — ‘East Africa’ spans very different circuits.",
+    absent: "Which country, park, or region",
+    vague: "Preferred parks or regions",
   },
   urgency: {
-    absent: "When they plan to decide or book.",
-    vague: "How firm their timeline is — still researching, or ready to commit.",
+    absent: "When they plan to decide or book",
+    vague: "How firm their booking timeline is",
   },
 };
 
 // Ready-to-send qualifying questions, one per signal.
 const QUESTION_BANK = {
   budget:
-    "So I can point you at the right camps and routing, do you have a rough budget in mind — total or per person?",
+    "So I can point you at the right camps and routing, do you have a rough budget in mind, total or per person?",
   travel_dates:
     "Do you have a month and year in mind? Season shapes pricing, wildlife, and availability, so it changes everything.",
   group_size:
-    "Who’ll be travelling? If children are joining, their ages help — several lodges and activities have minimum-age rules.",
+    "Who'll be travelling? If children are joining, their ages help, since several lodges and activities have minimum-age rules.",
   destination:
     "Is there a country or park already drawing you, or would you like me to suggest a route?",
   urgency: "When are you hoping to make a decision? The best camps in peak season book out early.",
@@ -98,7 +99,7 @@ const QUESTION_BANK = {
 const SHORT_GAP = {
   budget: "a budget figure",
   travel_dates: "their travel month and year",
-  group_size: "who’s travelling",
+  group_size: "who's travelling",
   destination: "where they want to go",
   urgency: "their booking timeline",
 };
@@ -129,8 +130,7 @@ export function buildResultCopy(signals, scored) {
     text: MISSING_INFO[key][signals[key].state === "vague" ? "vague" : "absent"],
   }));
 
-  const dest = extractedValue(signals, "destination") || "their trip";
-  const dates = extractedValue(signals, "travel_dates") || "their travel window";
+  const dest = extractedValue(signals, "destination");
   const topGap = missing[0] || null;
 
   const questionCount = { high: 1, mid: 3, low: 1, very_low: 3 }[scored.tier];
@@ -140,22 +140,22 @@ export function buildResultCopy(signals, scored) {
   switch (scored.tier) {
     case "high":
       copy = {
-        decision: "Quote-worthy — reply today",
+        decision: "Reply today",
         star: "Quote-worthy lead",
         headline: "Reply today with a route suggestion and one final qualifying question.",
         subline:
           missing.length > 0
             ? "The enquiry shows strong intent, but a few planning details are still missing."
-            : "Everything you need to quote is here — destination, dates, budget, group, and readiness.",
+            : "The enquiry gives you everything you need: destination, dates, budget, group, and readiness.",
         checklist: [
-          `Check availability with your preferred lodges for ${dates} before you commit detail.`,
-          `Reply today with a 2–3 stop route suggestion for ${dest} that fits their budget.`,
-          topGap
-            ? `Ask for the one missing detail — ${SHORT_GAP[topGap]}. The question is ready below.`
-            : "State your quote validity window and deposit terms so they can commit.",
+          "Share a tailored route suggestion that fits the enquiry",
+          missing.length > 0
+            ? "Ask one key qualifying question to uncover top priority"
+            : "State your quote validity window and deposit terms",
+          "Set expectations for what you need before building the itinerary",
         ],
-        why: "Travellers this ready are usually talking to two or three operators at once. Peak-season availability moves fast — the first solid, informed reply usually wins.",
-        callout: "Replying today with something concrete builds trust and keeps the momentum.",
+        why: "Travellers at this stage are comparing options and forming preferences. A timely, helpful reply keeps you top of mind and increases your chances of being their choice.",
+        callout: "Replying now builds trust and keeps the momentum.",
       };
       break;
     case "mid":
@@ -164,28 +164,28 @@ export function buildResultCopy(signals, scored) {
         star: "Not quote-ready yet",
         headline: "Ask two or three targeted questions before you build anything.",
         subline:
-          "There’s a real trip here, but quoting now means guessing. Two minutes of questions protects hours of work.",
+          "There's a real trip here, but quoting now means guessing. Two minutes of questions protects hours of work.",
         checklist: [
-          `Copy the ${questions.length} qualifying question${questions.length === 1 ? "" : "s"} below into your reply — don’t build anything yet.`,
-          `Open with one warm sentence about ${dest === "their trip" ? "their trip idea" : dest} so the reply doesn’t read like a form.`,
-          "Set a follow-up reminder for 3–4 days in case they don’t answer.",
+          `Send the ${questions.length} ready-made question${questions.length === 1 ? "" : "s"} below before building anything`,
+          `Open with one warm line about ${dest || "their trip idea"} so the reply doesn't read like a form`,
+          "Set a follow-up reminder for 3 to 4 days in case they don't answer",
         ],
-        why: "Real interest, but quoting now means guessing at budget or dates. A two-minute qualifying reply protects hours of itinerary work — and shows the traveller you take their trip seriously.",
+        why: "Real interest, but quoting now means guessing at budget or dates. A two-minute qualifying reply protects hours of itinerary work and shows the traveller you take their trip seriously.",
         callout: "Qualify first: your itinerary hours are your most expensive resource.",
       };
       break;
     case "low":
       copy = {
         decision: "Light follow-up",
-        star: "Don’t build an itinerary yet",
-        headline: "Send a short, friendly reply — don’t build an itinerary yet.",
+        star: "Don't build an itinerary yet",
+        headline: "Send a short, friendly reply. Don't build an itinerary yet.",
         subline: "Early-stage interest. Keep the door open without spending itinerary hours.",
         checklist: [
-          "Send a two-sentence reply: one warm line, then the question below.",
-          `Ask only the single easiest question — ${SHORT_GAP[topGap]}.`,
-          "Park it as early-stage — no route, no pricing, until they answer.",
+          "Send a two-sentence reply: one warm line, then the question below",
+          `Ask only the single easiest question: ${SHORT_GAP[topGap]}`,
+          "Hold off on routes and pricing until they answer",
         ],
-        why: "This is an early-stage dreamer. A warm, low-effort touch keeps you first in mind when the trip firms up — at near-zero cost to you.",
+        why: "This is an early-stage dreamer. A warm, low-effort touch keeps you first in mind when the trip firms up, at near-zero cost to you.",
         callout: "One friendly line now beats a full proposal nobody reads.",
       };
       break;
@@ -193,15 +193,15 @@ export function buildResultCopy(signals, scored) {
       copy = {
         decision: "Qualify first",
         star: "Not enough to score",
-        headline: "Not enough to act on yet — ask for the essentials first.",
+        headline: "Not enough to act on yet. Ask for the essentials first.",
         subline:
-          "The enquiry doesn’t give you anything concrete to price. The three questions below will change that.",
+          "The enquiry doesn't give you anything concrete to price. The three questions below will change that.",
         checklist: [
-          "Copy the three questions below into a reply — it takes two minutes.",
-          "Don’t build anything yet — no route, no lodges, no pricing.",
-          "When they answer, paste the reply back in here and re-score it.",
+          "Copy the three questions below into a quick reply",
+          "Don't build anything yet: no route, no lodges, no pricing",
+          "When they answer, paste the reply back in here and re-score it",
         ],
-        why: "Replying with good questions costs two minutes and turns a vague enquiry into a scoreable one — or politely filters it out before it costs you an afternoon.",
+        why: "Replying with good questions costs two minutes and turns a vague enquiry into a scoreable one, or politely filters it out before it costs you an afternoon.",
         callout: "Good questions turn vague enquiries into real leads.",
       };
   }

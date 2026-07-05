@@ -1,9 +1,9 @@
-/* Lead Insight Generator — view state machine + rendering.
+/* Lead Insight Generator, view state machine + rendering.
  *
  * Flow: input → loading (staged) → result.
  * The serverless function only classifies; the score is computed here by
  * the deterministic scoring.js so results are reproducible and testable.
- * All dynamic text is inserted via textContent — never innerHTML — so the
+ * All dynamic text is inserted via textContent, never innerHTML, so the
  * pasted enquiry and extracted values can't inject markup.
  */
 
@@ -62,7 +62,7 @@ emailInput.addEventListener("input", refreshInput);
 try {
   const saved = localStorage.getItem(EMAIL_STORE_KEY);
   if (saved) emailInput.value = saved;
-} catch { /* storage unavailable — fine */ }
+} catch { /* storage unavailable, fine */ }
 
 document.querySelectorAll(".li-chip").forEach((chip) => {
   chip.addEventListener("click", () => {
@@ -79,11 +79,11 @@ document.querySelectorAll(".li-chip").forEach((chip) => {
 
 function showError(code) {
   const messages = {
-    rate_limited: "Easy on the throttle — a few too many requests at once. Give it a minute and try again.",
+    rate_limited: "Too many requests at once. Give it a minute and try again.",
     enquiry_too_long: `That enquiry is over ${MAX_CHARS.toLocaleString()} characters. Trim it to the traveller's message and try again.`,
     not_configured: "The analysis service isn't configured yet (missing API key on the server). Your text is untouched.",
     offline: "We couldn't reach the analysis service. Check your connection and try again.",
-    default: "Something went wrong while analysing the enquiry. Your text is untouched — please try again.",
+    default: "Something went wrong while analysing the enquiry. Your text is untouched. Please try again.",
   };
   errorText.textContent = messages[code] || messages.default;
   errorBox.classList.add("li-error--show");
@@ -122,11 +122,11 @@ function stopLoading() {
 
 /* ---------- submit ---------- */
 
-/** Lead capture via Netlify Forms — fire-and-forget, never blocks the analysis. */
+/** Lead capture via Netlify Forms, fire-and-forget, never blocks the analysis. */
 function captureLead(email) {
   try {
     localStorage.setItem(EMAIL_STORE_KEY, email);
-  } catch { /* storage unavailable — fine */ }
+  } catch { /* storage unavailable, fine */ }
   const body = new URLSearchParams({
     "form-name": "lead-insight-tool",
     "bot-field": "",
@@ -221,7 +221,7 @@ function el(tag, className, text) {
 
 function iconSpan(svg) {
   const span = document.createElement("span");
-  span.innerHTML = svg; // static markup from ICONS only — never user data
+  span.innerHTML = svg; // static markup from ICONS only, never user data
   return span.firstElementChild;
 }
 
@@ -230,7 +230,7 @@ function renderResult(classification, scored) {
   const result = $("li-view-result");
   result.className = `li-view li-result li-result--${scored.tier}`;
 
-  // Gauge — arc proportional to score/10 (Very Low renders its 3.0).
+  // Gauge, arc proportional to score/10 (Very Low renders its 3.0).
   const arc = $("li-gauge-arc");
   const radius = 84;
   const circumference = 2 * Math.PI * radius;
@@ -319,14 +319,14 @@ function renderResult(classification, scored) {
     summarised++;
   }
   if (summarised === 0) {
-    summary.appendChild(el("div", "li-miss__none", "Nothing concrete to summarise yet — the enquiry stays vague on every signal."));
+    summary.appendChild(el("div", "li-miss__none", "Nothing concrete to summarise yet. The enquiry stays vague on every signal."));
   }
 
   // Missing information.
   const missing = $("li-missing");
   missing.replaceChildren();
   if (copy.gaps.length === 0) {
-    missing.appendChild(el("div", "li-miss__none", "Nothing critical is missing — you have what you need to quote with confidence."));
+    missing.appendChild(el("div", "li-miss__none", "Nothing critical is missing. You have what you need to quote with confidence."));
   } else {
     for (const gap of copy.gaps) {
       const row = el("div", "li-miss__row");
@@ -354,7 +354,7 @@ $("li-copy-questions").addEventListener("click", async () => {
     btn.textContent = "Copied ✓";
     setTimeout(() => { btn.textContent = btn.dataset.label; }, 1800);
   } catch {
-    // Clipboard unavailable (permissions) — select-and-copy fallback prompt.
+    // Clipboard unavailable (permissions), select-and-copy fallback prompt.
     btn.textContent = "Press Ctrl+C";
     window.getSelection().selectAllChildren($("li-questions-list"));
     setTimeout(() => { btn.textContent = "Copy questions"; }, 2500);

@@ -1,8 +1,8 @@
-/* Lead Insight Generator — Layer 3 deterministic scoring.
+/* Lead Insight Generator, Layer 3 deterministic scoring.
  *
  * Pure module: no DOM, no network, no dependencies. The LLM (Layer 2)
  * classifies the five signals; this function turns that classification
- * into the score. Same input always produces the same output — verified
+ * into the score. Same input always produces the same output, verified
  * against every acceptance test in the brief by
  * tools/lead-insight-tests/scoring.test.mjs.
  *
@@ -31,7 +31,7 @@ function stateOf(signals, key) {
 }
 
 /**
- * @param {Record<string, {state: string}|string>} signals — the five signals,
+ * @param {Record<string, {state: string}|string>} signals, the five signals,
  *   each `{state: "absent"|"vague"|"specific"|"very_specific"}` (or the bare state string).
  * @returns {{score: number, tier: "very_low"|"low"|"mid"|"high", floor: number|null, ceiling: number}}
  */
@@ -42,7 +42,7 @@ export function score(signals) {
   const urgencyPresent = urgency !== "absent";
   const S = T + (urgencySpecific ? 1 : 0);
 
-  // All signals vague or absent: never a dead end — fixed 3.0, Very Low.
+  // All signals vague or absent: never a dead end, fixed 3.0, Very Low.
   if (S === 0) {
     return { score: 3.0, tier: "very_low", floor: null, ceiling: 4.0 };
   }

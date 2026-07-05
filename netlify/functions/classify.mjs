@@ -1,7 +1,7 @@
-/* Lead Insight Generator — the single serverless function.
+/* Lead Insight Generator, the single serverless function.
  *
  * Exists only to hold the API key. Receives {enquiry}, returns the Layer 2
- * classification JSON. It does NOT score — Layer 3 runs client-side
+ * classification JSON. It does NOT score, Layer 3 runs client-side
  * (resources/free-tool/lead-insight/scoring.js) so the deterministic logic
  * is fully testable offline.
  *
@@ -81,7 +81,7 @@ export const CLASSIFICATION_SCHEMA = {
 // Static system prompt (prompt-cache friendly). Grounded verbatim in the
 // engine's Layer 2 definitions; the worked examples pin the judgment calls
 // the acceptance tests force.
-export const SYSTEM_PROMPT = `You classify traveller enquiries received by safari tour operators. For each of five signals — destination, travel_dates, budget, group_size, urgency — output its state (absent, vague, specific, or very_specific) and the extracted value: the shortest phrase from the enquiry that carries the signal, or null when absent. Classify only what is written. Never infer details the traveller did not give.
+export const SYSTEM_PROMPT = `You classify traveller enquiries received by safari tour operators. For each of five signals (destination, travel_dates, budget, group_size, urgency) output its state (absent, vague, specific, or very_specific) and the extracted value: the shortest phrase from the enquiry that carries the signal, or null when absent. Classify only what is written. Never infer details the traveller did not give.
 
 STATE DEFINITIONS
 
@@ -106,12 +106,12 @@ STATE DEFINITIONS
 4. group_size
 - absent: no reference to who is travelling.
 - vague: generic group type with no number ("with family", "girls trip", "me and my partner").
-- specific: a number or clearly named party ("family of four", "solo", "group of eight", "two of us"). "Just me" is specific. "Honeymoon" alone is specific — it names a party of two.
+- specific: a number or clearly named party ("family of four", "solo", "group of eight", "two of us"). "Just me" is specific. "Honeymoon" alone is specific: it names a party of two.
 - very_specific: number plus ages, roles, or composition ("family of four, two adults two kids aged 9 and 12").
 
 5. urgency
-- absent: no readiness to act. Pure information questions are absent. General trip statements are absent — "Planning a safari in Tanzania" or "Looking to go on safari" describe the trip, not booking readiness.
-- vague: general planning-to-book language ("starting to think about booking", "in the research phase"). Hedged commitment is vague — intent to book undercut by an unresolved blocker ("want to book but wife still needs convincing").
+- absent: no readiness to act. Pure information questions are absent. General trip statements are absent: "Planning a safari in Tanzania" or "Looking to go on safari" describe the trip, not booking readiness.
+- vague: general planning-to-book language ("starting to think about booking", "in the research phase"). Hedged commitment is vague: intent to book undercut by an unresolved blocker ("want to book but wife still needs convincing").
 - specific: clear readiness to choose an operator, or a direct operator question ("ready to book, need to pick an operator", "which operators do you recommend?", "inbox me").
 - very_specific: hard deadline or commitment action ("deposits due end of month", "down to two operators, deciding this week", "need to book in the next two weeks").
 
@@ -193,7 +193,7 @@ export default async function handler(req, context) {
     const classification = await classifyEnquiry(enquiry, apiKey);
     return json(200, classification);
   } catch (err) {
-    // Status code only — never the enquiry, never response content.
+    // Status code only, never the enquiry, never response content.
     console.error("classify failed:", err.message);
     const status = err.status === 429 ? 429 : 502;
     return json(status, { error: status === 429 ? "rate_limited" : "classification_failed" });
