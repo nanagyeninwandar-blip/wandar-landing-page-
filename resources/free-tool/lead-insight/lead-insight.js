@@ -94,13 +94,34 @@ function showError(code) {
 
 let runTips = WORLDVIEW_TIPS.slice(0, LOADING_STAGES.length);
 
-function shuffledTips() {
-  const pool = [...WORLDVIEW_TIPS];
-  for (let i = pool.length - 1; i > 0; i--) {
+const TIP_DECK_KEY = "wandar-li-tip-deck";
+
+function shuffledIndices() {
+  const idx = WORLDVIEW_TIPS.map((_, i) => i);
+  for (let i = idx.length - 1; i > 0; i--) {
     const j = Math.floor(Math.random() * (i + 1));
-    [pool[i], pool[j]] = [pool[j], pool[i]];
+    [idx[i], idx[j]] = [idx[j], idx[i]];
   }
-  return pool.slice(0, LOADING_STAGES.length);
+  return idx;
+}
+
+/* Deck sampling: the full pool is shuffled once and dealt 4 tips per run,
+ * so no run repeats a tip until every line has been shown, then reshuffles.
+ * The deck persists across visits via localStorage. */
+function drawTips() {
+  let deck = [];
+  try {
+    deck = JSON.parse(localStorage.getItem(TIP_DECK_KEY)) || [];
+  } catch { /* fresh deck below */ }
+  deck = Array.isArray(deck)
+    ? deck.filter((i) => Number.isInteger(i) && i >= 0 && i < WORLDVIEW_TIPS.length)
+    : [];
+  if (deck.length < LOADING_STAGES.length) deck = shuffledIndices();
+  const hand = deck.splice(0, LOADING_STAGES.length);
+  try {
+    localStorage.setItem(TIP_DECK_KEY, JSON.stringify(deck));
+  } catch { /* storage unavailable, random-only is fine */ }
+  return hand.map((i) => WORLDVIEW_TIPS[i]);
 }
 
 function setStage(index) {
@@ -114,7 +135,7 @@ function setStage(index) {
 }
 
 function startLoading() {
-  runTips = shuffledTips(); // fresh random draw every run, no repeats within one
+  runTips = drawTips(); // dealt from the persistent deck: no repeats across runs
   loading.classList.add("li-loading--active");
   document.body.style.overflow = "hidden";
   let stage = 0;
