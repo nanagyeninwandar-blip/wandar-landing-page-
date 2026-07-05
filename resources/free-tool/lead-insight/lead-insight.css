@@ -54,8 +54,9 @@
 .li-submit { width: 100%; margin-top: 18px; display: inline-flex; align-items: center; justify-content: center; gap: 10px; font-family: inherit; font-size: 15.5px; font-weight: 700; color: var(--white); background: var(--safari-primary); border: none; border-radius: var(--radius-md); padding: 16px 24px; cursor: pointer; transition: background 150ms ease, transform 150ms ease; }
 .li-submit:hover:not(:disabled) { background: var(--primary-hover); transform: scale(1.01); }
 .li-submit:disabled { opacity: 0.45; cursor: not-allowed; }
-.li-reassure { display: flex; align-items: center; justify-content: center; gap: 8px; font-size: 12.5px; color: var(--text-muted); margin-top: 13px; }
-.li-reassure svg { width: 14px; height: 14px; color: var(--safari-primary); flex: none; }
+.li-reassure { display: flex; align-items: center; justify-content: center; gap: 7px; flex-wrap: wrap; margin-top: 13px; }
+.li-tag { display: inline-flex; align-items: center; gap: 5px; font-size: 11px; font-weight: 600; color: var(--safari-primary); background: var(--primary-light); border: 1px solid rgba(26, 115, 115, 0.25); border-radius: var(--radius-pill); padding: 4px 10px; white-space: nowrap; }
+.li-tag svg { width: 11px; height: 11px; flex: none; }
 .li-error { display: none; align-items: flex-start; gap: 9px; font-size: 13.5px; color: #9a3412; background: var(--secondary-light); border: 1px solid rgba(196, 89, 17, 0.35); border-radius: var(--radius-md); padding: 11px 14px; margin-top: 14px; }
 .li-error--show { display: flex; }
 .li-error svg { width: 16px; height: 16px; flex: none; margin-top: 1px; }
