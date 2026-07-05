@@ -81,10 +81,10 @@ document.querySelectorAll(".li-chip").forEach((chip) => {
 function showError(code) {
   const messages = {
     rate_limited: "Too many requests at once. Give it a minute and try again.",
-    enquiry_too_long: `That enquiry is over ${MAX_CHARS.toLocaleString()} characters. Trim it to the traveller's message and try again.`,
+    enquiry_too_long: `That enquiry is over ${MAX_CHARS.toLocaleString()} characters. Trim it to the traveler's message and try again.`,
     not_configured: "The analysis service isn't configured yet (missing API key on the server). Your text is untouched.",
     offline: "We couldn't reach the analysis service. Check your connection and try again.",
-    default: "Something went wrong while analysing the enquiry. Your text is untouched. Please try again.",
+    default: "Something went wrong while analyzing the enquiry. Your text is untouched. Please try again.",
   };
   errorText.textContent = messages[code] || messages.default;
   errorBox.classList.add("li-error--show");
@@ -305,7 +305,7 @@ function renderResult(classification, scored) {
   // Enquiry summary.
   const summary = $("li-summary");
   summary.replaceChildren();
-  let summarised = 0;
+  let summarized = 0;
   for (const key of ALL_SIGNALS) {
     const entry = classification.signals[key];
     const counting = entry.state === "specific" || entry.state === "very_specific";
@@ -314,7 +314,7 @@ function renderResult(classification, scored) {
       row.appendChild(iconSpan(ICONS[key]));
       row.appendChild(document.createTextNode(entry.value));
       summary.appendChild(row);
-      summarised++;
+      summarized++;
     }
   }
   for (const detail of classification.notable_details.slice(0, 4)) {
@@ -322,17 +322,17 @@ function renderResult(classification, scored) {
     row.appendChild(iconSpan(ICONS.star));
     row.appendChild(document.createTextNode(detail));
     summary.appendChild(row);
-    summarised++;
+    summarized++;
   }
   if (selectedSource && SOURCE_LABELS[selectedSource]) {
     const row = el("div", "li-sum__row");
     row.appendChild(iconSpan(ICONS.source));
     row.appendChild(document.createTextNode(`Came in via ${SOURCE_LABELS[selectedSource]}`));
     summary.appendChild(row);
-    summarised++;
+    summarized++;
   }
-  if (summarised === 0) {
-    summary.appendChild(el("div", "li-miss__none", "Nothing concrete to summarise yet. The enquiry stays vague on every signal."));
+  if (summarized === 0) {
+    summary.appendChild(el("div", "li-miss__none", "Nothing concrete to summarize yet. The enquiry stays vague on every signal."));
   }
 
   // Missing information.

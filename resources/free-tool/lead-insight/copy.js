@@ -113,7 +113,7 @@ const MISSING_INFO = {
     vague: "Exact dates or date range",
   },
   group_size: {
-    absent: "Who's travelling, and children's ages",
+    absent: "Who's traveling, and children's ages",
     vague: "Exact party size and children's ages",
   },
   destination: {
@@ -133,7 +133,7 @@ const QUESTION_BANK = {
   travel_dates:
     "Do you have a month and year in mind? Season shapes pricing, wildlife, and availability, so it changes everything.",
   group_size:
-    "Who'll be travelling? If children are joining, their ages help, since several lodges and activities have minimum-age rules.",
+    "Who'll be traveling? If children are joining, their ages help, since several lodges and activities have minimum-age rules.",
   destination:
     "Is there a country or park already drawing you, or would you like me to suggest a route?",
   urgency: "When are you hoping to make a decision? The best camps in peak season book out early.",
@@ -143,7 +143,7 @@ const QUESTION_BANK = {
 const SHORT_GAP = {
   budget: "a budget figure",
   travel_dates: "their travel month and year",
-  group_size: "who's travelling",
+  group_size: "who's traveling",
   destination: "where they want to go",
   urgency: "their booking timeline",
 };
@@ -198,7 +198,7 @@ export function buildResultCopy(signals, scored) {
             : "State your quote validity window and deposit terms",
           "Set expectations for what you need before building the itinerary",
         ],
-        why: "Travellers at this stage are comparing options and forming preferences. A timely, helpful reply keeps you top of mind and increases your chances of being their choice.",
+        why: "Travelers at this stage are comparing options and forming preferences. A timely, helpful reply keeps you top of mind and increases your chances of being their choice.",
         callout: "Replying now builds trust and keeps the momentum.",
       };
       break;
@@ -214,7 +214,7 @@ export function buildResultCopy(signals, scored) {
           `Open with one warm line about ${dest || "their trip idea"} so the reply doesn't read like a form`,
           "Set a follow-up reminder for 3 to 4 days in case they don't answer",
         ],
-        why: "Real interest, but quoting now means guessing at budget or dates. A two-minute qualifying reply protects hours of itinerary work and shows the traveller you take their trip seriously.",
+        why: "Real interest, but quoting now means guessing at budget or dates. A two-minute qualifying reply protects hours of itinerary work and shows the traveler you take their trip seriously.",
         callout: "Qualify first: your itinerary hours are your most expensive resource.",
       };
       break;

@@ -81,7 +81,7 @@ export const CLASSIFICATION_SCHEMA = {
 // Static system prompt (prompt-cache friendly). Grounded verbatim in the
 // engine's Layer 2 definitions; the worked examples pin the judgment calls
 // the acceptance tests force.
-export const SYSTEM_PROMPT = `You classify traveller enquiries received by safari tour operators. For each of five signals (destination, travel_dates, budget, group_size, urgency) output its state (absent, vague, specific, or very_specific) and the extracted value: the shortest phrase from the enquiry that carries the signal, or null when absent. Classify only what is written. Never infer details the traveller did not give.
+export const SYSTEM_PROMPT = `You classify traveler enquiries received by safari tour operators. For each of five signals (destination, travel_dates, budget, group_size, urgency) output its state (absent, vague, specific, or very_specific) and the extracted value: the shortest phrase from the enquiry that carries the signal, or null when absent. Classify only what is written. Never infer details the traveler did not give.
 
 STATE DEFINITIONS
 
@@ -101,10 +101,10 @@ STATE DEFINITIONS
 - absent: no financial reference.
 - vague: qualitative level with no number ("luxury", "high end", "money is no issue", "decent budget").
 - specific: a stated total or per-person figure ("$15,000", "$6,000 per person", "around $12,000"). A named nightly lodge rate counts as specific.
-- very_specific: figure plus scope ("$20,000 total excluding international flights", "$8,000 per person, two travelling", "$20,000 all inclusive").
+- very_specific: figure plus scope ("$20,000 total excluding international flights", "$8,000 per person, two traveling", "$20,000 all inclusive").
 
 4. group_size
-- absent: no reference to who is travelling.
+- absent: no reference to who is traveling.
 - vague: generic group type with no number ("with family", "girls trip", "me and my partner").
 - specific: a number or clearly named party ("family of four", "solo", "group of eight", "two of us"). "Just me" is specific. "Honeymoon" alone is specific: it names a party of two.
 - very_specific: number plus ages, roles, or composition ("family of four, two adults two kids aged 9 and 12").
