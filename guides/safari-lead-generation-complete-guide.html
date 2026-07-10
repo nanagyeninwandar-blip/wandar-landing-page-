@@ -944,7 +944,12 @@ function handleDownloadSubmit(e) {
   }).finally(function() {
     document.getElementById('dl-default').style.display = 'none';
     document.getElementById('dl-success').style.display = 'block';
-    buildAndDownloadPDF('safari-lead-generation-guide-2026.pdf');
+    var a = document.createElement('a');
+    a.href = '../assets/Guides/Safari%20Lead%20Generation%20Guide%202026.pdf';
+    a.download = 'Safari Lead Generation Guide 2026.pdf';
+    document.body.appendChild(a);
+    a.click();
+    a.remove();
   });
 }
 function loadImageAsData(imgEl, format, quality) {
