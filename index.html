@@ -31,6 +31,8 @@
     /* AEO structural content — visible to crawlers and screen readers, not to sighted visitors */
     .aeo-answer-first,
     #key-concepts { position:absolute; left:-9999px; width:1px; height:1px; overflow:hidden; }
+    /* Align platform chips vertically with the paragraph text, not the headline */
+    @media (min-width:769px) { #platform-chips-grid { margin-top:110px; } }
   </style>
 
   <!-- Schema: WebPage (Article) -->
@@ -552,7 +554,7 @@
         <span class="eyebrow reveal">Where Wandar Listens</span>
         <h2 class="section-headline reveal reveal--delay-1">Every safari conversation. Every platform. In real time.</h2>
         <p class="body-text reveal reveal--delay-2">
-          Travelers don't call you first. They ask Reddit. They post on TripAdvisor. They question Quora. Wandar monitors all of it, 24/7, and surfaces every mention of safari planning before it disappears into someone else's inbox.
+          Travelers don't call you first. They ask Reddit. They post on TripAdvisor. They question Quora. Wandar monitors all of it, 24/7, and surfaces every mention of safari planning and connect operators earlier while travelers are still deciding who to trust and where to book.
         </p>
       </div>
       <div>
@@ -600,10 +602,6 @@
             </svg>
             TripAdvisor
           </a>
-        </div>
-        <div class="stat-callout reveal reveal--delay-1">
-          <div class="stat-callout__number">9+</div>
-          <div class="stat-callout__label">platforms monitored continuously</div>
         </div>
       </div>
     </div>
