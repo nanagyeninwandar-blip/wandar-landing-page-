@@ -1,16 +1,15 @@
 /* =====================================================================
    WANDAR — Billing-period toggle behaviour (SECTION-ONLY script)
-   Powers the Monthly / Quarterly / Semi-annual / Annual selector on the
+   Powers the Monthly / Quarterly / Annual selector on the
    pricing card. Self-contained; safe to drop in once per page.
 
    VERIFY these numbers against your real pricing before shipping.
    ===================================================================== */
 (function () {
   var PLANS = {
-    monthly:   { amount: '450', billedTotal: '$450',   billedWord: 'billed monthly',       save: null },
-    quarterly: { amount: '399', billedTotal: '$1,197', billedWord: 'billed quarterly',     save: '11%' },
-    semi:      { amount: '350', billedTotal: '$2,100', billedWord: 'billed semi-annually', save: '22%' },
-    annual:    { amount: '300', billedTotal: '$3,600', billedWord: 'billed annually',      save: '33%' }
+    monthly:   { amount: '249', billedTotal: '$249',   billedWord: 'billed monthly',   save: null },
+    quarterly: { amount: '199', billedTotal: '$597',   billedWord: 'billed quarterly', save: '20%' },
+    annual:    { amount: '149', billedTotal: '$1,788', billedWord: 'billed annually',  save: '40%' }
   };
 
   function init() {
