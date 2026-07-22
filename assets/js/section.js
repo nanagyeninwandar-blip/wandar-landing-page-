@@ -7,9 +7,9 @@
    ===================================================================== */
 (function () {
   var PLANS = {
-    monthly:   { amount: '249', billedTotal: '$249',   billedWord: 'billed monthly',   save: null },
-    quarterly: { amount: '199', billedTotal: '$597',   billedWord: 'billed quarterly', save: '20%' },
-    annual:    { amount: '149', billedTotal: '$1,788', billedWord: 'billed annually',  save: '40%' }
+    monthly:   { amount: '199', billedTotal: '$199',   billedWord: 'billed monthly',   save: null },
+    quarterly: { amount: '149', billedTotal: '$447',   billedWord: 'billed quarterly', save: '25%' },
+    annual:    { amount: '99',  billedTotal: '$1,188', billedWord: 'billed annually',  save: '50%' }
   };
 
   function init() {
