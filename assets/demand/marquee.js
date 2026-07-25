@@ -8,7 +8,7 @@
   var DISPLAY_NAMES = {
     reddit: 'Reddit', tripadvisor: 'TripAdvisor', quora: 'Quora',
     facebook: 'Facebook', instagram: 'Instagram', tiktok: 'TikTok',
-    x: 'X', pinterest: 'Pinterest', bluesky: 'Bluesky'
+    x: 'X', pinterest: 'Pinterest'
   };
 
   function cardSrc(platform, file) {

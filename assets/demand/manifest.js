@@ -9,6 +9,5 @@ window.WANDAR_DEMAND = {
   instagram: ["instagram-card-01.png","instagram-card-02.png","instagram-card-03.png","instagram-card-04.png","instagram-card-05.png","instagram-card-06.png","instagram-card-07.png","instagram-card-08.png","instagram-card-09.png","instagram-card-10.png"],
   tiktok: ["tiktok-card-01.png","tiktok-card-02.png","tiktok-card-03.png","tiktok-card-04.png","tiktok-card-05.png","tiktok-card-06.png","tiktok-card-07.png","tiktok-card-08.png","tiktok-card-09.png","tiktok-card-10.png"],
   x: ["x-card-01.png","x-card-02.png","x-card-03.png","x-card-04.png","x-card-05.png","x-card-06.png","x-card-07.png","x-card-08.png","x-card-09.png","x-card-10.png"],
-  pinterest: ["pinterest-card-01.png","pinterest-card-02.png","pinterest-card-03.png","pinterest-card-04.png","pinterest-card-05.png","pinterest-card-06.png","pinterest-card-07.png","pinterest-card-08.png","pinterest-card-09.png","pinterest-card-10.png"],
-  bluesky: ["bluesky-card-01.png","bluesky-card-02.png","bluesky-card-03.png","bluesky-card-04.png","bluesky-card-05.png","bluesky-card-06.png","bluesky-card-07.png","bluesky-card-08.png","bluesky-card-09.png","bluesky-card-10.png"]
+  pinterest: ["pinterest-card-01.png","pinterest-card-02.png","pinterest-card-03.png","pinterest-card-04.png","pinterest-card-05.png","pinterest-card-06.png","pinterest-card-07.png","pinterest-card-08.png","pinterest-card-09.png","pinterest-card-10.png"]
 };
