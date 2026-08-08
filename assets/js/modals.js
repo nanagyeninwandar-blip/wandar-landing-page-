@@ -131,6 +131,7 @@ function mSubmitB() {
   ok = mSetErr('b-email',   !mValidEmail(mg('mb-email').value.trim())   ? 'Valid email required' : '') & ok;
   ok = mSetErr('b-company', !mg('mb-company').value.trim()              ? 'Required'             : '') & ok;
   ok = mSetErr('b-role',    !mg('mb-role').value                        ? 'Please select a role' : '') & ok;
+  if (mg('mb-reason')) ok = mSetErr('b-reason', !mg('mb-reason').value ? 'Please select one' : '') & ok;
   ok = mSetErr('b-goal',    !mg('mb-goal').value                        ? 'Please select one'    : '') & ok;
   if (!ok) return;
 
@@ -143,8 +144,11 @@ function mSubmitB() {
   const goalOther = mg('mb-goal-other') ? mg('mb-goal-other').querySelector('input') : null;
   const goalVal   = goalSel === 'other' && goalOther ? goalOther.value.trim() : goalSel;
 
+  const reasonEl = mg('mb-reason');
+
   netlifySubmit('consultation', {
     email:   mg('mb-email').value.trim(),
+    reason:  reasonEl ? reasonEl.value : '',
     company: mg('mb-company').value.trim(),
     role:    mg('mb-role').value,
     goal:    goalVal,

@@ -317,7 +317,7 @@
       <div class="nav__right">
         <span class="nav__divider" aria-hidden="true"></span>
         <a href="#" onclick="openModal('early-access');return false;" class="btn btn--primary nav__cta-btn" id="nav-cta-desktop">Request Access</a>
-        <a href="#" class="nav__login-link" id="nav-login-desktop">Log In</a>
+        <a href="auth.html?mode=signin" class="nav__login-link" id="nav-login-desktop" target="_blank" rel="noopener">Log In</a>
         <button class="nav__hamburger" id="hamburger" aria-label="Open menu" aria-expanded="false">
           <span></span><span></span><span></span>
         </button>
@@ -377,50 +377,6 @@
 ═══════════════════════════════════════════ -->
 <section class="hero" id="hero" aria-label="Hero">
 
-  <!-- Floating background cards -->
-  <div class="hero__floating-cards" aria-hidden="true">
-
-    <div class="float-card float-card-2">
-      <div class="float-card__platform">
-        <svg class="float-card__platform-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-          <circle cx="6.5" cy="12" r="5.8" fill="#34E0A1"/><circle cx="6.5" cy="12" r="3.2" fill="white"/><circle cx="6.5" cy="12" r="1.8" fill="#34E0A1"/>
-          <circle cx="17.5" cy="12" r="5.8" fill="#34E0A1"/><circle cx="17.5" cy="12" r="3.2" fill="white"/><circle cx="17.5" cy="12" r="1.8" fill="#34E0A1"/>
-        </svg>
-        <span class="float-card__platform-name">TripAdvisor</span>
-      </div>
-      <p class="float-card__text">"Looking for a luxury operator in the Okavango Delta for July"</p>
-      <p class="float-card__time">8 min ago</p>
-    </div>
-
-    <div class="float-card float-card-4">
-      <div class="float-card__platform">
-        <svg class="float-card__platform-icon" viewBox="0 0 24 24" fill="#FF4500"><path d="M12 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0zm5.01 4.744c.688 0 1.25.561 1.25 1.249a1.25 1.25 0 0 1-2.498.056l-2.597-.547-.8 3.747c1.824.07 3.48.632 4.674 1.488.308-.309.73-.491 1.207-.491.968 0 1.754.786 1.754 1.754 0 .716-.435 1.333-1.01 1.614a3.111 3.111 0 0 1 .042.52c0 2.694-3.13 4.87-7.004 4.87-3.874 0-7.004-2.176-7.004-4.87 0-.183.015-.366.043-.534A1.748 1.748 0 0 1 4.028 12c0-.968.786-1.754 1.754-1.754.463 0 .898.196 1.207.49 1.207-.883 2.878-1.43 4.744-1.487l.885-4.182a.342.342 0 0 1 .14-.197.35.35 0 0 1 .238-.042l2.906.617a1.214 1.214 0 0 1 1.108-.701zM9.25 12C8.561 12 8 12.562 8 13.25c0 .687.561 1.248 1.25 1.248.687 0 1.248-.561 1.248-1.249 0-.688-.561-1.249-1.249-1.249zm5.5 0c-.687 0-1.248.561-1.248 1.25 0 .687.561 1.248 1.249 1.248.688 0 1.249-.561 1.249-1.249 0-.687-.562-1.249-1.25-1.249z"/></svg>
-        <span class="float-card__platform-name">r/travel</span>
-      </div>
-      <p class="float-card__text">"First safari, Masai Mara or Serengeti? Budget ~$8K per person"</p>
-      <p class="float-card__time">23 min ago</p>
-    </div>
-
-    <div class="float-card float-card-3">
-      <div class="float-card__platform">
-        <svg class="float-card__platform-icon" viewBox="0 0 24 24" fill="#B92B27"><path d="M12.003 0C5.373 0 0 5.372 0 12c0 6.628 5.373 12 12.003 12 6.628 0 11.997-5.372 11.997-12 0-6.628-5.369-12-11.997-12zm-.172 18.95c-.56-.172-1.068-.46-1.526-.857l-1.35 1.37-.983-.962 1.345-1.367c-.594-.858-.938-1.939-.938-3.134 0-2.994 1.96-5.122 4.595-5.122 1.317 0 2.458.5 3.29 1.357l1.073-1.09.984.965-1.061 1.076c.571.848.907 1.908.907 3.093 0 2.995-1.96 5.121-4.594 5.121-.59 0-1.142-.12-1.65-.33l-.092-.12z"/></svg>
-        <span class="float-card__platform-name">Quora</span>
-      </div>
-      <p class="float-card__text">"Best gorilla trekking operators in Rwanda vs Uganda?"</p>
-      <p class="float-card__time">15 min ago</p>
-    </div>
-
-    <div class="float-card float-card-5">
-      <div class="float-card__platform">
-        <svg class="float-card__platform-icon" viewBox="0 0 24 24" fill="#1877F2"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
-        <span class="float-card__platform-name">Facebook</span>
-      </div>
-      <p class="float-card__text">"Anyone done a Zambia walking safari? Who did you book with?"</p>
-      <p class="float-card__time">41 min ago</p>
-    </div>
-
-  </div>
-
   <div class="container">
     <div class="hero__inner">
       <div class="hero__content">
@@ -443,6 +399,92 @@
             <span>▶</span> Watch Demo
           </a>
         </div>
+
+        <!-- ============================================================
+             Wandar — LIVE SAFARI LEAD OPPORTUNITY cards
+             Self-contained: scoped wl- styles + live Supabase counts.
+             ============================================================ -->
+        <section class="wl-live" aria-label="Live safari lead opportunities">
+          <div class="wl-live__label"><span class="wl-live__dot"></span> Live Safari Lead Opportunities</div>
+          <div class="wl-live__cards">
+            <a class="wl-card" href="auth.html" target="_blank" rel="noopener">
+              <div class="wl-card__top">
+                <span class="wl-card__ico">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="#ff4500"><path d="M22 12.06c0-1.2-.98-2.17-2.18-2.17-.58 0-1.1.23-1.5.6-1.45-.98-3.4-1.6-5.57-1.68l.95-4.48 3.12.66a1.56 1.56 0 1 0 .17-.9l-3.5-.74a.45.45 0 0 0-.53.35l-1.06 5c-2.2.07-4.18.69-5.65 1.68a2.17 2.17 0 1 0-2.4 3.55 4.1 4.1 0 0 0-.05.63c0 3.2 3.73 5.8 8.33 5.8s8.33-2.6 8.33-5.8c0-.2-.01-.4-.04-.6.7-.38 1.16-1.11 1.16-1.98ZM7 13.6a1.56 1.56 0 1 1 3.12 0 1.56 1.56 0 0 1-3.12 0Zm8.44 3.9c-1.07 1.06-3.62 1.06-4.44 1.06-.82 0-3.37 0-4.44-1.07a.4.4 0 0 1 .57-.57c.67.67 1.82.9 3.87.9 2.05 0 3.2-.24 3.87-.9a.4.4 0 1 1 .57.58Zm-.16-2.35a1.56 1.56 0 1 1 0-3.12 1.56 1.56 0 0 1 0 3.12Z"/></svg>
+                </span>
+                Reddit
+              </div>
+              <div class="wl-card__num" data-wl-counter="reddit">—</div>
+              <div class="wl-card__txt">Safari lead opportunities found</div>
+              <span class="wl-card__link">View leads
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M8 7h9v9"/></svg>
+              </span>
+            </a>
+
+            <a class="wl-card" href="auth.html" target="_blank" rel="noopener">
+              <div class="wl-card__top">
+                <span class="wl-card__ico">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="#34e0a1"><circle cx="8" cy="12" r="4.4" fill="none" stroke="#34e0a1" stroke-width="1.8"/><circle cx="16" cy="12" r="4.4" fill="none" stroke="#34e0a1" stroke-width="1.8"/><circle cx="8" cy="12" r="1.6"/><circle cx="16" cy="12" r="1.6"/></svg>
+                </span>
+                Tripadvisor
+              </div>
+              <div class="wl-card__num" data-wl-counter="tripadvisor">—</div>
+              <div class="wl-card__txt">Safari lead opportunities found</div>
+              <span class="wl-card__link">View leads
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M8 7h9v9"/></svg>
+              </span>
+            </a>
+          </div>
+        </section>
+
+        <style>
+          .wl-live { margin-top: 34px; }
+          .wl-live__label {
+            display: inline-flex; align-items: center; gap: 9px;
+            font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
+            font-size: 13px; font-weight: 800; letter-spacing: .08em; text-transform: uppercase;
+            color: #234b50; margin-bottom: 16px;
+          }
+          .wl-live__dot { width: 9px; height: 9px; border-radius: 50%; background: #26c281; box-shadow: 0 0 0 4px rgba(38,194,129,.2); }
+          .wl-live__cards { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; max-width: 520px; }
+          .wl-card {
+            background: #c45911; color: #fff; border-radius: 16px; padding: 16px 24px; display: block;
+            box-shadow: 0 12px 32px rgba(26,26,26,.12); text-decoration: none;
+            transition: transform .12s ease, box-shadow .18s ease;
+            font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
+          }
+          .wl-card:hover { transform: translateY(-3px); box-shadow: 0 18px 38px rgba(196,89,17,.32); }
+          .wl-card__top { display: flex; align-items: center; gap: 10px; font-weight: 800; letter-spacing: .04em; text-transform: uppercase; font-size: 14px; }
+          .wl-card__ico { width: 30px; height: 30px; border-radius: 50%; background: #fff; display: inline-flex; align-items: center; justify-content: center; }
+          .wl-card__num { font-size: 38px; font-weight: 800; line-height: 1.05; margin: 8px 0 2px; }
+          .wl-card__txt { font-size: 12px; opacity: .95; white-space: nowrap; }
+          .wl-card__link { display: inline-flex; align-items: center; gap: 6px; margin-top: 12px; font-weight: 700; }
+          @media (max-width: 620px) { .wl-live__cards { grid-template-columns: 1fr; } }
+        </style>
+
+        <!-- Supabase live counts. If supabase-js is already on the page, the CDN line is a no-op. -->
+        <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+        <script>
+          (function () {
+            // Publishable key — safe in the browser (RLS allows public read of `leads` only).
+            var SUPABASE_URL = "https://ggwrnjaxhvgubgyanqyg.supabase.co";
+            var SUPABASE_ANON_KEY = "sb_publishable_rwEw98_b8Y_-ukfh05kk3g_LPr65AoY";
+            if (SUPABASE_URL.indexOf("YOUR-PROJECT") !== -1 || !window.supabase) return;
+
+            var sb = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+            function count(src) {
+              return sb.from("leads").select("*", { count: "exact", head: true }).eq("source", src)
+                .then(function (r) { return r.count || 0; });
+            }
+            ["reddit", "tripadvisor"].forEach(function (src) {
+              count(src).then(function (n) {
+                var el = document.querySelector('[data-wl-counter="' + src + '"]');
+                if (el) el.textContent = n.toLocaleString();
+              });
+            });
+          })();
+        </script>
+        <!-- ============================================================ -->
       </div>
 
       <!-- Product UI Mockup -->
