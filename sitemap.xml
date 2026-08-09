@@ -2,6 +2,7 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://www.getwandar.com/</loc>
+    <lastmod>2026-08-08</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
@@ -27,16 +28,6 @@
   </url>
   <url>
     <loc>https://www.getwandar.com/platforms/reddit.html</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://www.getwandar.com/platforms/pinterest.html</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://www.getwandar.com/platforms/quora.html</loc>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>

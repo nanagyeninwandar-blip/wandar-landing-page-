@@ -1,3 +1,9 @@
 User-agent: *
 Allow: /
+
+# App shell, auth and internal tooling — no search value
+Disallow: /app.html
+Disallow: /auth.html
+Disallow: /icon-picker.html
+
 Sitemap: https://www.getwandar.com/sitemap.xml
