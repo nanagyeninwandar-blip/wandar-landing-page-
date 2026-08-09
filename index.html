@@ -200,7 +200,7 @@ h1,h2,h3,h4{color:var(--text-primary);line-height:1.15;font-weight:700;letter-sp
 .mega__d{display:block;font-size:10.5px;color:var(--text-muted);line-height:1.4}
 
 /* Hamburger + mobile */
-.nav__burger{display:grid;place-items:center;width:44px;height:44px;border-radius:12px;background:var(--off-white)}
+.nav__burger{display:grid;place-items:center;width:44px;height:44px;border-radius:12px;background:transparent}
 @media(min-width:1024px){.nav__burger{display:none}}
 .nav__burger span{display:block;width:19px;height:2px;background:var(--text-primary);border-radius:2px;transition:transform 200ms ease,opacity 200ms ease}
 .nav__burger span+span{margin-top:4px}
@@ -1320,10 +1320,13 @@ h1,h2,h3,h4{color:var(--text-primary);line-height:1.15;font-weight:700;letter-sp
   background:var(--safari-primary);color:#fff;display:grid;place-items:center;font-size:13px;
 }
 
+/* Hidden on phones like .ui__side — at 194px it would leave the chat itself
+   barely any room inside the insert. */
 .ui__side--chat{
-  width:194px;flex-shrink:0;display:flex;flex-direction:column;min-height:0;
+  width:194px;flex-shrink:0;display:none;flex-direction:column;min-height:0;
   background:#f4f6f5;border-right:1px solid var(--border);padding:16px 10px;
 }
+@media(min-width:560px){.ui__side--chat{display:flex}}
 
 .ui__cchats{
   display:flex;align-items:center;gap:6px;padding:0 3px 12px;
@@ -1767,6 +1770,10 @@ h1,h2,h3,h4{color:var(--text-primary);line-height:1.15;font-weight:700;letter-sp
           <a class="macc__link" aria-disabled="true"><span class="mega__ic"><svg aria-hidden="true" width="24" height="24" viewBox="0 0 256 256"><g fill="currentColor"><path d="M200 72v112a8 8 0 0 1-8 8H32a8 8 0 0 1-8-8V72a8 8 0 0 1 8-8h160a8 8 0 0 1 8 8" opacity=".2"/><path d="M251.77 73a8 8 0 0 0-8.21.39L208 97.05V72a16 16 0 0 0-16-16H32a16 16 0 0 0-16 16v112a16 16 0 0 0 16 16h160a16 16 0 0 0 16-16v-25l35.56 23.71A8 8 0 0 0 248 184a8 8 0 0 0 8-8V80a8 8 0 0 0-4.23-7M192 184H32V72h160zm48-22.95l-32-21.33v-23.44L240 95Z"/></g></svg></span>Webinars</a>
           <span class="macc__label">Free tools</span>
           <a class="macc__link" aria-disabled="true"><span class="mega__ic"><svg aria-hidden="true" width="24" height="24" viewBox="0 0 256 256"><g fill="currentColor"><path d="M176 112L74.34 213.66a8 8 0 0 1-11.31 0L42.34 193a8 8 0 0 1 0-11.31L144 80Z" opacity=".2"/><path d="M248 152a8 8 0 0 1-8 8h-16v16a8 8 0 0 1-16 0v-16h-16a8 8 0 0 1 0-16h16v-16a8 8 0 0 1 16 0v16h16a8 8 0 0 1 8 8M56 72h16v16a8 8 0 0 0 16 0V72h16a8 8 0 0 0 0-16H88V40a8 8 0 0 0-16 0v16H56a8 8 0 0 0 0 16m128 120h-8v-8a8 8 0 0 0-16 0v8h-8a8 8 0 0 0 0 16h8v8a8 8 0 0 0 16 0v-8h8a8 8 0 0 0 0-16m35.31-112L80 219.31a16 16 0 0 1-22.62 0l-20.7-20.68a16 16 0 0 1 0-22.63L176 36.69a16 16 0 0 1 22.63 0l20.68 20.68a16 16 0 0 1 0 22.63m-54.63 32L144 91.31l-96 96L68.68 208ZM208 68.69L187.31 48l-32 32L176 100.69Z"/></g></svg></span>Lead Insight Generator</a>
+          <a class="macc__link" href="#hero"><span class="mega__ic"><svg aria-hidden="true" width="24" height="24" viewBox="0 0 256 256"><g fill="currentColor"><path d="m96 40l33.52 88H56Zm104 88h-70.48L160 208Z" opacity=".2"/><path d="M240 128a8 8 0 0 1-8 8h-27.06l-37.78 75.58A8 8 0 0 1 160 216h-.4a8 8 0 0 1-7.08-5.14L95.35 60.76l-32.07 70.55A8 8 0 0 1 56 136H24a8 8 0 0 1 0-16h26.85l37.87-83.31a8 8 0 0 1 14.76.46l57.51 151l31.85-63.71A8 8 0 0 1 200 120h32a8 8 0 0 1 8 8"/></g></svg></span>Live demand feed</a>
+          <span class="macc__label">Support</span>
+          <a class="macc__link" href="#faq"><span class="mega__ic"><svg aria-hidden="true" width="24" height="24" viewBox="0 0 256 256"><g fill="currentColor"><path d="M224 128a96 96 0 1 1-96-96a96 96 0 0 1 96 96" opacity=".2"/><path d="M140 180a12 12 0 1 1-12-12a12 12 0 0 1 12 12M128 72c-22.06 0-40 16.15-40 36v4a8 8 0 0 0 16 0v-4c0-11 10.77-20 24-20s24 9 24 20s-10.77 20-24 20a8 8 0 0 0-8 8v8a8 8 0 0 0 16 0v-.72c18.24-3.35 32-17.9 32-35.28c0-19.85-17.94-36-40-36m104 56A104 104 0 1 1 128 24a104.11 104.11 0 0 1 104 104m-16 0a88 88 0 1 0-88 88a88.1 88.1 0 0 0 88-88"/></g></svg></span>FAQ</a>
+          <a class="macc__link" href="#" onclick="openModal('contact');return false;"><span class="mega__ic"><svg aria-hidden="true" width="24" height="24" viewBox="0 0 256 256"><g fill="currentColor"><path d="m224 56l-96 88l-96-88Z" opacity=".2"/><path d="M224 48H32a8 8 0 0 0-8 8v136a16 16 0 0 0 16 16h176a16 16 0 0 0 16-16V56a8 8 0 0 0-8-8m-20.57 16L128 133.15L52.57 64ZM216 192H40V74.19l82.59 75.71a8 8 0 0 0 10.82 0L216 74.19z"/></g></svg></span>Contact us</a>
         </div>
       </div>
 
