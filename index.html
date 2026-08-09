@@ -262,7 +262,7 @@ h1,h2,h3,h4{color:var(--text-primary);line-height:1.15;font-weight:700;letter-sp
   background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='160' height='160' filter='url(%23n)'/%3E%3C/svg%3E");
 }
 
-.hero__grid{display:grid;grid-template-columns:1fr;gap:52px;align-items:center}
+.hero__grid{display:grid;grid-template-columns:minmax(0,1fr);gap:52px;align-items:center}
 @media(min-width:1024px){.hero__grid{grid-template-columns:minmax(0,1fr) minmax(0,1.15fr);gap:44px}}
 /* one shared measure: the copy column is capped to the text's natural width so the
    centred form sits on the same visual axis as the wrapped lines above it */
@@ -550,7 +550,7 @@ h1,h2,h3,h4{color:var(--text-primary);line-height:1.15;font-weight:700;letter-sp
 @keyframes blink{0%,100%{opacity:.25}50%{opacity:1}}
 
 /* Home dashboard variant */
-.ui__side--full{display:flex;flex-direction:column}
+@media(min-width:560px){.ui__side--full{display:flex;flex-direction:column}}
 .ui__nav-foot{margin-top:auto;padding-top:12px;border-top:1px solid rgba(255,255,255,.12)}
 .ui__main--home{background:#f6f6f5}
 .ui__bell{position:relative;width:16px;height:16px;color:var(--text-muted);flex-shrink:0}
@@ -1454,6 +1454,18 @@ h1,h2,h3,h4{color:var(--text-primary);line-height:1.15;font-weight:700;letter-sp
 @media(prefers-reduced-motion:reduce){
   .reveal{opacity:1;transform:none;transition:none}
   *{animation:none!important}
+}
+
+/* ── Phones: the product mockups are dense by design, so relax the
+      grids and pill padding rather than let the card clip its own rows ── */
+@media(max-width:559px){
+  .ui__panels{grid-template-columns:minmax(0,1fr)}
+  .ui__stats{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .ui__tabs{gap:9px}
+  .ui__tab{font-size:10px}
+  .ui__lead{gap:6px;padding:8px}
+  .ui__lead .ui__score{min-width:30px}
+  .ui__act{padding:3px 5px;font-size:7.5px}
 }
 </style>
 
