@@ -306,6 +306,16 @@ h1,h2,h3,h4{color:var(--text-primary);line-height:1.15;font-weight:700;letter-sp
 
 .hero__grid{display:grid;grid-template-columns:minmax(0,1fr);gap:52px;align-items:center}
 @media(min-width:1024px){.hero__grid{grid-template-columns:minmax(0,1fr) minmax(0,1.15fr);gap:44px}}
+/* Tablet portrait gets the same side-by-side hero as a laptop. The copy
+   column is only ~320px here, so step the type down to match. */
+@media(min-width:768px) and (max-width:1023px){
+  .hero__grid{grid-template-columns:minmax(0,1fr) minmax(0,1.15fr);gap:28px}
+  .hero__copy{max-width:none}
+  .hero__title{font-size:clamp(34px,4.4vw,44px);margin-bottom:16px}
+  .hero__lede{font-size:16px;margin-bottom:22px}
+  .hero__form{max-width:none}
+  .hero__note{font-size:11px;margin-top:12px}
+}
 /* one shared measure: the copy column is capped to the text's natural width so the
    centred form sits on the same visual axis as the wrapped lines above it */
 .hero__copy{max-width:496px}
