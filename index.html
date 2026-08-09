@@ -1499,15 +1499,27 @@ h1,h2,h3,h4{color:var(--text-primary);line-height:1.15;font-weight:700;letter-sp
 }
 
 /* ── Phones: the product mockups are dense by design, so relax the
-      grids and pill padding rather than let the card clip its own rows ── */
+      grids and pill padding rather than let the card clip its own rows.
+      The hero insert opts out — it keeps its full desktop composition and
+      is scaled down to fit instead (see .ui--fit below). ── */
 @media(max-width:559px){
-  .ui__panels{grid-template-columns:minmax(0,1fr)}
-  .ui__stats{grid-template-columns:repeat(2,minmax(0,1fr))}
-  .ui__tabs{gap:9px}
-  .ui__tab{font-size:10px}
-  .ui__lead{gap:6px;padding:8px}
-  .ui__lead .ui__score{min-width:30px}
-  .ui__act{padding:3px 5px;font-size:7.5px}
+  .ui:not(.ui--fit) .ui__panels{grid-template-columns:minmax(0,1fr)}
+  .ui:not(.ui--fit) .ui__stats{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .ui:not(.ui--fit) .ui__tabs{gap:9px}
+  .ui:not(.ui--fit) .ui__tab{font-size:10px}
+  .ui:not(.ui--fit) .ui__lead{gap:6px;padding:8px}
+  .ui:not(.ui--fit) .ui__lead .ui__score{min-width:30px}
+  .ui:not(.ui--fit) .ui__act{padding:3px 5px;font-size:7.5px}
+}
+
+/* ── Hero insert below the desktop breakpoint: render the whole dashboard
+      at its natural 704px width, sidebar and all, then scale it down to the
+      column width. fitHeroInsert() sets the scale and the wrapper height. ── */
+@media(max-width:1023px){
+  .hero__visual{overflow:hidden}
+  .ui--fit{width:704px;transform-origin:top left;flex-shrink:0}
+  .ui--fit .ui__side{display:block}
+  .ui--fit .ui__side--full{display:flex;flex-direction:column}
 }
 </style>
 
@@ -1841,7 +1853,7 @@ h1,h2,h3,h4{color:var(--text-primary);line-height:1.15;font-weight:700;letter-sp
         </div>
 
 
-        <div class="ui">
+        <div class="ui ui--fit">
           <aside class="ui__side ui__side--full">
             <div class="ui__brand">
               <img src="assets/wandar-banner-white-320.png" alt="Wandar" class="ui__logo" width="320" height="80" />
@@ -2768,6 +2780,27 @@ h1,h2,h3,h4{color:var(--text-primary);line-height:1.15;font-weight:700;letter-sp
   });
   document.addEventListener('keydown', function(e){ if(e.key === 'Escape') closeAll(); });
   document.addEventListener('click', function(e){ if(!e.target.closest('[data-dropdown]')) closeAll(); });
+
+  /* ── Hero insert: show the full dashboard on small screens by scaling the
+        natural-width mockup down to whatever the column gives us ── */
+  function fitHeroInsert(){
+    var wrap = document.querySelector('.hero__visual');
+    var ui   = wrap && wrap.querySelector('.ui--fit');
+    if (!ui) return;
+    if (window.innerWidth >= 1024){
+      ui.style.transform = '';
+      wrap.style.height  = '';
+      return;
+    }
+    var natural = 704;                       /* matches .ui--fit width in CSS */
+    var scale   = wrap.clientWidth / natural;
+    ui.style.transform = 'scale(' + scale + ')';
+    wrap.style.height  = Math.round(ui.offsetHeight * scale) + 'px';
+  }
+  fitHeroInsert();
+  window.addEventListener('resize', fitHeroInsert);
+  window.addEventListener('orientationchange', fitHeroInsert);
+  if (document.fonts && document.fonts.ready) document.fonts.ready.then(fitHeroInsert);
 
   /* ── Mobile menu ── */
   var burger   = document.getElementById('burger');
