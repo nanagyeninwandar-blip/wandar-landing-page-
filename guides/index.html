@@ -525,6 +525,78 @@ body{padding-top:0}
   .mf-checklist-grid { grid-template-columns: 1fr; }
   .mf-checklist-grid .mf-check-item { border-right: none; }
 }
+
+/* WANDAR-MOBILE-DRAWER — mobile menu as a dark drawer sliding in from the
+   right, matching index.html. Declared after main.css, which still owns the
+   older .mobile-panel / .macc rules. */
+.mobile-backdrop{
+  position:fixed;inset:0;z-index:80;background:rgba(8,20,18,.5);
+  opacity:0;visibility:hidden;transition:opacity 260ms ease,visibility 260ms ease;
+}
+.mobile-backdrop.is-open{opacity:1;visibility:visible}
+
+.mobile-panel{
+  position:fixed;top:0;right:0;z-index:90;
+  width:min(84vw,392px);height:100dvh;
+  display:flex;flex-direction:column;
+  margin-top:0;padding:0;border:0;border-radius:0;max-height:none;
+  background:#0f3d38;color:#fff;
+  box-shadow:-24px 0 60px rgba(8,20,18,.34);
+  transform:translateX(100%);transition:transform 300ms cubic-bezier(.2,.8,.3,1);
+  overflow-y:auto;overscroll-behavior:contain;
+}
+.nav.is-mobile-open .mobile-panel{display:flex;transform:translateX(0)}
+@media(min-width:1024px){.mobile-panel,.nav.is-mobile-open .mobile-panel{display:none}}
+
+.mobile-panel__top{
+  display:flex;align-items:center;justify-content:flex-end;
+  padding:18px 20px;min-height:74px;flex-shrink:0;
+  border-bottom:1px solid rgba(255,255,255,.13);
+}
+.mobile-panel__close{
+  display:grid;place-items:center;width:44px;height:44px;border-radius:12px;
+  background:transparent;border:0;color:#fff;cursor:pointer;
+}
+.mobile-panel__close svg{width:26px;height:26px}
+.mobile-panel__nav{flex:1;padding:6px 20px 0}
+
+.mobile-panel .macc{border-bottom:1px solid rgba(255,255,255,.13)}
+.mobile-panel .macc__btn{
+  display:flex;width:100%;align-items:center;justify-content:space-between;gap:14px;
+  padding:22px 0;font-size:20px;font-weight:500;letter-spacing:-.01em;
+  color:rgba(255,255,255,.92);text-align:left;background:transparent;border:0;
+}
+.mobile-panel .macc__btn .nav__chev{width:20px;height:20px;opacity:.55;flex-shrink:0}
+.mobile-panel .macc__btn[aria-disabled="true"]{color:rgba(255,255,255,.45)}
+.mobile-panel .macc__arrow{width:20px;height:20px;opacity:.55;flex-shrink:0}
+.mobile-panel .macc__panel{padding:0 0 16px}
+.mobile-panel .macc__label{color:#e0a23a;margin:14px 0 6px}
+.mobile-panel .macc__link{
+  display:flex;gap:11px;align-items:center;padding:10px 0;
+  font-size:15px;font-weight:500;color:rgba(255,255,255,.78);
+}
+.mobile-panel .macc__link[aria-disabled="true"]{color:rgba(255,255,255,.42)}
+.mobile-panel .macc__link .mega__ic{
+  width:30px;height:30px;border-radius:9px;
+  background:rgba(255,255,255,.08);color:#fff;flex-shrink:0;
+}
+.mobile-panel .macc__link .mega__ic svg{width:16px;height:16px}
+
+.mobile-panel__foot{
+  margin-top:auto;flex-shrink:0;display:block;
+  padding:22px 20px calc(22px + env(safe-area-inset-bottom));
+  border-top:1px solid rgba(255,255,255,.13);
+}
+.mobile-panel__foot .btn,
+.mobile-panel .mobile-panel__foot .btn--primary{
+  display:flex;width:100%;justify-content:center;align-items:center;gap:10px;
+  padding:17px 24px;font-size:16px;font-weight:700;
+  border-radius:var(--radius-pill);
+  background:var(--safari-secondary);color:#fff;border:none;box-shadow:none;
+}
+.mobile-panel .mobile-panel__foot .btn--primary:hover{
+  background:var(--secondary-hover);transform:none;box-shadow:none;
+}
 </style>
 </head>
 <body>
@@ -692,6 +764,12 @@ body{padding-top:0}
 
     <!-- Mobile panel -->
     <div class="mobile-panel" id="mobile-panel">
+      <div class="mobile-panel__top">
+        <button class="mobile-panel__close" id="mobile-close" aria-label="Close menu">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg>
+        </button>
+      </div>
+      <div class="mobile-panel__nav">
       <div class="macc" data-acc>
         <button class="macc__btn" data-acc-btn>Why Wandar
           <svg class="nav__chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg>
@@ -731,15 +809,23 @@ body{padding-top:0}
         </div>
       </div>
 
-      <a class="macc__btn" aria-disabled="true" style="border-bottom:1px solid var(--border)">Pricing</a>
+      <div class="macc">
+        <span class="macc__btn" aria-disabled="true">Pricing
+          <svg class="macc__arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17L17 7M9 7h8v8"/></svg>
+        </span>
+      </div>
+      </div>
 
       <div class="mobile-panel__foot">
-        <a href="#" onclick="openModal('early-access');return false;" class="btn btn--primary">Request Access</a>
-        <a href="#" onclick="openModal('consultation');return false;" class="btn btn--outline">Book a Demo</a>
+        <a href="#" onclick="openModal('early-access');return false;" class="btn btn--primary">Request Access
+          <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17L17 7M9 7h8v8"/></svg>
+        </a>
       </div>
     </div>
   </div>
 </header>
+
+<div class="mobile-backdrop" id="mobile-backdrop" hidden></div>
 
 <section class="gbanner">
   <div class="gbanner__wave" aria-hidden="true"></div>
@@ -1575,19 +1661,31 @@ function handleSubscribe(e) {
   document.addEventListener('click', function(e){ if(!e.target.closest('[data-dropdown]')) closeAll(); });
 
   /* ── Mobile menu ── */
-  var burger = document.getElementById('burger');
-  burger.addEventListener('click', function(){
-    var open = nav.classList.toggle('is-mobile-open');
+  var burger   = document.getElementById('burger');
+  var backdrop = document.getElementById('mobile-backdrop');
+  var mClose   = document.getElementById('mobile-close');
+
+  function setMobileMenu(open){
+    nav.classList.toggle('is-mobile-open', open);
     burger.setAttribute('aria-expanded', open ? 'true' : 'false');
+    if (backdrop){ backdrop.hidden = false; backdrop.classList.toggle('is-open', open); }
+    document.body.style.overflow = open ? 'hidden' : '';
+  }
+
+  burger.addEventListener('click', function(){
+    setMobileMenu(!nav.classList.contains('is-mobile-open'));
   });
+  if (mClose)   mClose.addEventListener('click',   function(){ setMobileMenu(false); });
+  if (backdrop) backdrop.addEventListener('click', function(){ setMobileMenu(false); });
+  document.addEventListener('keydown', function(e){
+    if (e.key === 'Escape' && nav.classList.contains('is-mobile-open')) setMobileMenu(false);
+  });
+
   document.querySelectorAll('[data-acc-btn]').forEach(function(btn){
     btn.addEventListener('click', function(){ btn.closest('[data-acc]').classList.toggle('is-open'); });
   });
   document.querySelectorAll('.mobile-panel a').forEach(function(a){
-    a.addEventListener('click', function(){
-      nav.classList.remove('is-mobile-open');
-      burger.setAttribute('aria-expanded','false');
-    });
+    a.addEventListener('click', function(){ setMobileMenu(false); });
   });
 })();
 </script>
