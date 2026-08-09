@@ -55,7 +55,7 @@ Your domain DNS is managed through Netlify. Follow these exact steps:
 2. In the left sidebar, click **"Sitemaps"** under the Indexing section
 3. In the "Add a new sitemap" field, enter: `sitemap.xml`
 4. Click **"Submit"**
-5. Confirm the sitemap shows status **"Success"** and lists 19 URLs
+5. Confirm the sitemap shows status **"Success"** and lists 17 URLs
 
 Your sitemap is at: `https://www.getwandar.com/sitemap.xml`
 
@@ -73,7 +73,10 @@ Use this for each key page to accelerate Google's crawl after launch.
 
 **Tier 1 (highest priority):**
 - `https://www.getwandar.com/`
-- `https://www.getwandar.com/pricing.html`
+
+> **Do not request indexing for `/pricing.html`.** That page was removed.
+> It now 301s to the homepage. See Step 5b — it needs removing from the
+> index, not re-crawling.
 
 **Tier 2 (guides — highest SEO value):**
 - `https://www.getwandar.com/guides/`
@@ -88,6 +91,36 @@ Use this for each key page to accelerate Google's crawl after launch.
 - `https://www.getwandar.com/blog/how-to-get-more-safari-bookings.html`
 
 **Note:** Google allows approximately 12 URL inspection requests per day. If you hit the limit, continue the next day.
+
+---
+
+## Step 5b: Remove Deleted Pages From the Index
+
+These pages no longer exist. Until Google drops them, their old content —
+including the retired **$149/month** pricing and the 14-day trial — can keep
+appearing in search results and AI Overviews.
+
+**Remove each of these:**
+- `https://www.getwandar.com/pricing.html`
+- `https://www.getwandar.com/webinar.html`
+- `https://www.getwandar.com/resources/webinar.html`
+- `https://www.getwandar.com/platforms/quora.html`
+- `https://www.getwandar.com/platforms/pinterest.html`
+- `https://www.getwandar.com/assets/Wandar%20Who%20Its%20For.html`
+
+**How:**
+1. In Search Console, go to **Indexing → Removals**
+2. Click **"New Request"**
+3. Keep **"Temporarily remove URL"** selected
+4. Paste the URL, choose **"Remove this URL only"**, click **Next → Submit**
+5. Repeat for each URL above
+
+This hides the URL for ~6 months. The permanent fix is the 301 redirect in
+`_redirects`, which tells Google to drop the URL for good. The removal
+request just makes it happen in hours instead of weeks.
+
+**Then confirm the old pricing is gone:** search Google for
+`site:getwandar.com pricing` — it should return nothing.
 
 ---
 

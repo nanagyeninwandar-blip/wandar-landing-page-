@@ -1,6 +1,9 @@
-/pricing.html            /  302
-/webinar.html            /  302
-/resources/webinar.html  /  302
+# Pages permanently removed. These must be 301, not 302 — a 302 tells
+# Google the URL still exists and keeps the old page (and its pricing)
+# in the index.
+/pricing.html            /  301
+/webinar.html            /  301
+/resources/webinar.html  /  301
 
 # Platforms removed from product scope — permanent
 /platforms/quora.html      /  301
