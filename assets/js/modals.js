@@ -191,10 +191,9 @@ function mHandleContactIntent() {
 }
 function mSubmitC() {
   let ok = true;
-  ok = mSetErr('c-name',    !mg('mc-name').value.trim()                 ? 'Required'             : '') & ok;
-  ok = mSetErr('c-company', !mg('mc-company').value.trim()              ? 'Required'             : '') & ok;
+  ok = mSetErr('c-first',   !mg('mc-first').value.trim()                ? 'Required'             : '') & ok;
+  ok = mSetErr('c-last',    !mg('mc-last').value.trim()                 ? 'Required'             : '') & ok;
   ok = mSetErr('c-email',   !mValidEmail(mg('mc-email').value.trim())   ? 'Valid email required' : '') & ok;
-  ok = mSetErr('c-intent',  !mg('mc-intent').value                      ? 'Please select one'    : '') & ok;
   ok = mSetErr('c-message', !mg('mc-message').value.trim()              ? 'Required'             : '') & ok;
   if (!ok) return;
 
@@ -203,20 +202,15 @@ function mSubmitC() {
   mBtnLoading(btn);
   mg('mf-submit-err-c').textContent = '';
 
-  const intent = mg('mc-intent').value;
-  const s = mContactSuccess[intent] || mContactSuccess['other'];
-
   netlifySubmit('contact', {
-    name:    mg('mc-name').value.trim(),
-    company: mg('mc-company').value.trim(),
-    email:   mg('mc-email').value.trim(),
-    intent:  intent,
-    message: mg('mc-message').value.trim()
+    'first-name': mg('mc-first').value.trim(),
+    'last-name':  mg('mc-last').value.trim(),
+    email:        mg('mc-email').value.trim(),
+    phone:        mg('mc-phone').value.trim(),
+    message:      mg('mc-message').value.trim()
   })
     .then(function(res) {
       if (!res.ok) throw new Error('Network response was not ok');
-      mg('mc-success-title').textContent = s.title;
-      mg('mc-success-body').textContent  = s.body;
       mg('mf-form-c').classList.add('hidden');
       mg('mf-success-c').classList.add('visible');
     })
