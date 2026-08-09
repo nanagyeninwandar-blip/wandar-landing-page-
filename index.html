@@ -337,6 +337,12 @@ h1,h2,h3,h4{color:var(--text-primary);line-height:1.15;font-weight:700;letter-sp
   .hero__form{max-width:none}
   .hero__note{font-size:11px;margin-top:12px}
 }
+/* Phones — hold the headline to three lines. 10.6vw clears the tightest
+   wrap at every common width: 320px needs <=36px, 360px <=40px, 390px <=44px. */
+@media(max-width:767px){
+  .hero__title{font-size:clamp(32px,10.6vw,44px)}
+  .hero__lede{font-size:16px;line-height:1.55;margin-bottom:24px}
+}
 
 .hero__form{
   display:flex;align-items:center;gap:8px;max-width:372px;margin-left:auto;margin-right:auto;
