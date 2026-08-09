@@ -60,7 +60,10 @@
   animation: wc-scroll 46s linear infinite;
   will-change: transform;
 }
-.wandar-demand .wc-row:hover .wc-track { animation-play-state: paused; }
+/* hover-pause only on real pointers; a tap leaves sticky :hover on touch */
+@media (hover: hover) and (pointer: fine) {
+  .wandar-demand .wc-row:hover .wc-track { animation-play-state: paused; }
+}
 .wandar-demand .wc-row--reverse .wc-track { animation-direction: reverse; }
 
 /* One group = the repeated card set. Track holds the group + its clone;

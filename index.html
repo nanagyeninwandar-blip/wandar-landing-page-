@@ -384,7 +384,7 @@ h1,h2,h3,h4{color:var(--text-primary);line-height:1.15;font-weight:700;letter-sp
 
 .marq__track{display:flex;width:max-content;animation:marq 30s linear infinite}
 
-.marq:hover .marq__track{animation-play-state:paused}
+@media(hover:hover) and (pointer:fine){.marq:hover .marq__track{animation-play-state:paused}}
 
 .marq__set{display:flex;align-items:center;gap:13px;padding-right:13px}
 
@@ -598,6 +598,12 @@ h1,h2,h3,h4{color:var(--text-primary);line-height:1.15;font-weight:700;letter-sp
   border:1px solid var(--border);border-radius:999px;padding:2px 6px;
 }
 .ui__float--tr{top:-16px;right:-10px}
+/* Between 1024px and ~1440px the hero visual bleeds far enough past the
+   container that this card ran off the right edge and was clipped by
+   .hero{overflow:hidden}. Pull it back over that range only — wider screens
+   already leave it clear. */
+@media(min-width:1024px) and (max-width:1279px){.ui__float--tr{right:60px}}
+@media(min-width:1280px) and (max-width:1439px){.ui__float--tr{right:70px}}
 .ui__float--bl{bottom:-18px;left:-8px}
 @media(max-width:640px){.ui__float{display:none}}
 @media(prefers-reduced-motion:reduce){.ui__float-live{animation:none}}
@@ -873,8 +879,13 @@ h1,h2,h3,h4{color:var(--text-primary);line-height:1.15;font-weight:700;letter-sp
 }
 .tour__tab.is-active .tour__tab__fill{clip-path:inset(0 0 0 0)}
 .tour__tab.is-active.is-timing .tour__tab__fill{animation:tourFill 7s linear forwards}
-.tour__tabs.is-paused .tour__tab.is-active .tour__tab__fill,
-.tour__tabs:hover .tour__tab.is-active .tour__tab__fill{animation-play-state:paused}
+.tour__tabs.is-paused .tour__tab.is-active .tour__tab__fill{animation-play-state:paused}
+/* Pause on hover only where hovering is real. On a touch screen a tap leaves a
+   sticky :hover on the tabs, which would freeze the fill — and since the next
+   panel is triggered by that animation ending, the whole tour would stall. */
+@media(hover:hover) and (pointer:fine){
+  .tour__tabs:hover .tour__tab.is-active .tour__tab__fill{animation-play-state:paused}
+}
 @keyframes tourFill{from{clip-path:inset(0 100% 0 0)}to{clip-path:inset(0 0 0 0)}}
 .tour__tab svg{width:19px;height:19px;opacity:.85}
 .tour__tab:not(.is-active):hover{border-color:rgba(26,115,115,.35);color:var(--safari-primary)}
@@ -2868,13 +2879,35 @@ h1,h2,h3,h4{color:var(--text-primary);line-height:1.15;font-weight:700;letter-sp
   var tabsBar = document.querySelector('.tour__tabs');
   var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
+  var tourFallback = null;
+  var canHover = window.matchMedia('(hover:hover) and (pointer:fine)');
+
+  function nextTab(tab){
+    var list = Array.prototype.slice.call(tabs);
+    return list[(list.indexOf(tab) + 1) % list.length];
+  }
+
+  /* The tour advances when the fill animation ends. If that animation never
+     ends — a stuck :hover on a touch screen, a backgrounded tab — the tour
+     would sit on one panel forever, so back it with a timer. */
+  function scheduleAdvance(tab){
+    clearTimeout(tourFallback);
+    tourFallback = setTimeout(function(){
+      if(!tab.classList.contains('is-active')) return;        /* already moved on */
+      if(tabsBar && tabsBar.classList.contains('is-paused')) return;  /* scrolled away */
+      if(canHover.matches && tabsBar && tabsBar.matches(':hover')) return; /* deliberate hover pause */
+      showTab(nextTab(tab), true);
+    }, 9000);
+  }
+
   function showTab(tab, autoplay){
     tabs.forEach(function(t){ t.classList.remove('is-active','is-timing'); t.setAttribute('aria-selected','false'); });
     document.querySelectorAll('.tour__panel').forEach(function(p){ p.classList.remove('is-active'); });
     tab.classList.add('is-active'); tab.setAttribute('aria-selected','true');
     var panel = document.getElementById(tab.dataset.tab);
     if(panel) panel.classList.add('is-active');
-    if(autoplay && !reduceMotion){ void tab.offsetWidth; tab.classList.add('is-timing'); }
+    clearTimeout(tourFallback);
+    if(autoplay && !reduceMotion){ void tab.offsetWidth; tab.classList.add('is-timing'); scheduleAdvance(tab); }
   }
 
   tabs.forEach(function(tab){
@@ -2888,8 +2921,8 @@ h1,h2,h3,h4{color:var(--text-primary);line-height:1.15;font-weight:700;letter-sp
     tab.addEventListener('click', function(){ showTab(tab, true); });
     tab.addEventListener('animationend', function(e){
       if(e.animationName !== 'tourFill' || !tab.classList.contains('is-active')) return;
-      var list = Array.prototype.slice.call(tabs);
-      showTab(list[(list.indexOf(tab) + 1) % list.length], true);
+      clearTimeout(tourFallback);
+      showTab(nextTab(tab), true);
     });
   });
 
