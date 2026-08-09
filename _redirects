@@ -5,6 +5,5 @@
 /webinar.html            /  301
 /resources/webinar.html  /  301
 
-# Platforms removed from product scope — permanent
-/platforms/quora.html      /  301
-/platforms/pinterest.html  /  301
+# Per-platform pages retired; the landing page now covers platform scope
+/platforms/*  /  301
