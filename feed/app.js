@@ -451,30 +451,56 @@
     if (card) card.classList.add("is-checking");
     function reveal() { clearTimeout(revealTimer); if (card) card.classList.remove("is-checking"); }
 
-    /* An existing session always wins. A returning operator on this device goes
-       straight to the feed and never sees this page again — they don't retype
-       anything, not even their email.
+    /* Decide who this visitor is. An existing session carries a returning
+       operator straight to the feed — but ONLY if the hero didn't name someone
+       else.
 
-       This MUST resolve before the no-email bounce below. getSession is async;
-       when the bounce ran first (synchronously) a signed-in visitor opening a
-       bare /auth.html was thrown out to the marketing page instead of their
-       feed. Keep the two decisions in this one callback. */
+       Typing an address into the hero is an explicit "this is who I am", and it
+       has to beat a leftover session. It didn't until 2026-08-09: on a shared or
+       previously-used browser, operator B typed their own address and was shown
+       operator A's feed, signed in as A — and because the redirect fired before
+       any signup could happen, B's account was never created and the lead was
+       lost silently. Compare the two before trusting the session.
+
+       This MUST also resolve before the no-email bounce below. getSession is
+       async; when the bounce ran first (synchronously) a signed-in visitor
+       opening a bare /auth.html was thrown out to the marketing page instead of
+       their feed. Keep all of these decisions in this one callback. */
     getSession(function (s) {
-      if (s) { location.replace(CFG.FEED_URL || "app.html"); return; }
+      var sessionEmail = ((s && s.user && s.user.email) || (s && s.email) || "").toLowerCase();
+      var typed = heroEmail.toLowerCase();
 
-      // No session and no email means the visitor skipped the hero (bookmark,
-      // shared link, back button, or a "Log In" link). Rather than show a form
-      // that cannot be submitted, send them to the hero that asks for it.
+      if (s && (!typed || sessionEmail === typed)) {
+        location.replace(CFG.FEED_URL || "app.html");     // same person, or no claim made
+        return;
+      }
+      if (s) {                                            // a DIFFERENT person is claiming this browser
+        signOutQuiet(function () { identify(); });
+        return;
+      }
+      identify();
+    });
+
+    // Drops the current session without navigating, unlike the shared signOut().
+    function signOutQuiet(cb) {
+      if (DEMO) { demoClear(); cb(); return; }
+      sb.auth.signOut().then(cb, cb);
+    }
+
+    function identify() {
+      // No email means the visitor skipped the hero (bookmark, shared link, back
+      // button, or a "Log In" link). Rather than show a form that cannot be
+      // submitted, send them to the hero that asks for it.
       if (!EMAIL_RE.test(heroEmail)) { location.replace(CFG.HOME_URL || "index.html"); return; }
 
-      // No session, but this device might still belong to someone who signed up
-      // on a different one. Ask the server before making them fill the form.
+      // This device might still belong to someone who signed up on another one.
+      // Ask the server before making them fill the form.
       heroSignIn(heroEmail, function (ok) {
         if (ok) return;                       // heroSignIn has navigated to the feed
         reveal();
         firstEl.focus();                      // new operator — email came from the hero
       });
-    });
+    }
 
     /* Returning operator on a device with no session. The hero-signin Edge
        Function tells us whether this email is already registered and, if it is,
