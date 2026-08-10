@@ -1,0 +1,110 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Sign in — Wandar Live Opportunity Feed</title>
+  <link rel="icon" type="image/svg+xml" href="assets/favicon.svg" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body data-page="auth">
+  <div class="auth">
+
+    <!-- ============ LEFT — supplied artwork + live lockup ============
+         assets/auth-panel.png is the designed panel, recoloured to teal. The
+         lockup that was baked into the artwork has been painted out, so the one
+         below is the only one — it stays crisp at any size and is a real link
+         back to the landing page. Don't re-bake a logo into the image. -->
+    <div class="auth__left">
+      <a class="auth__lockup" href="index.html">
+        <img src="assets/logo-white.png" alt="Wandar" />
+        <span class="auth__lockup-rule" aria-hidden="true"></span>
+        <span class="auth__lockup-tag">Sales platform<br />for safari operators</span>
+      </a>
+    </div>
+
+    <!-- ============ RIGHT — form ============ -->
+    <div class="auth__right">
+      <div class="auth-card">
+
+        <!-- below 900px the green panel is hidden, so the page would otherwise
+             carry no Wandar branding at all -->
+        <a class="auth__lockup auth__lockup--mobile" href="index.html">
+          <img src="assets/logo-black.png" alt="Wandar" />
+          <span class="auth__lockup-rule" aria-hidden="true"></span>
+          <span class="auth__lockup-tag">Sales platform<br />for safari operators</span>
+        </a>
+
+        <!-- ---------- the only form on this page ----------
+             No email field and no heading by design: the hero on the landing page
+             already took the email and hands it over in ?email=. Arriving here
+             without one is a broken entry point, so app.js sends those visitors
+             back to the hero rather than showing a form it can't submit.
+
+             There is deliberately NO "log in" or "email me a link" alternative.
+             Nothing on this page ever sends mail: a returning operator is
+             recognised from the hero email alone (hero-signin) and never reaches
+             this form. -->
+          <form id="auth-form" novalidate>
+            <div id="auth-msg" class="form-msg"></div>
+
+            <div class="field-row">
+              <div class="field">
+                <label for="auth-first">First name</label>
+                <div class="authfield">
+                  <input id="auth-first" type="text" autocomplete="given-name" required />
+                </div>
+              </div>
+              <div class="field">
+                <label for="auth-last">Last name</label>
+                <div class="authfield">
+                  <input id="auth-last" type="text" autocomplete="family-name" required />
+                </div>
+              </div>
+            </div>
+
+            <div class="field-row">
+              <div class="field">
+                <label for="auth-company">Company</label>
+                <div class="authfield">
+                  <input id="auth-company" type="text" autocomplete="organization" required />
+                </div>
+              </div>
+
+              <div class="field">
+                <label for="auth-role">Your role</label>
+                <div class="authfield">
+                  <select id="auth-role" required aria-label="Your role">
+                    <!-- empty placeholder: the field shows only the caret until a
+                         role is picked. `disabled` stops it being re-selected. -->
+                    <option value="" disabled selected hidden></option>
+                    <option>Owner / Founder</option>
+                    <option>Sales &amp; Bookings</option>
+                    <option>Marketing</option>
+                    <option>Operations</option>
+                    <option>Other</option>
+                  </select>
+                  <span class="caret"></span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Mandatory consent. The submit button stays disabled until this is
+                 ticked — the feed is free because it builds the launch list. -->
+            <label class="consent" for="auth-newsletter">
+              <input type="checkbox" id="auth-newsletter" required />
+              <span class="consent__text">Subscribe to product updates and newsletter</span>
+            </label>
+
+            <button class="auth-submit" type="submit" id="auth-submit" disabled>Sign in</button>
+          </form>
+
+      </div>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="config.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>

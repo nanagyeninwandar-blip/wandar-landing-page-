@@ -1,0 +1,280 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Live Opportunity Feed — Wandar</title>
+  <link rel="icon" type="image/svg+xml" href="assets/favicon.svg" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body data-page="feed">
+  <div class="shell">
+
+    <!-- ============ COLLAPSED SIDEBAR (logo · sign out) ============ -->
+    <aside class="railbar">
+      <a class="railbar__logo" href="index.html" title="Wandar"><img src="assets/mark-white.png" alt="Wandar" /></a>
+      <div class="railbar__spacer"></div>
+      <button class="rail-btn rail-btn--logout" id="sign-out" title="Sign out" aria-label="Sign out">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><path d="M16 17l5-5-5-5M21 12H9"/></svg>
+      </button>
+    </aside>
+
+    <!-- ============ CONTENT ============ -->
+    <div class="content">
+
+      <!-- top bar: title left · pill + account right -->
+      <header class="topbar">
+        <div class="topbar__inner">
+          <div>
+            <div class="topbar__title">Live Opportunity Feed</div>
+          </div>
+          <div class="topbar__right">
+          <button class="btn btn--primary pill-cta" data-open="early-access-modal">Request Early Access</button>
+          <div class="avatarmenu">
+            <button class="avatarmenu__btn" id="profile-chip">
+              <span class="avatar" data-user-initials>GT</span>
+              <span class="avatarmenu__meta">
+                <b data-user-name>Gina Taye</b>
+                <span data-user-sub>Serengeti Journeys</span>
+              </span>
+              <span class="avatarmenu__caret">▾</span>
+            </button>
+            <div class="menu" id="profile-menu" role="menu">
+              <div class="menu__head">
+                <b data-user-name>Gina Taye</b>
+                <span data-user-email>gina@serengetijourneys.com</span>
+              </div>
+              <div class="menu__divider"></div>
+              <button class="menu__item" data-open="early-access-modal">Request Early Access</button>
+              <button class="menu__item" id="pricing-link">Pricing</button>
+            </div>
+          </div>
+        </div>
+        </div>
+      </header>
+
+      <main class="page">
+
+        <!-- counters -->
+        <div class="counters">
+          <div class="counter">
+            <span class="counter__icon icon-all"><svg viewBox="0 0 24 24" fill="none" stroke="#1a7373" stroke-width="1.8"><circle cx="9" cy="8" r="3.2"/><path d="M3 19a6 6 0 0 1 12 0"/><circle cx="17" cy="8.5" r="2.6"/><path d="M15 19a5 5 0 0 1 6.5-4.8"/></svg></span>
+            <div class="counter__label">All Leads</div>
+            <div class="counter__num" data-counter="all">—</div>
+            <div class="counter__sub">Leads detected across all sources</div>
+          </div>
+          <div class="counter">
+            <span class="counter__icon icon-reddit"><svg viewBox="0 0 24 24" fill="#ff4500"><circle cx="12" cy="13.2" r="8" fill="none" stroke="#ff4500" stroke-width="1.6"/><circle cx="9" cy="13" r="1.3"/><circle cx="15" cy="13" r="1.3"/><path d="M8.8 16.2c1.8 1.2 4.6 1.2 6.4 0" fill="none" stroke="#ff4500" stroke-width="1.4" stroke-linecap="round"/><circle cx="19.2" cy="9.6" r="1.8"/><circle cx="12" cy="5.2" r="1.6"/><path d="M13.4 5.6 18.2 8.6" stroke="#ff4500" stroke-width="1.3" stroke-linecap="round"/></svg></span>
+            <div class="counter__label">Reddit Leads</div>
+            <div class="counter__num" data-counter="reddit">—</div>
+            <div class="counter__sub">Lead opportunities from Reddit</div>
+          </div>
+          <div class="counter">
+            <span class="counter__icon icon-trip"><svg viewBox="0 0 24 24" fill="#1a7373"><circle cx="8" cy="12" r="4.4" fill="none" stroke="#1a7373" stroke-width="1.8"/><circle cx="16" cy="12" r="4.4" fill="none" stroke="#1a7373" stroke-width="1.8"/><circle cx="8" cy="12" r="1.6"/><circle cx="16" cy="12" r="1.6"/></svg></span>
+            <div class="counter__label">Tripadvisor Leads</div>
+            <div class="counter__num" data-counter="tripadvisor">—</div>
+            <div class="counter__sub">Lead opportunities from Tripadvisor</div>
+          </div>
+        </div>
+
+        <!-- count + filter controls, directly above the table -->
+        <!-- Source pill + Date range pill on the LEFT, "Showing …" count on the RIGHT.
+             Re-added 2026-08-08 at the user's explicit request, overriding the
+             2026-07-25 removal (see app.js for that history) — filters by Post Date. -->
+        <div class="feed-bar">
+          <div class="feed-bar__controls">
+            <div class="dd" id="dd-source" data-default="all">
+              <button class="dd__btn" type="button"><span class="dd__text">All Sources</span><span class="dd__caret"></span></button>
+              <div class="dd__menu">
+                <button class="dd__opt" data-val="all">All Sources</button>
+                <button class="dd__opt" data-val="reddit">Reddit</button>
+                <button class="dd__opt" data-val="tripadvisor">Tripadvisor</button>
+              </div>
+            </div>
+            <div class="dd" id="dd-daterange" data-default="all" data-prefix="Date range: ">
+              <button class="dd__btn" type="button"><span class="dd__text">Date range: All</span><span class="dd__caret"></span></button>
+              <div class="dd__menu">
+                <button class="dd__opt" data-val="all">All</button>
+                <button class="dd__opt" data-val="7">Last 7 days</button>
+                <button class="dd__opt" data-val="14">Last 14 days</button>
+                <button class="dd__opt" data-val="30">Last 30 days</button>
+                <button class="dd__opt" data-val="90">Last 90 days</button>
+                <button class="dd__opt" data-val="year">This year</button>
+              </div>
+            </div>
+          </div>
+          <div class="feed-bar__count" id="feed-count">Showing <b>0</b> leads</div>
+        </div>
+
+        <!-- table -->
+        <div class="feed-table-card">
+          <table class="feed">
+            <thead>
+              <tr>
+                <th class="feed__post-h">Post</th>
+                <!-- ↓ not ⇅: the feed loads newest-first, so the caret must say so -->
+                <th class="feed__date-h" id="sort-date" title="Sort by date">Date Posted <span class="sort" id="sort-caret">↓</span></th>
+              </tr>
+            </thead>
+            <tbody id="feed-body">
+              <tr><td colspan="2" class="feed-empty">Loading opportunities…</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <!-- pagination -->
+        <div class="pager" id="pager" style="display:none">
+          <div class="pager__info" id="pager-info"></div>
+          <div class="pager__btns">
+            <button class="pager__btn" id="pager-prev">‹ Prev</button>
+            <button class="pager__btn" id="pager-next">Next ›</button>
+            <!-- Prev/Next deliberately do NOT scroll — they leave your scroll position
+                 alone. Jumping to the top is this button's job only. -->
+            <button class="pager__btn pager__btn--top" id="pager-top" title="Jump to top">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 19V5M5 12l7-7 7 7"/></svg>Top
+            </button>
+          </div>
+        </div>
+
+      </main>
+    </div>
+  </div>
+
+  <!-- ============ MODAL — Request Early Access (same fields as the landing page) ============ -->
+  <div class="modal-overlay" id="early-access-modal">
+    <div class="modal modal--wide">
+      <div class="modal__head">
+        <div>
+          <h2>Request Early Access</h2>
+          <p class="lead">Be among the first safari operators to access Wandar.</p>
+        </div>
+        <button class="modal__close" data-close="early-access-modal" aria-label="Close">×</button>
+      </div>
+      <form id="early-access-form" novalidate>
+        <div id="ea-msg" class="form-msg"></div>
+
+        <!-- Row 1: Email | Company -->
+        <div class="ea-grid">
+          <div class="field">
+            <label for="ea-email">Work email <span class="req">*</span></label>
+            <div class="authfield"><input id="ea-email" type="email" required placeholder="" autocomplete="email" /></div>
+          </div>
+          <div class="field">
+            <label for="ea-company">Company name <span class="req">*</span></label>
+            <div class="authfield"><input id="ea-company" type="text" required placeholder="" autocomplete="organization" /></div>
+          </div>
+        </div>
+
+        <!-- Row 2: Role | Challenge -->
+        <div class="ea-grid">
+          <div class="field">
+            <label for="ea-role">Your role <span class="req">*</span></label>
+            <div class="authfield">
+              <select id="ea-role" required>
+                <option value="" disabled selected hidden>Select your role</option>
+                <option>Owner / Founder</option>
+                <option>Sales &amp; Bookings</option>
+                <option>Marketing</option>
+                <option>Operations</option>
+                <option>Other</option>
+              </select>
+              <span class="caret"></span>
+            </div>
+          </div>
+          <div class="field">
+            <label for="ea-goal">Biggest challenge right now <span class="req">*</span></label>
+            <div class="authfield">
+              <select id="ea-goal" required>
+                <option value="" disabled selected hidden>Select one</option>
+                <option>Leads exist but I never see them in time</option>
+                <option>A competitor always replies before I do</option>
+                <option>I don't know where my next booking will come from</option>
+                <option>I'm spending on ads but can't tell if they work</option>
+                <option>Enquiries come in but don't convert to bookings</option>
+                <option value="other">Something else</option>
+              </select>
+              <span class="caret"></span>
+            </div>
+            <div class="ea-reveal" id="ea-goal-other"><div class="authfield"><input type="text" placeholder="Tell us in your own words…" /></div></div>
+          </div>
+        </div>
+
+        <!-- Tools -->
+        <fieldset class="ea-tools">
+          <legend class="field-legend">Tools you currently use</legend>
+          <div class="ea-checklist">
+            <div class="ea-check">
+              <label class="ea-check__row"><input type="checkbox" data-nested="crm" /> CRM</label>
+              <div class="ea-nested" id="ea-nest-crm">
+                <div class="ea-nested-label">Which CRM?</div>
+                <div class="authfield"><select id="ea-crm"><option value="">Select one</option><option>Salesforce</option><option>HubSpot</option><option>Pipedrive</option><option>Zoho CRM</option><option>Other</option></select><span class="caret"></span></div>
+              </div>
+            </div>
+            <div class="ea-check">
+              <label class="ea-check__row"><input type="checkbox" data-nested="booking" /> Booking system</label>
+              <div class="ea-nested" id="ea-nest-booking">
+                <div class="ea-nested-label">Which booking system?</div>
+                <div class="authfield"><select id="ea-booking"><option value="">Select one</option><option>Rezdy</option><option>FareHarbor</option><option>Checkfront</option><option>Bokun</option><option>Tourwriter</option><option>Other</option></select><span class="caret"></span></div>
+              </div>
+            </div>
+            <div class="ea-check"><label class="ea-check__row"><input type="checkbox" value="Google Alerts" /> Google Alerts</label></div>
+            <div class="ea-check"><label class="ea-check__row"><input type="checkbox" value="Meta Ads" /> Meta Ads</label></div>
+            <div class="ea-check"><label class="ea-check__row"><input type="checkbox" value="Email newsletter" /> Email newsletter</label></div>
+            <div class="ea-check"><label class="ea-check__row"><input type="checkbox" value="Spreadsheet tracking" /> Spreadsheet tracking</label></div>
+          </div>
+        </fieldset>
+
+        <button class="btn btn--primary btn--block btn--lg" type="submit">
+          Submit
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </button>
+        <div class="ea-trust"><span><b>•</b> No contracts or setup fees</span><span><b>•</b> Built exclusively for safari operators</span></div>
+      </form>
+    </div>
+  </div>
+
+  <!-- ============ LEAD SIDE PANEL (full post) ============ -->
+  <div class="sidepanel-overlay" id="lead-panel">
+    <aside class="sidepanel" role="dialog" aria-label="Lead detail">
+      <div class="sidepanel__head">
+        <span class="src-badge" id="lp-badge"></span>
+        <span>
+          <span class="sidepanel__src" id="lp-src"></span>
+          <span class="sidepanel__date" id="lp-date"></span>
+        </span>
+        <button class="sidepanel__close" id="lp-close" aria-label="Close">×</button>
+      </div>
+      <div class="sidepanel__body">
+        <div class="sidepanel__title" id="lp-title"></div>
+        <div class="sidepanel__post" id="lp-post"></div>
+        <div class="sidepanel__note" id="lp-note"></div>
+      </div>
+      <div class="sidepanel__foot">
+        <div class="feed__fb" id="lp-fb">
+          <button class="fb up" data-vote="up" title="Relevant lead" aria-label="Relevant"></button>
+          <button class="fb down" data-vote="down" title="Not relevant" aria-label="Not relevant"></button>
+        </div>
+        <a class="feed__reply" id="lp-view" target="_blank" rel="noopener noreferrer" title="Open the original post to reply">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8z"/></svg>Reply</a>
+      </div>
+    </aside>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="config.js"></script>
+  <!-- sample-data.js is the 238-lead DEMO snapshot (~250 KB) and is useless once real
+       Supabase keys are in config.js — so only fetch it when running unconfigured.
+       Parser-inserted document.write keeps it strictly ordered before app.js, which
+       reads window.WANDAR_SAMPLE at start-up. Same-origin, so no Chrome intervention. -->
+  <script>
+    (function () {
+      var c = window.WANDAR_CONFIG || {};
+      var unconfigured =
+        !c.SUPABASE_URL || c.SUPABASE_URL.indexOf("YOUR-PROJECT") !== -1 ||
+        !c.SUPABASE_ANON_KEY || c.SUPABASE_ANON_KEY.indexOf("YOUR-ANON") !== -1;
+      if (unconfigured) document.write('<script src="sample-data.js"><\/script>');
+    })();
+  </script>
+  <script src="app.js"></script>
+</body>
+</html>

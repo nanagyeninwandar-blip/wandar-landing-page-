@@ -3519,5 +3519,55 @@ h1,h2,h3,h4{color:var(--text-primary);line-height:1.15;font-weight:700;letter-sp
 
 <script src="assets/js/modals.js" defer></script>
 
+<!-- ==================================================================
+     Hero "See live demand" -> Wandar Live Opportunity Feed.
+     Hands the typed work email to /feed/auth.html?email=..., which prefills
+     the signup form, or — if that email already has an account — signs the
+     operator straight into the feed with nothing to fill in.
+
+     The hero form keeps its own onsubmit="return false;" and `required`:
+     this listener still runs (return false only calls preventDefault), and
+     `required` gives the native "Please fill out this field" bubble.
+     Source of truth for this snippet:
+     Others Workflows/Safari Demand Live Tracker/landing-see-live-demand.html
+     ================================================================== -->
+<script>
+(function () {
+  "use strict";
+  var HERO_FORM  = '.hero__form';
+  var HERO_EMAIL = '.hero__input';
+  var AUTH_URL   = '/feed/auth.html';
+
+  var EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+  function go(e) {
+    var input = document.querySelector(HERO_EMAIL);
+    if (!input) return;                                  // markup moved: leave the form alone
+    var email = (input.value || "").trim();
+    if (!email || !EMAIL_RE.test(email)) {
+      if (input.reportValidity) input.reportValidity();
+      if (e) e.preventDefault();
+      return;
+    }
+    if (e) e.preventDefault();
+    window.location.href = AUTH_URL + "?email=" + encodeURIComponent(email);
+  }
+
+  function wire() {
+    var el = document.querySelector(HERO_FORM);
+    if (!el) return;
+    if (el.tagName === "FORM") el.addEventListener("submit", go);
+    else el.addEventListener("click", go);
+    var input = document.querySelector(HERO_EMAIL);
+    if (input && el.tagName !== "FORM") {
+      input.addEventListener("keydown", function (ev) { if (ev.key === "Enter") go(ev); });
+    }
+  }
+
+  if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", wire);
+  else wire();
+})();
+</script>
+
 </body>
 </html>

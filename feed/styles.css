@@ -154,18 +154,9 @@ img { max-width:100%; display:block; }
 .rail-btn { width:44px; height:44px; border-radius:12px; display:flex; align-items:center; justify-content:center; color:rgba(233,244,242,.8); transition:background .18s, color .18s; }
 .rail-btn:hover { background:rgba(255,255,255,.08); color:#fff; }
 .rail-btn svg { width:22px; height:22px; }
-.rail-btn--demo { border:1px solid rgba(111,220,155,.3); color:#9ff0c0; margin-bottom:10px; }
-.rail-btn--demo:hover { background:rgba(111,220,155,.14); color:#bff7d5; }
 .rail-btn--logout { color:rgba(233,244,242,.6); }
 .rail-btn--logout:hover { color:#fff; }
 .content { flex:1; min-width:0; display:flex; flex-direction:column; }
-
-/* video (Watch Demo) modal */
-.modal-overlay.video .modal { background:#000; padding:0; max-width:920px; overflow:hidden; }
-.modal-video { position:relative; }
-.modal-video video { display:block; width:100%; height:auto; background:#000; }
-.modal-video__close { position:absolute; top:12px; right:14px; z-index:2; width:34px; height:34px; border-radius:50%; background:rgba(0,0,0,.55); color:#fff; font-size:20px; line-height:1; display:flex; align-items:center; justify-content:center; }
-.modal-video__close:hover { background:rgba(0,0,0,.8); }
 
 /* top bar: title left · pill + account right */
 .topbar { background:#fff; border-bottom:1px solid var(--border-1); }
@@ -309,49 +300,41 @@ table.feed { width:100%; border-collapse:collapse; table-layout:fixed; }
 .sidepanel__foot .feed__reply { margin-left:auto; }
 
 /* ============================================================
-   AUTH (marketing split — mirrors platform Auth screen exactly)
-   Left: light-green panel, drifting lead cards, gradient headline,
-   Wandar logo top-left. Right: tabbed form.
+   AUTH (marketing split)
+   Left: deep-green brand panel — Wandar lockup + tagline, glassy
+   drifting lead cards behind. Right: single passwordless form.
    ============================================================ */
 .auth { display:flex; min-height:100vh; background:#fff; }
-.auth__left { width:44%; max-width:640px; position:relative; overflow:hidden; background:#e8f3df; flex-shrink:0; }
-.auth__logo { position:absolute; top:46px; left:52px; z-index:3; }
-.auth__logo img { height:42px; width:auto; display:block; }
-
-/* drifting faded lead cards */
-.auth__cards { position:absolute; inset:0; z-index:0; }
-.hero-lead-card {
-  position:absolute; width:268px; background:#fff; border:1px solid var(--border-1);
-  border-radius:var(--radius-lg); box-shadow:var(--shadow-md); padding:15px 18px;
+/* The supplied artwork, recoloured from deep green to teal. `contain` rather than
+   `cover` so it is never cropped — at narrow-desktop widths (~1024px) cover would
+   slice into the illustration. The fill colour is sampled from the image's own
+   border, so the letterboxing above and below reads as part of the panel. */
+.auth__left {
+  width:44%; max-width:640px; position:relative; overflow:hidden; flex-shrink:0;
+  background:#155457 url("assets/auth-panel.png") center / contain no-repeat;
 }
-.hero-lead-card__head { display:flex; align-items:center; gap:9px; margin-bottom:9px; }
-.hero-lead-card__badge { width:24px; height:24px; border-radius:50%; display:inline-flex; align-items:center; justify-content:center; flex-shrink:0; }
-.hero-lead-card__label { font-size:11.5px; font-weight:800; letter-spacing:.09em; text-transform:uppercase; color:var(--fg-3); }
-.hero-lead-card__snippet { margin:0; font-size:15px; font-style:italic; color:var(--fg-2); line-height:1.45; }
-.hero-lead-card__time { margin-top:9px; font-size:12.5px; color:var(--fg-4); }
-.hero-lead-card.c1 { top:4%; right:30px; transform:rotate(2.5deg); opacity:.5; }
-.hero-lead-card.c2 { top:19%; left:30px; transform:rotate(-3deg); opacity:.44; }
-.hero-lead-card.c3 { bottom:15%; right:34px; transform:rotate(2.5deg); opacity:.56; }
+/* sits over the area the baked-in lockup was painted out of */
+.auth__left .auth__lockup { position:absolute; top:46px; left:46px; z-index:2; }
 
-/* soft wash keeps headline crisp over cards */
-.auth__wash { position:absolute; inset:0; z-index:1; background:radial-gradient(125% 78% at 50% 42%, rgba(232,243,223,.86) 0%, rgba(232,243,223,.5) 55%, rgba(232,243,223,.28) 100%); }
-
-.auth__pitch { position:relative; z-index:2; height:100%; display:flex; flex-direction:column; justify-content:center; padding:0 46px; }
-.auth__eyebrow { font-size:12px; font-weight:800; letter-spacing:.15em; color:var(--safari-secondary); text-transform:uppercase; margin-bottom:18px; }
-.auth__headline {
-  font-family:var(--font-body); font-weight:800; font-size:34px; line-height:1.12; letter-spacing:-.03em; margin:0;
-  background-image:linear-gradient(104deg,#157070 0%,#3a7c40 20%,#8a8417 40%,#c27e09 60%,#d2540f 80%,#e0691a 100%);
-  -webkit-background-clip:text; background-clip:text; -webkit-text-fill-color:transparent; color:transparent;
-}
-.auth__headline .hl { position:relative; display:inline-block; white-space:nowrap; color:var(--safari-secondary); -webkit-text-fill-color:var(--safari-secondary); background-image:none; }
-.auth__headline .hl svg { position:absolute; left:-3%; width:106%; bottom:-.30em; height:.40em; overflow:visible; }
+/* Wandar | SALES PLATFORM FOR SAFARI OPERATORS */
+.auth__lockup { display:inline-flex; align-items:center; gap:18px; align-self:flex-start; }
+.auth__lockup img { height:46px; width:auto; display:block; }
+.auth__lockup-rule { width:1px; height:44px; background:rgba(255,255,255,.28); }
+/* nowrap so it keeps the two designed lines instead of re-wrapping to three
+   when the panel narrows; the query below shrinks it rather than let it wrap */
+.auth__lockup-tag { font-size:12.5px; font-weight:700; line-height:1.45; letter-spacing:.13em; text-transform:uppercase; color:rgba(255,255,255,.72); white-space:nowrap; }
+/* dark variant shown only once the green panel drops away (see RESPONSIVE) */
+.auth__lockup--mobile { display:none; margin-bottom:26px; }
+.auth__lockup--mobile img { height:28px; }
+.auth__lockup--mobile .auth__lockup-rule { height:28px; background:var(--border-2); }
+.auth__lockup--mobile .auth__lockup-tag { color:var(--fg-3); }
 
 /* right form panel */
 .auth__right { flex:1; display:flex; align-items:center; justify-content:center; padding:36px 40px; }
 .auth-card { width:100%; max-width:440px; }
-.auth-tabs { display:flex; gap:0; margin-bottom:18px; }
-.auth-tab { flex:1; padding:0 0 12px; font-size:18px; font-weight:500; color:var(--fg-3); border-bottom:2.5px solid var(--border-1); }
-.auth-tab.active { font-weight:700; color:var(--fg-1); border-bottom-color:var(--safari-primary); }
+/* set by app.js only while it decides whether this visitor is already an
+   operator; it always comes back off, including on a timeout */
+.auth-card.is-checking { visibility:hidden; }
 .auth-card h1 { font-family:var(--font-body); font-weight:800; font-size:27px; letter-spacing:-.02em; color:var(--fg-1); margin-bottom:4px; }
 .auth-card .lead { color:var(--fg-3); font-size:14.5px; margin-bottom:16px; }
 
@@ -363,7 +346,6 @@ table.feed { width:100%; border-collapse:collapse; table-layout:fixed; }
 .authfield { position:relative; display:flex; align-items:center; border:1px solid var(--border-2); border-radius:var(--radius-md); padding:0 12px; height:42px; background:#fff; transition:border-color .15s, box-shadow .15s; }
 .authfield.invalid { border-color:var(--danger); }
 .authfield:focus-within { border-color:var(--safari-primary); box-shadow:var(--shadow-focus); }
-.authfield > svg { color:var(--fg-4); flex-shrink:0; width:18px; height:18px; }
 .authfield input, .authfield select {
   flex:1; border:none; outline:none; font-family:var(--font-body); font-size:15px; color:var(--fg-1);
   padding:0 10px; background:transparent; appearance:none; -webkit-appearance:none;
@@ -375,13 +357,25 @@ table.feed { width:100%; border-collapse:collapse; table-layout:fixed; }
 .authfield select option { color:var(--fg-1); background:#fff; }
 .authfield select option:disabled { color:var(--fg-4); }
 .authfield .caret { position:absolute; right:15px; width:8px; height:8px; border-right:2px solid var(--fg-3); border-bottom:2px solid var(--fg-3); transform:translateY(-2px) rotate(45deg); pointer-events:none; }
-.pw-toggle { flex-shrink:0; display:inline-flex; align-items:center; justify-content:center; padding:4px; color:var(--fg-3); }
-.pw-toggle:hover { color:var(--fg-1); }
-.pw-toggle svg { width:18px; height:18px; }
 .field .err { color:var(--danger); font-size:12.5px; margin-top:5px; display:none; }
 .field .err.show { display:block; }
-.auth-submit { width:100%; margin-top:10px; padding:12px; border-radius:var(--radius-md); background:#0e3a33; color:#fff; font-weight:700; font-size:15.5px; }
-.auth-submit:hover { background:#0a2e29; }
+/* mandatory consent — gates the submit button */
+.consent { display:flex; align-items:flex-start; gap:11px; margin:14px 0 2px; cursor:pointer; }
+.consent input { width:17px; height:17px; margin-top:2px; flex-shrink:0; accent-color:var(--safari-primary); cursor:pointer; }
+.consent__text { font-size:14px; line-height:1.45; color:var(--fg-1); }
+.consent__text em { display:block; margin-top:3px; font-style:normal; font-size:12.5px; color:var(--fg-3); }
+.consent.invalid .consent__text { color:var(--danger); }
+.consent.invalid input { outline:2px solid var(--danger); outline-offset:2px; }
+
+/* Burnt orange. Deliberately #bd5510 rather than the brand --safari-secondary
+   (#c45911): white on the brand orange measures 4.39:1, just under the 4.5:1 AA
+   floor for 15.5px bold. This shade is the closest passing step (4.70:1) and is
+   visually indistinguishable from it. */
+.auth-submit { width:100%; margin-top:14px; padding:12px; border-radius:var(--radius-md); background:#bd5510; color:#fff; font-weight:700; font-size:15.5px; transition:background .15s, opacity .15s; }
+.auth-submit:hover { background:var(--safari-secondary-hover); }
+.auth-submit:active { background:#9e440c; }
+.auth-submit:disabled { background:var(--neutral-200); color:var(--fg-4); cursor:not-allowed; }
+.auth-submit:disabled:hover { background:var(--neutral-200); }
 .auth-switch { text-align:center; margin-top:14px; color:var(--fg-3); font-size:14.5px; }
 .auth-switch a { color:var(--fg-1); font-weight:700; }
 .form-msg { padding:12px 15px; border-radius:var(--radius-md); font-size:14px; margin-bottom:18px; display:none; }
@@ -432,12 +426,22 @@ table.feed { width:100%; border-collapse:collapse; table-layout:fixed; }
 /* ============================================================
    RESPONSIVE
    ============================================================ */
+/* Between 900 and ~1180px the green panel is still shown but narrow. Scale the
+   lockup down rather than let the tagline crowd the panel edge. Scoped to
+   .auth__left so the in-card mobile lockup is untouched. */
+@media (max-width:1180px) {
+  .auth__left .auth__lockup { top:36px; left:36px; gap:14px; }
+  .auth__left .auth__lockup img { height:38px; }
+  .auth__left .auth__lockup-rule { height:36px; }
+  .auth__left .auth__lockup-tag { font-size:10.5px; letter-spacing:.11em; }
+}
 @media (max-width:900px) {
   .sidebar { display:none; }
   .main { padding:22px 18px 48px; }
   .counters { grid-template-columns:1fr; }
   .auth__left { display:none; }
-  .auth__right { padding:40px 24px; }
+  .auth__right { padding:40px 24px; align-items:flex-start; }
+  .auth__lockup--mobile { display:inline-flex; }
   .pricing-grid { grid-template-columns:1fr; }
 }
 @media (max-width:620px) {
