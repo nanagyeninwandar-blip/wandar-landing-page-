@@ -3602,7 +3602,17 @@ h1,h2,h3,h4{color:var(--text-primary);line-height:1.15;font-weight:700;letter-sp
       return;
     }
     if (e) e.preventDefault();
-    window.location.href = AUTH_URL + "?email=" + encodeURIComponent(email);
+
+    /* New tab, so the operator keeps the marketing page behind them.
+       window.open is called synchronously inside the click/submit handler and
+       with no feature string — that keeps it a TAB and keeps it inside the user
+       gesture, so pop-up blockers allow it. `opener = null` severs the handle
+       back to this page. If a blocker kills it anyway, fall back to same-tab
+       rather than leaving the button doing nothing. */
+    var url = AUTH_URL + "?email=" + encodeURIComponent(email);
+    var w = window.open(url, "_blank");
+    if (w) { try { w.opener = null; } catch (err) {} w.focus(); }
+    else { window.location.href = url; }
   }
 
   function wire() {
