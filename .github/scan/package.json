@@ -1,0 +1,14 @@
+{
+  "name": "wandar-safari-scan",
+  "private": true,
+  "type": "module",
+  "description": "Weekly Reddit + TripAdvisor demand scan for the Wandar Live Demand Feed",
+  "scripts": {
+    "scan": "node scan.mjs",
+    "dry-run": "node scan.mjs --dry-run",
+    "test-scorer": "node score.mjs"
+  },
+  "dependencies": {
+    "@anthropic-ai/sdk": "^0.70.0"
+  }
+}
