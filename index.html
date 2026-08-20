@@ -3195,6 +3195,10 @@ h1,h2,h3,h4{color:var(--text-primary);line-height:1.15;font-weight:700;letter-sp
 
 
 <!-- Netlify form registration (hidden) -->
+<form name="Feed email list" netlify netlify-honeypot="bot-field" hidden>
+  <input name="email" type="email" />
+</form>
+
 <form name="early-access" netlify netlify-honeypot="bot-field" hidden>
   <input name="email" type="email" />
   <input name="company" type="text" />
@@ -3592,6 +3596,27 @@ h1,h2,h3,h4{color:var(--text-primary);line-height:1.15;font-weight:700;letter-sp
 
   var EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
+  /* Records the attempt in the hidden "Feed email list" Netlify form: someone
+     typed a valid work email and was sent to the auth page. Fires whether or
+     not they go on to finish signup, so the Netlify submissions list is the
+     top-of-funnel count against Supabase's completed-signup rows.
+     keepalive lets the POST finish even though the tab changes focus; a failed
+     POST is swallowed so tracking can never block the operator reaching the feed.
+     `sent` de-dupes double clicks on the same email within one page load. */
+  var sent = {};
+  function record(email) {
+    if (sent[email]) return;
+    sent[email] = 1;
+    try {
+      fetch("/", {
+        method: "POST",
+        headers: { "Content-Type": "application/x-www-form-urlencoded" },
+        body: "form-name=Feed%20email%20list&email=" + encodeURIComponent(email),
+        keepalive: true
+      }).catch(function () {});
+    } catch (err) {}
+  }
+
   function go(e) {
     var input = document.querySelector(HERO_EMAIL);
     if (!input) return;                                  // markup moved: leave the form alone
@@ -3609,6 +3634,8 @@ h1,h2,h3,h4{color:var(--text-primary);line-height:1.15;font-weight:700;letter-sp
        gesture, so pop-up blockers allow it. `opener = null` severs the handle
        back to this page. If a blocker kills it anyway, fall back to same-tab
        rather than leaving the button doing nothing. */
+    record(email);
+
     var url = AUTH_URL + "?email=" + encodeURIComponent(email);
     var w = window.open(url, "_blank");
     if (w) { try { w.opener = null; } catch (err) {} w.focus(); }
