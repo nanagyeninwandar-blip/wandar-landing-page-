@@ -72,6 +72,29 @@ const SCHEMA = {
   additionalProperties: false,
 };
 
+/* Validate credentials BEFORE the caller spends anything on scraping.
+   The 2026-08-20 run scraped 275 posts ($0.48) and only then hit a 401 on an
+   invalid key — the expensive irreversible step ran ahead of the cheap check.
+   This also runs in --dry-run, so a rehearsal actually rehearses the auth. */
+export async function preflight() {
+  try {
+    await client.messages.create({
+      model: MODEL,
+      max_tokens: 16,
+      thinking: { type: "disabled" },      // accepted at effort <= high
+      output_config: { effort: "low" },
+      messages: [{ role: "user", content: "Reply with: ok" }],
+    });
+    return { ok: true, model: MODEL };
+  } catch (e) {
+    const kind = e?.status === 401 ? "ANTHROPIC_API_KEY is invalid or revoked"
+               : e?.status === 404 ? `model "${MODEL}" not available to this key`
+               : e?.status === 429 ? "rate limited"
+               : `${e?.status || "?"} ${e?.message || e}`;
+    return { ok: false, model: MODEL, reason: kind };
+  }
+}
+
 function render(posts, today) {
   return `Today is ${today}. Classify these ${posts.length} posts.\n\n` +
     posts.map(p =>

@@ -11,7 +11,7 @@ import fs from "node:fs";
 import { TA_FORUMS, RD_BLANKET, RD_GENERAL, RD_TERMS, TA_TITLE_KILL } from "./sources.mjs";
 import { getSpend, plan, describe, COST } from "./budget.mjs";
 import { taIndex, taBodies, reddit } from "./apify.mjs";
-import { classify } from "./classify.mjs";
+import { classify, preflight } from "./classify.mjs";
 import { scoreSig } from "./score.mjs";
 import { existingThreadIds, lastScanDate, writeLeads, leadCount } from "./supabase.mjs";
 
@@ -35,6 +35,15 @@ function loadSeen() {
 
 async function main() {
   log(`=== Wandar scan ${TODAY}${DRY ? " (DRY RUN)" : ""} ===`);
+
+  // ---- 0. Preflight: prove we can classify before we pay to scrape ---------
+  const pre = await preflight();
+  if (!pre.ok) {
+    console.error(`PREFLIGHT FAILED: ${pre.reason}`);
+    console.error("Nothing scraped, nothing spent. Fix the key and re-run.");
+    process.exit(1);
+  }
+  log(`preflight ok (${pre.model})`);
 
   // ---- 1. Budget guard -----------------------------------------------------
   const spend = await getSpend(process.env.APIFY_TOKEN);
