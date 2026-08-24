@@ -210,11 +210,11 @@ h1,h2,h3,h4{color:var(--text-primary);line-height:1.15;font-weight:700;letter-sp
 /* Hamburger + mobile */
 .nav__burger{display:grid;place-items:center;width:44px;height:44px;border-radius:12px;background:transparent}
 @media(min-width:1024px){.nav__burger{display:none}}
-.nav__burger span{display:block;width:19px;height:2px;background:var(--text-primary);border-radius:2px;transition:transform 200ms ease,opacity 200ms ease}
-.nav__burger span+span{margin-top:4px}
-.nav.is-mobile-open .nav__burger span:nth-child(1){transform:translateY(6px) rotate(45deg)}
+.nav__burger span{display:block;width:20px;height:2px;background:var(--text-primary);border-radius:2px;transition:transform 200ms ease,opacity 200ms ease}
+.nav__burger span+span{margin-top:3px}
+.nav.is-mobile-open .nav__burger span:nth-child(1){transform:translateY(5px) rotate(45deg)}
 .nav.is-mobile-open .nav__burger span:nth-child(2){opacity:0}
-.nav.is-mobile-open .nav__burger span:nth-child(3){transform:translateY(-6px) rotate(-45deg)}
+.nav.is-mobile-open .nav__burger span:nth-child(3){transform:translateY(-5px) rotate(-45deg)}
 .nav__cta--desktop{display:none}
 @media(min-width:640px){.nav__cta--desktop{display:inline-flex}}
 
@@ -530,14 +530,18 @@ h1,h2,h3,h4{color:var(--text-primary);line-height:1.15;font-weight:700;letter-sp
 @media(max-width:767px){
   .hero--center .hero__title{font-size:clamp(28px,7.8vw,38px)}
   .hero__subhead{font-size:19px}
+  /* keep the copy column within the viewport — the marquee's wide max-content
+     was letting justify-items:start size the copy to 540px and clip it */
+  .hero--center .hero__copy{max-width:100%}
+  .hero--center .marq{max-width:100%}
 }
 
 .hero__cta{display:flex;flex-wrap:wrap;align-items:center;justify-content:flex-start;gap:14px}
 .hero__btn{padding:15px 30px;font-size:13.5px;font-weight:700;border-radius:8px}
 .hero__btn .btn__arrow{display:inline-block;margin-left:2px;transition:transform 200ms ease}
 @media(max-width:600px){
-  .hero__cta{flex-direction:column;gap:16px}
-  .hero__btn{width:100%;justify-content:center}
+  .hero__cta{flex-direction:row;flex-wrap:wrap;gap:10px}
+  .hero__btn{width:auto;justify-content:center;padding:12px 20px;font-size:12.5px;border-radius:7px}
 }
 
 /* marquee, re-tuned for the left-aligned layout on the photograph.
