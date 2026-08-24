@@ -29,6 +29,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Righteous&display=swap" />
+<link rel="preload" as="image" href="assets/hero-operator.png" fetchpriority="high" />
 
 <style>
 /* ═══════════════════════════════════════════════════════════
@@ -45,6 +46,8 @@
   --text-secondary:#525252;
   --text-muted:#737373;
   --dark-bg:#111816;
+  --hero-green:#17807A;
+  --hero-green-deep:#0F5C58;
   --off-white:#FDF8F0;
   --white:#ffffff;
   --border:#E5E7EB;
@@ -441,6 +444,171 @@ h1,h2,h3,h4{color:var(--text-primary);line-height:1.15;font-weight:700;letter-sp
 @media(min-width:1024px){.hero__visual{margin-right:-80px}}
 @media(min-width:1280px){.hero__visual{margin-right:-120px}}
 
+/* ── CENTRED HERO ────────────────────────────────────────
+   Dark, single-column composition: eyebrow, headline, subheader,
+   subtext, then the CTA pair. Every rule is scoped to .hero--center
+   so it outranks the two-column rules above without editing them. */
+.hero--center{
+  background:var(--hero-green);
+  text-align:left;
+  padding:124px 0 76px;
+}
+@media(min-width:1024px){
+  /* full-height frame so the photograph behind the copy has room to read */
+  .hero--center{display:flex;align-items:center;min-height:100vh;min-height:100dvh;padding:140px 0 92px}
+}
+@media(max-width:767px){
+  .hero--center{padding:108px 0 60px}
+}
+/* the photograph IS the hero background — full bleed behind the copy */
+.hero--center .hero__bg{
+  inset:0;height:100%;z-index:-3;filter:none;
+  background-image:url("assets/hero-operator.png");
+  /* full bleed again — any size below cover letterboxes the photo and shows
+     its outline against the green */
+  background-size:cover;background-position:72% center;background-repeat:no-repeat;
+  /* wide, soft vignette: fades only the far edges into the green, so the
+     photograph has no perceptible boundary */
+  -webkit-mask-image:radial-gradient(135% 125% at 66% 46%, #000 62%, transparent 100%);
+          mask-image:radial-gradient(135% 125% at 66% 46%, #000 62%, transparent 100%);
+}
+/* green scrim mixed from --hero-green: heavy on the left where the copy sits,
+   clearing to the right so the operator and her lead-insight panel stay
+   visible, and closing to solid green at the bottom so there is no seam */
+.hero--center::before{
+  content:"";position:absolute;inset:0;z-index:-2;pointer-events:none;
+  background:
+    linear-gradient(90deg,
+      rgba(15,92,88,.88) 0%,
+      rgba(15,92,88,.8) 28%,
+      rgba(23,128,122,.48) 47%,
+      rgba(23,128,122,.14) 68%,
+      rgba(23,128,122,.04) 82%,
+      rgba(23,128,122,.26) 100%),
+    linear-gradient(180deg,
+      rgba(15,92,88,.5) 0%,
+      rgba(23,128,122,.05) 24%,
+      rgba(23,128,122,.1) 56%,
+      var(--hero-green) 100%);
+}
+/* brand wash over the photograph so it reads as Wandar's green, not a stock photo */
+.hero--center .hero__glow{
+  z-index:-1;opacity:1;mix-blend-mode:normal;background-image:none;
+  background:
+    radial-gradient(60% 70% at 12% 40%, rgba(23,128,122,.32), transparent 72%),
+    radial-gradient(46% 56% at 84% 76%, rgba(184,134,11,.12), transparent 74%);
+}
+
+/* copy sits in the shaded left third of the frame, not across the middle */
+.hero--center .hero__grid{grid-template-columns:minmax(0,1fr);gap:56px;justify-items:start}
+.hero--center .hero__copy{max-width:620px;margin:0}
+@media(max-width:1023px){.hero--center .hero__copy{max-width:540px}}
+
+.hero--center .hero__title{
+  margin-bottom:16px;font-weight:500;line-height:1.07;letter-spacing:-.03em;
+  color:var(--off-white);font-size:clamp(31px,4vw,52px);
+}
+.hero__subhead{
+  margin:0 0 15px;max-width:510px;
+  font-size:clamp(19px,1.68vw,23.5px);font-weight:600;line-height:1.35;color:#e8814a;letter-spacing:-.01em;
+}
+.hero--center .hero__lede{
+  margin:0 0 32px;max-width:500px;
+  font-size:clamp(13.5px,.95vw,14.5px);line-height:1.7;color:rgba(253,248,240,.68);
+}
+/* the lede rises into place a word at a time, left to right, once on load */
+.hero__lede .w{
+  display:inline-block;opacity:0;transform:translateY(8px);
+  animation:ledeWord .5s cubic-bezier(.2,.8,.3,1) forwards;
+}
+@keyframes ledeWord{to{opacity:1;transform:none}}
+@media(prefers-reduced-motion:reduce){
+  .hero__lede .w{animation:none;opacity:1;transform:none}
+}
+@media(max-width:767px){
+  .hero--center .hero__title{font-size:clamp(28px,7.8vw,38px)}
+  .hero__subhead{font-size:19px}
+}
+
+.hero__cta{display:flex;flex-wrap:wrap;align-items:center;justify-content:flex-start;gap:14px}
+.hero__btn{padding:15px 30px;font-size:13.5px;font-weight:700;border-radius:8px}
+.hero__btn .btn__arrow{display:inline-block;margin-left:2px;transition:transform 200ms ease}
+@media(max-width:600px){
+  .hero__cta{flex-direction:column;gap:16px}
+  .hero__btn{width:100%;justify-content:center}
+}
+
+/* marquee, re-tuned for the left-aligned layout on the photograph.
+   The top margin carries the height the eyebrow used to occupy, so the copy
+   block keeps its old total height: the headline starts where the eyebrow was
+   and the marquee stays down at its original position. */
+.hero--center .marq{margin:96px 0 0;max-width:600px}
+@media(max-width:767px){.hero--center .marq{margin-top:38px}}
+.hero--center .marq__lead{color:rgba(253,248,240,.55)}
+.hero--center .dcard{
+  background:rgba(255,255,255,.16);border-color:rgba(253,248,240,.34);
+  color:var(--off-white);box-shadow:0 6px 18px rgba(9,48,45,.22);
+  -webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px);
+}
+.hero--center .dcard:hover{background:rgba(255,255,255,.22);border-color:rgba(253,248,240,.5)}
+.hero--center .dcard__name{color:rgba(253,248,240,.8)}
+/* phones: shift the crop so the operator stays in frame behind the copy */
+@media(max-width:767px){
+  .hero--center .hero__bg{background-position:64% center}
+  .hero--center::before{
+    background:
+      radial-gradient(90% 70% at 50% 40%, rgba(15,92,88,.92) 0%, rgba(15,92,88,.86) 60%, rgba(15,92,88,.78) 100%),
+      linear-gradient(180deg, rgba(15,92,88,.9) 0%, rgba(23,128,122,.64) 30%, var(--hero-green) 92%);
+  }
+}
+
+/* ═══ PROOF STATS BAND (directly under the hero) ═════════
+   Six figures in one row on white, separated by hairline rules — label,
+   figure, then the sentence the figure comes from. */
+.wstats{background:var(--white);padding:56px 0}
+@media(min-width:1024px){.wstats{padding:72px 0}}
+/* the band and the section under it are both white, so their stacked vertical
+   padding read as one oversized gap — pull the following section's top in */
+/* same gap this boundary gets everywhere else on the page */
+.wstats + .section{padding-top:56px}
+@media(min-width:1024px){.wstats + .section{padding-top:72px}}
+.wstats__grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));row-gap:34px;align-items:stretch}
+@media(min-width:760px){.wstats__grid{grid-template-columns:repeat(3,minmax(0,1fr))}}
+@media(min-width:1180px){.wstats__grid{grid-template-columns:repeat(6,minmax(0,1fr));row-gap:0}}
+
+/* One hairline between every pair, none at the start of a row. Each breakpoint
+   must restore the borders the narrower breakpoint dropped, at matching
+   nth-child specificity — a plain .wstat rule loses to .wstat:nth-child(). */
+.wstat{padding:2px 18px;border-left:1px solid rgba(26,26,26,.17)}
+.wstat:nth-child(2n+1){border-left:none;padding-left:0}
+@media(min-width:760px){
+  .wstat:nth-child(2n+1){border-left:1px solid rgba(26,26,26,.17);padding-left:18px}
+  .wstat:nth-child(3n+1){border-left:none;padding-left:0}
+}
+@media(min-width:1180px){
+  .wstat:nth-child(2n+1),
+  .wstat:nth-child(3n+1){border-left:1px solid rgba(26,26,26,.17);padding-left:20px}
+  .wstat:nth-child(6n+1){border-left:none;padding-left:0}
+}
+.wstat__label{
+  display:block;margin-bottom:16px;min-height:2.6em;
+  font-size:10.5px;font-weight:800;letter-spacing:.11em;text-transform:uppercase;
+  line-height:1.3;color:#7a7a7a;
+}
+.wstat__fig{
+  display:block;margin-bottom:13px;white-space:nowrap;
+  font-size:clamp(27px,2.3vw,36px);font-weight:700;line-height:1.05;letter-spacing:-.04em;
+  color:var(--safari-secondary);
+}
+.wstat__note{display:block;font-size:13px;line-height:1.55;color:#5b5b5b}
+/* the label reserves two lines at every width, so a wrapping header (e.g.
+   "Customer understanding") cannot push its figure and note out of line
+   with the rest of the row */
+@media(max-width:759px){
+  .wstat__label{min-height:0;margin-bottom:12px}
+  .wstat__fig{margin-bottom:10px}
+}
+
 /* ═══ PLATFORM UI MOCKUP (new flow) ══════════════════════ */
 .ui{
   position:relative;display:flex;background:#fff;border-radius:18px;overflow:hidden;
@@ -706,7 +874,128 @@ h1,h2,h3,h4{color:var(--text-primary);line-height:1.15;font-weight:700;letter-sp
 /* ═══ PLATFORM OVERVIEW ══════════════════════════════════ */
 .ov__head{max-width:940px;margin:0 auto 56px;text-align:center}
 .ov__head .h-section{margin-bottom:18px;max-width:760px;margin-left:auto;margin-right:auto}
-.ov__head .lede{max-width:900px}
+/* 68ch keeps the line length in the comfortable reading band, the paragraph gap
+   stays wider than the line gap so the blocks stay distinct, and text-wrap:pretty
+   pulls a word down to stop each paragraph ending on a stub line */
+.ov__head .lede{
+  max-width:68ch;text-align:justify;line-height:1.68;text-wrap:pretty;
+  -webkit-hyphens:none;hyphens:none;
+}
+.ov__head .lede + .lede{margin-top:.5em}
+/* ── split layout: the argument on the left, capability cards cycling on the
+      right one at a time ─────────────────────────────────────────────────── */
+.ovsplit{display:grid;grid-template-columns:1fr;gap:44px;align-items:center}
+@media(min-width:1024px){.ovsplit{grid-template-columns:minmax(0,.92fr) minmax(0,1.08fr);gap:64px}}
+/* in the narrow column the head stops being a centred banner: left-aligned,
+   ragged right, no width cap of its own */
+.ovsplit .ov__head{max-width:none;margin:0;text-align:left}
+.ovsplit .ov__head .h-section{max-width:none;margin-left:0;margin-right:0}
+.ovsplit .ov__head .lede{
+  max-width:none;margin-left:0;margin-right:0;text-align:justify;
+  font-size:clamp(14px,1.02vw,15.5px);line-height:1.5;
+}
+
+.ovcar{position:relative}
+/* every card occupies the same grid cell, so the stage is as tall as the
+   tallest of the three and nothing jumps when they swap */
+.ovcar__stage{display:grid}
+.ovcar__stage > .ovcard{grid-area:1/1}
+.ovcar .ovcard{
+  opacity:0;visibility:hidden;pointer-events:none;transform:translateY(14px);
+  transition:opacity 460ms ease,transform 540ms cubic-bezier(.2,.8,.3,1),visibility 0s linear 540ms;
+}
+.ovcar .ovcard.is-active{
+  opacity:1;visibility:visible;pointer-events:auto;transform:none;transition-delay:0s;
+}
+/* the reveal: the card's parts rise in one beat after another */
+.ovcar .ovcard__art,
+.ovcar .ovcard__title,
+.ovcar .ovcard__lead,
+.ovcar .ovcard__text,
+.ovcar .ovcard__tags{
+  opacity:0;transform:translateY(12px);
+  transition:opacity 440ms ease,transform 520ms cubic-bezier(.2,.8,.3,1);
+}
+.ovcar .ovcard.is-active .ovcard__art,
+.ovcar .ovcard.is-active .ovcard__title,
+.ovcar .ovcard.is-active .ovcard__lead,
+.ovcar .ovcard.is-active .ovcard__text,
+.ovcar .ovcard.is-active .ovcard__tags{opacity:1;transform:none}
+.ovcar .ovcard.is-active .ovcard__title{transition-delay:.06s}
+.ovcar .ovcard.is-active .ovcard__art{transition-delay:.14s}
+.ovcar .ovcard.is-active .ovcard__lead{transition-delay:.22s}
+.ovcar .ovcard.is-active .ovcard__text{transition-delay:.28s}
+.ovcar .ovcard.is-active .ovcard__tags{transition-delay:.34s}
+
+/* the card's coloured top edge doubles as the countdown: --fill is driven
+   frame by frame from JS, so it freezes when the timer pauses rather than
+   running on regardless */
+.ovcar .ovcard::before{transform:scaleX(var(--fill,.22));transition:none}
+.ovcar .ovcard.is-active::before,
+.ovcar .ovcard.is-active:hover::before{transform:scaleX(var(--fill,0))}
+
+.ovcar__dots{display:flex;align-items:center;gap:10px;margin-top:26px}
+.ovcar__dot{
+  width:9px;height:9px;padding:0;border:0;border-radius:50%;cursor:pointer;
+  background:rgba(26,26,26,.18);
+  transition:background 240ms ease,transform 240ms ease,width 260ms cubic-bezier(.2,.8,.3,1);
+}
+.ovcar__dot:hover{background:rgba(26,26,26,.36)}
+.ovcar__dot.is-active{background:var(--safari-primary);width:26px;border-radius:5px}
+.ovcar__dot:focus-visible{outline:2px solid var(--safari-primary);outline-offset:3px}
+
+@media(prefers-reduced-motion:reduce){
+  .ovcar .ovcard,
+  .ovcar .ovcard__art,
+  .ovcar .ovcard__title,
+  .ovcar .ovcard__text,
+  .ovcar .ovcard__tags,
+  .ovcar__dot{transition:none}
+}
+
+/* ── scroll-driven sequence ───────────────────────────────────────────
+   The track is taller than the viewport and the panel inside it sticks, so
+   scrolling through the section advances the cards instead of leaving it.
+   Only on desktop, and only where the viewport is tall enough to hold the
+   panel without clipping — short screens and phones just scroll normally. */
+@media(min-width:1024px) and (min-height:640px){
+  .ovpin{position:relative;height:300vh}
+  /* the panel is only as tall as its content and sticks clear of the fixed nav.
+     A 100vh box centring its content left dead space above the heading, which
+     read as an oversized gap under the section before it. */
+  .ovpin__stick{position:sticky;top:104px;display:block}
+}
+@media(prefers-reduced-motion:reduce){
+  .ovpin{height:auto}
+  .ovpin__stick{position:static;min-height:0;display:block}
+}
+/* paragraphs arrive one per step, each on a pale pink ground — a lighter wash of
+   the marquee card tint — so a revealed block reads as placed rather than loose.
+   Hidden only once JS has taken over, so a failed script leaves it readable */
+.ovsteps-on .lede{opacity:0;transform:translateY(16px)}
+.ovsteps-on .lede.is-shown{opacity:1;transform:none}
+/* only the paragraph that just arrived carries the pink; the ones before it
+   stay readable on plain ground. Padding and border width never change, so
+   nothing shifts as the tint moves down the column */
+.ovsteps-on .lede{
+  background:transparent;border:1px solid transparent;border-radius:10px;
+  padding:9px 14px;
+  transition:
+    opacity 520ms ease,
+    transform 620ms cubic-bezier(.2,.8,.3,1),
+    background-color 420ms ease,
+    border-color 420ms ease;
+}
+.ovsteps-on .lede.is-current{background:#fffaf8;border-color:#fdefe9}
+/* pull the tint back out to the left so the text itself still lines up with the
+   heading above it — the inset is room for the colour, not an indent.
+   Written against .ovsteps-on.ov__head so it outranks the margin reset above. */
+.ovsteps-on.ov__head .lede{margin-left:-14px;margin-right:-14px}
+/* the vertical padding already separates the blocks */
+.ovsteps-on .lede + .lede{margin-top:0}
+@media(prefers-reduced-motion:reduce){
+  .ovsteps-on .lede{opacity:1;transform:none;transition:none}
+}
 .ov__grid{display:grid;grid-template-columns:1fr;gap:24px}
 @media(min-width:768px){.ov__grid{grid-template-columns:repeat(3,1fr)}}
 .ovcard{
@@ -789,7 +1078,8 @@ h1,h2,h3,h4{color:var(--text-primary);line-height:1.15;font-weight:700;letter-sp
 .ovcard--a{--g1:#37a3a3;--g2:#1a7373;--g3:#0f5555;--edge:#0a3f3f;--tint:rgba(26,115,115,.11)}
 .ovcard--b{--g1:#f08b3f;--g2:#c45911;--g3:#a34b0e;--edge:#7a3809;--tint:rgba(196,89,17,.11)}
 .ovcard--c{--g1:#4d8526;--g2:#2d5016;--g3:#22400f;--edge:#16290a;--tint:rgba(45,80,22,.11)}
-.ovcard__title{font-size:20px;font-weight:700;margin-bottom:10px}
+.ovcard__title{font-size:20px;font-weight:700;margin-bottom:18px;text-align:left}
+.ovcard__lead{font-size:15.5px;font-weight:600;line-height:1.4;color:var(--text-primary);margin-bottom:10px}
 .ovcard__text{font-size:14.5px;line-height:1.6;color:var(--text-secondary);flex:1}
 .ovcard__tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:20px;padding-top:18px;border-top:1px solid var(--border)}
 .ovcard__tag{
@@ -821,7 +1111,7 @@ h1,h2,h3,h4{color:var(--text-primary);line-height:1.15;font-weight:700;letter-sp
 .strip__inner{position:relative;z-index:1;padding:0 clamp(24px,3.4vw,44px)}
 .strip__title{
   font-size:clamp(22px,2.4vw,30px);font-weight:700;color:#fff;line-height:1.15;
-  letter-spacing:-.03em;max-width:420px;margin-bottom:10px;
+  letter-spacing:-.03em;max-width:560px;margin-bottom:10px;
 }
 .strip__stage{position:relative;margin-top:18px}
 @media(min-width:900px){
@@ -863,6 +1153,65 @@ h1,h2,h3,h4{color:var(--text-primary);line-height:1.15;font-weight:700;letter-sp
   transform:translate(-50%,-50%);box-shadow:0 0 0 4px rgba(255,255,255,.12);
 }
 @media(min-width:900px){.strip__node{display:block}}
+
+/* ═══ SAFARI SALES JOURNEY — split rail ══════════════ */
+.rail{position:relative;margin-top:30px}
+.rail__line{display:none}
+/* stacked timeline first: one vertical spine down the left of the cards */
+.rail__grid{
+  list-style:none;margin:0;padding:0;position:relative;
+  display:flex;flex-direction:column;gap:16px;
+}
+.rail__grid::before{
+  content:"";position:absolute;left:21px;top:22px;bottom:22px;width:2px;border-radius:2px;
+  background:linear-gradient(180deg,rgba(94,200,196,.7),rgba(141,191,74,.6),rgba(224,117,44,.75));
+}
+.rail__item{position:relative;z-index:1;display:flex;align-items:flex-start;gap:14px}
+.rail__stem{display:none}
+.rail__node{
+  order:-1;flex:none;width:44px;height:44px;border-radius:50%;display:grid;place-items:center;
+  font-size:17px;font-weight:800;color:#fff;background:var(--c);
+  outline:2px dotted var(--c);outline-offset:5px;box-shadow:0 8px 18px rgba(8,40,38,.28);
+}
+.jcard{
+  flex:1;background:#fff;border-radius:14px;padding:17px 18px 19px;
+  box-shadow:0 3px 8px rgba(8,40,38,.10), 0 20px 44px rgba(8,40,38,.22);
+  transition:transform 260ms cubic-bezier(.2,.8,.3,1),box-shadow 260ms ease;
+}
+.jcard:hover{transform:translateY(-5px);box-shadow:0 6px 14px rgba(8,40,38,.14), 0 28px 58px rgba(8,40,38,.28)}
+.jcard__hd{display:flex;align-items:center;gap:11px}
+.jcard__ic{
+  width:38px;height:38px;border-radius:11px;flex:none;display:grid;place-items:center;
+  background:var(--c);color:#fff;box-shadow:0 6px 14px rgba(8,40,38,.22);
+}
+.jcard__ic svg{width:20px;height:20px}
+.jcard__t{font-size:15.5px;font-weight:700;color:var(--text-primary);line-height:1.24;letter-spacing:-.02em}
+.jcard__rule{display:block;width:32px;height:3px;border-radius:3px;background:var(--c);margin:12px 0 10px}
+.jcard__d{font-size:12.8px;line-height:1.55;color:var(--text-secondary)}
+
+@media(min-width:1024px){
+  /* six steps alternate above and below one horizontal spine; each card spans two
+     of seven tracks, so the rows interlock and every card gets ~2x the width */
+  .rail__grid{display:grid;grid-template-columns:repeat(7,1fr);grid-template-rows:auto auto;gap:0 18px}
+  .rail__grid::before{display:none}
+  .rail__line{
+    display:block;grid-row:1;grid-column:1/-1;align-self:end;height:2px;border-radius:2px;z-index:0;margin-bottom:-1px;
+    background:linear-gradient(90deg,rgba(94,200,196,0),rgba(94,200,196,.8) 14%,rgba(141,191,74,.8) 50%,rgba(224,117,44,.85) 86%,rgba(224,117,44,0));
+  }
+  .rail__item{flex-direction:column;align-items:center;gap:0}
+  .rail__item:nth-child(1){grid-column:1/span 2}
+  .rail__item:nth-child(2){grid-column:2/span 2}
+  .rail__item:nth-child(3){grid-column:3/span 2}
+  .rail__item:nth-child(4){grid-column:4/span 2}
+  .rail__item:nth-child(5){grid-column:5/span 2}
+  .rail__item:nth-child(6){grid-column:6/span 2}
+  .rail__item--up{grid-row:1;align-self:stretch}
+  .rail__item--down{grid-row:2;align-self:stretch;flex-direction:column-reverse}
+  .rail__stem{display:block;width:0;height:24px;border-left:2px dotted var(--c);opacity:.75;margin:6px 0}
+  .rail__node{order:0}
+  .rail__item--up .rail__node{margin-bottom:-22px}
+  .rail__item--down .rail__node{margin-top:-22px}
+}
 
 /* ═══ PRODUCT TOUR ═══════════════════════════════════════ */
 .tour__head{max-width:800px;margin:0 auto 28px;text-align:center}
@@ -1895,7 +2244,7 @@ h1,h2,h3,h4{color:var(--text-primary);line-height:1.15;font-weight:700;letter-sp
       </nav>
 
       <div class="nav__right">
-        <a href="#" onclick="openModal('early-access');return false;" class="btn btn--primary nav__cta nav__cta--desktop">Request Access</a>
+        <a href="#" onclick="openModal('early-access');return false;" class="btn btn--primary nav__cta nav__cta--desktop">Build with us</a>
         <button class="nav__burger" id="burger" aria-label="Open menu" aria-expanded="false">
           <span></span><span></span><span></span>
         </button>
@@ -1961,7 +2310,7 @@ h1,h2,h3,h4{color:var(--text-primary);line-height:1.15;font-weight:700;letter-sp
       </div>
 
       <div class="mobile-panel__foot">
-        <a href="#" onclick="openModal('early-access');return false;" class="btn">Request Access
+        <a href="#" onclick="openModal('early-access');return false;" class="btn">Build with us
           <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17L17 7M9 7h8v8"/></svg>
         </a>
       </div>
@@ -1974,25 +2323,21 @@ h1,h2,h3,h4{color:var(--text-primary);line-height:1.15;font-weight:700;letter-sp
 <main>
 
 <!-- ═══════════════ HERO ═══════════════ -->
-<section class="hero" id="hero">
+<section class="hero hero--center" id="hero">
   <div class="hero__bg" aria-hidden="true"></div>
   <div class="hero__glow" aria-hidden="true"></div>
   <div class="container">
     <div class="hero__grid">
 
       <div class="hero__copy">
-        <h1 class="h-display hero__title">Go from <span class="accent">missed safari demand</span> to <span class="accent-teal">more bookings</span></h1>
-        <p class="lede hero__lede">An integrated safari sales platform built around how African safari operators actually work.</p>
+        <h1 class="h-display hero__title">Deep relationships with travelers win safari bookings</h1>
+        <p class="hero__subhead">Go from missed enquiries into more bookings</p>
+        <p class="lede hero__lede">Wandar is an integrated safari sales platform that reduces repetitive sales admin and gives safari operators more time for the work that matters most: understanding travelers, communicating value and building the trust that wins bookings.</p>
 
-        <form class="hero__form" onsubmit="return false;">
-          <label class="hero__field">
-            <span style="position:absolute;left:-9999px">Work email address</span>
-            <input type="email" class="hero__input" placeholder="Work email address" autocomplete="email" required />
-          </label>
-          <button type="submit" class="btn btn--primary hero__submit">See live demand</button>
-        </form>
-
-        <p class="hero__note">See current safari planning conversations from Reddit and Tripadvisor Forums</p>
+        <div class="hero__cta">
+          <a href="#" onclick="openModal('early-access');return false;" class="btn btn--orange hero__btn">Build with us</a>
+          <a href="#" onclick="openModal('consultation');return false;" class="btn btn--ghost hero__btn">See Live Demand</a>
+        </div>
 
         <div class="marq">
           <span class="marq__lead"><span class="marq__live" aria-hidden="true"></span>Live now</span>
@@ -2020,143 +2365,49 @@ h1,h2,h3,h4{color:var(--text-primary);line-height:1.15;font-weight:700;letter-sp
 
       </div>
 
-      <div class="hero__visual reveal">
-        <div class="ui__float ui__float--tr">
-          <span class="ui__float-ic" style="background:#FF4500">
-            <svg viewBox="0 0 24 24" width="17" height="17" fill="#fff" aria-hidden="true"><path d="M12 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0zm5.01 4.744c.688 0 1.25.561 1.25 1.249a1.25 1.25 0 0 1-2.498.056l-2.597-.547-.8 3.747c1.824.07 3.48.632 4.674 1.488.308-.309.73-.491 1.207-.491.968 0 1.754.786 1.754 1.754 0 .716-.435 1.333-1.01 1.614a3.111 3.111 0 0 1 .042.52c0 2.694-3.13 4.87-7.004 4.87-3.874 0-7.004-2.176-7.004-4.87 0-.183.015-.366.043-.534A1.748 1.748 0 0 1 4.028 12c0-.968.786-1.754 1.754-1.754.463 0 .898.196 1.207.49 1.207-.883 2.878-1.43 4.744-1.487l.885-4.182a.342.342 0 0 1 .14-.197.35.35 0 0 1 .238-.042l2.906.617a1.214 1.214 0 0 1 1.108-.701zM9.25 12c-.689 0-1.25.562-1.25 1.25 0 .687.561 1.248 1.25 1.248.687 0 1.248-.561 1.248-1.249 0-.688-.561-1.249-1.249-1.249zm5.5 0c-.687 0-1.248.561-1.248 1.25 0 .687.561 1.248 1.249 1.248.688 0 1.249-.561 1.249-1.249 0-.688-.562-1.249-1.25-1.249zm-5.466 3.99a.327.327 0 0 0-.231.094.33.33 0 0 0 0 .463c.842.842 2.484.913 2.961.913.477 0 2.105-.056 2.961-.913a.361.361 0 0 0 .029-.463.33.33 0 0 0-.464 0c-.547.533-1.684.73-2.512.73-.828 0-1.979-.196-2.512-.73a.326.326 0 0 0-.232-.095z"/></svg>
-          </span>
-          <span class="ui__float-body">
-            <span class="ui__float-top">
-              <span class="ui__float-tag">New lead opportunity</span>
-              <span class="ui__float-live" aria-hidden="true"></span>
-            </span>
-            <span class="ui__float-t">New safari planner found</span>
-            <span class="ui__float-s">Reddit · r/safari · just now</span>
-          </span>
-        </div>
+    </div>
+  </div>
+</section>
 
+<!-- ═══════════════ PROOF STATS ═══════════════ -->
+<section class="wstats">
+  <div class="container">
+    <div class="wstats__grid">
 
-        <div class="ui ui--fit">
-          <aside class="ui__side ui__side--full">
-            <div class="ui__brand">
-              <img src="assets/wandar-banner-white-320.png" alt="Wandar" class="ui__logo" width="320" height="80" />
-            </div>
-            <nav class="ui__nav">
-              <span class="ui__navitem is-active"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M3 11l9-7 9 7"/><path d="M6 10v9h12v-9"/></svg>Home</span>
-              <span class="ui__navitem"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2.5"/><path d="M7 10h4M7 14h7"/></svg>Lead Feed</span>
-              <span class="ui__navitem"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M16 8v5a3 3 0 0 0 6 0v-1a10 10 0 1 0-3.9 7.9"/></svg>Mentions</span>
-              <span class="ui__navitem"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>Activity<i class="ui__dot">3</i></span>
-              <span class="ui__navitem"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M2.5 4.5h5.5A3.5 3.5 0 0 1 11.5 8v11a3 3 0 0 0-3-2.5H2.5z"/><path d="M21.5 4.5H16A3.5 3.5 0 0 0 12.5 8v11a3 3 0 0 1 3-2.5h6z"/></svg>Knowledge<i class="ui__pip"></i></span>
-                <span class="ui__navitem"><svg viewBox="0 0 24 24" fill="currentColor" stroke="none" aria-hidden="true"><path d="M 12 10.1 C 11.48 7.25 10.81 4.12 10.53 2.31 C 10.39 1.31 13 1.12 13.43 2.12 C 13.19 4.02 12.48 7.25 12 10.1 Z M 13.34 10.66 C 14.99 8.27 16.74 5.58 17.81 4.11 C 18.42 3.3 20.4 5.01 19.99 6.02 C 18.48 7.2 15.69 8.98 13.34 10.66 Z M 13.9 12 C 16.75 11.48 19.89 10.81 21.69 10.53 C 22.69 10.39 22.88 13 21.88 13.43 C 19.98 13.19 16.75 12.48 13.9 12 Z M 13.34 13.34 C 15.73 14.99 18.42 16.74 19.89 17.81 C 20.7 18.42 18.99 20.4 17.98 19.99 C 16.8 18.48 15.02 15.69 13.34 13.34 Z M 12 13.9 C 12.52 16.75 13.19 19.89 13.47 21.69 C 13.62 22.69 11 22.88 10.58 21.88 C 10.81 19.98 11.53 16.75 12 13.9 Z M 10.66 13.34 C 9.01 15.73 7.26 18.42 6.19 19.89 C 5.58 20.7 3.6 18.99 4.01 17.98 C 5.52 16.8 8.31 15.02 10.66 13.34 Z M 10.1 12 C 7.25 12.52 4.12 13.19 2.31 13.47 C 1.31 13.62 1.12 11 2.12 10.58 C 4.02 10.81 7.25 11.53 10.1 12 Z M 10.66 10.66 C 8.27 9.01 5.58 7.26 4.11 6.19 C 3.3 5.58 5.01 3.6 6.02 4.01 C 7.2 5.52 8.98 8.31 10.66 10.66 Z"/></svg>Safari AI</span>
-            </nav>
-            <div class="ui__nav-foot">
-              <span class="ui__navitem"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M9.6 9.6a2.5 2.5 0 0 1 4.8.9c0 1.6-2.4 2-2.4 3.5"/><circle cx="12" cy="17" r=".9" fill="currentColor" stroke="none"/></svg>Help Center</span>
-              <span class="ui__navitem"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3.2"/><path d="M12 3.5v2.2M12 18.3v2.2M20.5 12h-2.2M5.7 12H3.5M18 6l-1.6 1.6M7.6 16.4L6 18M18 18l-1.6-1.6M7.6 7.6L6 6"/></svg>Settings</span>
-              <span class="ui__navitem"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M14 20H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h8"/><path d="M17 15l4-3-4-3"/><path d="M21 12H9"/></svg>Log out</span>
-            </div>
-          </aside>
+      <div class="wstat reveal">
+        <span class="wstat__label">Sales workweek</span>
+        <span class="wstat__fig">60%</span>
+        <span class="wstat__note">of the sales workweek is spent on repetitive admin work, not selling.</span>
+      </div>
 
-          <div class="ui__main ui__main--home">
-            <div class="ui__head">
-              <div>
-                <div class="ui__title">Good morning, Gina</div>
-              </div>
-              <div class="ui__user">
-                <span class="ui__bell">
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8a6 6 0 1 0-12 0c0 6-2 7-2 7h16s-2-1-2-7"/><path d="M10.5 20a2 2 0 0 0 3 0"/></svg>
-                  <i>3</i>
-                </span>
-                <span class="ui__avatar">GT</span>
-                <span><b>Gina Taye</b><span>Serengeti Journeys</span></span>
-              </div>
-            </div>
+      <div class="wstat reveal">
+        <span class="wstat__label">High-value work</span>
+        <span class="wstat__fig">85%</span>
+        <span class="wstat__note">of sales reps globally say AI tools free them for higher-value work.</span>
+      </div>
 
-            <div class="ui__stats">
-              <div class="ui__stat">
-                <span class="ui__stat-l">New lead opportunities</span>
-                <span class="ui__stat-n">12</span>
-                <span class="ui__stat-s">+4 since yesterday</span>
-                <span class="ui__stat-a">View Lead Feed &rarr;</span>
-              </div>
-              <div class="ui__stat">
-                <span class="ui__stat-l">Active conversations</span>
-                <span class="ui__stat-n">18</span>
-                <span class="ui__stat-s">Across website and WhatsApp</span>
-                <span class="ui__stat-a">Open conversations &rarr;</span>
-              </div>
-              <div class="ui__stat ui__stat--alert">
-                <span class="ui__stat-l">Needs human attention</span>
-                <span class="ui__stat-n">3</span>
-                <span class="ui__stat-s">1 response approval, 2 handoffs</span>
-                <span class="ui__stat-a">Review now &rarr;</span>
-              </div>
-              <div class="ui__stat">
-                <span class="ui__stat-l">Qualified this week</span>
-                <span class="ui__stat-n">7</span>
-                <span class="ui__stat-s">3 are ready for a quote</span>
-                <span class="ui__stat-a">See travelers &rarr;</span>
-              </div>
-            </div>
+      <div class="wstat reveal">
+        <span class="wstat__label">Customer understanding</span>
+        <span class="wstat__fig">90%</span>
+        <span class="wstat__note">of sales reps globally say AI tools help them understand customers better.</span>
+      </div>
 
-            <div class="ui__panels">
-              <div class="ui__box">
-                <div class="ui__box-hd">
-                  <span class="ui__box-t">Needs your attention</span>
-                  <span class="ui__box-lnk">View all tasks</span>
-                </div>
-                <span class="ui__box-s">The most important actions across the platform.</span>
+      <div class="wstat reveal">
+        <span class="wstat__label">Revenue growth</span>
+        <span class="wstat__fig">6 figures</span>
+        <span class="wstat__note">in safari bookings in under a year by one advisor using better tools.</span>
+      </div>
 
-                <div class="ui__task">
-                  <span class="ui__task-ic" style="background:#fdece0;color:#c45911">!</span>
-                  <span class="ui__task-b"><b>Approve a camp comparison response</b><span>Sophie asked whether a private concession would feel quieter.</span></span>
-                  <span class="ui__task-t">Now</span>
-                </div>
-                <div class="ui__task">
-                  <span class="ui__task-ic" style="background:#e6f4f4;color:#1a7373"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7"/><path d="M9 7h8v8"/></svg></span>
-                  <span class="ui__task-b"><b>Qualified traveler ready for handoff</b><span>Lena completed qualification for Botswana and Victoria Falls.</span></span>
-                  <span class="ui__task-t">38m</span>
-                </div>
-                <div class="ui__task">
-                  <span class="ui__task-ic" style="background:#f0efec;color:#525252"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></span>
-                  <span class="ui__task-b"><b>Quote follow-up due today</b><span>Michael has not replied since receiving the quote two days ago.</span></span>
-                  <span class="ui__task-t">2h</span>
-                </div>
-              </div>
+      <div class="wstat reveal">
+        <span class="wstat__label">More clients</span>
+        <span class="wstat__fig">25 &rarr; 80</span>
+        <span class="wstat__note">clients for a travel advisor after moving to an integrated platform.</span>
+      </div>
 
-              <div class="ui__box">
-                <div class="ui__box-hd">
-                  <span class="ui__box-t">Website + WhatsApp</span>
-                </div>
-                <span class="ui__box-s">Channel status and today&rsquo;s conversations.</span>
-
-                <div class="ui__chan">
-                  <span class="ui__chan-ic" style="background:#0f3d38"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18"/><path d="M12 3a14 14 0 0 1 0 18 14 14 0 0 1 0-18z"/></svg></span>
-                  <span class="ui__chan-b"><b>Website</b><span>7 conversations today</span></span>
-                  <span class="ui__live">Live</span>
-                </div>
-                <div class="ui__chan">
-                  <span class="ui__chan-ic" style="background:#25D366"><svg viewBox="0 0 24 24" fill="#fff" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413z"/></svg></span>
-                  <span class="ui__chan-b"><b>WhatsApp</b><span>11 conversations today</span></span>
-                  <span class="ui__live">Live</span>
-                </div>
-
-                <div class="ui__metrics">
-                  <span class="ui__metric"><b>36</b><span>questions answered</span></span>
-                  <span class="ui__metric"><b>9</b><span>travelers qualified</span></span>
-                  <span class="ui__metric"><b>3</b><span>human handoffs</span></span>
-                </div>
-              </div>
-            </div>
-
-            <div class="ui__box">
-              <div class="ui__box-hd">
-                <span class="ui__box-t">Recent conversations</span>
-                <span class="ui__box-lnk">Open Activity</span>
-              </div>
-              <span class="ui__box-s">The latest traveler activity from both channels.</span>
-            </div>
-          </div>
-        </div>
+      <div class="wstat reveal">
+        <span class="wstat__label">Faster sales work</span>
+        <span class="wstat__fig">10x faster</span>
+        <span class="wstat__note">time to proposal for an advisor on an integrated travel platform.</span>
       </div>
 
     </div>
@@ -2165,21 +2416,29 @@ h1,h2,h3,h4{color:var(--text-primary);line-height:1.15;font-weight:700;letter-sp
 
 <!-- ═══════════════ PLATFORM OVERVIEW ═══════════════ -->
 <section class="section section--white" id="platform">
+  <div class="ovpin" id="ovpin">
+  <div class="ovpin__stick">
   <div class="container">
+    <div class="ovsplit">
+
     <div class="ov__head reveal">
-      <span class="eyebrow eyebrow--teal">One connected platform</span>
+      <span class="eyebrow eyebrow--teal">Out-of-the-box safari sales platform</span>
       <h2 class="h-section">Built for the complexity of safari sales.</h2>
-      <p class="lede lede--center">Safari sales involve many moving parts. Wandar brings the work of finding demand, engaging travelers and keeping sales conversations moving toward a booking into one platform built around how safari operators actually work, giving teams more capacity to serve travelers and grow their businesses.</p>
+      <p class="lede lede--center">An African safari is expensive, complex and often a once-in-a-lifetime purchase. Travelers are not only comparing itineraries or prices. They are choosing which operator they trust to understand them, manage concerns and guide them through a decision that can involve thousands of dollars and months of planning. So competition is not the only obstacle to winning that booking.</p>
+      <p class="lede lede--center">The work required to sell a safari is demanding too. Operators are qualifying enquiries, checking rates, researching properties, following up and piecing together information scattered across the business.</p>
+      <p class="lede lede--center">Every hour spent on that work is time taken from understanding the traveler, building the relationship and applying the expertise that gets the operator the booking.</p>
     </div>
 
-    <div class="ov__grid">
+    <div class="ovcar reveal" id="ovcar">
+      <div class="ovcar__stage">
 
-      <article class="ovcard ovcard--a reveal">
+      <article class="ovcard ovcard--a is-active">
+        <h3 class="ovcard__title">Demand Discovery</h3>
         <div class="ovcard__art ovcard__art--flat">
           <img class="ovimg" src="assets/ov-demand-discovery.png?v=3" alt="" loading="lazy" width="640" height="640" />
         </div>
-        <h3 class="ovcard__title">Demand Discovery</h3>
-        <p class="ovcard__text">Reach active safari planning travelers and build trust across Reddit, Tripadvisor Forums and Facebook Groups.</p>
+        <p class="ovcard__lead">Understand safari demand.</p>
+        <p class="ovcard__text">Turn high-intent safari planning conversations across Reddit, Tripadvisor Forums and Facebook Groups into market demand intelligence.</p>
         <div class="ovcard__tags">
           <span class="ovcard__tag"><svg viewBox="0 0 24 24" fill="#FF4500" aria-hidden="true"><path d="M12 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0zm5.01 4.744c.688 0 1.25.561 1.25 1.249a1.25 1.25 0 0 1-2.498.056l-2.597-.547-.8 3.747c1.824.07 3.48.632 4.674 1.488.308-.309.73-.491 1.207-.491.968 0 1.754.786 1.754 1.754 0 .716-.435 1.333-1.01 1.614a3.111 3.111 0 0 1 .042.52c0 2.694-3.13 4.87-7.004 4.87-3.874 0-7.004-2.176-7.004-4.87 0-.183.015-.366.043-.534A1.748 1.748 0 0 1 4.028 12c0-.968.786-1.754 1.754-1.754.463 0 .898.196 1.207.49 1.207-.883 2.878-1.43 4.744-1.487l.885-4.182a.342.342 0 0 1 .14-.197.35.35 0 0 1 .238-.042l2.906.617a1.214 1.214 0 0 1 1.108-.701zM9.25 12c-.689 0-1.25.562-1.25 1.25 0 .687.561 1.248 1.25 1.248.687 0 1.248-.561 1.248-1.249 0-.688-.561-1.249-1.249-1.249zm5.5 0c-.687 0-1.248.561-1.248 1.25 0 .687.561 1.248 1.249 1.248.688 0 1.249-.561 1.249-1.249 0-.688-.562-1.249-1.25-1.249zm-5.466 3.99a.327.327 0 0 0-.231.094.33.33 0 0 0 0 .463c.842.842 2.484.913 2.961.913.477 0 2.105-.056 2.961-.913a.361.361 0 0 0 .029-.463.33.33 0 0 0-.464 0c-.547.533-1.684.73-2.512.73-.828 0-1.979-.196-2.512-.73a.326.326 0 0 0-.232-.095z"/></svg>Reddit</span>
           <span class="ovcard__tag"><svg viewBox="0 0 24 24" fill="#0d2e2c" aria-hidden="true"><path d="M12.006 4.295c-2.67 0-5.338.784-7.645 2.353H0l1.963 2.135a5.997 5.997 0 0 0 4.04 10.43a5.98 5.98 0 0 0 4.075-1.6L12 19.705l1.922-2.09a5.97 5.97 0 0 0 4.072 1.598a6 6 0 0 0 6-5.998a5.98 5.98 0 0 0-1.957-4.432L24 6.648h-4.35a13.57 13.57 0 0 0-7.644-2.353M12 6.255c1.531 0 3.063.303 4.504.903C13.943 8.138 12 10.43 12 13.1c0-2.671-1.942-4.962-4.504-5.942A11.7 11.7 0 0 1 12 6.256zM6.002 9.157a4.059 4.059 0 1 1 0 8.118a4.059 4.059 0 0 1 0-8.118m11.992.002a4.057 4.057 0 1 1 .003 8.115a4.057 4.057 0 0 1-.003-8.115m-11.992 1.93a2.128 2.128 0 0 0 0 4.256a2.128 2.128 0 0 0 0-4.256m11.992 0a2.128 2.128 0 0 0 0 4.256a2.128 2.128 0 0 0 0-4.256"/></svg>Tripadvisor</span>
@@ -2187,32 +2446,45 @@ h1,h2,h3,h4{color:var(--text-primary);line-height:1.15;font-weight:700;letter-sp
         </div>
       </article>
 
-      <article class="ovcard ovcard--b reveal">
+      <article class="ovcard ovcard--b">
+        <h3 class="ovcard__title">Social Mentions</h3>
         <div class="ovcard__art ovcard__art--flat">
           <img class="ovimg" src="assets/ov-social-mentions.png?v=3" alt="" loading="lazy" width="640" height="640" />
         </div>
-        <h3 class="ovcard__title">Social Mentions</h3>
-        <p class="ovcard__text">Track relevant safari mentions and engage prospective travelers across X, Instagram and TikTok.</p>
+        <p class="ovcard__lead">Monitor safari conversations.</p>
+        <p class="ovcard__text">Stay on top of relevant mentions, topics and shifts across Instagram, TikTok and Facebook.</p>
         <div class="ovcard__tags">
-          <span class="ovcard__tag"><svg viewBox="0 0 24 24" fill="#0f0f0f" aria-hidden="true"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.748l7.73-8.835L1.254 2.25H8.08l4.261 5.635 5.903-5.635zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>X</span>
           <span class="ovcard__tag"><svg viewBox="0 0 24 24" fill="#E1306C" aria-hidden="true"><path d="M12 2.16c3.2 0 3.58.01 4.85.07 3.25.15 4.77 1.69 4.92 4.92.06 1.27.07 1.65.07 4.85s-.01 3.58-.07 4.85c-.15 3.23-1.66 4.77-4.92 4.92-1.27.06-1.65.07-4.85.07s-3.58-.01-4.85-.07c-3.26-.15-4.77-1.7-4.92-4.92-.06-1.27-.07-1.65-.07-4.85s.01-3.58.07-4.85C2.38 3.93 3.9 2.38 7.15 2.23 8.42 2.17 8.8 2.16 12 2.16zm0 3.68A6.16 6.16 0 1 0 18.16 12 6.16 6.16 0 0 0 12 5.84zm0 10.16A4 4 0 1 1 16 12a4 4 0 0 1-4 4zm6.4-11.85a1.44 1.44 0 1 0 1.44 1.44 1.44 1.44 0 0 0-1.44-1.44z"/></svg>Instagram</span>
           <span class="ovcard__tag"><svg viewBox="0 0 24 24" fill="#0f0f0f" aria-hidden="true"><path d="M12.53.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.99-.32-2.15-.23-3.02.37-.63.41-1.11 1.04-1.36 1.75-.21.51-.15 1.07-.14 1.61.24 1.64 1.82 3.02 3.5 2.87 1.12-.01 2.19-.66 2.77-1.61.19-.33.4-.67.41-1.06.1-1.79.06-3.57.07-5.36.01-4.03-.01-8.05.02-12.07z"/></svg>TikTok</span>
+          <span class="ovcard__tag"><svg viewBox="0 0 24 24" fill="#1877F2" aria-hidden="true"><path d="M24 12.07C24 5.44 18.63.07 12 .07S0 5.44 0 12.07c0 6 4.39 10.95 10.13 11.85v-8.38H7.08v-3.47h3.05V9.43c0-3 1.79-4.67 4.53-4.67 1.31 0 2.69.24 2.69.24v2.95h-1.52c-1.49 0-1.96.93-1.96 1.87v2.25h3.33l-.53 3.47h-2.8v8.38C19.61 23.02 24 18.07 24 12.07z"/></svg>Facebook</span>
         </div>
       </article>
 
-      <article class="ovcard ovcard--c reveal">
+      <article class="ovcard ovcard--c">
+        <h3 class="ovcard__title">Sales Agent</h3>
         <div class="ovcard__art ovcard__art--flat">
           <img class="ovimg" src="assets/ov-sales-agent.png?v=3" alt="" loading="lazy" width="640" height="640" />
         </div>
-        <h3 class="ovcard__title">Sales Agent</h3>
-        <p class="ovcard__text">Engage prospects 24/7, answer safari questions and guide website and WhatsApp conversations toward a booking.</p>
+        <p class="ovcard__lead">Engage every enquiry 24/7.</p>
+        <p class="ovcard__text">Run stronger sales conversations across your website and WhatsApp. Ask the right questions, address concerns and build trust to help convert enquiries into bookings.</p>
         <div class="ovcard__tags">
           <span class="ovcard__tag"><svg viewBox="0 0 24 24" fill="none" stroke="#1a7373" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18"/><path d="M12 3a14 14 0 0 1 0 18 14 14 0 0 1 0-18z"/></svg>Website</span>
           <span class="ovcard__tag"><svg viewBox="0 0 24 24" fill="#25D366" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413z"/></svg>WhatsApp</span>
         </div>
       </article>
 
+      </div>
+
+      <div class="ovcar__dots" role="tablist" aria-label="Platform capabilities">
+        <button class="ovcar__dot is-active" type="button" role="tab" aria-selected="true" aria-label="Demand Discovery"></button>
+        <button class="ovcar__dot" type="button" role="tab" aria-selected="false" aria-label="Social Mentions"></button>
+        <button class="ovcar__dot" type="button" role="tab" aria-selected="false" aria-label="Sales Agent"></button>
+      </div>
     </div>
+
+    </div>
+  </div>
+  </div>
   </div>
 </section>
 
@@ -2222,56 +2494,91 @@ h1,h2,h3,h4{color:var(--text-primary);line-height:1.15;font-weight:700;letter-sp
     <div class="strip__card">
       <div class="tex" aria-hidden="true"></div>
       <div class="strip__inner">
-    <span class="eyebrow eyebrow--light">Discovery to direct conversation</span>
-    <h2 class="strip__title">From active safari demand to a booking opportunity.</h2>
+    <span class="eyebrow eyebrow--light">One connected safari sales journey</span>
+    <h2 class="strip__title">Stronger sales conversations need more than one tool.</h2>
 
-    <div class="strip__stage">
-      <svg class="strip__line" viewBox="0 0 1200 460" preserveAspectRatio="none" aria-hidden="true">
-        <!-- growth curve: flat through the early stages, steepening toward the outcome.
-             Node coordinates are segment endpoints, so the markers sit exactly on the line. -->
-        <path d="M0 460 L192 405 Q 390 378 588 350 Q 790 322 880 240 Q 950 140 984 64 L1200 0"
-              fill="none" stroke="rgba(255,255,255,.34)" stroke-width="2"
-              stroke-dasharray="7 9" stroke-linecap="round" vector-effect="non-scaling-stroke" />
-      </svg>
-
-      <span class="strip__node" style="left:16%;top:88%;background:#37a3a3"></span>
-      <span class="strip__node" style="left:49%;top:76%;background:#e0752c"></span>
-      <span class="strip__node" style="left:82%;top:14%;background:#5c9a2e"></span>
-
-      <div class="strip__grid">
-        <div class="strip__item">
-          <article class="scard">
-            <span class="scard__ic" style="background:linear-gradient(140deg,#37a3a3,#0f5555)">
-              <svg aria-hidden="true" width="24" height="24" viewBox="0 0 256 256"><g fill="currentColor"><path d="M104 168a40 40 0 1 1-40-40a40 40 0 0 1 40 40m88-40a40 40 0 1 0 40 40a40 40 0 0 0-40-40" opacity=".2"/><path d="M237.2 151.87a47 47 0 0 0-2.35-5.45L193.26 51.8a7.8 7.8 0 0 0-1.66-2.44a32 32 0 0 0-45.26 0A8 8 0 0 0 144 55v25h-32V55a8 8 0 0 0-2.34-5.66a32 32 0 0 0-45.26 0a7.8 7.8 0 0 0-1.66 2.44L21.15 146.4a47 47 0 0 0-2.35 5.45A48 48 0 1 0 112 168V96h32v72a48 48 0 1 0 93.2-16.13M76.71 59.75a16 16 0 0 1 19.29-1v73.51a47.9 47.9 0 0 0-46.79-9.92ZM64 200a32 32 0 1 1 32-32a32 32 0 0 1-32 32m96-141.26a16 16 0 0 1 19.29 1l27.5 62.58a47.9 47.9 0 0 0-46.79 9.93ZM192 200a32 32 0 1 1 32-32a32 32 0 0 1-32 32"/></g></svg>
-            </span>
-            <span class="scard__lbl">Discover</span>
-            <h3 class="scard__t">Find travelers earlier</h3>
-            <p class="scard__d">See active safari planners while they are still researching.</p>
+    <div class="rail">
+      <ol class="rail__grid">
+        <li class="rail__item rail__item--up" style="--c:#3aa8a5">
+          <article class="jcard">
+            <div class="jcard__hd">
+              <span class="jcard__ic"><svg aria-hidden="true" width="24" height="24" viewBox="0 0 256 256"><g fill="currentColor"><path d="M192,112a80,80,0,1,1-80-80A80,80,0,0,1,192,112Z" opacity="0.2"/><path d="M229.66,218.34,179.6,168.28a88.21,88.21,0,1,0-11.32,11.31l50.06,50.07a8,8,0,0,0,11.32-11.32ZM40,112a72,72,0,1,1,72,72A72.08,72.08,0,0,1,40,112Z"/></g></svg></span>
+              <h3 class="jcard__t">Understand demand</h3>
+            </div>
+            <span class="jcard__rule"></span>
+            <p class="jcard__d">Know what high-intent safari travelers are asking, comparing and trying to figure out.</p>
           </article>
-        </div>
+          <span class="rail__stem"></span>
+          <span class="rail__node">1</span>
+        </li>
 
-        <div class="strip__item">
-          <article class="scard">
-            <span class="scard__ic" style="background:linear-gradient(140deg,#f08b3f,#a34b0e)">
-              <svg aria-hidden="true" width="24" height="24" viewBox="0 0 256 256"><g fill="currentColor"><path d="M232 128c0 12.51-17.82 21.95-22.68 33.69c-4.68 11.32 1.42 30.65-7.78 39.85s-28.53 3.1-39.85 7.78C150 214.18 140.5 232 128 232s-22-17.82-33.69-22.68c-11.32-4.68-30.65 1.42-39.85-7.78s-3.1-28.53-7.78-39.85C41.82 150 24 140.5 24 128s17.82-22 22.68-33.69c4.68-11.31-1.42-30.65 7.78-39.85s28.54-3.1 39.85-7.78C106.05 41.82 115.5 24 128 24s22 17.82 33.69 22.68c11.32 4.68 30.65-1.42 39.85 7.78s3.1 28.53 7.78 39.85C214.18 106.05 232 115.5 232 128" opacity=".2"/><path d="M225.86 102.82c-3.77-3.94-7.67-8-9.14-11.57c-1.36-3.27-1.44-8.69-1.52-13.94c-.15-9.76-.31-20.82-8-28.51s-18.75-7.85-28.51-8c-5.25-.08-10.67-.16-13.94-1.52c-3.56-1.47-7.63-5.37-11.57-9.14C146.28 23.51 138.44 16 128 16s-18.27 7.51-25.18 14.14c-3.94 3.77-8 7.67-11.57 9.14c-3.25 1.36-8.69 1.44-13.94 1.52c-9.76.15-20.82.31-28.51 8s-7.8 18.75-8 28.51c-.08 5.25-.16 10.67-1.52 13.94c-1.47 3.56-5.37 7.63-9.14 11.57C23.51 109.72 16 117.56 16 128s7.51 18.27 14.14 25.18c3.77 3.94 7.67 8 9.14 11.57c1.36 3.27 1.44 8.69 1.52 13.94c.15 9.76.31 20.82 8 28.51s18.75 7.85 28.51 8c5.25.08 10.67.16 13.94 1.52c3.56 1.47 7.63 5.37 11.57 9.14c6.9 6.63 14.74 14.14 25.18 14.14s18.27-7.51 25.18-14.14c3.94-3.77 8-7.67 11.57-9.14c3.27-1.36 8.69-1.44 13.94-1.52c9.76-.15 20.82-.31 28.51-8s7.85-18.75 8-28.51c.08-5.25.16-10.67 1.52-13.94c1.47-3.56 5.37-7.63 9.14-11.57c6.63-6.9 14.14-14.74 14.14-25.18s-7.51-18.27-14.14-25.18m-11.55 39.29c-4.79 5-9.75 10.17-12.38 16.52c-2.52 6.1-2.63 13.07-2.73 19.82c-.1 7-.21 14.33-3.32 17.43s-10.39 3.22-17.43 3.32c-6.75.1-13.72.21-19.82 2.73c-6.35 2.63-11.52 7.59-16.52 12.38S132 224 128 224s-9.15-4.92-14.11-9.69s-10.17-9.75-16.52-12.38c-6.1-2.52-13.07-2.63-19.82-2.73c-7-.1-14.33-.21-17.43-3.32s-3.22-10.39-3.32-17.43c-.1-6.75-.21-13.72-2.73-19.82c-2.63-6.35-7.59-11.52-12.38-16.52S32 132 32 128s4.92-9.15 9.69-14.11s9.75-10.17 12.38-16.52c2.52-6.1 2.63-13.07 2.73-19.82c.1-7 .21-14.33 3.32-17.43s10.39-3.22 17.43-3.32c6.75-.1 13.72-.21 19.82-2.73c6.35-2.63 11.52-7.59 16.52-12.38S124 32 128 32s9.15 4.92 14.11 9.69s10.17 9.75 16.52 12.38c6.1 2.52 13.07 2.63 19.82 2.73c7 .1 14.33.21 17.43 3.32s3.22 10.39 3.32 17.43c.1 6.75.21 13.72 2.73 19.82c2.63 6.35 7.59 11.52 12.38 16.52S224 124 224 128s-4.92 9.15-9.69 14.11m-40.65-43.77a8 8 0 0 1 0 11.32l-56 56a8 8 0 0 1-11.32 0l-24-24a8 8 0 0 1 11.32-11.32L112 148.69l50.34-50.35a8 8 0 0 1 11.32 0"/></g></svg>
-            </span>
-            <span class="scard__lbl">Engage</span>
-            <h3 class="scard__t">Build trust sooner</h3>
-            <p class="scard__d">Share useful safari expertise while travelers decide who to contact.</p>
+        <li class="rail__item rail__item--down" style="--c:#e0752c">
+          <article class="jcard">
+            <div class="jcard__hd">
+              <span class="jcard__ic"><svg aria-hidden="true" width="24" height="24" viewBox="0 0 256 256"><g fill="currentColor"><path d="M224,128A96,96,0,0,1,79.93,211.11h0L42.54,223.58a8,8,0,0,1-10.12-10.12l12.47-37.39h0A96,96,0,1,1,224,128Z" opacity="0.2"/><path d="M128,24A104,104,0,0,0,36.18,176.88L24.83,210.93a16,16,0,0,0,20.24,20.24l34.05-11.35A104,104,0,1,0,128,24Zm0,192a87.87,87.87,0,0,1-44.06-11.81,8,8,0,0,0-4-1.08,7.85,7.85,0,0,0-2.53.42L40,216,52.47,178.6a8,8,0,0,0-.66-6.54A88,88,0,1,1,128,216Zm12-88a12,12,0,1,1-12-12A12,12,0,0,1,140,128Zm-44,0a12,12,0,1,1-12-12A12,12,0,0,1,96,128Zm88,0a12,12,0,1,1-12-12A12,12,0,0,1,184,128Z"/></g></svg></span>
+              <h3 class="jcard__t">Engage the traveler</h3>
+            </div>
+            <span class="jcard__rule"></span>
+            <p class="jcard__d">Start strong sales conversations from the moment an enquiry comes in.</p>
           </article>
-        </div>
+          <span class="rail__stem"></span>
+          <span class="rail__node">2</span>
+        </li>
 
-        <div class="strip__item">
-          <article class="scard">
-            <span class="scard__ic" style="background:linear-gradient(140deg,#4d8526,#22400f)">
-              <svg aria-hidden="true" width="24" height="24" viewBox="0 0 256 256"><g fill="currentColor"><path d="M232 56v64l-64-64Z" opacity=".2"/><path d="M232 48h-64a8 8 0 0 0-5.66 13.66L188.69 88L136 140.69l-34.34-34.35a8 8 0 0 0-11.32 0l-72 72a8 8 0 0 0 11.32 11.32L96 123.31l34.34 34.35a8 8 0 0 0 11.32 0L200 99.31l26.34 26.35A8 8 0 0 0 240 120V56a8 8 0 0 0-8-8m-8 52.69L187.31 64H224Z"/></g></svg>
-            </span>
-            <span class="scard__lbl">Convert</span>
-            <h3 class="scard__t">Create more booking opportunities</h3>
-            <p class="scard__d">Keep more enquiries moving toward a booking.</p>
+        <li class="rail__item rail__item--up" style="--c:#3aa8a5">
+          <article class="jcard">
+            <div class="jcard__hd">
+              <span class="jcard__ic"><svg aria-hidden="true" width="24" height="24" viewBox="0 0 256 256"><g fill="currentColor"><path d="M160,112a32,32,0,1,1-32-32A32,32,0,0,1,160,112Z" opacity="0.2"/><path d="M224,40V76a8,8,0,0,1-16,0V48H180a8,8,0,0,1,0-16h36A8,8,0,0,1,224,40Zm-8,132a8,8,0,0,0-8,8v28H180a8,8,0,0,0,0,16h36a8,8,0,0,0,8-8V180A8,8,0,0,0,216,172ZM76,208H48V180a8,8,0,0,0-16,0v36a8,8,0,0,0,8,8H76a8,8,0,0,0,0-16ZM40,84a8,8,0,0,0,8-8V48H76a8,8,0,0,0,0-16H40a8,8,0,0,0-8,8V76A8,8,0,0,0,40,84Zm136,92a8,8,0,0,1-6.41-3.19,52,52,0,0,0-83.2,0,8,8,0,1,1-12.8-9.62A67.94,67.94,0,0,1,101,141.51a40,40,0,1,1,53.94,0,67.94,67.94,0,0,1,27.43,21.68A8,8,0,0,1,176,176Zm-48-40a24,24,0,1,0-24-24A24,24,0,0,0,128,136Z"/></g></svg></span>
+              <h3 class="jcard__t">Learn what matters</h3>
+            </div>
+            <span class="jcard__rule"></span>
+            <p class="jcard__d">Learn what the traveler wants, what matters to them and where concerns or uncertainty remain.</p>
           </article>
-        </div>
-      </div>
+          <span class="rail__stem"></span>
+          <span class="rail__node">3</span>
+        </li>
+
+        <li class="rail__item rail__item--down" style="--c:#8dbf4a">
+          <article class="jcard">
+            <div class="jcard__hd">
+              <span class="jcard__ic"><svg aria-hidden="true" width="24" height="24" viewBox="0 0 256 256"><g fill="currentColor"><path d="M80,40V216H48a8,8,0,0,1-8-8V48a8,8,0,0,1,8-8Z" opacity="0.2"/><path d="M184,112a8,8,0,0,1-8,8H112a8,8,0,0,1,0-16h64A8,8,0,0,1,184,112Zm-8,24H112a8,8,0,0,0,0,16h64a8,8,0,0,0,0-16Zm48-88V208a16,16,0,0,1-16,16H48a16,16,0,0,1-16-16V48A16,16,0,0,1,48,32H208A16,16,0,0,1,224,48ZM48,208H72V48H48Zm160,0V48H88V208H208Z"/></g></svg></span>
+              <h3 class="jcard__t">Preserve the context</h3>
+            </div>
+            <span class="jcard__rule"></span>
+            <p class="jcard__d">Keep trip details, questions, concerns and conversation history together.</p>
+          </article>
+          <span class="rail__stem"></span>
+          <span class="rail__node">4</span>
+        </li>
+
+        <li class="rail__item rail__item--up" style="--c:#3aa8a5">
+          <article class="jcard">
+            <div class="jcard__hd">
+              <span class="jcard__ic"><svg aria-hidden="true" width="24" height="24" viewBox="0 0 256 256"><g fill="currentColor"><path d="M232,56V200H160a32,32,0,0,0-32,32V88a32,32,0,0,1,32-32Z" opacity="0.2"/><path d="M232,48H160a40,40,0,0,0-32,16A40,40,0,0,0,96,48H24a8,8,0,0,0-8,8V200a8,8,0,0,0,8,8H96a24,24,0,0,1,24,24,8,8,0,0,0,16,0,24,24,0,0,1,24-24h72a8,8,0,0,0,8-8V56A8,8,0,0,0,232,48ZM96,192H32V64H96a24,24,0,0,1,24,24V200A39.81,39.81,0,0,0,96,192Zm128,0H160a39.81,39.81,0,0,0-24,8V88a24,24,0,0,1,24-24h64ZM160,88h40a8,8,0,0,1,0,16H160a8,8,0,0,1,0-16Zm48,40a8,8,0,0,1-8,8H160a8,8,0,0,1,0-16h40A8,8,0,0,1,208,128Zm0,32a8,8,0,0,1-8,8H160a8,8,0,0,1,0-16h40A8,8,0,0,1,208,160Z"/></g></svg></span>
+              <h3 class="jcard__t">Apply expertise</h3>
+            </div>
+            <span class="jcard__rule"></span>
+            <p class="jcard__d">Use your destination knowledge and business information to guide the traveler well.</p>
+          </article>
+          <span class="rail__stem"></span>
+          <span class="rail__node">5</span>
+        </li>
+
+        <li class="rail__item rail__item--down" style="--c:#e0752c">
+          <article class="jcard">
+            <div class="jcard__hd">
+              <span class="jcard__ic"><svg aria-hidden="true" width="24" height="24" viewBox="0 0 256 256"><g fill="currentColor"><path d="M200,152l-40,40L96,176,40,136,72.68,70.63,128,56l55.32,14.63L183.6,72H144L98.34,116.29a8,8,0,0,0,1.38,12.42C117.23,139.9,141,139.13,160,120Z" opacity="0.2"/><path d="M254.3,107.91,228.78,56.85a16,16,0,0,0-21.47-7.15L182.44,62.13,130.05,48.27a8.14,8.14,0,0,0-4.1,0L73.56,62.13,48.69,49.7a16,16,0,0,0-21.47,7.15L1.7,107.9a16,16,0,0,0,7.15,21.47l27,13.51,55.49,39.63a8.06,8.06,0,0,0,2.71,1.25l64,16a8,8,0,0,0,7.6-2.1l55.07-55.08,26.42-13.21a16,16,0,0,0,7.15-21.46Zm-54.89,33.37L165,113.72a8,8,0,0,0-10.68.61C136.51,132.27,116.66,130,104,122L147.24,80h31.81l27.21,54.41ZM41.53,64,62,74.22,36.43,125.27,16,115.06Zm116,119.13L99.42,168.61l-49.2-35.14,28-56L128,64.28l9.8,2.59-45,43.68-.08.09a16,16,0,0,0,2.72,24.81c20.56,13.13,45.37,11,64.91-5L188,152.66Zm62-57.87-25.52-51L214.47,64,240,115.06Zm-87.75,92.67a8,8,0,0,1-7.75,6.06,8.13,8.13,0,0,1-1.95-.24L80.41,213.33a7.89,7.89,0,0,1-2.71-1.25L51.35,193.26a8,8,0,0,1,9.3-13l25.11,17.94L126,208.24A8,8,0,0,1,131.82,217.94Z"/></g></svg></span>
+              <h3 class="jcard__t">Build trust. Win the booking.</h3>
+            </div>
+            <span class="jcard__rule"></span>
+            <p class="jcard__d">Communicate value, address concerns and convert more enquiries into bookings.</p>
+          </article>
+          <span class="rail__stem"></span>
+          <span class="rail__node">6</span>
+        </li>
+
+        <li class="rail__line" aria-hidden="true"></li>
+      </ol>
     </div>
   </div>
     </div>
@@ -3215,8 +3522,8 @@ h1,h2,h3,h4{color:var(--text-primary);line-height:1.15;font-weight:700;letter-sp
       <div class="modal-hd-icon modal-hd-icon--teal">
         <svg width="24" height="24" aria-hidden="true" width="24" height="24" viewBox="0 0 256 256"><g fill="#1a7373"><path d="M184 120v61.65a8 8 0 0 1-2.34 5.65l-34.35 34.35a8 8 0 0 1-13.57-4.53L128 176Zm-48-48H74.35a8 8 0 0 0-5.65 2.34l-34.35 34.35a8 8 0 0 0 4.53 13.57L80 128ZM40 216c37.65 0 50.69-19.69 54.56-28.18l-26.38-26.38C59.69 165.31 40 178.35 40 216" opacity=".2"/><path d="M223.85 47.12a16 16 0 0 0-15-15c-12.58-.75-44.73.4-71.41 27.07L132.69 64H74.36A15.9 15.9 0 0 0 63 68.68L28.7 103a16 16 0 0 0 9.07 27.16l38.47 5.37l44.21 44.21l5.37 38.49a15.94 15.94 0 0 0 10.78 12.92a16.1 16.1 0 0 0 5.1.83a15.9 15.9 0 0 0 11.3-4.68l34.32-34.3a15.9 15.9 0 0 0 4.68-11.36v-58.33l4.77-4.77c26.68-26.68 27.83-58.83 27.08-71.42M74.36 80h42.33l-39.53 39.52L40 114.34Zm74.41-9.45a76.65 76.65 0 0 1 59.11-22.47a76.46 76.46 0 0 1-22.42 59.16L128 164.68L91.32 128ZM176 181.64L141.67 216l-5.19-37.17L176 139.31Zm-74.16 9.5C97.34 201 82.29 224 40 224a8 8 0 0 1-8-8c0-42.29 23-57.34 32.86-61.85a8 8 0 0 1 6.64 14.56c-6.43 2.93-20.62 12.36-23.12 38.91c26.55-2.5 36-16.69 38.91-23.12a8 8 0 1 1 14.56 6.64Z"/></g></svg>
       </div>
-      <h2 class="modal-h2" id="mea-title">Request Early Access</h2>
-      <p class="modal-sub">Join the early access list and get <strong style="font-weight:800;color:#c45911">20% discount</strong>.</p>
+      <h2 class="modal-h2" id="mea-title">Build with us</h2>
+      <p class="modal-sub">Join us early on this journey and get <strong style="font-weight:800;color:#c45911">20% discount</strong>.</p>
     </div>
     <div class="modal-bd">
 
@@ -3655,6 +3962,198 @@ h1,h2,h3,h4{color:var(--text-primary);line-height:1.15;font-weight:700;letter-sp
 
   if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", wire);
   else wire();
+})();
+</script>
+
+<!-- hero lede: wrap each word so it can rise in on its own beat. Done in JS so
+     the paragraph stays one clean sentence in the HTML source. -->
+<script>
+(function () {
+  var p = document.querySelector('.hero__lede');
+  if (!p) return;
+  if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  var words = p.textContent.trim().split(/\s+/);
+  p.textContent = '';
+  words.forEach(function (word, i) {
+    var span = document.createElement('span');
+    span.className = 'w';
+    span.textContent = word;
+    span.style.animationDelay = (0.25 + i * 0.03).toFixed(2) + 's';
+    p.appendChild(span);
+    if (i < words.length - 1) p.appendChild(document.createTextNode(' '));
+  });
+})();
+</script>
+
+<!-- platform overview. Two independent tracks:
+     · the cards cycle on an 8s timer, paused on hover or off-screen
+     · the paragraphs reveal against scroll position while the panel is pinned,
+       so a reader passes through the whole argument on the way down -->
+<script>
+(function () {
+  var root = document.getElementById('ovcar');
+  var pin  = document.getElementById('ovpin');
+  if (!root) return;
+  var cards = Array.prototype.slice.call(root.querySelectorAll('.ovcard'));
+  var dots  = Array.prototype.slice.call(root.querySelectorAll('.ovcar__dot'));
+  var head  = document.querySelector('#platform .ov__head');
+  var paras = head ? Array.prototype.slice.call(head.querySelectorAll('.lede')) : [];
+  if (cards.length < 2) return;
+
+  var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var HOLD = 10000;
+  var i = 0, visible = false, hovered = false;
+  var elapsed = 0, last = 0, raf = null;
+
+  /* ── cards: the top edge fills over HOLD, then the next card comes ── */
+  // the edge starts at the card's resting stub and grows from there to full
+  var BASE = 0.22;
+  function paint() {
+    cards.forEach(function (c, n) {
+      var v = n === i ? BASE + (1 - BASE) * (elapsed / HOLD) : BASE;
+      c.style.setProperty('--fill', v.toFixed(4));
+    });
+  }
+  function show(next) {
+    i = (next + cards.length) % cards.length;
+    elapsed = 0;
+    cards.forEach(function (c, n) { c.classList.toggle('is-active', n === i); });
+    dots.forEach(function (d, n) {
+      d.classList.toggle('is-active', n === i);
+      d.setAttribute('aria-selected', n === i ? 'true' : 'false');
+    });
+    paint();
+  }
+  function held() { return reduce || !visible || hovered || document.hidden; }
+  function frame(t) {
+    var dt = last ? t - last : 0;
+    last = t;
+    if (!held()) {
+      elapsed += dt;
+      if (elapsed >= HOLD) { show(i + 1); }
+      else paint();
+    }
+    raf = requestAnimationFrame(frame);
+  }
+  // kept as start/stop so the hover, focus and visibility wiring below is
+  // unchanged: the loop runs continuously, held() decides whether it counts
+  function stop() { last = 0; }
+  function start() {
+    last = 0;
+    if (reduce || raf) return;
+    raf = requestAnimationFrame(frame);
+  }
+
+  dots.forEach(function (d, n) {
+    d.addEventListener('click', function () { show(n); start(); });
+  });
+  root.addEventListener('mouseenter', function () { hovered = true; stop(); });
+  root.addEventListener('mouseleave', function () { hovered = false; start(); });
+  root.addEventListener('focusin',  function () { hovered = true; stop(); });
+  root.addEventListener('focusout', function () { hovered = false; start(); });
+  document.addEventListener('visibilitychange', function () {
+    if (document.hidden) stop(); else start();
+  });
+  if ('IntersectionObserver' in window) {
+    new IntersectionObserver(function (entries) {
+      visible = entries[0].isIntersecting;
+      if (visible) start(); else stop();
+    }, { threshold: 0.25 }).observe(root);
+  } else { visible = true; }
+
+  show(0);
+  start();
+
+  /* ── paragraphs: scroll ───────────────────────────────────────── */
+  if (!paras.length || reduce) return;
+  head.classList.add('ovsteps-on');
+
+
+  function pinned() {
+    return !!pin && window.matchMedia('(min-width:1024px) and (min-height:640px)').matches;
+  }
+
+  // where the panel cannot pin, fall back to a plain reveal as each
+  // paragraph enters the viewport
+  var io = 'IntersectionObserver' in window
+    ? new IntersectionObserver(function (entries) {
+        entries.forEach(function (e) {
+          if (!e.isIntersecting) return;
+          e.target.classList.add('is-shown');
+          paras.forEach(function (p) { p.classList.toggle('is-current', p === e.target); });
+        });
+      }, { threshold: 0, rootMargin: '0px 0px -32% 0px' })
+    : null;
+  var observing = false;
+  function observeAll() {
+    if (observing || !io) return;
+    observing = true;
+    paras.forEach(function (p) { io.observe(p); });
+  }
+
+  var furthest = -1;
+  var SPREAD = 0.62;
+  var lastTint = null;
+  var ticking = false;
+  function onScroll() {
+    if (ticking) return;
+    ticking = true;
+    requestAnimationFrame(function () {
+      ticking = false;
+      if (!pinned()) { observeAll(); return; }
+      var box = pin.getBoundingClientRect();
+      var stick = pin.firstElementChild;
+      var travel = box.height - (stick ? stick.offsetHeight : window.innerHeight);
+      if (travel <= 0) {
+        paras.forEach(function (p, n) {
+          p.classList.add('is-shown');
+          p.classList.toggle('is-current', n === paras.length - 1);
+        });
+        return;
+      }
+      var progress = Math.min(1, Math.max(0, -box.top / travel));
+      // first paragraph is up as soon as the panel lands, the rest follow.
+      // add only, never remove: once read, a paragraph stays put on the way back up
+      // reveals finish inside the first SPREAD of the track, so the last one
+      // has room to sit and be read before the section scrolls away
+      var current = -1;
+      paras.forEach(function (p, n) {
+        if (progress >= (n / paras.length) * SPREAD) { p.classList.add('is-shown'); current = n; }
+      });
+      // the tint only ever moves forward, with a reveal — scrolling back up
+      // leaves it on the furthest paragraph reached
+      if (current > furthest) {
+        furthest = current;
+        paras.forEach(function (p, n) { p.classList.toggle('is-current', n === furthest); });
+        // each tint leaves when the next one arrives. The last has no next, so
+        // it clears itself after a beat: once the whole argument is up, the
+        // column is plain again
+        clearTimeout(lastTint);
+        if (furthest === paras.length - 1) {
+          lastTint = setTimeout(function () {
+            paras.forEach(function (p) { p.classList.remove('is-current'); });
+          }, 1500);
+        }
+      }
+    });
+  }
+
+  /* Reveals are add-only while you are inside the section, so scrolling back up
+     never pulls a paragraph away mid-read. Leaving the section entirely clears
+     them, so coming back down plays the sequence again from the top. */
+  if ('IntersectionObserver' in window) {
+    new IntersectionObserver(function (entries) {
+      if (entries[0].isIntersecting) return;
+      furthest = -1;
+      clearTimeout(lastTint);
+      paras.forEach(function (p) { p.classList.remove('is-shown', 'is-current'); });
+      if (io) { observing = false; }   // let the fallback path re-arm too
+    }, { threshold: 0 }).observe(pin || root);
+  }
+
+  window.addEventListener('scroll', onScroll, { passive: true });
+  window.addEventListener('resize', onScroll);
+  onScroll();
 })();
 </script>
 
