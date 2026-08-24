@@ -1,0 +1,36 @@
+name: Import Scored Leads
+
+# Manual write-only path: upserts leads that were already classified and scored
+# offline. Used when the scan's Anthropic step can't run but the posts have been
+# judged by hand. Never scrapes, never calls a model, never spends Apify credit.
+on:
+  workflow_dispatch:
+    inputs:
+      file:
+        description: "JSON file of scored leads, relative to .github/scan"
+        type: string
+        default: "pending-leads.json"
+
+concurrency:
+  group: safari-scan            # share the scan's lock — never write concurrently
+  cancel-in-progress: false
+
+jobs:
+  import:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    permissions:
+      contents: read
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+
+      - name: Import
+        working-directory: .github/scan
+        env:
+          SUPABASE_URL: ${{ secrets.SUPABASE_URL }}
+          SUPABASE_SERVICE_ROLE: ${{ secrets.SUPABASE_SERVICE_ROLE }}
+        run: node import-leads.mjs "${{ inputs.file }}"
