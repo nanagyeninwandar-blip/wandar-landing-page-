@@ -122,7 +122,7 @@
   /* ----------------------------- feed ----------------------------- */
   // Signing in shows every lead matching the current Source + Date range filters,
   // newest first. sortDir is toggled only by the "Date Posted" column header.
-  var feedState = { source: "all", sortDir: "desc", dateRange: "all" };
+  var feedState = { source: "all", sortDir: "desc", dateRange: "all", q: "" };
 
   /* Post Date range filter (dd-daterange). "all" = no cutoff (default — matches the
      pre-2026-08-08 behavior of showing every lead). "year" = calendar-year-to-date
@@ -199,8 +199,20 @@
   }
 
   var PAGE_SIZE = 25;
-  var allRows = [];   // full filtered + sorted set
+  var fetchedRows = [];  // what Source + Date range returned, before the text search
+  var allRows = [];      // full filtered + sorted set
   var page = 1;
+
+  /* The text search runs in the browser over the rows already fetched (500 max),
+     so typing never costs a round trip and never fights the pill filters: it
+     narrows whatever those two left behind. Matches title and body. */
+  function searchRows(rows) {
+    var q = feedState.q;
+    if (!q) return rows;
+    return rows.filter(function (l) {
+      return ((l.title || "") + " " + (l.body || "")).toLowerCase().indexOf(q) !== -1;
+    });
+  }
 
   function loadFeed() {
     var body = $("#feed-body");
@@ -212,7 +224,8 @@
     });
   }
 
-  function setRows(rows) { allRows = rows; page = 1; renderPage(); }
+  function setRows(rows) { fetchedRows = rows; applySearch(); }
+  function applySearch() { allRows = searchRows(fetchedRows); page = 1; renderPage(); }
 
   /* Only the pager's "↑ Top" button scrolls. Prev/Next intentionally leave the scroll
      position where it is. */
@@ -252,7 +265,9 @@
   function renderRows(rows, offset) {
     var body = $("#feed-body");
     if (!rows.length) {
-      body.innerHTML = '<tr><td colspan="2" class="feed-empty">No leads match these filters. Try a wider <b>Date range</b> or <b>All Sources</b>.</td></tr>';
+      body.innerHTML = feedState.q
+        ? '<tr><td colspan="2" class="feed-empty">No leads match <b>' + esc(feedState.q) + '</b>. Try a different search, a wider <b>Date range</b> or <b>All Sources</b>.</td></tr>'
+        : '<tr><td colspan="2" class="feed-empty">No leads match these filters. Try a wider <b>Date range</b> or <b>All Sources</b>.</td></tr>';
       return;
     }
     var votes = getVotes();
@@ -681,6 +696,21 @@
 
     initDropdown($("#dd-source"), function (v) { feedState.source = v; loadFeed(); });
     initDropdown($("#dd-daterange"), function (v) { feedState.dateRange = v; loadFeed(); });
+
+    var searchEl = $("#feed-search"), searchClear = $("#feed-search-clear");
+    if (searchEl) {
+      searchEl.addEventListener("input", function () {
+        feedState.q = searchEl.value.trim().toLowerCase();
+        if (searchClear) searchClear.hidden = !searchEl.value;
+        applySearch();
+      });
+      // Enter would submit and reload the page; the filtering is already live.
+      searchEl.addEventListener("keydown", function (e) { if (e.key === "Enter") e.preventDefault(); });
+      if (searchClear) searchClear.addEventListener("click", function () {
+        searchEl.value = ""; feedState.q = ""; searchClear.hidden = true;
+        applySearch(); searchEl.focus();
+      });
+    }
 
     // row interactions: thumbs vote · view link · else open the side panel
     var feedBody = $("#feed-body");

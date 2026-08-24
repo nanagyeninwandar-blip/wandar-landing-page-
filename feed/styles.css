@@ -193,7 +193,30 @@ img { max-width:100%; display:block; }
 /* controls sit left, the count is pushed to the right edge */
 .feed-bar__count { font-size:14.5px; color:var(--fg-3); margin-left:auto; }
 .feed-bar__count b { color:var(--safari-primary); font-weight:700; }
-.feed-bar__controls { display:flex; gap:12px; }
+.feed-bar__controls { display:flex; gap:12px; flex-wrap:wrap; align-items:center; }
+
+/* text search — same pill as .dd__btn so the three controls read as one row */
+.feed-search {
+  position:relative; display:inline-flex; align-items:center; gap:8px; background:#fff;
+  border:1px solid var(--border-1); border-radius:var(--radius-full); padding:0 12px;
+  height:37px; min-width:200px; transition:all .15s;
+}
+.feed-search:hover { border-color:var(--border-2); }
+.feed-search:focus-within { border-color:var(--safari-primary); box-shadow:var(--shadow-focus); }
+.feed-search__ico { width:15px; height:15px; color:var(--fg-3); flex-shrink:0; }
+.feed-search input {
+  flex:1; min-width:0; border:none; outline:none; background:transparent;
+  font-family:inherit; font-size:13px; font-weight:600; color:var(--fg-1);
+}
+.feed-search input::placeholder { color:var(--fg-3); font-weight:600; }
+/* the browser's own clear affordance would sit beside ours */
+.feed-search input::-webkit-search-cancel-button { display:none; }
+.feed-search__clear {
+  flex-shrink:0; border:none; background:transparent; cursor:pointer; padding:0 2px;
+  font-size:17px; line-height:1; color:var(--fg-3);
+}
+.feed-search__clear:hover { color:var(--fg-1); }
+@media (max-width:560px) { .feed-search { width:100%; } }
 
 /* ---- custom dropdown (pill button + menu with checkmark) — platform size ---- */
 .dd { position:relative; display:inline-block; }
