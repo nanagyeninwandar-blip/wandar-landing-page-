@@ -37,9 +37,8 @@
 
         <!-- ---------- the only form on this page ----------
              No email field and no heading by design: the hero on the landing page
-             already took the email and hands it over in ?email=. Arriving here
-             without one is a broken entry point, so app.js sends those visitors
-             back to the hero rather than showing a form it can't submit.
+             may hand the email over in ?email=, which prefills the first field
+             below; arriving without one is fine — the operator types it here.
 
              There is deliberately NO "log in" or "email me a link" alternative.
              Nothing on this page ever sends mail: a returning operator is
@@ -47,6 +46,13 @@
              this form. -->
           <form id="auth-form" novalidate>
             <div id="auth-msg" class="form-msg"></div>
+
+            <div class="field">
+              <label for="auth-email">Work email</label>
+              <div class="authfield">
+                <input id="auth-email" type="email" autocomplete="email" required />
+              </div>
+            </div>
 
             <div class="field-row">
               <div class="field">

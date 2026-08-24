@@ -430,16 +430,17 @@
   function initAuthPage() {
     var form = $("#auth-form"); if (!form) return;
 
+    var emailEl = $("#auth-email");
     var firstEl = $("#auth-first"), lastEl = $("#auth-last");
     var companyEl = $("#auth-company"), roleEl = $("#auth-role"), newsEl = $("#auth-newsletter");
     var consentWrap = newsEl.closest(".consent");
     var formMsg = $("#auth-msg"), submit = $("#auth-submit");
 
-    // The ONLY source of the email — there is no field for it on this page.
-    // `?mode=signin` (the landing nav's old "Log In" target) carries no email, so
-    // it falls through the guard below and lands on the hero, which is now the
-    // single way in for everyone.
+    // The email field on this page is the source of truth. ?email= is only a
+    // convenience: when the landing page already collected an address it prefills
+    // the field, and a returning operator is recognised from it on load.
     var heroEmail = (new URLSearchParams(location.search).get("email") || "").trim();
+    if (heroEmail) emailEl.value = heroEmail;
 
     /* Hold the card back while we work out whether this person is already an
        operator. Without this a returning visitor sees the signup form flash up
@@ -488,10 +489,9 @@
     }
 
     function identify() {
-      // No email means the visitor skipped the hero (bookmark, shared link, back
-      // button, or a "Log In" link). Rather than show a form that cannot be
-      // submitted, send them to the hero that asks for it.
-      if (!EMAIL_RE.test(heroEmail)) { location.replace(CFG.HOME_URL || "index.html"); return; }
+      // Arriving without ?email= is a normal entry point (bookmark, shared link,
+      // "Log In"): show the form and let them type the address themselves.
+      if (!EMAIL_RE.test(heroEmail)) { reveal(); emailEl.focus(); return; }
 
       // This device might still belong to someone who signed up on another one.
       // Ask the server before making them fill the form.
@@ -546,7 +546,7 @@
     newsEl.addEventListener("change", syncGate);
     syncGate();
 
-    [firstEl, lastEl, companyEl, roleEl].forEach(function (el) {
+    [emailEl, firstEl, lastEl, companyEl, roleEl].forEach(function (el) {
       el.addEventListener("input", function () { markInvalid(el, false); });
       el.addEventListener("change", function () { markInvalid(el, false); });
     });
@@ -575,13 +575,17 @@
     /* ---- create the account ---- */
     form.addEventListener("submit", function (e) {
       e.preventDefault();
-      var email = heroEmail;                      // from ?email=, validated on load
+      var email = emailEl.value.trim();           // typed here, or prefilled from ?email=
       var first = firstEl.value.trim(), last = lastEl.value.trim();
       var company = companyEl.value.trim(), role = roleEl.value;
       var fullName = (first + " " + last).trim();
 
       // The button is disabled until this is ticked; this is the belt to that braces.
       if (!newsEl.checked) { consentWrap.classList.add("invalid"); return; }
+
+      var badEmail = !EMAIL_RE.test(email);
+      markInvalid(emailEl, badEmail);
+      if (badEmail) { showMsg(formMsg, "error", "Please enter a valid work email address."); emailEl.focus(); return; }
 
       var missing = false;
       [[firstEl, first], [lastEl, last], [companyEl, company], [roleEl, role]].forEach(function (p) {
