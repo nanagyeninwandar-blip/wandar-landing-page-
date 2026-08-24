@@ -211,10 +211,10 @@ h1,h2,h3,h4{color:var(--text-primary);line-height:1.15;font-weight:700;letter-sp
 .nav__burger{display:grid;place-items:center;width:42px;height:42px;border-radius:4px;background:#fff;border:1px solid #ccd6d6}
 @media(min-width:1024px){.nav__burger{display:none}}
 .nav__burger span{display:block;width:22px;height:2px;background:var(--safari-primary);border-radius:2px;transition:transform 200ms ease,opacity 200ms ease}
-.nav__burger span+span{margin-top:4px}
-.nav.is-mobile-open .nav__burger span:nth-child(1){transform:translateY(6px) rotate(45deg)}
+.nav__burger span+span{margin-top:2px}
+.nav.is-mobile-open .nav__burger span:nth-child(1){transform:translateY(4px) rotate(45deg)}
 .nav.is-mobile-open .nav__burger span:nth-child(2){opacity:0}
-.nav.is-mobile-open .nav__burger span:nth-child(3){transform:translateY(-6px) rotate(-45deg)}
+.nav.is-mobile-open .nav__burger span:nth-child(3){transform:translateY(-4px) rotate(-45deg)}
 .nav__cta--desktop{display:none}
 @media(min-width:640px){.nav__cta--desktop{display:inline-flex}}
 
