@@ -28,8 +28,9 @@
 <link rel="canonical" href="https://www.getwandar.com/" />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Righteous&display=swap" />
-<link rel="preload" as="image" href="assets/hero-operator.png" fetchpriority="high" />
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Righteous&display=swap" media="print" onload="this.media='all'" />
+<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Righteous&display=swap" /></noscript>
+<link rel="preload" as="image" href="assets/hero-operator.webp" type="image/webp" fetchpriority="high" />
 
 <style>
 /* ═══════════════════════════════════════════════════════════
@@ -464,6 +465,7 @@ h1,h2,h3,h4{color:var(--text-primary);line-height:1.15;font-weight:700;letter-sp
 .hero--center .hero__bg{
   inset:0;height:100%;z-index:-3;filter:none;
   background-image:url("assets/hero-operator.png");
+  background-image:image-set(url("assets/hero-operator.webp") type("image/webp"), url("assets/hero-operator.png") type("image/png"));
   /* full bleed again — any size below cover letterboxes the photo and shows
      its outline against the green */
   background-size:cover;background-position:72% center;background-repeat:no-repeat;
@@ -2435,7 +2437,7 @@ h1,h2,h3,h4{color:var(--text-primary);line-height:1.15;font-weight:700;letter-sp
       <article class="ovcard ovcard--a is-active">
         <h3 class="ovcard__title">Demand Discovery</h3>
         <div class="ovcard__art ovcard__art--flat">
-          <img class="ovimg" src="assets/ov-demand-discovery.png?v=3" alt="" loading="lazy" width="640" height="640" />
+          <picture><source srcset="assets/ov-demand-discovery.webp?v=3" type="image/webp" /><img class="ovimg" src="assets/ov-demand-discovery.png?v=3" alt="" loading="lazy" width="640" height="640" /></picture>
         </div>
         <p class="ovcard__lead">Understand safari demand.</p>
         <p class="ovcard__text">Turn high-intent safari planning conversations across Reddit, Tripadvisor Forums and Facebook Groups into market demand intelligence.</p>
@@ -2449,7 +2451,7 @@ h1,h2,h3,h4{color:var(--text-primary);line-height:1.15;font-weight:700;letter-sp
       <article class="ovcard ovcard--b">
         <h3 class="ovcard__title">Social Mentions</h3>
         <div class="ovcard__art ovcard__art--flat">
-          <img class="ovimg" src="assets/ov-social-mentions.png?v=3" alt="" loading="lazy" width="640" height="640" />
+          <picture><source srcset="assets/ov-social-mentions.webp?v=3" type="image/webp" /><img class="ovimg" src="assets/ov-social-mentions.png?v=3" alt="" loading="lazy" width="640" height="640" /></picture>
         </div>
         <p class="ovcard__lead">Monitor safari conversations.</p>
         <p class="ovcard__text">Stay on top of relevant mentions, topics and shifts across Instagram, TikTok and Facebook.</p>
@@ -2463,7 +2465,7 @@ h1,h2,h3,h4{color:var(--text-primary);line-height:1.15;font-weight:700;letter-sp
       <article class="ovcard ovcard--c">
         <h3 class="ovcard__title">Sales Agent</h3>
         <div class="ovcard__art ovcard__art--flat">
-          <img class="ovimg" src="assets/ov-sales-agent.png?v=3" alt="" loading="lazy" width="640" height="640" />
+          <picture><source srcset="assets/ov-sales-agent.webp?v=3" type="image/webp" /><img class="ovimg" src="assets/ov-sales-agent.png?v=3" alt="" loading="lazy" width="640" height="640" /></picture>
         </div>
         <p class="ovcard__lead">Engage every enquiry 24/7.</p>
         <p class="ovcard__text">Run stronger sales conversations across your website and WhatsApp. Ask the right questions, address concerns and build trust to help convert enquiries into bookings.</p>
