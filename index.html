@@ -894,11 +894,42 @@ h1,h2,h3,h4{color:var(--text-primary);line-height:1.15;font-weight:700;letter-sp
 @media(min-width:1024px){.ovsplit{grid-template-columns:minmax(0,.92fr) minmax(0,1.08fr);gap:64px}}
 /* in the narrow column the head stops being a centred banner: left-aligned,
    ragged right, no width cap of its own */
+/* the head sits beside a thin rail whose single dot travels down to mark the
+   paragraph currently revealed */
+.ovhead{position:relative;display:flex;align-items:stretch;gap:14px}
+.ovhead .ov__head{flex:1 1 auto;min-width:0}
+/* the column is as wide as the marker; the rail line itself is drawn down its
+   centre so the disc can overhang it on both sides without clipping */
+.ovrail{position:relative;flex:0 0 52px;margin:8px 0}
+.ovrail::before{
+  content:'';position:absolute;left:50%;top:0;bottom:0;width:2px;margin-left:-1px;
+  background:var(--border);border-radius:2px;
+}
+.ovrail__dot{
+  position:absolute;left:50%;top:0;width:24px;height:24px;margin:-12px 0 0 -12px;
+  border-radius:50%;background:var(--safari-primary);
+  opacity:0;
+  transition:top 620ms cubic-bezier(.2,.8,.3,1),opacity 400ms ease;
+}
+/* dotted ring standing off the disc */
+.ovrail__dot::before{
+  content:'';position:absolute;left:-5px;top:-5px;right:-5px;bottom:-5px;
+  border-radius:50%;border:2px dotted rgba(26,115,115,.45);
+}
+/* short connector reaching toward the paragraph it marks */
+.ovrail__dot::after{
+  /* stops in the middle of the 14px gap so it never runs up against the text */
+  content:'';position:absolute;left:100%;top:50%;width:14px;height:2px;
+  margin:-1px 0 0 7px;background:var(--safari-primary);opacity:.55;
+}
+.ovrail__dot.is-on{opacity:1}
+@media(max-width:767px){.ovrail{display:none}.ovhead{gap:0}}
+@media(prefers-reduced-motion:reduce){.ovrail__dot{transition:none}}
 .ovsplit .ov__head{max-width:none;margin:0;text-align:left}
-.ovsplit .ov__head .h-section{max-width:none;margin-left:0;margin-right:0}
+.ovsplit .ov__head .h-section{max-width:none;margin-left:0;margin-right:0;font-size:clamp(25px,3.1vw,38px)}
 .ovsplit .ov__head .lede{
-  max-width:none;margin-left:0;margin-right:0;text-align:justify;
-  font-size:clamp(14px,1.02vw,15.5px);line-height:1.5;
+  max-width:none;margin-left:0;margin-right:0;text-align:left;
+  font-size:clamp(14px,1.02vw,15.5px);line-height:1.45;
 }
 
 .ovcar{position:relative}
@@ -984,21 +1015,13 @@ h1,h2,h3,h4{color:var(--text-primary);line-height:1.15;font-weight:700;letter-sp
    stay readable on plain ground. Padding and border width never change, so
    nothing shifts as the tint moves down the column */
 .ovsteps-on .lede{
-  background:transparent;border:1px solid transparent;border-radius:10px;
-  padding:9px 14px;
+  padding:0;
   transition:
     opacity 520ms ease,
-    transform 620ms cubic-bezier(.2,.8,.3,1),
-    background-color 420ms ease,
-    border-color 420ms ease;
+    transform 620ms cubic-bezier(.2,.8,.3,1);
 }
-.ovsteps-on .lede.is-current{background:#fffaf8;border-color:#fdefe9}
-/* pull the tint back out to the left so the text itself still lines up with the
-   heading above it — the inset is room for the colour, not an indent.
-   Written against .ovsteps-on.ov__head so it outranks the margin reset above. */
-.ovsteps-on.ov__head .lede{margin-left:-14px;margin-right:-14px}
-/* the vertical padding already separates the blocks */
-.ovsteps-on .lede + .lede{margin-top:0}
+/* no padding left to separate the blocks, so the gap is carried by margin */
+.ovsteps-on .lede + .lede{margin-top:.85em}
 @media(prefers-reduced-motion:reduce){
   .ovsteps-on .lede{opacity:1;transform:none;transition:none}
 }
@@ -1267,8 +1290,8 @@ h1,h2,h3,h4{color:var(--text-primary);line-height:1.15;font-weight:700;letter-sp
   .panel{
     grid-template-columns:minmax(0,.72fr) minmax(0,1.28fr);align-items:stretch;
     grid-template-rows:minmax(0,1fr);
-    height:clamp(480px, calc(100vh - 300px), 640px);
-    height:clamp(480px, calc(100dvh - 300px), 640px);
+    height:clamp(500px, calc(100vh - 280px), 660px);
+    height:clamp(500px, calc(100dvh - 280px), 660px);
   }
 }
 .panel::before{
@@ -1276,7 +1299,9 @@ h1,h2,h3,h4{color:var(--text-primary);line-height:1.15;font-weight:700;letter-sp
   background:radial-gradient(circle,rgba(255,255,255,.08),transparent 70%);
 }
 .panel__copy{position:relative;z-index:1;padding:40px 30px}
-@media(min-width:1024px){.panel__copy{padding:clamp(32px,5vh,60px) 28px clamp(32px,5vh,60px) 48px;align-self:center}}
+/* top-aligned, not centred: the eyebrow then starts at the same height on every
+   tab regardless of how long that panel's copy runs */
+@media(min-width:1024px){.panel__copy{padding:clamp(32px,5vh,60px) 28px clamp(32px,5vh,60px) 48px;align-self:start}}
 .panel__eyebrow{display:block;font-size:12px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:#e8a862;margin-bottom:16px}
 .panel__title{font-size:clamp(24px,2.6vw,32px);font-weight:700;color:#fff;line-height:1.16;letter-spacing:-.03em;margin-bottom:16px}
 .panel__text{font-size:15px;line-height:1.7;color:rgba(255,255,255,.76);max-width:420px}
@@ -1321,7 +1346,7 @@ h1,h2,h3,h4{color:var(--text-primary);line-height:1.15;font-weight:700;letter-sp
 .panel__visual{position:relative;z-index:1;min-width:0;padding:0 20px 34px}
 @media(min-width:1024px){
   /* Full insert — never cropped. Sits inside a thin teal margin on the right and bottom. */
-  .panel__visual{display:flex;padding:clamp(28px,5vh,64px) 18px 18px 0;margin-right:0}
+  .panel__visual{display:flex;padding:clamp(28px,5vh,64px) 26px 46px 0;margin-right:0}
   /* min-height:0 stops the insert's own content from inflating the grid row —
      otherwise a panel with a taller feed grows past the shared min-height */
   .panel__visual .ui{flex:1;height:100%;min-height:0}
@@ -2427,12 +2452,17 @@ h1,h2,h3,h4{color:var(--text-primary);line-height:1.15;font-weight:700;letter-sp
   <div class="container">
     <div class="ovsplit">
 
+    <div class="ovhead">
+      <div class="ovrail" aria-hidden="true"><span class="ovrail__dot" id="ovraildot"></span></div>
     <div class="ov__head reveal">
       <span class="eyebrow eyebrow--teal">Out-of-the-box safari sales platform</span>
       <h2 class="h-section">Built for the complexity of safari sales.</h2>
-      <p class="lede lede--center">An African safari is expensive, complex and often a once-in-a-lifetime purchase. Travelers are not only comparing itineraries or prices. They are choosing which operator they trust to understand them, manage concerns and guide them through a decision that can involve thousands of dollars and months of planning. So competition is not the only obstacle to winning that booking.</p>
-      <p class="lede lede--center">The work required to sell a safari is demanding too. Operators are qualifying enquiries, checking rates, researching properties, following up and piecing together information scattered across the business.</p>
+      <p class="lede lede--center">An African safari is expensive, complex and often a once-in-a-lifetime purchase. Travelers are not only comparing itineraries or prices.</p>
+      <p class="lede lede--center">They are choosing which operator they trust to understand them, manage concerns and guide them through a decision that can involve thousands of dollars and months of planning.</p>
+      <p class="lede lede--center">So competition is not the only obstacle to winning that booking. The work required to sell a safari is demanding too.</p>
+      <p class="lede lede--center">Operators are qualifying enquiries, checking rates, researching properties, following up and piecing together information scattered across the business.</p>
       <p class="lede lede--center">Every hour spent on that work is time taken from understanding the traveler, building the relationship and applying the expertise that gets the operator the booking.</p>
+    </div>
     </div>
 
     <div class="ovcar reveal" id="ovcar">
@@ -2596,7 +2626,7 @@ h1,h2,h3,h4{color:var(--text-primary);line-height:1.15;font-weight:700;letter-sp
   <div class="container">
     <div class="tour__head reveal">
       <span class="eyebrow">Your safari sales centre</span>
-      <h2 class="h-section">Manage sales opportunities and prospect conversations in one place.</h2>
+      <h2 class="h-section">Everything around a stronger safari sales conversation, connected.</h2>
     </div>
 
     <div class="tour__tabs" role="tablist">
@@ -2628,9 +2658,9 @@ h1,h2,h3,h4{color:var(--text-primary);line-height:1.15;font-weight:700;letter-sp
         <div class="tex" aria-hidden="true"></div>
         <div class="panel__copy">
           <span class="panel__eyebrow">Demand Discovery</span>
-          <h3 class="panel__title">Build visibility and trust before travelers enquire.</h3>
+          <h3 class="panel__title">Turn planning conversations into demand intelligence.</h3>
           <div class="panel__rule"></div>
-          <p class="panel__text">Discover relevant safari-planning conversations across Reddit, Tripadvisor Forums and Facebook Groups, respond with your safari expertise and build trust while travelers decide who to contact.</p>
+          <p class="panel__text">See what high-intent travelers are asking, comparing and trying to understand across Reddit, Tripadvisor Forums and Facebook Groups. Use those patterns to improve your sales messaging, content, offers and marketing decisions, while spotting conversations where your expertise could be useful.</p>
         </div>
         <div class="panel__visual">
           <div class="ui">
@@ -2683,9 +2713,9 @@ h1,h2,h3,h4{color:var(--text-primary);line-height:1.15;font-weight:700;letter-sp
         <div class="tex" aria-hidden="true"></div>
         <div class="panel__copy">
           <span class="panel__eyebrow">Social Mentions</span>
-          <h3 class="panel__title">Track keywords across social media.</h3>
+          <h3 class="panel__title">Monitor the safari market conversation.</h3>
           <div class="panel__rule"></div>
-          <p class="panel__text">Monitor keywords related to the destinations and safari experiences you offer across X, Instagram and TikTok, spot relevant conversations, respond at the right moment, gain visibility and start conversations with prospective travelers.</p>
+          <p class="panel__text">Track relevant keywords, destinations, experiences and traveler questions across X, Instagram and TikTok. See what is gaining attention, spot mentions and conversations worth responding to, and understand what travelers are talking about across social media.</p>
         </div>
         <div class="panel__visual">
           <div class="ui">
@@ -2761,9 +2791,9 @@ h1,h2,h3,h4{color:var(--text-primary);line-height:1.15;font-weight:700;letter-sp
         <div class="tex" aria-hidden="true"></div>
         <div class="panel__copy">
           <span class="panel__eyebrow">Sales Agent</span>
-          <h3 class="panel__title">Keep sales conversations moving 24/7.</h3>
+          <h3 class="panel__title">Stronger sales attention from the first enquiry.</h3>
           <div class="panel__rule"></div>
-          <p class="panel__text">Deploy a sales agent trained on your safari knowledge to engage website and whatsApp prospects, answer trip-planning questions, gather key details and keep conversations moving toward a booking, with your team stepping in when human judgment is needed.</p>
+          <p class="panel__text">Engage prospective travelers across your website and WhatsApp with a sales-native agent built around how experienced safari sales professionals work. Ask the right questions, qualify enquiries, answer factual planning questions and keep early-stage conversations moving, while bringing you in when human judgment is needed.</p>
         </div>
         <div class="panel__visual">
           <div class="ui ui--inbox">
@@ -2839,10 +2869,10 @@ h1,h2,h3,h4{color:var(--text-primary);line-height:1.15;font-weight:700;letter-sp
       <div class="panel panel--gold">
         <div class="tex" aria-hidden="true"></div>
         <div class="panel__copy">
-          <span class="panel__eyebrow">Workspace</span>
-          <h3 class="panel__title">Keep track of sales activity and next steps.</h3>
+          <span class="panel__eyebrow">Sales Workspace</span>
+          <h3 class="panel__title">Every opportunity with full traveler context.</h3>
           <div class="panel__rule"></div>
-          <p class="panel__text">Manage what needs action across every sales conversation. See what the Sales Agent has handled, where a safari expert needs to step in and what should happen next.</p>
+          <p class="panel__text">Manage opportunities, traveler context and prospect conversations in a shared workspace. Build a living customer brief for every enquiry so you can see what the traveler wants, what they have asked, what concerns them, what has already happened and what needs attention next.</p>
         </div>
         <div class="panel__visual">
           <div class="ui">
@@ -2949,9 +2979,9 @@ h1,h2,h3,h4{color:var(--text-primary);line-height:1.15;font-weight:700;letter-sp
         <div class="tex" aria-hidden="true"></div>
         <div class="panel__copy">
           <span class="panel__eyebrow">Safari AI</span>
-          <h3 class="panel__title">Find answers across your safari sales information.</h3>
+          <h3 class="panel__title">Put your safari knowledge to work.</h3>
           <div class="panel__rule"></div>
-          <p class="panel__text">Ask questions across your rates, camp and lodge details, itineraries, traveler conversations, quotes and booking history to find answers and get sales work done faster.</p>
+          <p class="panel__text">Ask questions across your rates, camps, itineraries, quotes, booking history, traveler conversations and internal knowledge. Find answers faster and get sales work done without searching through scattered documents and systems.</p>
         </div>
         <div class="panel__visual">
           <div class="ui">
@@ -4004,6 +4034,8 @@ h1,h2,h3,h4{color:var(--text-primary);line-height:1.15;font-weight:700;letter-sp
   var dots  = Array.prototype.slice.call(root.querySelectorAll('.ovcar__dot'));
   var head  = document.querySelector('#platform .ov__head');
   var paras = head ? Array.prototype.slice.call(head.querySelectorAll('.lede')) : [];
+  var rail  = document.querySelector('#platform .ovrail');
+  var dot   = document.getElementById('ovraildot');
   if (cards.length < 2) return;
 
   var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -4075,6 +4107,14 @@ h1,h2,h3,h4{color:var(--text-primary);line-height:1.15;font-weight:700;letter-sp
   head.classList.add('ovsteps-on');
 
 
+  /* the dot lines up with the vertical centre of whichever paragraph is live */
+  function moveDot(el) {
+    if (!rail || !dot) return;
+    if (!el) { dot.classList.remove('is-on'); return; }
+    dot.style.top = ((el.offsetTop - rail.offsetTop) + el.offsetHeight / 2) + 'px';
+    dot.classList.add('is-on');
+  }
+
   function pinned() {
     return !!pin && window.matchMedia('(min-width:1024px) and (min-height:640px)').matches;
   }
@@ -4087,6 +4127,7 @@ h1,h2,h3,h4{color:var(--text-primary);line-height:1.15;font-weight:700;letter-sp
           if (!e.isIntersecting) return;
           e.target.classList.add('is-shown');
           paras.forEach(function (p) { p.classList.toggle('is-current', p === e.target); });
+          moveDot(e.target);
         });
       }, { threshold: 0, rootMargin: '0px 0px -32% 0px' })
     : null;
@@ -4115,6 +4156,7 @@ h1,h2,h3,h4{color:var(--text-primary);line-height:1.15;font-weight:700;letter-sp
           p.classList.add('is-shown');
           p.classList.toggle('is-current', n === paras.length - 1);
         });
+        moveDot(paras[paras.length - 1]);
         return;
       }
       var progress = Math.min(1, Math.max(0, -box.top / travel));
@@ -4131,6 +4173,7 @@ h1,h2,h3,h4{color:var(--text-primary);line-height:1.15;font-weight:700;letter-sp
       if (current > furthest) {
         furthest = current;
         paras.forEach(function (p, n) { p.classList.toggle('is-current', n === furthest); });
+        moveDot(paras[furthest]);
         // each tint leaves when the next one arrives. The last has no next, so
         // it clears itself after a beat: once the whole argument is up, the
         // column is plain again
@@ -4153,12 +4196,17 @@ h1,h2,h3,h4{color:var(--text-primary);line-height:1.15;font-weight:700;letter-sp
       furthest = -1;
       clearTimeout(lastTint);
       paras.forEach(function (p) { p.classList.remove('is-shown', 'is-current'); });
+      moveDot(null);
       if (io) { observing = false; }   // let the fallback path re-arm too
     }, { threshold: 0 }).observe(pin || root);
   }
 
   window.addEventListener('scroll', onScroll, { passive: true });
-  window.addEventListener('resize', onScroll);
+  // a reflow changes where the paragraphs sit, so the dot is re-seated with them
+  window.addEventListener('resize', function () {
+    onScroll();
+    if (furthest >= 0) moveDot(paras[furthest]);
+  });
   onScroll();
 })();
 </script>

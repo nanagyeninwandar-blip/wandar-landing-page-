@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Lede emphasis options — Wandar hero</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" />
+<style>
+:root{
+  --hero-green:#17807A;
+  --hero-green-deep:#0F5C58;
+  --off-white:#FDF8F0;
+  --safari-secondary:#c45911;
+  --font-primary:'Plus Jakarta Sans',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;
+}
+*{box-sizing:border-box}
+body{
+  margin:0;padding:56px 32px 96px;
+  background:var(--hero-green);
+  font-family:var(--font-primary);
+  -webkit-font-smoothing:antialiased;
+}
+.wrap{max-width:760px;margin:0 auto}
+.pagehead{
+  color:rgba(253,248,240,.5);font-size:11px;font-weight:800;letter-spacing:.14em;
+  text-transform:uppercase;margin:0 0 40px;
+}
+
+/* the hero lede, exactly as it is in hero-photo.html */
+.lede{
+  margin:0;max-width:500px;
+  font-size:clamp(13.5px,.95vw,14.5px);line-height:1.7;color:rgba(253,248,240,.68);
+}
+
+.opt{padding:26px 0 30px;border-top:1px solid rgba(253,248,240,.16)}
+.opt__tag{
+  display:block;margin-bottom:14px;
+  font-size:10.5px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;
+  color:var(--safari-secondary);
+}
+.opt__tag em{font-style:normal;color:rgba(253,248,240,.42);letter-spacing:.04em;font-weight:600;text-transform:none}
+
+/* ── 1. stacked lines with markers ───────────────────────────── */
+.v1 .lede{margin-bottom:14px}
+.v1 ul{list-style:none;margin:0;padding:0;max-width:500px}
+.v1 li{
+  position:relative;padding-left:18px;margin-bottom:7px;
+  font-size:clamp(13.5px,.95vw,14.5px);line-height:1.7;color:rgba(253,248,240,.68);
+}
+.v1 li::before{
+  content:"";position:absolute;left:0;top:.72em;
+  width:5px;height:5px;border-radius:50%;background:var(--safari-secondary);
+}
+
+/* ── 2. slight size step ─────────────────────────────────────── */
+.v2 .em{font-size:1.14em}
+
+/* ── 3. letter-spacing ───────────────────────────────────────── */
+.v3 .em{letter-spacing:.045em}
+
+/* ── 4. offset underline ─────────────────────────────────────── */
+.v4 .em{
+  text-decoration:underline;text-decoration-thickness:1px;
+  text-underline-offset:4px;text-decoration-color:rgba(253,248,240,.32);
+}
+
+/* ── 5. staggered reveal ─────────────────────────────────────── */
+.v5 .em{
+  display:inline-block;opacity:0;transform:translateY(6px);
+  animation:rise .55s cubic-bezier(.2,.8,.3,1) forwards;
+}
+.v5 .em:nth-of-type(1){animation-delay:.15s}
+.v5 .em:nth-of-type(2){animation-delay:.30s}
+.v5 .em:nth-of-type(3){animation-delay:.45s}
+@keyframes rise{to{opacity:1;transform:none}}
+.replay{
+  margin-top:12px;background:none;border:1px solid rgba(253,248,240,.25);
+  color:rgba(253,248,240,.7);font:inherit;font-size:11px;font-weight:700;
+  letter-spacing:.06em;text-transform:uppercase;padding:7px 13px;border-radius:6px;cursor:pointer;
+}
+.replay:hover{border-color:rgba(253,248,240,.5);color:var(--off-white)}
+
+/* ── 6. middot separators ────────────────────────────────────── */
+.v6 .dot{color:var(--safari-secondary);padding:0 3px}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <p class="pagehead">Hero lede — six ways to lift the triad (no colour or weight change)</p>
+
+  <div class="opt v1">
+    <span class="opt__tag">1 — Stacked lines <em>whitespace does the work</em></span>
+    <p class="lede">Wandar is an integrated safari sales platform that reduces repetitive sales admin and gives safari operators more time for the work that matters most:</p>
+    <ul>
+      <li>Understanding travelers</li>
+      <li>Communicating value</li>
+      <li>Building the trust that wins bookings</li>
+    </ul>
+  </div>
+
+  <div class="opt v2">
+    <span class="opt__tag">2 — Size step <em>1.14em, same colour and weight</em></span>
+    <p class="lede">Wandar is an integrated safari sales platform that reduces repetitive sales admin and gives safari operators more time for the work that matters most: <span class="em">understanding travelers</span>, <span class="em">communicating value</span> and <span class="em">building the trust that wins bookings</span>.</p>
+  </div>
+
+  <div class="opt v3">
+    <span class="opt__tag">3 — Letter-spacing <em>opened to .045em</em></span>
+    <p class="lede">Wandar is an integrated safari sales platform that reduces repetitive sales admin and gives safari operators more time for the work that matters most: <span class="em">understanding travelers</span>, <span class="em">communicating value</span> and <span class="em">building the trust that wins bookings</span>.</p>
+  </div>
+
+  <div class="opt v4">
+    <span class="opt__tag">4 — Offset underline <em>1px, 4px below the baseline</em></span>
+    <p class="lede">Wandar is an integrated safari sales platform that reduces repetitive sales admin and gives safari operators more time for the work that matters most: <span class="em">understanding travelers</span>, <span class="em">communicating value</span> and <span class="em">building the trust that wins bookings</span>.</p>
+  </div>
+
+  <div class="opt v5">
+    <span class="opt__tag">5 — Staggered reveal <em>fades up 150ms apart</em></span>
+    <p class="lede">Wandar is an integrated safari sales platform that reduces repetitive sales admin and gives safari operators more time for the work that matters most: <span class="em">understanding travelers</span>, <span class="em">communicating value</span> and <span class="em">building the trust that wins bookings</span>.</p>
+    <button class="replay" onclick="var p=this.previousElementSibling,c=p.cloneNode(true);p.replaceWith(c);">Replay</button>
+  </div>
+
+  <div class="opt v6">
+    <span class="opt__tag">6 — Middot separators <em>prose becomes a triad</em></span>
+    <p class="lede">Wandar is an integrated safari sales platform that reduces repetitive sales admin and gives safari operators more time for the work that matters most: understanding travelers <span class="dot">&middot;</span> communicating value <span class="dot">&middot;</span> building the trust that wins bookings.</p>
+  </div>
+
+</div>
+</body>
+</html>
