@@ -75,21 +75,21 @@ img { max-width:100%; display:block; }
 .app { display:flex; min-height:100vh; }
 
 .sidebar {
-  width:196px; flex-shrink:0; align-self:stretch;
+  width:176px; flex-shrink:0; align-self:stretch;
   background:linear-gradient(176deg,#0e3a34 0%,#082823 55%,#061f1b 100%);
-  border-radius:0 24px 24px 0; padding:26px 12px 22px;
+  border-radius:0 21.6px 21.6px 0; padding:23.4px 10.8px 19.8px;
   display:flex; flex-direction:column; color:#fff; position:sticky; top:0; height:100vh;
 }
 .sidebar__logo { display:flex; align-items:center; gap:9px; padding:0 4px 26px; }
 .sidebar__logo .wordmark { font-family:var(--font-display); font-size:22px; color:#fff; letter-spacing:-.01em; }
 .sidebar__nav { display:flex; flex-direction:column; gap:6px; }
 .nav-item {
-  display:flex; align-items:center; gap:10px; width:100%; padding:11px 11px; border-radius:11px;
-  text-align:left; font-size:13.5px; font-weight:500; color:rgba(233,244,242,.72); transition:background .18s,color .18s;
+  display:flex; align-items:center; gap:9px; width:100%; padding:9.9px; border-radius:9.9px;
+  text-align:left; font-size:12.15px; font-weight:500; color:rgba(233,244,242,.72); transition:background .18s,color .18s;
 }
 .nav-item:hover { background:rgba(255,255,255,.06); }
 .nav-item.active { font-weight:700; color:#fff; background:linear-gradient(90deg,#167471 0%,#0e524e 100%); box-shadow:0 6px 16px rgba(0,0,0,.25); }
-.nav-item svg { width:20px; height:20px; flex-shrink:0; }
+.nav-item svg { width:18px; height:18px; flex-shrink:0; }
 .sidebar__divider { height:1px; background:rgba(255,255,255,.12); margin:20px 8px; }
 .sidebar__spacer { flex:1; }
 .sidebar__upgrade {
@@ -99,11 +99,11 @@ img { max-width:100%; display:block; }
 }
 .sidebar__upgrade:hover { background:rgba(111,220,155,.16); }
 .sidebar__logout {
-  display:flex; align-items:center; gap:10px; width:100%; padding:11px; border-radius:11px;
-  font-size:13.5px; font-weight:500; color:rgba(233,244,242,.6);
+  display:flex; align-items:center; gap:9px; width:100%; padding:9.9px; border-radius:9.9px;
+  font-size:12.15px; font-weight:500; color:rgba(233,244,242,.6);
 }
 .sidebar__logout:hover { background:rgba(255,255,255,.06); color:#fff; }
-.sidebar__logout svg { width:19px; height:19px; }
+.sidebar__logout svg { width:17.1px; height:17.1px; }
 
 .main { flex:1; min-width:0; padding:34px 40px 60px; }
 .main__inner { max-width:1180px; margin:0 auto; }
@@ -139,33 +139,57 @@ img { max-width:100%; display:block; }
 .menu__item.danger:hover { background:var(--danger-light); }
 .menu__item svg { width:17px; height:17px; flex-shrink:0; }
 
+/* The one action in this menu, so it reads as a button rather than another row
+   of text. Full-width pill inside the menu's 6px padding. */
+.menu__cta {
+  /* flex + auto side margins: keeps the button at its own content width while
+     centring it in the menu (width:100% would stretch it edge to edge). */
+  display:flex; align-items:center; justify-content:center; gap:8px;
+  width:fit-content; margin:4px auto 6px; padding:9px 16px; border:0; cursor:pointer;
+  border-radius:var(--radius-full); background:var(--safari-secondary); color:#fff;
+  font-family:var(--font-body); font-size:13.05px; font-weight:700; white-space:nowrap;
+  transition:background .18s;
+}
+.menu__cta:hover { background:var(--safari-secondary-hover); }
+
 /* ============================================================
    SHELL — collapsed logo-only sidebar + content
    ============================================================ */
 .shell { display:flex; min-height:100vh; }
-.railbar {
-  width:72px; flex-shrink:0; align-self:stretch; position:sticky; top:0; height:100vh;
-  background:linear-gradient(176deg,#0e3a34 0%,#082823 55%,#061f1b 100%);
-  border-radius:0 22px 22px 0; display:flex; flex-direction:column; align-items:center; padding:22px 0;
+/* Feed sidebar. The .sidebar / .nav-item rules above are the original design and
+   carry the look; everything here is only what they lacked — a collapse toggle
+   and the label hiding that goes with it. */
+.sidebar__head { display:flex; align-items:center; justify-content:space-between; gap:7.2px; padding:0 0 21.6px; }
+.sidebar__head .sidebar__logo { padding:0; min-width:0; }
+.sidebar__wordmark { height:34.2px; width:auto; display:block; }
+.sidebar__mark { height:28.8px; width:auto; display:none; }
+.sidebar__toggle {
+  margin-left:auto; width:25.2px; height:25.2px; border-radius:7.2px; flex-shrink:0;
+  display:flex; align-items:center; justify-content:center;
+  color:rgba(255,255,255,.8); background:rgba(255,255,255,.08); transition:background .18s, color .18s;
 }
-.railbar__logo { margin-bottom:24px; }
-.railbar__logo img { width:34px; height:auto; display:block; }
-.railbar__spacer { flex:1; }
-.rail-btn { width:44px; height:44px; border-radius:12px; display:flex; align-items:center; justify-content:center; color:rgba(233,244,242,.8); transition:background .18s, color .18s; }
-.rail-btn:hover { background:rgba(255,255,255,.08); color:#fff; }
-.rail-btn svg { width:22px; height:22px; }
-.rail-btn--logout { color:rgba(233,244,242,.6); }
-.rail-btn--logout:hover { color:#fff; }
+.sidebar__toggle:hover { background:rgba(255,255,255,.14); color:#fff; }
+.sidebar__toggle svg { width:15px; height:15px; }
+.sidebar { transition:width .2s var(--ease-out), padding .2s var(--ease-out); }
+.nav-item { white-space:nowrap; }
+
+.sidebar--collapsed { width:72px; padding:25.2px 12.6px 19.8px; }
+.sidebar--collapsed .sidebar__wordmark { display:none; }
+.sidebar--collapsed .sidebar__mark { display:block; }
+.sidebar--collapsed .sidebar__head { flex-direction:column; justify-content:center; gap:14px; padding:0 0 26px; }
+.sidebar--collapsed .sidebar__toggle { margin-left:0; transform:rotate(180deg); }
+.sidebar--collapsed .nav-item { justify-content:center; padding:11px 0; }
+.sidebar--collapsed .nav-label { display:none; }
+
 .content { flex:1; min-width:0; display:flex; flex-direction:column; }
 
 /* top bar: title left · pill + account right */
 .topbar { background:#fff; border-bottom:1px solid var(--border-1); }
 .topbar__inner { width:100%; padding:0 40px; min-height:80px; display:flex; align-items:center; gap:20px; }
-.topbar__title { font-family:var(--font-body); font-weight:800; font-size:25px; letter-spacing:-.02em; color:var(--fg-1); line-height:1.12; }
+.topbar__title { font-family:var(--font-body); font-weight:800; font-size:22.5px; letter-spacing:-.02em; color:var(--fg-1); line-height:1.12; }
 .topbar__count { font-size:14px; color:var(--fg-3); margin-top:4px; }
 .topbar__count b { color:var(--safari-primary); font-weight:700; }
 .topbar__right { margin-left:auto; display:flex; align-items:center; gap:18px; }
-.pill-cta { border-radius:var(--radius-full); padding:9px 17px; font-size:13px; }
 .avatarmenu__caret { color:var(--fg-3); font-size:14px; }
 
 .page { width:100%; padding:30px 40px 60px; }
@@ -174,11 +198,11 @@ img { max-width:100%; display:block; }
    COUNTERS
    ============================================================ */
 /* counter cards — compact, matched to the platform StatCard */
-.counters { display:grid; grid-template-columns:repeat(3,1fr); gap:16px; margin-bottom:24px; }
+.counters { display:grid; grid-template-columns:repeat(3,1fr); gap:14.4px; margin-bottom:21.6px; }
 .counter { background:#fff; border:1px solid var(--border-1); border-radius:var(--radius-lg); padding:18px 20px 16px; box-shadow:var(--shadow-xs); position:relative; }
-.counter__label { font-size:13.5px; font-weight:600; color:var(--fg-1); }
-.counter__num { font-family:var(--font-body); font-weight:800; font-size:26px; letter-spacing:-.02em; color:var(--fg-1); margin:5px 0 6px; line-height:1.05; }
-.counter__sub { font-size:12.5px; color:var(--fg-3); line-height:1.4; max-width:200px; }
+.counter__label { font-size:13.05px; font-weight:600; color:var(--fg-1); }
+.counter__num { font-family:var(--font-body); font-weight:800; font-size:27px; letter-spacing:-.02em; color:var(--fg-1); margin:5.4px 0 7.2px; line-height:1.05; }
+.counter__sub { font-size:11.7px; color:var(--fg-3); line-height:1.45; max-width:180px; }
 .counter__icon { position:absolute; top:18px; right:20px; width:30px; height:30px; border-radius:50%; display:grid; place-items:center; }
 .counter__icon svg { width:15px; height:15px; }
 .icon-all { background:var(--safari-primary-light); }
@@ -191,38 +215,51 @@ img { max-width:100%; display:block; }
 /* count + filter row sits directly above the table */
 .feed-bar { display:flex; align-items:center; gap:16px; margin-bottom:12px; flex-wrap:wrap; }
 /* controls sit left, the count is pushed to the right edge */
-.feed-bar__count { font-size:14.5px; color:var(--fg-3); margin-left:auto; }
-.feed-bar__count b { color:var(--safari-primary); font-weight:700; }
-.feed-bar__controls { display:flex; gap:12px; flex-wrap:wrap; align-items:center; }
+.feed-bar__count { font-size:13.05px; color:var(--fg-3); margin-left:auto; }
+.feed-bar__count b { color:var(--fg-1); font-weight:700; }
+.feed-bar__controls { display:flex; gap:12px; flex-wrap:wrap; align-items:center; flex:1; min-width:0; }
+/* Pushes Sort + Date range to the right edge, the same spacer idiom the
+   platform's LeadFilterBar uses. Collapses to 0 when the bar wraps. */
+.feed-bar__spacer { flex:1 1 auto; min-width:0; }
 
 /* text search — same pill as .dd__btn so the three controls read as one row */
 .feed-search {
   position:relative; display:inline-flex; align-items:center; gap:8px; background:#fff;
   border:1px solid var(--border-1); border-radius:var(--radius-full); padding:0 12px;
-  height:37px; min-width:200px; transition:all .15s;
+  /* SearchField is 230px at the platform's 14.4px root = 207px rendered. */
+  height:33px; width:207px; flex:0 0 207px; transition:all .15s;
 }
 .feed-search:hover { border-color:var(--border-2); }
 .feed-search:focus-within { border-color:var(--safari-primary); box-shadow:var(--shadow-focus); }
 .feed-search__ico { width:15px; height:15px; color:var(--fg-3); flex-shrink:0; }
 .feed-search input {
   flex:1; min-width:0; border:none; outline:none; background:transparent;
-  font-family:inherit; font-size:13px; font-weight:600; color:var(--fg-1);
+  font-family:inherit; font-size:12.15px; font-weight:500; color:var(--fg-1);
 }
-.feed-search input::placeholder { color:var(--fg-3); font-weight:600; }
+.feed-search input::placeholder { color:var(--fg-3); font-weight:500; }
 /* the browser's own clear affordance would sit beside ours */
 .feed-search input::-webkit-search-cancel-button { display:none; }
 .feed-search__clear {
-  flex-shrink:0; border:none; background:transparent; cursor:pointer; padding:0 2px;
-  font-size:17px; line-height:1; color:var(--fg-3);
+  flex-shrink:0; border:none; cursor:pointer; padding:0; width:18px; height:18px;
+  display:flex; align-items:center; justify-content:center; border-radius:var(--radius-full);
+  background:var(--neutral-100); font-size:12.6px; line-height:1; color:var(--fg-3);
 }
-.feed-search__clear:hover { color:var(--fg-1); }
+/* `display:flex` above is author-level, so it beats the browser's own
+   [hidden]{display:none} and the button would show on an empty field. The
+   attribute is the only thing that hides it, so it must win here explicitly. */
+.feed-search__clear[hidden] { display:none; }
+.feed-search__clear:hover { color:var(--fg-1); background:var(--neutral-150); }
 @media (max-width:560px) { .feed-search { width:100%; } }
 
 /* ---- custom dropdown (pill button + menu with checkmark) — platform size ---- */
 .dd { position:relative; display:inline-block; }
+/* Same trap as .feed-search__clear: an author-level display beats the browser's
+   [hidden]{display:none}, so the Intent pill stayed visible on High Intent and
+   the not-yet-live Destination pill showed anyway. Guard every hideable rule. */
+.dd[hidden] { display:none; }
 .dd__btn {
   display:inline-flex; align-items:center; gap:8px; background:#fff; border:1px solid var(--border-1);
-  border-radius:var(--radius-full); padding:8px 14px; font-size:13px; font-weight:600; color:var(--fg-1);
+  border-radius:var(--radius-full); padding:7.2px 12.6px; font-size:11.7px; font-weight:600; color:var(--fg-1);
   cursor:pointer; transition:all .15s; white-space:nowrap;
 }
 .dd__ico { width:15px; height:15px; color:var(--fg-3); flex-shrink:0; }
@@ -232,43 +269,106 @@ img { max-width:100%; display:block; }
 .dd__menu {
   position:absolute; top:calc(100% + 8px); right:0; z-index:60; min-width:200px;
   background:#fff; border:1px solid var(--border-1); border-radius:var(--radius-md); box-shadow:var(--shadow-lg);
-  padding:6px; display:none;
+  padding:5.4px; max-height:288px; overflow-y:auto; display:none;
 }
 .dd.open .dd__menu { display:block; }
 .dd__opt {
   display:flex; align-items:center; justify-content:space-between; gap:12px; width:100%; text-align:left;
-  padding:10px 12px; border-radius:8px; font-size:14.5px; font-weight:500; color:var(--fg-1);
+  padding:9px 10.8px; border-radius:7.2px; font-size:13.05px; font-weight:500; color:var(--fg-1);
 }
 .dd__opt:hover { background:var(--neutral-50); }
 .dd__opt.selected { color:var(--safari-primary); font-weight:700; }
+
+/* Multi-select: a tick column on every row so the menu reads as a checklist
+   even before anything is picked, and the trigger goes teal while a filter is
+   on — otherwise a narrowed feed looks identical to an unfiltered one. */
+.dd--multi .dd__opt::after {
+  content:"✓"; font-size:11.7px; font-weight:700; color:var(--safari-primary);
+  opacity:0; transition:opacity .12s;
+}
+.dd--multi .dd__opt.selected::after { opacity:1; }
+.dd--on .dd__btn {
+  background:var(--safari-primary-light); border-color:#b9dedd;
+  color:var(--safari-primary); font-weight:700;
+}
+.dd--on .dd__caret { border-color:var(--safari-primary); }
 .dd__opt.selected::after { content:"✓"; color:var(--safari-primary); font-weight:700; }
 
 /* ============================================================
    FEED TABLE (Post | Date Posted) — matches reference
    ============================================================ */
+/* Selected destinations, under the filter bar. Plain text, not pills — the
+   filter pills above already carry that shape, and repeating it here read as a
+   second row of controls rather than a readout of what is applied. */
+.chips { display:flex; flex-wrap:wrap; align-items:center; gap:4px; margin:0 0 14.4px;
+         font-family:var(--font-body); font-size:11.7px; color:var(--fg-3); }
+.chips[hidden] { display:none; }
+.chip { display:inline-flex; align-items:center; gap:3px; color:var(--fg-1); font-weight:600; }
+.chip__sep { color:var(--fg-4); margin-right:2px; }
+.chip__x {
+  border:0; background:none; padding:0 1px; cursor:pointer; line-height:1;
+  font-size:12.6px; color:var(--fg-4);
+}
+.chip__x:hover { color:var(--fg-1); }
+.chips__clear {
+  border:0; background:none; cursor:pointer; padding:0 0 0 6px;
+  font-family:var(--font-body); font-size:11.7px; font-weight:600; color:var(--safari-primary);
+}
+.chips__clear:hover { text-decoration:underline; text-underline-offset:2px; }
+
+/* Score-band tabs (High Intent). Underline-style, matching the platform mockup. */
+.tabs { display:flex; align-items:center; gap:25.2px; margin:0 0 21.6px; border-bottom:1px solid var(--border-1); }
+.tabs[hidden] { display:none; }
+.tab {
+  padding:0 0 11.7px; background:none; border:0; border-bottom:2.25px solid transparent;
+  margin-bottom:-1px; cursor:pointer; white-space:nowrap;
+  font-family:var(--font-body); font-size:13.05px; font-weight:500; color:var(--fg-3);
+  transition:color .15s;
+}
+.tab:hover { color:var(--fg-1); }
+.tab.is-active { color:var(--safari-primary); font-weight:700; border-bottom-color:var(--safari-primary); }
+.tab__n { color:var(--fg-4); font-weight:600; margin-left:3px; }
+.tab.is-active .tab__n { color:var(--safari-primary); opacity:.75; }
+
+.counters[hidden] { display:none; }
+
 .feed-table-card { background:#fff; border:1px solid var(--border-1); border-radius:var(--radius-lg); box-shadow:var(--shadow-sm); overflow:hidden; }
 table.feed { width:100%; border-collapse:collapse; table-layout:fixed; }
-.feed thead th { background:#0e3a33; color:#fff; font-size:14px; font-weight:700; padding:15px 24px; }
-.feed__post-h { text-align:center; }
-.feed__date-h { text-align:right; white-space:nowrap; cursor:pointer; user-select:none; width:150px; }
-.feed__date-h:hover { background:#0a2e29; }
-.feed thead th .sort { opacity:.85; margin-left:6px; }
-.feed tbody td { padding:15px 24px; border-bottom:1px solid var(--border-1); vertical-align:middle; }
+/* The dark green <thead> bar was removed 2026-09-05 along with its sort control;
+   the list reads as cards and Sort moved to a pill in the filter bar. The table
+   element stays for the row layout, it simply has no header row now. */
+.feed tbody td { padding:14.4px 18px; border-bottom:1px solid var(--border-1); vertical-align:middle; }
+.feed tbody tr:first-child td { padding-top:16px; }   /* no header above it any more */
 .feed tbody tr:last-child td { border-bottom:0; }
 .feed tbody tr { cursor:pointer; }
 .feed tbody tr:hover { background:#fafcfc; }
 /* align-items:center so the badge, the thumbs and Reply all sit on the row's vertical
    centre line (the date cell is vertical-align:middle to match) */
-.feed__post { display:flex; align-items:center; gap:14px; min-width:0; }
-.src-badge { width:30px; height:30px; border-radius:50%; display:inline-flex; align-items:center; justify-content:center; flex-shrink:0; }
-.src-badge svg { width:17px; height:17px; }
+.feed__post { display:flex; align-items:center; gap:16.2px; min-width:0; }
+.src-badge { width:27px; height:27px; border-radius:50%; display:inline-flex; align-items:center; justify-content:center; flex-shrink:0; }
+.src-badge svg { width:15.3px; height:15.3px; }
 .src-badge.reddit { background:#FF4500; }
 .src-badge.tripadvisor { background:#34E0A1; }
 /* exactly 1 line of title + 3 lines of post body, then truncate — click row for full post */
+/* Source name and score sit in fixed-width columns so titles line up down the
+   table however long the source label or score is. */
+/* .feed__src / .feed__src-name removed 2026-09-05 — rows show the badge alone. */
+
+.feed__score { flex-shrink:0; width:58px; }
+.feed__score-num { font-size:14.4px; font-weight:800; color:var(--fg-1); letter-spacing:-.02em; line-height:1.1; }
+.feed__score-den { font-size:10px; font-weight:600; color:var(--fg-3); margin-left:2px; }
+.tier-pill {
+  display:inline-block; margin-top:4.5px; padding:1.8px 7.2px; border-radius:var(--radius-full);
+  font-size:9px; font-weight:700; letter-spacing:.01em; white-space:nowrap;
+}
+.tier-pill--high { background:var(--safari-nature-light); color:var(--safari-nature); }
+.tier-pill--mid  { background:var(--safari-gold-light);   color:var(--safari-gold); }
+.tier-pill--low  { background:var(--neutral-100);         color:var(--fg-3); }
+
 .feed__text { flex:1; min-width:0; }
-.ft-title { font-weight:700; color:var(--fg-1); font-size:14px; line-height:1.45;
+.ft-title { font-weight:700; color:var(--fg-1); font-size:14.4px; line-height:1.3; letter-spacing:-.012em;
   white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
-.ft-body { font-weight:400; color:var(--fg-2); font-size:13px; line-height:1.5; margin-top:3px;
+.ft-body { font-weight:400; color:var(--fg-3); font-size:12.15px; line-height:1.5; margin-top:4.5px;
   display:-webkit-box; -webkit-line-clamp:3; -webkit-box-orient:vertical; overflow:hidden; }
 /* like / dislike feedback buttons */
 .feed__fb { display:flex; align-items:center; gap:6px; flex-shrink:0; }
@@ -285,7 +385,7 @@ table.feed { width:100%; border-collapse:collapse; table-layout:fixed; }
   transition:all .15s; }
 .feed__reply:hover { border-color:var(--safari-primary); background:var(--neutral-50); }
 .feed__reply svg { width:15px; height:15px; }
-.feed__date { text-align:right; color:#33565b; font-size:14px; white-space:nowrap; width:150px; vertical-align:middle; }
+.feed__date { text-align:right; color:var(--fg-4); font-size:10.8px; white-space:nowrap; width:150px; vertical-align:middle; }
 .feed-empty { padding:56px 24px; text-align:center; color:var(--fg-3); font-size:16px; }
 .feed-empty button { color:var(--safari-primary); font-weight:700; }
 
@@ -459,7 +559,16 @@ table.feed { width:100%; border-collapse:collapse; table-layout:fixed; }
   .auth__left .auth__lockup-tag { font-size:10.5px; letter-spacing:.11em; }
 }
 @media (max-width:900px) {
-  .sidebar { display:none; }
+  /* Was ".sidebar { display:none }" — which hid a sidebar that did not exist yet
+     (the page shipped with a 72px icon rail instead). Now that .sidebar is real,
+     narrow viewports get the collapsed rail rather than losing sign-out entirely. */
+  .sidebar { width:72px; padding:25.2px 12.6px 19.8px; }
+  .sidebar .sidebar__wordmark { display:none; }
+  .sidebar .sidebar__mark { display:block; }
+  .sidebar .sidebar__head { flex-direction:column; gap:14px; padding:0 0 22px; }
+  .sidebar .sidebar__toggle { display:none; }
+  .sidebar .nav-item { justify-content:center; padding:11px 0; }
+  .sidebar .nav-label { display:none; }
   .main { padding:22px 18px 48px; }
   .counters { grid-template-columns:1fr; }
   .auth__left { display:none; }

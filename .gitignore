@@ -3,3 +3,14 @@
 *.log
 .DS_Store
 Thumbs.db
+
+# Local-only sign-in helper: holds a live access token. Never commit.
+feed/dev-signin.html
+
+# Scan run artifacts: raw scraped posts, the TA index cache and offline
+# classification output. Regenerated per run; never part of the site.
+.github/scan/scraped-posts.json
+.github/scan/ta-index-*.json
+.github/scan/judgments.json
+.github/scan/seen-threads.json
+.github/scan/dump.mjs

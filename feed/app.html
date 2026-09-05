@@ -6,16 +6,45 @@
   <title>Live Demand Feed — Wandar</title>
   <link rel="icon" type="image/svg+xml" href="assets/favicon.svg" />
   <link rel="stylesheet" href="styles.css" />
+  <!-- Modal styling lifted from the landing page (the same block the blog and
+       guide pages use) so "Build with us" is identical wherever it opens.
+       Loaded after styles.css, whose older .modal-* rules would otherwise win. -->
+  <link rel="stylesheet" href="modal.css" />
 </head>
 <body data-page="feed">
   <div class="shell">
 
-    <!-- ============ COLLAPSED SIDEBAR (logo · sign out) ============ -->
-    <aside class="railbar">
-      <a class="railbar__logo" href="index.html" title="Wandar"><img src="assets/mark-white.png" alt="Wandar" /></a>
-      <div class="railbar__spacer"></div>
-      <button class="rail-btn rail-btn--logout" id="sign-out" title="Sign out" aria-label="Sign out">
+    <!-- ============ SIDEBAR (wordmark · nav · sign out) ============
+         Nav items are BUTTONS, not links: both views live on this page and are
+         switched in JS off location.hash, so there is no second document to
+         navigate to. The collapse toggle drops back to the original 72px icon
+         rail, and that choice is remembered in localStorage. -->
+    <aside class="sidebar" id="sidenav">
+      <div class="sidebar__head">
+        <a class="sidebar__logo" href="/" title="Wandar">
+          <img class="sidebar__wordmark" src="assets/logo-white.png" alt="Wandar" />
+          <img class="sidebar__mark" src="assets/mark-white.png" alt="Wandar" />
+        </a>
+        <button class="sidebar__toggle" id="nav-toggle" title="Collapse menu" aria-label="Collapse menu" aria-expanded="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg>
+        </button>
+      </div>
+
+      <nav class="sidebar__nav" aria-label="Views">
+        <button class="nav-item active" data-view="feed" aria-current="page">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 9h18M8 13h8M8 16.5h5"/></svg>
+          <span class="nav-label">Lead Feed</span>
+        </button>
+        <button class="nav-item" data-view="high">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="8.5"/><circle cx="12" cy="12" r="4.5"/><circle cx="12" cy="12" r="1"/></svg>
+          <span class="nav-label">High Intent</span>
+        </button>
+      </nav>
+
+      <div class="sidebar__spacer"></div>
+      <button class="nav-item sidebar__logout" id="sign-out" title="Sign out" aria-label="Sign out">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><path d="M16 17l5-5-5-5M21 12H9"/></svg>
+        <span class="nav-label">Sign out</span>
       </button>
     </aside>
 
@@ -29,7 +58,6 @@
             <div class="topbar__title">Live Demand Feed</div>
           </div>
           <div class="topbar__right">
-          <button class="btn btn--primary pill-cta" data-open="early-access-modal">Request Early Access</button>
           <div class="avatarmenu">
             <button class="avatarmenu__btn" id="profile-chip">
               <span class="avatar" data-user-initials>GT</span>
@@ -45,8 +73,7 @@
                 <span data-user-email>gina@serengetijourneys.com</span>
               </div>
               <div class="menu__divider"></div>
-              <button class="menu__item" data-open="early-access-modal">Request Early Access</button>
-              <button class="menu__item" id="pricing-link">Pricing</button>
+              <button class="menu__cta" data-open="modal-early-access">Build with us</button>
             </div>
           </div>
         </div>
@@ -56,7 +83,7 @@
       <main class="page">
 
         <!-- counters -->
-        <div class="counters">
+        <div class="counters" id="counters">
           <div class="counter">
             <span class="counter__icon icon-all"><svg viewBox="0 0 24 24" fill="none" stroke="#1a7373" stroke-width="1.8"><circle cx="9" cy="8" r="3.2"/><path d="M3 19a6 6 0 0 1 12 0"/><circle cx="17" cy="8.5" r="2.6"/><path d="M15 19a5 5 0 0 1 6.5-4.8"/></svg></span>
             <div class="counter__label">All Leads</div>
@@ -83,12 +110,54 @@
              2026-07-25 removal (see app.js for that history) — filters by Post Date. -->
         <div class="feed-bar">
           <div class="feed-bar__controls">
+            <div class="feed-search">
+              <svg class="feed-search__ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.7-3.7"/></svg>
+              <input id="feed-search" type="search" placeholder="Search keywords…" aria-label="Search keywords" autocomplete="off" />
+              <button class="feed-search__clear" id="feed-search-clear" type="button" aria-label="Clear search" hidden>&times;</button>
+            </div>
+            <!-- Filters on `tier`. Hidden on the High Intent view, where it could
+                 only ever contradict the screen you are already on. -->
+            <div class="dd" id="dd-intent" data-default="all">
+              <button class="dd__btn" type="button"><span class="dd__text">All Intent</span><span class="dd__caret"></span></button>
+              <div class="dd__menu">
+                <button class="dd__opt" data-val="all">All Intent</button>
+                <button class="dd__opt" data-val="High Intent">High Intent</button>
+                <button class="dd__opt" data-val="Mid Intent">Mid Intent</button>
+                <button class="dd__opt" data-val="Low Intent">Low Intent</button>
+              </div>
+            </div>
+            <!-- Multi-valued: a lead weighing "Kenya or Tanzania" appears under BOTH.
+                 Filters in the browser off the post text until the destinations
+                 column exists; then DEST_COLS_LIVE moves it into the query. -->
+            <div class="dd dd--multi" id="dd-destination" data-multi data-static-label>
+              <button class="dd__btn" type="button"><span class="dd__text">All Destinations</span><span class="dd__caret"></span></button>
+              <div class="dd__menu">
+                <button class="dd__opt" data-val="all">All Destinations</button>
+                <button class="dd__opt" data-val="Tanzania">Tanzania</button>
+                <button class="dd__opt" data-val="Kenya">Kenya</button>
+                <button class="dd__opt" data-val="South Africa">South Africa</button>
+                <button class="dd__opt" data-val="Botswana">Botswana</button>
+                <button class="dd__opt" data-val="Namibia">Namibia</button>
+                <button class="dd__opt" data-val="Zimbabwe">Zimbabwe</button>
+                <button class="dd__opt" data-val="Zambia">Zambia</button>
+                <button class="dd__opt" data-val="Uganda">Uganda</button>
+                <button class="dd__opt" data-val="Rwanda">Rwanda</button>
+              </div>
+            </div>
             <div class="dd" id="dd-source" data-default="all">
               <button class="dd__btn" type="button"><span class="dd__text">All Sources</span><span class="dd__caret"></span></button>
               <div class="dd__menu">
                 <button class="dd__opt" data-val="all">All Sources</button>
                 <button class="dd__opt" data-val="reddit">Reddit</button>
                 <button class="dd__opt" data-val="tripadvisor">Tripadvisor</button>
+              </div>
+            </div>
+            <div class="feed-bar__spacer"></div>
+            <div class="dd" id="dd-sort" data-default="desc" data-prefix="Sort: ">
+              <button class="dd__btn" type="button"><span class="dd__text">Sort: Newest</span><span class="dd__caret"></span></button>
+              <div class="dd__menu">
+                <button class="dd__opt" data-val="desc">Newest</button>
+                <button class="dd__opt" data-val="asc">Oldest</button>
               </div>
             </div>
             <div class="dd" id="dd-daterange" data-default="all" data-prefix="Date range: ">
@@ -102,25 +171,29 @@
                 <button class="dd__opt" data-val="year">This year</button>
               </div>
             </div>
-            <div class="feed-search">
-              <svg class="feed-search__ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.7-3.7"/></svg>
-              <input id="feed-search" type="search" placeholder="Search keyword" aria-label="Search keyword" autocomplete="off" />
-              <button class="feed-search__clear" id="feed-search-clear" type="button" aria-label="Clear search" hidden>&times;</button>
-            </div>
           </div>
           <div class="feed-bar__count" id="feed-count">Showing <b>0</b> leads</div>
+        </div>
+
+        <!-- Selected destinations, shown under the search field rather than
+             squeezed into the pill label. Each chip removes just itself. -->
+        <div class="chips" id="dest-chips" hidden></div>
+
+        <!-- Score bands, High Intent only. There is deliberately no "Warm (8.0-8.4)"
+             tab: the engine can only emit 4.5, 6.5, 7, 8.5, 9 and 10, so that band
+             is unreachable by arithmetic and would read (0) forever. -->
+        <div class="tabs" id="band-tabs" hidden>
+          <button class="tab is-active" data-band="all">All <span class="tab__n" data-band-count="all"></span></button>
+          <button class="tab" data-band="veryhot">Very Hot (9.0+) <span class="tab__n" data-band-count="veryhot"></span></button>
+          <button class="tab" data-band="hot">Hot (8.5 – 8.9) <span class="tab__n" data-band-count="hot"></span></button>
         </div>
 
         <!-- table -->
         <div class="feed-table-card">
           <table class="feed">
-            <thead>
-              <tr>
-                <th class="feed__post-h">Post</th>
-                <!-- ↓ not ⇅: the feed loads newest-first, so the caret must say so -->
-                <th class="feed__date-h" id="sort-date" title="Sort by date">Date Posted <span class="sort" id="sort-caret">↓</span></th>
-              </tr>
-            </thead>
+            <!-- No <thead>. The dark green header bar was removed 2026-09-05; the
+                 rows read as a card list, and date sorting moved to the Sort pill
+                 in the filter bar (a header cell was its only control before). -->
             <tbody id="feed-body">
               <tr><td colspan="2" class="feed-empty">Loading opportunities…</td></tr>
             </tbody>
@@ -145,96 +218,109 @@
     </div>
   </div>
 
-  <!-- ============ MODAL — Request Early Access (same fields as the landing page) ============ -->
-  <div class="modal-overlay" id="early-access-modal">
-    <div class="modal modal--wide">
-      <div class="modal__head">
-        <div>
-          <h2>Request Early Access</h2>
-          <p class="lead">Be among the first safari operators to access Wandar.</p>
-        </div>
-        <button class="modal__close" data-close="early-access-modal" aria-label="Close">×</button>
+  <!-- ============ MODAL — Build with us ============
+       Markup and classes match the landing page's #modal-early-access so the
+       dialog is identical wherever it opens. The SUBMIT differs on purpose: the
+       landing posts to Netlify Forms, this writes the row to Supabase `waitlist`
+       with the signed-in user_id, which is what the feed has always done. -->
+  <div class="modal-overlay" id="modal-early-access" aria-modal="true" role="dialog" aria-labelledby="ea-title">
+    <div class="modal-card modal-card--teal-top">
+      <button class="modal-close" data-close="modal-early-access" aria-label="Close">&times;</button>
+      <div class="modal-hd">
+        <div class="modal-hd-icon modal-hd-icon--teal"><svg width="24" height="24" viewBox="0 0 256 256" aria-hidden="true"><g fill="#1a7373"><path d="M184 120v61.65a8 8 0 0 1-2.34 5.65l-34.35 34.35a8 8 0 0 1-13.57-4.53L128 176Zm-48-48H74.35a8 8 0 0 0-5.65 2.34l-34.35 34.35a8 8 0 0 0 4.53 13.57L80 128ZM40 216c37.65 0 50.69-19.69 54.56-28.18l-26.38-26.38C59.69 165.31 40 178.35 40 216" opacity=".2"/><path d="M223.85 47.12a16 16 0 0 0-15-15c-12.58-.75-44.73.4-71.41 27.07L132.69 64H74.36A15.9 15.9 0 0 0 63 68.68L28.7 103a16 16 0 0 0 9.07 27.16l38.47 5.37l44.21 44.21l5.37 38.49a15.94 15.94 0 0 0 10.78 12.92a16.1 16.1 0 0 0 5.1.83a15.9 15.9 0 0 0 11.3-4.68l34.32-34.3a15.9 15.9 0 0 0 4.68-11.36v-58.33l4.77-4.77c26.68-26.68 27.83-58.83 27.08-71.42M74.36 80h42.33l-39.53 39.52L40 114.34Zm74.41-9.45a76.65 76.65 0 0 1 59.11-22.47a76.46 76.46 0 0 1-22.42 59.16L128 164.68L91.32 128ZM176 181.64L141.67 216l-5.19-37.17L176 139.31Zm-74.16 9.5C97.34 201 82.29 224 40 224a8 8 0 0 1-8-8c0-42.29 23-57.34 32.86-61.85a8 8 0 0 1 6.64 14.56c-6.43 2.93-20.62 12.36-23.12 38.91c26.55-2.5 36-16.69 38.91-23.12a8 8 0 1 1 14.56 6.64Z"/></g></svg></div>
+        <h2 class="modal-h2" id="ea-title">Build with us</h2>
+        <p class="modal-sub">Join us early on this journey and get <strong style="font-weight:800;color:#c45911">20% discount</strong>.</p>
       </div>
-      <form id="early-access-form" novalidate>
-        <div id="ea-msg" class="form-msg"></div>
+      <div class="modal-bd">
+        <form class="mf-form" id="early-access-form" novalidate>
+          <div id="ea-msg" class="mf-err" role="alert" style="display:block;margin-bottom:6px"></div>
 
-        <!-- Row 1: Email | Company -->
-        <div class="ea-grid">
-          <div class="field">
-            <label for="ea-email">Work email <span class="req">*</span></label>
-            <div class="authfield"><input id="ea-email" type="email" required placeholder="" autocomplete="email" /></div>
+          <div class="mf-grid-2">
+            <div class="mf-field">
+              <label class="mf-label" for="ea-email">Work email <span class="mf-req-teal">*</span></label>
+              <input type="email" id="ea-email" class="mf-input" autocomplete="email" required />
+            </div>
+            <div class="mf-field">
+              <label class="mf-label" for="ea-company">Company name <span class="mf-req-teal">*</span></label>
+              <input type="text" id="ea-company" class="mf-input" autocomplete="organization" required />
+            </div>
           </div>
-          <div class="field">
-            <label for="ea-company">Company name <span class="req">*</span></label>
-            <div class="authfield"><input id="ea-company" type="text" required placeholder="" autocomplete="organization" /></div>
-          </div>
-        </div>
 
-        <!-- Row 2: Role | Challenge -->
-        <div class="ea-grid">
-          <div class="field">
-            <label for="ea-role">Your role <span class="req">*</span></label>
-            <div class="authfield">
-              <select id="ea-role" required>
-                <option value="" disabled selected hidden>Select your role</option>
+          <div class="mf-grid-2">
+            <div class="mf-field">
+              <label class="mf-label" for="ea-role">Your role <span class="mf-req-teal">*</span></label>
+              <select id="ea-role" class="mf-select" required>
+                <option value="">Select your role</option>
                 <option>Owner / Founder</option>
                 <option>Sales &amp; Bookings</option>
                 <option>Marketing</option>
                 <option>Operations</option>
                 <option>Other</option>
               </select>
-              <span class="caret"></span>
             </div>
-          </div>
-          <div class="field">
-            <label for="ea-goal">Biggest challenge right now <span class="req">*</span></label>
-            <div class="authfield">
-              <select id="ea-goal" required>
-                <option value="" disabled selected hidden>Select one</option>
+            <div class="mf-field">
+              <label class="mf-label" for="ea-goal">Biggest challenge right now <span class="mf-req-teal">*</span></label>
+              <select id="ea-goal" class="mf-select" style="font-size:12px" required>
+                <option value="">Select one</option>
                 <option>Leads exist but I never see them in time</option>
                 <option>A competitor always replies before I do</option>
-                <option>I don't know where my next booking will come from</option>
-                <option>I'm spending on ads but can't tell if they work</option>
-                <option>Enquiries come in but don't convert to bookings</option>
+                <option>I don&#39;t know where my next booking will come from</option>
+                <option>I&#39;m spending on ads but can&#39;t tell if they work</option>
+                <option>Enquiries come in but don&#39;t convert to bookings</option>
                 <option value="other">Something else</option>
               </select>
-              <span class="caret"></span>
+              <div class="mf-reveal" id="ea-goal-other">
+                <input class="mf-input" type="text" placeholder="Tell us in your own words..." autocomplete="off" />
+              </div>
             </div>
-            <div class="ea-reveal" id="ea-goal-other"><div class="authfield"><input type="text" placeholder="Tell us in your own words…" /></div></div>
           </div>
+
+          <fieldset style="border:none;padding:0;margin:0 0 14px">
+            <legend class="mf-label">Tools you currently use</legend>
+            <div class="mf-checklist mf-checklist-grid">
+              <div class="mf-check-item">
+                <label class="mf-check-row"><input type="checkbox" data-nested="crm" /><span class="mf-check-label">CRM</span></label>
+                <div class="mf-check-nested" id="ea-nest-crm">
+                  <div class="mf-nested-label">Which CRM?</div>
+                  <select id="ea-crm" class="mf-select">
+                    <option value="">Select one</option><option>Salesforce</option><option>HubSpot</option>
+                    <option>Pipedrive</option><option>Zoho CRM</option><option>Other</option>
+                  </select>
+                </div>
+              </div>
+              <div class="mf-check-item">
+                <label class="mf-check-row"><input type="checkbox" data-nested="booking" /><span class="mf-check-label">Booking system</span></label>
+                <div class="mf-check-nested" id="ea-nest-booking">
+                  <div class="mf-nested-label">Which booking system?</div>
+                  <select id="ea-booking" class="mf-select">
+                    <option value="">Select one</option><option>Rezdy</option><option>FareHarbor</option>
+                    <option>Checkfront</option><option>Bokun</option><option>Tourwriter</option><option>Other</option>
+                  </select>
+                </div>
+              </div>
+              <div class="mf-check-item"><label class="mf-check-row"><input type="checkbox" value="Google Alerts" /><span class="mf-check-label">Google Alerts</span></label></div>
+              <div class="mf-check-item"><label class="mf-check-row"><input type="checkbox" value="Meta Ads" /><span class="mf-check-label">Meta Ads</span></label></div>
+              <div class="mf-check-item"><label class="mf-check-row"><input type="checkbox" value="Email newsletter" /><span class="mf-check-label">Email newsletter</span></label></div>
+              <div class="mf-check-item"><label class="mf-check-row"><input type="checkbox" value="Spreadsheet tracking" /><span class="mf-check-label">Spreadsheet tracking</span></label></div>
+            </div>
+          </fieldset>
+
+          <!-- Netlify honeypot: the form declaration on index.html sets
+               netlify-honeypot="bot-field", so the POST must carry it. -->
+          <input type="text" name="bot-field" style="display:none" aria-hidden="true" tabindex="-1" autocomplete="off" />
+          <button class="mf-submit mf-submit--teal" type="submit">
+            Submit
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          </button>
+        </form>
+
+        <div class="mf-success" id="ea-success" aria-live="polite">
+          <div class="mf-success-ring mf-success-ring--teal">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#1a7373" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg>
+          </div>
+          <h2>You&#39;re on the list.</h2>
         </div>
-
-        <!-- Tools -->
-        <fieldset class="ea-tools">
-          <legend class="field-legend">Tools you currently use</legend>
-          <div class="ea-checklist">
-            <div class="ea-check">
-              <label class="ea-check__row"><input type="checkbox" data-nested="crm" /> CRM</label>
-              <div class="ea-nested" id="ea-nest-crm">
-                <div class="ea-nested-label">Which CRM?</div>
-                <div class="authfield"><select id="ea-crm"><option value="">Select one</option><option>Salesforce</option><option>HubSpot</option><option>Pipedrive</option><option>Zoho CRM</option><option>Other</option></select><span class="caret"></span></div>
-              </div>
-            </div>
-            <div class="ea-check">
-              <label class="ea-check__row"><input type="checkbox" data-nested="booking" /> Booking system</label>
-              <div class="ea-nested" id="ea-nest-booking">
-                <div class="ea-nested-label">Which booking system?</div>
-                <div class="authfield"><select id="ea-booking"><option value="">Select one</option><option>Rezdy</option><option>FareHarbor</option><option>Checkfront</option><option>Bokun</option><option>Tourwriter</option><option>Other</option></select><span class="caret"></span></div>
-              </div>
-            </div>
-            <div class="ea-check"><label class="ea-check__row"><input type="checkbox" value="Google Alerts" /> Google Alerts</label></div>
-            <div class="ea-check"><label class="ea-check__row"><input type="checkbox" value="Meta Ads" /> Meta Ads</label></div>
-            <div class="ea-check"><label class="ea-check__row"><input type="checkbox" value="Email newsletter" /> Email newsletter</label></div>
-            <div class="ea-check"><label class="ea-check__row"><input type="checkbox" value="Spreadsheet tracking" /> Spreadsheet tracking</label></div>
-          </div>
-        </fieldset>
-
-        <button class="btn btn--primary btn--block btn--lg" type="submit">
-          Submit
-          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-        </button>
-        <div class="ea-trust"><span><b>•</b> No contracts or setup fees</span><span><b>•</b> Built exclusively for safari operators</span></div>
-      </form>
+      </div>
     </div>
   </div>
 
