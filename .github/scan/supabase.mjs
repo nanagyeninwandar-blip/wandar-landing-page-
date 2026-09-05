@@ -1,3 +1,4 @@
+import { extractDestinations } from "./destinations.mjs";
 /* Supabase read/write. Service-role key — bypasses RLS; never ship it to a
    browser (the publishable key in feed/config.js is read-only by design). */
 
@@ -10,6 +11,11 @@ const KEY = process.env.SUPABASE_SERVICE_ROLE;
    them means the scan silently writes nothing. Flip this with the migration. */
 const TRAVEL_COLS_LIVE = false;
 
+/* Flip to true in the SAME commit as 2026-09-05_destinations.sql. Sending a
+   column that does not exist makes PostgREST reject the WHOLE batch (PGRST204)
+   and the scan writes nothing — same trap TRAVEL_COLS_LIVE guards. The feed has
+   a matching DEST_COLS_LIVE in app.js; both flip together. */
+const DEST_COLS_LIVE = false;
 const H = { apikey: KEY, Authorization: `Bearer ${KEY}`, "Content-Type": "application/json" };
 
 export async function existingThreadIds() {
@@ -72,6 +78,9 @@ export async function writeLeads(leads) {
     body: cleanBody(l.body) || null,
     url: (l.url || "").trim(),
     post_date: l.post_date || null,
+    // Derived here so the column is never stale: the scan is the only writer.
+    // Runs on the CLEANED body — raw text is entity-escaped and would miss words.
+    ...(DEST_COLS_LIVE ? { destinations: extractDestinations(l.title, cleanBody(l.body), l.url) } : {}),
     ...(TRAVEL_COLS_LIVE ? { travel_date: null, travel_window_end: null, travel_precision: null } : {}),
     tier: l.tier,
     score: l.score,
