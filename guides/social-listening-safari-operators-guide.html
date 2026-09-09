@@ -194,6 +194,15 @@ body{padding-top:0}
 .cta .btn--orange{background:var(--safari-secondary);color:#fff;box-shadow:0 8px 20px rgba(196,89,17,.26)}
 .cta .btn--orange:hover{background:var(--secondary-hover);transform:translateY(-2px);box-shadow:0 12px 26px rgba(196,89,17,.32)}
 .cta .btn--ghost{background:transparent;color:#fff;border:1.5px solid rgba(255,255,255,.55)}
+
+.vision{background:var(--off-white);text-align:center;padding:56px 24px}
+.vision__title{max-width:760px;margin:18px auto 0;font-size:clamp(22px,3vw,32px);font-weight:800;letter-spacing:-0.02em;color:var(--text-primary);line-height:1.25}
+.vision .eyebrow{margin-bottom:0}
+.vision__btns{display:flex;flex-wrap:wrap;gap:14px;justify-content:center;margin-top:28px}
+.vision .btn--orange{background:var(--safari-secondary);color:#fff;box-shadow:0 8px 20px rgba(196,89,17,.26)}
+.vision .btn--orange:hover{background:#a34b0e;transform:translateY(-2px)}
+.vision .btn--ghost{background:transparent;color:var(--safari-primary);border:1.5px solid var(--safari-primary)}
+.vision .btn--ghost:hover{background:rgba(26,115,115,.08);transform:translateY(-2px)}
 .cta .btn--ghost:hover{background:rgba(255,255,255,.12);border-color:#fff;transform:translateY(-2px)}
 
 /* ═══ FOOTER (ported from new-landing.html) ═════════════════ */
@@ -669,60 +678,55 @@ body{padding-top:0}
 
       <nav class="nav__links" aria-label="Main navigation">
 
-        <!-- WHY WANDAR — mega menu -->
+        <!-- PRODUCT — mega menu -->
         <div class="nav__item" data-dropdown>
           <button class="nav__link" aria-expanded="false" aria-haspopup="true" data-trigger>
-            Why Wandar
+            Product
             <svg class="nav__chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
           </button>
           <div class="mega" data-panel role="menu">
             <div class="mega__grid">
 
               <div class="mega__col">
-                <span class="mega__label">One sales platform</span>
+                <span class="mega__label">The Platform</span>
 
                 <a class="mega__item" href="../index.html#platform" role="menuitem">
                   <span class="mega__ic"><svg aria-hidden="true" width="24" height="24" viewBox="0 0 256 256"><g fill="currentColor"><path d="M192 112a80 80 0 1 1-80-80a80 80 0 0 1 80 80" opacity=".2"/><path d="m229.66 218.34l-50.06-50.06a88.21 88.21 0 1 0-11.32 11.31l50.06 50.07a8 8 0 0 0 11.32-11.32M40 112a72 72 0 1 1 72 72a72.08 72.08 0 0 1-72-72"/></g></svg></span>
-                  <span><span class="mega__t">Demand discovery</span><span class="mega__d">Find people actively planning safaris.</span></span>
+                  <span><span class="mega__t">Social Demand</span><span class="mega__d">See the questions, comparisons and concerns shaping safari decisions online.</span></span>
                 </a>
 
                 <a class="mega__item" href="../index.html#platform" role="menuitem">
-                  <span class="mega__ic"><svg aria-hidden="true" width="24" height="24" viewBox="0 0 256 256"><g fill="currentColor"><path d="M224 128a96 96 0 1 1-96-96a96 96 0 0 1 96 96" opacity=".2"/><path d="M128 24a104 104 0 0 0 0 208c21.51 0 44.1-6.48 60.43-17.33a8 8 0 0 0-8.86-13.33C166 210.38 146.21 216 128 216a88 88 0 1 1 88-88c0 26.45-10.88 32-20 32s-20-5.55-20-32V88a8 8 0 0 0-16 0v4.26a48 48 0 1 0 5.93 65.1c6 12 16.35 18.64 30.07 18.64c22.54 0 36-17.94 36-48A104.11 104.11 0 0 0 128 24m0 136a32 32 0 1 1 32-32a32 32 0 0 1-32 32"/></g></svg></span>
-                  <span><span class="mega__t">Social mentions</span><span class="mega__d">Track relevant traveler conversations online.</span></span>
-                </a>
-
-                <a class="mega__item" href="../index.html#tour" role="menuitem">
                   <span class="mega__ic"><svg aria-hidden="true" width="24" height="24" viewBox="0 0 256 256"><g fill="currentColor"><path d="M200 56H56a24 24 0 0 0-24 24v112a24 24 0 0 0 24 24h144a24 24 0 0 0 24-24V80a24 24 0 0 0-24-24m-36 128H92a20 20 0 0 1 0-40h72a20 20 0 0 1 0 40" opacity=".2"/><path d="M200 48h-64V16a8 8 0 0 0-16 0v32H56a32 32 0 0 0-32 32v112a32 32 0 0 0 32 32h144a32 32 0 0 0 32-32V80a32 32 0 0 0-32-32m16 144a16 16 0 0 1-16 16H56a16 16 0 0 1-16-16V80a16 16 0 0 1 16-16h144a16 16 0 0 1 16 16ZM72 108a12 12 0 1 1 12 12a12 12 0 0 1-12-12m88 0a12 12 0 1 1 12 12a12 12 0 0 1-12-12m4 28H92a28 28 0 0 0 0 56h72a28 28 0 0 0 0-56m-24 16v24h-24v-24Zm-60 12a12 12 0 0 1 12-12h8v24h-8a12 12 0 0 1-12-12m84 12h-8v-24h8a12 12 0 0 1 0 24"/></g></svg></span>
-                  <span><span class="mega__t">Sales agent</span><span class="mega__d">Engage prospects and qualify stronger enquiries.</span></span>
+                  <span><span class="mega__t">Sales Agent</span><span class="mega__d">Handle the repetitive early-stage conversation and build traveler context.</span></span>
                 </a>
 
-                <a class="mega__item" href="../index.html#tour" role="menuitem">
+                <a class="mega__item" href="../index.html#platform" role="menuitem">
                   <span class="mega__ic"><svg aria-hidden="true" width="24" height="24" viewBox="0 0 256 256"><g fill="currentColor"><path d="M216 56v64h-56V56ZM40 208a8 8 0 0 0 8 8h40a8 8 0 0 0 8-8v-88H40Z" opacity=".2"/><path d="M216 48H40a8 8 0 0 0-8 8v152a16 16 0 0 0 16 16h40a16 16 0 0 0 16-16v-48h48v16a16 16 0 0 0 16 16h40a16 16 0 0 0 16-16V56a8 8 0 0 0-8-8m-8 64h-40V64h40ZM88 64v48H48V64Zm0 144H48v-80h40Zm16-64V64h48v80Zm64 32v-48h40v48Z"/></g></svg></span>
-                  <span><span class="mega__t">Workspace</span><span class="mega__d">See what needs a reply and who is on it.</span></span>
+                  <span><span class="mega__t">Sales Workspace</span><span class="mega__d">See what is happening, what matters and what needs your attention next.</span></span>
                 </a>
 
-                <a class="mega__item" href="../index.html#tour" role="menuitem">
-                  <span class="mega__ic"><svg aria-hidden="true" width="24" height="24" viewBox="0 0 256 256"><g fill="currentColor"><path d="m194.82 151.43l-55.09 20.3l-20.3 55.09a7.92 7.92 0 0 1-14.86 0l-20.3-55.09l-55.09-20.3a7.92 7.92 0 0 1 0-14.86l55.09-20.3l20.3-55.09a7.92 7.92 0 0 1 14.86 0l20.3 55.09l55.09 20.3a7.92 7.92 0 0 1 0 14.86" opacity=".2"/><path d="M197.58 129.06L146 110l-19-51.62a15.92 15.92 0 0 0-29.88 0L78 110l-51.62 19a15.92 15.92 0 0 0 0 29.88L78 178l19 51.62a15.92 15.92 0 0 0 29.88 0L146 178l51.62-19a15.92 15.92 0 0 0 0-29.88ZM137 164.22a8 8 0 0 0-4.74 4.74L112 223.85L91.78 169a8 8 0 0 0-4.78-4.78L32.15 144L87 123.78a8 8 0 0 0 4.78-4.78L112 64.15L132.22 119a8 8 0 0 0 4.74 4.74L191.85 144ZM144 40a8 8 0 0 1 8-8h16V16a8 8 0 0 1 16 0v16h16a8 8 0 0 1 0 16h-16v16a8 8 0 0 1-16 0V48h-16a8 8 0 0 1-8-8m104 48a8 8 0 0 1-8 8h-8v8a8 8 0 0 1-16 0v-8h-8a8 8 0 0 1 0-16h8v-8a8 8 0 0 1 16 0v8h8a8 8 0 0 1 8 8"/></g></svg></span>
-                  <span><span class="mega__t">Safari AI</span><span class="mega__d">Ask questions across your safari data.</span></span>
+                <a class="mega__item" href="../index.html#platform" role="menuitem">
+                  <span class="mega__ic"><svg aria-hidden="true" width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M 12 10.1 C 11.48 7.25 10.81 4.12 10.53 2.31 C 10.39 1.31 13 1.12 13.43 2.12 C 13.19 4.02 12.48 7.25 12 10.1 Z M 13.34 10.66 C 14.99 8.27 16.74 5.58 17.81 4.11 C 18.42 3.3 20.4 5.01 19.99 6.02 C 18.48 7.2 15.69 8.98 13.34 10.66 Z M 13.9 12 C 16.75 11.48 19.89 10.81 21.69 10.53 C 22.69 10.39 22.88 13 21.88 13.43 C 19.98 13.19 16.75 12.48 13.9 12 Z M 13.34 13.34 C 15.73 14.99 18.42 16.74 19.89 17.81 C 20.7 18.42 18.99 20.4 17.98 19.99 C 16.8 18.48 15.02 15.69 13.34 13.34 Z M 12 13.9 C 12.52 16.75 13.19 19.89 13.47 21.69 C 13.62 22.69 11 22.88 10.58 21.88 C 10.81 19.98 11.53 16.75 12 13.9 Z M 10.66 13.34 C 9.01 15.73 7.26 18.42 6.19 19.89 C 5.58 20.7 3.6 18.99 4.01 17.98 C 5.52 16.8 8.31 15.02 10.66 13.34 Z M 10.1 12 C 7.25 12.52 4.12 13.19 2.31 13.47 C 1.31 13.62 1.12 11 2.12 10.58 C 4.02 10.81 7.25 11.53 10.1 12 Z M 10.66 10.66 C 8.27 9.01 5.58 7.26 4.11 6.19 C 3.3 5.58 5.01 3.6 6.02 4.01 C 7.2 5.52 8.98 8.31 10.66 10.66 Z"/></svg></span>
+                  <span><span class="mega__t">Safari AI</span><span class="mega__d">Get direct answers from your conversations, sales data and business knowledge.</span></span>
                 </a>
               </div>
 
               <div class="mega__col">
-                <span class="mega__label">Grow your safari business</span>
+                <span class="mega__label">Why Wandar</span>
 
-                <a class="mega__item" href="../index.html#platform" role="menuitem">
-                  <span class="mega__ic"><svg aria-hidden="true" width="24" height="24" viewBox="0 0 256 256"><g fill="currentColor"><path d="M104 168a40 40 0 1 1-40-40a40 40 0 0 1 40 40m88-40a40 40 0 1 0 40 40a40 40 0 0 0-40-40" opacity=".2"/><path d="M237.2 151.87a47 47 0 0 0-2.35-5.45L193.26 51.8a7.8 7.8 0 0 0-1.66-2.44a32 32 0 0 0-45.26 0A8 8 0 0 0 144 55v25h-32V55a8 8 0 0 0-2.34-5.66a32 32 0 0 0-45.26 0a7.8 7.8 0 0 0-1.66 2.44L21.15 146.4a47 47 0 0 0-2.35 5.45A48 48 0 1 0 112 168V96h32v72a48 48 0 1 0 93.2-16.13M76.71 59.75a16 16 0 0 1 19.29-1v73.51a47.9 47.9 0 0 0-46.79-9.92ZM64 200a32 32 0 1 1 32-32a32 32 0 0 1-32 32m96-141.26a16 16 0 0 1 19.29 1l27.5 62.58a47.9 47.9 0 0 0-46.79 9.93ZM192 200a32 32 0 1 1 32-32a32 32 0 0 1-32 32"/></g></svg></span>
-                  <span><span class="mega__t">Find travelers earlier</span><span class="mega__d">Reach safari planners before competitors do.</span></span>
+                <a class="mega__item" href="../index.html#value" role="menuitem">
+                  <span class="mega__ic"><svg aria-hidden="true" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="8.5"/><path d="M12 8v4.2l3 2"/></svg></span>
+                  <span><span class="mega__t">Less busywork</span><span class="mega__d">Reduce repetitive work around enquiries and follow-ups.</span></span>
                 </a>
 
-                <a class="mega__item" href="../index.html#tour" role="menuitem">
-                  <span class="mega__ic"><svg aria-hidden="true" width="24" height="24" viewBox="0 0 256 256"><g fill="currentColor"><path d="M232 128c0 12.51-17.82 21.95-22.68 33.69c-4.68 11.32 1.42 30.65-7.78 39.85s-28.53 3.1-39.85 7.78C150 214.18 140.5 232 128 232s-22-17.82-33.69-22.68c-11.32-4.68-30.65 1.42-39.85-7.78s-3.1-28.53-7.78-39.85C41.82 150 24 140.5 24 128s17.82-22 22.68-33.69c4.68-11.31-1.42-30.65 7.78-39.85s28.54-3.1 39.85-7.78C106.05 41.82 115.5 24 128 24s22 17.82 33.69 22.68c11.32 4.68 30.65-1.42 39.85 7.78s3.1 28.53 7.78 39.85C214.18 106.05 232 115.5 232 128" opacity=".2"/><path d="M225.86 102.82c-3.77-3.94-7.67-8-9.14-11.57c-1.36-3.27-1.44-8.69-1.52-13.94c-.15-9.76-.31-20.82-8-28.51s-18.75-7.85-28.51-8c-5.25-.08-10.67-.16-13.94-1.52c-3.56-1.47-7.63-5.37-11.57-9.14C146.28 23.51 138.44 16 128 16s-18.27 7.51-25.18 14.14c-3.94 3.77-8 7.67-11.57 9.14c-3.25 1.36-8.69 1.44-13.94 1.52c-9.76.15-20.82.31-28.51 8s-7.8 18.75-8 28.51c-.08 5.25-.16 10.67-1.52 13.94c-1.47 3.56-5.37 7.63-9.14 11.57C23.51 109.72 16 117.56 16 128s7.51 18.27 14.14 25.18c3.77 3.94 7.67 8 9.14 11.57c1.36 3.27 1.44 8.69 1.52 13.94c.15 9.76.31 20.82 8 28.51s18.75 7.85 28.51 8c5.25.08 10.67.16 13.94 1.52c3.56 1.47 7.63 5.37 11.57 9.14c6.9 6.63 14.74 14.14 25.18 14.14s18.27-7.51 25.18-14.14c3.94-3.77 8-7.67 11.57-9.14c3.27-1.36 8.69-1.44 13.94-1.52c9.76-.15 20.82-.31 28.51-8s7.85-18.75 8-28.51c.08-5.25.16-10.67 1.52-13.94c1.47-3.56 5.37-7.63 9.14-11.57c6.63-6.9 14.14-14.74 14.14-25.18s-7.51-18.27-14.14-25.18m-11.55 39.29c-4.79 5-9.75 10.17-12.38 16.52c-2.52 6.1-2.63 13.07-2.73 19.82c-.1 7-.21 14.33-3.32 17.43s-10.39 3.22-17.43 3.32c-6.75.1-13.72.21-19.82 2.73c-6.35 2.63-11.52 7.59-16.52 12.38S132 224 128 224s-9.15-4.92-14.11-9.69s-10.17-9.75-16.52-12.38c-6.1-2.52-13.07-2.63-19.82-2.73c-7-.1-14.33-.21-17.43-3.32s-3.22-10.39-3.32-17.43c-.1-6.75-.21-13.72-2.73-19.82c-2.63-6.35-7.59-11.52-12.38-16.52S32 132 32 128s4.92-9.15 9.69-14.11s9.75-10.17 12.38-16.52c2.52-6.1 2.63-13.07 2.73-19.82c.1-7 .21-14.33 3.32-17.43s10.39-3.22 17.43-3.32c6.75-.1 13.72-.21 19.82-2.73c6.35-2.63 11.52-7.59 16.52-12.38S124 32 128 32s9.15 4.92 14.11 9.69s10.17 9.75 16.52 12.38c6.1 2.52 13.07 2.63 19.82 2.73c7 .1 14.33.21 17.43 3.32s3.22 10.39 3.32 17.43c.1 6.75.21 13.72 2.73 19.82c2.63 6.35 7.59 11.52 12.38 16.52S224 124 224 128s-4.92 9.15-9.69 14.11m-40.65-43.77a8 8 0 0 1 0 11.32l-56 56a8 8 0 0 1-11.32 0l-24-24a8 8 0 0 1 11.32-11.32L112 148.69l50.34-50.35a8 8 0 0 1 11.32 0"/></g></svg></span>
-                  <span><span class="mega__t">Build trust sooner</span><span class="mega__d">Show expertise before trust forms elsewhere.</span></span>
+                <a class="mega__item" href="../index.html#value" role="menuitem">
+                  <span class="mega__ic"><svg aria-hidden="true" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 8.5V6.5A2 2 0 0 1 6 4.5h2"/><path d="M20 8.5V6.5a2 2 0 0 0-2-2h-2"/><path d="M4 15.5v2a2 2 0 0 0 2 2h2"/><path d="M20 15.5v2a2 2 0 0 1-2 2h-2"/><circle cx="12" cy="10.3" r="2" fill="currentColor" stroke="none"/><path d="M8.2 17.2c.7-2.3 2.1-3.3 3.8-3.3s3.1 1 3.8 3.3"/></svg></span>
+                  <span><span class="mega__t">Better traveler context</span><span class="mega__d">Keep what the traveler wants and what's already happened.</span></span>
                 </a>
 
-                <a class="mega__item" href="../index.html#tour" role="menuitem">
-                  <span class="mega__ic"><svg aria-hidden="true" width="24" height="24" viewBox="0 0 256 256"><g fill="currentColor"><path d="M232 56v64l-64-64Z" opacity=".2"/><path d="M232 48h-64a8 8 0 0 0-5.66 13.66L188.69 88L136 140.69l-34.34-34.35a8 8 0 0 0-11.32 0l-72 72a8 8 0 0 0 11.32 11.32L96 123.31l34.34 34.35a8 8 0 0 0 11.32 0L200 99.31l26.34 26.35A8 8 0 0 0 240 120V56a8 8 0 0 0-8-8m-8 52.69L187.31 64H224Z"/></g></svg></span>
-                  <span><span class="mega__t">Create more booking opportunities</span><span class="mega__d">Move more enquiries toward a booking.</span></span>
+                <a class="mega__item" href="../index.html#value" role="menuitem">
+                  <span class="mega__ic"><svg aria-hidden="true" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 6.8c-1.4-1.1-3.3-1.6-5.2-1.6A1.8 1.8 0 0 0 5 7v9.6a1.8 1.8 0 0 0 1.8 1.8c1.9 0 3.8.5 5.2 1.6"/><path d="M12 6.8c1.4-1.1 3.3-1.6 5.2-1.6A1.8 1.8 0 0 1 19 7v9.6a1.8 1.8 0 0 1-1.8 1.8c-1.9 0-3.8.5-5.2 1.6V6.8Z"/></svg></span>
+                  <span><span class="mega__t">Easier access to expertise</span><span class="mega__d">Make your safari knowledge easier to use when it matters.</span></span>
                 </a>
               </div>
 
@@ -731,22 +735,12 @@ body{padding-top:0}
 
                 <a class="mega__item" href="../index.html#who" role="menuitem">
                   <span class="mega__ic"><svg aria-hidden="true" width="24" height="24" viewBox="0 0 256 256"><g fill="currentColor"><path d="M192 96a64 64 0 1 1-64-64a64 64 0 0 1 64 64" opacity=".2"/><path d="M230.92 212c-15.23-26.33-38.7-45.21-66.09-54.16a72 72 0 1 0-73.66 0c-27.39 8.94-50.86 27.82-66.09 54.16a8 8 0 1 0 13.85 8c18.84-32.56 52.14-52 89.07-52s70.23 19.44 89.07 52a8 8 0 1 0 13.85-8M72 96a56 56 0 1 1 56 56a56.06 56.06 0 0 1-56-56"/></g></svg></span>
-                  <span><span class="mega__t">Owner-led operators</span><span class="mega__d">Stay close without handling every conversation.</span></span>
+                  <span><span class="mega__t">Owner-led operators</span><span class="mega__d">Stay close without handling every conversation yourself.</span></span>
                 </a>
 
                 <a class="mega__item" href="../index.html#who" role="menuitem">
                   <span class="mega__ic"><svg aria-hidden="true" width="24" height="24" viewBox="0 0 256 256"><g fill="currentColor"><path d="M136 192H8L72 48Z" opacity=".2"/><path d="m255.31 188.75l-64-144A8 8 0 0 0 184 40H72a8 8 0 0 0-7.27 4.69a.2.2 0 0 0 0 .06v.12L.69 188.75A8 8 0 0 0 8 200h240a8 8 0 0 0 7.31-11.25M64 184H20.31L64 85.7Zm16 0V85.7l43.69 98.3Zm61.2 0L84.31 56h94.49l56.89 128Z"/></g></svg></span>
-                  <span><span class="mega__t">Boutique safari operators</span><span class="mega__d">Keep every enquiry personal at scale.</span></span>
-                </a>
-
-                <a class="mega__item" href="../index.html#who" role="menuitem">
-                  <span class="mega__ic"><svg aria-hidden="true" width="24" height="24" viewBox="0 0 256 256"><g fill="currentColor"><path d="M80 144v40a16 16 0 0 1-16 16H48a16 16 0 0 1-16-16v-56h32a16 16 0 0 1 16 16m112-16a16 16 0 0 0-16 16v40a16 16 0 0 0 16 16h32v-72Z" opacity=".2"/><path d="M201.89 54.66A104.08 104.08 0 0 0 24 128v56a24 24 0 0 0 24 24h16a24 24 0 0 0 24-24v-40a24 24 0 0 0-24-24H40.36a88.12 88.12 0 0 1 150.18-54.07A87.4 87.4 0 0 1 215.65 120H192a24 24 0 0 0-24 24v40a24 24 0 0 0 24 24h24a24 24 0 0 1-24 24h-56a8 8 0 0 0 0 16h56a40 40 0 0 0 40-40v-80a103.4 103.4 0 0 0-30.11-73.34M64 136a8 8 0 0 1 8 8v40a8 8 0 0 1-8 8H48a8 8 0 0 1-8-8v-48Zm128 56a8 8 0 0 1-8-8v-40a8 8 0 0 1 8-8h24v56Z"/></g></svg></span>
-                  <span><span class="mega__t">Safari sales teams</span><span class="mega__d">Share context across every traveler conversation.</span></span>
-                </a>
-
-                <a class="mega__item" href="../index.html#who" role="menuitem">
-                  <span class="mega__ic"><svg aria-hidden="true" width="24" height="24" viewBox="0 0 256 256"><g fill="currentColor"><path d="M224 64v144H32V48h176a16 16 0 0 1 16 16" opacity=".2"/><path d="M232 208a8 8 0 0 1-8 8H32a8 8 0 0 1-8-8V48a8 8 0 0 1 16 0v108.69l50.34-50.35a8 8 0 0 1 11.32 0L128 132.69L180.69 80H160a8 8 0 0 1 0-16h40a8 8 0 0 1 8 8v40a8 8 0 0 1-16 0V91.31l-58.34 58.35a8 8 0 0 1-11.32 0L96 123.31l-56 56V200h184a8 8 0 0 1 8 8"/></g></svg></span>
-                  <span><span class="mega__t">Growing operators</span><span class="mega__d">Handle more enquiries without losing quality.</span></span>
+                  <span><span class="mega__t">Boutique safari operators</span><span class="mega__d">Keep every enquiry personal as you grow.</span></span>
                 </a>
               </div>
 
@@ -773,19 +767,11 @@ body{padding-top:0}
                   <span class="mega__ic"><svg aria-hidden="true" width="24" height="24" viewBox="0 0 256 256"><g fill="currentColor"><path d="M232 56v144h-72a32 32 0 0 0-32 32a32 32 0 0 0-32-32H24V56h72a32 32 0 0 1 32 32a32 32 0 0 1 32-32Z" opacity=".2"/><path d="M232 48h-72a40 40 0 0 0-32 16a40 40 0 0 0-32-16H24a8 8 0 0 0-8 8v144a8 8 0 0 0 8 8h72a24 24 0 0 1 24 24a8 8 0 0 0 16 0a24 24 0 0 1 24-24h72a8 8 0 0 0 8-8V56a8 8 0 0 0-8-8M96 192H32V64h64a24 24 0 0 1 24 24v112a39.8 39.8 0 0 0-24-8m128 0h-64a39.8 39.8 0 0 0-24 8V88a24 24 0 0 1 24-24h64Z"/></g></svg></span>
                   <span><span class="mega__t">Guides</span><span class="mega__d">In-depth playbooks for safari operators.</span></span>
                 </a>
-                <a class="mega__item" aria-disabled="true" role="menuitem">
-                  <span class="mega__ic"><svg aria-hidden="true" width="24" height="24" viewBox="0 0 256 256"><g fill="currentColor"><path d="M200 72v112a8 8 0 0 1-8 8H32a8 8 0 0 1-8-8V72a8 8 0 0 1 8-8h160a8 8 0 0 1 8 8" opacity=".2"/><path d="M251.77 73a8 8 0 0 0-8.21.39L208 97.05V72a16 16 0 0 0-16-16H32a16 16 0 0 0-16 16v112a16 16 0 0 0 16 16h160a16 16 0 0 0 16-16v-25l35.56 23.71A8 8 0 0 0 248 184a8 8 0 0 0 8-8V80a8 8 0 0 0-4.23-7M192 184H32V72h160zm48-22.95l-32-21.33v-23.44L240 95Z"/></g></svg></span>
-                  <span><span class="mega__t">Webinars</span><span class="mega__d">Practical AI use across safari operations.</span></span>
-                </a>
               </div>
 
               <div class="mega__col">
                 <span class="mega__label">Free tools</span>
-                <a class="mega__item" aria-disabled="true" role="menuitem">
-                  <span class="mega__ic"><svg aria-hidden="true" width="24" height="24" viewBox="0 0 256 256"><g fill="currentColor"><path d="M176 112L74.34 213.66a8 8 0 0 1-11.31 0L42.34 193a8 8 0 0 1 0-11.31L144 80Z" opacity=".2"/><path d="M248 152a8 8 0 0 1-8 8h-16v16a8 8 0 0 1-16 0v-16h-16a8 8 0 0 1 0-16h16v-16a8 8 0 0 1 16 0v16h16a8 8 0 0 1 8 8M56 72h16v16a8 8 0 0 0 16 0V72h16a8 8 0 0 0 0-16H88V40a8 8 0 0 0-16 0v16H56a8 8 0 0 0 0 16m128 120h-8v-8a8 8 0 0 0-16 0v8h-8a8 8 0 0 0 0 16h8v8a8 8 0 0 0 16 0v-8h8a8 8 0 0 0 0-16m35.31-112L80 219.31a16 16 0 0 1-22.62 0l-20.7-20.68a16 16 0 0 1 0-22.63L176 36.69a16 16 0 0 1 22.63 0l20.68 20.68a16 16 0 0 1 0 22.63m-54.63 32L144 91.31l-96 96L68.68 208ZM208 68.69L187.31 48l-32 32L176 100.69Z"/></g></svg></span>
-                  <span><span class="mega__t">Lead Insight Generator</span><span class="mega__d">Score your inbound safari enquiries.</span></span>
-                </a>
-                <a class="mega__item" href="../index.html#platform" role="menuitem">
+                <a class="mega__item" href="../index.html#hero" role="menuitem">
                   <span class="mega__ic"><svg aria-hidden="true" width="24" height="24" viewBox="0 0 256 256"><g fill="currentColor"><path d="m96 40l33.52 88H56Zm104 88h-70.48L160 208Z" opacity=".2"/><path d="M240 128a8 8 0 0 1-8 8h-27.06l-37.78 75.58A8 8 0 0 1 160 216h-.4a8 8 0 0 1-7.08-5.14L95.35 60.76l-32.07 70.55A8 8 0 0 1 56 136H24a8 8 0 0 1 0-16h26.85l37.87-83.31a8 8 0 0 1 14.76.46l57.51 151l31.85-63.71A8 8 0 0 1 200 120h32a8 8 0 0 1 8 8"/></g></svg></span>
                   <span><span class="mega__t">Live demand feed</span><span class="mega__d">See safari planning conversations happening now.</span></span>
                 </a>
@@ -807,11 +793,10 @@ body{padding-top:0}
           </div>
         </div>
 
-        <a aria-disabled="true" class="nav__link">Pricing</a>
       </nav>
 
       <div class="nav__right">
-        <a href="#" onclick="openModal('early-access');return false;" class="btn btn--primary nav__cta nav__cta--desktop">Request Access</a>
+        <a href="#" onclick="openModal('early-access');return false;" class="btn btn--primary nav__cta nav__cta--desktop">Build with us</a>
         <button class="nav__burger" id="burger" aria-label="Open menu" aria-expanded="false">
           <span></span><span></span><span></span>
         </button>
@@ -827,27 +812,24 @@ body{padding-top:0}
       </div>
       <div class="mobile-panel__nav">
       <div class="macc" data-acc>
-        <button class="macc__btn" data-acc-btn>Why Wandar
+        <button class="macc__btn" data-acc-btn>Product
           <svg class="nav__chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg>
         </button>
         <div class="macc__panel">
-          <span class="macc__label">One sales platform</span>
-          <a class="macc__link" href="../index.html#platform"><span class="mega__ic"><svg aria-hidden="true" width="24" height="24" viewBox="0 0 256 256"><g fill="currentColor"><path d="M192 112a80 80 0 1 1-80-80a80 80 0 0 1 80 80" opacity=".2"/><path d="m229.66 218.34l-50.06-50.06a88.21 88.21 0 1 0-11.32 11.31l50.06 50.07a8 8 0 0 0 11.32-11.32M40 112a72 72 0 1 1 72 72a72.08 72.08 0 0 1-72-72"/></g></svg></span>Demand discovery</a>
-          <a class="macc__link" href="../index.html#platform"><span class="mega__ic"><svg aria-hidden="true" width="24" height="24" viewBox="0 0 256 256"><g fill="currentColor"><path d="M224 128a96 96 0 1 1-96-96a96 96 0 0 1 96 96" opacity=".2"/><path d="M128 24a104 104 0 0 0 0 208c21.51 0 44.1-6.48 60.43-17.33a8 8 0 0 0-8.86-13.33C166 210.38 146.21 216 128 216a88 88 0 1 1 88-88c0 26.45-10.88 32-20 32s-20-5.55-20-32V88a8 8 0 0 0-16 0v4.26a48 48 0 1 0 5.93 65.1c6 12 16.35 18.64 30.07 18.64c22.54 0 36-17.94 36-48A104.11 104.11 0 0 0 128 24m0 136a32 32 0 1 1 32-32a32 32 0 0 1-32 32"/></g></svg></span>Social mentions</a>
-          <a class="macc__link" href="../index.html#tour"><span class="mega__ic"><svg aria-hidden="true" width="24" height="24" viewBox="0 0 256 256"><g fill="currentColor"><path d="M200 56H56a24 24 0 0 0-24 24v112a24 24 0 0 0 24 24h144a24 24 0 0 0 24-24V80a24 24 0 0 0-24-24m-36 128H92a20 20 0 0 1 0-40h72a20 20 0 0 1 0 40" opacity=".2"/><path d="M200 48h-64V16a8 8 0 0 0-16 0v32H56a32 32 0 0 0-32 32v112a32 32 0 0 0 32 32h144a32 32 0 0 0 32-32V80a32 32 0 0 0-32-32m16 144a16 16 0 0 1-16 16H56a16 16 0 0 1-16-16V80a16 16 0 0 1 16-16h144a16 16 0 0 1 16 16ZM72 108a12 12 0 1 1 12 12a12 12 0 0 1-12-12m88 0a12 12 0 1 1 12 12a12 12 0 0 1-12-12m4 28H92a28 28 0 0 0 0 56h72a28 28 0 0 0 0-56m-24 16v24h-24v-24Zm-60 12a12 12 0 0 1 12-12h8v24h-8a12 12 0 0 1-12-12m84 12h-8v-24h8a12 12 0 0 1 0 24"/></g></svg></span>Sales agent</a>
-          <a class="macc__link" href="../index.html#tour"><span class="mega__ic"><svg aria-hidden="true" width="24" height="24" viewBox="0 0 256 256"><g fill="currentColor"><path d="M216 56v64h-56V56ZM40 208a8 8 0 0 0 8 8h40a8 8 0 0 0 8-8v-88H40Z" opacity=".2"/><path d="M216 48H40a8 8 0 0 0-8 8v152a16 16 0 0 0 16 16h40a16 16 0 0 0 16-16v-48h48v16a16 16 0 0 0 16 16h40a16 16 0 0 0 16-16V56a8 8 0 0 0-8-8m-8 64h-40V64h40ZM88 64v48H48V64Zm0 144H48v-80h40Zm16-64V64h48v80Zm64 32v-48h40v48Z"/></g></svg></span>Workspace</a>
-          <a class="macc__link" href="../index.html#tour"><span class="mega__ic"><svg aria-hidden="true" width="24" height="24" viewBox="0 0 256 256"><g fill="currentColor"><path d="m194.82 151.43l-55.09 20.3l-20.3 55.09a7.92 7.92 0 0 1-14.86 0l-20.3-55.09l-55.09-20.3a7.92 7.92 0 0 1 0-14.86l55.09-20.3l20.3-55.09a7.92 7.92 0 0 1 14.86 0l20.3 55.09l55.09 20.3a7.92 7.92 0 0 1 0 14.86" opacity=".2"/><path d="M197.58 129.06L146 110l-19-51.62a15.92 15.92 0 0 0-29.88 0L78 110l-51.62 19a15.92 15.92 0 0 0 0 29.88L78 178l19 51.62a15.92 15.92 0 0 0 29.88 0L146 178l51.62-19a15.92 15.92 0 0 0 0-29.88ZM137 164.22a8 8 0 0 0-4.74 4.74L112 223.85L91.78 169a8 8 0 0 0-4.78-4.78L32.15 144L87 123.78a8 8 0 0 0 4.78-4.78L112 64.15L132.22 119a8 8 0 0 0 4.74 4.74L191.85 144ZM144 40a8 8 0 0 1 8-8h16V16a8 8 0 0 1 16 0v16h16a8 8 0 0 1 0 16h-16v16a8 8 0 0 1-16 0V48h-16a8 8 0 0 1-8-8m104 48a8 8 0 0 1-8 8h-8v8a8 8 0 0 1-16 0v-8h-8a8 8 0 0 1 0-16h8v-8a8 8 0 0 1 16 0v8h8a8 8 0 0 1 8 8"/></g></svg></span>Safari AI</a>
+          <span class="macc__label">The Platform</span>
+          <a class="macc__link" href="../index.html#platform"><span class="mega__ic"><svg aria-hidden="true" width="24" height="24" viewBox="0 0 256 256"><g fill="currentColor"><path d="M192 112a80 80 0 1 1-80-80a80 80 0 0 1 80 80" opacity=".2"/><path d="m229.66 218.34l-50.06-50.06a88.21 88.21 0 1 0-11.32 11.31l50.06 50.07a8 8 0 0 0 11.32-11.32M40 112a72 72 0 1 1 72 72a72.08 72.08 0 0 1-72-72"/></g></svg></span>Social Demand</a>
+          <a class="macc__link" href="../index.html#platform"><span class="mega__ic"><svg aria-hidden="true" width="24" height="24" viewBox="0 0 256 256"><g fill="currentColor"><path d="M200 56H56a24 24 0 0 0-24 24v112a24 24 0 0 0 24 24h144a24 24 0 0 0 24-24V80a24 24 0 0 0-24-24m-36 128H92a20 20 0 0 1 0-40h72a20 20 0 0 1 0 40" opacity=".2"/><path d="M200 48h-64V16a8 8 0 0 0-16 0v32H56a32 32 0 0 0-32 32v112a32 32 0 0 0 32 32h144a32 32 0 0 0 32-32V80a32 32 0 0 0-32-32m16 144a16 16 0 0 1-16 16H56a16 16 0 0 1-16-16V80a16 16 0 0 1 16-16h144a16 16 0 0 1 16 16ZM72 108a12 12 0 1 1 12 12a12 12 0 0 1-12-12m88 0a12 12 0 1 1 12 12a12 12 0 0 1-12-12m4 28H92a28 28 0 0 0 0 56h72a28 28 0 0 0 0-56m-24 16v24h-24v-24Zm-60 12a12 12 0 0 1 12-12h8v24h-8a12 12 0 0 1-12-12m84 12h-8v-24h8a12 12 0 0 1 0 24"/></g></svg></span>Sales Agent</a>
+          <a class="macc__link" href="../index.html#platform"><span class="mega__ic"><svg aria-hidden="true" width="24" height="24" viewBox="0 0 256 256"><g fill="currentColor"><path d="M216 56v64h-56V56ZM40 208a8 8 0 0 0 8 8h40a8 8 0 0 0 8-8v-88H40Z" opacity=".2"/><path d="M216 48H40a8 8 0 0 0-8 8v152a16 16 0 0 0 16 16h40a16 16 0 0 0 16-16v-48h48v16a16 16 0 0 0 16 16h40a16 16 0 0 0 16-16V56a8 8 0 0 0-8-8m-8 64h-40V64h40ZM88 64v48H48V64Zm0 144H48v-80h40Zm16-64V64h48v80Zm64 32v-48h40v48Z"/></g></svg></span>Sales Workspace</a>
+          <a class="macc__link" href="../index.html#platform"><span class="mega__ic"><svg aria-hidden="true" width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M 12 10.1 C 11.48 7.25 10.81 4.12 10.53 2.31 C 10.39 1.31 13 1.12 13.43 2.12 C 13.19 4.02 12.48 7.25 12 10.1 Z M 13.34 10.66 C 14.99 8.27 16.74 5.58 17.81 4.11 C 18.42 3.3 20.4 5.01 19.99 6.02 C 18.48 7.2 15.69 8.98 13.34 10.66 Z M 13.9 12 C 16.75 11.48 19.89 10.81 21.69 10.53 C 22.69 10.39 22.88 13 21.88 13.43 C 19.98 13.19 16.75 12.48 13.9 12 Z M 13.34 13.34 C 15.73 14.99 18.42 16.74 19.89 17.81 C 20.7 18.42 18.99 20.4 17.98 19.99 C 16.8 18.48 15.02 15.69 13.34 13.34 Z M 12 13.9 C 12.52 16.75 13.19 19.89 13.47 21.69 C 13.62 22.69 11 22.88 10.58 21.88 C 10.81 19.98 11.53 16.75 12 13.9 Z M 10.66 13.34 C 9.01 15.73 7.26 18.42 6.19 19.89 C 5.58 20.7 3.6 18.99 4.01 17.98 C 5.52 16.8 8.31 15.02 10.66 13.34 Z M 10.1 12 C 7.25 12.52 4.12 13.19 2.31 13.47 C 1.31 13.62 1.12 11 2.12 10.58 C 4.02 10.81 7.25 11.53 10.1 12 Z M 10.66 10.66 C 8.27 9.01 5.58 7.26 4.11 6.19 C 3.3 5.58 5.01 3.6 6.02 4.01 C 7.2 5.52 8.98 8.31 10.66 10.66 Z"/></svg></span>Safari AI</a>
 
-          <span class="macc__label">Grow your safari business</span>
-          <a class="macc__link" href="../index.html#platform"><span class="mega__ic"><svg aria-hidden="true" width="24" height="24" viewBox="0 0 256 256"><g fill="currentColor"><path d="M104 168a40 40 0 1 1-40-40a40 40 0 0 1 40 40m88-40a40 40 0 1 0 40 40a40 40 0 0 0-40-40" opacity=".2"/><path d="M237.2 151.87a47 47 0 0 0-2.35-5.45L193.26 51.8a7.8 7.8 0 0 0-1.66-2.44a32 32 0 0 0-45.26 0A8 8 0 0 0 144 55v25h-32V55a8 8 0 0 0-2.34-5.66a32 32 0 0 0-45.26 0a7.8 7.8 0 0 0-1.66 2.44L21.15 146.4a47 47 0 0 0-2.35 5.45A48 48 0 1 0 112 168V96h32v72a48 48 0 1 0 93.2-16.13M76.71 59.75a16 16 0 0 1 19.29-1v73.51a47.9 47.9 0 0 0-46.79-9.92ZM64 200a32 32 0 1 1 32-32a32 32 0 0 1-32 32m96-141.26a16 16 0 0 1 19.29 1l27.5 62.58a47.9 47.9 0 0 0-46.79 9.93ZM192 200a32 32 0 1 1 32-32a32 32 0 0 1-32 32"/></g></svg></span>Find travelers earlier</a>
-          <a class="macc__link" href="../index.html#tour"><span class="mega__ic"><svg aria-hidden="true" width="24" height="24" viewBox="0 0 256 256"><g fill="currentColor"><path d="M232 128c0 12.51-17.82 21.95-22.68 33.69c-4.68 11.32 1.42 30.65-7.78 39.85s-28.53 3.1-39.85 7.78C150 214.18 140.5 232 128 232s-22-17.82-33.69-22.68c-11.32-4.68-30.65 1.42-39.85-7.78s-3.1-28.53-7.78-39.85C41.82 150 24 140.5 24 128s17.82-22 22.68-33.69c4.68-11.31-1.42-30.65 7.78-39.85s28.54-3.1 39.85-7.78C106.05 41.82 115.5 24 128 24s22 17.82 33.69 22.68c11.32 4.68 30.65-1.42 39.85 7.78s3.1 28.53 7.78 39.85C214.18 106.05 232 115.5 232 128" opacity=".2"/><path d="M225.86 102.82c-3.77-3.94-7.67-8-9.14-11.57c-1.36-3.27-1.44-8.69-1.52-13.94c-.15-9.76-.31-20.82-8-28.51s-18.75-7.85-28.51-8c-5.25-.08-10.67-.16-13.94-1.52c-3.56-1.47-7.63-5.37-11.57-9.14C146.28 23.51 138.44 16 128 16s-18.27 7.51-25.18 14.14c-3.94 3.77-8 7.67-11.57 9.14c-3.25 1.36-8.69 1.44-13.94 1.52c-9.76.15-20.82.31-28.51 8s-7.8 18.75-8 28.51c-.08 5.25-.16 10.67-1.52 13.94c-1.47 3.56-5.37 7.63-9.14 11.57C23.51 109.72 16 117.56 16 128s7.51 18.27 14.14 25.18c3.77 3.94 7.67 8 9.14 11.57c1.36 3.27 1.44 8.69 1.52 13.94c.15 9.76.31 20.82 8 28.51s18.75 7.85 28.51 8c5.25.08 10.67.16 13.94 1.52c3.56 1.47 7.63 5.37 11.57 9.14c6.9 6.63 14.74 14.14 25.18 14.14s18.27-7.51 25.18-14.14c3.94-3.77 8-7.67 11.57-9.14c3.27-1.36 8.69-1.44 13.94-1.52c9.76-.15 20.82-.31 28.51-8s7.85-18.75 8-28.51c.08-5.25.16-10.67 1.52-13.94c1.47-3.56 5.37-7.63 9.14-11.57c6.63-6.9 14.14-14.74 14.14-25.18s-7.51-18.27-14.14-25.18m-11.55 39.29c-4.79 5-9.75 10.17-12.38 16.52c-2.52 6.1-2.63 13.07-2.73 19.82c-.1 7-.21 14.33-3.32 17.43s-10.39 3.22-17.43 3.32c-6.75.1-13.72.21-19.82 2.73c-6.35 2.63-11.52 7.59-16.52 12.38S132 224 128 224s-9.15-4.92-14.11-9.69s-10.17-9.75-16.52-12.38c-6.1-2.52-13.07-2.63-19.82-2.73c-7-.1-14.33-.21-17.43-3.32s-3.22-10.39-3.32-17.43c-.1-6.75-.21-13.72-2.73-19.82c-2.63-6.35-7.59-11.52-12.38-16.52S32 132 32 128s4.92-9.15 9.69-14.11s9.75-10.17 12.38-16.52c2.52-6.1 2.63-13.07 2.73-19.82c.1-7 .21-14.33 3.32-17.43s10.39-3.22 17.43-3.32c6.75-.1 13.72-.21 19.82-2.73c6.35-2.63 11.52-7.59 16.52-12.38S124 32 128 32s9.15 4.92 14.11 9.69s10.17 9.75 16.52 12.38c6.1 2.52 13.07 2.63 19.82 2.73c7 .1 14.33.21 17.43 3.32s3.22 10.39 3.32 17.43c.1 6.75.21 13.72 2.73 19.82c2.63 6.35 7.59 11.52 12.38 16.52S224 124 224 128s-4.92 9.15-9.69 14.11m-40.65-43.77a8 8 0 0 1 0 11.32l-56 56a8 8 0 0 1-11.32 0l-24-24a8 8 0 0 1 11.32-11.32L112 148.69l50.34-50.35a8 8 0 0 1 11.32 0"/></g></svg></span>Build trust sooner</a>
-          <a class="macc__link" href="../index.html#tour"><span class="mega__ic"><svg aria-hidden="true" width="24" height="24" viewBox="0 0 256 256"><g fill="currentColor"><path d="M232 56v64l-64-64Z" opacity=".2"/><path d="M232 48h-64a8 8 0 0 0-5.66 13.66L188.69 88L136 140.69l-34.34-34.35a8 8 0 0 0-11.32 0l-72 72a8 8 0 0 0 11.32 11.32L96 123.31l34.34 34.35a8 8 0 0 0 11.32 0L200 99.31l26.34 26.35A8 8 0 0 0 240 120V56a8 8 0 0 0-8-8m-8 52.69L187.31 64H224Z"/></g></svg></span>Create more booking opportunities</a>
+          <span class="macc__label">Why Wandar</span>
+          <a class="macc__link" href="../index.html#value"><span class="mega__ic"><svg aria-hidden="true" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="8.5"/><path d="M12 8v4.2l3 2"/></svg></span>Less busywork</a>
+          <a class="macc__link" href="../index.html#value"><span class="mega__ic"><svg aria-hidden="true" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 8.5V6.5A2 2 0 0 1 6 4.5h2"/><path d="M20 8.5V6.5a2 2 0 0 0-2-2h-2"/><path d="M4 15.5v2a2 2 0 0 0 2 2h2"/><path d="M20 15.5v2a2 2 0 0 1-2 2h-2"/><circle cx="12" cy="10.3" r="2" fill="currentColor" stroke="none"/><path d="M8.2 17.2c.7-2.3 2.1-3.3 3.8-3.3s3.1 1 3.8 3.3"/></svg></span>Better traveler context</a>
+          <a class="macc__link" href="../index.html#value"><span class="mega__ic"><svg aria-hidden="true" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 6.8c-1.4-1.1-3.3-1.6-5.2-1.6A1.8 1.8 0 0 0 5 7v9.6a1.8 1.8 0 0 0 1.8 1.8c1.9 0 3.8.5 5.2 1.6"/><path d="M12 6.8c1.4-1.1 3.3-1.6 5.2-1.6A1.8 1.8 0 0 1 19 7v9.6a1.8 1.8 0 0 1-1.8 1.8c-1.9 0-3.8.5-5.2 1.6V6.8Z"/></svg></span>Easier access to expertise</a>
 
           <span class="macc__label">Built for safari operators</span>
           <a class="macc__link" href="../index.html#who"><span class="mega__ic"><svg aria-hidden="true" width="24" height="24" viewBox="0 0 256 256"><g fill="currentColor"><path d="M192 96a64 64 0 1 1-64-64a64 64 0 0 1 64 64" opacity=".2"/><path d="M230.92 212c-15.23-26.33-38.7-45.21-66.09-54.16a72 72 0 1 0-73.66 0c-27.39 8.94-50.86 27.82-66.09 54.16a8 8 0 1 0 13.85 8c18.84-32.56 52.14-52 89.07-52s70.23 19.44 89.07 52a8 8 0 1 0 13.85-8M72 96a56 56 0 1 1 56 56a56.06 56.06 0 0 1-56-56"/></g></svg></span>Owner-led operators</a>
           <a class="macc__link" href="../index.html#who"><span class="mega__ic"><svg aria-hidden="true" width="24" height="24" viewBox="0 0 256 256"><g fill="currentColor"><path d="M136 192H8L72 48Z" opacity=".2"/><path d="m255.31 188.75l-64-144A8 8 0 0 0 184 40H72a8 8 0 0 0-7.27 4.69a.2.2 0 0 0 0 .06v.12L.69 188.75A8 8 0 0 0 8 200h240a8 8 0 0 0 7.31-11.25M64 184H20.31L64 85.7Zm16 0V85.7l43.69 98.3Zm61.2 0L84.31 56h94.49l56.89 128Z"/></g></svg></span>Boutique safari operators</a>
-          <a class="macc__link" href="../index.html#who"><span class="mega__ic"><svg aria-hidden="true" width="24" height="24" viewBox="0 0 256 256"><g fill="currentColor"><path d="M80 144v40a16 16 0 0 1-16 16H48a16 16 0 0 1-16-16v-56h32a16 16 0 0 1 16 16m112-16a16 16 0 0 0-16 16v40a16 16 0 0 0 16 16h32v-72Z" opacity=".2"/><path d="M201.89 54.66A104.08 104.08 0 0 0 24 128v56a24 24 0 0 0 24 24h16a24 24 0 0 0 24-24v-40a24 24 0 0 0-24-24H40.36a88.12 88.12 0 0 1 150.18-54.07A87.4 87.4 0 0 1 215.65 120H192a24 24 0 0 0-24 24v40a24 24 0 0 0 24 24h24a24 24 0 0 1-24 24h-56a8 8 0 0 0 0 16h56a40 40 0 0 0 40-40v-80a103.4 103.4 0 0 0-30.11-73.34M64 136a8 8 0 0 1 8 8v40a8 8 0 0 1-8 8H48a8 8 0 0 1-8-8v-48Zm128 56a8 8 0 0 1-8-8v-40a8 8 0 0 1 8-8h24v56Z"/></g></svg></span>Safari sales teams</a>
-          <a class="macc__link" href="../index.html#who"><span class="mega__ic"><svg aria-hidden="true" width="24" height="24" viewBox="0 0 256 256"><g fill="currentColor"><path d="M224 64v144H32V48h176a16 16 0 0 1 16 16" opacity=".2"/><path d="M232 208a8 8 0 0 1-8 8H32a8 8 0 0 1-8-8V48a8 8 0 0 1 16 0v108.69l50.34-50.35a8 8 0 0 1 11.32 0L128 132.69L180.69 80H160a8 8 0 0 1 0-16h40a8 8 0 0 1 8 8v40a8 8 0 0 1-16 0V91.31l-58.34 58.35a8 8 0 0 1-11.32 0L96 123.31l-56 56V200h184a8 8 0 0 1 8 8"/></g></svg></span>Growing operators</a>
         </div>
       </div>
 
@@ -859,9 +841,7 @@ body{padding-top:0}
           <span class="macc__label">Learn</span>
           <a class="macc__link" href="../blog/index.html"><span class="mega__ic"><svg aria-hidden="true" width="24" height="24" viewBox="0 0 256 256"><g fill="currentColor"><path d="M224 56v144a8 8 0 0 1-8 8H40a8 8 0 0 1-8-8V56a8 8 0 0 1 8-8h176a8 8 0 0 1 8 8" opacity=".2"/><path d="M216 40H40a16 16 0 0 0-16 16v144a16 16 0 0 0 16 16h176a16 16 0 0 0 16-16V56a16 16 0 0 0-16-16m0 160H40V56h176zM184 96a8 8 0 0 1-8 8H80a8 8 0 0 1 0-16h96a8 8 0 0 1 8 8m0 32a8 8 0 0 1-8 8H80a8 8 0 0 1 0-16h96a8 8 0 0 1 8 8m0 32a8 8 0 0 1-8 8H80a8 8 0 0 1 0-16h96a8 8 0 0 1 8 8"/></g></svg></span>Blog</a>
           <a class="macc__link" href="index.html"><span class="mega__ic"><svg aria-hidden="true" width="24" height="24" viewBox="0 0 256 256"><g fill="currentColor"><path d="M232 56v144h-72a32 32 0 0 0-32 32a32 32 0 0 0-32-32H24V56h72a32 32 0 0 1 32 32a32 32 0 0 1 32-32Z" opacity=".2"/><path d="M232 48h-72a40 40 0 0 0-32 16a40 40 0 0 0-32-16H24a8 8 0 0 0-8 8v144a8 8 0 0 0 8 8h72a24 24 0 0 1 24 24a8 8 0 0 0 16 0a24 24 0 0 1 24-24h72a8 8 0 0 0 8-8V56a8 8 0 0 0-8-8M96 192H32V64h64a24 24 0 0 1 24 24v112a39.8 39.8 0 0 0-24-8m128 0h-64a39.8 39.8 0 0 0-24 8V88a24 24 0 0 1 24-24h64Z"/></g></svg></span>Guides</a>
-          <a class="macc__link" aria-disabled="true"><span class="mega__ic"><svg aria-hidden="true" width="24" height="24" viewBox="0 0 256 256"><g fill="currentColor"><path d="M200 72v112a8 8 0 0 1-8 8H32a8 8 0 0 1-8-8V72a8 8 0 0 1 8-8h160a8 8 0 0 1 8 8" opacity=".2"/><path d="M251.77 73a8 8 0 0 0-8.21.39L208 97.05V72a16 16 0 0 0-16-16H32a16 16 0 0 0-16 16v112a16 16 0 0 0 16 16h160a16 16 0 0 0 16-16v-25l35.56 23.71A8 8 0 0 0 248 184a8 8 0 0 0 8-8V80a8 8 0 0 0-4.23-7M192 184H32V72h160zm48-22.95l-32-21.33v-23.44L240 95Z"/></g></svg></span>Webinars</a>
           <span class="macc__label">Free tools</span>
-          <a class="macc__link" aria-disabled="true"><span class="mega__ic"><svg aria-hidden="true" width="24" height="24" viewBox="0 0 256 256"><g fill="currentColor"><path d="M176 112L74.34 213.66a8 8 0 0 1-11.31 0L42.34 193a8 8 0 0 1 0-11.31L144 80Z" opacity=".2"/><path d="M248 152a8 8 0 0 1-8 8h-16v16a8 8 0 0 1-16 0v-16h-16a8 8 0 0 1 0-16h16v-16a8 8 0 0 1 16 0v16h16a8 8 0 0 1 8 8M56 72h16v16a8 8 0 0 0 16 0V72h16a8 8 0 0 0 0-16H88V40a8 8 0 0 0-16 0v16H56a8 8 0 0 0 0 16m128 120h-8v-8a8 8 0 0 0-16 0v8h-8a8 8 0 0 0 0 16h8v8a8 8 0 0 0 16 0v-8h8a8 8 0 0 0 0-16m35.31-112L80 219.31a16 16 0 0 1-22.62 0l-20.7-20.68a16 16 0 0 1 0-22.63L176 36.69a16 16 0 0 1 22.63 0l20.68 20.68a16 16 0 0 1 0 22.63m-54.63 32L144 91.31l-96 96L68.68 208ZM208 68.69L187.31 48l-32 32L176 100.69Z"/></g></svg></span>Lead Insight Generator</a>
           <a class="macc__link" href="../index.html#hero"><span class="mega__ic"><svg aria-hidden="true" width="24" height="24" viewBox="0 0 256 256"><g fill="currentColor"><path d="m96 40l33.52 88H56Zm104 88h-70.48L160 208Z" opacity=".2"/><path d="M240 128a8 8 0 0 1-8 8h-27.06l-37.78 75.58A8 8 0 0 1 160 216h-.4a8 8 0 0 1-7.08-5.14L95.35 60.76l-32.07 70.55A8 8 0 0 1 56 136H24a8 8 0 0 1 0-16h26.85l37.87-83.31a8 8 0 0 1 14.76.46l57.51 151l31.85-63.71A8 8 0 0 1 200 120h32a8 8 0 0 1 8 8"/></g></svg></span>Live demand feed</a>
           <span class="macc__label">Support</span>
           <a class="macc__link" href="../index.html#faq"><span class="mega__ic"><svg aria-hidden="true" width="24" height="24" viewBox="0 0 256 256"><g fill="currentColor"><path d="M224 128a96 96 0 1 1-96-96a96 96 0 0 1 96 96" opacity=".2"/><path d="M140 180a12 12 0 1 1-12-12a12 12 0 0 1 12 12M128 72c-22.06 0-40 16.15-40 36v4a8 8 0 0 0 16 0v-4c0-11 10.77-20 24-20s24 9 24 20s-10.77 20-24 20a8 8 0 0 0-8 8v8a8 8 0 0 0 16 0v-.72c18.24-3.35 32-17.9 32-35.28c0-19.85-17.94-36-40-36m104 56A104 104 0 1 1 128 24a104.11 104.11 0 0 1 104 104m-16 0a88 88 0 1 0-88 88a88.1 88.1 0 0 0 88-88"/></g></svg></span>FAQ</a>
@@ -869,15 +849,10 @@ body{padding-top:0}
         </div>
       </div>
 
-      <div class="macc">
-        <span class="macc__btn" aria-disabled="true">Pricing
-          <svg class="macc__arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17L17 7M9 7h8v8"/></svg>
-        </span>
-      </div>
       </div>
 
       <div class="mobile-panel__foot">
-        <a href="#" onclick="openModal('early-access');return false;" class="btn btn--primary">Request Access
+        <a href="#" onclick="openModal('early-access');return false;" class="btn">Build with us
           <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17L17 7M9 7h8v8"/></svg>
         </a>
       </div>
@@ -1056,19 +1031,13 @@ body{padding-top:0}
 <!-- CTA Banner -->
 <!-- CTA Banner (full-width, fan gradient, no watermarks) -->
 <!-- CTA Banner (site-wide) -->
-<section class="cta" id="cta">
+<section class="vision" id="cta">
   <div class="container">
-    <div class="cta__card">
-      <div class="cta__dots" aria-hidden="true"></div>
-      <div class="tex" aria-hidden="true"></div>
-      <div class="cta__inner">
-    <span class="eyebrow eyebrow--gold">Sales platform for safari operators</span>
-    <h2 class="cta__title">Grow your safari business with tools built for the complexity of safari sales.</h2>
-    <div class="cta__btns">
-      <a href="#" onclick="openModal('early-access');return false;" class="btn btn--orange">Request Access</a>
+    <span class="eyebrow">The future of safari sales is personal</span>
+    <h2 class="vision__title">Grow your safari business without making the sales experience less personal.</h2>
+    <div class="vision__btns">
+      <a href="#" onclick="openModal('early-access');return false;" class="btn btn--orange">Build with us</a>
       <a href="#" onclick="openModal('consultation');return false;" class="btn btn--ghost">Let's Chat</a>
-    </div>
-  </div>
     </div>
   </div>
 </section>
@@ -1166,23 +1135,21 @@ body{padding-top:0}
     <div class="footer__cols">
       <div>
         <span class="footer__ch">Platform</span>
-        <a class="footer__cl" href="../index.html#tour">Demand discovery</a>
-        <a class="footer__cl" href="../index.html#tour">Social mentions</a>
-        <a class="footer__cl" href="../index.html#tour">Sales agent</a>
-        <a class="footer__cl" href="../index.html#tour">Workspace</a>
-        <a class="footer__cl" href="../index.html#tour">Safari AI</a>
+        <a class="footer__cl" href="../index.html#platform">Social Demand</a>
+        <a class="footer__cl" href="../index.html#platform">Sales Agent</a>
+        <a class="footer__cl" href="../index.html#platform">Sales Workspace</a>
+        <a class="footer__cl" href="../index.html#platform">Safari AI</a>
       </div>
 
       <div>
         <span class="footer__ch">Why Wandar</span>
-        <a class="footer__cl" href="../index.html#platform">One sales platform</a>
-        <a class="footer__cl" href="../index.html#grow">Grow your safari business</a>
-        <a class="footer__cl" href="../index.html#who">Built for safari operators</a>
+        <a class="footer__cl" href="../index.html#platform">Platform overview</a>
+        <a class="footer__cl" href="../index.html#philosophy">Our philosophy</a>
+        <a class="footer__cl" href="../index.html#who">Who it's for</a>
       </div>
 
       <div>
         <span class="footer__ch">For operators</span>
-        <a class="footer__cl" aria-disabled="true">Pricing</a>
         <a class="footer__cl" href="../blog/index.html">Blog</a>
         <a class="footer__cl" href="index.html">Guides</a>
         <a class="footer__cl" aria-disabled="true">Webinars</a>
