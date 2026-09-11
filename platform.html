@@ -4,8 +4,8 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <meta name="google-site-verification" content="eQBLKY94TAoACzCX7eFObjz5wTaGWC5sbwJFFnVdY2E" />
-<title>Wandar | Sales Platform for African Safari Operators</title>
-<meta name="description" content="Wandar is the sales platform for African safari operators: surface active safari-planning demand, track social mentions and engage website and WhatsApp enquiries 24/7." />
+<title>Platform | Wandar</title>
+<meta name="description" content="Wandar brings safari demand, traveler conversations, sales context and business knowledge together in one platform built around how modern safari operators sell." />
 <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
 <meta name="author" content="Wandar" />
 <meta name="theme-color" content="#1a7373" />
@@ -2134,6 +2134,203 @@ h1,h2,h3,h4{color:var(--text-primary);line-height:1.15;font-weight:700;letter-sp
 .product-card:hover .icon-badge{transform:scale(1.06)}
 @media(max-width:760px){.value-top{margin-bottom:20px}.product-top{gap:12px}.product-label{gap:11px}}
 
+
+/* ═══════════════ PLATFORM FEATURES PAGE ═══════════════ */
+.pf-hero{background:var(--deep);color:#fff;padding:162px 0 90px}
+.pf-hero h1{color:#fff}
+.pf-hero .eyebrow{color:#dfd6c7;font-size:.78rem}
+.pf-hero .detail-art{background:transparent;border-radius:20px;padding:0;overflow:hidden;margin-left:auto;max-width:400px}
+
+.fsec{--c:var(--safari-primary);--c-stage:var(--safari-primary);--sec-bg:#fff;padding:100px 0}
+.fsec--orange{--c:var(--safari-secondary);--c-stage:var(--safari-secondary)}
+.fsec--green{--c:var(--safari-nature);--c-stage:#3d6b1e}
+.fsec--gold{--c:var(--safari-gold);--c-stage:var(--safari-gold)}
+.fsec--tint{background:#f1f5f2;--sec-bg:#f1f5f2}
+
+.frow{display:grid;grid-template-columns:1fr 1.05fr;gap:56px;align-items:center}
+.frow--flip .fart{order:-1}
+.fcopy .product-label{margin-bottom:24px;font-size:1.05rem;font-weight:700;color:var(--teal)}
+.fcopy .flede{margin-top:22px;max-width:52ch;line-height:1.75}
+
+.fart{position:relative;isolation:isolate;overflow:hidden;background:var(--c-stage);border-radius:22px;padding:clamp(20px,2.6vw,32px);display:flex;min-width:0;height:540px}
+.fart .tex{border-radius:inherit}
+.fart .pm{position:relative;z-index:1;min-height:0;overflow:hidden}
+
+.block-label{margin-top:58px;margin-bottom:20px}
+
+/* How it supports the sale — one panel, hairline dividers */
+.supports{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:1px;background:var(--line);border:1px solid var(--line);border-radius:20px;overflow:hidden}
+.supports article{background:var(--sec-bg);padding:clamp(20px,2.4vw,32px);display:flex;gap:14px;align-items:flex-start}
+.supports svg{width:22px;height:22px;flex:none;margin-top:2px;stroke:var(--ink)}
+.supports article>div{display:flex;flex-direction:column;gap:8px;min-width:0}
+.supports h3{font-size:19px;font-weight:700;line-height:1.3;letter-spacing:-.02em;color:var(--ink)}
+.supports p{font-size:15px;line-height:1.6;color:var(--muted)}
+
+/* How it works — four steps on a rule */
+.steps{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:clamp(16px,2vw,28px)}
+.steps article{display:flex;flex-direction:column;gap:10px;border-top:2px solid #cdd7cf;padding-top:16px}
+.steps article:first-child{border-top-color:var(--c)}
+.step-num{font-size:15px;font-weight:800;letter-spacing:-.02em;color:var(--c)}
+.steps h3{font-size:17px;font-weight:700;line-height:1.3;letter-spacing:-.02em;color:var(--ink)}
+.steps p{font-size:15px;line-height:1.6;color:var(--muted)}
+
+.pf-close{background:var(--cream);padding:100px 0}
+.pf-close .vision{border-top:0;padding:0 35px}
+
+/* ── product mocks ─────────────────────────────────────
+   Abstract by design: grey skeleton bars carry most of the
+   text, only the labels that make the point are real. */
+.pm{flex:1;min-width:0;display:flex;flex-direction:column;font-size:13px;line-height:1.45;color:var(--ink)}
+.pm i{font-style:normal}
+.pm-b{display:block;height:7px;border-radius:4px;background:#dbe3dd}
+.pm-b--d{background:#c3cec7;height:8px}
+.pm--split{display:grid;grid-template-columns:minmax(0,.42fr) minmax(0,1fr);background:#fff;border-radius:16px;box-shadow:0 2px 6px rgba(17,24,22,.05),0 16px 36px rgba(17,24,22,.08);overflow:hidden}
+
+/* sidebar */
+.pm-side{background:#f7faf8;border-right:1px solid var(--line);padding:16px 14px;display:flex;flex-direction:column;gap:16px;min-width:0;min-height:0;overflow:hidden}
+.pm-side-h{display:flex;align-items:center;gap:8px}
+.pm-side-t{font-size:13px;font-weight:700;color:var(--ink);white-space:nowrap}
+.pm-side-n{font-size:12px;color:#7a8a80}
+.pm-nav{display:flex;flex-direction:column;gap:10px}
+.pm-nav>span{display:flex;align-items:center;gap:9px;font-size:12.5px;color:var(--muted);min-width:0}
+.pm-nav>span.is-on{font-weight:600;color:var(--ink)}
+.pm-nav svg{width:14px;height:14px;flex-shrink:0}
+.pm-grp{display:flex;flex-direction:column;gap:10px}
+.pm-label{font-size:10px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#7a8a80}
+.pm-bars{display:flex;flex-direction:column;gap:11px;padding:0 2px}
+.pm-recent{background:#fff;border:1px solid var(--line);border-radius:8px;padding:8px 10px}
+
+/* main pane */
+.pm-main{padding:20px;display:flex;flex-direction:column;gap:16px;min-width:0;min-height:0;overflow:hidden}
+.pm-head{display:flex;align-items:flex-start;justify-content:space-between;gap:12px;flex:none}
+.pm-head--end{justify-content:flex-end}
+.pm-headl{display:flex;flex-direction:column;gap:6px;min-width:0}
+.pm-title{font-size:20px;font-weight:700;letter-spacing:-.03em;color:var(--ink);white-space:nowrap;line-height:1.1}
+.pm-sub{font-size:12.5px;color:#7a8a80}
+.pm-pill{font-size:11px;font-weight:700;padding:5px 11px;border-radius:999px;flex:none;white-space:nowrap}
+.pm-pill--teal{background:#edf4f1;color:var(--teal)}
+.pm-pill--clay{background:#fdf1e7;color:var(--orange)}
+
+/* signal rows */
+.pm-sig{display:flex;flex-direction:column;gap:2px}
+.pm-sigrow{display:flex;flex-direction:column;gap:7px;padding:11px 12px;border-radius:10px}
+.pm-sigrow.is-top{background:#edf4f1}
+.pm-sigtop{display:flex;justify-content:space-between;align-items:center;gap:10px}
+.pm-sigtop b{font-size:13.5px;font-weight:600;color:var(--ink)}
+.pm-sigrow.is-top .pm-sigtop b{font-weight:700}
+.pm-sigtop i{font-size:12.5px;color:#7a8a80}
+.pm-track{height:5px;border-radius:3px;background:#e4eae6}
+.pm-track span{display:block;height:5px;border-radius:3px;background:var(--teal)}
+
+/* evidence */
+.pm-ev{margin-top:auto;border-top:1px solid var(--line);padding-top:14px;display:flex;flex-direction:column;gap:10px}
+.pm-evhead{display:flex;align-items:center;justify-content:space-between;gap:10px}
+.pm-evn{font-size:12px;font-weight:600;color:var(--teal)}
+.pm-evrow{display:flex;gap:10px;align-items:flex-start;padding:10px 12px;border:1px solid var(--line);border-radius:12px}
+.pm-evrow.is-dim{opacity:.55}
+.pm-evbody{display:flex;flex-direction:column;gap:6px;flex:1;min-width:0}
+.pm-evtags{display:flex;align-items:center;gap:6px;flex-wrap:wrap}
+.pm-tag{font-size:11.5px;font-weight:600;padding:3px 8px;border-radius:6px;background:#edf4f1;color:var(--teal)}
+.pm-av{width:22px;height:22px;border-radius:999px;background:#dbe3dd;flex:none}
+.pm-av--lg{width:28px;height:28px}
+
+/* chat (Sales Agent) */
+.pm--chat{gap:12px;justify-content:center}
+.pm-chead{display:flex;align-items:center;gap:8px;padding-bottom:4px}
+.pm-clabel{font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:rgba(255,255,255,.92)}
+.pm-cdot{width:6px;height:6px;border-radius:999px;background:#fff}
+.pm-clive{font-size:11px;color:rgba(255,255,255,.72)}
+.pm-bub{max-width:80%;padding:12px 14px;font-size:14px;line-height:1.5}
+.pm-bub--in{align-self:flex-start;background:#fff;color:var(--ink);border-radius:16px 16px 16px 4px;box-shadow:0 1px 3px rgba(17,24,22,.07)}
+.pm-bub--out{align-self:flex-end;max-width:82%;background:var(--primary-light);color:var(--ink);border-radius:16px 16px 4px 16px}
+.pm-bub--nar{max-width:70%}
+
+/* cards (Sales Agent brief, Workspace) */
+.pm--stack{gap:14px;justify-content:center}
+.pm-card{background:#fff;border-radius:16px;box-shadow:0 1px 3px rgba(17,24,22,.07);padding:18px;display:flex;flex-direction:column;gap:12px}
+.pm-card--lift{box-shadow:0 2px 6px rgba(17,24,22,.05),0 14px 30px rgba(17,24,22,.08);margin-top:6px}
+.pm-card--list{padding:0;gap:0;overflow:hidden}
+.pm-cardhead{display:flex;align-items:center;justify-content:space-between;gap:12px}
+.pm-cardhead--ruled{padding:14px 18px;border-bottom:1px solid var(--line)}
+.pm-cardlabel{font-size:13px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--ink)}
+.pm-fields{display:grid;grid-template-columns:repeat(auto-fit,minmax(120px,1fr));gap:12px}
+.pm-fields--3{grid-template-columns:repeat(auto-fit,minmax(110px,1fr))}
+.pm-fields>div{display:flex;flex-direction:column;gap:3px;min-width:0}
+.pm-k{font-size:11px;color:#7a8a80}
+.pm-v{font-size:14px;font-weight:600;color:var(--ink)}
+.pm-v.is-empty{color:#a3b0a8}
+.pm-hand{display:flex;align-items:center;gap:8px;padding-top:10px;border-top:1px solid var(--line)}
+.pm-hand i{width:22px;height:22px;border-radius:999px;background:#2d5016;flex:none}
+.pm-hand span{font-size:13px;color:var(--muted)}
+
+/* opportunity rows */
+.pm-opp{display:flex;align-items:center;gap:12px;padding:14px 18px;border-bottom:1px solid var(--line)}
+.pm-opp:last-child{border-bottom:0}
+.pm-opplines{display:flex;flex-direction:column;gap:5px;flex:1;min-width:0}
+.pm-opplines .pm-b{max-width:100%;background:#e7ece9}
+.pm-opplines .pm-b--d{background:#c3cec7}
+.pm-stat{font-size:11px;font-weight:700;padding:4px 10px;border-radius:999px;flex:none;white-space:nowrap}
+.pm-stat--clay{background:#fdf1e7;color:var(--orange)}
+.pm-stat--teal{background:#edf4f1;color:var(--teal)}
+.pm-stat--mute{background:#f1f3f1;color:#7a8a80}
+.pm-next{display:flex;align-items:center;gap:10px;padding:10px 12px;border-radius:12px;background:#fdf1e7}
+.pm-next i{width:7px;height:7px;border-radius:999px;background:var(--orange);flex:none}
+.pm-next span{font-size:13px;font-weight:600;color:var(--orange)}
+
+/* Safari AI answer */
+.pm-user{display:flex;align-items:center;gap:8px;min-width:0}
+.pm-ava{width:26px;height:26px;border-radius:999px;background:var(--teal);color:#fff;font-size:10px;font-weight:700;display:flex;align-items:center;justify-content:center;flex:none}
+.pm-userlines{display:flex;flex-direction:column;gap:4px;min-width:0}
+.pm-userlines .pm-b{height:6px;background:#e7ece9}
+.pm-userlines .pm-b--d{height:7px}
+.pm-q{align-self:flex-end;max-width:88%;background:var(--primary-light);color:var(--ink);border-radius:14px;padding:10px 14px;font-size:13.5px;line-height:1.45}
+.pm-ans{display:flex;flex-direction:column;gap:12px}
+.pm-anshead{display:flex;flex-direction:column;gap:8px}
+.pm-anst{font-size:14px;font-weight:700;color:var(--ink)}
+.pm-fig{display:flex;align-items:baseline;gap:10px;flex-wrap:wrap}
+.pm-fig>b{font-size:30px;font-weight:800;line-height:1;letter-spacing:-.04em;color:var(--ink)}
+.pm-fig>span{font-size:13px;color:var(--muted)}
+.pm-fig>span b{color:var(--ink)}
+.pm-groups{display:flex;flex-direction:column;gap:10px}
+.pm-gh{display:flex;align-items:center;gap:8px}
+.pm-gh span{font-size:13px;font-weight:700;color:var(--ink)}
+.pm-gd{width:9px;height:9px;border-radius:999px;flex:none}
+.pm-gd--green{background:#2d5016}
+.pm-gd--amber{background:#d97706}
+.pm-gitems{display:flex;flex-direction:column;gap:8px;padding-left:17px}
+.pm-gitems--plain{gap:5px}
+.pm-gitem{display:flex;gap:8px;align-items:flex-start}
+.pm-gitem>span{font-size:12px;font-weight:700;color:#7a8a80;flex:none}
+.pm-gitem>div{display:flex;flex-direction:column;gap:5px;flex:1;min-width:0}
+.pm-comp{margin-top:auto;display:flex;align-items:center;justify-content:space-between;gap:12px;border:1px solid #c8d2cc;border-radius:999px;padding:8px 8px 8px 16px}
+.pm-comp>span{font-size:13px;color:#a3b0a8}
+.pm-send{width:30px;height:30px;border-radius:999px;background:var(--teal);display:flex;align-items:center;justify-content:center;flex:none}
+.pm-send svg{width:15px;height:15px}
+
+@media(max-width:1080px){
+  .frow{gap:38px}
+  .fart{height:480px}
+  .steps{gap:20px}
+}
+@media(max-width:900px){
+  .frow{grid-template-columns:1fr;gap:34px}
+  .frow--flip .fart{order:0}
+  .fart{height:auto}
+}
+@media(max-width:620px){
+  .pm--split{grid-template-columns:1fr}
+  .pm-side{border-right:0;border-bottom:1px solid var(--line)}
+  .pm-side .pm-bars,.pm-recent{display:none}
+}
+@media(max-width:760px){
+  .pf-hero{padding:132px 0 70px}
+  .pf-hero .detail-art{margin:0 auto}
+  .fsec{padding:65px 0}
+  .block-label{margin-top:50px}
+  .steps{grid-template-columns:1fr 1fr;gap:26px}
+  .pf-close{padding:65px 0}
+  .pm-main{padding:16px}
+}
 </style>
 </head>
 <body>
@@ -2163,22 +2360,22 @@ h1,h2,h3,h4{color:var(--text-primary);line-height:1.15;font-weight:700;letter-sp
               <div class="mega__col">
                 <span class="mega__label">The Platform</span>
 
-                <a class="mega__item" href="#platform" role="menuitem">
+                <a class="mega__item" href="#social-demand" role="menuitem">
                   <span class="mega__ic"><svg aria-hidden="true" width="24" height="24" viewBox="0 0 256 256"><g fill="currentColor"><path d="M192 112a80 80 0 1 1-80-80a80 80 0 0 1 80 80" opacity=".2"/><path d="m229.66 218.34l-50.06-50.06a88.21 88.21 0 1 0-11.32 11.31l50.06 50.07a8 8 0 0 0 11.32-11.32M40 112a72 72 0 1 1 72 72a72.08 72.08 0 0 1-72-72"/></g></svg></span>
                   <span><span class="mega__t">Social Demand</span><span class="mega__d">See the questions, comparisons and concerns shaping safari decisions online.</span></span>
                 </a>
 
-                <a class="mega__item" href="#platform" role="menuitem">
+                <a class="mega__item" href="#sales-agent" role="menuitem">
                   <span class="mega__ic"><svg aria-hidden="true" width="24" height="24" viewBox="0 0 256 256"><g fill="currentColor"><path d="M200 56H56a24 24 0 0 0-24 24v112a24 24 0 0 0 24 24h144a24 24 0 0 0 24-24V80a24 24 0 0 0-24-24m-36 128H92a20 20 0 0 1 0-40h72a20 20 0 0 1 0 40" opacity=".2"/><path d="M200 48h-64V16a8 8 0 0 0-16 0v32H56a32 32 0 0 0-32 32v112a32 32 0 0 0 32 32h144a32 32 0 0 0 32-32V80a32 32 0 0 0-32-32m16 144a16 16 0 0 1-16 16H56a16 16 0 0 1-16-16V80a16 16 0 0 1 16-16h144a16 16 0 0 1 16 16ZM72 108a12 12 0 1 1 12 12a12 12 0 0 1-12-12m88 0a12 12 0 1 1 12 12a12 12 0 0 1-12-12m4 28H92a28 28 0 0 0 0 56h72a28 28 0 0 0 0-56m-24 16v24h-24v-24Zm-60 12a12 12 0 0 1 12-12h8v24h-8a12 12 0 0 1-12-12m84 12h-8v-24h8a12 12 0 0 1 0 24"/></g></svg></span>
                   <span><span class="mega__t">Sales Agent</span><span class="mega__d">Handle the repetitive early-stage conversation and build traveler context.</span></span>
                 </a>
 
-                <a class="mega__item" href="#platform" role="menuitem">
+                <a class="mega__item" href="#sales-workspace" role="menuitem">
                   <span class="mega__ic"><svg aria-hidden="true" width="24" height="24" viewBox="0 0 256 256"><g fill="currentColor"><path d="M216 56v64h-56V56ZM40 208a8 8 0 0 0 8 8h40a8 8 0 0 0 8-8v-88H40Z" opacity=".2"/><path d="M216 48H40a8 8 0 0 0-8 8v152a16 16 0 0 0 16 16h40a16 16 0 0 0 16-16v-48h48v16a16 16 0 0 0 16 16h40a16 16 0 0 0 16-16V56a8 8 0 0 0-8-8m-8 64h-40V64h40ZM88 64v48H48V64Zm0 144H48v-80h40Zm16-64V64h48v80Zm64 32v-48h40v48Z"/></g></svg></span>
                   <span><span class="mega__t">Sales Workspace</span><span class="mega__d">See what is happening, what matters and what needs your attention next.</span></span>
                 </a>
 
-                <a class="mega__item" href="#platform" role="menuitem">
+                <a class="mega__item" href="#safari-ai" role="menuitem">
                   <span class="mega__ic"><svg aria-hidden="true" width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M 12 10.1 C 11.48 7.25 10.81 4.12 10.53 2.31 C 10.39 1.31 13 1.12 13.43 2.12 C 13.19 4.02 12.48 7.25 12 10.1 Z M 13.34 10.66 C 14.99 8.27 16.74 5.58 17.81 4.11 C 18.42 3.3 20.4 5.01 19.99 6.02 C 18.48 7.2 15.69 8.98 13.34 10.66 Z M 13.9 12 C 16.75 11.48 19.89 10.81 21.69 10.53 C 22.69 10.39 22.88 13 21.88 13.43 C 19.98 13.19 16.75 12.48 13.9 12 Z M 13.34 13.34 C 15.73 14.99 18.42 16.74 19.89 17.81 C 20.7 18.42 18.99 20.4 17.98 19.99 C 16.8 18.48 15.02 15.69 13.34 13.34 Z M 12 13.9 C 12.52 16.75 13.19 19.89 13.47 21.69 C 13.62 22.69 11 22.88 10.58 21.88 C 10.81 19.98 11.53 16.75 12 13.9 Z M 10.66 13.34 C 9.01 15.73 7.26 18.42 6.19 19.89 C 5.58 20.7 3.6 18.99 4.01 17.98 C 5.52 16.8 8.31 15.02 10.66 13.34 Z M 10.1 12 C 7.25 12.52 4.12 13.19 2.31 13.47 C 1.31 13.62 1.12 11 2.12 10.58 C 4.02 10.81 7.25 11.53 10.1 12 Z M 10.66 10.66 C 8.27 9.01 5.58 7.26 4.11 6.19 C 3.3 5.58 5.01 3.6 6.02 4.01 C 7.2 5.52 8.98 8.31 10.66 10.66 Z"/></svg></span>
                   <span><span class="mega__t">Safari AI</span><span class="mega__d">Get direct answers from your conversations, sales data and business knowledge.</span></span>
                 </a>
@@ -2187,17 +2384,17 @@ h1,h2,h3,h4{color:var(--text-primary);line-height:1.15;font-weight:700;letter-sp
               <div class="mega__col">
                 <span class="mega__label">Why Wandar</span>
 
-                <a class="mega__item" href="#value" role="menuitem">
+                <a class="mega__item" href="index.html#value" role="menuitem">
                   <span class="mega__ic"><svg aria-hidden="true" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="8.5"/><path d="M12 8v4.2l3 2"/></svg></span>
                   <span><span class="mega__t">Less busywork</span><span class="mega__d">Reduce repetitive work around enquiries and follow-ups.</span></span>
                 </a>
 
-                <a class="mega__item" href="#value" role="menuitem">
+                <a class="mega__item" href="index.html#value" role="menuitem">
                   <span class="mega__ic"><svg aria-hidden="true" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 8.5V6.5A2 2 0 0 1 6 4.5h2"/><path d="M20 8.5V6.5a2 2 0 0 0-2-2h-2"/><path d="M4 15.5v2a2 2 0 0 0 2 2h2"/><path d="M20 15.5v2a2 2 0 0 1-2 2h-2"/><circle cx="12" cy="10.3" r="2" fill="currentColor" stroke="none"/><path d="M8.2 17.2c.7-2.3 2.1-3.3 3.8-3.3s3.1 1 3.8 3.3"/></svg></span>
                   <span><span class="mega__t">Better traveler context</span><span class="mega__d">Keep what the traveler wants and what's already happened.</span></span>
                 </a>
 
-                <a class="mega__item" href="#value" role="menuitem">
+                <a class="mega__item" href="index.html#value" role="menuitem">
                   <span class="mega__ic"><svg aria-hidden="true" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 6.8c-1.4-1.1-3.3-1.6-5.2-1.6A1.8 1.8 0 0 0 5 7v9.6a1.8 1.8 0 0 0 1.8 1.8c1.9 0 3.8.5 5.2 1.6"/><path d="M12 6.8c1.4-1.1 3.3-1.6 5.2-1.6A1.8 1.8 0 0 1 19 7v9.6a1.8 1.8 0 0 1-1.8 1.8c-1.9 0-3.8.5-5.2 1.6V6.8Z"/></svg></span>
                   <span><span class="mega__t">Easier access to expertise</span><span class="mega__d">Make your safari knowledge easier to use when it matters.</span></span>
                 </a>
@@ -2206,12 +2403,12 @@ h1,h2,h3,h4{color:var(--text-primary);line-height:1.15;font-weight:700;letter-sp
               <div class="mega__col">
                 <span class="mega__label">Built for safari operators</span>
 
-                <a class="mega__item" href="#who" role="menuitem">
+                <a class="mega__item" href="index.html#who" role="menuitem">
                   <span class="mega__ic"><svg aria-hidden="true" width="24" height="24" viewBox="0 0 256 256"><g fill="currentColor"><path d="M192 96a64 64 0 1 1-64-64a64 64 0 0 1 64 64" opacity=".2"/><path d="M230.92 212c-15.23-26.33-38.7-45.21-66.09-54.16a72 72 0 1 0-73.66 0c-27.39 8.94-50.86 27.82-66.09 54.16a8 8 0 1 0 13.85 8c18.84-32.56 52.14-52 89.07-52s70.23 19.44 89.07 52a8 8 0 1 0 13.85-8M72 96a56 56 0 1 1 56 56a56.06 56.06 0 0 1-56-56"/></g></svg></span>
                   <span><span class="mega__t">Owner-led operators</span><span class="mega__d">Stay close without handling every conversation yourself.</span></span>
                 </a>
 
-                <a class="mega__item" href="#who" role="menuitem">
+                <a class="mega__item" href="index.html#who" role="menuitem">
                   <span class="mega__ic"><svg aria-hidden="true" width="24" height="24" viewBox="0 0 256 256"><g fill="currentColor"><path d="M136 192H8L72 48Z" opacity=".2"/><path d="m255.31 188.75l-64-144A8 8 0 0 0 184 40H72a8 8 0 0 0-7.27 4.69a.2.2 0 0 0 0 .06v.12L.69 188.75A8 8 0 0 0 8 200h240a8 8 0 0 0 7.31-11.25M64 184H20.31L64 85.7Zm16 0V85.7l43.69 98.3Zm61.2 0L84.31 56h94.49l56.89 128Z"/></g></svg></span>
                   <span><span class="mega__t">Boutique safari operators</span><span class="mega__d">Keep every enquiry personal as you grow.</span></span>
                 </a>
@@ -2252,7 +2449,7 @@ h1,h2,h3,h4{color:var(--text-primary);line-height:1.15;font-weight:700;letter-sp
 
               <div class="mega__col">
                 <span class="mega__label">Support</span>
-                <a class="mega__item" href="#faq" role="menuitem">
+                <a class="mega__item" href="index.html#faq" role="menuitem">
                   <span class="mega__ic"><svg aria-hidden="true" width="24" height="24" viewBox="0 0 256 256"><g fill="currentColor"><path d="M224 128a96 96 0 1 1-96-96a96 96 0 0 1 96 96" opacity=".2"/><path d="M140 180a12 12 0 1 1-12-12a12 12 0 0 1 12 12M128 72c-22.06 0-40 16.15-40 36v4a8 8 0 0 0 16 0v-4c0-11 10.77-20 24-20s24 9 24 20s-10.77 20-24 20a8 8 0 0 0-8 8v8a8 8 0 0 0 16 0v-.72c18.24-3.35 32-17.9 32-35.28c0-19.85-17.94-36-40-36m104 56A104 104 0 1 1 128 24a104.11 104.11 0 0 1 104 104m-16 0a88 88 0 1 0-88 88a88.1 88.1 0 0 0 88-88"/></g></svg></span>
                   <span><span class="mega__t">FAQ</span><span class="mega__d">Answers to the questions operators ask most.</span></span>
                 </a>
@@ -2290,19 +2487,19 @@ h1,h2,h3,h4{color:var(--text-primary);line-height:1.15;font-weight:700;letter-sp
         </button>
         <div class="macc__panel">
           <span class="macc__label">The Platform</span>
-          <a class="macc__link" href="#platform"><span class="mega__ic"><svg aria-hidden="true" width="24" height="24" viewBox="0 0 256 256"><g fill="currentColor"><path d="M192 112a80 80 0 1 1-80-80a80 80 0 0 1 80 80" opacity=".2"/><path d="m229.66 218.34l-50.06-50.06a88.21 88.21 0 1 0-11.32 11.31l50.06 50.07a8 8 0 0 0 11.32-11.32M40 112a72 72 0 1 1 72 72a72.08 72.08 0 0 1-72-72"/></g></svg></span>Social Demand</a>
-          <a class="macc__link" href="#platform"><span class="mega__ic"><svg aria-hidden="true" width="24" height="24" viewBox="0 0 256 256"><g fill="currentColor"><path d="M200 56H56a24 24 0 0 0-24 24v112a24 24 0 0 0 24 24h144a24 24 0 0 0 24-24V80a24 24 0 0 0-24-24m-36 128H92a20 20 0 0 1 0-40h72a20 20 0 0 1 0 40" opacity=".2"/><path d="M200 48h-64V16a8 8 0 0 0-16 0v32H56a32 32 0 0 0-32 32v112a32 32 0 0 0 32 32h144a32 32 0 0 0 32-32V80a32 32 0 0 0-32-32m16 144a16 16 0 0 1-16 16H56a16 16 0 0 1-16-16V80a16 16 0 0 1 16-16h144a16 16 0 0 1 16 16ZM72 108a12 12 0 1 1 12 12a12 12 0 0 1-12-12m88 0a12 12 0 1 1 12 12a12 12 0 0 1-12-12m4 28H92a28 28 0 0 0 0 56h72a28 28 0 0 0 0-56m-24 16v24h-24v-24Zm-60 12a12 12 0 0 1 12-12h8v24h-8a12 12 0 0 1-12-12m84 12h-8v-24h8a12 12 0 0 1 0 24"/></g></svg></span>Sales Agent</a>
-          <a class="macc__link" href="#platform"><span class="mega__ic"><svg aria-hidden="true" width="24" height="24" viewBox="0 0 256 256"><g fill="currentColor"><path d="M216 56v64h-56V56ZM40 208a8 8 0 0 0 8 8h40a8 8 0 0 0 8-8v-88H40Z" opacity=".2"/><path d="M216 48H40a8 8 0 0 0-8 8v152a16 16 0 0 0 16 16h40a16 16 0 0 0 16-16v-48h48v16a16 16 0 0 0 16 16h40a16 16 0 0 0 16-16V56a8 8 0 0 0-8-8m-8 64h-40V64h40ZM88 64v48H48V64Zm0 144H48v-80h40Zm16-64V64h48v80Zm64 32v-48h40v48Z"/></g></svg></span>Sales Workspace</a>
-          <a class="macc__link" href="#platform"><span class="mega__ic"><svg aria-hidden="true" width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M 12 10.1 C 11.48 7.25 10.81 4.12 10.53 2.31 C 10.39 1.31 13 1.12 13.43 2.12 C 13.19 4.02 12.48 7.25 12 10.1 Z M 13.34 10.66 C 14.99 8.27 16.74 5.58 17.81 4.11 C 18.42 3.3 20.4 5.01 19.99 6.02 C 18.48 7.2 15.69 8.98 13.34 10.66 Z M 13.9 12 C 16.75 11.48 19.89 10.81 21.69 10.53 C 22.69 10.39 22.88 13 21.88 13.43 C 19.98 13.19 16.75 12.48 13.9 12 Z M 13.34 13.34 C 15.73 14.99 18.42 16.74 19.89 17.81 C 20.7 18.42 18.99 20.4 17.98 19.99 C 16.8 18.48 15.02 15.69 13.34 13.34 Z M 12 13.9 C 12.52 16.75 13.19 19.89 13.47 21.69 C 13.62 22.69 11 22.88 10.58 21.88 C 10.81 19.98 11.53 16.75 12 13.9 Z M 10.66 13.34 C 9.01 15.73 7.26 18.42 6.19 19.89 C 5.58 20.7 3.6 18.99 4.01 17.98 C 5.52 16.8 8.31 15.02 10.66 13.34 Z M 10.1 12 C 7.25 12.52 4.12 13.19 2.31 13.47 C 1.31 13.62 1.12 11 2.12 10.58 C 4.02 10.81 7.25 11.53 10.1 12 Z M 10.66 10.66 C 8.27 9.01 5.58 7.26 4.11 6.19 C 3.3 5.58 5.01 3.6 6.02 4.01 C 7.2 5.52 8.98 8.31 10.66 10.66 Z"/></svg></span>Safari AI</a>
+          <a class="macc__link" href="#social-demand"><span class="mega__ic"><svg aria-hidden="true" width="24" height="24" viewBox="0 0 256 256"><g fill="currentColor"><path d="M192 112a80 80 0 1 1-80-80a80 80 0 0 1 80 80" opacity=".2"/><path d="m229.66 218.34l-50.06-50.06a88.21 88.21 0 1 0-11.32 11.31l50.06 50.07a8 8 0 0 0 11.32-11.32M40 112a72 72 0 1 1 72 72a72.08 72.08 0 0 1-72-72"/></g></svg></span>Social Demand</a>
+          <a class="macc__link" href="#sales-agent"><span class="mega__ic"><svg aria-hidden="true" width="24" height="24" viewBox="0 0 256 256"><g fill="currentColor"><path d="M200 56H56a24 24 0 0 0-24 24v112a24 24 0 0 0 24 24h144a24 24 0 0 0 24-24V80a24 24 0 0 0-24-24m-36 128H92a20 20 0 0 1 0-40h72a20 20 0 0 1 0 40" opacity=".2"/><path d="M200 48h-64V16a8 8 0 0 0-16 0v32H56a32 32 0 0 0-32 32v112a32 32 0 0 0 32 32h144a32 32 0 0 0 32-32V80a32 32 0 0 0-32-32m16 144a16 16 0 0 1-16 16H56a16 16 0 0 1-16-16V80a16 16 0 0 1 16-16h144a16 16 0 0 1 16 16ZM72 108a12 12 0 1 1 12 12a12 12 0 0 1-12-12m88 0a12 12 0 1 1 12 12a12 12 0 0 1-12-12m4 28H92a28 28 0 0 0 0 56h72a28 28 0 0 0 0-56m-24 16v24h-24v-24Zm-60 12a12 12 0 0 1 12-12h8v24h-8a12 12 0 0 1-12-12m84 12h-8v-24h8a12 12 0 0 1 0 24"/></g></svg></span>Sales Agent</a>
+          <a class="macc__link" href="#sales-workspace"><span class="mega__ic"><svg aria-hidden="true" width="24" height="24" viewBox="0 0 256 256"><g fill="currentColor"><path d="M216 56v64h-56V56ZM40 208a8 8 0 0 0 8 8h40a8 8 0 0 0 8-8v-88H40Z" opacity=".2"/><path d="M216 48H40a8 8 0 0 0-8 8v152a16 16 0 0 0 16 16h40a16 16 0 0 0 16-16v-48h48v16a16 16 0 0 0 16 16h40a16 16 0 0 0 16-16V56a8 8 0 0 0-8-8m-8 64h-40V64h40ZM88 64v48H48V64Zm0 144H48v-80h40Zm16-64V64h48v80Zm64 32v-48h40v48Z"/></g></svg></span>Sales Workspace</a>
+          <a class="macc__link" href="#safari-ai"><span class="mega__ic"><svg aria-hidden="true" width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M 12 10.1 C 11.48 7.25 10.81 4.12 10.53 2.31 C 10.39 1.31 13 1.12 13.43 2.12 C 13.19 4.02 12.48 7.25 12 10.1 Z M 13.34 10.66 C 14.99 8.27 16.74 5.58 17.81 4.11 C 18.42 3.3 20.4 5.01 19.99 6.02 C 18.48 7.2 15.69 8.98 13.34 10.66 Z M 13.9 12 C 16.75 11.48 19.89 10.81 21.69 10.53 C 22.69 10.39 22.88 13 21.88 13.43 C 19.98 13.19 16.75 12.48 13.9 12 Z M 13.34 13.34 C 15.73 14.99 18.42 16.74 19.89 17.81 C 20.7 18.42 18.99 20.4 17.98 19.99 C 16.8 18.48 15.02 15.69 13.34 13.34 Z M 12 13.9 C 12.52 16.75 13.19 19.89 13.47 21.69 C 13.62 22.69 11 22.88 10.58 21.88 C 10.81 19.98 11.53 16.75 12 13.9 Z M 10.66 13.34 C 9.01 15.73 7.26 18.42 6.19 19.89 C 5.58 20.7 3.6 18.99 4.01 17.98 C 5.52 16.8 8.31 15.02 10.66 13.34 Z M 10.1 12 C 7.25 12.52 4.12 13.19 2.31 13.47 C 1.31 13.62 1.12 11 2.12 10.58 C 4.02 10.81 7.25 11.53 10.1 12 Z M 10.66 10.66 C 8.27 9.01 5.58 7.26 4.11 6.19 C 3.3 5.58 5.01 3.6 6.02 4.01 C 7.2 5.52 8.98 8.31 10.66 10.66 Z"/></svg></span>Safari AI</a>
 
           <span class="macc__label">Why Wandar</span>
-          <a class="macc__link" href="#value"><span class="mega__ic"><svg aria-hidden="true" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="8.5"/><path d="M12 8v4.2l3 2"/></svg></span>Less busywork</a>
-          <a class="macc__link" href="#value"><span class="mega__ic"><svg aria-hidden="true" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 8.5V6.5A2 2 0 0 1 6 4.5h2"/><path d="M20 8.5V6.5a2 2 0 0 0-2-2h-2"/><path d="M4 15.5v2a2 2 0 0 0 2 2h2"/><path d="M20 15.5v2a2 2 0 0 1-2 2h-2"/><circle cx="12" cy="10.3" r="2" fill="currentColor" stroke="none"/><path d="M8.2 17.2c.7-2.3 2.1-3.3 3.8-3.3s3.1 1 3.8 3.3"/></svg></span>Better traveler context</a>
-          <a class="macc__link" href="#value"><span class="mega__ic"><svg aria-hidden="true" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 6.8c-1.4-1.1-3.3-1.6-5.2-1.6A1.8 1.8 0 0 0 5 7v9.6a1.8 1.8 0 0 0 1.8 1.8c1.9 0 3.8.5 5.2 1.6"/><path d="M12 6.8c1.4-1.1 3.3-1.6 5.2-1.6A1.8 1.8 0 0 1 19 7v9.6a1.8 1.8 0 0 1-1.8 1.8c-1.9 0-3.8.5-5.2 1.6V6.8Z"/></svg></span>Easier access to expertise</a>
+          <a class="macc__link" href="index.html#value"><span class="mega__ic"><svg aria-hidden="true" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="8.5"/><path d="M12 8v4.2l3 2"/></svg></span>Less busywork</a>
+          <a class="macc__link" href="index.html#value"><span class="mega__ic"><svg aria-hidden="true" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 8.5V6.5A2 2 0 0 1 6 4.5h2"/><path d="M20 8.5V6.5a2 2 0 0 0-2-2h-2"/><path d="M4 15.5v2a2 2 0 0 0 2 2h2"/><path d="M20 15.5v2a2 2 0 0 1-2 2h-2"/><circle cx="12" cy="10.3" r="2" fill="currentColor" stroke="none"/><path d="M8.2 17.2c.7-2.3 2.1-3.3 3.8-3.3s3.1 1 3.8 3.3"/></svg></span>Better traveler context</a>
+          <a class="macc__link" href="index.html#value"><span class="mega__ic"><svg aria-hidden="true" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 6.8c-1.4-1.1-3.3-1.6-5.2-1.6A1.8 1.8 0 0 0 5 7v9.6a1.8 1.8 0 0 0 1.8 1.8c1.9 0 3.8.5 5.2 1.6"/><path d="M12 6.8c1.4-1.1 3.3-1.6 5.2-1.6A1.8 1.8 0 0 1 19 7v9.6a1.8 1.8 0 0 1-1.8 1.8c-1.9 0-3.8.5-5.2 1.6V6.8Z"/></svg></span>Easier access to expertise</a>
 
           <span class="macc__label">Built for safari operators</span>
-          <a class="macc__link" href="#who"><span class="mega__ic"><svg aria-hidden="true" width="24" height="24" viewBox="0 0 256 256"><g fill="currentColor"><path d="M192 96a64 64 0 1 1-64-64a64 64 0 0 1 64 64" opacity=".2"/><path d="M230.92 212c-15.23-26.33-38.7-45.21-66.09-54.16a72 72 0 1 0-73.66 0c-27.39 8.94-50.86 27.82-66.09 54.16a8 8 0 1 0 13.85 8c18.84-32.56 52.14-52 89.07-52s70.23 19.44 89.07 52a8 8 0 1 0 13.85-8M72 96a56 56 0 1 1 56 56a56.06 56.06 0 0 1-56-56"/></g></svg></span>Owner-led operators</a>
-          <a class="macc__link" href="#who"><span class="mega__ic"><svg aria-hidden="true" width="24" height="24" viewBox="0 0 256 256"><g fill="currentColor"><path d="M136 192H8L72 48Z" opacity=".2"/><path d="m255.31 188.75l-64-144A8 8 0 0 0 184 40H72a8 8 0 0 0-7.27 4.69a.2.2 0 0 0 0 .06v.12L.69 188.75A8 8 0 0 0 8 200h240a8 8 0 0 0 7.31-11.25M64 184H20.31L64 85.7Zm16 0V85.7l43.69 98.3Zm61.2 0L84.31 56h94.49l56.89 128Z"/></g></svg></span>Boutique safari operators</a>
+          <a class="macc__link" href="index.html#who"><span class="mega__ic"><svg aria-hidden="true" width="24" height="24" viewBox="0 0 256 256"><g fill="currentColor"><path d="M192 96a64 64 0 1 1-64-64a64 64 0 0 1 64 64" opacity=".2"/><path d="M230.92 212c-15.23-26.33-38.7-45.21-66.09-54.16a72 72 0 1 0-73.66 0c-27.39 8.94-50.86 27.82-66.09 54.16a8 8 0 1 0 13.85 8c18.84-32.56 52.14-52 89.07-52s70.23 19.44 89.07 52a8 8 0 1 0 13.85-8M72 96a56 56 0 1 1 56 56a56.06 56.06 0 0 1-56-56"/></g></svg></span>Owner-led operators</a>
+          <a class="macc__link" href="index.html#who"><span class="mega__ic"><svg aria-hidden="true" width="24" height="24" viewBox="0 0 256 256"><g fill="currentColor"><path d="M136 192H8L72 48Z" opacity=".2"/><path d="m255.31 188.75l-64-144A8 8 0 0 0 184 40H72a8 8 0 0 0-7.27 4.69a.2.2 0 0 0 0 .06v.12L.69 188.75A8 8 0 0 0 8 200h240a8 8 0 0 0 7.31-11.25M64 184H20.31L64 85.7Zm16 0V85.7l43.69 98.3Zm61.2 0L84.31 56h94.49l56.89 128Z"/></g></svg></span>Boutique safari operators</a>
         </div>
       </div>
 
@@ -2317,7 +2514,7 @@ h1,h2,h3,h4{color:var(--text-primary);line-height:1.15;font-weight:700;letter-sp
           <span class="macc__label">Free tools</span>
           <a class="macc__link" href="feed/app.html" target="_blank" rel="noopener"><span class="mega__ic"><svg aria-hidden="true" width="24" height="24" viewBox="0 0 256 256"><g fill="currentColor"><path d="m96 40l33.52 88H56Zm104 88h-70.48L160 208Z" opacity=".2"/><path d="M240 128a8 8 0 0 1-8 8h-27.06l-37.78 75.58A8 8 0 0 1 160 216h-.4a8 8 0 0 1-7.08-5.14L95.35 60.76l-32.07 70.55A8 8 0 0 1 56 136H24a8 8 0 0 1 0-16h26.85l37.87-83.31a8 8 0 0 1 14.76.46l57.51 151l31.85-63.71A8 8 0 0 1 200 120h32a8 8 0 0 1 8 8"/></g></svg></span>Live demand feed</a>
           <span class="macc__label">Support</span>
-          <a class="macc__link" href="#faq"><span class="mega__ic"><svg aria-hidden="true" width="24" height="24" viewBox="0 0 256 256"><g fill="currentColor"><path d="M224 128a96 96 0 1 1-96-96a96 96 0 0 1 96 96" opacity=".2"/><path d="M140 180a12 12 0 1 1-12-12a12 12 0 0 1 12 12M128 72c-22.06 0-40 16.15-40 36v4a8 8 0 0 0 16 0v-4c0-11 10.77-20 24-20s24 9 24 20s-10.77 20-24 20a8 8 0 0 0-8 8v8a8 8 0 0 0 16 0v-.72c18.24-3.35 32-17.9 32-35.28c0-19.85-17.94-36-40-36m104 56A104 104 0 1 1 128 24a104.11 104.11 0 0 1 104 104m-16 0a88 88 0 1 0-88 88a88.1 88.1 0 0 0 88-88"/></g></svg></span>FAQ</a>
+          <a class="macc__link" href="index.html#faq"><span class="mega__ic"><svg aria-hidden="true" width="24" height="24" viewBox="0 0 256 256"><g fill="currentColor"><path d="M224 128a96 96 0 1 1-96-96a96 96 0 0 1 96 96" opacity=".2"/><path d="M140 180a12 12 0 1 1-12-12a12 12 0 0 1 12 12M128 72c-22.06 0-40 16.15-40 36v4a8 8 0 0 0 16 0v-4c0-11 10.77-20 24-20s24 9 24 20s-10.77 20-24 20a8 8 0 0 0-8 8v8a8 8 0 0 0 16 0v-.72c18.24-3.35 32-17.9 32-35.28c0-19.85-17.94-36-40-36m104 56A104 104 0 1 1 128 24a104.11 104.11 0 0 1 104 104m-16 0a88 88 0 1 0-88 88a88.1 88.1 0 0 0 88-88"/></g></svg></span>FAQ</a>
           <a class="macc__link" href="#" onclick="openModal('contact');return false;"><span class="mega__ic"><svg aria-hidden="true" width="24" height="24" viewBox="0 0 256 256"><g fill="currentColor"><path d="m224 56l-96 88l-96-88Z" opacity=".2"/><path d="M224 48H32a8 8 0 0 0-8 8v136a16 16 0 0 0 16 16h176a16 16 0 0 0 16-16V56a8 8 0 0 0-8-8m-20.57 16L128 133.15L52.57 64ZM216 192H40V74.19l82.59 75.71a8 8 0 0 0 10.82 0L216 74.19z"/></g></svg></span>Contact us</a>
         </div>
       </div>
@@ -2335,12 +2532,426 @@ h1,h2,h3,h4{color:var(--text-primary);line-height:1.15;font-weight:700;letter-sp
 
 <div class="mobile-backdrop" id="mobile-backdrop" hidden></div>
 
-<main id="main"><section class="hero" id="hero"><img class="hero-image" src="assets/landing-hero.webp" width="1672" height="941" alt="Safari specialist speaking with a traveler on a video call" fetchpriority="high"><div class="hero-shade"></div><div class="container hero-content"><p class="eyebrow">Sales platform for safari operators</p><h1>Deep relationships with travelers <em>win safari bookings.</em></h1><p class="hero-intro">Wandar is an integrated safari sales platform built around how modern owner-led and boutique safari operators actually sell.</p><p class="hero-support">Understand travelers more deeply, reduce the repetitive work around every enquiry and keep more opportunities moving toward a booking.</p><div class="hero-cta-row"><button class="button button-orange" onclick="openModal('early-access');return false;">Build with us</button><a href="feed/app.html" class="button button-outline" target="_blank" rel="noopener">See Live Demand <span aria-hidden="true">↗︎</span></a></div></div><div class="container hero-bottom"><a href="#why-wandar">Discover Wandar <span aria-hidden="true">↓︎</span></a></div></section>
-<section class="section problem" id="why-wandar"><div class="container"><p class="eyebrow">Safari sales is high-trust work</p><div class="split"><h2>Safari demand is high. Converting it still takes too much manual work.</h2><div class="prose"><p>Winning a safari booking requires understanding the traveler, explaining tradeoffs clearly and building confidence in a complex, expensive decision.</p><p>But too much of an operator’s capacity is consumed by the work surrounding that relationship.</p><p>Finding information. Reconstructing conversations. Clarifying enquiries. Tracking follow-ups. Keeping sales context together.</p></div></div><blockquote class="problem-quote">Busywork takes up capacity that should go toward the relationship-building work that wins bookings.</blockquote></div></section>
-<section class="section value" id="value"><div class="container"><p class="eyebrow">Built around the work that wins bookings</p><h2 class="wide-heading">Less busywork. Better traveler context. More leverage for your expertise.</h2><div class="value-grid"><article><div class="value-top"><span class="icon-badge icon-badge--gold" aria-hidden="true"><svg class="section-icon" focusable="false" aria-hidden="true" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="8.5"/><path d="M12 8v4.2l3 2"/></svg></span></div><h3>Less busywork</h3><p>Reduce repetitive work around enquiries, follow-ups and sales administration.</p></article><article><div class="value-top"><span class="icon-badge icon-badge--teal" aria-hidden="true"><svg class="section-icon" focusable="false" aria-hidden="true" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"><path d="M4 8.5V6.5A2 2 0 0 1 6 4.5h2"/><path d="M20 8.5V6.5a2 2 0 0 0-2-2h-2"/><path d="M4 15.5v2a2 2 0 0 0 2 2h2"/><path d="M20 15.5v2a2 2 0 0 1-2 2h-2"/><circle cx="12" cy="10.3" r="2.3" fill="currentColor" stroke="none"/><path d="M8.2 17.2c.7-2.3 2.1-3.3 3.8-3.3s3.1 1 3.8 3.3"/></svg></span></div><h3>Better traveler context</h3><p>Keep what the traveler wants, what matters to them and what has already happened together.</p></article><article><div class="value-top"><span class="icon-badge icon-badge--green" aria-hidden="true"><svg class="section-icon" focusable="false" aria-hidden="true" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 6.8c-1.4-1.1-3.3-1.6-5.2-1.6A1.8 1.8 0 0 0 5 7v9.6a1.8 1.8 0 0 0 1.8 1.8c1.9 0 3.8.5 5.2 1.6"/><path d="M12 6.8c1.4-1.1 3.3-1.6 5.2-1.6A1.8 1.8 0 0 1 19 7v9.6a1.8 1.8 0 0 1-1.8 1.8c-1.9 0-3.8.5-5.2 1.6V6.8Z"/></svg></span></div><h3>Easier access to expertise</h3><p>Make the knowledge inside your safari business easier to use when travelers need answers and guidance.</p></article></div><div class="journey-grid"><div class="journey-card"><span class="icon-badge icon-badge--teal" aria-hidden="true"><svg class="section-icon" focusable="false" aria-hidden="true" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"><path d="M4 8.5V6.5A2 2 0 0 1 6 4.5h2"/><path d="M20 8.5V6.5a2 2 0 0 0-2-2h-2"/><path d="M4 15.5v2a2 2 0 0 0 2 2h2"/><path d="M20 15.5v2a2 2 0 0 1-2 2h-2"/><circle cx="12" cy="10.3" r="2.3" fill="currentColor" stroke="none"/><path d="M8.2 17.2c.7-2.3 2.1-3.3 3.8-3.3s3.1 1 3.8 3.3"/></svg></span><p>Understand the traveler better <span aria-hidden="true">→︎</span></p></div><div class="journey-card"><span class="icon-badge icon-badge--gold" aria-hidden="true"><svg class="section-icon" focusable="false" aria-hidden="true" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12.2a8 8 0 1 1 3.3 6.4L4 19.5l1.1-3.4A7.9 7.9 0 0 1 4 12.2Z"/><circle cx="9" cy="12.2" r=".9" fill="currentColor" stroke="none"/><circle cx="12" cy="12.2" r=".9" fill="currentColor" stroke="none"/><circle cx="15" cy="12.2" r=".9" fill="currentColor" stroke="none"/></svg></span><p>Communicate value clearly <span aria-hidden="true">→︎</span></p></div><div class="journey-card"><span class="icon-badge icon-badge--orange" aria-hidden="true"><svg class="section-icon" focusable="false" aria-hidden="true" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3.6 5.5 6v5.6c0 4.4 2.8 7.3 6.5 8.4 3.7-1.1 6.5-4 6.5-8.4V6Z"/><path d="M9 12.4l2 2 4-4.4"/></svg></span><p>Build trust <span aria-hidden="true">→︎</span></p></div><div class="journey-card"><span class="icon-badge icon-badge--green" aria-hidden="true"><svg class="section-icon" focusable="false" aria-hidden="true" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="5.5" width="16" height="14.5" rx="2.3"/><path d="M8 3.5v3.2M16 3.5v3.2M4 10h16"/><path d="M9 14.8l2 2 4-4.4"/></svg></span><p>Convert more enquiries into bookings <span aria-hidden="true">→︎</span></p></div></div></div></section>
-<section class="section platform" id="platform"><div class="container"><div class="section-heading"><div><p class="eyebrow">Out-of-the-box safari sales platform</p><h2>Built around the safari sales journey.</h2></div></div><div class="product-grid"><a class="product-card" href="platform.html#social-demand"><div class="product-top"><span class="product-label"><span class="icon-badge icon-badge--teal" aria-hidden="true"><svg class="section-icon" focusable="false" aria-hidden="true" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="6.5"/><path d="M20 20l-4.3-4.3"/></svg></span><span>Social Demand</span></span></div><h3>Understand what safari travelers are trying to figure out.</h3><p>See the questions, comparisons and concerns shaping safari decisions online.</p><span class="explore">Explore Social Demand <span aria-hidden="true">↗︎</span></span></a><a class="product-card" href="platform.html#sales-agent"><div class="product-top"><span class="product-label"><span class="icon-badge icon-badge--orange" aria-hidden="true"><svg class="section-icon" focusable="false" aria-hidden="true" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="8.5" width="16" height="11" rx="3"/><path d="M12 8.5V5"/><circle cx="12" cy="3.6" r="1.4" fill="currentColor" stroke="none"/><circle cx="9" cy="14" r="1.1" fill="currentColor" stroke="none"/><circle cx="15" cy="14" r="1.1" fill="currentColor" stroke="none"/><path d="M2.5 12.5v3M21.5 12.5v3"/></svg></span><span>Sales Agent</span></span></div><h3>Start every enquiry with deeper understanding.</h3><p>Handle the repetitive early-stage conversation and build the traveler context your safari specialist needs.</p><span class="explore">Explore Sales Agent <span aria-hidden="true">↗︎</span></span></a><a class="product-card" href="platform.html#sales-workspace"><div class="product-top"><span class="product-label"><span class="icon-badge icon-badge--green" aria-hidden="true"><svg class="section-icon" focusable="false" aria-hidden="true" width="24" height="24" viewBox="0 0 256 256"><g fill="currentColor"><path d="M216 56v64h-56V56ZM40 208a8 8 0 0 0 8 8h40a8 8 0 0 0 8-8v-88H40Z" opacity=".2"/><path d="M216 48H40a8 8 0 0 0-8 8v152a16 16 0 0 0 16 16h40a16 16 0 0 0 16-16v-48h48v16a16 16 0 0 0 16 16h40a16 16 0 0 0 16-16V56a8 8 0 0 0-8-8m-8 64h-40V64h40ZM88 64v48H48V64Zm0 144H48v-80h40Zm16-64V64h48v80Zm64 32v-48h40v48Z"/></g></svg></span><span>Sales Workspace</span></span></div><h3>Keep every traveler relationship clear.</h3><p>See what is happening, what matters and what needs your attention next.</p><span class="explore">Explore Sales Workspace <span aria-hidden="true">↗︎</span></span></a><a class="product-card" href="platform.html#safari-ai"><div class="product-top"><span class="product-label"><span class="icon-badge icon-badge--gold" aria-hidden="true"><svg class="section-icon" focusable="false" aria-hidden="true" width="19" height="19" viewBox="0 0 24 24" fill="currentColor"><path d="M 12 10.1 C 11.48 7.25 10.81 4.12 10.53 2.31 C 10.39 1.31 13 1.12 13.43 2.12 C 13.19 4.02 12.48 7.25 12 10.1 Z M 13.34 10.66 C 14.99 8.27 16.74 5.58 17.81 4.11 C 18.42 3.3 20.4 5.01 19.99 6.02 C 18.48 7.2 15.69 8.98 13.34 10.66 Z M 13.9 12 C 16.75 11.48 19.89 10.81 21.69 10.53 C 22.69 10.39 22.88 13 21.88 13.43 C 19.98 13.19 16.75 12.48 13.9 12 Z M 13.34 13.34 C 15.73 14.99 18.42 16.74 19.89 17.81 C 20.7 18.42 18.99 20.4 17.98 19.99 C 16.8 18.48 15.02 15.69 13.34 13.34 Z M 12 13.9 C 12.52 16.75 13.19 19.89 13.47 21.69 C 13.62 22.69 11 22.88 10.58 21.88 C 10.81 19.98 11.53 16.75 12 13.9 Z M 10.66 13.34 C 9.01 15.73 7.26 18.42 6.19 19.89 C 5.58 20.7 3.6 18.99 4.01 17.98 C 5.52 16.8 8.31 15.02 10.66 13.34 Z M 10.1 12 C 7.25 12.52 4.12 13.19 2.31 13.47 C 1.31 13.62 1.12 11 2.12 10.58 C 4.02 10.81 7.25 11.53 10.1 12 Z M 10.66 10.66 C 8.27 9.01 5.58 7.26 4.11 6.19 C 3.3 5.58 5.01 3.6 6.02 4.01 C 7.2 5.52 8.98 8.31 10.66 10.66 Z"/></svg></span><span>Safari AI</span></span></div><h3>Ask your safari business anything.</h3><p>Get direct answers from your traveler conversations, sales data and business knowledge.</p><span class="explore">Explore Safari AI <span aria-hidden="true">↗︎</span></span></a></div></div></section>
-<section class="section philosophy" id="philosophy"><div class="container"><p class="eyebrow">Built around safari operator expertise</p><div class="split"><div><h2>Technology should make safari expertise count for more, <em>not remove it.</em></h2></div><div class="prose"><p>Safari sales decisions depend on judgment.</p><p>The most famous destination is not automatically the right one. The quickest itinerary is not automatically the strongest one.</p><p>Wandar handles more of the repetitive work around the sale so the operator can stay closest to the moments where understanding, advice and trust matter most.</p></div></div><blockquote class="trust-quote"><span aria-hidden="true">“</span>Technology can shorten the path to trust. It cannot manufacture the kind of trust that closes a safari booking.<span aria-hidden="true">”</span></blockquote></div></section>
-<section class="section audience" id="who"><div class="container"><div class="split"><div><p class="eyebrow">Purpose-built for safari sales</p><h2>Growing safari operators<br>build with Wandar.</h2></div><div class="audience-grid"><article><img src="assets/who-owner-led.png" width="256" height="256" alt="" loading="lazy"><div><h3>Owner-led operators</h3><p>Stay close to important traveler relationships without personally handling every repeatable sales task.</p></div></article><article><img src="assets/who-boutique.png" width="256" height="256" alt="" loading="lazy"><div><h3>Boutique safari operators</h3><p>Serve more prospective travelers while protecting the personal attention and expertise that differentiate your business.</p></div></article></div></div><div class="vision"><p class="eyebrow">The future of safari sales is personal</p><h2>Grow your safari business without making the sales experience less personal.</h2><div class="hero-cta-row"><button class="button button-orange" onclick="openModal('early-access');return false;">Build with us</button><a href="#" class="button button-outline" onclick="openModal('contact');return false;">Let's Chat</a></div></div></div></section><section class="section section--white" id="faq"><div class="container"><div class="faq__head reveal"><div><span class="eyebrow eyebrow--teal">Common questions</span><h2 class="h-section">Frequently asked questions</h2></div><a href="#" onclick="openModal('contact');return false;" class="faq__link">Still have questions? Contact us</a></div><div class="faq__grid"><div><div class="faq__item"><button class="faq__q">What does Wandar actually do?<span class="faq__sign"></span></button><div class="faq__a"><p>Wandar is an integrated sales platform for safari operators. Its Sales Agent engages website and WhatsApp prospects 24/7, asks discovery questions, answers guidance questions using your approved safari knowledge, gathers key trip details and keeps conversations moving until human expertise and judgment are needed.</p><p>Wandar also surfaces active safari-planning conversations, tracks relevant social mentions, helps your team manage sales activity and next steps, and lets them find answers across rates, itineraries, camp details, quotes and booking history.</p></div></div><div class="faq__item"><button class="faq__q">How does Wandar help create more booking opportunities?<span class="faq__sign"></span></button><div class="faq__a"><p>Safari demand is easy to miss, and interested travelers can lose momentum when they are sent to a static enquiry form or left waiting on WhatsApp. Wandar surfaces relevant demand, engages website and WhatsApp prospects while their interest is active and keeps sales conversations moving.</p><p>It also shows teams what needs action, brings in a safari expert when human judgment is required and helps them find answers quickly across rates, itineraries, camp details, quotes and booking history. Together, this helps operators reach more travelers, run stronger sales conversations and keep more promising enquiries moving toward a booking.</p></div></div><div class="faq__item"><button class="faq__q">Will the Sales Agent replace my team?<span class="faq__sign"></span></button><div class="faq__a"><p>No. It handles the repeatable parts of early-stage sales 24/7 by engaging prospects, asking discovery questions, answering guidance questions using your approved safari knowledge, addressing common concerns and helping travelers understand the value of your safari offering.</p><p>It gathers key trip details, keeps conversations moving and brings in your team whenever a traveler needs recommendations, itinerary design, pricing or other input that requires human expertise and judgment.</p></div></div><div class="faq__item"><button class="faq__q">How does the Sales Agent know what to say?<span class="faq__sign"></span></button><div class="faq__a"><p>The Sales Agent works from the safari information you approve, including your website, itineraries, rates, camp and lodge details, policies and sales materials. It uses that information to answer guidance questions, explain your offering and address common traveler concerns.</p><p>When it cannot answer confidently or the traveler needs human expertise and judgment, it brings in your team with the conversation context already captured.</p></div></div></div><div><div class="faq__item"><button class="faq__q">Where does Wandar find safari-planning demand?<span class="faq__sign"></span></button><div class="faq__a"><p>Demand Discovery surfaces relevant safari-planning conversations across Reddit, Tripadvisor Forums and Facebook Groups. Social Mentions separately tracks keywords related to the destinations, experiences and traveler interests you serve across X, Instagram and TikTok.</p></div></div><div class="faq__item"><button class="faq__q">Can my team manage everything in one place?<span class="faq__sign"></span></button><div class="faq__a"><p>Wandar brings the sales activity it supports into one workspace. Your team can see surfaced demand, social mentions, Sales Agent conversations, what has already been handled, where human input is needed and what should happen next.</p><p>It does not replace specialist booking, live availability or itinerary-design systems.</p></div></div><div class="faq__item"><button class="faq__q">How long does it take to get set up?<span class="faq__sign"></span></button><div class="faq__a"><p>The onboarding takes a matter of minutes. Add your website and upload the files Wandar should work from. We then configure the platform and deploy your Sales Agent across your website and WhatsApp, with your full sales platform ready within hours.</p></div></div><div class="faq__item"><button class="faq__q">Is Wandar built only for safari operators?<span class="faq__sign"></span></button><div class="faq__a"><p>Yes. Wandar is purpose-built for African safari operators and the realities of selling complex, high-value safari trips. It is designed around website and WhatsApp enquiries, detailed rates and itineraries, camp and lodge information, long buying decisions and the importance of human safari expertise.</p><p>It is not a generic CRM, chatbot or social-listening platform adapted for safari businesses.</p></div></div></div></div></div></section></main>
+<main id="main">
+
+<!-- ═══════════════ HERO ═══════════════ -->
+<section class="pf-hero">
+  <div class="container">
+    <div class="detail-head">
+      <div>
+        <p class="eyebrow">Your safari sales platform</p>
+        <h1>Everything around a stronger safari sales conversation, connected.</h1>
+        <p class="hero-intro">Wandar brings safari demand, traveler conversations, sales context and business knowledge together in one platform built around how modern safari operators sell.</p>
+      </div>
+      <div class="detail-art">
+        <picture>
+          <source srcset="assets/platform-hero.webp" type="image/webp">
+          <img src="assets/platform%20page%20hero.png" width="1254" height="1254" alt="A safari operator at a desk, with the Wandar platform around them" fetchpriority="high" />
+        </picture>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="fsec" id="social-demand">
+  <div class="container">
+
+    <div class="frow frow--flip">
+      <div class="fcopy">
+        <span class="product-label"><span class="icon-badge icon-badge--teal" aria-hidden="true"><svg class="section-icon" focusable="false" aria-hidden="true" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="6.5"/><path d="M20 20l-4.3-4.3"/></svg></span><span>Social Demand</span></span>
+        <h2>Understand what safari travelers are trying to figure out.</h2>
+        <p class="flede">Turn high-intent safari-planning conversations into traveler intelligence you can use to make better sales, product, content and marketing decisions.</p>
+      </div>
+      <div class="fart">
+        <div class="tex" aria-hidden="true"></div>
+<div class="pm pm--split">
+  <div class="pm-side">
+    <span class="pm-side-t">Social Demand</span>
+    <div class="pm-nav">
+      <span class="is-on"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4v14a2 2 0 0 0 2 2h14"/><path d="M8 16v-4"/><path d="M13 16V8"/><path d="M18 16V5"/></svg>Insights</span>
+      <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 12a7 7 0 0 1-7 7H9l-4 3v-4.6A7 7 0 0 1 8 5h5a7 7 0 0 1 7 7Z"/></svg>Lead Feed</span>
+      <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 6h16M7 12h10M10 18h4"/></svg>Sources</span>
+    </div>
+    <div class="pm-grp">
+      <span class="pm-label">Signals</span>
+      <div class="pm-bars"><i class="pm-b" style="width:86%;opacity:.9"></i><i class="pm-b" style="width:70%;opacity:.75"></i><i class="pm-b" style="width:92%;opacity:.6"></i><i class="pm-b" style="width:64%;opacity:.45"></i><i class="pm-b" style="width:78%;opacity:.3"></i></div>
+    </div>
+  </div>
+  <div class="pm-main">
+    <div class="pm-head">
+      <div class="pm-headl">
+        <span class="pm-title">Insights</span>
+        <span class="pm-sub">Last 30 days &middot; 214 conversations</span>
+      </div>
+      <span class="pm-pill pm-pill--teal">Kenya</span>
+    </div>
+
+    <div class="pm-sig">
+      <div class="pm-sigrow is-top">
+        <div class="pm-sigtop"><b>Green season value</b><i>42</i></div>
+        <div class="pm-track"><span style="width:82%"></span></div>
+      </div>
+      <div class="pm-sigrow">
+        <div class="pm-sigtop"><b>Kenya vs Tanzania</b><i>31</i></div>
+        <div class="pm-track"><span style="width:61%"></span></div>
+      </div>
+      <div class="pm-sigrow">
+        <div class="pm-sigtop"><b>Travelling with children</b><i>17</i></div>
+        <div class="pm-track"><span style="width:36%"></span></div>
+      </div>
+    </div>
+
+    <div class="pm-ev">
+      <div class="pm-evhead"><span class="pm-label">Evidence</span><span class="pm-evn">42 conversations</span></div>
+      <div class="pm-evrow">
+        <span class="pm-av"></span>
+        <div class="pm-evbody">
+          <div class="pm-evtags"><span class="pm-tag">green season value</span><i class="pm-b" style="width:52px;opacity:.8"></i></div>
+          <i class="pm-b" style="width:90%;opacity:.6"></i>
+        </div>
+      </div>
+      <div class="pm-evrow is-dim">
+        <span class="pm-av"></span>
+        <div class="pm-evbody"><i class="pm-b" style="width:72%;opacity:.9"></i><i class="pm-b" style="width:84%;opacity:.6"></i></div>
+      </div>
+    </div>
+  </div>
+</div>
+      </div>
+    </div>
+
+    <p class="eyebrow block-label">How it supports the sale</p>
+    <div class="supports">
+        <article>
+          <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 20v-1.5a3.5 3.5 0 0 0-3.5-3.5h-5A3.5 3.5 0 0 0 4 18.5V20"/><circle cx="10" cy="8" r="3.5"/><path d="M17 12a3 3 0 0 0 0-6"/><path d="M20 20v-1a3 3 0 0 0-2-2.8"/></svg>
+          <div><h3>Understand traveler needs</h3><p>Learn what travelers are repeatedly asking, comparing and concerned about before they book.</p></div>
+        </article>
+        <article>
+          <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 12a7 7 0 0 1-7 7H9l-4 3v-4.6A7 7 0 0 1 8 5h5a7 7 0 0 1 7 7Z"/><path d="M9 11h8M9 15h5"/></svg>
+          <div><h3>Improve sales conversations</h3><p>Use those questions, comparisons and concerns to make your guidance and explanations more relevant.</p></div>
+        </article>
+        <article>
+          <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4v14a2 2 0 0 0 2 2h14"/><path d="M8 16v-4"/><path d="M13 16V8"/><path d="M18 16V5"/></svg>
+          <div><h3>Make better decisions</h3><p>Apply traveler intelligence across sales, product, content and marketing decisions.</p></div>
+        </article>
+    </div>
+
+    <p class="eyebrow block-label">How it works</p>
+    <div class="steps">
+        <article>
+          <span class="step-num">01</span>
+          <h3>Learn from traveler conversations</h3>
+          <p>Analyze public safari-planning conversations to understand what travelers are trying to learn, compare and decide.</p>
+        </article>
+        <article>
+          <span class="step-num">02</span>
+          <h3>Identify recurring needs</h3>
+          <p>Identify recurring questions, concerns, comparisons and planning gaps.</p>
+        </article>
+        <article>
+          <span class="step-num">03</span>
+          <h3>Find content gaps</h3>
+          <p>Compare those traveler needs against your existing website content and business knowledge.</p>
+        </article>
+        <article>
+          <span class="step-num">04</span>
+          <h3>Create better content</h3>
+          <p>Create, update or expand traveler-facing content for you to review and approve.</p>
+        </article>
+    </div>
+
+  </div>
+</section>
+
+<section class="fsec fsec--orange fsec--tint" id="sales-agent">
+  <div class="container">
+
+    <div class="frow">
+      <div class="fcopy">
+        <span class="product-label"><span class="icon-badge icon-badge--orange" aria-hidden="true"><svg class="section-icon" focusable="false" aria-hidden="true" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="8.5" width="16" height="11" rx="3"/><path d="M12 8.5V5"/><circle cx="12" cy="3.6" r="1.4" fill="currentColor" stroke="none"/><circle cx="9" cy="14" r="1.1" fill="currentColor" stroke="none"/><circle cx="15" cy="14" r="1.1" fill="currentColor" stroke="none"/><path d="M2.5 12.5v3M21.5 12.5v3"/></svg></span><span>Sales Agent</span></span>
+        <h2>Start every enquiry with deeper understanding.</h2>
+        <p class="flede">Run stronger early-stage sales conversations across your website and WhatsApp 24/7. Ask the right questions, answer factual planning questions, recognize concerns and build a living understanding of the traveler.</p>
+      </div>
+      <div class="fart">
+        <div class="tex" aria-hidden="true"></div>
+<div class="pm pm--chat">
+  <div class="pm-chead">
+    <span class="pm-clabel">WhatsApp enquiry</span>
+    <i class="pm-cdot"></i>
+    <span class="pm-clive">live</span>
+  </div>
+  <div class="pm-bub pm-bub--in">We&rsquo;re thinking Kenya in August, two of us &mdash; is that a good time?</div>
+  <div class="pm-bub pm-bub--out">August is peak migration season in the Mara. Are you set on those dates, or is the wildlife the priority?</div>
+  <div class="pm-bub pm-bub--in pm-bub--nar">Wildlife is the priority. Dates are flexible.</div>
+
+  <div class="pm-card pm-card--lift">
+    <div class="pm-cardhead">
+      <span class="pm-cardlabel">Traveler brief</span>
+      <span class="pm-pill pm-pill--teal">updating</span>
+    </div>
+    <div class="pm-fields">
+      <div><span class="pm-k">Timing</span><span class="pm-v">Aug &mdash; flexible</span></div>
+      <div><span class="pm-k">Party</span><span class="pm-v">2 adults</span></div>
+      <div><span class="pm-k">Priority</span><span class="pm-v">Wildlife density</span></div>
+      <div><span class="pm-k">Budget</span><span class="pm-v is-empty">Not yet known</span></div>
+    </div>
+    <div class="pm-hand"><i></i><span>Hand to safari operator &mdash; recommendation needed</span></div>
+  </div>
+</div>
+      </div>
+    </div>
+
+    <p class="eyebrow block-label">How it supports the sale</p>
+    <div class="supports">
+        <article>
+          <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="10" cy="7.5" r="4"/><path d="M10.3 15H7a4 4 0 0 0-4 4v2"/><circle cx="17" cy="16.5" r="3"/><path d="m21.5 21-2.4-2.4"/></svg>
+          <div><h3>Understand the traveler</h3><p>Learn what the traveler wants, what matters to them and where questions or concerns remain.</p></div>
+        </article>
+        <article>
+          <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 13h4l1.5 3h7L17 13h4"/><path d="M4.5 13 6 5h12l1.5 8v5a2 2 0 0 1-2 2H6.5a2 2 0 0 1-2-2v-5Z"/></svg>
+          <div><h3>Handle early-stage sales work</h3><p>Answer questions, clarify the request and gather the context needed to understand the trip.</p></div>
+        </article>
+        <article>
+          <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="12" cy="8.8" rx="6.7" ry="1.6"/><path d="M8.6 8.6a3.4 3.4 0 0 1 6.8 0"/><path d="M9.1 10.5v1.2a2.9 2.9 0 0 0 5.8 0v-1.2"/><path d="M5.2 21.3a6.8 6.8 0 0 1 13.6 0"/></svg>
+          <div><h3>Bring in your expertise</h3><p>Preserve the traveler context so your safari operator can step in when recommendations, judgment and advice matter.</p></div>
+        </article>
+    </div>
+
+    <p class="eyebrow block-label">How it works</p>
+    <div class="steps">
+        <article>
+          <span class="step-num">01</span>
+          <h3>Engage the enquiry</h3>
+          <p>Respond to website and WhatsApp enquiries using your business knowledge and safari sales logic.</p>
+        </article>
+        <article>
+          <span class="step-num">02</span>
+          <h3>Understand the traveler</h3>
+          <p>Answer the immediate question, ask the next useful question and clarify missing or conflicting information.</p>
+        </article>
+        <article>
+          <span class="step-num">03</span>
+          <h3>Build the traveler brief</h3>
+          <p>Keep trip purpose, timing, budget, preferences, questions, concerns and missing information together as the conversation develops.</p>
+        </article>
+        <article>
+          <span class="step-num">04</span>
+          <h3>Bring in the safari operator</h3>
+          <p>Recognize when human expertise or commercial judgment is needed and bring the safari operator into the same conversation with the context preserved.</p>
+        </article>
+    </div>
+
+  </div>
+</section>
+
+<section class="fsec fsec--green" id="sales-workspace">
+  <div class="container">
+
+    <div class="frow frow--flip">
+      <div class="fcopy">
+        <span class="product-label"><span class="icon-badge icon-badge--green" aria-hidden="true"><svg class="section-icon" focusable="false" aria-hidden="true" width="24" height="24" viewBox="0 0 256 256"><g fill="currentColor"><path d="M216 56v64h-56V56ZM40 208a8 8 0 0 0 8 8h40a8 8 0 0 0 8-8v-88H40Z" opacity=".2"/><path d="M216 48H40a8 8 0 0 0-8 8v152a16 16 0 0 0 16 16h40a16 16 0 0 0 16-16v-48h48v16a16 16 0 0 0 16 16h40a16 16 0 0 0 16-16V56a8 8 0 0 0-8-8m-8 64h-40V64h40ZM88 64v48H48V64Zm0 144H48v-80h40Zm16-64V64h48v80Zm64 32v-48h40v48Z"/></g></svg></span><span>Sales Workspace</span></span>
+        <h2>Keep every traveler relationship clear.</h2>
+        <p class="flede">Keep the developing traveler brief, conversation history and what needs attention together so your team can pick up an enquiry already understanding what has happened.</p>
+      </div>
+      <div class="fart">
+        <div class="tex" aria-hidden="true"></div>
+<div class="pm pm--stack">
+  <div class="pm-card pm-card--list">
+    <div class="pm-cardhead pm-cardhead--ruled">
+      <span class="pm-cardlabel">Opportunities</span>
+      <span class="pm-pill pm-pill--clay">3 need attention</span>
+    </div>
+    <div class="pm-opp">
+        <span class="pm-av pm-av--lg"></span>
+        <div class="pm-opplines"><i class="pm-b pm-b--d" style="width:120px"></i><i class="pm-b" style="width:170px;opacity:1"></i></div>
+        <span class="pm-stat pm-stat--clay">Reply due</span>
+      </div>
+      <div class="pm-opp">
+        <span class="pm-av pm-av--lg"></span>
+        <div class="pm-opplines"><i class="pm-b pm-b--d" style="width:96px"></i><i class="pm-b" style="width:140px;opacity:1"></i></div>
+        <span class="pm-stat pm-stat--teal">Safari operator</span>
+      </div>
+      <div class="pm-opp">
+        <span class="pm-av pm-av--lg"></span>
+        <div class="pm-opplines"><i class="pm-b pm-b--d" style="width:132px"></i><i class="pm-b" style="width:110px;opacity:1"></i></div>
+        <span class="pm-stat pm-stat--mute">Quote sent</span>
+      </div>
+  </div>
+
+  <div class="pm-card">
+    <span class="pm-cardlabel">Customer brief</span>
+    <div class="pm-fields pm-fields--3">
+      <div><span class="pm-k">Trip</span><span class="pm-v">Kenya &middot; 9 nights</span></div>
+      <div><span class="pm-k">Open question</span><span class="pm-v">Malaria risk</span></div>
+      <div><span class="pm-k">Last contact</span><span class="pm-v">2 days ago</span></div>
+    </div>
+    <div class="pm-next"><i></i><span>Next action &mdash; send revised itinerary</span></div>
+  </div>
+</div>
+      </div>
+    </div>
+
+    <p class="eyebrow block-label">How it supports the sale</p>
+    <div class="supports">
+        <article>
+          <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 7.5A2.5 2.5 0 0 1 6.5 5h3l2 2.5H18A2 2 0 0 1 20 9.5v7A2.5 2.5 0 0 1 17.5 19h-11A2.5 2.5 0 0 1 4 16.5Z"/><path d="M8 13h8"/></svg>
+          <div><h3>Preserve traveler context</h3><p>Keep trip details, preferences, questions, concerns and conversation history together.</p></div>
+        </article>
+        <article>
+          <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 9a6 6 0 1 0-12 0c0 5-2 6-2 6h16s-2-1-2-6Z"/><path d="M10.5 19a2 2 0 0 0 3 0"/></svg>
+          <div><h3>Know what needs attention</h3><p>See where a reply, follow-up or safari-safari operator involvement is required.</p></div>
+        </article>
+        <article>
+          <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3.2 12a8.8 8.8 0 1 0 2.9-6.5L3 8"/><path d="M3 3.5V8h4.5"/><path d="M12 7.8V12l3.4 1.9"/></svg>
+          <div><h3>Continue the relationship</h3><p>Pick up the enquiry with the context needed to continue without reconstructing the traveler.</p></div>
+        </article>
+    </div>
+
+    <p class="eyebrow block-label">How it works</p>
+    <div class="steps">
+        <article>
+          <span class="step-num">01</span>
+          <h3>Capture the relationship</h3>
+          <p>Connect the traveler, opportunity and conversation around the same enquiry.</p>
+        </article>
+        <article>
+          <span class="step-num">02</span>
+          <h3>Build the customer brief</h3>
+          <p>Keep traveler details, trip context, questions, concerns and sales history current as the relationship develops.</p>
+        </article>
+        <article>
+          <span class="step-num">03</span>
+          <h3>Surface what needs attention</h3>
+          <p>Show where a reply, follow-up, safari operator involvement or another human action is required.</p>
+        </article>
+        <article>
+          <span class="step-num">04</span>
+          <h3>Work from one place</h3>
+          <p>Open the opportunity with the traveler brief, conversation, tasks and relevant itinerary or quote information together.</p>
+        </article>
+    </div>
+
+  </div>
+</section>
+
+<section class="fsec fsec--gold fsec--tint" id="safari-ai">
+  <div class="container">
+
+    <div class="frow">
+      <div class="fcopy">
+        <span class="product-label"><span class="icon-badge icon-badge--gold" aria-hidden="true"><svg class="section-icon" focusable="false" aria-hidden="true" width="19" height="19" viewBox="0 0 24 24" fill="currentColor"><path d="M 12 10.1 C 11.48 7.25 10.81 4.12 10.53 2.31 C 10.39 1.31 13 1.12 13.43 2.12 C 13.19 4.02 12.48 7.25 12 10.1 Z M 13.34 10.66 C 14.99 8.27 16.74 5.58 17.81 4.11 C 18.42 3.3 20.4 5.01 19.99 6.02 C 18.48 7.2 15.69 8.98 13.34 10.66 Z M 13.9 12 C 16.75 11.48 19.89 10.81 21.69 10.53 C 22.69 10.39 22.88 13 21.88 13.43 C 19.98 13.19 16.75 12.48 13.9 12 Z M 13.34 13.34 C 15.73 14.99 18.42 16.74 19.89 17.81 C 20.7 18.42 18.99 20.4 17.98 19.99 C 16.8 18.48 15.02 15.69 13.34 13.34 Z M 12 13.9 C 12.52 16.75 13.19 19.89 13.47 21.69 C 13.62 22.69 11 22.88 10.58 21.88 C 10.81 19.98 11.53 16.75 12 13.9 Z M 10.66 13.34 C 9.01 15.73 7.26 18.42 6.19 19.89 C 5.58 20.7 3.6 18.99 4.01 17.98 C 5.52 16.8 8.31 15.02 10.66 13.34 Z M 10.1 12 C 7.25 12.52 4.12 13.19 2.31 13.47 C 1.31 13.62 1.12 11 2.12 10.58 C 4.02 10.81 7.25 11.53 10.1 12 Z M 10.66 10.66 C 8.27 9.01 5.58 7.26 4.11 6.19 C 3.3 5.58 5.01 3.6 6.02 4.01 C 7.2 5.52 8.98 8.31 10.66 10.66 Z"/></svg></span><span>Safari AI</span></span>
+        <h2>Ask your safari business anything.</h2>
+        <p class="flede">Ask questions across your business knowledge, traveler conversations and sales data and get grounded answers from the information already inside your safari business.</p>
+      </div>
+      <div class="fart">
+        <div class="tex" aria-hidden="true"></div>
+<div class="pm pm--split">
+  <div class="pm-side">
+    <div class="pm-side-h"><span class="pm-side-t">Chats</span><span class="pm-side-n">6</span></div>
+    <div class="pm-nav">
+      <span class="is-on"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20h8"/><path d="M16.5 4.5a2.1 2.1 0 0 1 3 3L8 19l-4 1 1-4Z"/></svg>New chat</span>
+      <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="6.5"/><path d="m20 20-4.4-4.4"/></svg>Search chat</span>
+      <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M5 5v14M10 5v14M15 6l4 13"/></svg>Library</span>
+    </div>
+    <div class="pm-grp">
+      <span class="pm-label">Recent chats</span>
+      <div class="pm-recent"><i class="pm-b" style="width:92%;opacity:1"></i></div>
+      <div class="pm-bars"><i class="pm-b" style="width:88%;opacity:.9"></i><i class="pm-b" style="width:74%;opacity:.8"></i><i class="pm-b" style="width:93%;opacity:.7"></i><i class="pm-b" style="width:66%;opacity:.55"></i><i class="pm-b" style="width:81%;opacity:.4"></i></div>
+    </div>
+  </div>
+  <div class="pm-main">
+    <div class="pm-head pm-head--end">
+      <div class="pm-user">
+        <span class="pm-ava">GT</span>
+        <div class="pm-userlines"><i class="pm-b pm-b--d" style="width:56px"></i><i class="pm-b" style="width:70px;opacity:1"></i></div>
+      </div>
+    </div>
+
+    <div class="pm-q">Which previous itineraries are similar to this enquiry?</div>
+
+    <div class="pm-ans">
+      <i class="pm-b" style="width:62%;opacity:1"></i>
+      <div class="pm-anshead">
+        <span class="pm-anst">Similar itineraries &mdash; Kenya &amp; Tanzania, August</span>
+        <div class="pm-fig"><b>34</b><span>sold with a similar shape &middot; <b>3</b> close matches</span></div>
+      </div>
+
+      <div class="pm-groups">
+        <div class="pm-gh"><i class="pm-gd pm-gd--green"></i><span>Booked more than three times</span></div>
+        <div class="pm-gitems">
+          <div class="pm-gitem"><span>1.</span><div><i class="pm-b" style="width:95%;opacity:1"></i><i class="pm-b" style="width:68%;opacity:.6"></i></div></div>
+          <div class="pm-gitem"><span>2.</span><div><i class="pm-b" style="width:88%;opacity:1"></i><i class="pm-b" style="width:54%;opacity:.6"></i></div></div>
+        </div>
+        <div class="pm-gh"><i class="pm-gd pm-gd--amber"></i><span>Partial match</span></div>
+        <div class="pm-gitems pm-gitems--plain"><i class="pm-b" style="width:90%;opacity:.85"></i><i class="pm-b" style="width:72%;opacity:.45"></i></div>
+      </div>
+    </div>
+
+    <div class="pm-comp"><span>Ask your data anything</span><i class="pm-send"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M12 19V5"/><path d="m6 11 6-6 6 6"/></svg></i></div>
+  </div>
+</div>
+      </div>
+    </div>
+
+    <p class="eyebrow block-label">How it supports the sale</p>
+    <div class="supports">
+        <article>
+          <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 11.5a7.5 7.5 0 0 1-10.9 6.7L4 20l1.8-4.6A7.5 7.5 0 1 1 20 11.5Z"/><path d="M9.8 9.2a2.3 2.3 0 0 1 4.4.8c0 1.6-2.2 1.8-2.2 3"/><path d="M12 15.2v.01"/></svg>
+          <div><h3>Ask in your own words</h3><p>Ask practical sales questions without figuring out which file, document or conversation contains the answer.</p></div>
+        </article>
+        <article>
+          <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m12 3 8.5 4.5L12 12 3.5 7.5Z"/><path d="m4 12 8 4.2 8-4.2"/><path d="m4 16.5 8 4.2 8-4.2"/></svg>
+          <div><h3>Bring your knowledge together</h3><p>Use rates, lodge details, policies, itineraries, traveler conversations and previous work as business context.</p></div>
+        </article>
+        <article>
+          <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="8.5"/><path d="m15.5 8.5-2.1 4.9-4.9 2.1 2.1-4.9Z"/></svg>
+          <div><h3>Apply it with judgment</h3><p>Use the right information to advise travelers, answer questions and communicate value while keeping human expertise central.</p></div>
+        </article>
+    </div>
+
+    <p class="eyebrow block-label">How it works</p>
+    <div class="steps">
+        <article>
+          <span class="step-num">01</span>
+          <h3>Ask your business a question</h3>
+          <p>Ask anything about your safari business in normal language.</p>
+        </article>
+        <article>
+          <span class="step-num">02</span>
+          <h3>Safari AI understands what you mean</h3>
+          <p>Ask about travelers, enquiries, quotes, bookings, destinations, policies or anything else Wandar knows.</p>
+        </article>
+        <article>
+          <span class="step-num">03</span>
+          <h3>It looks across your business</h3>
+          <p>Safari AI uses your business knowledge, traveler conversations and sales information to answer.</p>
+        </article>
+        <article>
+          <span class="step-num">04</span>
+          <h3>Get a direct answer</h3>
+          <p>Get a clear answer without searching through files, conversations or records.</p>
+        </article>
+    </div>
+
+  </div>
+</section>
+
+<!-- ═══════════════ CLOSING CTA ═══════════════ -->
+<section class="pf-close">
+  <div class="container">
+    <div class="vision">
+      <p class="eyebrow">Built for safari sales</p>
+      <h2>Grow your safari business with tools built for the complexity of safari sales.</h2>
+      <p>Put better infrastructure around your sales process so you can handle more without giving up the expertise, judgment and relationships that win bookings.</p>
+      <div class="hero-cta-row">
+        <button class="button button-orange" onclick="openModal('early-access');return false;">Build with us</button>
+        <a href="#" class="button button-outline" onclick="openModal('contact');return false;">Let's Chat</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+</main>
 <!-- ═══════════════ FOOTER ═══════════════ -->
 <footer class="footer" id="footer">
   <div class="footer-container">
@@ -2370,17 +2981,17 @@ h1,h2,h3,h4{color:var(--text-primary);line-height:1.15;font-weight:700;letter-sp
     <div class="footer__cols">
       <div>
         <span class="footer__ch">Platform</span>
-        <a class="footer__cl" href="#platform">Social Demand</a>
-        <a class="footer__cl" href="#platform">Sales Agent</a>
-        <a class="footer__cl" href="#platform">Sales Workspace</a>
-        <a class="footer__cl" href="#platform">Safari AI</a>
+        <a class="footer__cl" href="#social-demand">Social Demand</a>
+        <a class="footer__cl" href="#sales-agent">Sales Agent</a>
+        <a class="footer__cl" href="#sales-workspace">Sales Workspace</a>
+        <a class="footer__cl" href="#safari-ai">Safari AI</a>
       </div>
 
       <div>
         <span class="footer__ch">Why Wandar</span>
-        <a class="footer__cl" href="#platform">Platform overview</a>
-        <a class="footer__cl" href="#philosophy">Our philosophy</a>
-        <a class="footer__cl" href="#who">Who it's for</a>
+        <a class="footer__cl" href="index.html#platform">Platform overview</a>
+        <a class="footer__cl" href="index.html#philosophy">Our philosophy</a>
+        <a class="footer__cl" href="index.html#who">Who it's for</a>
       </div>
 
       <div>
@@ -2389,7 +3000,7 @@ h1,h2,h3,h4{color:var(--text-primary);line-height:1.15;font-weight:700;letter-sp
         <a class="footer__cl" href="guides/index.html">Guides</a>
         <a class="footer__cl" aria-disabled="true">Webinars</a>
         <a class="footer__cl" aria-disabled="true">Free tools</a>
-        <a class="footer__cl" href="#faq">FAQ</a>
+        <a class="footer__cl" href="index.html#faq">FAQ</a>
       </div>
 
       <div>
