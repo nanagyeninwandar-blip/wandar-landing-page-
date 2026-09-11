@@ -2318,18 +2318,29 @@ h1,h2,h3,h4{color:var(--text-primary);line-height:1.15;font-weight:700;letter-sp
   .fart{height:auto}
 }
 @media(max-width:620px){
+  /* the sidebar is scene-setting only - drop it rather than stack it */
   .pm--split{grid-template-columns:1fr}
-  .pm-side{border-right:0;border-bottom:1px solid var(--line)}
-  .pm-side .pm-bars,.pm-recent{display:none}
+  .pm-side{display:none}
 }
 @media(max-width:760px){
   .pf-hero{padding:132px 0 70px}
-  .pf-hero .detail-art{margin:0 auto}
+  .pf-hero .detail-art{display:none}
   .fsec{padding:65px 0}
   .block-label{margin-top:50px}
   .steps{grid-template-columns:1fr 1fr;gap:26px}
   .pf-close{padding:65px 0}
-  .pm-main{padding:16px}
+  /* keep the mocks compact on a phone */
+  .fart{padding:16px;border-radius:18px}
+  .pm-main{padding:14px;gap:12px}
+  .pm--chat{gap:10px}
+  .pm--stack{gap:12px}
+  .pm-card{padding:14px;gap:10px}
+  .pm-cardhead--ruled{padding:12px 14px}
+  .pm-opp{padding:11px 14px}
+  .pm-sigrow{padding:9px 10px}
+  .pm-bub{font-size:13.5px;padding:10px 12px}
+  .pm-evrow.is-dim{display:none}
+  .pm-ans{gap:10px}
 }
 </style>
 </head>
