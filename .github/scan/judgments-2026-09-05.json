@@ -1,0 +1,2762 @@
+[
+ {
+  "id": "ta_15571238",
+  "pass": false,
+  "d": "a",
+  "t": "a",
+  "b": "a",
+  "g": "a",
+  "u": "a",
+  "why": "food-safety logistics"
+ },
+ {
+  "id": "ta_15515147",
+  "pass": false,
+  "d": "a",
+  "t": "a",
+  "b": "a",
+  "g": "a",
+  "u": "a",
+  "why": "airport timing logistics"
+ },
+ {
+  "id": "ta_15568395",
+  "pass": false,
+  "d": "a",
+  "t": "a",
+  "b": "a",
+  "g": "a",
+  "u": "a",
+  "why": "credit-card logistics"
+ },
+ {
+  "id": "ta_15418040",
+  "pass": false,
+  "d": "a",
+  "t": "a",
+  "b": "a",
+  "g": "a",
+  "u": "a",
+  "why": "park-fee logistics"
+ },
+ {
+  "id": "ta_15574325",
+  "pass": false,
+  "d": "a",
+  "t": "a",
+  "b": "a",
+  "g": "a",
+  "u": "a",
+  "why": "packing/camera logistics"
+ },
+ {
+  "id": "ta_15468808",
+  "pass": false,
+  "d": "a",
+  "t": "a",
+  "b": "a",
+  "g": "a",
+  "u": "a",
+  "why": "beach fishing, non-safari"
+ },
+ {
+  "id": "ta_15568490",
+  "pass": false,
+  "d": "a",
+  "t": "a",
+  "b": "a",
+  "g": "a",
+  "u": "a",
+  "why": "SIM card logistics"
+ },
+ {
+  "id": "ta_15566662",
+  "pass": false,
+  "d": "a",
+  "t": "a",
+  "b": "a",
+  "g": "a",
+  "u": "a",
+  "why": "walking safety logistics"
+ },
+ {
+  "id": "ta_15566990",
+  "pass": false,
+  "d": "a",
+  "t": "a",
+  "b": "a",
+  "g": "a",
+  "u": "a",
+  "why": "self-drive gate-timing logistics"
+ },
+ {
+  "id": "ta_15376315",
+  "pass": false,
+  "d": "a",
+  "t": "a",
+  "b": "a",
+  "g": "a",
+  "u": "a",
+  "why": "shuttle booking logistics"
+ },
+ {
+  "id": "ta_15469305",
+  "pass": false,
+  "d": "a",
+  "t": "a",
+  "b": "a",
+  "g": "a",
+  "u": "a",
+  "why": "visa question"
+ },
+ {
+  "id": "ta_15572500",
+  "pass": false,
+  "d": "a",
+  "t": "a",
+  "b": "a",
+  "g": "a",
+  "u": "a",
+  "why": "city sightseeing"
+ },
+ {
+  "id": "ta_15564052",
+  "pass": false,
+  "d": "a",
+  "t": "a",
+  "b": "a",
+  "g": "a",
+  "u": "a",
+  "why": "border/taxi logistics"
+ },
+ {
+  "id": "ta_7780288",
+  "pass": false,
+  "d": "a",
+  "t": "a",
+  "b": "a",
+  "g": "a",
+  "u": "a",
+  "why": "evergreen resource thread"
+ },
+ {
+  "id": "ta_15576210",
+  "pass": false,
+  "d": "a",
+  "t": "a",
+  "b": "a",
+  "g": "a",
+  "u": "a",
+  "why": "health question, city"
+ },
+ {
+  "id": "ta_15407443",
+  "pass": false,
+  "d": "a",
+  "t": "a",
+  "b": "a",
+  "g": "a",
+  "u": "a",
+  "why": "tour timing + souvenirs logistics"
+ },
+ {
+  "id": "ta_15530813",
+  "pass": false,
+  "d": "a",
+  "t": "a",
+  "b": "a",
+  "g": "a",
+  "u": "a",
+  "why": "city museum safety"
+ },
+ {
+  "id": "ta_15552947",
+  "pass": false,
+  "d": "a",
+  "t": "a",
+  "b": "a",
+  "g": "a",
+  "u": "a",
+  "why": "SIM topup logistics"
+ },
+ {
+  "id": "ta_15561637",
+  "pass": false,
+  "d": "a",
+  "t": "a",
+  "b": "a",
+  "g": "a",
+  "u": "a",
+  "why": "taxi/border logistics"
+ },
+ {
+  "id": "ta_15565324",
+  "pass": false,
+  "d": "a",
+  "t": "a",
+  "b": "a",
+  "g": "a",
+  "u": "a",
+  "why": "mid-trip, already booked, activity ideas"
+ },
+ {
+  "id": "ta_15543092",
+  "pass": false,
+  "d": "a",
+  "t": "a",
+  "b": "a",
+  "g": "a",
+  "u": "a",
+  "why": "what-to-wear packing"
+ },
+ {
+  "id": "ta_15494833",
+  "pass": false,
+  "d": "a",
+  "t": "a",
+  "b": "a",
+  "g": "a",
+  "u": "a",
+  "why": "trip report"
+ },
+ {
+  "id": "ta_15553368",
+  "pass": false,
+  "d": "a",
+  "t": "a",
+  "b": "a",
+  "g": "a",
+  "u": "a",
+  "why": "road route logistics"
+ },
+ {
+  "id": "ta_15546007",
+  "pass": false,
+  "d": "a",
+  "t": "a",
+  "b": "a",
+  "g": "a",
+  "u": "a",
+  "why": "airport transfer"
+ },
+ {
+  "id": "ta_15553019",
+  "pass": false,
+  "d": "a",
+  "t": "a",
+  "b": "a",
+  "g": "a",
+  "u": "a",
+  "why": "taxi recommendation post, not a request"
+ },
+ {
+  "id": "ta_15575019",
+  "pass": false,
+  "d": "a",
+  "t": "a",
+  "b": "a",
+  "g": "a",
+  "u": "a",
+  "why": "plug adapter"
+ },
+ {
+  "id": "ta_15544387",
+  "pass": false,
+  "d": "a",
+  "t": "a",
+  "b": "a",
+  "g": "a",
+  "u": "a",
+  "why": "driving route"
+ },
+ {
+  "id": "ta_15548521",
+  "pass": false,
+  "d": "a",
+  "t": "a",
+  "b": "a",
+  "g": "a",
+  "u": "a",
+  "why": "SANParks contact number"
+ },
+ {
+  "id": "ta_15572805",
+  "pass": true,
+  "d": "x",
+  "t": "x",
+  "b": "v",
+  "g": "s",
+  "u": "x",
+  "why": "4-country Southern Africa private trip Sep 11-Oct 2 2026, 2 adults, premium-luxury camps, explicitly seeking a tour operator with departure ~2 weeks out"
+ },
+ {
+  "id": "ta_15566857",
+  "pass": false,
+  "d": "a",
+  "t": "a",
+  "b": "a",
+  "g": "a",
+  "u": "a",
+  "why": "currency question"
+ },
+ {
+  "id": "ta_15573020",
+  "pass": false,
+  "d": "a",
+  "t": "a",
+  "b": "a",
+  "g": "a",
+  "u": "a",
+  "why": "immigration queue"
+ },
+ {
+  "id": "ta_15560212",
+  "pass": false,
+  "d": "a",
+  "t": "a",
+  "b": "a",
+  "g": "a",
+  "u": "a",
+  "why": "Zanzibar restaurants, non-safari"
+ },
+ {
+  "id": "ta_15569609",
+  "pass": false,
+  "d": "a",
+  "t": "a",
+  "b": "a",
+  "g": "a",
+  "u": "a",
+  "why": "drive-to-airport logistics"
+ },
+ {
+  "id": "ta_15533168",
+  "pass": false,
+  "d": "a",
+  "t": "a",
+  "b": "a",
+  "g": "a",
+  "u": "a",
+  "why": "Cape Town city stay, no safari"
+ },
+ {
+  "id": "ta_15566060",
+  "pass": false,
+  "d": "a",
+  "t": "a",
+  "b": "a",
+  "g": "a",
+  "u": "a",
+  "why": "in-trip routing, guide already booked, August trip now past"
+ },
+ {
+  "id": "ta_15560508",
+  "pass": false,
+  "d": "a",
+  "t": "a",
+  "b": "a",
+  "g": "a",
+  "u": "a",
+  "why": "Zanzibar beach activities"
+ },
+ {
+  "id": "ta_15556332",
+  "pass": false,
+  "d": "a",
+  "t": "a",
+  "b": "a",
+  "g": "a",
+  "u": "a",
+  "why": "Zanzibar island stay; safari already booked separately"
+ },
+ {
+  "id": "ta_15574896",
+  "pass": false,
+  "d": "a",
+  "t": "a",
+  "b": "a",
+  "g": "a",
+  "u": "a",
+  "why": "city sunset/Uber"
+ },
+ {
+  "id": "ta_15571765",
+  "pass": false,
+  "d": "a",
+  "t": "a",
+  "b": "a",
+  "g": "a",
+  "u": "a",
+  "why": "in-park drive timing"
+ },
+ {
+  "id": "ta_15553663",
+  "pass": false,
+  "d": "a",
+  "t": "a",
+  "b": "a",
+  "g": "a",
+  "u": "a",
+  "why": "ice availability logistics"
+ },
+ {
+  "id": "ta_15552239",
+  "pass": false,
+  "d": "a",
+  "t": "a",
+  "b": "a",
+  "g": "a",
+  "u": "a",
+  "why": "Zanzibar beach transport; safari already booked"
+ },
+ {
+  "id": "ta_15572245",
+  "pass": false,
+  "d": "a",
+  "t": "a",
+  "b": "a",
+  "g": "a",
+  "u": "a",
+  "why": "self-drive road safety, no safari"
+ },
+ {
+  "id": "ta_15545165",
+  "pass": false,
+  "d": "a",
+  "t": "a",
+  "b": "a",
+  "g": "a",
+  "u": "a",
+  "why": "immigration logistics"
+ },
+ {
+  "id": "ta_15575444",
+  "pass": true,
+  "d": "x",
+  "t": "v",
+  "b": "a",
+  "g": "v",
+  "u": "x",
+  "why": "finalising Tanzania route with TO, comparing two routings after an availability clash"
+ },
+ {
+  "id": "ta_15575610",
+  "pass": false,
+  "d": "a",
+  "t": "a",
+  "b": "a",
+  "g": "a",
+  "u": "a",
+  "why": "trip report / video"
+ },
+ {
+  "id": "ta_14041348",
+  "pass": false,
+  "d": "a",
+  "t": "a",
+  "b": "a",
+  "g": "a",
+  "u": "a",
+  "why": "ferry timetable"
+ },
+ {
+  "id": "ta_15541195",
+  "pass": false,
+  "d": "a",
+  "t": "a",
+  "b": "a",
+  "g": "a",
+  "u": "a",
+  "why": "Zanzibar dhow tour, beach"
+ },
+ {
+  "id": "ta_15422666",
+  "pass": false,
+  "d": "a",
+  "t": "a",
+  "b": "a",
+  "g": "a",
+  "u": "a",
+  "why": "airport transfer"
+ },
+ {
+  "id": "ta_15572086",
+  "pass": true,
+  "d": "x",
+  "t": "a",
+  "b": "a",
+  "g": "v",
+  "u": "v",
+  "why": "planning 11-day Uganda/Rwanda gorilla+chimp circuit, asking whether to book through a local operator"
+ },
+ {
+  "id": "ta_15572240",
+  "pass": false,
+  "d": "a",
+  "t": "a",
+  "b": "a",
+  "g": "a",
+  "u": "a",
+  "why": "visa question"
+ },
+ {
+  "id": "ta_15536729",
+  "pass": false,
+  "d": "a",
+  "t": "a",
+  "b": "a",
+  "g": "a",
+  "u": "a",
+  "why": "mid-June trip, already past"
+ },
+ {
+  "id": "ta_15545689",
+  "pass": false,
+  "d": "a",
+  "t": "a",
+  "b": "a",
+  "g": "a",
+  "u": "a",
+  "why": "Zanzibar beach recommendations"
+ },
+ {
+  "id": "ta_15517302",
+  "pass": false,
+  "d": "a",
+  "t": "a",
+  "b": "a",
+  "g": "a",
+  "u": "a",
+  "why": "Paje accommodation, beach"
+ },
+ {
+  "id": "ta_15574504",
+  "pass": false,
+  "d": "a",
+  "t": "a",
+  "b": "a",
+  "g": "a",
+  "u": "a",
+  "why": "Riu hotel choice, beach"
+ },
+ {
+  "id": "ta_15561222",
+  "pass": false,
+  "d": "a",
+  "t": "a",
+  "b": "a",
+  "g": "a",
+  "u": "a",
+  "why": "trip report"
+ },
+ {
+  "id": "ta_15565069",
+  "pass": false,
+  "d": "a",
+  "t": "a",
+  "b": "a",
+  "g": "a",
+  "u": "a",
+  "why": "Arusha city hotel before an already-booked safari"
+ },
+ {
+  "id": "ta_15539128",
+  "pass": false,
+  "d": "a",
+  "t": "a",
+  "b": "a",
+  "g": "a",
+  "u": "a",
+  "why": "June 2026 trip, already past"
+ },
+ {
+  "id": "ta_15573866",
+  "pass": true,
+  "d": "x",
+  "t": "v",
+  "b": "v",
+  "g": "s",
+  "u": "s",
+  "why": "first Tanzania trip 2027, full draft itinerary, solo, asking for a reliable local agency"
+ },
+ {
+  "id": "ta_15534105",
+  "pass": false,
+  "d": "a",
+  "t": "a",
+  "b": "a",
+  "g": "a",
+  "u": "a",
+  "why": "Mt Meru trek footwear"
+ },
+ {
+  "id": "ta_14242492",
+  "pass": false,
+  "d": "a",
+  "t": "a",
+  "b": "a",
+  "g": "a",
+  "u": "a",
+  "why": "bus company review"
+ },
+ {
+  "id": "ta_15566306",
+  "pass": false,
+  "d": "a",
+  "t": "a",
+  "b": "a",
+  "g": "a",
+  "u": "a",
+  "why": "road routing"
+ },
+ {
+  "id": "ta_15572471",
+  "pass": false,
+  "d": "a",
+  "t": "a",
+  "b": "a",
+  "g": "a",
+  "u": "a",
+  "why": "Stone Town hotel, dates already past"
+ },
+ {
+  "id": "ta_15454361",
+  "pass": false,
+  "d": "a",
+  "t": "a",
+  "b": "a",
+  "g": "a",
+  "u": "a",
+  "why": "Paje drivers"
+ },
+ {
+  "id": "ta_15368378",
+  "pass": false,
+  "d": "a",
+  "t": "a",
+  "b": "a",
+  "g": "a",
+  "u": "a",
+  "why": "operator ask but stated travel is 2025, expired"
+ },
+ {
+  "id": "ta_15573305",
+  "pass": true,
+  "d": "s",
+  "t": "v",
+  "b": "v",
+  "g": "v",
+  "u": "s",
+  "why": "Tanzania next year, choosing between self-drive camping and a camping-tour operator"
+ },
+ {
+  "id": "ta_15539409",
+  "pass": false,
+  "d": "a",
+  "t": "a",
+  "b": "a",
+  "g": "a",
+  "u": "a",
+  "why": "beach massages"
+ },
+ {
+  "id": "ta_15575127",
+  "pass": true,
+  "d": "s",
+  "t": "a",
+  "b": "a",
+  "g": "v",
+  "u": "v",
+  "why": "safari + 10 days Zanzibar from London, asking where to fly to pick up the safari"
+ },
+ {
+  "id": "ta_15571582",
+  "pass": false,
+  "d": "a",
+  "t": "a",
+  "b": "a",
+  "g": "a",
+  "u": "a",
+  "why": "trip report"
+ },
+ {
+  "id": "ta_15517326",
+  "pass": false,
+  "d": "a",
+  "t": "a",
+  "b": "a",
+  "g": "a",
+  "u": "a",
+  "why": "pre-travel visa/insurance checklist"
+ },
+ {
+  "id": "ta_15563790",
+  "pass": false,
+  "d": "a",
+  "t": "a",
+  "b": "a",
+  "g": "a",
+  "u": "a",
+  "why": "news post"
+ },
+ {
+  "id": "ta_15572522",
+  "pass": false,
+  "d": "a",
+  "t": "a",
+  "b": "a",
+  "g": "a",
+  "u": "a",
+  "why": "pottery village activity, not safari planning"
+ },
+ {
+  "id": "ta_15562538",
+  "pass": false,
+  "d": "a",
+  "t": "a",
+  "b": "a",
+  "g": "a",
+  "u": "a",
+  "why": "SIM/taxi/money logistics"
+ },
+ {
+  "id": "ta_14415030",
+  "pass": false,
+  "d": "a",
+  "t": "a",
+  "b": "a",
+  "g": "a",
+  "u": "a",
+  "why": "Zanzibar complaint/review"
+ },
+ {
+  "id": "ta_15572806",
+  "pass": false,
+  "d": "a",
+  "t": "a",
+  "b": "a",
+  "g": "a",
+  "u": "a",
+  "why": "cross-post duplicate of ta_15572805 (same trip, Zimbabwe forum)"
+ },
+ {
+  "id": "ta_15532243",
+  "pass": false,
+  "d": "a",
+  "t": "a",
+  "b": "a",
+  "g": "a",
+  "u": "a",
+  "why": "Zanzibar must-dos"
+ },
+ {
+  "id": "ta_15548482",
+  "pass": false,
+  "d": "a",
+  "t": "a",
+  "b": "a",
+  "g": "a",
+  "u": "a",
+  "why": "seaweed, beach resort choice"
+ },
+ {
+  "id": "ta_15572011",
+  "pass": false,
+  "d": "a",
+  "t": "a",
+  "b": "a",
+  "g": "a",
+  "u": "a",
+  "why": "bus boarding logistics"
+ },
+ {
+  "id": "ta_15575405",
+  "pass": false,
+  "d": "a",
+  "t": "a",
+  "b": "a",
+  "g": "a",
+  "u": "a",
+  "why": "airport transfer across the border"
+ },
+ {
+  "id": "ta_5928634",
+  "pass": false,
+  "d": "a",
+  "t": "a",
+  "b": "a",
+  "g": "a",
+  "u": "a",
+  "why": "intercity bus"
+ },
+ {
+  "id": "ta_15571739",
+  "pass": false,
+  "d": "a",
+  "t": "a",
+  "b": "a",
+  "g": "a",
+  "u": "a",
+  "why": "explicitly rules safari out"
+ },
+ {
+  "id": "ta_15573963",
+  "pass": true,
+  "d": "x",
+  "t": "s",
+  "b": "x",
+  "g": "s",
+  "u": "x",
+  "why": "Botswana April 2028, two costed itineraries (8000/7400 EUR pp) with named camps, couple, comparing at booking stage"
+ },
+ {
+  "id": "ta_15544741",
+  "pass": false,
+  "d": "a",
+  "t": "a",
+  "b": "a",
+  "g": "a",
+  "u": "a",
+  "why": "vaccination question"
+ },
+ {
+  "id": "ta_15573010",
+  "pass": false,
+  "d": "a",
+  "t": "a",
+  "b": "a",
+  "g": "a",
+  "u": "a",
+  "why": "Zanzibar hotel reviews, beach"
+ },
+ {
+  "id": "ta_15562564",
+  "pass": false,
+  "d": "a",
+  "t": "a",
+  "b": "a",
+  "g": "a",
+  "u": "a",
+  "why": "camp swap complaint; trip was late Aug 2026, now past"
+ },
+ {
+  "id": "ta_15562441",
+  "pass": false,
+  "d": "a",
+  "t": "a",
+  "b": "a",
+  "g": "a",
+  "u": "a",
+  "why": "ATM fees"
+ },
+ {
+  "id": "ta_15573614",
+  "pass": false,
+  "d": "a",
+  "t": "a",
+  "b": "a",
+  "g": "a",
+  "u": "a",
+  "why": "city walking safety"
+ },
+ {
+  "id": "ta_15562480",
+  "pass": false,
+  "d": "a",
+  "t": "a",
+  "b": "a",
+  "g": "a",
+  "u": "a",
+  "why": "bus transport to a pilgrimage site"
+ },
+ {
+  "id": "ta_15572975",
+  "pass": true,
+  "d": "x",
+  "t": "a",
+  "b": "a",
+  "g": "a",
+  "u": "s",
+  "why": "asking for references on a named operator for an Okavango + Chobe trip"
+ },
+ {
+  "id": "ta_15560434",
+  "pass": false,
+  "d": "a",
+  "t": "a",
+  "b": "a",
+  "g": "a",
+  "u": "a",
+  "why": "already booked; asking what to wear and what lunches are like"
+ },
+ {
+  "id": "ta_15556908",
+  "pass": false,
+  "d": "a",
+  "t": "a",
+  "b": "a",
+  "g": "a",
+  "u": "a",
+  "why": "eVisa data error"
+ },
+ {
+  "id": "ta_15545391",
+  "pass": false,
+  "d": "a",
+  "t": "a",
+  "b": "a",
+  "g": "a",
+  "u": "a",
+  "why": "cash vs card, tour already booked"
+ },
+ {
+  "id": "ta_15573489",
+  "pass": false,
+  "d": "a",
+  "t": "a",
+  "b": "a",
+  "g": "a",
+  "u": "a",
+  "why": "early taxi to airport"
+ },
+ {
+  "id": "ta_15553595",
+  "pass": false,
+  "d": "a",
+  "t": "a",
+  "b": "a",
+  "g": "a",
+  "u": "a",
+  "why": "Ebola, considering postponing"
+ },
+ {
+  "id": "ta_15575436",
+  "pass": false,
+  "d": "a",
+  "t": "a",
+  "b": "a",
+  "g": "a",
+  "u": "a",
+  "why": "airport strike"
+ },
+ {
+  "id": "ta_15575406",
+  "pass": false,
+  "d": "a",
+  "t": "a",
+  "b": "a",
+  "g": "a",
+  "u": "a",
+  "why": "cross-post of ta_15575405, airport transfer"
+ },
+ {
+  "id": "ta_15569559",
+  "pass": false,
+  "d": "a",
+  "t": "a",
+  "b": "a",
+  "g": "a",
+  "u": "a",
+  "why": "flight connection time"
+ },
+ {
+  "id": "ta_15561058",
+  "pass": false,
+  "d": "a",
+  "t": "a",
+  "b": "a",
+  "g": "a",
+  "u": "a",
+  "why": "trip report"
+ },
+ {
+  "id": "ta_15398327",
+  "pass": false,
+  "d": "a",
+  "t": "a",
+  "b": "a",
+  "g": "a",
+  "u": "a",
+  "why": "lodge choice but travel was late June 2026, now past"
+ },
+ {
+  "id": "ta_15571964",
+  "pass": false,
+  "d": "a",
+  "t": "a",
+  "b": "a",
+  "g": "a",
+  "u": "a",
+  "why": "news post"
+ },
+ {
+  "id": "ta_5445514",
+  "pass": false,
+  "d": "a",
+  "t": "a",
+  "b": "a",
+  "g": "a",
+  "u": "a",
+  "why": "border crossing"
+ },
+ {
+  "id": "ta_15498448",
+  "pass": false,
+  "d": "a",
+  "t": "a",
+  "b": "a",
+  "g": "a",
+  "u": "a",
+  "why": "filling 3 hours before a flight"
+ },
+ {
+  "id": "ta_15491756",
+  "pass": false,
+  "d": "a",
+  "t": "a",
+  "b": "a",
+  "g": "a",
+  "u": "a",
+  "why": "health and weather"
+ },
+ {
+  "id": "ta_15556300",
+  "pass": false,
+  "d": "a",
+  "t": "a",
+  "b": "a",
+  "g": "a",
+  "u": "a",
+  "why": "walking safety"
+ },
+ {
+  "id": "ta_14898152",
+  "pass": false,
+  "d": "a",
+  "t": "a",
+  "b": "a",
+  "g": "a",
+  "u": "a",
+  "why": "park ticket payment method"
+ },
+ {
+  "id": "ta_15553756",
+  "pass": false,
+  "d": "a",
+  "t": "a",
+  "b": "a",
+  "g": "a",
+  "u": "a",
+  "why": "baggage allowance"
+ },
+ {
+  "id": "ta_15551261",
+  "pass": false,
+  "d": "a",
+  "t": "a",
+  "b": "a",
+  "g": "a",
+  "u": "a",
+  "why": "Nairobi apartment, city stay, no safari"
+ },
+ {
+  "id": "ta_15558859",
+  "pass": false,
+  "d": "a",
+  "t": "a",
+  "b": "a",
+  "g": "a",
+  "u": "a",
+  "why": "one-line honeymoon stay enquiry, no safari context stated"
+ },
+ {
+  "id": "ta_12925251",
+  "pass": false,
+  "d": "a",
+  "t": "a",
+  "b": "a",
+  "g": "a",
+  "u": "a",
+  "why": "driver review"
+ },
+ {
+  "id": "ta_15417588",
+  "pass": false,
+  "d": "a",
+  "t": "a",
+  "b": "a",
+  "g": "a",
+  "u": "a",
+  "why": "ETA document not received"
+ },
+ {
+  "id": "ta_15574628",
+  "pass": false,
+  "d": "a",
+  "t": "a",
+  "b": "a",
+  "g": "a",
+  "u": "a",
+  "why": "domestic airline comparison"
+ },
+ {
+  "id": "ta_15558567",
+  "pass": false,
+  "d": "a",
+  "t": "a",
+  "b": "a",
+  "g": "a",
+  "u": "a",
+  "why": "where to sleep before an early flight"
+ },
+ {
+  "id": "ta_14634843",
+  "pass": false,
+  "d": "a",
+  "t": "a",
+  "b": "a",
+  "g": "a",
+  "u": "a",
+  "why": "day-tour filler around a booked safari"
+ },
+ {
+  "id": "ta_15508509",
+  "pass": false,
+  "d": "a",
+  "t": "a",
+  "b": "a",
+  "g": "a",
+  "u": "a",
+  "why": "safety question"
+ },
+ {
+  "id": "ta_15528631",
+  "pass": false,
+  "d": "a",
+  "t": "a",
+  "b": "a",
+  "g": "a",
+  "u": "a",
+  "why": "things to do in Entebbe"
+ },
+ {
+  "id": "ta_15552356",
+  "pass": false,
+  "d": "a",
+  "t": "a",
+  "b": "a",
+  "g": "a",
+  "u": "a",
+  "why": "shoebill logistics and driving route"
+ },
+ {
+  "id": "ta_15568613",
+  "pass": false,
+  "d": "a",
+  "t": "a",
+  "b": "a",
+  "g": "a",
+  "u": "a",
+  "why": "SIM card on arrival"
+ },
+ {
+  "id": "ta_15574414",
+  "pass": false,
+  "d": "a",
+  "t": "a",
+  "b": "a",
+  "g": "a",
+  "u": "a",
+  "why": "intercity transport"
+ },
+ {
+  "id": "ta_15505584",
+  "pass": false,
+  "d": "a",
+  "t": "a",
+  "b": "a",
+  "g": "a",
+  "u": "a",
+  "why": "car and driver for a non-safari leg"
+ },
+ {
+  "id": "ta_15573023",
+  "pass": false,
+  "d": "a",
+  "t": "a",
+  "b": "a",
+  "g": "a",
+  "u": "a",
+  "why": "self-drive timing"
+ },
+ {
+  "id": "ta_15574170",
+  "pass": false,
+  "d": "a",
+  "t": "a",
+  "b": "a",
+  "g": "a",
+  "u": "a",
+  "why": "ETA payment failure"
+ },
+ {
+  "id": "ta_15572593",
+  "pass": false,
+  "d": "a",
+  "t": "a",
+  "b": "a",
+  "g": "a",
+  "u": "a",
+  "why": "leaving in 24h, asking what changed since last visit"
+ },
+ {
+  "id": "ta_15571812",
+  "pass": false,
+  "d": "a",
+  "t": "a",
+  "b": "a",
+  "g": "a",
+  "u": "a",
+  "why": "hire car / public transport routing"
+ },
+ {
+  "id": "ta_15543943",
+  "pass": false,
+  "d": "a",
+  "t": "a",
+  "b": "a",
+  "g": "a",
+  "u": "a",
+  "why": "Ebola + transport, June arrival now past"
+ },
+ {
+  "id": "ta_15571633",
+  "pass": false,
+  "d": "a",
+  "t": "a",
+  "b": "a",
+  "g": "a",
+  "u": "a",
+  "why": "which coastal town to sleep in"
+ },
+ {
+  "id": "ta_15545188",
+  "pass": false,
+  "d": "a",
+  "t": "a",
+  "b": "a",
+  "g": "a",
+  "u": "a",
+  "why": "airline cancellation notice"
+ },
+ {
+  "id": "ta_15575660",
+  "pass": true,
+  "d": "x",
+  "t": "a",
+  "b": "a",
+  "g": "s",
+  "u": "v",
+  "why": "solo first safari Kenya 5-6 nights, has a TO itinerary (Nakuru + Mara), asking whether to swap Nakuru"
+ },
+ {
+  "id": "ta_15531489",
+  "pass": false,
+  "d": "a",
+  "t": "a",
+  "b": "a",
+  "g": "a",
+  "u": "a",
+  "why": "August tour already past; asking Kigali extras"
+ },
+ {
+  "id": "ta_15551140",
+  "pass": false,
+  "d": "a",
+  "t": "a",
+  "b": "a",
+  "g": "a",
+  "u": "a",
+  "why": "4x4 rental company"
+ },
+ {
+  "id": "ta_15571412",
+  "pass": false,
+  "d": "a",
+  "t": "a",
+  "b": "a",
+  "g": "a",
+  "u": "a",
+  "why": "lunch stops on a drive"
+ },
+ {
+  "id": "ta_15548878",
+  "pass": false,
+  "d": "a",
+  "t": "a",
+  "b": "a",
+  "g": "a",
+  "u": "a",
+  "why": "how to hire a park ranger for a self-drive"
+ },
+ {
+  "id": "ta_15553767",
+  "pass": false,
+  "d": "a",
+  "t": "a",
+  "b": "a",
+  "g": "a",
+  "u": "a",
+  "why": "where to buy wine"
+ },
+ {
+  "id": "ta_15432560",
+  "pass": false,
+  "d": "a",
+  "t": "a",
+  "b": "a",
+  "g": "a",
+  "u": "a",
+  "why": "flight strike, safari already booked and imminent"
+ },
+ {
+  "id": "ta_15571630",
+  "pass": false,
+  "d": "a",
+  "t": "a",
+  "b": "a",
+  "g": "a",
+  "u": "a",
+  "why": "snorkel operator, beach"
+ },
+ {
+  "id": "ta_15536143",
+  "pass": false,
+  "d": "a",
+  "t": "a",
+  "b": "a",
+  "g": "a",
+  "u": "a",
+  "why": "taxi app fares"
+ },
+ {
+  "id": "ta_15480140",
+  "pass": false,
+  "d": "a",
+  "t": "a",
+  "b": "a",
+  "g": "a",
+  "u": "a",
+  "why": "beach hawkers"
+ },
+ {
+  "id": "ta_15570254",
+  "pass": false,
+  "d": "a",
+  "t": "a",
+  "b": "a",
+  "g": "a",
+  "u": "a",
+  "why": "beach quality at a Nungwi hotel"
+ },
+ {
+  "id": "ta_15566736",
+  "pass": false,
+  "d": "a",
+  "t": "a",
+  "b": "a",
+  "g": "a",
+  "u": "a",
+  "why": "Zanzibar beach/snorkel trip, no safari"
+ },
+ {
+  "id": "ta_15553324",
+  "pass": false,
+  "d": "a",
+  "t": "a",
+  "b": "a",
+  "g": "a",
+  "u": "a",
+  "why": "which coast of Zanzibar"
+ },
+ {
+  "id": "ta_15552549",
+  "pass": false,
+  "d": "a",
+  "t": "a",
+  "b": "a",
+  "g": "a",
+  "u": "a",
+  "why": "all-inclusive with beach snorkelling"
+ },
+ {
+  "id": "ta_15563989",
+  "pass": false,
+  "d": "a",
+  "t": "a",
+  "b": "a",
+  "g": "a",
+  "u": "a",
+  "why": "coastal island day trip"
+ },
+ {
+  "id": "ta_15572763",
+  "pass": true,
+  "d": "x",
+  "t": "s",
+  "b": "x",
+  "g": "x",
+  "u": "x",
+  "why": "22-day Kenya/Tanzania Aug 2027 for two 40yos, USD 11k pp ex flights, merging two local-operator quotes and asking for a review"
+ },
+ {
+  "id": "ta_15558829",
+  "pass": false,
+  "d": "a",
+  "t": "a",
+  "b": "a",
+  "g": "a",
+  "u": "a",
+  "why": "border visa and money changing"
+ },
+ {
+  "id": "ta_15571141",
+  "pass": false,
+  "d": "a",
+  "t": "a",
+  "b": "a",
+  "g": "a",
+  "u": "a",
+  "why": "operator ask but for an all-inclusive beach holiday"
+ },
+ {
+  "id": "ta_15562435",
+  "pass": false,
+  "d": "a",
+  "t": "a",
+  "b": "a",
+  "g": "a",
+  "u": "a",
+  "why": "hotel amenities"
+ },
+ {
+  "id": "ta_15566523",
+  "pass": false,
+  "d": "a",
+  "t": "a",
+  "b": "a",
+  "g": "a",
+  "u": "a",
+  "why": "food illness"
+ },
+ {
+  "id": "ta_15575452",
+  "pass": false,
+  "d": "a",
+  "t": "a",
+  "b": "a",
+  "g": "a",
+  "u": "a",
+  "why": "road surface"
+ },
+ {
+  "id": "ta_15574441",
+  "pass": false,
+  "d": "a",
+  "t": "a",
+  "b": "a",
+  "g": "a",
+  "u": "a",
+  "why": "customs declaration form"
+ },
+ {
+  "id": "ta_15558462",
+  "pass": false,
+  "d": "a",
+  "t": "a",
+  "b": "a",
+  "g": "a",
+  "u": "a",
+  "why": "migration tracking, informational"
+ },
+ {
+  "id": "ta_15548576",
+  "pass": false,
+  "d": "a",
+  "t": "a",
+  "b": "a",
+  "g": "a",
+  "u": "a",
+  "why": "ground transport between towns"
+ },
+ {
+  "id": "ta_15567378",
+  "pass": false,
+  "d": "a",
+  "t": "a",
+  "b": "a",
+  "g": "a",
+  "u": "a",
+  "why": "trip report"
+ },
+ {
+  "id": "ta_15569935",
+  "pass": false,
+  "d": "a",
+  "t": "a",
+  "b": "a",
+  "g": "a",
+  "u": "a",
+  "why": "trip report / operator praise"
+ },
+ {
+  "id": "ta_15574996",
+  "pass": true,
+  "d": "s",
+  "t": "s",
+  "b": "v",
+  "g": "v",
+  "u": "v",
+  "why": "Greater Kruger Aug 2027, self-drive plus a private reserve, hunting for a lodge with a 6-7 night long-stay rate"
+ },
+ {
+  "id": "ta_7704563",
+  "pass": false,
+  "d": "a",
+  "t": "a",
+  "b": "a",
+  "g": "a",
+  "u": "a",
+  "why": "general pre-trip tips"
+ },
+ {
+  "id": "ta_15563742",
+  "pass": true,
+  "d": "x",
+  "t": "a",
+  "b": "v",
+  "g": "v",
+  "u": "v",
+  "why": "3-week South Africa itinerary incl. 3 nights Kruger, asking whether a safari can be arranged from Hazyview without pre-booking"
+ },
+ {
+  "id": "ta_15549751",
+  "pass": false,
+  "d": "a",
+  "t": "a",
+  "b": "a",
+  "g": "a",
+  "u": "a",
+  "why": "group transfer quote"
+ },
+ {
+  "id": "ta_15574077",
+  "pass": false,
+  "d": "a",
+  "t": "a",
+  "b": "a",
+  "g": "a",
+  "u": "a",
+  "why": "local taxi to restaurants"
+ },
+ {
+  "id": "ta_15548052",
+  "pass": false,
+  "d": "a",
+  "t": "a",
+  "b": "a",
+  "g": "a",
+  "u": "a",
+  "why": "in-park drive times"
+ },
+ {
+  "id": "ta_15572819",
+  "pass": false,
+  "d": "a",
+  "t": "a",
+  "b": "a",
+  "g": "a",
+  "u": "a",
+  "why": "cabin luggage sizing"
+ },
+ {
+  "id": "ta_15555377",
+  "pass": false,
+  "d": "a",
+  "t": "a",
+  "b": "a",
+  "g": "a",
+  "u": "a",
+  "why": "campsite security"
+ },
+ {
+  "id": "ta_15572083",
+  "pass": false,
+  "d": "a",
+  "t": "a",
+  "b": "a",
+  "g": "a",
+  "u": "a",
+  "why": "safari planned but the question is flight pricing and routing"
+ },
+ {
+  "id": "ta_15572289",
+  "pass": false,
+  "d": "a",
+  "t": "a",
+  "b": "a",
+  "g": "a",
+  "u": "a",
+  "why": "post removed by Tripadvisor"
+ },
+ {
+  "id": "ta_14853345",
+  "pass": false,
+  "d": "a",
+  "t": "a",
+  "b": "a",
+  "g": "a",
+  "u": "a",
+  "why": "due diligence on a packaged tour, packing-list detail"
+ },
+ {
+  "id": "ta_15575037",
+  "pass": false,
+  "d": "a",
+  "t": "a",
+  "b": "a",
+  "g": "a",
+  "u": "a",
+  "why": "transport to a cricket match"
+ },
+ {
+  "id": "ta_15551293",
+  "pass": false,
+  "d": "a",
+  "t": "a",
+  "b": "a",
+  "g": "a",
+  "u": "a",
+  "why": "filling an afternoon near the airport lodge"
+ },
+ {
+  "id": "ta_15467024",
+  "pass": false,
+  "d": "a",
+  "t": "a",
+  "b": "a",
+  "g": "a",
+  "u": "a",
+  "why": "airport transit question"
+ },
+ {
+  "id": "ta_15572761",
+  "pass": false,
+  "d": "a",
+  "t": "a",
+  "b": "a",
+  "g": "a",
+  "u": "a",
+  "why": "cross-post duplicate of ta_15572763 (Tanzania forum)"
+ },
+ {
+  "id": "ta_15454364",
+  "pass": false,
+  "d": "a",
+  "t": "a",
+  "b": "a",
+  "g": "a",
+  "u": "a",
+  "why": "local guides, beach"
+ },
+ {
+  "id": "ta_15563537",
+  "pass": false,
+  "d": "a",
+  "t": "a",
+  "b": "a",
+  "g": "a",
+  "u": "a",
+  "why": "roadblock notice"
+ },
+ {
+  "id": "ta_15575812",
+  "pass": false,
+  "d": "a",
+  "t": "a",
+  "b": "a",
+  "g": "a",
+  "u": "a",
+  "why": "camp-to-airport transfer timing"
+ },
+ {
+  "id": "ta_15560529",
+  "pass": false,
+  "d": "a",
+  "t": "a",
+  "b": "a",
+  "g": "a",
+  "u": "a",
+  "why": "do-not-fly list problem"
+ },
+ {
+  "id": "ta_15549564",
+  "pass": false,
+  "d": "a",
+  "t": "a",
+  "b": "a",
+  "g": "a",
+  "u": "a",
+  "why": "taxi pricing"
+ },
+ {
+  "id": "ta_15569381",
+  "pass": true,
+  "d": "s",
+  "t": "v",
+  "b": "v",
+  "g": "a",
+  "u": "v",
+  "why": "5-6 nights Okavango in July, weighing Jao Camp against Kwara on wildlife vs looks"
+ },
+ {
+  "id": "ta_15572808",
+  "pass": false,
+  "d": "a",
+  "t": "a",
+  "b": "a",
+  "g": "a",
+  "u": "a",
+  "why": "third cross-post of the 4-country trip (Zambia forum)"
+ },
+ {
+  "id": "ta_15571339",
+  "pass": false,
+  "d": "a",
+  "t": "a",
+  "b": "a",
+  "g": "a",
+  "u": "a",
+  "why": "informational question about NNP"
+ },
+ {
+  "id": "ta_15571937",
+  "pass": false,
+  "d": "a",
+  "t": "a",
+  "b": "a",
+  "g": "a",
+  "u": "a",
+  "why": "camps already booked; asking what conditions to expect"
+ },
+ {
+  "id": "ta_15570111",
+  "pass": false,
+  "d": "a",
+  "t": "a",
+  "b": "a",
+  "g": "a",
+  "u": "a",
+  "why": "late-night airport transfer"
+ },
+ {
+  "id": "ta_15573211",
+  "pass": true,
+  "d": "s",
+  "t": "a",
+  "b": "a",
+  "g": "a",
+  "u": "s",
+  "why": "chosen a named Letaka itinerary, deciding whether to book direct or via a UK agency"
+ },
+ {
+  "id": "ta_15566204",
+  "pass": false,
+  "d": "a",
+  "t": "a",
+  "b": "a",
+  "g": "a",
+  "u": "a",
+  "why": "what else to do after the orphanage"
+ },
+ {
+  "id": "ta_14427516",
+  "pass": false,
+  "d": "a",
+  "t": "a",
+  "b": "a",
+  "g": "a",
+  "u": "a",
+  "why": "things to do in Entebbe"
+ },
+ {
+  "id": "ta_15561219",
+  "pass": false,
+  "d": "a",
+  "t": "a",
+  "b": "a",
+  "g": "a",
+  "u": "a",
+  "why": "city minibus hire, date already past"
+ },
+ {
+  "id": "ta_15557920",
+  "pass": false,
+  "d": "a",
+  "t": "a",
+  "b": "a",
+  "g": "a",
+  "u": "a",
+  "why": "customs paperwork"
+ },
+ {
+  "id": "ta_15559372",
+  "pass": false,
+  "d": "a",
+  "t": "a",
+  "b": "a",
+  "g": "a",
+  "u": "a",
+  "why": "booked trip, August date now past"
+ },
+ {
+  "id": "ta_15554127",
+  "pass": false,
+  "d": "a",
+  "t": "a",
+  "b": "a",
+  "g": "a",
+  "u": "a",
+  "why": "July dates already past"
+ },
+ {
+  "id": "ta_15564997",
+  "pass": false,
+  "d": "a",
+  "t": "a",
+  "b": "a",
+  "g": "a",
+  "u": "a",
+  "why": "post removed by author"
+ },
+ {
+  "id": "ta_15567376",
+  "pass": false,
+  "d": "a",
+  "t": "a",
+  "b": "a",
+  "g": "a",
+  "u": "a",
+  "why": "arrival drive timing"
+ },
+ {
+  "id": "ta_15574188",
+  "pass": false,
+  "d": "a",
+  "t": "a",
+  "b": "a",
+  "g": "a",
+  "u": "a",
+  "why": "ETA validity"
+ },
+ {
+  "id": "ta_15569914",
+  "pass": false,
+  "d": "a",
+  "t": "a",
+  "b": "a",
+  "g": "a",
+  "u": "a",
+  "why": "dust on drives, camps already booked"
+ },
+ {
+  "id": "ta_15571078",
+  "pass": false,
+  "d": "a",
+  "t": "a",
+  "b": "a",
+  "g": "a",
+  "u": "a",
+  "why": "self-drive Etosha plan review, lodges already booked, travelling next week"
+ },
+ {
+  "id": "ta_15548281",
+  "pass": false,
+  "d": "a",
+  "t": "a",
+  "b": "a",
+  "g": "a",
+  "u": "a",
+  "why": "customs / personal item"
+ },
+ {
+  "id": "ta_15571389",
+  "pass": false,
+  "d": "a",
+  "t": "a",
+  "b": "a",
+  "g": "a",
+  "u": "a",
+  "why": "news post"
+ },
+ {
+  "id": "ta_15575593",
+  "pass": false,
+  "d": "a",
+  "t": "a",
+  "b": "a",
+  "g": "a",
+  "u": "a",
+  "why": "park fee question"
+ },
+ {
+  "id": "ta_15555498",
+  "pass": false,
+  "d": "a",
+  "t": "a",
+  "b": "a",
+  "g": "a",
+  "u": "a",
+  "why": "airline news"
+ },
+ {
+  "id": "ta_15571803",
+  "pass": false,
+  "d": "a",
+  "t": "a",
+  "b": "a",
+  "g": "a",
+  "u": "a",
+  "why": "news post"
+ },
+ {
+  "id": "ta_15504865",
+  "pass": false,
+  "d": "a",
+  "t": "a",
+  "b": "a",
+  "g": "a",
+  "u": "a",
+  "why": "Zanzibar snorkel/Stone Town guide"
+ },
+ {
+  "id": "ta_15559972",
+  "pass": false,
+  "d": "a",
+  "t": "a",
+  "b": "a",
+  "g": "a",
+  "u": "a",
+  "why": "trip report"
+ },
+ {
+  "id": "ta_15569940",
+  "pass": false,
+  "d": "a",
+  "t": "a",
+  "b": "a",
+  "g": "a",
+  "u": "a",
+  "why": "Eastern Highlands waterfalls, no game viewing"
+ },
+ {
+  "id": "ta_15575166",
+  "pass": false,
+  "d": "a",
+  "t": "a",
+  "b": "a",
+  "g": "a",
+  "u": "a",
+  "why": "booked 11 nights, complaint about park accommodation"
+ },
+ {
+  "id": "ta_15544225",
+  "pass": false,
+  "d": "a",
+  "t": "a",
+  "b": "a",
+  "g": "a",
+  "u": "a",
+  "why": "sea fishing trips"
+ },
+ {
+  "id": "ta_15571885",
+  "pass": false,
+  "d": "a",
+  "t": "a",
+  "b": "a",
+  "g": "a",
+  "u": "a",
+  "why": "Cape Town sightseeing; the safari leg is already fixed"
+ },
+ {
+  "id": "ta_15546722",
+  "pass": false,
+  "d": "a",
+  "t": "a",
+  "b": "a",
+  "g": "a",
+  "u": "a",
+  "why": "plug adapter"
+ },
+ {
+  "id": "ta_15575462",
+  "pass": true,
+  "d": "x",
+  "t": "v",
+  "b": "v",
+  "g": "a",
+  "u": "x",
+  "why": "Masai Mara in Nov, choosing Amboseli vs Serengeti pairing and asking about advance payment to the agency"
+ },
+ {
+  "id": "ta_14342167",
+  "pass": false,
+  "d": "a",
+  "t": "a",
+  "b": "a",
+  "g": "a",
+  "u": "a",
+  "why": "room-type question at one camp"
+ },
+ {
+  "id": "ta_15555753",
+  "pass": false,
+  "d": "a",
+  "t": "a",
+  "b": "a",
+  "g": "a",
+  "u": "a",
+  "why": "is self-drive allowed"
+ },
+ {
+  "id": "ta_15539459",
+  "pass": false,
+  "d": "a",
+  "t": "a",
+  "b": "a",
+  "g": "a",
+  "u": "a",
+  "why": "explicitly not interested in safari; June date past"
+ },
+ {
+  "id": "ta_15512365",
+  "pass": false,
+  "d": "a",
+  "t": "a",
+  "b": "a",
+  "g": "a",
+  "u": "a",
+  "why": "tipping etiquette"
+ },
+ {
+  "id": "ta_13155443",
+  "pass": false,
+  "d": "a",
+  "t": "a",
+  "b": "a",
+  "g": "a",
+  "u": "a",
+  "why": "evergreen operator-list resource thread"
+ },
+ {
+  "id": "ta_15567655",
+  "pass": false,
+  "d": "a",
+  "t": "a",
+  "b": "a",
+  "g": "a",
+  "u": "a",
+  "why": "how long to see the falls"
+ },
+ {
+  "id": "ta_15576155",
+  "pass": false,
+  "d": "a",
+  "t": "a",
+  "b": "a",
+  "g": "a",
+  "u": "a",
+  "why": "flight connection"
+ },
+ {
+  "id": "ta_15563656",
+  "pass": false,
+  "d": "a",
+  "t": "a",
+  "b": "a",
+  "g": "a",
+  "u": "a",
+  "why": "curiosity about occupancy; states no plans to travel"
+ },
+ {
+  "id": "ta_15552718",
+  "pass": false,
+  "d": "a",
+  "t": "a",
+  "b": "a",
+  "g": "a",
+  "u": "a",
+  "why": "airport taxi"
+ },
+ {
+  "id": "ta_15569931",
+  "pass": false,
+  "d": "a",
+  "t": "a",
+  "b": "a",
+  "g": "a",
+  "u": "a",
+  "why": "beach quality"
+ },
+ {
+  "id": "ta_15556954",
+  "pass": false,
+  "d": "a",
+  "t": "a",
+  "b": "a",
+  "g": "a",
+  "u": "a",
+  "why": "transfer share, August dates past"
+ },
+ {
+  "id": "ta_15571752",
+  "pass": false,
+  "d": "a",
+  "t": "a",
+  "b": "a",
+  "g": "a",
+  "u": "a",
+  "why": "wanted a mainland safari but the 28 Aug-5 Sep trip is over"
+ },
+ {
+  "id": "ta_15546623",
+  "pass": false,
+  "d": "a",
+  "t": "a",
+  "b": "a",
+  "g": "a",
+  "u": "a",
+  "why": "July 2026 trip, power and fridge query"
+ },
+ {
+  "id": "ta_15505031",
+  "pass": false,
+  "d": "a",
+  "t": "a",
+  "b": "a",
+  "g": "a",
+  "u": "a",
+  "why": "car and driver vs ride hailing"
+ },
+ {
+  "id": "ta_15547290",
+  "pass": false,
+  "d": "a",
+  "t": "a",
+  "b": "a",
+  "g": "a",
+  "u": "a",
+  "why": "airport transport plus Ebola status"
+ },
+ {
+  "id": "ta_15570458",
+  "pass": false,
+  "d": "a",
+  "t": "a",
+  "b": "a",
+  "g": "a",
+  "u": "a",
+  "why": "beach hotel day pass"
+ },
+ {
+  "id": "ta_15559100",
+  "pass": false,
+  "d": "a",
+  "t": "a",
+  "b": "a",
+  "g": "a",
+  "u": "a",
+  "why": "news post"
+ },
+ {
+  "id": "ta_15560767",
+  "pass": false,
+  "d": "a",
+  "t": "a",
+  "b": "a",
+  "g": "a",
+  "u": "a",
+  "why": "lodge marketing"
+ },
+ {
+  "id": "ta_15548994",
+  "pass": false,
+  "d": "a",
+  "t": "a",
+  "b": "a",
+  "g": "a",
+  "u": "a",
+  "why": "how tent assignment works, no buying signal"
+ },
+ {
+  "id": "ta_15553862",
+  "pass": false,
+  "d": "a",
+  "t": "a",
+  "b": "a",
+  "g": "a",
+  "u": "a",
+  "why": "KAZA visa mechanics"
+ },
+ {
+  "id": "ta_14798974",
+  "pass": false,
+  "d": "a",
+  "t": "a",
+  "b": "a",
+  "g": "a",
+  "u": "a",
+  "why": "solo safety in Kigali before a booked trek"
+ },
+ {
+  "id": "rd_1w48hol",
+  "pass": true,
+  "d": "x",
+  "t": "s",
+  "b": "a",
+  "g": "s",
+  "u": "s",
+  "why": "honeymoon Oct 2026, 8 nights, two adults, torn between Tanzania+Zanzibar and a South Africa lodge+beach combo, nothing booked a month out"
+ },
+ {
+  "id": "rd_1w1n1in",
+  "pass": false,
+  "d": "a",
+  "t": "a",
+  "b": "a",
+  "g": "a",
+  "u": "a",
+  "why": "title only, no body to judge"
+ },
+ {
+  "id": "rd_1w7iiib",
+  "pass": true,
+  "d": "x",
+  "t": "s",
+  "b": "v",
+  "g": "x",
+  "u": "v",
+  "why": "solo 42M, 20 days Kenya+Tanzania Jan/Feb 2027, detailed draft itinerary, moderate budget"
+ },
+ {
+  "id": "rd_1vxbosl",
+  "pass": false,
+  "d": "a",
+  "t": "a",
+  "b": "a",
+  "g": "a",
+  "u": "a",
+  "why": "trip report"
+ },
+ {
+  "id": "rd_1w1kvl5",
+  "pass": true,
+  "d": "s",
+  "t": "v",
+  "b": "v",
+  "g": "s",
+  "u": "s",
+  "why": "Sabi Sand next May, 5 adults, deciding between three named lodges on game viewing"
+ },
+ {
+  "id": "rd_1vwy80b",
+  "pass": false,
+  "d": "a",
+  "t": "a",
+  "b": "a",
+  "g": "a",
+  "u": "a",
+  "why": "rabies vaccination"
+ },
+ {
+  "id": "rd_1vygbra",
+  "pass": true,
+  "d": "s",
+  "t": "a",
+  "b": "v",
+  "g": "x",
+  "u": "v",
+  "why": "taking an 85-year-old mother on safari, Tanzania vs South Africa, wants lodge recommendations"
+ },
+ {
+  "id": "rd_1vyyq6e",
+  "pass": false,
+  "d": "a",
+  "t": "a",
+  "b": "a",
+  "g": "a",
+  "u": "a",
+  "why": "multi-country hop incl. Angola and Algeria; safari incidental"
+ },
+ {
+  "id": "rd_1vy9mlb",
+  "pass": false,
+  "d": "a",
+  "t": "a",
+  "b": "a",
+  "g": "a",
+  "u": "a",
+  "why": "Peru"
+ },
+ {
+  "id": "rd_1w4krul",
+  "pass": false,
+  "d": "a",
+  "t": "a",
+  "b": "a",
+  "g": "a",
+  "u": "a",
+  "why": "award-flight routing"
+ },
+ {
+  "id": "rd_1w7o0zp",
+  "pass": true,
+  "d": "v",
+  "t": "v",
+  "b": "x",
+  "g": "x",
+  "u": "s",
+  "why": "solo 37F wants a small-group safari in 2027, 10-14 days under $6K ex flights, shopping operators beyond Contiki"
+ },
+ {
+  "id": "rd_1w6o7mp",
+  "pass": false,
+  "d": "a",
+  "t": "a",
+  "b": "a",
+  "g": "a",
+  "u": "a",
+  "why": "lodge review"
+ },
+ {
+  "id": "rd_1w6ly61",
+  "pass": true,
+  "d": "x",
+  "t": "s",
+  "b": "a",
+  "g": "s",
+  "u": "v",
+  "why": "family of 4, Kenya July 2027, 7 days across 2-3 areas, wants ethical conservancies and operators"
+ },
+ {
+  "id": "rd_1w68gce",
+  "pass": false,
+  "d": "a",
+  "t": "a",
+  "b": "a",
+  "g": "a",
+  "u": "a",
+  "why": "photo post"
+ },
+ {
+  "id": "rd_1w60cly",
+  "pass": false,
+  "d": "a",
+  "t": "a",
+  "b": "a",
+  "g": "a",
+  "u": "a",
+  "why": "photo post"
+ },
+ {
+  "id": "rd_1w5hx9q",
+  "pass": false,
+  "d": "a",
+  "t": "a",
+  "b": "a",
+  "g": "a",
+  "u": "a",
+  "why": "photo post"
+ },
+ {
+  "id": "rd_1w5blhh",
+  "pass": false,
+  "d": "a",
+  "t": "a",
+  "b": "a",
+  "g": "a",
+  "u": "a",
+  "why": "photo post"
+ },
+ {
+  "id": "rd_1w56vca",
+  "pass": false,
+  "d": "a",
+  "t": "a",
+  "b": "a",
+  "g": "a",
+  "u": "a",
+  "why": "photo post"
+ },
+ {
+  "id": "rd_1w53iyc",
+  "pass": false,
+  "d": "a",
+  "t": "a",
+  "b": "a",
+  "g": "a",
+  "u": "a",
+  "why": "artwork post"
+ },
+ {
+  "id": "rd_1w51i56",
+  "pass": false,
+  "d": "a",
+  "t": "a",
+  "b": "a",
+  "g": "a",
+  "u": "a",
+  "why": "photo post"
+ },
+ {
+  "id": "rd_1w2p2jc",
+  "pass": false,
+  "d": "a",
+  "t": "a",
+  "b": "a",
+  "g": "a",
+  "u": "a",
+  "why": "photo post"
+ },
+ {
+  "id": "rd_1w115b6",
+  "pass": true,
+  "d": "x",
+  "t": "s",
+  "b": "x",
+  "g": "s",
+  "u": "v",
+  "why": "self-drive Kruger honeymoon June 2027, ~$3,000 all-in for two, deciding Olifants vs Lower Sabie plus a Balule lodge"
+ },
+ {
+  "id": "rd_1vzlv1w",
+  "pass": false,
+  "d": "a",
+  "t": "a",
+  "b": "a",
+  "g": "a",
+  "u": "a",
+  "why": "photo post"
+ },
+ {
+  "id": "rd_1vy6raf",
+  "pass": false,
+  "d": "a",
+  "t": "a",
+  "b": "a",
+  "g": "a",
+  "u": "a",
+  "why": "photo post"
+ },
+ {
+  "id": "rd_1w7cvn3",
+  "pass": false,
+  "d": "a",
+  "t": "a",
+  "b": "a",
+  "g": "a",
+  "u": "a",
+  "why": "photo post"
+ },
+ {
+  "id": "rd_1w6qf0e",
+  "pass": false,
+  "d": "a",
+  "t": "a",
+  "b": "a",
+  "g": "a",
+  "u": "a",
+  "why": "anecdote from a trip in progress"
+ },
+ {
+  "id": "rd_1w740ea",
+  "pass": false,
+  "d": "a",
+  "t": "a",
+  "b": "a",
+  "g": "a",
+  "u": "a",
+  "why": "operator content marketing"
+ },
+ {
+  "id": "rd_1w7246h",
+  "pass": false,
+  "d": "a",
+  "t": "a",
+  "b": "a",
+  "g": "a",
+  "u": "a",
+  "why": "trip report"
+ },
+ {
+  "id": "rd_1w71sc1",
+  "pass": false,
+  "d": "a",
+  "t": "a",
+  "b": "a",
+  "g": "a",
+  "u": "a",
+  "why": "villa marketing"
+ },
+ {
+  "id": "rd_1w70w4a",
+  "pass": false,
+  "d": "a",
+  "t": "a",
+  "b": "a",
+  "g": "a",
+  "u": "a",
+  "why": "operator FAQ marketing"
+ },
+ {
+  "id": "rd_1w634qa",
+  "pass": false,
+  "d": "a",
+  "t": "a",
+  "b": "a",
+  "g": "a",
+  "u": "a",
+  "why": "engagement-bait poll, no trip"
+ },
+ {
+  "id": "rd_1w48kco",
+  "pass": false,
+  "d": "a",
+  "t": "a",
+  "b": "a",
+  "g": "a",
+  "u": "a",
+  "why": "wants a whole-continent itinerary map, no safari specifics"
+ },
+ {
+  "id": "rd_1w38o66",
+  "pass": false,
+  "d": "a",
+  "t": "a",
+  "b": "a",
+  "g": "a",
+  "u": "a",
+  "why": "empty body"
+ },
+ {
+  "id": "rd_1w38lav",
+  "pass": false,
+  "d": "a",
+  "t": "a",
+  "b": "a",
+  "g": "a",
+  "u": "a",
+  "why": "operator marketing, DM to book"
+ },
+ {
+  "id": "rd_1w2sz7t",
+  "pass": false,
+  "d": "a",
+  "t": "a",
+  "b": "a",
+  "g": "a",
+  "u": "a",
+  "why": "guide's photo post"
+ },
+ {
+  "id": "rd_1w21ibh",
+  "pass": false,
+  "d": "a",
+  "t": "a",
+  "b": "a",
+  "g": "a",
+  "u": "a",
+  "why": "poll on best African country, no safari context"
+ },
+ {
+  "id": "rd_1w1ixgh",
+  "pass": true,
+  "d": "x",
+  "t": "s",
+  "b": "v",
+  "g": "a",
+  "u": "v",
+  "why": "self-drive camping June/July 2027, choosing Tanzania northern circuit against Malawi"
+ },
+ {
+  "id": "rd_1w0r3le",
+  "pass": false,
+  "d": "a",
+  "t": "a",
+  "b": "a",
+  "g": "a",
+  "u": "a",
+  "why": "gift ideas for tipping on a booked trip"
+ },
+ {
+  "id": "rd_1w0n97v",
+  "pass": false,
+  "d": "a",
+  "t": "a",
+  "b": "a",
+  "g": "a",
+  "u": "a",
+  "why": "operator engagement bait"
+ },
+ {
+  "id": "rd_1w0ju7g",
+  "pass": false,
+  "d": "a",
+  "t": "a",
+  "b": "a",
+  "g": "a",
+  "u": "a",
+  "why": "rock climbing promo"
+ },
+ {
+  "id": "rd_1vzvyd5",
+  "pass": false,
+  "d": "a",
+  "t": "a",
+  "b": "a",
+  "g": "a",
+  "u": "a",
+  "why": "photo post"
+ },
+ {
+  "id": "rd_1vzuyn0",
+  "pass": true,
+  "d": "x",
+  "t": "s",
+  "b": "a",
+  "g": "a",
+  "u": "v",
+  "why": "South Africa July 2027, Cape Town through to Kruger, weighing whether the Garden Route works in that season"
+ },
+ {
+  "id": "rd_1vyqhgx",
+  "pass": false,
+  "d": "a",
+  "t": "a",
+  "b": "a",
+  "g": "a",
+  "u": "a",
+  "why": "guesthouse operator gathering local info"
+ },
+ {
+  "id": "rd_1vybbri",
+  "pass": false,
+  "d": "a",
+  "t": "a",
+  "b": "a",
+  "g": "a",
+  "u": "a",
+  "why": "which 4x4 to rent"
+ },
+ {
+  "id": "rd_1vy078h",
+  "pass": false,
+  "d": "a",
+  "t": "a",
+  "b": "a",
+  "g": "a",
+  "u": "a",
+  "why": "airline comparison"
+ },
+ {
+  "id": "rd_1vxq9uf",
+  "pass": false,
+  "d": "a",
+  "t": "a",
+  "b": "a",
+  "g": "a",
+  "u": "a",
+  "why": "Addis Ababa city visit"
+ },
+ {
+  "id": "rd_1vxmylm",
+  "pass": true,
+  "d": "s",
+  "t": "a",
+  "b": "a",
+  "g": "s",
+  "u": "s",
+  "why": "flights to Nairobi already booked, asking for someone to build a 10-day Kenya itinerary, travelling with a 3-year-old"
+ },
+ {
+  "id": "rd_1w65hhg",
+  "pass": false,
+  "d": "a",
+  "t": "a",
+  "b": "a",
+  "g": "a",
+  "u": "a",
+  "why": "recruiting travel companions to share a hired vehicle"
+ },
+ {
+  "id": "rd_1w6b4s0",
+  "pass": false,
+  "d": "a",
+  "t": "a",
+  "b": "a",
+  "g": "a",
+  "u": "a",
+  "why": "camps booked; asking routes and which animals to look for"
+ },
+ {
+  "id": "rd_1w6asuo",
+  "pass": false,
+  "d": "a",
+  "t": "a",
+  "b": "a",
+  "g": "a",
+  "u": "a",
+  "why": "Somalia tourism marketing"
+ },
+ {
+  "id": "rd_1w6cn23",
+  "pass": false,
+  "d": "a",
+  "t": "a",
+  "b": "a",
+  "g": "a",
+  "u": "a",
+  "why": "sharing a booked game drive on 8 Sep, now past"
+ },
+ {
+  "id": "rd_1w6a62e",
+  "pass": true,
+  "d": "s",
+  "t": "s",
+  "b": "v",
+  "g": "a",
+  "u": "v",
+  "why": "late March 2027, Cape Town vs Tanzania, wants a safari with a luxury plunge-pool room"
+ },
+ {
+  "id": "rd_1w3hq9l",
+  "pass": false,
+  "d": "a",
+  "t": "a",
+  "b": "a",
+  "g": "a",
+  "u": "a",
+  "why": "Nepal/China/India"
+ },
+ {
+  "id": "rd_1vxuhx1",
+  "pass": false,
+  "d": "a",
+  "t": "a",
+  "b": "a",
+  "g": "a",
+  "u": "a",
+  "why": "luxury camp review"
+ }
+]

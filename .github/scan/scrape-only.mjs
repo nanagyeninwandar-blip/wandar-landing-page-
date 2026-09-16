@@ -44,7 +44,12 @@ async function main() {
 
   const existing = await existingThreadIds();
   const seen = loadSeen();
-  const since = (await lastScanDate()) || daysAgo(30);
+  /* `scanned_on` records the day a batch was IMPORTED, not the day it was
+     scraped. On the offline path those differ — classification by hand can
+     take days — so deriving the Reddit window from it silently skips every
+     day in between. SINCE=YYYY-MM-DD overrides it; overlap is free, the
+     existing-id and seen-thread filters drop anything already held. */
+  const since = process.env.SINCE || (await lastScanDate()) || daysAgo(30);
   log(`live leads: ${existing.size} | seen threads: ${seen.size} | reddit window from: ${since}`);
 
   let cost = 0;

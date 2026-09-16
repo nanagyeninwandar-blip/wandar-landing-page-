@@ -1,11 +1,20 @@
 name: Safari Demand Scan
 
-# Weekly. Cadence barely moves cost once postDateLimit is set (you pay for new
-# content, not for looking) — the budget guard in scan/budget.mjs is what keeps
-# Apify inside its ceiling, not the schedule.
+# MANUAL ONLY (2026-09-09). The weekly cron was removed: it needs a working
+# ANTHROPIC_API_KEY for the Layer 1/2 preflight, and with the key revoked every
+# firing exited before scraping and told nobody — the feed went ten days stale
+# before anyone noticed. A scheduled job that fails silently is worse than none.
+#
+# It is run by hand from a local checkout instead, via the offline path:
+#   node --env-file=.env scrape-only.mjs   -> scraped-posts.json  (spends Apify)
+#   Layers 1/2 judged by hand              -> judgments.json
+#   node build-pending.mjs                 -> pending-leads.json  (Layer 3)
+#   node --env-file=.env import-leads.mjs  -> upsert into Supabase
+# Restore the cron line below only once a valid ANTHROPIC_API_KEY is in repo
+# secrets AND a failure notification exists.
 on:
-  schedule:
-    - cron: "0 11 * * 1"        # Mondays 11:00 UTC = 07:00 ET
+  # schedule:
+  #   - cron: "0 11 * * 1"      # Mondays 11:00 UTC — re-enable with a live key
   workflow_dispatch:            # run it by hand from the Actions tab
     inputs:
       dry_run:
