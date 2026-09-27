@@ -140,24 +140,28 @@ h1,h2,h3,h4{color:var(--text-primary);line-height:1.15;font-weight:700;letter-sp
 .btn__arrow{transition:transform 180ms ease}
 .btn:hover .btn__arrow{transform:translateX(3px)}
 
-/* ═══ NAVIGATION ═════════════════════════════════════════ */
-.nav{position:fixed;top:0;left:0;right:0;z-index:400;padding:10px 0;transition:padding 220ms ease}
+/* ═══ NAVIGATION ═════════════════════════════════════════
+   Transparent bar over the hero; solid white once scrolled
+   past it — logo, links and CTA swap from light to dark to match. */
+.nav{position:fixed;top:0;left:0;right:0;z-index:400;background:transparent;transition:background 220ms ease,box-shadow 220ms ease}
+.nav.is-scrolled{background:rgba(255,255,255,.97);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);box-shadow:var(--shadow-md)}
 .nav__shell{
   position:relative;display:flex;align-items:center;justify-content:space-between;gap:18px;
-  background:rgba(255,255,255,.92);backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px);
-  border:1px solid rgba(17,24,22,.06);border-radius:16px;
-  padding:7px 8px 7px 14px;box-shadow:var(--shadow-md);
-  transition:box-shadow 220ms ease,background 220ms ease;
+  padding:22px 0;
 }
-.nav.is-scrolled .nav__shell{box-shadow:var(--shadow-lg);background:rgba(255,255,255,.97)}
 
 .nav__brand{display:flex;align-items:center;gap:14px;flex-shrink:0}
-.nav__logo-img{width:auto;height:36px}
-.nav__brand-divider{width:1px;height:27px;background:#d8d4cc;flex-shrink:0}
+.nav__logo-img{width:auto;height:32px}
+.nav__logo-img--dark{display:none}
+.nav.is-scrolled .nav__logo-img--light{display:none}
+.nav.is-scrolled .nav__logo-img--dark{display:block}
+.nav__brand-divider{width:1px;height:24px;background:rgba(255,255,255,.35);flex-shrink:0;transition:background 220ms ease}
+.nav.is-scrolled .nav__brand-divider{background:#d8d4cc}
 .nav__brand-tag{
   font-size:9px;font-weight:700;letter-spacing:.09em;text-transform:uppercase;
-  color:#3d3d3d;line-height:1.55;white-space:nowrap;
+  color:rgba(255,255,255,.85);line-height:1.55;white-space:nowrap;transition:color 220ms ease;
 }
+.nav.is-scrolled .nav__brand-tag{color:#3d3d3d}
 @media(max-width:479px){.nav__brand-divider,.nav__brand-tag{display:none}}
 
 .nav__links{display:none;align-items:center;gap:4px;margin-left:auto}
@@ -165,10 +169,12 @@ h1,h2,h3,h4{color:var(--text-primary);line-height:1.15;font-weight:700;letter-sp
 .nav__item{position:static}
 .nav__link{
   display:inline-flex;align-items:center;gap:6px;padding:8px 12px;
-  font-size:14.5px;font-weight:600;color:var(--text-primary);border-radius:9px;
+  font-size:14.5px;font-weight:600;color:rgba(255,255,255,.92);border-radius:9px;
   transition:color 160ms ease,background 160ms ease;
 }
-.nav__link:hover,.nav__item.is-open .nav__link{color:var(--safari-primary);background:transparent}
+.nav__link:hover,.nav__item.is-open .nav__link{color:#fff;background:rgba(255,255,255,.14)}
+.nav.is-scrolled .nav__link{color:var(--text-primary)}
+.nav.is-scrolled .nav__link:hover,.nav.is-scrolled .nav__item.is-open .nav__link{color:var(--safari-primary);background:transparent}
 .nav__chev{width:15px;height:15px;transition:transform 220ms ease;opacity:.6}
 .nav__item.is-open .nav__chev{transform:rotate(180deg);opacity:1}
 
@@ -210,7 +216,8 @@ h1,h2,h3,h4{color:var(--text-primary);line-height:1.15;font-weight:700;letter-sp
 /* Hamburger + mobile */
 .nav__burger{display:grid;place-items:center;align-content:center;width:42px;height:42px;background:none;border:none}
 @media(min-width:1024px){.nav__burger{display:none}}
-.nav__burger span{display:block;width:22px;height:2px;background:var(--safari-primary);border-radius:2px;transition:transform 200ms ease,opacity 200ms ease}
+.nav__burger span{display:block;width:22px;height:2px;background:#fff;border-radius:2px;transition:transform 200ms ease,opacity 200ms ease,background 220ms ease}
+.nav.is-scrolled .nav__burger span{background:var(--safari-primary)}
 .nav__burger span+span{margin-top:2px}
 .nav.is-mobile-open .nav__burger span:nth-child(1){transform:translateY(4px) rotate(45deg)}
 .nav.is-mobile-open .nav__burger span:nth-child(2){opacity:0}
@@ -1957,7 +1964,7 @@ h1,h2,h3,h4{color:var(--text-primary);line-height:1.15;font-weight:700;letter-sp
     "url": "https://www.getwandar.com/assets/wandar-logo.png"
   },
   "image": "https://www.getwandar.com/assets/og-card.jpg",
-  "description": "Wandar is the sales platform for African safari operators. It surfaces active safari-planning demand across Reddit, Tripadvisor Forums and Facebook Groups, tracks social mentions on X, Instagram and TikTok, and engages website and WhatsApp enquiries 24/7 with an AI Sales Agent that hands over to human safari experts.",
+  "description": "Wandar is the sales platform for African safari operators. It surfaces active safari-planning demand across Reddit, Tripadvisor Forums and Facebook Groups, tracks social mentions on X, Instagram and TikTok, and engages website and WhatsApp enquiries 24/7 with an AI Sales Assistant that hands over to human safari experts.",
   "foundingDate": "2025",
   "sameAs": [
     "https://www.linkedin.com/company/getwandar/",
@@ -2019,11 +2026,11 @@ h1,h2,h3,h4{color:var(--text-primary);line-height:1.15;font-weight:700;letter-sp
   "applicationCategory": "BusinessApplication",
   "applicationSubCategory": "Sales platform for safari operators",
   "operatingSystem": "Web browser",
-  "description": "Wandar is an integrated sales platform built for African safari operators. Demand Discovery surfaces active safari-planning conversations on Reddit, Tripadvisor Forums and Facebook Groups. Social Mentions tracks safari keywords across X, Instagram and TikTok. The Sales Agent engages website and WhatsApp prospects 24/7, answers questions from the operator's approved safari knowledge, gathers trip details and hands over to human safari experts when judgment is needed.",
+  "description": "Wandar is an integrated sales platform built for African safari operators. Demand Discovery surfaces active safari-planning conversations on Reddit, Tripadvisor Forums and Facebook Groups. Social Mentions tracks safari keywords across X, Instagram and TikTok. The Sales Assistant engages website and WhatsApp prospects 24/7, answers questions from the operator's approved safari knowledge, gathers trip details and hands over to human safari experts when judgment is needed.",
   "featureList": [
     "Demand Discovery across Reddit, Tripadvisor Forums and Facebook Groups",
     "Social Mentions tracking across X, Instagram and TikTok",
-    "AI Sales Agent for website and WhatsApp conversations, available 24/7",
+    "AI Sales Assistant for website and WhatsApp conversations, available 24/7",
     "Answers built from the operator's own approved safari knowledge",
     "Handover to human safari experts with conversation context captured",
     "Shared workspace for sales activity, next steps and what needs action",
@@ -2055,7 +2062,7 @@ h1,h2,h3,h4{color:var(--text-primary);line-height:1.15;font-weight:700;letter-sp
       "name": "What does Wandar actually do?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Wandar is an integrated sales platform for safari operators. Its Sales Agent engages website and WhatsApp prospects 24/7, asks discovery questions, answers guidance questions using your approved safari knowledge, gathers key trip details and keeps conversations moving until human expertise and judgment are needed. Wandar also surfaces active safari-planning conversations, tracks relevant social mentions, helps your team manage sales activity and next steps, and lets them find answers across rates, itineraries, camp details, quotes and booking history."
+        "text": "Wandar is an integrated sales platform for safari operators. Its Sales Assistant engages website and WhatsApp prospects 24/7, asks discovery questions, answers guidance questions using your approved safari knowledge, gathers key trip details and keeps conversations moving until human expertise and judgment are needed. Wandar also surfaces active safari-planning conversations, tracks relevant social mentions, helps your team manage sales activity and next steps, and lets them find answers across rates, itineraries, camp details, quotes and booking history."
       }
     },
     {
@@ -2068,7 +2075,7 @@ h1,h2,h3,h4{color:var(--text-primary);line-height:1.15;font-weight:700;letter-sp
     },
     {
       "@type": "Question",
-      "name": "Will the Sales Agent replace my team?",
+      "name": "Will the Sales Assistant replace my team?",
       "acceptedAnswer": {
         "@type": "Answer",
         "text": "No. It handles the repeatable parts of early-stage sales 24/7 by engaging prospects, asking discovery questions, answering guidance questions using your approved safari knowledge, addressing common concerns and helping travelers understand the value of your safari offering. It gathers key trip details, keeps conversations moving and brings in your team whenever a traveler needs recommendations, itinerary design, pricing or other input that requires human expertise and judgment."
@@ -2076,10 +2083,10 @@ h1,h2,h3,h4{color:var(--text-primary);line-height:1.15;font-weight:700;letter-sp
     },
     {
       "@type": "Question",
-      "name": "How does the Sales Agent know what to say?",
+      "name": "How does the Sales Assistant know what to say?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "The Sales Agent works from the safari information you approve, including your website, itineraries, rates, camp and lodge details, policies and sales materials. It uses that information to answer guidance questions, explain your offering and address common traveler concerns. When it cannot answer confidently or the traveler needs human expertise and judgment, it brings in your team with the conversation context already captured."
+        "text": "The Sales Assistant works from the safari information you approve, including your website, itineraries, rates, camp and lodge details, policies and sales materials. It uses that information to answer guidance questions, explain your offering and address common traveler concerns. When it cannot answer confidently or the traveler needs human expertise and judgment, it brings in your team with the conversation context already captured."
       }
     },
     {
@@ -2095,7 +2102,7 @@ h1,h2,h3,h4{color:var(--text-primary);line-height:1.15;font-weight:700;letter-sp
       "name": "Can my team manage everything in one place?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Wandar brings the sales activity it supports into one workspace. Your team can see surfaced demand, social mentions, Sales Agent conversations, what has already been handled, where human input is needed and what should happen next. It does not replace specialist booking, live availability or itinerary-design systems."
+        "text": "Wandar brings the sales activity it supports into one workspace. Your team can see surfaced demand, social mentions, Sales Assistant conversations, what has already been handled, where human input is needed and what should happen next. It does not replace specialist booking, live availability or itinerary-design systems."
       }
     },
     {
@@ -2103,7 +2110,7 @@ h1,h2,h3,h4{color:var(--text-primary);line-height:1.15;font-weight:700;letter-sp
       "name": "How long does it take to get set up?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "The onboarding takes a matter of minutes. Add your website and upload the files Wandar should work from. We then configure the platform and deploy your Sales Agent across your website and WhatsApp, with your full sales platform ready within hours."
+        "text": "The onboarding takes a matter of minutes. Add your website and upload the files Wandar should work from. We then configure the platform and deploy your Sales Assistant across your website and WhatsApp, with your full sales platform ready within hours."
       }
     },
     {
@@ -2234,7 +2241,7 @@ h1,h2,h3,h4{color:var(--text-primary);line-height:1.15;font-weight:700;letter-sp
 .pm-av{width:22px;height:22px;border-radius:999px;background:#dbe3dd;flex:none}
 .pm-av--lg{width:28px;height:28px}
 
-/* chat (Sales Agent) */
+/* chat (Sales Assistant) */
 .pm--chat{gap:12px;justify-content:center}
 .pm-chead{display:flex;align-items:center;gap:8px;padding-bottom:4px}
 .pm-clabel{font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:rgba(255,255,255,.92)}
@@ -2245,7 +2252,7 @@ h1,h2,h3,h4{color:var(--text-primary);line-height:1.15;font-weight:700;letter-sp
 .pm-bub--out{align-self:flex-end;max-width:82%;background:var(--primary-light);color:var(--ink);border-radius:16px 16px 4px 16px}
 .pm-bub--nar{max-width:70%}
 
-/* cards (Sales Agent brief, Workspace) */
+/* cards (Sales Assistant brief, Workspace) */
 .pm--stack{gap:14px;justify-content:center}
 .pm-card{background:#fff;border-radius:16px;box-shadow:0 1px 3px rgba(17,24,22,.07);padding:18px;display:flex;flex-direction:column;gap:12px}
 .pm-card--lift{box-shadow:0 2px 6px rgba(17,24,22,.05),0 14px 30px rgba(17,24,22,.08);margin-top:6px}
@@ -2352,7 +2359,8 @@ h1,h2,h3,h4{color:var(--text-primary);line-height:1.15;font-weight:700;letter-sp
     <div class="nav__shell">
 
       <a href="index.html" class="nav__brand" aria-label="Wandar home">
-        <img src="assets/logo-black.png" alt="Wandar" class="nav__logo-img" width="1253" height="314" />
+        <img src="assets/wandar-banner-white-320.png" alt="Wandar" class="nav__logo-img nav__logo-img--light" width="320" height="80" />
+        <img src="assets/logo-black.png" alt="Wandar" class="nav__logo-img nav__logo-img--dark" width="1253" height="314" />
         <span class="nav__brand-divider" aria-hidden="true"></span>
         <span class="nav__brand-tag">Sales platform<br>for safari operators</span>
       </a>
@@ -2378,7 +2386,7 @@ h1,h2,h3,h4{color:var(--text-primary);line-height:1.15;font-weight:700;letter-sp
 
                 <a class="mega__item" href="#sales-agent" role="menuitem">
                   <span class="mega__ic"><svg aria-hidden="true" width="24" height="24" viewBox="0 0 256 256"><g fill="currentColor"><path d="M200 56H56a24 24 0 0 0-24 24v112a24 24 0 0 0 24 24h144a24 24 0 0 0 24-24V80a24 24 0 0 0-24-24m-36 128H92a20 20 0 0 1 0-40h72a20 20 0 0 1 0 40" opacity=".2"/><path d="M200 48h-64V16a8 8 0 0 0-16 0v32H56a32 32 0 0 0-32 32v112a32 32 0 0 0 32 32h144a32 32 0 0 0 32-32V80a32 32 0 0 0-32-32m16 144a16 16 0 0 1-16 16H56a16 16 0 0 1-16-16V80a16 16 0 0 1 16-16h144a16 16 0 0 1 16 16ZM72 108a12 12 0 1 1 12 12a12 12 0 0 1-12-12m88 0a12 12 0 1 1 12 12a12 12 0 0 1-12-12m4 28H92a28 28 0 0 0 0 56h72a28 28 0 0 0 0-56m-24 16v24h-24v-24Zm-60 12a12 12 0 0 1 12-12h8v24h-8a12 12 0 0 1-12-12m84 12h-8v-24h8a12 12 0 0 1 0 24"/></g></svg></span>
-                  <span><span class="mega__t">Sales Agent</span><span class="mega__d">Handle the repetitive early-stage conversation and build traveler context.</span></span>
+                  <span><span class="mega__t">Sales Assistant</span><span class="mega__d">Handle the repetitive early-stage conversation and build traveler context.</span></span>
                 </a>
 
                 <a class="mega__item" href="#sales-workspace" role="menuitem">
@@ -2499,7 +2507,7 @@ h1,h2,h3,h4{color:var(--text-primary);line-height:1.15;font-weight:700;letter-sp
         <div class="macc__panel">
           <span class="macc__label">The Platform</span>
           <a class="macc__link" href="#social-demand"><span class="mega__ic"><svg aria-hidden="true" width="24" height="24" viewBox="0 0 256 256"><g fill="currentColor"><path d="M192 112a80 80 0 1 1-80-80a80 80 0 0 1 80 80" opacity=".2"/><path d="m229.66 218.34l-50.06-50.06a88.21 88.21 0 1 0-11.32 11.31l50.06 50.07a8 8 0 0 0 11.32-11.32M40 112a72 72 0 1 1 72 72a72.08 72.08 0 0 1-72-72"/></g></svg></span>Social Demand</a>
-          <a class="macc__link" href="#sales-agent"><span class="mega__ic"><svg aria-hidden="true" width="24" height="24" viewBox="0 0 256 256"><g fill="currentColor"><path d="M200 56H56a24 24 0 0 0-24 24v112a24 24 0 0 0 24 24h144a24 24 0 0 0 24-24V80a24 24 0 0 0-24-24m-36 128H92a20 20 0 0 1 0-40h72a20 20 0 0 1 0 40" opacity=".2"/><path d="M200 48h-64V16a8 8 0 0 0-16 0v32H56a32 32 0 0 0-32 32v112a32 32 0 0 0 32 32h144a32 32 0 0 0 32-32V80a32 32 0 0 0-32-32m16 144a16 16 0 0 1-16 16H56a16 16 0 0 1-16-16V80a16 16 0 0 1 16-16h144a16 16 0 0 1 16 16ZM72 108a12 12 0 1 1 12 12a12 12 0 0 1-12-12m88 0a12 12 0 1 1 12 12a12 12 0 0 1-12-12m4 28H92a28 28 0 0 0 0 56h72a28 28 0 0 0 0-56m-24 16v24h-24v-24Zm-60 12a12 12 0 0 1 12-12h8v24h-8a12 12 0 0 1-12-12m84 12h-8v-24h8a12 12 0 0 1 0 24"/></g></svg></span>Sales Agent</a>
+          <a class="macc__link" href="#sales-agent"><span class="mega__ic"><svg aria-hidden="true" width="24" height="24" viewBox="0 0 256 256"><g fill="currentColor"><path d="M200 56H56a24 24 0 0 0-24 24v112a24 24 0 0 0 24 24h144a24 24 0 0 0 24-24V80a24 24 0 0 0-24-24m-36 128H92a20 20 0 0 1 0-40h72a20 20 0 0 1 0 40" opacity=".2"/><path d="M200 48h-64V16a8 8 0 0 0-16 0v32H56a32 32 0 0 0-32 32v112a32 32 0 0 0 32 32h144a32 32 0 0 0 32-32V80a32 32 0 0 0-32-32m16 144a16 16 0 0 1-16 16H56a16 16 0 0 1-16-16V80a16 16 0 0 1 16-16h144a16 16 0 0 1 16 16ZM72 108a12 12 0 1 1 12 12a12 12 0 0 1-12-12m88 0a12 12 0 1 1 12 12a12 12 0 0 1-12-12m4 28H92a28 28 0 0 0 0 56h72a28 28 0 0 0 0-56m-24 16v24h-24v-24Zm-60 12a12 12 0 0 1 12-12h8v24h-8a12 12 0 0 1-12-12m84 12h-8v-24h8a12 12 0 0 1 0 24"/></g></svg></span>Sales Assistant</a>
           <a class="macc__link" href="#sales-workspace"><span class="mega__ic"><svg aria-hidden="true" width="24" height="24" viewBox="0 0 256 256"><g fill="currentColor"><path d="M216 56v64h-56V56ZM40 208a8 8 0 0 0 8 8h40a8 8 0 0 0 8-8v-88H40Z" opacity=".2"/><path d="M216 48H40a8 8 0 0 0-8 8v152a16 16 0 0 0 16 16h40a16 16 0 0 0 16-16v-48h48v16a16 16 0 0 0 16 16h40a16 16 0 0 0 16-16V56a8 8 0 0 0-8-8m-8 64h-40V64h40ZM88 64v48H48V64Zm0 144H48v-80h40Zm16-64V64h48v80Zm64 32v-48h40v48Z"/></g></svg></span>Sales Workspace</a>
           <a class="macc__link" href="#safari-ai"><span class="mega__ic"><svg aria-hidden="true" width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M 12 10.1 C 11.48 7.25 10.81 4.12 10.53 2.31 C 10.39 1.31 13 1.12 13.43 2.12 C 13.19 4.02 12.48 7.25 12 10.1 Z M 13.34 10.66 C 14.99 8.27 16.74 5.58 17.81 4.11 C 18.42 3.3 20.4 5.01 19.99 6.02 C 18.48 7.2 15.69 8.98 13.34 10.66 Z M 13.9 12 C 16.75 11.48 19.89 10.81 21.69 10.53 C 22.69 10.39 22.88 13 21.88 13.43 C 19.98 13.19 16.75 12.48 13.9 12 Z M 13.34 13.34 C 15.73 14.99 18.42 16.74 19.89 17.81 C 20.7 18.42 18.99 20.4 17.98 19.99 C 16.8 18.48 15.02 15.69 13.34 13.34 Z M 12 13.9 C 12.52 16.75 13.19 19.89 13.47 21.69 C 13.62 22.69 11 22.88 10.58 21.88 C 10.81 19.98 11.53 16.75 12 13.9 Z M 10.66 13.34 C 9.01 15.73 7.26 18.42 6.19 19.89 C 5.58 20.7 3.6 18.99 4.01 17.98 C 5.52 16.8 8.31 15.02 10.66 13.34 Z M 10.1 12 C 7.25 12.52 4.12 13.19 2.31 13.47 C 1.31 13.62 1.12 11 2.12 10.58 C 4.02 10.81 7.25 11.53 10.1 12 Z M 10.66 10.66 C 8.27 9.01 5.58 7.26 4.11 6.19 C 3.3 5.58 5.01 3.6 6.02 4.01 C 7.2 5.52 8.98 8.31 10.66 10.66 Z"/></svg></span>Safari AI</a>
 
@@ -2679,7 +2687,7 @@ h1,h2,h3,h4{color:var(--text-primary);line-height:1.15;font-weight:700;letter-sp
 
     <div class="frow">
       <div class="fcopy">
-        <span class="product-label"><span class="icon-badge icon-badge--orange" aria-hidden="true"><svg class="section-icon" focusable="false" aria-hidden="true" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="8.5" width="16" height="11" rx="3"/><path d="M12 8.5V5"/><circle cx="12" cy="3.6" r="1.4" fill="currentColor" stroke="none"/><circle cx="9" cy="14" r="1.1" fill="currentColor" stroke="none"/><circle cx="15" cy="14" r="1.1" fill="currentColor" stroke="none"/><path d="M2.5 12.5v3M21.5 12.5v3"/></svg></span><span>Sales Agent</span></span>
+        <span class="product-label"><span class="icon-badge icon-badge--orange" aria-hidden="true"><svg class="section-icon" focusable="false" aria-hidden="true" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="8.5" width="16" height="11" rx="3"/><path d="M12 8.5V5"/><circle cx="12" cy="3.6" r="1.4" fill="currentColor" stroke="none"/><circle cx="9" cy="14" r="1.1" fill="currentColor" stroke="none"/><circle cx="15" cy="14" r="1.1" fill="currentColor" stroke="none"/><path d="M2.5 12.5v3M21.5 12.5v3"/></svg></span><span>Sales Assistant</span></span>
         <h2>Start every enquiry with deeper understanding.</h2>
         <p class="flede">Run stronger early-stage sales conversations across your website and WhatsApp 24/7. Ask the right questions, answer factual planning questions, recognize concerns and build a living understanding of the traveler.</p>
       </div>
@@ -2993,7 +3001,7 @@ h1,h2,h3,h4{color:var(--text-primary);line-height:1.15;font-weight:700;letter-sp
       <div>
         <span class="footer__ch">Platform</span>
         <a class="footer__cl" href="#social-demand">Social Demand</a>
-        <a class="footer__cl" href="#sales-agent">Sales Agent</a>
+        <a class="footer__cl" href="#sales-agent">Sales Assistant</a>
         <a class="footer__cl" href="#sales-workspace">Sales Workspace</a>
         <a class="footer__cl" href="#safari-ai">Safari AI</a>
       </div>
@@ -3048,7 +3056,11 @@ h1,h2,h3,h4{color:var(--text-primary);line-height:1.15;font-weight:700;letter-sp
 (function(){
   /* ── Nav scroll state ── */
   var nav = document.getElementById('nav');
-  function onScroll(){ nav.classList.toggle('is-scrolled', window.scrollY> 8); }
+  var heroEl = document.querySelector('.pf-hero');
+  function onScroll(){
+    var trigger = heroEl ? Math.max(heroEl.offsetHeight - 90, 8) : 8;
+    nav.classList.toggle('is-scrolled', window.scrollY > trigger);
+  }
   onScroll(); window.addEventListener('scroll', onScroll, {passive:true});
 
   /* ── Desktop dropdowns ── */
