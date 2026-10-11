@@ -7,3 +7,26 @@
 
 # Per-platform pages retired; the landing page now covers platform scope
 /platforms/*  /  301
+
+# The AI Safari Sales Rep page is now the whole site; every other page goes home.
+# The ! forces the redirect even though the old files are still in the repo.
+/sales-rep             /  301!
+/sales-rep.html        /  301!
+/platform              /  301!
+/platform.html         /  301!
+/blog                  /  301!
+/blog/*                /  301!
+/guides                /  301!
+/guides/*              /  301!
+/resources             /  301!
+/resources/*           /  301!
+/tools                 /  301!
+/tools/*               /  301!
+/feed                  /  301!
+/feed/*                /  301!
+/hero-photo            /  301!
+/hero-photo.html       /  301!
+/icon-picker           /  301!
+/icon-picker.html      /  301!
+/lede-options          /  301!
+/lede-options.html     /  301!
