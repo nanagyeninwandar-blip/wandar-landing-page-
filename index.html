@@ -469,7 +469,8 @@ a:focus-visible,button:focus-visible,summary:focus-visible{outline:3px solid #d8
 /* safari mascot standing at the front-left of the demo */
 .demo__mascot{position:absolute;z-index:6;left:-84px;bottom:-12px;width:auto;height:298px;pointer-events:none;filter:drop-shadow(0 18px 24px rgba(4,30,18,.35))}
 @media(max-width:1180px){.demo__mascot{left:-112px;bottom:-10px;height:240px}}
-@media(max-width:900px){.demo__mascot{display:none}}
+@media(max-width:900px){.demo__mascot{left:-14px;bottom:-14px;height:190px}}
+@media(max-width:480px){.demo__mascot{left:-20px;bottom:-18px;height:132px}}
 /* premium swipe arrows, centred on the left and right of the frame */
 .demo__arrow{position:absolute;z-index:7;top:40%;display:grid;place-items:center;width:36px;height:36px;margin-top:-18px;padding:0;border-radius:50%;cursor:pointer;
   border:1.5px solid rgba(253,248,240,.85);background:rgba(10,40,40,.18);color:var(--off-white);-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px);
@@ -1925,6 +1926,10 @@ a.cbm__item:hover .cbm__ic{background:#d7ebe6}
 @media(prefers-reduced-motion:reduce){.people__grid.is-auto .pcard.is-auto .pcard__bar i{animation-duration:12s}}
 .people__grid.is-auto .pcard:not(.is-auto) .pcard__preview{opacity:0;transition:none}
 .nav__logo-img--dark{height:42px}
+/* mobile: the closed menu drawer must not cast its shadow onto the page, and nothing may widen the page (keeps the fixed nav steady on iPhone) */
+.mobile-panel{visibility:hidden;box-shadow:none;transition:transform 300ms cubic-bezier(.2,.8,.3,1),visibility 0s linear 300ms}
+.nav.is-mobile-open .mobile-panel{visibility:visible;box-shadow:-24px 0 60px rgba(8,20,18,.34);transition:transform 300ms cubic-bezier(.2,.8,.3,1),visibility 0s}
+@supports not (overflow:clip){body{overflow-x:hidden}}
 </style>
 </head>
 <body>
@@ -2832,7 +2837,7 @@ a.cbm__item:hover .cbm__ic{background:#d7ebe6}
   var nav = document.getElementById('nav');
   var heroEl = document.querySelector('.hero');
   function onScroll(){
-    var trigger = heroEl ? Math.max(heroEl.offsetHeight - 90, 8) : 8;
+    var trigger = (heroEl && window.innerWidth >= 1024) ? Math.max(heroEl.offsetHeight - 90, 8) : 8;
     nav.classList.toggle('is-scrolled', window.scrollY > trigger);
   }
   onScroll(); window.addEventListener('scroll', onScroll, {passive:true});
