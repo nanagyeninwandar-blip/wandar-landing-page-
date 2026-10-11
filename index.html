@@ -1911,6 +1911,19 @@ a.cbm__item:hover .cbm__ic{background:#d7ebe6}
 .vs__badge--a svg{width:54px;height:54px}
 @media(max-width:760px){.vs__badge--a svg{width:40px;height:40px}}
 .cbm__item--static,.macc__link--static{cursor:default}
+
+/* ═══ Photo row on touch screens with the wide layout (iPad): auto-play with a progress line ═══ */
+.pcard__bar{position:absolute;left:0;right:0;bottom:0;z-index:4;height:3px;background:rgba(255,255,255,.22);display:none}
+.pcard__bar i{display:block;width:0;height:100%;background:#fff}
+.people__grid.is-auto .pcard__bar{display:block}
+.people__grid.is-auto .pcard.is-auto{flex:0 0 46%}
+.people__grid.is-auto .pcard:not(.is-auto) figcaption{font-size:1.05rem}
+.people__grid.is-auto .pcard.is-auto .pcard__preview{opacity:1;transition:opacity 300ms ease 300ms}
+.people__grid.is-auto .pcard.is-auto .pcard__bar i{animation:pcFill 7s linear forwards}
+.people__grid.is-auto.is-paused .pcard__bar i{animation-play-state:paused}
+@keyframes pcFill{to{width:100%}}
+@media(prefers-reduced-motion:reduce){.people__grid.is-auto .pcard.is-auto .pcard__bar i{animation-duration:12s}}
+.people__grid.is-auto .pcard:not(.is-auto) .pcard__preview{opacity:0;transition:none}
 </style>
 </head>
 <body>
@@ -3403,6 +3416,30 @@ a.cbm__item:hover .cbm__ic{background:#d7ebe6}
   els.forEach(function(el){ io.observe(el); });
 })();
 </script>
-<script>/* touch screens: show each photo card's chat as soon as the card is in view */(function(){if(matchMedia('(hover:hover)').matches||!('IntersectionObserver' in window))return;var io=new IntersectionObserver(function(es){es.forEach(function(e){e.target.classList.toggle('is-tap',e.intersectionRatio>=.6)})},{threshold:[0,.6,1]});document.querySelectorAll('.pcard').forEach(function(c){io.observe(c)});})();</script>
+<script>/* touch screens: show each photo card's chat as soon as the card is in view */(function(){if(matchMedia('(hover:hover)').matches||!('IntersectionObserver' in window))return;var io=new IntersectionObserver(function(es){es.forEach(function(e){var c=e.target,inView=e.intersectionRatio>=.6;if(inView&&!c._seen){c._seen=true;c.classList.add('is-tap');clearTimeout(c._t);c._t=setTimeout(function(){c.classList.remove('is-tap')},10000);}else if(!inView&&e.intersectionRatio<.2){c._seen=false;clearTimeout(c._t);c.classList.remove('is-tap');}})},{threshold:[0,.2,.6,1]});document.querySelectorAll('.pcard').forEach(function(c){io.observe(c)});})();</script>
+<script>/* iPad and other touch screens with the wide photo row: each card opens in turn, a line fills, then the next one opens */
+(function(){
+  var g = document.querySelector('.people__grid'); if(!g) return;
+  var cards = [].slice.call(g.querySelectorAll('.pcard')), cur = 0;
+  var mq = matchMedia('(hover:none) and (min-width:901px)');
+  cards.forEach(function(c, k){
+    var b = document.createElement('span'); b.className = 'pcard__bar'; b.setAttribute('aria-hidden', 'true'); b.innerHTML = '<i></i>'; c.appendChild(b);
+    b.firstChild.addEventListener('animationend', function(){ if(g.classList.contains('is-auto') && k === cur) go((k + 1) % cards.length); });
+    c.addEventListener('click', function(){ if(g.classList.contains('is-auto')) go(k); });
+  });
+  function go(i){
+    cur = i;
+    cards.forEach(function(c, k){
+      var bar = c.querySelector('.pcard__bar i');
+      bar.style.animation = 'none'; bar.offsetWidth; bar.style.animation = '';
+      c.classList.toggle('is-auto', k === i);
+    });
+  }
+  function apply(){ if(mq.matches){ g.classList.add('is-auto'); go(cur); } else { g.classList.remove('is-auto'); cards.forEach(function(c){ c.classList.remove('is-auto'); }); } }
+  if('IntersectionObserver' in window) new IntersectionObserver(function(es){ g.classList.toggle('is-paused', !es[0].isIntersecting); }, {threshold: .35}).observe(g);
+  (mq.addEventListener ? mq.addEventListener('change', apply) : mq.addListener(apply));
+  apply();
+})();
+</script>
 </body>
 </html>
