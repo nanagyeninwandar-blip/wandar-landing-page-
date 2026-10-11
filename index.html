@@ -3417,7 +3417,7 @@ a.cbm__item:hover .cbm__ic{background:#d7ebe6}
   els.forEach(function(el){ io.observe(el); });
 })();
 </script>
-<script>/* touch screens: show each photo card's chat as soon as the card is in view */(function(){if(matchMedia('(hover:hover)').matches||!('IntersectionObserver' in window))return;var io=new IntersectionObserver(function(es){es.forEach(function(e){var c=e.target,inView=e.intersectionRatio>=.6;if(inView&&!c._seen){c._seen=true;c.classList.add('is-tap');clearTimeout(c._t);c._t=setTimeout(function(){c.classList.remove('is-tap')},10000);}else if(!inView&&e.intersectionRatio<.2){c._seen=false;clearTimeout(c._t);c.classList.remove('is-tap');}})},{threshold:[0,.2,.6,1]});document.querySelectorAll('.pcard').forEach(function(c){io.observe(c)});})();</script>
+<script>/* touch screens: show each photo card's chat as soon as the card is in view */(function(){if(matchMedia('(hover:hover)').matches||!('IntersectionObserver' in window))return;var io=new IntersectionObserver(function(es){es.forEach(function(e){var c=e.target,inView=e.intersectionRatio>=.6;if(inView&&!c._seen){c._seen=true;c.classList.add('is-tap');clearTimeout(c._t);c._t=setTimeout(function(){c.classList.remove('is-tap')},5000);}else if(!inView&&e.intersectionRatio<.2){c._seen=false;clearTimeout(c._t);c.classList.remove('is-tap');}})},{threshold:[0,.2,.6,1]});document.querySelectorAll('.pcard').forEach(function(c){io.observe(c)});})();</script>
 <script>/* iPad and other touch screens with the wide photo row: each card opens in turn, a line fills, then the next one opens */
 (function(){
   var g = document.querySelector('.people__grid'); if(!g) return;
