@@ -1,7 +1,7 @@
 // Shared modal JS — used by index.html and all guide/blog pages
 
 // ── NETLIFY FORM SUBMIT ───────────────────────────────────────────
-var _mfDivIds = { 'early-access': 'mf-form-a', 'consultation': 'mf-form-b', 'contact': 'mf-form-c' };
+var _mfDivIds = { 'early-access': 'mf-form-a', 'consultation': 'mf-form-b', 'contact': 'mf-form-c', 'interest': 'mf-form-i' };
 function netlifySubmit(formName, data) {
   var divId = _mfDivIds[formName];
   var botEl = divId ? document.querySelector('#' + divId + ' [name="bot-field"]') : null;
@@ -38,6 +38,7 @@ document.addEventListener('keydown', function(e) {
     closeModal('early-access');
     closeModal('consultation');
     closeModal('contact');
+    closeModal('interest');
   }
 });
 
@@ -217,5 +218,42 @@ function mSubmitC() {
     .catch(function() {
       mBtnReset(btn);
       mg('mf-submit-err-c').textContent = 'Something went wrong. Please try again.';
+    });
+}
+
+function mSubmitI() {
+  let ok = true;
+  ok = mSetErr('i-first',   !mg('mi-first').value.trim()                ? 'Required'             : '') & ok;
+  ok = mSetErr('i-last',    !mg('mi-last').value.trim()                 ? 'Required'             : '') & ok;
+  ok = mSetErr('i-email',   !mValidEmail(mg('mi-email').value.trim())   ? 'Valid email required' : '') & ok;
+  ok = mSetErr('i-org',     !mg('mi-org').value                         ? 'Please select one'    : '') & ok;
+  ok = mSetErr('i-team',    !mg('mi-team').value                        ? 'Please select one'    : '') & ok;
+  ok = mSetErr('i-country', !mg('mi-country').value                     ? 'Please select one'    : '') & ok;
+  ok = mSetErr('i-beta',    !mg('mi-beta').value                        ? 'Please select one'    : '') & ok;
+  if (!ok) return;
+
+  const btn = mg('mi-submit-btn');
+  if (btn.disabled) return;
+  mBtnLoading(btn);
+  mg('mf-submit-err-i').textContent = '';
+
+  netlifySubmit('interest', {
+    'first-name':  mg('mi-first').value.trim(),
+    'last-name':   mg('mi-last').value.trim(),
+    email:         mg('mi-email').value.trim(),
+    phone:         mg('mi-phone').value.trim(),
+    'org-type':    mg('mi-org').value,
+    'team-size':   mg('mi-team').value,
+    country:       mg('mi-country').value,
+    'beta-tester': mg('mi-beta').value
+  })
+    .then(function(res) {
+      if (!res.ok) throw new Error('Network response was not ok');
+      mg('mf-form-i').classList.add('hidden');
+      mg('mf-success-i').classList.add('visible');
+    })
+    .catch(function() {
+      mBtnReset(btn);
+      mg('mf-submit-err-i').textContent = 'Something went wrong. Please try again.';
     });
 }

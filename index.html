@@ -1909,6 +1909,17 @@ a.cbm__item:hover .cbm__ic{background:#d7ebe6}
 #modal-contact .modal-hd-icon{background:#fdf1e7}
 #modal-contact .mf-submit{display:flex;width:auto;margin:0 auto;padding-left:28px;padding-right:28px;background:var(--safari-secondary)}
 #modal-contact .mf-submit:hover{background:#a84a0e;box-shadow:0 4px 16px rgba(196,89,17,.3)}
+#modal-interest .modal-card{max-width:600px;border-radius:4px;border-top:none}
+#modal-interest .modal-close{border-radius:4px}
+#modal-interest .modal-bd{padding:44px 36px 36px}
+#modal-interest .mf-grid-2{gap:0 20px}
+#modal-interest .mf-field{margin-bottom:16px}
+#modal-interest .mf-label{font-size:13.5px;font-weight:500;color:#1a1a1a;text-transform:none;letter-spacing:0;margin-bottom:7px}
+#modal-interest .mf-input,#modal-interest .mf-select{border-radius:4px;border-color:#d4d4d4;padding:12px 14px}
+#modal-interest .mf-input:focus,#modal-interest .mf-select:focus{border-color:#1a7373;box-shadow:0 0 0 3px rgba(26,115,115,.1)}
+#modal-interest .mf-err{min-height:0}
+#modal-interest .mf-submit{width:100%;margin-top:8px;border-radius:4px;background:var(--safari-secondary)}
+#modal-interest .mf-submit:hover{background:#a84a0e;box-shadow:0 4px 16px rgba(196,89,17,.3)}
 .vs__badge--a svg{width:54px;height:54px}
 @media(max-width:760px){.vs__badge--a svg{width:40px;height:40px}}
 .cbm__item--static,.macc__link--static{cursor:default}
@@ -2062,6 +2073,12 @@ a.cbm__item:hover .cbm__ic{background:#d7ebe6}
                   <span class="cbm__item cbm__item--static"><span class="cbm__ic"><svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M24 12c-4-3-10-4-18-3v29c8-1 14 0 18 3 4-3 10-4 18-3V9c-8-1-14 0-18 3Z"/><path d="M24 12v29"/></svg></span><span class="cbm__txt"><span class="cbm__t">Guides</span><span class="cbm__d">Sales &amp; growth playbooks for safari operators.</span></span></span>
                 </div>
                 </div>
+                <div class="cbm__group">
+                <span class="cbm__label">Free tools</span>
+                <div class="cbm__items">
+                  <a class="cbm__item" href="feed/app.html" target="_blank" rel="noopener" role="menuitem"><span class="cbm__ic"><svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 26h8l5-12 8 22 6-16 4 6h9"/><path d="M40 6v5M37.5 8.5h5"/></svg></span><span class="cbm__txt"><span class="cbm__t">Live demand feed</span><span class="cbm__d">See safari planning conversations happening now.</span></span></a>
+                </div>
+                </div>
               </div>
               <div class="cbm__panel">
                 <div class="cbm__group">
@@ -2079,7 +2096,7 @@ a.cbm__item:hover .cbm__ic{background:#d7ebe6}
       </nav>
 
       <div class="nav__right">
-        <a href="#" onclick="openModal('contact');return false;" class="btn btn--primary nav__cta nav__cta--desktop">Interested? Let's chat</a>
+        <a href="#" onclick="openModal('interest');return false;" class="btn btn--primary nav__cta nav__cta--desktop">Interested? Let's chat</a>
         <button class="nav__burger" id="burger" aria-label="Open menu" aria-expanded="false">
           <span></span><span></span><span></span>
         </button>
@@ -2119,6 +2136,8 @@ a.cbm__item:hover .cbm__ic{background:#d7ebe6}
           <span class="macc__label">Learn</span>
           <span class="macc__link macc__link--static"><span class="mega__ic mega__ic--draw"><svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10 5h20l8 8v30H10Z"/><path d="M30 5v8h8"/><path d="M16 22h16M16 29h16M16 36h10"/></svg></span>Blog</span>
           <span class="macc__link macc__link--static"><span class="mega__ic mega__ic--draw"><svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M24 12c-4-3-10-4-18-3v29c8-1 14 0 18 3 4-3 10-4 18-3V9c-8-1-14 0-18 3Z"/><path d="M24 12v29"/></svg></span>Guides</span>
+          <span class="macc__label">Free tools</span>
+          <a class="macc__link" href="feed/app.html" target="_blank" rel="noopener"><span class="mega__ic mega__ic--draw"><svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 26h8l5-12 8 22 6-16 4 6h9"/><path d="M40 6v5M37.5 8.5h5"/></svg></span>Live demand feed</a>
           <span class="macc__label">Support</span>
           <a class="macc__link" href="#faq"><span class="mega__ic mega__ic--draw"><svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 8h32a3 3 0 0 1 3 3v20a3 3 0 0 1-3 3H22l-9 7v-7H8a3 3 0 0 1-3-3V11a3 3 0 0 1 3-3Z"/><path d="M19.5 17a4.5 4.5 0 1 1 6.5 4c-1.3.7-2 1.6-2 3v1"/><circle cx="24" cy="29" r=".9" fill="currentColor"/></svg></span>FAQ</a>
           <a class="macc__link" href="#" onclick="openModal('contact');return false;"><span class="mega__ic mega__ic--draw"><svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="5" y="11" width="38" height="27" rx="3"/><path d="M6 13l18 13 18-13"/></svg></span>Contact us</a>
@@ -2128,7 +2147,7 @@ a.cbm__item:hover .cbm__ic{background:#d7ebe6}
       </div>
 
       <div class="mobile-panel__foot">
-        <a href="#" onclick="openModal('contact');return false;" class="btn">Interested? Let's chat
+        <a href="#" onclick="openModal('interest');return false;" class="btn">Interested? Let's chat
           <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17L17 7M9 7h8v8"/></svg>
         </a>
       </div>
@@ -2157,7 +2176,7 @@ a.cbm__item:hover .cbm__ic{background:#d7ebe6}
           <span class="hero__chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9.5"/><path d="M2.5 12h19"/><path d="M12 2.5c2.6 2.7 3.9 5.9 3.9 9.5s-1.3 6.8-3.9 9.5c-2.6-2.7-3.9-5.9-3.9-9.5s1.3-6.8 3.9-9.5Z"/></svg>Website</span></p>
         <p class="hero__tag">Not a chatbot.</p>
         <div class="hero__cta">
-          <a href="#" onclick="openModal('contact');return false;" class="btn btn--mint">Interested? Let’s chat
+          <a href="#" onclick="openModal('interest');return false;" class="btn btn--mint">Interested? Let’s chat
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
           </a>
         </div>
@@ -2416,7 +2435,7 @@ a.cbm__item:hover .cbm__ic{background:#d7ebe6}
             <div class="hiw__body"><p>A human safari expert gets what the traveler wants and what worries them. So the first itinerary is personalized, not generic.</p></div>
           </li>
         </ol>
-        <a href="#" onclick="openModal('contact');return false;" class="hub__cta">Interested? Let’s chat <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+        <a href="#" onclick="openModal('interest');return false;" class="hub__cta">Interested? Let’s chat <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
       </div>
       <div class="hiw__right rv" aria-hidden="true">
           <div class="hiw__screen is-active"><div class="tmc__wrap"><div class="tmc tmc--t"><p>Hi! We&rsquo;re thinking about a safari in Tanzania next August. Family of four.</p><small><img class="tmc__tav" src="assets/sales-rep/sarah.webp" alt="" width="96" height="96" loading="lazy" />Sarah</small></div><div class="tmc tmc--r"><p>Thanks for reaching out to KiliTrail Safaris! I&rsquo;m happy to help you find the best fit. May I know your name?</p><small><img src="assets/sales-rep/mascot-wave.webp" alt="" width="560" height="548" loading="lazy" />AI Safari Sales Rep</small></div></div></div>
@@ -2478,7 +2497,7 @@ a.cbm__item:hover .cbm__ic{background:#d7ebe6}
         <p class="oc__lede">Some travelers arrive ready to plan. Others ask one question, go quiet, come back weeks later, change their dates, rethink their budget, or need several conversations before they are ready to decide.</p>
         <p class="oc__lede">The enquiry that looks casual today can become the booking later.</p>
         <p class="oc__lede oc__lede--key">That is why every enquiry needs proper sales attention from the start.</p>
-        <a href="#" onclick="openModal('contact');return false;" class="hiw__cta">Interested? Let&rsquo;s chat <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+        <a href="#" onclick="openModal('interest');return false;" class="hiw__cta">Interested? Let&rsquo;s chat <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
       </div>
       <div class="oc__grid rv">
         <article class="oc__card">
@@ -2522,7 +2541,7 @@ a.cbm__item:hover .cbm__ic{background:#d7ebe6}
             <div class="hiw__body"><p>From then on, every enquiry gets the sales work it needs, 24/7. Human safari experts get a traveler brief when a traveler is ready.</p></div>
           </li>
         </ol>
-        <a href="#" onclick="openModal('contact');return false;" class="hiw__cta">Interested? Let&rsquo;s chat <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+        <a href="#" onclick="openModal('interest');return false;" class="hiw__cta">Interested? Let&rsquo;s chat <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
       </div>
       <div class="hiw__right rv" aria-hidden="true">
           <div class="hiw__screen is-active" data-demo="src">
@@ -2597,7 +2616,7 @@ a.cbm__item:hover .cbm__ic{background:#d7ebe6}
 <section class="section section--white" id="faq"><div class="container"><div class="faq__head rv"><div><span class="pstrip__tag faq__tag"><svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 8h32a3 3 0 0 1 3 3v20a3 3 0 0 1-3 3H22l-9 7v-7H8a3 3 0 0 1-3-3V11a3 3 0 0 1 3-3Z"/><path d="M19.5 17a4.5 4.5 0 1 1 6.5 4c-1.3.7-2 1.6-2 3v1"/><circle cx="24" cy="29" r=".9" fill="currentColor"/></svg>FAQ</span><h2 class="h-section faq__h">Frequently asked <span>questions.</span></h2></div><div class="faq__ask"><span>Still have questions?</span><a href="#" onclick="openModal('contact');return false;" class="hiw__cta faq__cta">Contact us <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></div></div><div class="faq__grid"><div><div class="faq__item"><button class="faq__q">Is AI Safari Sales Rep better at selling than me?<span class="faq__sign"></span></button><div class="faq__a"><p>No, and that is not the point.</p><p>The point is that every enquiry gets the sales work it needs, done the same way every time. Including the ones that come in while you are busy, traveling, or asleep.</p></div></div><div class="faq__item"><button class="faq__q">Is Wandar just another chatbot?<span class="faq__sign"></span></button><div class="faq__a"><p>No. A chatbot answers questions or collects contact details.</p><p>AI Safari Sales Rep does the work of a salesperson: getting to know travelers, answering their questions, talking through their worries, and getting them ready to book.</p></div></div><div class="faq__item"><button class="faq__q">Do I have to train AI Safari Sales Rep?<span class="faq__sign"></span></button><div class="faq__a"><p>Not on safari, and not on selling.</p><p>Just share information about what you offer: your safaris, destinations, and experiences.</p></div></div><div class="faq__item"><button class="faq__q">Will AI Safari Sales Rep replace my team?<span class="faq__sign"></span></button><div class="faq__a"><p>No. AI Safari Sales Rep does the sales conversations. Human safari experts still design the safari and decide the price.</p><p>More sales capacity, not fewer people.</p></div></div></div><div><div class="faq__item"><button class="faq__q">Will AI Safari Sales Rep design itineraries and send quotes?<span class="faq__sign"></span></button><div class="faq__a"><p>No. Human safari experts stay responsible for itineraries, recommendations, and pricing.</p><p>AI Safari Sales Rep gathers what they need, so the first itinerary is personalized, not generic.</p></div></div><div class="faq__item"><button class="faq__q">Does AI Safari Sales Rep follow up with travelers who go quiet?<span class="faq__sign"></span></button><div class="faq__a"><p>Not yet. AI Safari Sales Rep handles the conversations travelers start on your WhatsApp and website.</p></div></div><div class="faq__item"><button class="faq__q">Where does AI Safari Sales Rep talk to travelers?<span class="faq__sign"></span></button><div class="faq__a"><p>On your WhatsApp and website.</p></div></div><div class="faq__item"><button class="faq__q">Is Wandar available now?<span class="faq__sign"></span></button><div class="faq__a"><p>We are inviting a small group of safari operators to get early access.</p><p>If you would like to see AI Safari Sales Rep in action and help shape the product, we would love to hear from you.</p></div></div></div></div></div></section>
 
 <!-- ═══════════════ FINAL CTA ═══════════════ -->
-<section class="section audience"><div class="container"><div class="vision cta-panel rv"><h2 style="text-wrap:balance">Give every enquiry the<br><span>sales attention</span> it needs.</h2><p>Extend your sales capacity and give every opportunity the consistent attention it needs to turn interested travelers into bookings.</p><a href="#" class="cta-panel__btn" onclick="openModal('contact');return false;">Interested? Let&rsquo;s chat <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></div></div></section>
+<section class="section audience"><div class="container"><div class="vision cta-panel rv"><h2 style="text-wrap:balance">Give every enquiry the<br><span>sales attention</span> it needs.</h2><p>Extend your sales capacity and give every opportunity the consistent attention it needs to turn interested travelers into bookings.</p><a href="#" class="cta-panel__btn" onclick="openModal('interest');return false;">Interested? Let&rsquo;s chat <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></div></div></section>
 
 </main>
 
@@ -2821,6 +2840,141 @@ a.cbm__item:hover .cbm__ic{background:#d7ebe6}
   <input name="more" type="text" />
 </form>
 
+<form name="interest" netlify netlify-honeypot="bot-field" hidden>
+  <input name="first-name" type="text" />
+  <input name="last-name" type="text" />
+  <input name="email" type="email" />
+  <input name="phone" type="text" />
+  <input name="org-type" type="text" />
+  <input name="team-size" type="text" />
+  <input name="country" type="text" />
+  <input name="beta-tester" type="text" />
+</form>
+
+<!-- Modal: Interested? Let's chat -->
+<div class="modal-overlay" id="modal-interest" aria-modal="true" role="dialog" aria-label="Tell us about your safari business">
+  <div class="modal-card">
+    <button class="modal-close" onclick="closeModal('interest')" aria-label="Close">&times;</button>
+
+    <div class="modal-bd">
+      <div class="mf-form" id="mf-form-i">
+
+        <!-- Row 1: First name | Last name -->
+        <div class="mf-grid-2">
+          <div class="mf-field">
+            <label class="mf-label" for="mi-first">First name <span class="mf-req-teal">*</span></label>
+            <input type="text" id="mi-first" name="first-name" class="mf-input" autocomplete="given-name" />
+            <span class="mf-err" id="merr-i-first"></span>
+          </div>
+          <div class="mf-field">
+            <label class="mf-label" for="mi-last">Last name <span class="mf-req-teal">*</span></label>
+            <input type="text" id="mi-last" name="last-name" class="mf-input" autocomplete="family-name" />
+            <span class="mf-err" id="merr-i-last"></span>
+          </div>
+        </div>
+
+        <!-- Row 2: Email | Phone -->
+        <div class="mf-grid-2">
+          <div class="mf-field">
+            <label class="mf-label" for="mi-email">Email <span class="mf-req-teal">*</span></label>
+            <input type="email" id="mi-email" name="email" class="mf-input" autocomplete="email" />
+            <span class="mf-err" id="merr-i-email"></span>
+          </div>
+          <div class="mf-field">
+            <label class="mf-label" for="mi-phone">Phone</label>
+            <input type="tel" id="mi-phone" name="phone" class="mf-input" autocomplete="tel" />
+          </div>
+        </div>
+
+        <!-- Row 3: Organization type | Team size -->
+        <div class="mf-grid-2">
+          <div class="mf-field">
+            <label class="mf-label" for="mi-org">Organization type <span class="mf-req-teal">*</span></label>
+            <select id="mi-org" name="org-type" class="mf-select" autocomplete="off">
+              <option value="">Select...</option>
+              <option>Owner-led operator</option>
+              <option>Boutique safari company</option>
+            </select>
+            <span class="mf-err" id="merr-i-org"></span>
+          </div>
+          <div class="mf-field">
+            <label class="mf-label" for="mi-team">Team size <span class="mf-req-teal">*</span></label>
+            <select id="mi-team" name="team-size" class="mf-select" autocomplete="off">
+              <option value="">Select...</option>
+              <option>Just me</option>
+              <option>2&ndash;5</option>
+              <option>6&ndash;14</option>
+              <option>15+</option>
+            </select>
+            <span class="mf-err" id="merr-i-team"></span>
+          </div>
+        </div>
+
+        <!-- Row 4: Country -->
+        <div class="mf-grid-2">
+          <div class="mf-field">
+            <label class="mf-label" for="mi-country">Country <span class="mf-req-teal">*</span></label>
+            <select id="mi-country" name="country" class="mf-select" autocomplete="off">
+              <option value="">Select...</option>
+              <option>Angola</option>
+              <option>Botswana</option>
+              <option>Burundi</option>
+              <option>Comoros</option>
+              <option>Djibouti</option>
+              <option>Eritrea</option>
+              <option>Eswatini</option>
+              <option>Ethiopia</option>
+              <option>Kenya</option>
+              <option>Lesotho</option>
+              <option>Madagascar</option>
+              <option>Malawi</option>
+              <option>Mauritius</option>
+              <option>Mozambique</option>
+              <option>Namibia</option>
+              <option>Rwanda</option>
+              <option>Seychelles</option>
+              <option>Somalia</option>
+              <option>South Africa</option>
+              <option>South Sudan</option>
+              <option>Tanzania</option>
+              <option>Uganda</option>
+              <option>Zambia</option>
+              <option>Zimbabwe</option>
+            </select>
+            <span class="mf-err" id="merr-i-country"></span>
+          </div>
+        </div>
+
+        <!-- Beta tester -->
+        <div class="mf-field">
+          <label class="mf-label" for="mi-beta">Do you want to be an early beta tester? <span class="mf-req-teal">*</span></label>
+          <select id="mi-beta" name="beta-tester" class="mf-select" autocomplete="off">
+            <option value="">Select...</option>
+            <option>Yes</option>
+            <option>No</option>
+          </select>
+          <span class="mf-err" id="merr-i-beta"></span>
+        </div>
+
+        <input type="text" name="bot-field" style="display:none" aria-hidden="true" tabindex="-1" autocomplete="off" />
+        <span class="mf-err" id="mf-submit-err-i"></span>
+
+        <button class="mf-submit mf-submit--teal" id="mi-submit-btn" onclick="mSubmitI()">
+          Submit
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </button>
+      </div>
+
+      <div class="mf-success" id="mf-success-i" aria-live="polite">
+        <div class="mf-success-ring mf-success-ring--teal">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#1a7373" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg>
+        </div>
+        <h2>Thanks, we have your details.</h2>
+      </div>
+    </div>
+  </div>
+</div><!-- /modal-interest -->
+
 <!-- Modal: Contact -->
 <div class="modal-overlay" id="modal-contact" aria-modal="true" role="dialog" aria-labelledby="mct-title">
   <div class="modal-card modal-card--teal-top">
@@ -2867,7 +3021,7 @@ a.cbm__item:hover .cbm__ic{background:#d7ebe6}
 
         <!-- How can we help? -->
         <div class="mf-field">
-          <label class="mf-label" for="mc-message">How can we help? <span class="mf-req-teal">*</span></label>
+          <label class="mf-label" for="mc-message">What more do you want to know? <span class="mf-req-teal">*</span></label>
           <textarea id="mc-message" name="message" class="mf-ta" placeholder="Write your message here..." style="min-height:120px;"></textarea>
           <span class="mf-err" id="merr-c-message"></span>
         </div>
