@@ -1934,6 +1934,70 @@ a.cbm__item:hover .cbm__ic{background:#d7ebe6}
 .footer__cl{font-size:11px}
 .footer__nl-h{font-size:15px}
 .nav .mobile-panel__foot .btn{width:fit-content;display:flex;margin:0 auto;padding:13px 22px;font-size:14px}
+
+/* ═══ FAQ — premium: heading left (sticky), questions as quiet cards right ═══ */
+@media(min-width:1024px){
+  #faq .container{display:grid;grid-template-columns:minmax(0,.85fr) minmax(0,1.6fr);gap:72px;align-items:start}
+  .faq__head{position:sticky;top:120px;flex-direction:column;align-items:flex-start;gap:22px;margin:0}
+}
+.faq__head .h-section{text-wrap:balance}
+.faq__link{display:inline-flex;align-items:center;gap:8px;padding:11px 18px;border:1px solid #e3dfd8;border-radius:999px;background:#fff;color:var(--text-primary);font-size:13px;font-weight:600;transition:border-color 180ms ease,color 180ms ease}
+.faq__link:hover{border-color:var(--safari-primary);color:var(--safari-primary)}
+.faq__grid,.faq__grid>div{display:grid;grid-template-columns:minmax(0,1fr)!important;gap:12px;align-content:start}
+@media(min-width:900px){.faq__grid{grid-template-columns:minmax(0,1fr) minmax(0,1fr)!important}}
+@media(min-width:1024px){#faq .container{grid-template-columns:minmax(0,.62fr) minmax(0,2fr);gap:56px}}
+.faq__item{border:1px solid #ece8e1;border-radius:16px;background:#fff;padding:0 22px;transition:border-color 200ms ease,box-shadow 240ms ease}
+.faq__item:hover{border-color:#ddd8cf}
+.faq__item.is-open{border-color:#e3dfd8;box-shadow:0 20px 44px -26px rgba(17,24,22,.28)}
+.faq__q{padding:20px 0;font-size:15.5px;font-weight:600;letter-spacing:-.01em}
+.faq__q:hover{color:var(--text-primary)}
+.faq__sign{display:grid;place-items:center;width:30px;height:30px;border-radius:50%;background:#f4f2ee;transition:background 200ms ease,transform 260ms cubic-bezier(.2,.8,.3,1)}
+.faq__sign::before{width:12px;height:1.8px}
+.faq__sign::after{width:1.8px;height:12px}
+.faq__sign::before,.faq__sign::after{background:var(--text-primary)}
+.faq__item:hover .faq__sign{background:#ebe7e0}
+.faq__item.is-open .faq__sign{background:var(--safari-primary)}
+.faq__item.is-open .faq__sign::before,.faq__item.is-open .faq__sign::after{background:#fff}
+.faq__a p{padding:0 0 20px;font-size:14.5px;line-height:1.7;color:#5d6260;max-width:none}
+.faq__a p + p{margin-top:-10px}
+@media(max-width:640px){.faq__item{padding:0 16px}.faq__q{font-size:14.5px;padding:17px 0}}
+@media(min-width:900px){.faq__q{min-height:78px;padding:14px 0}}
+/* FAQ: heading on top, questions in 2 columns below */
+@media(min-width:1024px){#faq .container{display:block}.faq__head{position:static;flex-direction:row;align-items:flex-end;justify-content:space-between;margin-bottom:40px}}
+/* FAQ header — premium */
+.faq__tag{margin-bottom:22px}
+.faq__tag svg{width:17px;height:17px;stroke-width:3.4}
+.faq__h span{color:#8a8f8b}
+.faq__ask{display:flex;align-items:center;gap:16px;font-size:14px;color:#6b706d}
+.faq__ask .faq__cta{margin-top:0}
+@media(max-width:640px){.faq__ask{margin-top:4px}}
+
+/* ═══ Footer — premium: newsletter panel, one aligned grid, refined links ═══ */
+.fx__news{display:flex;align-items:center;justify-content:space-between;gap:32px;padding:30px 34px;border:1px solid rgba(255,255,255,.08);border-radius:20px;
+  background:linear-gradient(135deg,rgba(255,255,255,.06),rgba(255,255,255,.02))}
+.fx__news .footer__nl-s{margin:4px 0 0;max-width:none}
+.fx__news .footer__pill{flex:0 0 360px;max-width:360px}
+.fx__main{display:grid;grid-template-columns:1.5fr 1fr 1fr 1fr;gap:32px;padding:52px 0 44px}
+.fx__brand .footer__lockup{margin-bottom:20px}
+.fx__col{display:flex;flex-direction:column;align-items:flex-start}
+.fx__col .footer__ch{margin-bottom:14px;font-size:12px;letter-spacing:.14em}
+.fx__col .footer__cl{position:relative;padding:5px 0;font-size:11px;color:rgba(255,255,255,.58);transition:color 180ms ease,transform 200ms ease}
+.fx__col .footer__cl::after{content:"\2192";position:absolute;left:calc(100% + 6px);opacity:0;transform:translateX(-4px);transition:opacity 180ms ease,transform 200ms ease}
+.fx__col .footer__cl:hover{color:#fff}
+.fx__col .footer__cl:hover::after{opacity:1;transform:none}
+@media(max-width:900px){.fx__news{flex-direction:column;align-items:stretch;padding:24px}.fx__news .footer__pill{flex:none;max-width:none}.fx__main{grid-template-columns:1fr 1fr;row-gap:36px}.fx__brand{grid-column:1/-1}}
+
+/* ═══ Final CTA — premium: badge, soft spotlight, lines fading behind the words ═══ */
+.audience{position:relative;isolation:isolate;padding:128px 0 136px}
+.audience::before{content:"";position:absolute;inset:0;z-index:-1;pointer-events:none;
+  background:radial-gradient(52% 62% at 50% 50%,#fdf8f0 0%,#fdf8f0 45%,rgba(253,248,240,0) 100%)}
+.audience::after{content:"";position:absolute;left:50%;top:50%;z-index:-1;width:min(760px,90%);height:340px;transform:translate(-50%,-50%);pointer-events:none;
+  background:radial-gradient(closest-side,rgba(196,89,17,.06),rgba(196,89,17,.02) 60%,rgba(196,89,17,0))}
+.cta__tag{margin-bottom:26px}
+.cta__tag svg{width:17px;height:17px;stroke-width:3.4}
+.audience .vision.cta-panel>p:not(.eyebrow){margin-top:24px}
+.audience .cta-panel__btn{margin-top:36px;padding:14px 24px;font-size:.82rem;box-shadow:0 14px 30px -12px rgba(17,24,22,.45)}
+@media(max-width:760px){.audience{padding:88px 0 96px}}
 </style>
 </head>
 <body>
@@ -2530,7 +2594,7 @@ a.cbm__item:hover .cbm__ic{background:#d7ebe6}
 </section>
 
 <!-- ═══════════════ FAQ ═══════════════ -->
-<section class="section section--white" id="faq"><div class="container"><div class="faq__head rv"><div><h2 class="h-section">Frequently asked questions</h2></div><a href="#" onclick="openModal('contact');return false;" class="faq__link">Still have questions? Contact us</a></div><div class="faq__grid"><div><div class="faq__item"><button class="faq__q">Is AI Safari Sales Rep better at selling than me?<span class="faq__sign"></span></button><div class="faq__a"><p>No, and that is not the point.</p><p>The point is that every enquiry gets the sales work it needs, done the same way every time. Including the ones that come in while you are busy, traveling, or asleep.</p></div></div><div class="faq__item"><button class="faq__q">Is Wandar just another chatbot?<span class="faq__sign"></span></button><div class="faq__a"><p>No. A chatbot answers questions or collects contact details.</p><p>AI Safari Sales Rep does the work of a salesperson: getting to know travelers, answering their questions, talking through their worries, and getting them ready to book.</p></div></div><div class="faq__item"><button class="faq__q">Do I have to train AI Safari Sales Rep?<span class="faq__sign"></span></button><div class="faq__a"><p>Not on safari, and not on selling.</p><p>Just share information about what you offer: your safaris, destinations, and experiences.</p></div></div><div class="faq__item"><button class="faq__q">Will AI Safari Sales Rep replace my team?<span class="faq__sign"></span></button><div class="faq__a"><p>No. AI Safari Sales Rep does the sales conversations. Human safari experts still design the safari and decide the price.</p><p>More sales capacity, not fewer people.</p></div></div></div><div><div class="faq__item"><button class="faq__q">Will AI Safari Sales Rep design itineraries and send quotes?<span class="faq__sign"></span></button><div class="faq__a"><p>No. Human safari experts stay responsible for itineraries, recommendations, and pricing.</p><p>AI Safari Sales Rep gathers what they need, so the first itinerary is personalized, not generic.</p></div></div><div class="faq__item"><button class="faq__q">Does AI Safari Sales Rep follow up with travelers who go quiet?<span class="faq__sign"></span></button><div class="faq__a"><p>Not yet. AI Safari Sales Rep handles the conversations travelers start on your WhatsApp and website.</p></div></div><div class="faq__item"><button class="faq__q">Where does AI Safari Sales Rep talk to travelers?<span class="faq__sign"></span></button><div class="faq__a"><p>On your WhatsApp and website.</p></div></div><div class="faq__item"><button class="faq__q">Is Wandar available now?<span class="faq__sign"></span></button><div class="faq__a"><p>We are inviting a small group of safari operators to get early access.</p><p>If you would like to see AI Safari Sales Rep in action and help shape the product, we would love to hear from you.</p></div></div></div></div></div></section>
+<section class="section section--white" id="faq"><div class="container"><div class="faq__head rv"><div><span class="pstrip__tag faq__tag"><svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 8h32a3 3 0 0 1 3 3v20a3 3 0 0 1-3 3H22l-9 7v-7H8a3 3 0 0 1-3-3V11a3 3 0 0 1 3-3Z"/><path d="M19.5 17a4.5 4.5 0 1 1 6.5 4c-1.3.7-2 1.6-2 3v1"/><circle cx="24" cy="29" r=".9" fill="currentColor"/></svg>FAQ</span><h2 class="h-section faq__h">Frequently asked <span>questions.</span></h2></div><div class="faq__ask"><span>Still have questions?</span><a href="#" onclick="openModal('contact');return false;" class="hiw__cta faq__cta">Contact us <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></div></div><div class="faq__grid"><div><div class="faq__item"><button class="faq__q">Is AI Safari Sales Rep better at selling than me?<span class="faq__sign"></span></button><div class="faq__a"><p>No, and that is not the point.</p><p>The point is that every enquiry gets the sales work it needs, done the same way every time. Including the ones that come in while you are busy, traveling, or asleep.</p></div></div><div class="faq__item"><button class="faq__q">Is Wandar just another chatbot?<span class="faq__sign"></span></button><div class="faq__a"><p>No. A chatbot answers questions or collects contact details.</p><p>AI Safari Sales Rep does the work of a salesperson: getting to know travelers, answering their questions, talking through their worries, and getting them ready to book.</p></div></div><div class="faq__item"><button class="faq__q">Do I have to train AI Safari Sales Rep?<span class="faq__sign"></span></button><div class="faq__a"><p>Not on safari, and not on selling.</p><p>Just share information about what you offer: your safaris, destinations, and experiences.</p></div></div><div class="faq__item"><button class="faq__q">Will AI Safari Sales Rep replace my team?<span class="faq__sign"></span></button><div class="faq__a"><p>No. AI Safari Sales Rep does the sales conversations. Human safari experts still design the safari and decide the price.</p><p>More sales capacity, not fewer people.</p></div></div></div><div><div class="faq__item"><button class="faq__q">Will AI Safari Sales Rep design itineraries and send quotes?<span class="faq__sign"></span></button><div class="faq__a"><p>No. Human safari experts stay responsible for itineraries, recommendations, and pricing.</p><p>AI Safari Sales Rep gathers what they need, so the first itinerary is personalized, not generic.</p></div></div><div class="faq__item"><button class="faq__q">Does AI Safari Sales Rep follow up with travelers who go quiet?<span class="faq__sign"></span></button><div class="faq__a"><p>Not yet. AI Safari Sales Rep handles the conversations travelers start on your WhatsApp and website.</p></div></div><div class="faq__item"><button class="faq__q">Where does AI Safari Sales Rep talk to travelers?<span class="faq__sign"></span></button><div class="faq__a"><p>On your WhatsApp and website.</p></div></div><div class="faq__item"><button class="faq__q">Is Wandar available now?<span class="faq__sign"></span></button><div class="faq__a"><p>We are inviting a small group of safari operators to get early access.</p><p>If you would like to see AI Safari Sales Rep in action and help shape the product, we would love to hear from you.</p></div></div></div></div></div></section>
 
 <!-- ═══════════════ FINAL CTA ═══════════════ -->
 <section class="section audience"><div class="container"><div class="vision cta-panel rv"><h2 style="text-wrap:balance">Give every enquiry the<br><span>sales attention</span> it needs.</h2><p>Extend your sales capacity and give every opportunity the consistent attention it needs to turn interested travelers into bookings.</p><a href="#" class="cta-panel__btn" onclick="openModal('contact');return false;">Interested? Let&rsquo;s chat <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></div></div></section>
@@ -2541,15 +2605,26 @@ a.cbm__item:hover .cbm__ic{background:#d7ebe6}
 <footer class="footer" id="footer">
   <div class="footer-container">
 
-    <div class="footer__top">
-      <div>
+    <div class="fx__news">
+      <div class="fx__news-txt">
+        <h3 class="footer__nl-h">Stay updated</h3>
+        <p class="footer__nl-s">News about AI Safari Sales Rep and early access for safari operators.</p>
+      </div>
+      <form class="footer__pill" onsubmit="return false;">
+          <label for="nl-email" style="position:absolute;left:-9999px">Email address</label>
+          <input type="email" id="nl-email" placeholder="Enter your email" autocomplete="email" required />
+          <button type="submit" class="footer__arrow" aria-label="Subscribe">→︎</button>
+        </form>
+    </div>
+
+    <div class="fx__main">
+      <div class="fx__brand">
         <div class="footer__lockup">
           <img src="assets/wandar-banner-white-320.png" alt="Wandar" width="320" height="80" loading="lazy" />
           <span class="footer__lockup-div" aria-hidden="true"></span>
           <span class="footer__lockup-tag">AI Sales &amp; Growth Teammates<br>for safari operators</span>
         </div>
-        <div class="footer__connect">
-                    <div class="footer__socials">
+        <div class="footer__socials">
             <a href="https://www.linkedin.com/company/getwandar/" target="_blank" rel="noopener" class="footer__sl" aria-label="Wandar on LinkedIn">
               <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
             </a>
@@ -2563,29 +2638,12 @@ a.cbm__item:hover .cbm__ic{background:#d7ebe6}
               <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413z"/></svg>
             </a>
           </div>
-        </div>
       </div>
-
-      <div class="footer__nl">
-        <div>
-          <h3 class="footer__nl-h">Stay updated</h3>
-          <p class="footer__nl-s">News about AI Safari Sales Rep and early access for safari operators.</p>
-        </div>
-        <form class="footer__pill" onsubmit="return false;">
-          <label for="nl-email" style="position:absolute;left:-9999px">Email address</label>
-          <input type="email" id="nl-email" placeholder="Enter your email" autocomplete="email" required />
-          <button type="submit" class="footer__arrow" aria-label="Subscribe">→︎</button>
-        </form>
-      </div>
-    </div>
-
-    <div class="footer__cols">
-      <div>
+      <div class="fx__col">
         <span class="footer__ch">AI Teammates</span>
         <a class="footer__cl" href="/">AI Safari Sales Rep</a>
       </div>
-
-      <div>
+      <div class="fx__col">
         <span class="footer__ch">Why AI Safari Sales Rep</span>
         <a class="footer__cl" href="#problem">Problem</a>
         <a class="footer__cl" href="#outcome">Outcome</a>
@@ -2593,8 +2651,7 @@ a.cbm__item:hover .cbm__ic{background:#d7ebe6}
         <a class="footer__cl" href="#compare">Compare</a>
         <a class="footer__cl" href="#launch">Setup</a>
       </div>
-
-      <div>
+      <div class="fx__col">
         <span class="footer__ch">Support</span>
         <a class="footer__cl" href="#faq">FAQ</a>
         <a class="footer__cl" href="#" onclick="openModal('contact');return false;">Contact us</a>
