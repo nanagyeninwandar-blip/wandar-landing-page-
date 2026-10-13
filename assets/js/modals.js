@@ -195,6 +195,8 @@ function mSubmitC() {
   ok = mSetErr('c-first',   !mg('mc-first').value.trim()                ? 'Required'             : '') & ok;
   ok = mSetErr('c-last',    !mg('mc-last').value.trim()                 ? 'Required'             : '') & ok;
   ok = mSetErr('c-email',   !mValidEmail(mg('mc-email').value.trim())   ? 'Valid email required' : '') & ok;
+  ok = mSetErr('c-company', !mg('mc-company').value.trim()              ? 'Required'             : '') & ok;
+  ok = mSetErr('c-job',     !mg('mc-job').value                         ? 'Please select one'    : '') & ok;
   ok = mSetErr('c-message', !mg('mc-message').value.trim()              ? 'Required'             : '') & ok;
   if (!ok) return;
 
@@ -208,6 +210,8 @@ function mSubmitC() {
     'last-name':  mg('mc-last').value.trim(),
     email:        mg('mc-email').value.trim(),
     phone:        mg('mc-phone').value.trim(),
+    company:      mg('mc-company').value.trim(),
+    'job-title':  mg('mc-job').value,
     message:      mg('mc-message').value.trim()
   })
     .then(function(res) {
@@ -228,7 +232,8 @@ function mSubmitI() {
   ok = mSetErr('i-email',   !mValidEmail(mg('mi-email').value.trim())   ? 'Valid email required' : '') & ok;
   ok = mSetErr('i-org',     !mg('mi-org').value                         ? 'Please select one'    : '') & ok;
   ok = mSetErr('i-team',    !mg('mi-team').value                        ? 'Please select one'    : '') & ok;
-  ok = mSetErr('i-country', !mg('mi-country').value                     ? 'Please select one'    : '') & ok;
+  ok = mSetErr('i-company', !mg('mi-company').value.trim()              ? 'Required'             : '') & ok;
+  ok = mSetErr('i-job',     !mg('mi-job').value                         ? 'Please select one'    : '') & ok;
   ok = mSetErr('i-beta',    !mg('mi-beta').value                        ? 'Please select one'    : '') & ok;
   if (!ok) return;
 
@@ -244,7 +249,8 @@ function mSubmitI() {
     phone:         mg('mi-phone').value.trim(),
     'org-type':    mg('mi-org').value,
     'team-size':   mg('mi-team').value,
-    country:       mg('mi-country').value,
+    company:       mg('mi-company').value.trim(),
+    'job-title':   mg('mi-job').value,
     'beta-tester': mg('mi-beta').value
   })
     .then(function(res) {

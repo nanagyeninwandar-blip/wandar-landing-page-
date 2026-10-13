@@ -536,7 +536,7 @@
 
         if (DEMO) {
           var botD = $('input[name="bot-field"]', form);
-          netlifySubmit("early-access", {
+          netlifySubmit("demand-feed", {
             email: payload.email, company: payload.company,
             role: payload.role, goal: payload.goal, tools: payload.tools,
           }, botD ? botD.value : "");
@@ -547,7 +547,7 @@
         // Both destinations, on purpose: Netlify Forms is where the landing
         // page's signups land, Supabase is where the feed's always have.
         var bot = $('input[name="bot-field"]', form);
-        netlifySubmit("early-access", {
+        netlifySubmit("demand-feed", {
           email: payload.email, company: payload.company,
           role: payload.role, goal: payload.goal, tools: payload.tools,
         }, bot ? bot.value : "");
@@ -567,7 +567,7 @@
     }
   }
   /* Mirror of assets/js/modals.js netlifySubmit(). Netlify Forms only accepts
-     the field names declared by the hidden <form name="early-access"> on
+     the field names declared by the hidden <form name="demand-feed"> on
      index.html — email, company, role, goal, tools — so send exactly those.
      The POST goes to "/" on this origin, which is the Netlify site in
      production and simply 404s on a local dev server: it is fire-and-forget and
