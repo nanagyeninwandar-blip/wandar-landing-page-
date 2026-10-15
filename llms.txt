@@ -1,0 +1,35 @@
+# Wandar
+
+> Wandar makes AI Safari Sales Rep: an AI sales teammate for owner-led and boutique safari operators across Eastern and Southern Africa. AI Safari Sales Rep does the sales work on every enquiry that travelers start on the operator's WhatsApp and website, 24/7, so every traveler gets the attention they need and human safari experts get more time for the work that needs their judgment.
+
+## What AI Safari Sales Rep does
+
+- Replies to every enquiry on the operator's WhatsApp and website chat, 24/7.
+- Gets to know the traveler: why they want to go, what they like, what they can spend, and what matters most.
+- Answers questions and explains choices.
+- Notices when a traveler is unsure and talks through their worries, such as price, dates or the wrong choice.
+- Sends a traveler brief to a human safari expert, so the first itinerary is personalized, not generic.
+
+## What AI Safari Sales Rep does not do
+
+- Design itineraries, make recommendations on the operator's behalf, or set prices. Human safari experts stay responsible for those.
+- Replace the operator's team. AI Safari Sales Rep adds sales capacity.
+- Follow up with travelers who go quiet. AI Safari Sales Rep handles the conversations travelers start.
+- Act as a chatbot that only answers questions or collects contact details.
+
+## Who AI Safari Sales Rep is for
+
+Owner-led and boutique safari operators based in Eastern and Southern Africa.
+
+## Setup
+
+Operators do not need to train AI Safari Sales Rep on safari or on selling. They share information about what they offer: their safaris, destinations and experiences.
+
+## Availability
+
+Wandar is in early access. A small group of safari operators is being invited to use AI Safari Sales Rep and help shape the product.
+
+## Contact
+
+- Website: https://www.getwandar.com/
+- To request early access or ask a question, use "Interested? Let's chat" or "Contact us" on the website.

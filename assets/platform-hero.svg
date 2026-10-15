@@ -1,0 +1,107 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640" width="640" height="640" fill="none" role="img" aria-label="A safari operator at a desk, with the Wandar platform around them">
+  <title>The Wandar platform around a safari sales conversation</title>
+
+  <g stroke="#17231f" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+
+    <!-- ── floor shadow ───────────────────────────────── -->
+    <ellipse cx="330" cy="556" rx="250" ry="13" fill="#17231f" opacity=".07" stroke="none"/>
+
+    <!-- ── traveler message, top left ──────────────────── -->
+    <rect x="56" y="142" width="172" height="88" rx="16" fill="#fdf8f0"/>
+    <rect x="96" y="224" width="34" height="8" fill="#fdf8f0" stroke="none"/>
+    <path d="M96 226 L96 254 L132 227" fill="#fdf8f0"/>
+    <rect x="80" y="168" width="128" height="10" rx="5" fill="#1a7373" opacity=".3" stroke="none"/>
+    <rect x="80" y="190" width="86" height="10" rx="5" fill="#c45911" opacity=".55" stroke="none"/>
+
+    <!-- ── platform panel, top right ───────────────────── -->
+    <rect x="286" y="64" width="306" height="198" rx="16" fill="#fdf8f0"/>
+    <path d="M286 112 H592"/>
+    <circle cx="310" cy="88" r="5" fill="#c45911"/>
+    <circle cx="328" cy="88" r="5" fill="#1a7373"/>
+    <circle cx="346" cy="88" r="5" fill="#fdf8f0"/>
+
+    <!-- growth tile -->
+    <rect x="306" y="128" width="120" height="58" rx="10" fill="#e6f4f4"/>
+    <path d="M330 170 L362 144" stroke="#c45911" stroke-width="5"/>
+    <path d="M346 144 H362 V160" stroke="#c45911" stroke-width="5"/>
+
+    <!-- signal pill -->
+    <rect x="450" y="136" width="122" height="42" rx="21" fill="#ffeee0"/>
+    <circle cx="476" cy="157" r="7" fill="#c45911"/>
+    <circle cx="496" cy="157" r="7" fill="#c45911" opacity=".6"/>
+    <circle cx="516" cy="157" r="7" fill="#c45911" opacity=".3"/>
+    <rect x="530" y="152" width="28" height="10" rx="5" fill="#c45911" opacity=".3" stroke="none"/>
+
+    <!-- skeleton copy -->
+    <rect x="306" y="204" width="150" height="11" rx="5.5" fill="#1a7373" opacity=".3" stroke="none"/>
+    <rect x="306" y="226" width="96" height="11" rx="5.5" fill="#1a7373" opacity=".16" stroke="none"/>
+
+    <!-- result card -->
+    <rect x="472" y="196" width="100" height="46" rx="9" fill="#e6f4f4"/>
+    <rect x="486" y="213" width="62" height="10" rx="5" fill="#1a7373" opacity=".45" stroke="none"/>
+
+    <!-- ── chair ───────────────────────────────────────── -->
+    <rect x="148" y="342" width="66" height="122" rx="27" fill="#1a7373"/>
+    <rect x="175" y="462" width="12" height="36" rx="6" fill="#1a7373"/>
+    <path d="M181 496 L150 528 M181 496 L212 528" stroke-width="5"/>
+    <circle cx="147" cy="532" r="7" fill="#fdf8f0"/>
+    <circle cx="215" cy="532" r="7" fill="#fdf8f0"/>
+
+    <!-- ── seated figure ───────────────────────────────── -->
+    <!-- legs (the desk crosses in front of them) -->
+    <rect x="226" y="424" width="80" height="28" rx="14" fill="#103f3b"/>
+    <rect x="284" y="438" width="28" height="90" rx="14" fill="#103f3b"/>
+    <path d="M286 516 L286 534 C286 540 291 543 298 543 L328 543 C335 543 336 534 330 530 L314 518 Z" fill="#fdf8f0"/>
+
+    <!-- torso -->
+    <path d="M206 434 C202 396 210 360 232 348 C254 336 276 346 282 370 C288 394 288 414 288 434 Z" fill="#ffffff"/>
+
+    <!-- arm reaching to the desk -->
+    <path d="M274 370 C296 380 306 400 312 420" stroke-width="25"/>
+    <path d="M274 370 C296 380 306 400 312 420" stroke="#ffffff" stroke-width="19"/>
+    <circle cx="313" cy="423" r="11" fill="#8a5a3b"/>
+
+    <!-- head -->
+    <circle cx="250" cy="312" r="32" fill="#8a5a3b"/>
+    <path d="M220 306 C220 284 240 272 258 274 C276 276 284 290 282 304 C272 292 240 288 220 306 Z" fill="#2a1e18"/>
+    <circle cx="279" cy="319" r="6" fill="#8a5a3b"/>
+
+    <!-- ── desk ────────────────────────────────────────── -->
+    <rect x="118" y="436" width="488" height="15" rx="7.5" fill="#fdf8f0"/>
+    <rect x="150" y="451" width="12" height="97" rx="6" fill="#fdf8f0"/>
+    <rect x="562" y="451" width="12" height="97" rx="6" fill="#fdf8f0"/>
+
+    <!-- ── monitor ─────────────────────────────────────── -->
+    <rect x="330" y="316" width="186" height="120" rx="11" fill="#fdf8f0"/>
+    <rect x="348" y="334" width="76" height="11" rx="5.5" fill="#1a7373" opacity=".35" stroke="none"/>
+    <path d="M348 410 L380 386 L406 396 L436 360 L466 374 L498 346" stroke="#c45911" stroke-width="5"/>
+    <rect x="348" y="416" width="44" height="9" rx="4.5" fill="#1a7373" opacity=".22" stroke="none"/>
+    <rect x="400" y="416" width="30" height="9" rx="4.5" fill="#1a7373" opacity=".12" stroke="none"/>
+
+    <!-- ── desk lamp ───────────────────────────────────── -->
+    <path d="M580 434 C580 396 574 380 560 366" stroke-width="5"/>
+    <ellipse cx="580" cy="434" rx="20" ry="6" fill="#fdf8f0"/>
+    <path d="M528 348 L572 330 L588 358 L544 376 Z" fill="#c45911"/>
+
+    <!-- ── cup ─────────────────────────────────────────── -->
+    <rect x="528" y="412" width="26" height="24" rx="6" fill="#c45911"/>
+    <path d="M554 418 C564 418 564 430 554 430"/>
+
+    <!-- ── plant ───────────────────────────────────────── -->
+    <path d="M96 494 C96 466 84 448 66 440 C78 462 80 480 96 494 Z" fill="#3d6b1e"/>
+    <path d="M96 494 C96 460 106 438 128 426 C120 454 116 476 96 494 Z" fill="#2d5016"/>
+    <path d="M96 494 C88 472 68 462 46 464 C64 478 74 490 96 494 Z" fill="#2d5016"/>
+    <path d="M70 496 H124 L116 546 C116 547 115 548 114 548 H80 C79 548 78 547 78 546 Z" fill="#fdf8f0"/>
+    <path d="M72 512 H122" stroke-width="2.5"/>
+
+    <!-- ── ground ──────────────────────────────────────── -->
+    <path d="M40 548 H600"/>
+
+    <!-- ── sparks ──────────────────────────────────────── -->
+    <g stroke="none">
+      <path d="M252 96 C253 104 255 106 263 108 C255 110 253 112 252 120 C251 112 249 110 241 108 C249 106 251 104 252 96 Z" fill="#1a7373"/>
+      <path d="M614 292 C615 302 618 305 628 306 C618 307 615 310 614 320 C613 310 610 307 600 306 C610 305 613 302 614 292 Z" fill="#c45911"/>
+    </g>
+
+  </g>
+</svg>

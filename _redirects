@@ -1,3 +1,10 @@
+# PostHog reverse proxy (assets/js/analytics.js sends to /ingest) so ad
+# blockers don't drop events. static/ and array/ must come before the
+# catch-all. EU project: swap us -> eu in all three.
+/ingest/static/*  https://us-assets.i.posthog.com/static/:splat  200!
+/ingest/array/*   https://us-assets.i.posthog.com/array/:splat   200!
+/ingest/*         https://us.i.posthog.com/:splat                200!
+
 # Pages permanently removed. These must be 301, not 302 — a 302 tells
 # Google the URL still exists and keeps the old page (and its pricing)
 # in the index.

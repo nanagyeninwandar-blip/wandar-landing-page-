@@ -1,0 +1,564 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="_ds/wandar-design-system-a67f6318-711a-498b-9c79-8fdeff5808d8/colors_and_type.css">
+<script src="_ds/wandar-design-system-a67f6318-711a-498b-9c79-8fdeff5808d8/_ds_bundle.js"></script>
+<style>
+  body { margin:0; background: var(--bg-1); }
+  * { box-sizing: border-box; }
+  a { color: var(--safari-primary); text-decoration: none; }
+  a:hover { color: var(--safari-primary-hover); }
+</style>
+</helmet>
+
+<div style="font-family:var(--font-body); color:var(--fg-1); background:var(--bg-1); width:100%; overflow-x:hidden">
+
+  <!-- HERO -->
+  <section style="max-width:1280px; margin:0 auto; padding:clamp(56px,8vw,112px) clamp(20px,5vw,48px) clamp(40px,6vw,72px); display:flex; flex-direction:column; gap:24px">
+    <div style="font-size:12px; font-weight:700; letter-spacing:0.08em; text-transform:uppercase; color:var(--safari-primary)">Your safari sales platform</div>
+    <h1 style="margin:0; font-family:var(--font-display); font-size:clamp(38px,5.4vw,68px); line-height:1.05; letter-spacing:-0.03em; max-width:20ch; text-wrap:pretty">Everything around a stronger safari sales conversation, connected.</h1>
+    <p style="margin:0; max-width:62ch; font-size:clamp(17px,1.5vw,20px); line-height:1.6; color:var(--fg-2)">Wandar brings safari demand, traveler conversations, sales context and business knowledge together in one platform built around how modern safari operators sell.</p>
+  </section>
+
+  <!-- OVERVIEW CARDS -->
+  <sc-if value="{{ showOverview }}" hint-placeholder-val="{{ true }}">
+  <section style="max-width:1280px; margin:0 auto; padding:0 clamp(20px,5vw,48px) clamp(48px,7vw,88px)">
+    <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(300px,1fr)); gap:24px">
+
+      <a href="#social-demand" style="display:flex; flex-direction:column; gap:16px; padding:28px; border:1px solid var(--border-1); border-radius:20px; background:var(--bg-1); transition:box-shadow 200ms var(--ease-out)" style-hover="box-shadow:var(--shadow-md)">
+        <div style="display:flex; align-items:center; gap:12px">
+          <div style="width:34px; height:34px; border-radius:9999px; background:var(--safari-primary); display:flex; align-items:center; justify-content:center; color:#fff; flex:none">
+            <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><circle cx="11" cy="11" r="7"></circle><path d="M20 20l-3.5-3.5"></path></svg>
+          </div>
+          <span style="font-size:16px; font-weight:700; color:var(--safari-primary)">Social Demand</span>
+        </div>
+        <h3 style="margin:0; font-size:24px; font-weight:700; line-height:1.25; color:var(--fg-1)">Understand what safari travelers are trying to figure out.</h3>
+        <p style="margin:0; font-size:15px; line-height:1.6; color:var(--fg-2)">See the questions, comparisons and concerns shaping safari decisions online.</p>
+        <div style="display:flex; align-items:center; justify-content:space-between; margin-top:4px; font-size:14px; font-weight:600; color:var(--safari-secondary)"><span>Explore Social Demand</span><span>↗</span></div>
+      </a>
+
+      <a href="#sales-agent" style="display:flex; flex-direction:column; gap:16px; padding:28px; border:1px solid var(--border-1); border-radius:20px; background:var(--bg-1); transition:box-shadow 200ms var(--ease-out)" style-hover="box-shadow:var(--shadow-md)">
+        <div style="display:flex; align-items:center; gap:12px">
+          <div style="width:34px; height:34px; border-radius:9999px; background:var(--safari-secondary); display:flex; align-items:center; justify-content:center; color:#fff; flex:none">
+            <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="7" width="16" height="12" rx="3"></rect><path d="M12 3v4M9 13h.01M15 13h.01"></path></svg>
+          </div>
+          <span style="font-size:16px; font-weight:700; color:var(--safari-primary)">Sales Agent</span>
+        </div>
+        <h3 style="margin:0; font-size:24px; font-weight:700; line-height:1.25; color:var(--fg-1)">Start every enquiry with deeper understanding.</h3>
+        <p style="margin:0; font-size:15px; line-height:1.6; color:var(--fg-2)">Handle the repetitive early-stage conversation and build the traveler context your safari specialist needs.</p>
+        <div style="display:flex; align-items:center; justify-content:space-between; margin-top:4px; font-size:14px; font-weight:600; color:var(--safari-secondary)"><span>Explore Sales Agent</span><span>↗</span></div>
+      </a>
+
+      <a href="#sales-workspace" style="display:flex; flex-direction:column; gap:16px; padding:28px; border:1px solid var(--border-1); border-radius:20px; background:var(--bg-1); transition:box-shadow 200ms var(--ease-out)" style-hover="box-shadow:var(--shadow-md)">
+        <div style="display:flex; align-items:center; gap:12px">
+          <div style="width:34px; height:34px; border-radius:9999px; background:var(--safari-nature); display:flex; align-items:center; justify-content:center; color:#fff; flex:none">
+            <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="4" width="16" height="16" rx="3"></rect><path d="M4 10h16M11 10v10"></path></svg>
+          </div>
+          <span style="font-size:16px; font-weight:700; color:var(--safari-primary)">Sales Workspace</span>
+        </div>
+        <h3 style="margin:0; font-size:24px; font-weight:700; line-height:1.25; color:var(--fg-1)">Keep every traveler relationship clear.</h3>
+        <p style="margin:0; font-size:15px; line-height:1.6; color:var(--fg-2)">See what is happening, what matters and what needs your attention next.</p>
+        <div style="display:flex; align-items:center; justify-content:space-between; margin-top:4px; font-size:14px; font-weight:600; color:var(--safari-secondary)"><span>Explore Sales Workspace</span><span>↗</span></div>
+      </a>
+
+      <a href="#safari-ai" style="display:flex; flex-direction:column; gap:16px; padding:28px; border:1px solid var(--border-1); border-radius:20px; background:var(--bg-1); transition:box-shadow 200ms var(--ease-out)" style-hover="box-shadow:var(--shadow-md)">
+        <div style="display:flex; align-items:center; gap:12px">
+          <div style="width:34px; height:34px; border-radius:9999px; background:var(--safari-gold); display:flex; align-items:center; justify-content:center; color:#fff; flex:none">
+            <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M12 3v18M3 12h18M5.6 5.6l12.8 12.8M18.4 5.6L5.6 18.4"></path></svg>
+          </div>
+          <span style="font-size:16px; font-weight:700; color:var(--safari-primary)">Safari AI</span>
+        </div>
+        <h3 style="margin:0; font-size:24px; font-weight:700; line-height:1.25; color:var(--fg-1)">Ask your safari business anything.</h3>
+        <p style="margin:0; font-size:15px; line-height:1.6; color:var(--fg-2)">Get direct answers from your traveler conversations, sales data and business knowledge.</p>
+        <div style="display:flex; align-items:center; justify-content:space-between; margin-top:4px; font-size:14px; font-weight:600; color:var(--safari-secondary)"><span>Explore Safari AI</span><span>↗</span></div>
+      </a>
+
+    </div>
+  </section>
+  </sc-if>
+
+  <!-- ============ 1. SOCIAL DEMAND ============ -->
+  <section id="social-demand" data-screen-label="Social Demand" style="background:var(--bg-2); border-top:1px solid var(--border-1); padding:clamp(56px,7vw,96px) 0">
+    <div style="max-width:1280px; margin:0 auto; padding:0 clamp(20px,5vw,48px); display:flex; flex-direction:column; gap:clamp(40px,5vw,64px)">
+
+      <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(520px,1fr)); gap:clamp(28px,4vw,56px); align-items:stretch">
+        <div style="display:flex; flex-direction:column; gap:20px; min-width:0; justify-content:center">
+          <span style="align-self:flex-start; padding:7px 16px; border-radius:9999px; background:var(--safari-primary-light); color:var(--safari-primary); font-size:12px; font-weight:700; letter-spacing:0.08em; text-transform:uppercase">Social Demand</span>
+          <h2 style="margin:0; font-family:var(--font-display); font-size:clamp(30px,3.4vw,44px); line-height:1.1; letter-spacing:-0.03em; text-wrap:pretty">Understand what safari travelers are trying to figure out.</h2>
+          <p style="margin:0; font-size:17px; line-height:1.65; color:var(--fg-2); max-width:52ch">Turn high-intent safari-planning conversations into traveler intelligence you can use to make better sales, product, content and marketing decisions.</p>
+        </div>
+
+        <!-- mock -->
+        <div style="background:var(--safari-primary-light); border-radius:28px; padding:clamp(16px,2.4vw,26px); min-width:0; min-height:500px; display:flex">
+          <div style="flex:1; background:#fff; border-radius:18px; box-shadow:var(--shadow-md); overflow:hidden; display:grid; grid-template-columns:minmax(0,0.42fr) minmax(0,1fr); min-width:0">
+
+            <div style="background:var(--bg-2); border-right:1px solid var(--border-1); padding:16px 14px; display:flex; flex-direction:column; gap:16px; min-width:0">
+              <span style="font-size:13px; font-weight:700; color:var(--fg-1); white-space:nowrap">Social Demand</span>
+              <div style="display:flex; flex-direction:column; gap:10px">
+                <div style="display:flex; align-items:center; gap:9px">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--fg-1)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex:none"><path d="M4 20h16"/><rect x="5" y="12" width="3" height="5" rx="1"/><rect x="10.5" y="8" width="3" height="9" rx="1"/><rect x="16" y="5" width="3" height="12" rx="1"/></svg>
+                  <span style="font-size:12.5px; font-weight:600; color:var(--fg-1)">Insights</span>
+                </div>
+                <div style="display:flex; align-items:center; gap:9px">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--fg-2)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex:none"><path d="M20 12a7 7 0 0 1-7 7H9l-4 3v-4.6A7 7 0 0 1 8 5h5a7 7 0 0 1 7 7Z"/></svg>
+                  <span style="font-size:12.5px; color:var(--fg-2)">Lead Feed</span>
+                </div>
+                <div style="display:flex; align-items:center; gap:9px">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--fg-2)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex:none"><path d="M4 6h16M7 12h10M10 18h4"/></svg>
+                  <span style="font-size:12.5px; color:var(--fg-2)">Sources</span>
+                </div>
+              </div>
+              <div style="display:flex; flex-direction:column; gap:10px">
+                <span style="font-size:10px; font-weight:700; letter-spacing:0.08em; text-transform:uppercase; color:var(--fg-3)">Signals</span>
+                <div style="display:flex; flex-direction:column; gap:11px; padding:0 2px">
+                  <div style="height:7px; border-radius:4px; background:var(--neutral-200); width:86%; opacity:.9"></div><div style="height:7px; border-radius:4px; background:var(--neutral-200); width:70%; opacity:.75"></div><div style="height:7px; border-radius:4px; background:var(--neutral-200); width:92%; opacity:.6"></div><div style="height:7px; border-radius:4px; background:var(--neutral-200); width:64%; opacity:.45"></div><div style="height:7px; border-radius:4px; background:var(--neutral-200); width:78%; opacity:.3"></div>
+                </div>
+              </div>
+            </div>
+
+            <div style="padding:clamp(16px,2vw,22px); display:flex; flex-direction:column; gap:16px; min-width:0">
+              <div style="display:flex; align-items:flex-start; justify-content:space-between; gap:12px">
+                <div style="display:flex; flex-direction:column; gap:6px; min-width:0">
+                  <span style="font-family:var(--font-display); font-size:clamp(18px,2vw,22px); letter-spacing:-0.02em; color:var(--fg-1); white-space:nowrap">Insights</span>
+                  <span style="font-size:12.5px; color:var(--fg-3)">Last 30 days · 214 conversations</span>
+                </div>
+                <span style="font-size:11px; font-weight:700; padding:5px 11px; border-radius:9999px; background:var(--safari-primary-light); color:var(--safari-primary); flex:none; white-space:nowrap">Kenya</span>
+              </div>
+
+              <div style="display:flex; flex-direction:column; gap:2px">
+                <div style="display:flex; flex-direction:column; gap:7px; padding:11px 12px; border-radius:10px; background:var(--safari-primary-light)">
+                  <div style="display:flex; justify-content:space-between; align-items:center; gap:10px"><span style="font-size:13.5px; font-weight:700; color:var(--fg-1)">Green season value</span><span style="font-size:12.5px; color:var(--fg-3)">42</span></div>
+                  <div style="height:5px; border-radius:3px; background:var(--neutral-150)"><div style="width:82%; height:5px; border-radius:3px; background:var(--safari-primary)"></div></div>
+                </div>
+                <div style="display:flex; flex-direction:column; gap:7px; padding:11px 12px; border-radius:10px; background:transparent">
+                  <div style="display:flex; justify-content:space-between; align-items:center; gap:10px"><span style="font-size:13.5px; font-weight:600; color:var(--fg-1)">Kenya vs Tanzania</span><span style="font-size:12.5px; color:var(--fg-3)">31</span></div>
+                  <div style="height:5px; border-radius:3px; background:var(--neutral-150)"><div style="width:61%; height:5px; border-radius:3px; background:var(--safari-primary)"></div></div>
+                </div>
+                <div style="display:flex; flex-direction:column; gap:7px; padding:11px 12px; border-radius:10px; background:transparent">
+                  <div style="display:flex; justify-content:space-between; align-items:center; gap:10px"><span style="font-size:13.5px; font-weight:600; color:var(--fg-1)">Travelling with children</span><span style="font-size:12.5px; color:var(--fg-3)">17</span></div>
+                  <div style="height:5px; border-radius:3px; background:var(--neutral-150)"><div style="width:36%; height:5px; border-radius:3px; background:var(--safari-primary)"></div></div>
+                </div>
+              </div>
+
+              <div style="margin-top:auto; border-top:1px solid var(--border-1); padding-top:14px; display:flex; flex-direction:column; gap:10px">
+                <div style="display:flex; align-items:center; justify-content:space-between; gap:10px">
+                  <span style="font-size:11px; font-weight:700; letter-spacing:0.07em; text-transform:uppercase; color:var(--fg-3)">Evidence</span>
+                  <span style="font-size:12px; color:var(--safari-primary); font-weight:600">42 conversations</span>
+                </div>
+                <div style="display:flex; gap:10px; align-items:flex-start; padding:10px 12px; border:1px solid var(--border-1); border-radius:12px">
+                  <span style="width:22px; height:22px; border-radius:9999px; background:var(--neutral-200); flex:none"></span>
+                  <div style="display:flex; flex-direction:column; gap:6px; flex:1; min-width:0">
+                    <div style="display:flex; align-items:center; gap:6px; flex-wrap:wrap">
+                      <span style="font-size:11.5px; font-weight:600; padding:3px 8px; border-radius:6px; background:var(--safari-primary-light); color:var(--safari-primary)">green season value</span>
+                      <div style="height:7px; border-radius:4px; background:var(--neutral-200); width:52px; opacity:.8"></div>
+                    </div>
+                    <div style="height:7px; border-radius:4px; background:var(--neutral-200); width:90%; opacity:.6"></div>
+                  </div>
+                </div>
+                <div style="display:flex; gap:10px; align-items:flex-start; padding:10px 12px; border:1px solid var(--border-1); border-radius:12px; opacity:.55">
+                  <span style="width:22px; height:22px; border-radius:9999px; background:var(--neutral-200); flex:none"></span>
+                  <div style="display:flex; flex-direction:column; gap:6px; flex:1; min-width:0"><div style="height:7px; border-radius:4px; background:var(--neutral-200); width:72%; opacity:.9"></div><div style="height:7px; border-radius:4px; background:var(--neutral-200); width:84%; opacity:.6"></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- how it supports the sale -->
+      <div style="display:flex; flex-direction:column; gap:20px">
+        <div style="font-size:12px; font-weight:700; letter-spacing:0.08em; text-transform:uppercase; color:var(--fg-3)">How it supports the sale</div>
+        <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(250px,1fr)); gap:1px; background:var(--border-1); border:1px solid var(--border-1); border-radius:20px; overflow:hidden">
+          <div style="background:var(--bg-1); padding:clamp(20px,2.4vw,32px); display:flex; gap:14px; align-items:flex-start"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--fg-1)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex:none; margin-top:2px"><path d="M16 20v-1.5a3.5 3.5 0 0 0-3.5-3.5h-5A3.5 3.5 0 0 0 4 18.5V20"/><circle cx="10" cy="8" r="3.5"/><path d="M17 12a3 3 0 0 0 0-6"/><path d="M20 20v-1a3 3 0 0 0-2-2.8"/></svg><div style="display:flex; flex-direction:column; gap:8px; min-width:0"><h4 style="margin:0; font-size:19px; font-weight:700; color:var(--fg-1)">Understand traveler needs</h4><p style="margin:0; font-size:15px; line-height:1.6; color:var(--fg-2)">Learn what travelers are repeatedly asking, comparing and concerned about before they book.</p></div></div>
+          <div style="background:var(--bg-1); padding:clamp(20px,2.4vw,32px); display:flex; gap:14px; align-items:flex-start"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--fg-1)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex:none; margin-top:2px"><path d="M20 12a7 7 0 0 1-7 7H9l-4 3v-4.6A7 7 0 0 1 8 5h5a7 7 0 0 1 7 7Z"/><path d="M9 11h8M9 15h5"/></svg><div style="display:flex; flex-direction:column; gap:8px; min-width:0"><h4 style="margin:0; font-size:19px; font-weight:700; color:var(--fg-1)">Improve sales conversations</h4><p style="margin:0; font-size:15px; line-height:1.6; color:var(--fg-2)">Use those questions, comparisons and concerns to make your guidance and explanations more relevant.</p></div></div>
+          <div style="background:var(--bg-1); padding:clamp(20px,2.4vw,32px); display:flex; gap:14px; align-items:flex-start"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--fg-1)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex:none; margin-top:2px"><path d="M4 20h16"/><rect x="5" y="12" width="3.5" height="5" rx="1"/><rect x="10.5" y="8" width="3.5" height="9" rx="1"/><rect x="16" y="4" width="3.5" height="13" rx="1"/></svg><div style="display:flex; flex-direction:column; gap:8px; min-width:0"><h4 style="margin:0; font-size:19px; font-weight:700; color:var(--fg-1)">Make better decisions</h4><p style="margin:0; font-size:15px; line-height:1.6; color:var(--fg-2)">Apply traveler intelligence across sales, product, content and marketing decisions.</p></div></div>
+        </div>
+      </div>
+
+      <!-- how it works -->
+      <div style="display:flex; flex-direction:column; gap:20px">
+        <div style="font-size:12px; font-weight:700; letter-spacing:0.08em; text-transform:uppercase; color:var(--fg-3)">How it works</div>
+        <div style="display:grid; grid-template-columns:repeat(4,minmax(0,1fr)); gap:clamp(16px,2vw,28px)">
+          <div style="display:flex; flex-direction:column; gap:10px; padding-top:16px; border-top:2px solid var(--safari-primary)"><span style="font-family:var(--font-display); font-size:15px; letter-spacing:-0.02em; color:var(--safari-primary)">01</span><h5 style="margin:0; font-size:17px; font-weight:700; color:var(--fg-1)">Learn from traveler conversations</h5><p style="margin:0; font-size:15px; line-height:1.6; color:var(--fg-2)">Analyze public safari-planning conversations to understand what travelers are trying to learn, compare and decide.</p></div>
+          <div style="display:flex; flex-direction:column; gap:10px; padding-top:16px; border-top:2px solid var(--border-2)"><span style="font-family:var(--font-display); font-size:15px; letter-spacing:-0.02em; color:var(--safari-primary)">02</span><h5 style="margin:0; font-size:17px; font-weight:700; color:var(--fg-1)">Identify recurring needs</h5><p style="margin:0; font-size:15px; line-height:1.6; color:var(--fg-2)">Identify recurring questions, concerns, comparisons and planning gaps.</p></div>
+          <div style="display:flex; flex-direction:column; gap:10px; padding-top:16px; border-top:2px solid var(--border-2)"><span style="font-family:var(--font-display); font-size:15px; letter-spacing:-0.02em; color:var(--safari-primary)">03</span><h5 style="margin:0; font-size:17px; font-weight:700; color:var(--fg-1)">Find content gaps</h5><p style="margin:0; font-size:15px; line-height:1.6; color:var(--fg-2)">Compare those traveler needs against your existing website content and business knowledge.</p></div>
+          <div style="display:flex; flex-direction:column; gap:10px; padding-top:16px; border-top:2px solid var(--border-2)"><span style="font-family:var(--font-display); font-size:15px; letter-spacing:-0.02em; color:var(--safari-primary)">04</span><h5 style="margin:0; font-size:17px; font-weight:700; color:var(--fg-1)">Create better content</h5><p style="margin:0; font-size:15px; line-height:1.6; color:var(--fg-2)">Create, update or expand traveler-facing content for you to review and approve.</p></div>
+        </div>
+      </div>
+
+      <sc-if value="{{ showSpecNotes }}" hint-placeholder-val="{{ false }}">
+        <p style="margin:0; font-size:14px; line-height:1.6; color:var(--fg-3); border-left:0; max-width:80ch">Conversation captured → relevance checked → planning context understood → signals extracted → evidence retained → Insights and Lead Feed updated.</p>
+      </sc-if>
+    </div>
+  </section>
+
+  <!-- ============ 2. SALES AGENT ============ -->
+  <section id="sales-agent" data-screen-label="Sales Agent" style="background:var(--bg-1); border-top:1px solid var(--border-1); padding:clamp(56px,7vw,96px) 0">
+    <div style="max-width:1280px; margin:0 auto; padding:0 clamp(20px,5vw,48px); display:flex; flex-direction:column; gap:clamp(40px,5vw,64px)">
+
+      <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(520px,1fr)); gap:clamp(28px,4vw,56px); align-items:stretch">
+        <!-- mock (left) -->
+        <div style="order:1; background:var(--safari-secondary-light); border-radius:28px; padding:clamp(20px,3vw,32px); display:flex; flex-direction:column; gap:12px; min-width:0; min-height:500px; justify-content:center">
+          <div style="display:flex; align-items:center; gap:8px; padding-bottom:4px">
+            <span style="font-size:11px; font-weight:700; letter-spacing:0.08em; text-transform:uppercase; color:var(--safari-secondary)">WhatsApp enquiry</span>
+            <span style="width:6px; height:6px; border-radius:9999px; background:var(--safari-secondary)"></span>
+            <span style="font-size:11px; color:var(--fg-3)">live</span>
+          </div>
+          <div style="align-self:flex-start; max-width:80%; background:#fff; border-radius:16px 16px 16px 4px; box-shadow:var(--shadow-sm); padding:12px 14px; font-size:14px; line-height:1.5; color:var(--fg-1)">We're thinking Kenya in August, two of us — is that a good time?</div>
+          <div style="align-self:flex-end; max-width:82%; background:var(--safari-primary); color:#fff; border-radius:16px 16px 4px 16px; padding:12px 14px; font-size:14px; line-height:1.5">August is peak migration season in the Mara. Are you set on those dates, or is the wildlife the priority?</div>
+          <div style="align-self:flex-start; max-width:70%; background:#fff; border-radius:16px 16px 16px 4px; box-shadow:var(--shadow-sm); padding:12px 14px; font-size:14px; line-height:1.5; color:var(--fg-1)">Wildlife is the priority. Dates are flexible.</div>
+          <div style="background:#fff; border-radius:16px; box-shadow:var(--shadow-md); padding:16px; display:flex; flex-direction:column; gap:12px; margin-top:6px">
+            <div style="display:flex; justify-content:space-between; align-items:center; gap:12px"><span style="font-size:13px; font-weight:700; letter-spacing:0.06em; text-transform:uppercase; color:var(--fg-1)">Traveler brief</span><span style="font-size:11px; font-weight:600; padding:3px 10px; border-radius:9999px; background:var(--safari-primary-light); color:var(--safari-primary)">updating</span></div>
+            <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(120px,1fr)); gap:12px">
+              <div style="display:flex; flex-direction:column; gap:3px"><span style="font-size:11px; color:var(--fg-3)">Timing</span><span style="font-size:14px; font-weight:600; color:var(--fg-1)">Aug — flexible</span></div>
+              <div style="display:flex; flex-direction:column; gap:3px"><span style="font-size:11px; color:var(--fg-3)">Party</span><span style="font-size:14px; font-weight:600; color:var(--fg-1)">2 adults</span></div>
+              <div style="display:flex; flex-direction:column; gap:3px"><span style="font-size:11px; color:var(--fg-3)">Priority</span><span style="font-size:14px; font-weight:600; color:var(--fg-1)">Wildlife density</span></div>
+              <div style="display:flex; flex-direction:column; gap:3px"><span style="font-size:11px; color:var(--fg-3)">Budget</span><span style="font-size:14px; font-weight:600; color:var(--fg-4)">Not yet known</span></div>
+            </div>
+            <div style="display:flex; align-items:center; gap:8px; padding-top:10px; border-top:1px solid var(--border-1)">
+              <span style="width:22px; height:22px; border-radius:9999px; background:var(--safari-nature); flex:none"></span>
+              <span style="font-size:13px; color:var(--fg-2)">Hand to safari specialist — recommendation needed</span>
+            </div>
+          </div>
+        </div>
+
+        <div style="order:2; display:flex; flex-direction:column; gap:20px; min-width:0; justify-content:center">
+          <span style="align-self:flex-start; padding:7px 16px; border-radius:9999px; background:var(--safari-secondary-light); color:var(--safari-secondary); font-size:12px; font-weight:700; letter-spacing:0.08em; text-transform:uppercase">Sales Agent</span>
+          <h2 style="margin:0; font-family:var(--font-display); font-size:clamp(30px,3.4vw,44px); line-height:1.1; letter-spacing:-0.03em; text-wrap:pretty">Start every enquiry with deeper understanding.</h2>
+          <p style="margin:0; font-size:17px; line-height:1.65; color:var(--fg-2); max-width:52ch">Run stronger early-stage sales conversations across your website and WhatsApp 24/7. Ask the right questions, answer factual planning questions, recognize concerns and build a living understanding of the traveler.</p>
+        </div>
+      </div>
+
+      <div style="display:flex; flex-direction:column; gap:20px">
+        <div style="font-size:12px; font-weight:700; letter-spacing:0.08em; text-transform:uppercase; color:var(--fg-3)">How it supports the sale</div>
+        <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(250px,1fr)); gap:1px; background:var(--border-1); border:1px solid var(--border-1); border-radius:20px; overflow:hidden">
+          <div style="background:var(--bg-1); padding:clamp(20px,2.4vw,32px); display:flex; gap:14px; align-items:flex-start"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--fg-1)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex:none; margin-top:2px"><circle cx="11" cy="11" r="6.5"/><path d="M20 20l-4.4-4.4"/><path d="M11 8.5v.01M11 11v2.5"/></svg><div style="display:flex; flex-direction:column; gap:8px; min-width:0"><h4 style="margin:0; font-size:19px; font-weight:700; color:var(--fg-1)">Understand the traveler</h4><p style="margin:0; font-size:15px; line-height:1.6; color:var(--fg-2)">Learn what the traveler wants, what matters to them and where questions or concerns remain.</p></div></div>
+          <div style="background:var(--bg-1); padding:clamp(20px,2.4vw,32px); display:flex; gap:14px; align-items:flex-start"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--fg-1)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex:none; margin-top:2px"><path d="M3 13h4l1.5 3h7L17 13h4"/><path d="M4.5 13 6 5h12l1.5 8v5a2 2 0 0 1-2 2H6.5a2 2 0 0 1-2-2v-5Z"/></svg><div style="display:flex; flex-direction:column; gap:8px; min-width:0"><h4 style="margin:0; font-size:19px; font-weight:700; color:var(--fg-1)">Handle early-stage sales work</h4><p style="margin:0; font-size:15px; line-height:1.6; color:var(--fg-2)">Answer questions, clarify the request and gather the context needed to understand the trip.</p></div></div>
+          <div style="background:var(--bg-1); padding:clamp(20px,2.4vw,32px); display:flex; gap:14px; align-items:flex-start"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--fg-1)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex:none; margin-top:2px"><path d="M12 3.5 14.2 8l5 .7-3.6 3.5.9 5-4.5-2.4L7.5 17.2l.9-5L4.8 8.7 9.8 8Z"/></svg><div style="display:flex; flex-direction:column; gap:8px; min-width:0"><h4 style="margin:0; font-size:19px; font-weight:700; color:var(--fg-1)">Bring in your expertise</h4><p style="margin:0; font-size:15px; line-height:1.6; color:var(--fg-2)">Preserve the traveler context so your safari specialist can step in when recommendations, judgment and advice matter.</p></div></div>
+        </div>
+      </div>
+
+      <div style="display:flex; flex-direction:column; gap:20px">
+        <div style="font-size:12px; font-weight:700; letter-spacing:0.08em; text-transform:uppercase; color:var(--fg-3)">How it works</div>
+        <div style="display:grid; grid-template-columns:repeat(4,minmax(0,1fr)); gap:clamp(16px,2vw,28px)">
+          <div style="display:flex; flex-direction:column; gap:10px; padding-top:16px; border-top:2px solid var(--safari-secondary)"><span style="font-family:var(--font-display); font-size:15px; letter-spacing:-0.02em; color:var(--safari-secondary)">01</span><h5 style="margin:0; font-size:17px; font-weight:700; color:var(--fg-1)">Engage the enquiry</h5><p style="margin:0; font-size:15px; line-height:1.6; color:var(--fg-2)">Respond to website and WhatsApp enquiries using your business knowledge and safari sales logic.</p></div>
+          <div style="display:flex; flex-direction:column; gap:10px; padding-top:16px; border-top:2px solid var(--border-2)"><span style="font-family:var(--font-display); font-size:15px; letter-spacing:-0.02em; color:var(--safari-secondary)">02</span><h5 style="margin:0; font-size:17px; font-weight:700; color:var(--fg-1)">Understand the traveler</h5><p style="margin:0; font-size:15px; line-height:1.6; color:var(--fg-2)">Answer the immediate question, ask the next useful question and clarify missing or conflicting information.</p></div>
+          <div style="display:flex; flex-direction:column; gap:10px; padding-top:16px; border-top:2px solid var(--border-2)"><span style="font-family:var(--font-display); font-size:15px; letter-spacing:-0.02em; color:var(--safari-secondary)">03</span><h5 style="margin:0; font-size:17px; font-weight:700; color:var(--fg-1)">Build the traveler brief</h5><p style="margin:0; font-size:15px; line-height:1.6; color:var(--fg-2)">Keep trip purpose, timing, budget, preferences, questions, concerns and missing information together as the conversation develops.</p></div>
+          <div style="display:flex; flex-direction:column; gap:10px; padding-top:16px; border-top:2px solid var(--border-2)"><span style="font-family:var(--font-display); font-size:15px; letter-spacing:-0.02em; color:var(--safari-secondary)">04</span><h5 style="margin:0; font-size:17px; font-weight:700; color:var(--fg-1)">Bring in the safari specialist</h5><p style="margin:0; font-size:15px; line-height:1.6; color:var(--fg-2)">Recognize when human expertise or commercial judgment is needed and bring the specialist into the same conversation with the context preserved.</p></div>
+        </div>
+      </div>
+
+      <sc-if value="{{ showSpecNotes }}" hint-placeholder-val="{{ false }}">
+        <p style="margin:0; font-size:14px; line-height:1.6; color:var(--fg-3); max-width:80ch">Wandar's first sales layer for inbound enquiries — continuing until enough context exists for a safari specialist to create a strong personalized first itinerary without restarting discovery.</p>
+      </sc-if>
+    </div>
+  </section>
+
+  <!-- ============ 3. SALES WORKSPACE ============ -->
+  <section id="sales-workspace" data-screen-label="Sales Workspace" style="background:var(--bg-2); border-top:1px solid var(--border-1); padding:clamp(56px,7vw,96px) 0">
+    <div style="max-width:1280px; margin:0 auto; padding:0 clamp(20px,5vw,48px); display:flex; flex-direction:column; gap:clamp(40px,5vw,64px)">
+
+      <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(520px,1fr)); gap:clamp(28px,4vw,56px); align-items:stretch">
+        <div style="display:flex; flex-direction:column; gap:20px; min-width:0; justify-content:center">
+          <span style="align-self:flex-start; padding:7px 16px; border-radius:9999px; background:var(--safari-nature-light); color:var(--safari-nature); font-size:12px; font-weight:700; letter-spacing:0.08em; text-transform:uppercase">Sales Workspace</span>
+          <h2 style="margin:0; font-family:var(--font-display); font-size:clamp(30px,3.4vw,44px); line-height:1.1; letter-spacing:-0.03em; text-wrap:pretty">Keep every traveler relationship clear.</h2>
+          <p style="margin:0; font-size:17px; line-height:1.65; color:var(--fg-2); max-width:52ch">Keep the developing traveler brief, conversation history and what needs attention together so your team can pick up an enquiry already understanding what has happened.</p>
+        </div>
+
+        <div style="background:var(--safari-nature-light); border-radius:28px; padding:clamp(20px,3vw,32px); display:flex; flex-direction:column; gap:14px; min-width:0; min-height:500px; justify-content:center">
+          <div style="background:#fff; border-radius:18px; box-shadow:var(--shadow-md); overflow:hidden">
+            <div style="display:flex; align-items:center; justify-content:space-between; gap:12px; padding:14px 18px; border-bottom:1px solid var(--border-1)">
+              <span style="font-size:13px; font-weight:700; letter-spacing:0.06em; text-transform:uppercase; color:var(--fg-1)">Opportunities</span>
+              <span style="font-size:12px; font-weight:600; padding:3px 10px; border-radius:9999px; background:var(--safari-secondary-light); color:var(--safari-secondary)">3 need attention</span>
+            </div>
+            <div style="display:flex; flex-direction:column">
+              <div style="display:flex; align-items:center; gap:12px; padding:14px 18px; border-bottom:1px solid var(--border-1)">
+                <span style="width:28px; height:28px; border-radius:9999px; background:var(--neutral-200); flex:none"></span>
+                <div style="display:flex; flex-direction:column; gap:5px; flex:1; min-width:0">
+                  <div style="height:8px; width:120px; border-radius:4px; background:var(--neutral-300)"></div>
+                  <div style="height:7px; width:170px; max-width:100%; border-radius:4px; background:var(--neutral-150)"></div>
+                </div>
+                <span style="font-size:11px; font-weight:700; padding:4px 10px; border-radius:9999px; background:var(--safari-secondary-light); color:var(--safari-secondary); flex:none">Reply due</span>
+              </div>
+              <div style="display:flex; align-items:center; gap:12px; padding:14px 18px; border-bottom:1px solid var(--border-1)">
+                <span style="width:28px; height:28px; border-radius:9999px; background:var(--neutral-200); flex:none"></span>
+                <div style="display:flex; flex-direction:column; gap:5px; flex:1; min-width:0">
+                  <div style="height:8px; width:96px; border-radius:4px; background:var(--neutral-300)"></div>
+                  <div style="height:7px; width:140px; max-width:100%; border-radius:4px; background:var(--neutral-150)"></div>
+                </div>
+                <span style="font-size:11px; font-weight:700; padding:4px 10px; border-radius:9999px; background:var(--safari-primary-light); color:var(--safari-primary); flex:none">Specialist</span>
+              </div>
+              <div style="display:flex; align-items:center; gap:12px; padding:14px 18px">
+                <span style="width:28px; height:28px; border-radius:9999px; background:var(--neutral-200); flex:none"></span>
+                <div style="display:flex; flex-direction:column; gap:5px; flex:1; min-width:0">
+                  <div style="height:8px; width:132px; border-radius:4px; background:var(--neutral-300)"></div>
+                  <div style="height:7px; width:110px; max-width:100%; border-radius:4px; background:var(--neutral-150)"></div>
+                </div>
+                <span style="font-size:11px; font-weight:700; padding:4px 10px; border-radius:9999px; background:var(--neutral-100); color:var(--fg-3); flex:none">Quote sent</span>
+              </div>
+            </div>
+          </div>
+
+          <div style="background:#fff; border-radius:18px; box-shadow:var(--shadow-sm); padding:18px; display:flex; flex-direction:column; gap:12px">
+            <span style="font-size:13px; font-weight:700; letter-spacing:0.06em; text-transform:uppercase; color:var(--fg-1)">Customer brief</span>
+            <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(110px,1fr)); gap:12px">
+              <div style="display:flex; flex-direction:column; gap:3px"><span style="font-size:11px; color:var(--fg-3)">Trip</span><span style="font-size:14px; font-weight:600; color:var(--fg-1)">Kenya · 9 nights</span></div>
+              <div style="display:flex; flex-direction:column; gap:3px"><span style="font-size:11px; color:var(--fg-3)">Open question</span><span style="font-size:14px; font-weight:600; color:var(--fg-1)">Malaria risk</span></div>
+              <div style="display:flex; flex-direction:column; gap:3px"><span style="font-size:11px; color:var(--fg-3)">Last contact</span><span style="font-size:14px; font-weight:600; color:var(--fg-1)">2 days ago</span></div>
+            </div>
+            <div style="display:flex; align-items:center; gap:10px; padding:10px 12px; border-radius:12px; background:var(--safari-secondary-light)">
+              <span style="width:7px; height:7px; border-radius:9999px; background:var(--safari-secondary); flex:none"></span>
+              <span style="font-size:13px; font-weight:600; color:var(--safari-secondary)">Next action — send revised itinerary</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div style="display:flex; flex-direction:column; gap:20px">
+        <div style="font-size:12px; font-weight:700; letter-spacing:0.08em; text-transform:uppercase; color:var(--fg-3)">How it supports the sale</div>
+        <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(250px,1fr)); gap:1px; background:var(--border-1); border:1px solid var(--border-1); border-radius:20px; overflow:hidden">
+          <div style="background:var(--bg-1); padding:clamp(20px,2.4vw,32px); display:flex; gap:14px; align-items:flex-start"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--fg-1)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex:none; margin-top:2px"><path d="M4 7.5A2.5 2.5 0 0 1 6.5 5h3l2 2.5H18A2 2 0 0 1 20 9.5v7A2.5 2.5 0 0 1 17.5 19h-11A2.5 2.5 0 0 1 4 16.5Z"/><path d="M8 13h8"/></svg><div style="display:flex; flex-direction:column; gap:8px; min-width:0"><h4 style="margin:0; font-size:19px; font-weight:700; color:var(--fg-1)">Preserve traveler context</h4><p style="margin:0; font-size:15px; line-height:1.6; color:var(--fg-2)">Keep trip details, preferences, questions, concerns and conversation history together.</p></div></div>
+          <div style="background:var(--bg-1); padding:clamp(20px,2.4vw,32px); display:flex; gap:14px; align-items:flex-start"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--fg-1)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex:none; margin-top:2px"><path d="M18 9a6 6 0 1 0-12 0c0 5-2 6-2 6h16s-2-1-2-6Z"/><path d="M10.5 19a2 2 0 0 0 3 0"/></svg><div style="display:flex; flex-direction:column; gap:8px; min-width:0"><h4 style="margin:0; font-size:19px; font-weight:700; color:var(--fg-1)">Know what needs attention</h4><p style="margin:0; font-size:15px; line-height:1.6; color:var(--fg-2)">See where a reply, follow-up or safari-specialist involvement is required.</p></div></div>
+          <div style="background:var(--bg-1); padding:clamp(20px,2.4vw,32px); display:flex; gap:14px; align-items:flex-start"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--fg-1)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex:none; margin-top:2px"><path d="M20.5 12a8.5 8.5 0 1 1-2.6-6.1"/><path d="M20.5 4.5V10h-5.5"/></svg><div style="display:flex; flex-direction:column; gap:8px; min-width:0"><h4 style="margin:0; font-size:19px; font-weight:700; color:var(--fg-1)">Continue the relationship</h4><p style="margin:0; font-size:15px; line-height:1.6; color:var(--fg-2)">Pick up the enquiry with the context needed to continue without reconstructing the traveler.</p></div></div>
+        </div>
+      </div>
+
+      <div style="display:flex; flex-direction:column; gap:20px">
+        <div style="font-size:12px; font-weight:700; letter-spacing:0.08em; text-transform:uppercase; color:var(--fg-3)">How it works</div>
+        <div style="display:grid; grid-template-columns:repeat(4,minmax(0,1fr)); gap:clamp(16px,2vw,28px)">
+          <div style="display:flex; flex-direction:column; gap:10px; padding-top:16px; border-top:2px solid var(--safari-nature)"><span style="font-family:var(--font-display); font-size:15px; letter-spacing:-0.02em; color:var(--safari-nature)">01</span><h5 style="margin:0; font-size:17px; font-weight:700; color:var(--fg-1)">Capture the relationship</h5><p style="margin:0; font-size:15px; line-height:1.6; color:var(--fg-2)">Connect the traveler, opportunity and conversation around the same enquiry.</p></div>
+          <div style="display:flex; flex-direction:column; gap:10px; padding-top:16px; border-top:2px solid var(--border-2)"><span style="font-family:var(--font-display); font-size:15px; letter-spacing:-0.02em; color:var(--safari-nature)">02</span><h5 style="margin:0; font-size:17px; font-weight:700; color:var(--fg-1)">Build the customer brief</h5><p style="margin:0; font-size:15px; line-height:1.6; color:var(--fg-2)">Keep traveler details, trip context, questions, concerns and sales history current as the relationship develops.</p></div>
+          <div style="display:flex; flex-direction:column; gap:10px; padding-top:16px; border-top:2px solid var(--border-2)"><span style="font-family:var(--font-display); font-size:15px; letter-spacing:-0.02em; color:var(--safari-nature)">03</span><h5 style="margin:0; font-size:17px; font-weight:700; color:var(--fg-1)">Surface what needs attention</h5><p style="margin:0; font-size:15px; line-height:1.6; color:var(--fg-2)">Show where a reply, follow-up, specialist involvement or another human action is required.</p></div>
+          <div style="display:flex; flex-direction:column; gap:10px; padding-top:16px; border-top:2px solid var(--border-2)"><span style="font-family:var(--font-display); font-size:15px; letter-spacing:-0.02em; color:var(--safari-nature)">04</span><h5 style="margin:0; font-size:17px; font-weight:700; color:var(--fg-1)">Work from one place</h5><p style="margin:0; font-size:15px; line-height:1.6; color:var(--fg-2)">Open the opportunity with the traveler brief, conversation, tasks and relevant itinerary or quote information together.</p></div>
+        </div>
+      </div>
+
+      <sc-if value="{{ showSpecNotes }}" hint-placeholder-val="{{ false }}">
+        <p style="margin:0; font-size:14px; line-height:1.6; color:var(--fg-3); max-width:80ch">Workspace build principle: preserve the relationship, surface the next important action and remove the admin required to do both.</p>
+      </sc-if>
+    </div>
+  </section>
+
+  <!-- ============ 4. SAFARI AI ============ -->
+  <section id="safari-ai" data-screen-label="Safari AI" style="background:var(--bg-1); border-top:1px solid var(--border-1); padding:clamp(56px,7vw,96px) 0">
+    <div style="max-width:1280px; margin:0 auto; padding:0 clamp(20px,5vw,48px); display:flex; flex-direction:column; gap:clamp(40px,5vw,64px)">
+
+      <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(520px,1fr)); gap:clamp(28px,4vw,56px); align-items:stretch">
+        <div style="order:1; background:var(--safari-gold-light); border-radius:28px; padding:clamp(16px,2.4vw,26px); min-width:0; min-height:500px; display:flex">
+          <div style="background:#fff; border-radius:18px; box-shadow:var(--shadow-md); overflow:hidden; flex:1; min-width:0; display:grid; grid-template-columns:minmax(0,0.42fr) minmax(0,1fr)">
+
+            <div style="background:var(--bg-2); border-right:1px solid var(--border-1); padding:16px 14px; display:flex; flex-direction:column; gap:16px; min-width:0">
+              <div style="display:flex; align-items:center; gap:8px">
+                <span style="font-size:13px; font-weight:700; color:var(--fg-1)">Chats</span>
+                <span style="font-size:12px; color:var(--fg-3)">6</span>
+              </div>
+              <div style="display:flex; flex-direction:column; gap:10px">
+                <div style="display:flex; align-items:center; gap:9px">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--fg-1)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex:none"><path d="M12 20h8"/><path d="M16.5 4.5a2.1 2.1 0 0 1 3 3L8 19l-4 1 1-4Z"/></svg>
+                  <span style="font-size:12.5px; font-weight:600; color:var(--fg-1)">New chat</span>
+                </div>
+                <div style="display:flex; align-items:center; gap:9px">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--fg-2)" stroke-width="2" stroke-linecap="round" style="flex:none"><circle cx="11" cy="11" r="6.5"/><path d="m20 20-4.4-4.4"/></svg>
+                  <span style="font-size:12.5px; color:var(--fg-2)">Search chat</span>
+                </div>
+                <div style="display:flex; align-items:center; gap:9px">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--fg-2)" stroke-width="2" stroke-linecap="round" style="flex:none"><path d="M5 5v14M10 5v14M15 6l4 13"/></svg>
+                  <span style="font-size:12.5px; color:var(--fg-2)">Library</span>
+                </div>
+              </div>
+              <div style="display:flex; flex-direction:column; gap:10px">
+                <span style="font-size:10px; font-weight:700; letter-spacing:0.08em; text-transform:uppercase; color:var(--fg-3)">Recent chats</span>
+                <div style="background:#fff; border:1px solid var(--border-1); border-radius:8px; padding:8px 10px; display:flex; flex-direction:column; gap:5px">
+                  <div style="height:7px; border-radius:4px; background:var(--neutral-200); width:92%; opacity:1"></div>
+                </div>
+                <div style="display:flex; flex-direction:column; gap:11px; padding:0 2px">
+                  <div style="height:7px; border-radius:4px; background:var(--neutral-200); width:88%; opacity:.9"></div><div style="height:7px; border-radius:4px; background:var(--neutral-200); width:74%; opacity:.8"></div><div style="height:7px; border-radius:4px; background:var(--neutral-200); width:93%; opacity:.7"></div><div style="height:7px; border-radius:4px; background:var(--neutral-200); width:66%; opacity:.55"></div><div style="height:7px; border-radius:4px; background:var(--neutral-200); width:81%; opacity:.4"></div>
+                </div>
+              </div>
+            </div>
+
+            <div style="padding:clamp(16px,2vw,22px); display:flex; flex-direction:column; gap:14px; min-width:0">
+              <div style="display:flex; align-items:center; justify-content:space-between; gap:12px">
+                <span style="font-family:var(--font-display); font-size:clamp(18px,2vw,22px); letter-spacing:-0.02em; color:var(--fg-1); white-space:nowrap">Safari AI</span>
+                <div style="display:flex; align-items:center; gap:8px; min-width:0">
+                  <span style="width:26px; height:26px; border-radius:9999px; background:var(--safari-primary); color:#fff; font-size:10px; font-weight:700; display:flex; align-items:center; justify-content:center; flex:none">GT</span>
+                  <div style="display:flex; flex-direction:column; gap:4px; min-width:0">
+                    <div style="height:7px; width:56px; border-radius:4px; background:var(--neutral-300)"></div>
+                    <div style="height:6px; width:70px; border-radius:4px; background:var(--neutral-150)"></div>
+                  </div>
+                </div>
+              </div>
+
+              <div style="align-self:flex-end; max-width:88%; background:var(--safari-primary-light); color:var(--fg-1); border-radius:14px; padding:10px 14px; font-size:13.5px; line-height:1.45">Which previous itineraries are similar to this enquiry?</div>
+
+              <div style="display:flex; flex-direction:column; gap:12px">
+                <div style="height:7px; width:62%; border-radius:4px; background:var(--neutral-200)"></div>
+
+                <div style="display:flex; flex-direction:column; gap:8px">
+                  <span style="font-size:14px; font-weight:700; color:var(--fg-1)">Similar itineraries — Kenya &amp; Tanzania, August</span>
+                  <div style="display:flex; align-items:baseline; gap:10px">
+                    <span style="font-family:var(--font-display); font-size:30px; line-height:1; letter-spacing:-0.03em; color:var(--fg-1)">34</span>
+                    <span style="font-size:13px; color:var(--fg-2)">sold with a similar shape · <span style="font-weight:700; color:var(--fg-1)">3</span> close matches</span>
+                  </div>
+                </div>
+
+                <div style="display:flex; flex-direction:column; gap:10px">
+                  <div style="display:flex; align-items:center; gap:8px">
+                    <span style="width:9px; height:9px; border-radius:9999px; background:var(--safari-nature); flex:none"></span>
+                    <span style="font-size:13px; font-weight:700; color:var(--fg-1)">Booked more than three times</span>
+                  </div>
+                  <div style="display:flex; flex-direction:column; gap:8px; padding-left:17px">
+                    <div style="display:flex; gap:8px; align-items:flex-start"><span style="font-size:12px; font-weight:700; color:var(--fg-3); flex:none">1.</span><div style="display:flex; flex-direction:column; gap:5px; flex:1; min-width:0"><div style="height:7px; border-radius:4px; background:var(--neutral-200); width:95%; opacity:1"></div><div style="height:7px; border-radius:4px; background:var(--neutral-200); width:68%; opacity:.6"></div></div></div>
+                    <div style="display:flex; gap:8px; align-items:flex-start"><span style="font-size:12px; font-weight:700; color:var(--fg-3); flex:none">2.</span><div style="display:flex; flex-direction:column; gap:5px; flex:1; min-width:0"><div style="height:7px; border-radius:4px; background:var(--neutral-200); width:88%; opacity:1"></div><div style="height:7px; border-radius:4px; background:var(--neutral-200); width:54%; opacity:.6"></div></div></div>
+                  </div>
+                  <div style="display:flex; align-items:center; gap:8px">
+                    <span style="width:9px; height:9px; border-radius:9999px; background:var(--safari-rating); flex:none"></span>
+                    <span style="font-size:13px; font-weight:700; color:var(--fg-1)">Partial match</span>
+                  </div>
+                  <div style="display:flex; flex-direction:column; gap:5px; padding-left:17px"><div style="height:7px; border-radius:4px; background:var(--neutral-200); width:90%; opacity:.85"></div><div style="height:7px; border-radius:4px; background:var(--neutral-200); width:72%; opacity:.45"></div></div>
+                </div>
+              </div>
+
+              <div style="margin-top:auto; display:flex; align-items:center; justify-content:space-between; gap:12px; border:1px solid var(--border-2); border-radius:9999px; padding:8px 8px 8px 16px">
+                <span style="font-size:13px; color:var(--fg-4)">Ask your data anything</span>
+                <span style="width:30px; height:30px; border-radius:9999px; background:var(--safari-primary); display:flex; align-items:center; justify-content:center; flex:none">
+                  <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M12 19V5"/><path d="m6 11 6-6 6 6"/></svg>
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div style="order:2; display:flex; flex-direction:column; gap:20px; min-width:0; justify-content:center">
+          <span style="align-self:flex-start; padding:7px 16px; border-radius:9999px; background:var(--safari-gold-light); color:var(--safari-gold); font-size:12px; font-weight:700; letter-spacing:0.08em; text-transform:uppercase">Safari AI</span>
+          <h2 style="margin:0; font-family:var(--font-display); font-size:clamp(30px,3.4vw,44px); line-height:1.1; letter-spacing:-0.03em; text-wrap:pretty">Ask your safari business anything.</h2>
+          <p style="margin:0; font-size:17px; line-height:1.65; color:var(--fg-2); max-width:52ch">Ask questions across your business knowledge, traveler conversations and sales data and get grounded answers from the information already inside your safari business.</p>
+        </div>
+      </div>
+
+      <div style="display:flex; flex-direction:column; gap:20px">
+        <div style="font-size:12px; font-weight:700; letter-spacing:0.08em; text-transform:uppercase; color:var(--fg-3)">How it supports the sale</div>
+        <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(250px,1fr)); gap:1px; background:var(--border-1); border:1px solid var(--border-1); border-radius:20px; overflow:hidden">
+          <div style="background:var(--bg-1); padding:clamp(20px,2.4vw,32px); display:flex; gap:14px; align-items:flex-start"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--fg-1)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex:none; margin-top:2px"><path d="M20 11.5a7.5 7.5 0 0 1-10.9 6.7L4 20l1.8-4.6A7.5 7.5 0 1 1 20 11.5Z"/><path d="M9.8 9.2a2.3 2.3 0 0 1 4.4.8c0 1.6-2.2 1.8-2.2 3"/><path d="M12 15.2v.01"/></svg><div style="display:flex; flex-direction:column; gap:8px; min-width:0"><h4 style="margin:0; font-size:19px; font-weight:700; color:var(--fg-1)">Ask in your own words</h4><p style="margin:0; font-size:15px; line-height:1.6; color:var(--fg-2)">Ask practical sales questions without figuring out which file, document or conversation contains the answer.</p></div></div>
+          <div style="background:var(--bg-1); padding:clamp(20px,2.4vw,32px); display:flex; gap:14px; align-items:flex-start"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--fg-1)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex:none; margin-top:2px"><path d="m12 3 8.5 4.5L12 12 3.5 7.5Z"/><path d="m4 12 8 4.2 8-4.2"/><path d="m4 16.5 8 4.2 8-4.2"/></svg><div style="display:flex; flex-direction:column; gap:8px; min-width:0"><h4 style="margin:0; font-size:19px; font-weight:700; color:var(--fg-1)">Bring your knowledge together</h4><p style="margin:0; font-size:15px; line-height:1.6; color:var(--fg-2)">Use rates, lodge details, policies, itineraries, traveler conversations and previous work as business context.</p></div></div>
+          <div style="background:var(--bg-1); padding:clamp(20px,2.4vw,32px); display:flex; gap:14px; align-items:flex-start"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--fg-1)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex:none; margin-top:2px"><circle cx="12" cy="12" r="8.5"/><path d="m15.5 8.5-2.1 4.9-4.9 2.1 2.1-4.9Z"/></svg><div style="display:flex; flex-direction:column; gap:8px; min-width:0"><h4 style="margin:0; font-size:19px; font-weight:700; color:var(--fg-1)">Apply it with judgment</h4><p style="margin:0; font-size:15px; line-height:1.6; color:var(--fg-2)">Use the right information to advise travelers, answer questions and communicate value while keeping human expertise central.</p></div></div>
+        </div>
+      </div>
+
+      <div style="display:flex; flex-direction:column; gap:20px">
+        <div style="font-size:12px; font-weight:700; letter-spacing:0.08em; text-transform:uppercase; color:var(--fg-3)">How it works</div>
+        <div style="display:grid; grid-template-columns:repeat(4,minmax(0,1fr)); gap:clamp(16px,2vw,28px)">
+          <div style="display:flex; flex-direction:column; gap:10px; padding-top:16px; border-top:2px solid var(--safari-gold)"><span style="font-family:var(--font-display); font-size:15px; letter-spacing:-0.02em; color:var(--safari-gold)">01</span><h5 style="margin:0; font-size:17px; font-weight:700; color:var(--fg-1)">Ask a business question</h5><p style="margin:0; font-size:15px; line-height:1.6; color:var(--fg-2)">Ask what you need to know in normal language.</p></div>
+          <div style="display:flex; flex-direction:column; gap:10px; padding-top:16px; border-top:2px solid var(--border-2)"><span style="font-family:var(--font-display); font-size:15px; letter-spacing:-0.02em; color:var(--safari-gold)">02</span><h5 style="margin:0; font-size:17px; font-weight:700; color:var(--fg-1)">Route it automatically</h5><p style="margin:0; font-size:15px; line-height:1.6; color:var(--fg-2)">Safari AI determines which business knowledge, sales data or traveler conversations are needed.</p></div>
+          <div style="display:flex; flex-direction:column; gap:10px; padding-top:16px; border-top:2px solid var(--border-2)"><span style="font-family:var(--font-display); font-size:15px; letter-spacing:-0.02em; color:var(--safari-gold)">03</span><h5 style="margin:0; font-size:17px; font-weight:700; color:var(--fg-1)">Get the answer</h5><p style="margin:0; font-size:15px; line-height:1.6; color:var(--fg-2)">Get the answer, number or conclusion first, with a useful breakdown where needed.</p></div>
+          <div style="display:flex; flex-direction:column; gap:10px; padding-top:16px; border-top:2px solid var(--border-2)"><span style="font-family:var(--font-display); font-size:15px; letter-spacing:-0.02em; color:var(--safari-gold)">04</span><h5 style="margin:0; font-size:17px; font-weight:700; color:var(--fg-1)">Inspect the evidence</h5><p style="margin:0; font-size:15px; line-height:1.6; color:var(--fg-2)">Open the travelers, quotes, bookings, conversations or business sources behind the answer when useful.</p></div>
+        </div>
+      </div>
+
+      <sc-if value="{{ showSpecNotes }}" hint-placeholder-val="{{ false }}">
+        <p style="margin:0; font-size:14px; line-height:1.6; color:var(--fg-3); max-width:80ch">The operator never chooses a query type — Safari AI handles retrieval, counting, filtering, aggregation and conversation analysis underneath the experience.</p>
+      </sc-if>
+    </div>
+  </section>
+
+  <!-- FINAL CTA -->
+  <section style="background:var(--bg-2); padding:clamp(64px,8vw,112px) 0">
+    <div style="max-width:1000px; margin:0 auto; padding:0 clamp(20px,5vw,48px); display:flex; flex-direction:column; gap:22px; align-items:center; text-align:center">
+      <div style="font-size:13px; font-weight:700; letter-spacing:0.09em; text-transform:uppercase; color:var(--safari-primary)">The future of safari sales is personal</div>
+      <h2 style="margin:0; font-family:var(--font-display); font-size:clamp(34px,5vw,64px); line-height:1.05; letter-spacing:-0.03em; color:var(--fg-1); max-width:18ch; text-wrap:balance">Grow your safari business without making the sales experience less personal.</h2>
+      <div style="display:flex; flex-wrap:wrap; gap:14px; justify-content:center; margin-top:10px">
+        <a href="#" style="display:inline-flex; align-items:center; padding:13px 24px; border-radius:8px; background:var(--safari-clay); color:#fff; font-size:16px; font-weight:700; transition:background 180ms var(--ease-out)" style-hover="background:var(--safari-clay-hover)">{{ ctaLabel }}</a>
+        <a href="#" style="display:inline-flex; align-items:center; padding:13px 24px; border-radius:8px; border:1px solid var(--fg-1); background:var(--bg-1); color:var(--fg-1); font-size:16px; font-weight:600; transition:background 180ms var(--ease-out), color 180ms var(--ease-out)" style-hover="background:var(--fg-1); color:#fff">Let's Chat</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer style="background:var(--neutral-900); color:#fff; padding:clamp(48px,6vw,80px) 0 28px">
+    <div style="max-width:1280px; margin:0 auto; padding:0 clamp(20px,5vw,48px); display:flex; flex-direction:column; gap:clamp(32px,4vw,52px)">
+
+      <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(300px,1fr)); gap:clamp(28px,4vw,56px)">
+        <div style="display:flex; align-items:center; gap:18px; min-width:0">
+          <img src="assets/logo-banner-dark.png" alt="Wandar" style="height:34px; width:auto; display:block">
+          <span style="width:1px; height:38px; background:rgba(255,255,255,0.18); flex:none"></span>
+          <span style="font-size:11px; font-weight:700; letter-spacing:0.09em; text-transform:uppercase; line-height:1.5; color:rgba(255,255,255,0.62)">Sales platform<br>for safari operators</span>
+        </div>
+        <div style="display:flex; flex-direction:column; gap:14px; min-width:0">
+          <h3 style="margin:0; font-family:var(--font-display); font-size:24px; letter-spacing:-0.02em; color:#fff">Stay Updated</h3>
+          <p style="margin:0; font-size:15px; line-height:1.6; color:rgba(255,255,255,0.62); max-width:46ch">Platform updates and practical ideas for turning safari demand into bookings.</p>
+          <div style="display:flex; align-items:center; justify-content:space-between; gap:12px; border:1px solid rgba(255,255,255,0.18); border-radius:9999px; padding:8px 8px 8px 22px; max-width:480px">
+            <span style="font-size:15px; color:rgba(255,255,255,0.5)">Enter your email</span>
+            <span style="width:38px; height:38px; border-radius:9999px; background:var(--safari-clay); display:flex; align-items:center; justify-content:center; flex:none">
+              <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m13 6 6 6-6 6"/></svg>
+            </span>
+          </div>
+        </div>
+      </div>
+
+      <div style="height:1px; background:rgba(255,255,255,0.12)"></div>
+
+      <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(180px,1fr)); gap:clamp(24px,3vw,40px)">
+        <div style="display:flex; flex-direction:column; gap:16px; min-width:0">
+          <span style="font-size:11px; font-weight:700; letter-spacing:0.09em; text-transform:uppercase; color:var(--safari-clay)">Platform</span>
+          <div style="display:flex; flex-direction:column; gap:13px">
+            <a href="#social-demand" style="font-size:15px; color:rgba(255,255,255,0.72)" style-hover="color:#fff">Social Demand</a>
+            <a href="#sales-agent" style="font-size:15px; color:rgba(255,255,255,0.72)" style-hover="color:#fff">Sales Agent</a>
+            <a href="#sales-workspace" style="font-size:15px; color:rgba(255,255,255,0.72)" style-hover="color:#fff">Sales Workspace</a>
+            <a href="#safari-ai" style="font-size:15px; color:rgba(255,255,255,0.72)" style-hover="color:#fff">Safari AI</a>
+          </div>
+        </div>
+        <div style="display:flex; flex-direction:column; gap:16px; min-width:0">
+          <span style="font-size:11px; font-weight:700; letter-spacing:0.09em; text-transform:uppercase; color:var(--safari-clay)">Why Wandar</span>
+          <div style="display:flex; flex-direction:column; gap:13px"><a href="#" style="font-size:15px; color:rgba(255,255,255,0.72); transition:color 160ms var(--ease-out)" style-hover="color:#fff">Platform overview</a><a href="#" style="font-size:15px; color:rgba(255,255,255,0.72); transition:color 160ms var(--ease-out)" style-hover="color:#fff">Our philosophy</a><a href="#" style="font-size:15px; color:rgba(255,255,255,0.72); transition:color 160ms var(--ease-out)" style-hover="color:#fff">Who it's for</a></div>
+        </div>
+        <div style="display:flex; flex-direction:column; gap:16px; min-width:0">
+          <span style="font-size:11px; font-weight:700; letter-spacing:0.09em; text-transform:uppercase; color:var(--safari-clay)">For operators</span>
+          <div style="display:flex; flex-direction:column; gap:13px"><a href="#" style="font-size:15px; color:rgba(255,255,255,0.72); transition:color 160ms var(--ease-out)" style-hover="color:#fff">Blog</a><a href="#" style="font-size:15px; color:rgba(255,255,255,0.72); transition:color 160ms var(--ease-out)" style-hover="color:#fff">Guides</a><a href="#" style="font-size:15px; color:rgba(255,255,255,0.72); transition:color 160ms var(--ease-out)" style-hover="color:#fff">Webinars</a><a href="#" style="font-size:15px; color:rgba(255,255,255,0.72); transition:color 160ms var(--ease-out)" style-hover="color:#fff">Free tools</a><a href="#" style="font-size:15px; color:rgba(255,255,255,0.72); transition:color 160ms var(--ease-out)" style-hover="color:#fff">FAQ</a></div>
+        </div>
+        <div style="display:flex; flex-direction:column; gap:16px; min-width:0">
+          <span style="font-size:11px; font-weight:700; letter-spacing:0.09em; text-transform:uppercase; color:var(--safari-clay)">Connect with us</span>
+          <div style="display:flex; gap:10px; flex-wrap:wrap">
+            <a href="#" style="width:34px; height:34px; border-radius:9999px; background:rgba(255,255,255,0.08); display:flex; align-items:center; justify-content:center; transition:background 160ms var(--ease-out)" style-hover="background:rgba(255,255,255,0.16)"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.85)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="4" width="16" height="16" rx="3"/><path d="M8 10.5V16M8 7.6v.01M12 16v-3.2a1.8 1.8 0 0 1 3.6 0V16"/></svg></a>
+            <a href="#" style="width:34px; height:34px; border-radius:9999px; background:rgba(255,255,255,0.08); display:flex; align-items:center; justify-content:center; transition:background 160ms var(--ease-out)" style-hover="background:rgba(255,255,255,0.16)"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.85)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="m5 5 14 14M19 5 5 19"/></svg></a>
+            <a href="#" style="width:34px; height:34px; border-radius:9999px; background:rgba(255,255,255,0.08); display:flex; align-items:center; justify-content:center; transition:background 160ms var(--ease-out)" style-hover="background:rgba(255,255,255,0.16)"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.85)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="4" width="16" height="16" rx="5"/><circle cx="12" cy="12" r="3.4"/><path d="M16.8 7.2v.01"/></svg></a>
+            <a href="#" style="width:34px; height:34px; border-radius:9999px; background:rgba(255,255,255,0.08); display:flex; align-items:center; justify-content:center; transition:background 160ms var(--ease-out)" style-hover="background:rgba(255,255,255,0.16)"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.85)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20 11.7a7.7 7.7 0 0 1-11.4 6.8L4 20l1.6-4.4A7.7 7.7 0 1 1 20 11.7Z"/><path d="M9.4 9.2c.3 2.4 2.6 4.6 5 5l1-1.2 1.6.8-.4 1.5c-2.9.5-6.9-3.3-6.7-6.4l1.4-.5Z"/></svg></a>
+          </div>
+        </div>
+      </div>
+
+      <div style="height:1px; background:rgba(255,255,255,0.12)"></div>
+
+      <div style="display:flex; flex-wrap:wrap; gap:16px 28px; align-items:center; justify-content:space-between">
+        <span style="font-size:14px; color:rgba(255,255,255,0.5)">© 2026 Wandar. All rights reserved.</span>
+        <div style="display:flex; flex-wrap:wrap; gap:16px 28px">
+          <a href="#" style="font-size:14px; color:rgba(255,255,255,0.6)" style-hover="color:#fff">Privacy Policy</a>
+          <a href="#" style="font-size:14px; color:rgba(255,255,255,0.6)" style-hover="color:#fff">Terms of Service</a>
+          <a href="#" style="font-size:14px; color:rgba(255,255,255,0.6)" style-hover="color:#fff">AI Transparency Statement</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+</div>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;showOverview&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:false,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Content&quot;},&quot;showSpecNotes&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:false,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Content&quot;},&quot;ctaLabel&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;Build with us&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Content&quot;}}">
+class Component extends DCLogic {
+  renderVals() {
+    return {
+      showOverview: this.props.showOverview ?? false,
+      showSpecNotes: this.props.showSpecNotes ?? false,
+      ctaLabel: this.props.ctaLabel ?? "Build with us",
+    };
+  }
+}
+</script>
+</body>
+</html>

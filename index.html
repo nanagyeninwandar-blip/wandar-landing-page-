@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Hire your first AI Safari Sales Rep | Wandar</title>
+<title>Wandar: AI Safari Sales Rep for safari operators</title>
 <meta name="description" content="Hire your first AI Safari Sales Rep: a dedicated teammate consistently doing the sales work on every enquiry on your WhatsApp and website, 24/7." />
 <meta name="robots" content="index, follow, max-image-preview:large" />
 <meta name="theme-color" content="#1a7373" />
@@ -626,11 +626,11 @@ a:focus-visible,button:focus-visible,summary:focus-visible{outline:3px solid #d8
   transition:font-size 450ms cubic-bezier(.2,.8,.3,1),color 300ms ease,padding 450ms cubic-bezier(.2,.8,.3,1)}
 .plist li:hover{color:#6f7570}
 .plist li.is-active{padding:22px 0 18px;font-size:clamp(1.25rem,1.65vw,1.5rem);font-weight:600;color:var(--text-primary);letter-spacing:-.03em}
-.plist li::after{content:"";position:absolute;left:0;bottom:-1px;height:2px;width:0;background:var(--safari-secondary)}
-.plist li.is-active::after{animation:plistFill var(--plist-dur,6500ms) linear forwards}
-.plist.is-paused li.is-active::after{animation-play-state:paused}
-@keyframes plistFill{to{width:100%}}
-@media(prefers-reduced-motion:reduce){.plist li{color:var(--text-primary);transition:none}.plist li.is-active::after{animation:none;width:100%}}
+/* scroll track: the split pins while each scroll step hands the next line the spotlight */
+.pscroll.is-pinned .psplit{position:sticky;top:var(--pscroll-top,96px)}
+.plist li::after{content:"";position:absolute;left:0;bottom:-1px;height:0;width:0;border-top:1px solid var(--safari-secondary)}
+.plist li.is-active::after{width:calc(var(--plist-p,0) * 100%)}
+@media(prefers-reduced-motion:reduce){.plist li{color:var(--text-primary);transition:none}.plist li.is-active::after{width:100%}}
 
 
 /* closing statement: two quiet lines, then one loud one — centred, no rules */
@@ -817,8 +817,9 @@ a:focus-visible,button:focus-visible,summary:focus-visible{outline:3px solid #d8
 .hiw--tm .hiw__list{margin-top:0}
 .hiw--tm .hiw__item{padding-left:0}
 .hiw--tm .hiw__item::before,.hiw--tm .hiw__item::after{left:auto;right:0;display:none}
-.hiw--tm .hiw__item.is-active::after{display:block;left:50px;right:auto;top:auto;bottom:-6px;width:0;height:2px;animation:tmFill 6500ms linear forwards}
-@keyframes tmFill{to{width:calc(100% - 42px)}}
+.hiw--tm .hiw__item.is-active::after{display:block;left:50px;right:auto;top:auto;bottom:-6px;width:calc((100% - 42px) * var(--tm-p,0));height:0;background:none;border-top:1px solid var(--safari-secondary);animation:none}
+/* scroll track: the teammate split pins while each scroll step opens the next item */
+.tmscroll.is-pinned .hiw--tm{position:sticky;top:var(--tmscroll-top,96px)}
 .hiw--tm .hiw__item + .hiw__item{margin-top:14px}
 .hiw--tm .hiw__btn{gap:14px;align-items:center;font-size:1.3rem}
 .tm__ic{width:36px;height:36px;flex-shrink:0;color:#a3a8a5;transition:color 200ms ease}
@@ -1854,6 +1855,11 @@ a.cbm__item:hover .cbm__ic{background:#d7ebe6}
 .oc__ic svg{width:22px;height:22px}
 .oc__p{display:block;margin-top:10px;font-size:.95rem;line-height:1.65;color:#5d6260}
 .oc__lede--key{padding-left:16px;box-shadow:inset 2px 0 0 var(--safari-secondary)}
+/* key line: slides in from the left on its own, then the orange bar draws down */
+/* the bar is a 2px background (not a transformed element) so it stays exactly as thick as the box-shadow it replaces */
+.oc__lede--key.rv{box-shadow:none;background:linear-gradient(var(--safari-secondary),var(--safari-secondary)) no-repeat 0 0/2px 0;transform:translateX(-36px);transition:opacity 700ms ease 150ms,transform 850ms cubic-bezier(.2,.8,.3,1) 150ms,background-size 600ms cubic-bezier(.2,.8,.3,1) 700ms}
+.oc__lede--key.rv.is-in{transform:none;background-size:2px 100%}
+@media(prefers-reduced-motion:reduce){.oc__lede--key.rv{transform:none;transition:none;background-size:2px 100%}}
 .oc__h{margin-bottom:6px}
 .oc__tag,.pstrip__tag{background:var(--safari-primary);border-color:var(--safari-primary);color:#fff}
 .oc__tag svg,.pstrip__tag svg{color:#fff}
@@ -2019,6 +2025,148 @@ a.cbm__item:hover .cbm__ic{background:#d7ebe6}
 .audience .cta-panel__btn{margin-top:36px;padding:14px 24px;font-size:.82rem;box-shadow:0 14px 30px -12px rgba(17,24,22,.45)}
 @media(max-width:760px){.audience{padding:88px 0 96px}}
 </style>
+<script type="application/ld+json">
+{
+ "@context": "https://schema.org",
+ "@graph": [
+  {
+   "@type": "Organization",
+   "@id": "https://www.getwandar.com/#org",
+   "name": "Wandar",
+   "alternateName": ["getwandar", "Wandar AI"],
+   "logo": "https://www.getwandar.com/assets/wandar-logo-whitebg.jpg",
+   "url": "https://www.getwandar.com/",
+   "sameAs": [
+    "https://x.com/GetWandar"
+   ],
+   "areaServed": [
+    {
+     "@type": "Place",
+     "name": "Eastern Africa"
+    },
+    {
+     "@type": "Place",
+     "name": "Southern Africa"
+    }
+   ]
+  },
+  {
+   "@type": "WebSite",
+   "@id": "https://www.getwandar.com/#website",
+   "url": "https://www.getwandar.com/",
+   "name": "Wandar",
+   "publisher": {
+    "@id": "https://www.getwandar.com/#org"
+   }
+  },
+  {
+   "@type": "SoftwareApplication",
+   "@id": "https://www.getwandar.com/#product",
+   "name": "AI Safari Sales Rep",
+   "applicationCategory": "BusinessApplication",
+   "operatingSystem": "Web",
+   "url": "https://www.getwandar.com/",
+   "image": "https://www.getwandar.com/assets/og-card.jpg",
+   "provider": {
+    "@id": "https://www.getwandar.com/#org"
+   },
+   "description": "An AI sales teammate for owner-led and boutique safari operators in Eastern and Southern Africa. AI Safari Sales Rep does the sales work on every enquiry that travelers start on the operator's WhatsApp and website, 24/7: getting to know the traveler, answering their questions, talking through their worries, and sending a traveler brief to a human safari expert. Human safari experts still design itineraries and set prices. Currently in early access.",
+   "audience": {
+    "@type": "BusinessAudience",
+    "audienceType": "Owner-led and boutique safari operators",
+    "geographicArea": [
+     {
+      "@type": "Place",
+      "name": "Eastern Africa"
+     },
+     {
+      "@type": "Place",
+      "name": "Southern Africa"
+     }
+    ]
+   },
+   "featureList": [
+    "Replies to every enquiry",
+    "Gets to know the traveler",
+    "Answers questions and explains choices",
+    "Talks through their worries",
+    "Sends a traveler brief",
+    "Works on WhatsApp and website chat"
+   ]
+  },
+  {
+   "@type": "FAQPage",
+   "@id": "https://www.getwandar.com/#faq",
+   "mainEntity": [
+    {
+     "@type": "Question",
+     "name": "Is AI Safari Sales Rep better at selling than me?",
+     "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "No, and that is not the point. The point is that every enquiry gets the sales work it needs, done the same way every time. Including the ones that come in while you are busy, traveling, or asleep."
+     }
+    },
+    {
+     "@type": "Question",
+     "name": "Is Wandar just another chatbot?",
+     "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "No. A chatbot answers questions or collects contact details. AI Safari Sales Rep does the work of a salesperson: getting to know travelers, answering their questions, talking through their worries, and getting them ready to book."
+     }
+    },
+    {
+     "@type": "Question",
+     "name": "Do I have to train AI Safari Sales Rep?",
+     "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "Not on safari, and not on selling. Just share information about what you offer: your safaris, destinations, and experiences."
+     }
+    },
+    {
+     "@type": "Question",
+     "name": "Will AI Safari Sales Rep replace my team?",
+     "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "No. AI Safari Sales Rep does the sales conversations. Human safari experts still design the safari and decide the price. More sales capacity, not fewer people."
+     }
+    },
+    {
+     "@type": "Question",
+     "name": "Will AI Safari Sales Rep design itineraries and send quotes?",
+     "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "No. Human safari experts stay responsible for itineraries, recommendations, and pricing. AI Safari Sales Rep gathers what they need, so the first itinerary is personalized, not generic."
+     }
+    },
+    {
+     "@type": "Question",
+     "name": "Does AI Safari Sales Rep follow up with travelers who go quiet?",
+     "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "Not yet. AI Safari Sales Rep handles the conversations travelers start on your WhatsApp and website."
+     }
+    },
+    {
+     "@type": "Question",
+     "name": "Where does AI Safari Sales Rep talk to travelers?",
+     "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "On your WhatsApp and website."
+     }
+    },
+    {
+     "@type": "Question",
+     "name": "Is Wandar available now?",
+     "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "We are inviting a small group of safari operators to get early access. If you would like to see AI Safari Sales Rep in action and help shape the product, we would love to hear from you."
+     }
+    }
+   ]
+  }
+ ]
+}
+</script>
 </head>
 <body>
 
@@ -2387,6 +2535,7 @@ a.cbm__item:hover .cbm__ic{background:#d7ebe6}
 <!-- ═══════════════ GREAT SAFARIS DON'T SELL THEMSELVES ═══════════════ -->
 <section class="section section--cream">
   <div class="container">
+    <div class="pscroll">
     <div class="psplit">
       <div class="psplit__left rv">
         <h2 class="psplit__h">Great safaris <span class="psplit__br">do not sell themselves.</span></h2>
@@ -2405,6 +2554,7 @@ a.cbm__item:hover .cbm__ic{background:#d7ebe6}
         </ul>
       </div>
     </div>
+    </div>
     <div class="pclose rv">
       <p class="pclose__line">Knowing safari is one skill.</p>
       <p class="pclose__line">Knowing how to sell it is another.</p>
@@ -2420,6 +2570,7 @@ a.cbm__item:hover .cbm__ic{background:#d7ebe6}
       <p class="how__h how__pre">Meet your new teammate</p>
       <h2 class="how__h"><span>Knows safari and how to sell them.</span></h2>
     </div>
+    <div class="tmscroll">
     <div class="hiw hiw--tm">
       <div class="hiw__left rv">
         <ol class="hiw__list">
@@ -2466,6 +2617,7 @@ a.cbm__item:hover .cbm__ic{background:#d7ebe6}
             </div></div>
       </div>
     </div>
+    </div>
   </div>
 </section>
 
@@ -2505,7 +2657,7 @@ a.cbm__item:hover .cbm__ic{background:#d7ebe6}
         <h2 class="oc__h">You can&rsquo;t know <span>which enquiry will book.</span></h2>
         <p class="oc__lede">Some travelers arrive ready to plan. Others ask one question, go quiet, come back weeks later, change their dates, rethink their budget, or need several conversations before they are ready to decide.</p>
         <p class="oc__lede">The enquiry that looks casual today can become the booking later.</p>
-        <p class="oc__lede oc__lede--key">That is why every enquiry needs proper sales attention from the start.</p>
+        <p class="oc__lede oc__lede--key rv rv--replay">That is why every enquiry needs proper sales attention from the start.</p>
         <a href="#" onclick="openModal('interest');return false;" class="hiw__cta">Interested? Let&rsquo;s chat <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
       </div>
       <div class="oc__grid rv">
@@ -2698,148 +2850,6 @@ a.cbm__item:hover .cbm__ic{background:#d7ebe6}
   </div>
   <div class="footer__word" aria-hidden="true"><img src="assets/sales-rep/wordmark-white.png" alt="" width="2301" height="456" loading="lazy" /></div>
 </footer>
-
-
-
-<!-- ═══════════════ REQUEST ACCESS MODAL ═══════════════ -->
-<div class="modal-overlay" id="modal-early-access" aria-modal="true" role="dialog" aria-labelledby="mea-title">
-  <div class="modal-card modal-card--teal-top">
-    <button class="modal-close" onclick="closeModal('early-access')" aria-label="Close">×</button>
-    <div class="modal-hd">
-      <div class="modal-hd-icon modal-hd-icon--teal">
-        <svg width="24" height="24" aria-hidden="true" width="24" height="24" viewBox="0 0 256 256"><g fill="#1a7373"><path d="M184 120v61.65a8 8 0 0 1-2.34 5.65l-34.35 34.35a8 8 0 0 1-13.57-4.53L128 176Zm-48-48H74.35a8 8 0 0 0-5.65 2.34l-34.35 34.35a8 8 0 0 0 4.53 13.57L80 128ZM40 216c37.65 0 50.69-19.69 54.56-28.18l-26.38-26.38C59.69 165.31 40 178.35 40 216" opacity=".2"/><path d="M223.85 47.12a16 16 0 0 0-15-15c-12.58-.75-44.73.4-71.41 27.07L132.69 64H74.36A15.9 15.9 0 0 0 63 68.68L28.7 103a16 16 0 0 0 9.07 27.16l38.47 5.37l44.21 44.21l5.37 38.49a15.94 15.94 0 0 0 10.78 12.92a16.1 16.1 0 0 0 5.1.83a15.9 15.9 0 0 0 11.3-4.68l34.32-34.3a15.9 15.9 0 0 0 4.68-11.36v-58.33l4.77-4.77c26.68-26.68 27.83-58.83 27.08-71.42M74.36 80h42.33l-39.53 39.52L40 114.34Zm74.41-9.45a76.65 76.65 0 0 1 59.11-22.47a76.46 76.46 0 0 1-22.42 59.16L128 164.68L91.32 128ZM176 181.64L141.67 216l-5.19-37.17L176 139.31Zm-74.16 9.5C97.34 201 82.29 224 40 224a8 8 0 0 1-8-8c0-42.29 23-57.34 32.86-61.85a8 8 0 0 1 6.64 14.56c-6.43 2.93-20.62 12.36-23.12 38.91c26.55-2.5 36-16.69 38.91-23.12a8 8 0 1 1 14.56 6.64Z"/></g></svg>
-      </div>
-      <h2 class="modal-h2" id="mea-title">Build with us</h2>
-      <p class="modal-sub">Join us early on this journey and get <strong style="font-weight:800;color:#c45911">20% discount</strong>.</p>
-    </div>
-    <div class="modal-bd">
-
-      <div class="mf-form" id="mf-form-a">
-
-        <!-- Row 1: Email | Company -->
-        <div class="mf-grid-2">
-          <div class="mf-field">
-            <label class="mf-label" for="ma-email">Work email <span class="mf-req-teal">*</span></label>
-            <input type="email" id="ma-email" name="email" class="mf-input" autocomplete="email" />
-            <span class="mf-err" id="merr-a-email"></span>
-          </div>
-          <div class="mf-field">
-            <label class="mf-label" for="ma-company">Company name <span class="mf-req-teal">*</span></label>
-            <input type="text" id="ma-company" name="company" class="mf-input" autocomplete="organization" />
-            <span class="mf-err" id="merr-a-company"></span>
-          </div>
-        </div>
-
-        <!-- Row 2: Role | Challenge -->
-        <div class="mf-grid-2">
-          <div class="mf-field">
-            <label class="mf-label" for="ma-role">Your role <span class="mf-req-teal">*</span></label>
-            <select id="ma-role" name="role" class="mf-select" autocomplete="off">
-              <option value="">Select your role</option>
-              <option>Owner / Founder</option>
-              <option>Sales &amp; Bookings</option>
-              <option>Marketing</option>
-              <option>Operations</option>
-              <option>Other</option>
-            </select>
-            <span class="mf-err" id="merr-a-role"></span>
-          </div>
-          <div class="mf-field">
-            <label class="mf-label" for="ma-goal">Biggest challenge right now <span class="mf-req-teal">*</span></label>
-            <select id="ma-goal" name="goal" class="mf-select" style="font-size:12px" autocomplete="off" onchange="mHandleGoal('ma-goal','ma-goal-other')">
-              <option value="">Select one</option>
-              <option>Leads exist but I never see them in time</option>
-              <option>A competitor always replies before I do</option>
-              <option>I do not know where my next booking will come from</option>
-              <option>I am spending on ads but cannot tell if they work</option>
-              <option>Enquiries come in but do not convert to bookings</option>
-              <option value="other">Something else</option>
-            </select>
-            <div class="mf-reveal" id="ma-goal-other">
-              <input class="mf-input" type="text" placeholder="Tell us in your own words..." autocomplete="off" />
-            </div>
-            <span class="mf-err" id="merr-a-goal"></span>
-          </div>
-        </div>
-
-        <!-- Tools — full width -->
-        <fieldset style="border:none;padding:0;margin:0 0 14px">
-          <legend class="mf-label">Tools you currently use</legend>
-          <div class="mf-checklist mf-checklist-grid">
-
-            <!-- CRM -->
-            <div class="mf-check-item">
-              <label class="mf-check-row">
-                <input type="checkbox" id="ma-chk-crm" name="tool-crm" onchange="mToggleNested('ma','crm')" />
-                <span class="mf-check-label">CRM</span>
-              </label>
-              <div class="mf-check-nested" id="ma-nest-crm">
-                <div class="mf-nested-label">Which CRM?</div>
-                <select id="ma-crm-sel" class="mf-select" autocomplete="off" onchange="mHandleOther('ma-crm-sel','ma-crm-other')">
-                  <option value="">Select one</option>
-                  <option>Salesforce</option>
-                  <option>HubSpot</option>
-                  <option>Pipedrive</option>
-                  <option>Zoho CRM</option>
-                  <option value="other">Other</option>
-                </select>
-                <div class="mf-other-reveal" id="ma-crm-other">
-                  <input type="text" class="mf-input" placeholder="Type your CRM..." style="margin-top:8px" autocomplete="off" />
-                </div>
-              </div>
-            </div>
-
-            <!-- Booking system -->
-            <div class="mf-check-item">
-              <label class="mf-check-row">
-                <input type="checkbox" id="ma-chk-booking" name="tool-booking" onchange="mToggleNested('ma','booking')" />
-                <span class="mf-check-label">Booking system</span>
-              </label>
-              <div class="mf-check-nested" id="ma-nest-booking">
-                <div class="mf-nested-label">Which booking system?</div>
-                <select id="ma-booking-sel" class="mf-select" autocomplete="off" onchange="mHandleOther('ma-booking-sel','ma-booking-other')">
-                  <option value="">Select one</option>
-                  <option>Rezdy</option>
-                  <option>FareHarbor</option>
-                  <option>Checkfront</option>
-                  <option>Bokun</option>
-                  <option>Tourwriter</option>
-                  <option value="other">Other</option>
-                </select>
-                <div class="mf-other-reveal" id="ma-booking-other">
-                  <input type="text" class="mf-input" placeholder="Type your booking system..." style="margin-top:8px" autocomplete="off" />
-                </div>
-              </div>
-            </div>
-
-            <div class="mf-check-item"><label class="mf-check-row"><input type="checkbox" id="ma-chk-google-alerts" name="tool-google-alerts" /><span class="mf-check-label">Google Alerts</span></label></div>
-            <div class="mf-check-item"><label class="mf-check-row"><input type="checkbox" id="ma-chk-meta-ads" name="tool-meta-ads" /><span class="mf-check-label">Meta Ads</span></label></div>
-            <div class="mf-check-item"><label class="mf-check-row"><input type="checkbox" id="ma-chk-email-newsletter" name="tool-email-newsletter" /><span class="mf-check-label">Email newsletter</span></label></div>
-            <div class="mf-check-item"><label class="mf-check-row"><input type="checkbox" id="ma-chk-spreadsheet" name="tool-spreadsheet" /><span class="mf-check-label">Spreadsheet tracking</span></label></div>
-
-          </div>
-        </fieldset>
-
-        <input type="text" name="bot-field" style="display:none" aria-hidden="true" tabindex="-1" autocomplete="off" />
-        <button id="ma-submit-btn" class="mf-submit mf-submit--teal" onclick="mSubmitA()">
-          Submit
-          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-        </button>
-        <span class="mf-err" id="mf-submit-err-a" role="alert" style="display:block;text-align:center;margin-top:6px"></span>
-
-      </div><!-- /mf-form-a -->
-
-      <div class="mf-success" id="mf-success-a" aria-live="polite">
-        <div class="mf-success-ring mf-success-ring--teal">
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#1a7373" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg>
-        </div>
-        <h2>You are on the list.</h2>
-      </div>
-
-    </div>
-  </div>
-</div><!-- /modal-early-access -->
-
 <form name="demand-feed" netlify netlify-honeypot="bot-field" hidden>
   <input name="email" type="email" />
   <input name="company" type="text" />
@@ -3067,6 +3077,7 @@ a.cbm__item:hover .cbm__ic{background:#d7ebe6}
 </div><!-- /modal-consultation -->
 
 <script src="assets/js/modals.js" defer></script>
+<script src="assets/js/analytics.js" defer></script>
 <script>
 (function(){
   /* ── Nav scroll state (same as the homepage) ── */
@@ -3456,6 +3467,7 @@ a.cbm__item:hover .cbm__ic{background:#d7ebe6}
   /* How it works: the orange bar fills, then the next step opens and its screen slides in */
   (function(){
     document.querySelectorAll('.hiw').forEach(function(root){
+    if(root.classList.contains('hiw--tm')) return; /* the teammate list is scroll-driven, below */
     var items = Array.prototype.slice.call(root.querySelectorAll('.hiw__item'));
     var screens = Array.prototype.slice.call(root.querySelectorAll('.hiw__screen'));
     var cur = 0;
@@ -3480,6 +3492,62 @@ a.cbm__item:hover .cbm__ic{background:#d7ebe6}
       }, {threshold:Array.from({length:21}, function(_, i){ return i / 20; })}).observe(root);
     } else root.classList.remove('is-paused');
     });
+  })();
+
+  /* Meet your teammate: scroll drives the open item. On wide screens the split pins and each
+     scroll step opens the next item and its screen; the orange bar fills with that step. */
+  (function(){
+    var track = document.querySelector('.tmscroll');
+    if(!track) return;
+    var root = track.querySelector('.hiw--tm'), list = root.querySelector('.hiw__list');
+    var items = Array.prototype.slice.call(root.querySelectorAll('.hiw__item'));
+    var screens = Array.prototype.slice.call(root.querySelectorAll('.hiw__screen'));
+    var cur = null, pinned = false, ticking = false;
+    /* n = -1: no item open yet (section not reached); the first screen stays up */
+    function show(n, p){
+      if(n !== cur){
+        items.forEach(function(li, k){ li.classList.toggle('is-active', k === n); li.querySelector('.hiw__btn').setAttribute('aria-expanded', k === n ? 'true' : 'false'); });
+        screens.forEach(function(sc, k){ sc.classList.toggle('is-active', k === Math.max(n, 0)); });
+        cur = n;
+      }
+      root.style.setProperty('--tm-p', p);
+    }
+    var still = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if(still){ show(0, 1); items.forEach(function(li, k){ li.querySelector('.hiw__btn').addEventListener('click', function(){ show(k, 1); }); }); return; }
+    show(-1, 0);
+    function step(){ return Math.round(window.innerHeight * .35); }
+    function pinTop(){ return parseFloat(track.style.getPropertyValue('--tmscroll-top')) || 0; }
+    function layout(){
+      pinned = window.innerWidth > 1080 && root.offsetHeight < window.innerHeight - 40;
+      track.classList.toggle('is-pinned', pinned);
+      if(pinned){
+        track.style.setProperty('--tmscroll-top', Math.max(88, Math.round((window.innerHeight - root.offsetHeight) / 2)) + 'px');
+        track.style.height = (root.offsetHeight + step() * items.length) + 'px';
+      } else track.style.height = '';
+      update();
+    }
+    function update(){
+      ticking = false;
+      var pos;
+      if(pinned) pos = (pinTop() - track.getBoundingClientRect().top) / step();
+      else {
+        /* phones and tablets: the item crossing the middle of the screen is the open one */
+        var r = list.getBoundingClientRect();
+        pos = (window.innerHeight * .55 - r.top) / (r.height / items.length);
+      }
+      if(pos < 0){ show(-1, 0); return; }   /* not scrolled to the list yet: keep every item closed */
+      pos = Math.min(items.length - .0001, pos);
+      var n = Math.floor(pos);
+      show(n, Math.min(1, (pos - n) * 1.25));
+    }
+    items.forEach(function(li, k){ li.querySelector('.hiw__btn').addEventListener('click', function(){
+      if(!pinned){ show(k, 1); return; }
+      window.scrollTo({top: window.scrollY + track.getBoundingClientRect().top - pinTop() + step() * (k + .85), behavior:'smooth'});
+    }); });
+    window.addEventListener('scroll', function(){ if(!ticking){ ticking = true; requestAnimationFrame(update); } }, {passive:true});
+    window.addEventListener('resize', layout);
+    window.addEventListener('load', layout);
+    layout();
   })();
 
   /* Launch demos: play a short, realistic product sequence whenever a step's screen opens */
@@ -3597,31 +3665,58 @@ a.cbm__item:hover .cbm__ic{background:#d7ebe6}
     } else if(first) run(first);
   })();
 
-  /* "They might…" list: cycle the active line, Harper style */
+  /* "They might…" list: scroll drives the active line. On wide screens the split pins and each
+     scroll step hands the next line the spotlight; the orange bar fills with that step. */
   (function(){
-    var list = document.querySelector('.plist');
-    if(!list) return;
-    var items = Array.prototype.slice.call(list.children), cur = 0;
-    /* the orange bar is the clock: when it fills, the next line takes over. Scrolling away only pauses it,
-       so the list never jumps back to the first line (the active line growing can nudge the observer). */
-    function setActive(n){
-      items.forEach(function(li, k){ li.classList.remove('is-active'); });
-      void list.offsetWidth; /* restart the bar even when the same line is picked again */
-      items[n].classList.add('is-active');
-      cur = n;
+    var list = document.querySelector('.plist'), track = document.querySelector('.pscroll');
+    if(!list || !track) return;
+    var split = track.querySelector('.psplit');
+    var items = Array.prototype.slice.call(list.children), cur = -1, pinned = false, ticking = false;
+    function setActive(n, p){
+      if(n !== cur){
+        items.forEach(function(li, k){ li.classList.toggle('is-active', k === n); });
+        cur = n;
+      }
+      list.style.setProperty('--plist-p', p);
     }
-    list.classList.add('is-paused');
-    setActive(0);
+    setActive(0, 1);
     if(window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-    list.addEventListener('animationend', function(e){
-      if(e.animationName === 'plistFill') setActive((cur + 1) % items.length);
-    });
-    items.forEach(function(li, k){ li.addEventListener('click', function(){ setActive(k); }); });
-    if('IntersectionObserver' in window){
-      new IntersectionObserver(function(entries){
-        list.classList.toggle('is-paused', !entries[0].isIntersecting);
-      }, {threshold:0, rootMargin:'0px 0px -15% 0px'}).observe(list);
-    } else list.classList.remove('is-paused');
+    function step(){ return Math.round(window.innerHeight * .35); }
+    function layout(){
+      pinned = window.innerWidth > 760 && split.offsetHeight < window.innerHeight - 40;
+      track.classList.toggle('is-pinned', pinned);
+      if(pinned){
+        var top = Math.max(88, Math.round((window.innerHeight - split.offsetHeight) / 2));
+        track.style.setProperty('--pscroll-top', top + 'px');
+        track.style.height = (split.offsetHeight + step() * items.length) + 'px';
+      } else track.style.height = '';
+      update();
+    }
+    function update(){
+      ticking = false;
+      var pos;
+      if(pinned){
+        var top = parseFloat(track.style.getPropertyValue('--pscroll-top')) || 0;
+        pos = (top - track.getBoundingClientRect().top) / step();
+      } else {
+        /* phones: the line crossing the middle of the screen is the active one */
+        var mid = window.innerHeight * .55, first = items[0].getBoundingClientRect();
+        var last = items[items.length - 1].getBoundingClientRect();
+        pos = (mid - first.top) / ((last.bottom - first.top) / items.length);
+      }
+      pos = Math.max(0, Math.min(items.length - .0001, pos));
+      var n = Math.floor(pos);
+      setActive(n, Math.min(1, (pos - n) * 1.25));
+    }
+    items.forEach(function(li, k){ li.addEventListener('click', function(){
+      if(!pinned) return;
+      var top = parseFloat(track.style.getPropertyValue('--pscroll-top')) || 0;
+      window.scrollTo({top: window.scrollY + track.getBoundingClientRect().top - top + step() * (k + .85), behavior:'smooth'});
+    }); });
+    window.addEventListener('scroll', function(){ if(!ticking){ ticking = true; requestAnimationFrame(update); } }, {passive:true});
+    window.addEventListener('resize', layout);
+    window.addEventListener('load', layout);
+    layout();
   })();
 
   /* hiring steps tabs */
@@ -3662,6 +3757,15 @@ a.cbm__item:hover .cbm__ic{background:#d7ebe6}
     entries.forEach(function(en){ if(en.isIntersecting){ en.target.classList.add('is-in'); io.unobserve(en.target); } });
   }, {rootMargin:'0px 0px -8% 0px'});
   els.forEach(function(el){ io.observe(el); });
+  /* .rv--replay plays again each time it is reached scrolling down: it resets only once it has
+     gone fully below the screen (scrolled back up past it), so scrolling up into it never replays */
+  var inZone = new IntersectionObserver(function(entries){
+    entries.forEach(function(en){ if(en.isIntersecting) en.target.classList.add('is-in'); });
+  }, {rootMargin:'0px 0px -8% 0px'});
+  var out = new IntersectionObserver(function(entries){
+    entries.forEach(function(en){ if(!en.isIntersecting && en.boundingClientRect.top > 0) en.target.classList.remove('is-in'); });
+  });
+  document.querySelectorAll('.rv--replay').forEach(function(el){ io.unobserve(el); inZone.observe(el); out.observe(el); });
 })();
 </script>
 <script>/* touch screens: show each photo card's chat as soon as the card is in view */(function(){if(matchMedia('(hover:hover)').matches||!('IntersectionObserver' in window))return;var io=new IntersectionObserver(function(es){es.forEach(function(e){var c=e.target,inView=e.intersectionRatio>=.6;if(inView&&!c._seen){c._seen=true;c.classList.add('is-tap');clearTimeout(c._t);c._t=setTimeout(function(){c.classList.remove('is-tap')},5000);}else if(!inView&&e.intersectionRatio<.2){c._seen=false;clearTimeout(c._t);c.classList.remove('is-tap');}})},{threshold:[0,.2,.6,1]});document.querySelectorAll('.pcard').forEach(function(c){io.observe(c)});})();</script>

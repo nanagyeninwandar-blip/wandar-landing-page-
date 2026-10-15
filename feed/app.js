@@ -520,7 +520,13 @@
         if (!companyEl.value.trim()) { bad(companyEl, true); missing = true; } else bad(companyEl, false);
         if (!roleEl.value) { bad(roleEl, true); missing = true; } else bad(roleEl, false);
         if (!goalEl.value) { bad(goalEl, true); missing = true; } else bad(goalEl, false);
-        if (missing) { showMsg(msg, "error", "Please fill in the required fields."); return; }
+        if (missing) {
+          showMsg(msg, "error", "Please fill in the required fields.");
+          var badFields = [["email", emailEl], ["company", companyEl], ["role", roleEl], ["goal", goalEl]]
+            .filter(function (f) { return f[1].classList.contains("mf-input--err"); }).map(function (f) { return f[0]; });
+          if (window.wandarAnalytics) wandarAnalytics.failed("build_with_us", "validation", { fields: badFields });
+          return;
+        }
 
         // collect tools
         var tools = [];
@@ -534,6 +540,23 @@
         var goal = goalEl.value === "other" ? (($("#ea-goal-other input", form) || {}).value || "Something else") : goalEl.value;
         var payload = { email: email, company: companyEl.value.trim(), role: roleEl.value, goal: goal, tools: tools.join(", ") };
 
+        // Analytics: select values only — "other" stays "other", never free text.
+        function nestedVal(key, selId) {
+          var chk = $('input[data-nested="' + key + '"]', form);
+          return chk && chk.checked ? (($(selId, form) || {}).value || "unspecified") : null;
+        }
+        var trackSubmitted = function () {
+          if (!window.wandarAnalytics) return;
+          wandarAnalytics.submitted("build_with_us", {
+            role: roleEl.value,
+            challenge: goalEl.value,
+            crm: nestedVal("crm", "#ea-crm"),
+            booking_system: nestedVal("booking", "#ea-booking"),
+            other_tools: $all(".mf-check-row input[type=checkbox]:not([data-nested])", form)
+              .filter(function (c) { return c.checked && c.value; }).map(function (c) { return c.value; }),
+          }, { email: payload.email, company: payload.company, role: payload.role });
+        };
+
         if (DEMO) {
           var botD = $('input[name="bot-field"]', form);
           netlifySubmit("demand-feed", {
@@ -542,6 +565,7 @@
           }, botD ? botD.value : "");
           form.style.display = "none";
           var okD = $("#ea-success"); if (okD) okD.classList.add("visible");
+          trackSubmitted();
           return;
         }
         // Both destinations, on purpose: Netlify Forms is where the landing
@@ -558,9 +582,14 @@
             // "check your inbox" promised mail that is never sent — no welcome
             // email is wired (PENDING.md §2) and this page sends none by design.
             .then(function (r) {
-              if (r.error) { showMsg(msg, "error", r.error.message); return; }
+              if (r.error) {
+                showMsg(msg, "error", r.error.message);
+                if (window.wandarAnalytics) wandarAnalytics.failed("build_with_us", r.error.code || "supabase_error");
+                return;
+              }
               form.style.display = "none";                       // landing behaviour:
               var ok = $("#ea-success"); if (ok) ok.classList.add("visible");   // form -> tick
+              trackSubmitted();
             });
         });
       });
