@@ -3705,11 +3705,17 @@ a.cbm__item:hover .cbm__ic{background:#d7ebe6}
         pos = (mid - first.top) / ((last.bottom - first.top) / items.length);
       }
       pos = Math.max(0, Math.min(items.length - .0001, pos));
+      /* forward only: scrolling back up holds the furthest line reached; once the section is
+         fully below the screen again it resets to the first line */
+      if(track.getBoundingClientRect().top >= window.innerHeight) reached = 0;
+      else reached = pos = Math.max(pos, reached);
       var n = Math.floor(pos);
       setActive(n, Math.min(1, (pos - n) * 1.25));
     }
+    var reached = 0;
     items.forEach(function(li, k){ li.addEventListener('click', function(){
       if(!pinned) return;
+      reached = k;   /* a click may jump back to an earlier line */
       var top = parseFloat(track.style.getPropertyValue('--pscroll-top')) || 0;
       window.scrollTo({top: window.scrollY + track.getBoundingClientRect().top - top + step() * (k + .85), behavior:'smooth'});
     }); });
