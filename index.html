@@ -322,17 +322,17 @@ a:focus-visible,button:focus-visible,summary:focus-visible{outline:3px solid #d8
    On load: the card scales in inside a white frame, grid lines draw down, each headline
    line is revealed by a sweeping block, then the nav drops in and the bottom row rises.
    On scroll the white frame closes to full width (inset/radius driven by JS). */
-.hero{background:#fff;padding:96px 0 48px;--hero-inset:24px;--hero-radius:24px}
+.hero{background:#fff;padding:96px 0 48px;--hero-inset:20px;--hero-radius:24px}
 .hero__bg{clip-path:inset(var(--hero-inset) round var(--hero-radius));animation:hero-in 1s cubic-bezier(.165,.84,.44,1) backwards}
 @keyframes hero-in{from{opacity:0;transform:scale(.94)}}
-@media(max-width:1023px){.hero{--hero-inset:8px;--hero-radius:16px}}
+@media(max-width:1023px){.hero{--hero-inset:0px;--hero-radius:0px}}
 /* layout: top group, flexible gap, bottom row */
 .hero__inner{display:flex;flex-direction:column}
 .hero__foot{display:flex;align-items:center;justify-content:space-between;gap:20px}
 .hero__foot .hero__intro{flex:0 1 auto;max-width:500px;margin-top:0;color:#fff;font-size:1.02rem}
 .hero__foot .hero__cta{margin-top:0;flex-shrink:0}
 @media(min-width:901px){
-  .hero{align-items:stretch;padding:160px 0 72px}
+  .hero{align-items:stretch;padding:160px 0 54px}
   .hero .hero__grid{align-items:start}
   .hero .demo{margin-top:calc(var(--py) * -1)}
   .hero__foot{margin-top:auto;padding-top:32px}
@@ -346,7 +346,7 @@ a:focus-visible,button:focus-visible,summary:focus-visible{outline:3px solid #d8
 /* shorter laptop screens: tighter top; the phone is scaled by JS (fitHero) so the whole card fits one screen */
 @media(min-width:901px) and (max-height:840px){.hero{padding-top:140px}}
 /* wide screens: phone 10% bigger, growing upward into the space under the nav (bottom edge stays put) */
-@media(min-width:1181px){.hero .demo{zoom:1.1;margin-top:-96px;margin-left:70px}}
+@media(min-width:1181px){.hero .demo{zoom:1.02;margin-top:-58px;margin-left:70px}}
 /* faint vertical grid lines over the card, 24px outside the content edge */
 .hero__lines{position:absolute;top:0;bottom:0;left:0;right:0;z-index:-1;margin:0 auto;width:calc(100% - 48px);max-width:1288px;display:grid;grid-template-columns:repeat(4,1fr);pointer-events:none}
 .hero__lines span{border-left:1px solid rgba(255,255,255,.16);transform-origin:top center;animation:hero-line .45s cubic-bezier(.455,.03,.515,.955) .9s backwards}
@@ -930,6 +930,43 @@ a:focus-visible,button:focus-visible,summary:focus-visible{outline:3px solid #d8
 .hiw--tm .hiw__screen.is-active .tmc:nth-child(3){transition-delay:1s}
 @media(max-width:1080px){.hiw--tm{grid-template-columns:1fr;gap:36px}.hiw--tm .hiw__right{min-height:460px}}
 @media(max-width:560px){.hiw--tm .hiw__screen{padding:24px}.hiw--tm .hiw__btn{font-size:1.12rem}}
+/* phones only, up to 640px so no iPad (Meet your teammate + Launch): the screen sits above the steps.
+   JS sizes the card (--fit-card-h) so card, the open step and the button fit one screen together:
+   - Meet your teammate pins as a whole while scrolling slides one step after another into place
+     (like desktop); screens too short to pin just scroll normally.
+   - Launch steps run on a timer, so it simply fits one screen.
+   Each screen's content is scaled down to fit by JS (fitScreens) */
+@media(max-width:640px){
+  .hiw.hiw--tm .hiw__right,.hiw.hiw--launch .hiw__right{order:-1;z-index:2;min-height:0;aspect-ratio:auto;height:var(--fit-card-h,min(400px,44vh));box-shadow:0 18px 36px -20px rgba(4,30,26,.5)}
+  .hiw.hiw--tm,.hiw.hiw--launch{gap:28px}
+  /* tighter steps so card + every step + button pin together on a normal phone */
+  .hiw.hiw--tm .hiw__item + .hiw__item{margin-top:10px}
+  .hiw.hiw--tm .hub__cta{margin-top:20px}
+  .hiw.hiw--tm .hiw__btn{font-size:1.02rem;line-height:1.3}
+  .hiw.hiw--tm .hiw__body > p,.hiw.hiw--tm .hiw__item.is-active .hiw__body > p{font-size:.9rem;line-height:1.5}
+  /* pinned on phones: the steps keep their usual look but share one slot right under the mock;
+     each new step slides up into place over the last, which slides up and fades away */
+  .tmscroll.is-pinned .hiw.hiw--tm .hiw__list{display:grid;min-height:var(--tm-slot-h,auto)}
+  .tmscroll.is-pinned .hiw.hiw--tm .hiw__item{grid-area:1/1;align-self:start;margin:0;opacity:0;transform:translateY(40px);pointer-events:none;transition:transform 520ms cubic-bezier(.2,.8,.3,1),opacity 360ms ease}
+  .tmscroll.is-pinned .hiw.hiw--tm .hiw__item.is-past{transform:translateY(-24px)}
+  .tmscroll.is-pinned .hiw.hiw--tm .hiw__item.is-active{opacity:1;transform:none;pointer-events:auto}
+  .tmscroll.is-pinned .hiw.hiw--tm .hiw__list:not(:has(.is-active)) .hiw__item:first-child{opacity:1;transform:none}
+  .hiw.hiw--tm .hiw__screen,.hiw.hiw--launch .hiw__screen{padding:18px}
+  /* Go live: the website mock is taller than the card, so take it out of the grid and centre it
+     exactly on the card's middle; fitScreens then scales it around that centre */
+  .hiw--launch .golive{position:absolute;left:18px;right:18px;top:50%;width:auto;height:auto;display:block;transform:translateY(-50%)}
+  .hiw--launch .golive .gw{margin:0 auto}
+  /* content that fits is centred; content taller than the card starts at the top and is scaled from the top,
+     so it shrinks to fill the card exactly */
+  .hiw.hiw--tm .hiw__screen,.hiw.hiw--launch .hiw__screen{place-items:safe center}
+  .hiw--tm .hiw__screen > *,.hiw--launch .hiw__screen > *{transform-origin:top center}
+  .hiw--launch .hiw__screen > .golive{transform-origin:center center}
+  /* Launch: heading first, then the pinned screen, then the steps and button */
+  .hiw--launch .hiw__left{display:contents}
+  .hiw--launch .hiw__h{order:-2}
+  .hiw.hiw--launch .hiw__list,.hiw.hiw--launch .hiw__cta{margin-top:0}
+  .hiw.hiw--launch .hiw__cta{justify-self:start}
+}
 
 /* Launch: channel toggles that switch on, and a live list */
 
@@ -3185,8 +3222,8 @@ span.ym__item{cursor:default}
     if(!heroEl) return;
     var desk = window.innerWidth >= 1024;
     var p = Math.min(Math.max(window.scrollY / (desk ? 200 : 120), 0), 1);
-    heroEl.style.setProperty('--hero-inset', ((desk ? 24 : 8) * (1 - p)) + 'px');
-    heroEl.style.setProperty('--hero-radius', ((desk ? 24 : 16) * (1 - p)) + 'px');
+    heroEl.style.setProperty('--hero-inset', ((desk ? 20 : 0) * (1 - p)) + 'px');
+    heroEl.style.setProperty('--hero-radius', ((desk ? 24 : 0) * (1 - p)) + 'px');
   }
   onHeroFrame();
   window.addEventListener('scroll', onHeroFrame, {passive:true});
@@ -3632,7 +3669,7 @@ span.ym__item{cursor:default}
     /* n = -1: no item open yet (section not reached); the first screen stays up */
     function show(n, p){
       if(n !== cur){
-        items.forEach(function(li, k){ li.classList.toggle('is-active', k === n); li.querySelector('.hiw__btn').setAttribute('aria-expanded', k === n ? 'true' : 'false'); });
+        items.forEach(function(li, k){ li.classList.toggle('is-active', k === n); li.classList.toggle('is-past', k < n); li.querySelector('.hiw__btn').setAttribute('aria-expanded', k === n ? 'true' : 'false'); });
         screens.forEach(function(sc, k){ sc.classList.toggle('is-active', k === Math.max(n, 0)); });
         cur = n;
       }
@@ -3644,6 +3681,29 @@ span.ym__item{cursor:default}
     function step(){ return Math.round(window.innerHeight * .35); }
     function pinTop(){ return parseFloat(track.style.getPropertyValue('--tmscroll-top')) || 0; }
     function layout(){
+      if(window.innerWidth <= 640){
+        /* phones and tablets: size the card so it, every step header (with the longest step open) and the
+           button fit one screen, then pin the whole block like desktop; too short a screen falls back to
+           a sticky card */
+        /* the steps stack in one slot, so reserve room for the tallest open step card plus the button */
+        var maxBody = Math.max.apply(null, items.map(function(li){ return li.querySelector('.hiw__body > p').scrollHeight; })) + 16;
+        var maxBtn = Math.max.apply(null, items.map(function(li){ return li.querySelector('.hiw__btn').offsetHeight; }));
+        var slotH = maxBtn + maxBody + 14;
+        var cta = root.querySelector('.hub__cta');
+        var leftH = slotH + 20 + (cta ? cta.offsetHeight : 0);
+        var top = 94, cardH = Math.min(400, Math.floor(window.innerHeight - top - leftH - 28 - 12));
+        pinned = cardH >= 180;
+        if(pinned){
+          root.style.setProperty('--tm-slot-h', slotH + 'px');
+          root.style.setProperty('--fit-card-h', cardH + 'px');
+          track.style.setProperty('--tmscroll-top', top + 'px');
+          track.style.height = (cardH + 28 + leftH + step() * items.length) + 'px';
+        } else { root.style.removeProperty('--fit-card-h'); root.style.removeProperty('--tm-slot-h'); track.style.height = ''; }
+        track.classList.toggle('is-pinned', pinned);
+        update();
+        return;
+      }
+      root.style.removeProperty('--fit-card-h'); root.style.removeProperty('--tm-slot-h');
       pinned = window.innerWidth > 1080 && root.offsetHeight < window.innerHeight - 40;
       track.classList.toggle('is-pinned', pinned);
       if(pinned){
@@ -3657,7 +3717,7 @@ span.ym__item{cursor:default}
       var pos;
       if(pinned) pos = (pinTop() - track.getBoundingClientRect().top) / step();
       else {
-        /* phones and tablets: the item crossing the middle of the screen is the open one */
+        /* screens too short to pin: the item crossing the middle of the screen is the open one */
         var r = list.getBoundingClientRect();
         pos = (window.innerHeight * .55 - r.top) / (r.height / items.length);
       }
@@ -3676,6 +3736,45 @@ span.ym__item{cursor:default}
     layout();
   })();
 
+  /* Phones and tablets: the Meet your teammate and Launch screens are short and pinned, so scale each
+     screen's content down until it fits (and again whenever it grows, e.g. a file row being added) */
+  (function(){
+    var els = Array.prototype.slice.call(document.querySelectorAll('.hiw--tm .hiw__screen > *, .hiw--launch .hiw__screen > *'));
+    if(!els.length) return;
+    function fit(el){
+      el.style.transform = '';
+      if(window.innerWidth > 640) return;
+      var sc = el.parentNode, cs = getComputedStyle(sc);
+      var avail = sc.clientHeight - parseFloat(cs.paddingTop) - parseFloat(cs.paddingBottom);
+      /* Go live fills the screen and centres a fixed-height website / phone inside it, so measure those */
+      var h = el.classList.contains('golive') ? Math.max.apply(null, Array.prototype.map.call(el.children, function(c){ return c.offsetHeight; })) : el.offsetHeight;
+      var s = Math.min(1, avail / h);
+      /* Go live is centred on the card's middle line by CSS (translateY(-50%)), so keep that when scaling */
+      if(s < 1) el.style.transform = (el.classList.contains('golive') ? 'translateY(-50%) ' : '') + 'scale(' + s.toFixed(3) + ')';
+    }
+    /* Launch on phones: size the card so the card, all three steps (longest one open) and the button fit one screen */
+    var launch = document.querySelector('.hiw--launch');
+    function sizeLaunch(){
+      if(!launch) return;
+      if(window.innerWidth > 640){ launch.style.removeProperty('--fit-card-h'); return; }
+      var list = launch.querySelector('.hiw__list'), cta = launch.querySelector('.hiw__cta');
+      var ps = Array.prototype.map.call(list.querySelectorAll('.hiw__body > p'), function(p){ return p.scrollHeight; });
+      var open = list.querySelector('.hiw__item.is-active .hiw__body');
+      var listH = list.offsetHeight - (open ? open.offsetHeight : 0) + Math.max.apply(null, ps) + 16;
+      var h = Math.floor(window.innerHeight - 94 - listH - 28 - cta.offsetHeight - 28 - 12);
+      launch.style.setProperty('--fit-card-h', Math.max(240, Math.min(400, h)) + 'px');
+    }
+    function fitAll(){ sizeLaunch(); els.forEach(fit); }
+    fitAll();
+    window.addEventListener('load', fitAll);
+    window.addEventListener('resize', fitAll);
+    if('ResizeObserver' in window){
+      var ro = new ResizeObserver(function(en){ en.forEach(function(e){ if(els.indexOf(e.target) > -1) fit(e.target); else els.forEach(fit); }); });
+      els.forEach(function(el){ ro.observe(el); });
+      document.querySelectorAll('.hiw--tm .hiw__right, .hiw--launch .hiw__right').forEach(function(r){ ro.observe(r); });
+    }
+  })();
+
   /* Launch demos: play a short, realistic product sequence whenever a step's screen opens */
   (function(){
     var screens = document.querySelectorAll('.hiw--launch [data-demo]');
@@ -3684,11 +3783,13 @@ span.ym__item{cursor:default}
     var timers = [];
     function at(ms, fn){ timers.push(setTimeout(fn, ms)); }
     function clear(){ timers.forEach(clearTimeout); timers = []; }
+    /* the card may be scaled down to fit on phones (fitScreens); convert screen px back to card px */
+    function scaleOf(card){ return (card.getBoundingClientRect().width / card.offsetWidth) || 1; }
     function cursorTo(card, el, dx, dy){
       var c = card.querySelector('.dcur'); if(!c) return;
-      var a = card.getBoundingClientRect(), b = el.getBoundingClientRect();
+      var a = card.getBoundingClientRect(), b = el.getBoundingClientRect(), s = scaleOf(card);
       c.style.opacity = '1';
-      c.style.transform = 'translate(' + (b.left - a.left + (dx || b.width / 2)) + 'px,' + (b.top - a.top + (dy || b.height / 2)) + 'px)';
+      c.style.transform = 'translate(' + ((b.left - a.left) / s + (dx || b.width / s / 2)) + 'px,' + ((b.top - a.top) / s + (dy || b.height / s / 2)) + 'px)';
     }
     function click(card, el){
       var c = card.querySelector('.dcur'); if(c){ c.classList.add('is-click'); setTimeout(function(){ c.classList.remove('is-click'); }, 140); }
@@ -3748,7 +3849,7 @@ span.ym__item{cursor:default}
         at(t2 + 650, function(){ click(card); tab(1); });
         at(t2 + 900, function(){ fly.classList.add('is-on'); var c = card.querySelector('.dcur'); var a = card.getBoundingClientRect(), d = drop.getBoundingClientRect();
           c.style.transform = 'translate(350px,-20px)'; });
-        at(t2 + 1050, function(){ var a = card.getBoundingClientRect(), d = drop.getBoundingClientRect(), x = d.left - a.left + 60, y = d.top - a.top + 14;
+        at(t2 + 1050, function(){ var a = card.getBoundingClientRect(), d = drop.getBoundingClientRect(), s = scaleOf(card), x = (d.left - a.left) / s + 60, y = (d.top - a.top) / s + 14;
           fly.style.transform = 'translate(' + x + 'px,' + y + 'px)'; cursorTo(card, drop, 80, 34); drop.classList.add('is-over'); });
         at(t2 + 2050, function(){ fly.classList.remove('is-on'); drop.classList.remove('is-over'); click(card);
           var r = row(PDF, 'Safari packages 2027.pdf', '2.4 MB \u00b7 uploading');
