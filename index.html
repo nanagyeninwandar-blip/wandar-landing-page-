@@ -108,8 +108,27 @@ a:focus-visible,button:focus-visible,summary:focus-visible{outline:3px solid #d8
 .nav.is-scrolled{background:rgba(255,255,255,.97);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);box-shadow:var(--shadow-md)}
 .nav__shell{
   position:relative;display:flex;align-items:center;justify-content:space-between;gap:18px;
-  padding:22px 0;
+  padding:22px 0;transition:padding 220ms ease;
 }
+/* over the framed hero, sit the bar lower so it clears the white frame */
+@media(min-width:1024px){.nav:not(.is-scrolled) .nav__shell{padding-top:50px}}
+/* desktop, as on y.uno: the bar scrolls away with the hero, then a solid bar drops in once past it;
+   on load it slides down with the hero sequence */
+@media(min-width:1024px){
+  .nav:not(.is-scrolled){position:absolute}
+  /* over the hero: no orange chat pill (the hero has its own) */
+  .nav:not(.is-scrolled) .nav__right{display:none}
+  /* links end just left of the centre grid line, over the hero and in the white bar alike;
+     the chat pill (white bar only) is pinned to the far right so it doesn't shift them */
+  .nav .nav__shell{justify-content:flex-start}
+  .nav .nav__links{margin-left:auto;margin-right:calc(50% + 12px)}
+  .nav .nav__right{position:absolute;right:0;top:50%;transform:translateY(-50%);margin:0}
+  .nav.is-scrolled{animation:nav-drop .3s ease backwards}
+}
+.nav__shell{animation:hero-rise-down .8s cubic-bezier(.215,.61,.355,1) 1.16s backwards}
+@keyframes nav-drop{from{transform:translateY(-100%)}}
+@keyframes hero-rise-down{from{opacity:0;transform:translateY(-20px)}}
+@media(prefers-reduced-motion:reduce){.nav.is-scrolled,.nav__shell{animation:none}}
 
 .nav__brand{display:flex;align-items:center;gap:14px;flex-shrink:0}
 .nav__logo-img{width:auto;height:32px}
@@ -298,6 +317,66 @@ a:focus-visible,button:focus-visible,summary:focus-visible{outline:3px solid #d8
 
 /* ═══ GREEN HERO — emerald with a light grain that thins out from the top ═══ */
 .hero{background:#0b603d}
+/* ═══ HERO BEHAVIOUR — modelled on y.uno ═══════════════════
+   One screen tall: headline + phone at the top, intro + CTA pinned to the bottom row.
+   On load: the card scales in inside a white frame, grid lines draw down, each headline
+   line is revealed by a sweeping block, then the nav drops in and the bottom row rises.
+   On scroll the white frame closes to full width (inset/radius driven by JS). */
+.hero{background:#fff;padding:96px 0 48px;--hero-inset:24px;--hero-radius:24px}
+.hero__bg{clip-path:inset(var(--hero-inset) round var(--hero-radius));animation:hero-in 1s cubic-bezier(.165,.84,.44,1) backwards}
+@keyframes hero-in{from{opacity:0;transform:scale(.94)}}
+@media(max-width:1023px){.hero{--hero-inset:8px;--hero-radius:16px}}
+/* layout: top group, flexible gap, bottom row */
+.hero__inner{display:flex;flex-direction:column}
+.hero__foot{display:flex;align-items:center;justify-content:space-between;gap:20px}
+.hero__foot .hero__intro{flex:0 1 auto;max-width:500px;margin-top:0;color:#fff;font-size:1.02rem}
+.hero__foot .hero__cta{margin-top:0;flex-shrink:0}
+@media(min-width:901px){
+  .hero{align-items:stretch;padding:160px 0 72px}
+  .hero .hero__grid{align-items:start}
+  .hero .demo{margin-top:calc(var(--py) * -1)}
+  .hero__foot{margin-top:auto;padding-top:32px}
+}
+/* phones: no full-screen layout; keep intro + CTA above the phone */
+@media(max-width:900px){
+  .hero .hero__grid{display:contents}
+  .hero__lead{order:1}.hero__foot{order:2;flex-direction:column;align-items:flex-start;margin-top:24px;gap:24px}.hero .demo{order:3;margin-top:44px;align-self:center}
+}
+@media(max-width:760px){.hero .demo{align-self:stretch}}
+/* shorter laptop screens: tighter top; the phone is scaled by JS (fitHero) so the whole card fits one screen */
+@media(min-width:901px) and (max-height:840px){.hero{padding-top:140px}}
+/* wide screens: phone 10% bigger, growing upward into the space under the nav (bottom edge stays put) */
+@media(min-width:1181px){.hero .demo{zoom:1.1;margin-top:-96px;margin-left:70px}}
+/* faint vertical grid lines over the card, 24px outside the content edge */
+.hero__lines{position:absolute;top:0;bottom:0;left:0;right:0;z-index:-1;margin:0 auto;width:calc(100% - 48px);max-width:1288px;display:grid;grid-template-columns:repeat(4,1fr);pointer-events:none}
+.hero__lines span{border-left:1px solid rgba(255,255,255,.16);transform-origin:top center;animation:hero-line .45s cubic-bezier(.455,.03,.515,.955) .9s backwards}
+.hero__lines span:last-child{border-right:1px solid rgba(255,255,255,.16)}
+.hero__lines span:nth-child(2){animation-delay:.97s}.hero__lines span:nth-child(3){animation-delay:1.04s}.hero__lines span:nth-child(4){animation-delay:1.11s}
+@keyframes hero-line{from{transform:scaleY(0)}}
+@media(max-width:1080px){.hero__lines{width:calc(100% - 16px)}}
+@media(max-width:900px){.hero__lines{display:none}}
+/* headline block reveal: a mint block sweeps across each line, a paler one trails it, the text appears mid-sweep */
+.hero__line{position:relative;display:inline-block;overflow:hidden;vertical-align:top;padding-bottom:.1em;margin-bottom:-.1em}
+.hero__line::before,.hero__line::after{content:"";position:absolute;inset:0;transform:translateX(-102%);animation:hero-sweep 1s cubic-bezier(.77,0,.175,1) .3s both}
+.hero__line::before{z-index:2;background:var(--mint)}
+.hero__line::after{z-index:1;background:#c9f5e3;animation-delay:.38s}
+.hero__line .hero__txt{animation:hero-show .01s linear .7s both}
+.hero h1 em .hero__line::before{animation-delay:.55s}.hero h1 em .hero__line::after{animation-delay:.63s}.hero h1 em .hero__txt{animation-delay:.95s}
+@keyframes hero-sweep{from{transform:translateX(-102%)}to{transform:translateX(102%)}}
+@keyframes hero-show{from{opacity:0}to{opacity:1}}
+/* the rest of the sequence */
+.hero__eyebrow{animation:hero-fade .8s cubic-bezier(.215,.61,.355,1) .7s backwards}
+.hero__tag{animation:hero-tag-in .8s cubic-bezier(.215,.61,.355,1) 1.16s backwards}
+.hero__foot{animation:hero-rise .8s cubic-bezier(.215,.61,.355,1) 1.16s backwards}
+.hero .demo{animation:hero-fade 1s cubic-bezier(.455,.03,.515,.955) 2.96s backwards}
+@keyframes hero-fade{from{opacity:0}}
+@keyframes hero-rise{from{opacity:0;transform:translateY(20px)}}
+@keyframes hero-tag-in{from{opacity:0;transform:rotate(-3deg) translateY(20px)}}
+@media(max-width:900px){.hero__foot{animation-name:hero-fade}}
+@media(prefers-reduced-motion:reduce){
+  .hero__bg,.hero__lines span,.hero__txt,.hero__eyebrow,.hero__tag,.hero__foot,.hero .demo{animation:none}
+  .hero__line::before,.hero__line::after{display:none}
+}
 .hero__bg{background:#0b5638 url("assets/sales-rep/hero-hill.webp") center top/cover no-repeat}
 .hero__grain{display:none}
 .hero__streaks,.hero__scrim{display:none}
@@ -308,7 +387,7 @@ a:focus-visible,button:focus-visible,summary:focus-visible{outline:3px solid #d8
 .hero__eyebrow{color:#dfd6c7;font-size:.74rem;font-weight:700;letter-spacing:.12em;margin-bottom:14px}
 /* text and phone sit as one group in the middle of the page, not pushed to the edges */
 .hero__grid{display:grid;grid-template-columns:minmax(0,560px) auto;justify-content:start;gap:40px;align-items:center}
-.hero h1{color:#fff;font-size:clamp(3.1rem,5.53vw,5.16rem);letter-spacing:-.045em;max-width:800px}
+.hero h1{color:#fff;font-size:clamp(3.1rem,5.3vw,4.75rem);letter-spacing:-.045em;max-width:800px}
 .hero h1 em{display:block;font-style:normal;color:var(--mint);white-space:nowrap}
 .hero__intro{max-width:520px;margin-top:20px;font-size:1.14rem;font-weight:400;line-height:1.7;letter-spacing:-.005em;color:rgba(255,255,255,.72);text-wrap:balance}
 .hero__intro strong{font-weight:500;color:#fff}
@@ -318,8 +397,8 @@ a:focus-visible,button:focus-visible,summary:focus-visible{outline:3px solid #d8
 .hero__chip{display:inline-flex;align-items:center;gap:6px;margin:0 2px;padding:2px 11px 2px 8px;border-radius:999px;border:1px solid rgba(255,255,255,.2);background:rgba(255,255,255,.09);-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px);color:#fff;font-size:.94em;font-weight:600;line-height:1.5;vertical-align:baseline;white-space:nowrap}
 .hero__chip svg{width:15px;height:15px;flex-shrink:0;opacity:.95}
 .hero__cta{display:flex;flex-wrap:wrap;align-items:center;gap:16px;margin-top:24px}
-.hero__cta .btn{padding:15px 26px;font-size:.95rem;gap:12px}
-.hero__cta .btn svg{width:15px;height:15px}
+.hero__cta .btn{padding:11px 14px;font-size:.86rem;gap:8px}
+.hero__cta .btn svg{width:14px;height:14px}
 
 
 
@@ -467,8 +546,8 @@ a:focus-visible,button:focus-visible,summary:focus-visible{outline:3px solid #d8
 @media(max-width:1180px){.web{left:56px;right:56px}}
 @media(max-width:480px){.demo{--py:36px;--px:22px}.web{left:22px;right:22px}}
 /* safari mascot standing at the front-left of the demo */
-.demo__mascot{position:absolute;z-index:6;left:-84px;bottom:-12px;width:auto;height:298px;pointer-events:none;filter:drop-shadow(0 18px 24px rgba(4,30,18,.35))}
-@media(max-width:1180px){.demo__mascot{left:-112px;bottom:-10px;height:240px}}
+.demo__mascot{position:absolute;z-index:6;left:-84px;bottom:-52px;width:auto;height:298px;pointer-events:none;filter:drop-shadow(0 18px 24px rgba(4,30,18,.35))}
+@media(max-width:1180px){.demo__mascot{left:-112px;bottom:-50px;height:240px}}
 @media(max-width:900px){.demo__mascot{left:-14px;bottom:-14px;height:190px}}
 @media(max-width:480px){.demo__mascot{left:-20px;bottom:-18px;height:132px}}
 /* premium swipe arrows, centred on the left and right of the frame */
@@ -1789,6 +1868,26 @@ a.cbm__item:hover .cbm__ic{background:#d7ebe6}
 .cbm__panel--cols{display:grid;grid-template-columns:1fr 1fr;column-gap:24px;align-content:start}
 .cbm__panel--cols .cbm__group + .cbm__group{margin-top:0}
 
+/* ═══ Dropdowns in the y.uno style: one large white rounded panel, numbered columns
+   with big light headings, one-line items, hairline dividers between columns ═══ */
+.mega.mega--y{top:100%;padding:36px 0 38px;background:#fff;border:0;border-radius:24px;box-shadow:0 40px 90px -30px rgba(17,24,22,.35),0 0 0 1px rgba(17,24,22,.05)}
+.mega.mega--y::before{content:"";position:absolute;left:0;right:0;top:-24px;height:24px}
+.ym{display:grid;grid-template-columns:repeat(3,minmax(0,1fr))}
+.ym__col{padding:0 36px}
+.ym__col + .ym__col{border-left:1px solid #ebe8e2}
+.ym__col--wide{grid-column:span 2}
+.ym__h{margin:0 0 16px;font-size:12px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:#7a7f7c}
+.ym__items{display:grid;row-gap:2px;align-content:start;min-height:105px} /* room for 3 rows, so Product and Resources open at the same height */
+.ym__items--2{grid-template-columns:1fr 1fr;column-gap:28px}
+.ym__item{display:flex;align-items:center;gap:12px;padding:8px 10px;margin:0 -10px;border-radius:9px;font-size:13.5px;font-weight:400;line-height:1.3;color:var(--text-primary);transition:background 160ms ease}
+a.ym__item:hover{background:#f6f4f0}
+span.ym__item{cursor:default}
+.ym__ic{display:grid;place-items:center;flex-shrink:0;width:22px;height:22px;color:var(--safari-secondary)}
+.ym__ic svg{width:20px;height:20px}
+.ym__ic--mascot{place-items:end center;overflow:hidden}
+.ym__ic--mascot img{width:24px;height:auto}
+@media(max-width:1180px){.ym__col{padding:0 30px}}
+
 /* ═══ Problem strip under the hero: tag + dotted rule, headline left, description right ═══ */
 .pstrip{padding:88px 0;background:#fff}
 .pstrip__top{display:flex;align-items:center;gap:20px;margin-bottom:40px}
@@ -2188,26 +2287,22 @@ a.cbm__item:hover .cbm__ic{background:#d7ebe6}
             Product
             <svg class="nav__chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
           </button>
-          <div class="mega mega--cb" data-panel role="menu">
-            <div class="cbm cbm--product">
-              <div class="cbm__panel">
-                <div class="cbm__group">
-                <span class="cbm__label">AI Teammates</span>
-                <div class="cbm__items">
-                  <a class="cbm__item" href="/" role="menuitem"><span class="cbm__ic cbm__ic--mascot"><img src="assets/sales-rep/mascot-wave.webp" alt="" width="560" height="548" loading="lazy" /></span><span class="cbm__txt"><span class="cbm__t">AI Safari Sales Rep</span><span class="cbm__d">Sales teammate, 24/7.</span></span></a>
-                </div>
+          <div class="mega mega--y" data-panel role="menu">
+            <div class="ym">
+              <div class="ym__col">
+                <p class="ym__h">AI Teammates</p>
+                <div class="ym__items">
+                  <a class="ym__item" href="/" role="menuitem"><span class="ym__ic ym__ic--mascot"><img src="assets/sales-rep/mascot-wave.webp" alt="" width="560" height="548" loading="lazy" /></span>AI Safari Sales Rep</a>
                 </div>
               </div>
-              <div class="cbm__panel cbm__panel--wide">
-                <div class="cbm__group">
-                <span class="cbm__label">Everything AI Safari Sales Rep</span>
-                <div class="cbm__items cbm__items--2">
-                  <a class="cbm__item" href="#problem" role="menuitem"><span class="cbm__ic"><svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 9h22a4 4 0 0 1 4 4v14a4 4 0 0 1-4 4H18l-8 7v-7H8a4 4 0 0 1-4-4V13a4 4 0 0 1 4-4Z"/><path d="M19 15v7"/><circle cx="19" cy="26" r="1" fill="currentColor"/><circle cx="38" cy="10" r="6"/><path d="M38 7v3.5l2 1.5"/></svg></span><span class="cbm__txt"><span class="cbm__t">Problem</span><span class="cbm__d">Why enquiries get missed.</span></span></a>
-                  <a class="cbm__item" href="#outcome" role="menuitem"><span class="cbm__ic"><svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 37l12-12 8 7 17-17"/><path d="M31 15h11v11"/></svg></span><span class="cbm__txt"><span class="cbm__t">Outcome</span><span class="cbm__d">What gets better.</span></span></a>
-                  <a class="cbm__item" href="#teammate" role="menuitem"><span class="cbm__ic"><svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="16" cy="16" r="6.5"/><path d="M4 41c0-7.2 5.4-12 12-12s12 4.8 12 12"/><circle cx="34" cy="18" r="5.5"/><path d="M31 30.4c1-.3 2-.4 3-.4 5.9 0 10 4.2 10 11"/></svg></span><span class="cbm__txt"><span class="cbm__t">Expertise</span><span class="cbm__d">What AI handles. What experts handle.</span></span></a>
-                  <a class="cbm__item" href="#compare" role="menuitem"><span class="cbm__ic"><svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M24 6v36M14 42h20M9 12h30"/><path d="M9 12 3.5 25a5.5 5.5 0 0 0 11 0Z"/><path d="M39 12l-5.5 13a5.5 5.5 0 0 0 11 0Z"/></svg></span><span class="cbm__txt"><span class="cbm__t">Compare</span><span class="cbm__d">How it differs from a chatbot.</span></span></a>
-                  <a class="cbm__item" href="#launch" role="menuitem"><span class="cbm__ic"><svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M31 5a11 11 0 0 0-10.3 14.8L5.6 34.9a4.4 4.4 0 0 0 6.2 6.2l15.1-15.1A11 11 0 0 0 42.6 15.6l-6.4 6.4-6.4-1.7-1.7-6.4 6.4-6.4A11 11 0 0 0 31 5Z"/></svg></span><span class="cbm__txt"><span class="cbm__t">Setup</span><span class="cbm__d">How to get started.</span></span></a>
-                </div>
+              <div class="ym__col ym__col--wide">
+                <p class="ym__h">Everything AI Safari Sales Rep</p>
+                <div class="ym__items ym__items--2">
+                  <a class="ym__item" href="#problem" role="menuitem"><span class="ym__ic"><svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 9h22a4 4 0 0 1 4 4v14a4 4 0 0 1-4 4H18l-8 7v-7H8a4 4 0 0 1-4-4V13a4 4 0 0 1 4-4Z"/><path d="M19 15v7"/><circle cx="19" cy="26" r="1" fill="currentColor"/><circle cx="38" cy="10" r="6"/><path d="M38 7v3.5l2 1.5"/></svg></span>Problem</a>
+                  <a class="ym__item" href="#outcome" role="menuitem"><span class="ym__ic"><svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 37l12-12 8 7 17-17"/><path d="M31 15h11v11"/></svg></span>Outcome</a>
+                  <a class="ym__item" href="#teammate" role="menuitem"><span class="ym__ic"><svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="16" cy="16" r="6.5"/><path d="M4 41c0-7.2 5.4-12 12-12s12 4.8 12 12"/><circle cx="34" cy="18" r="5.5"/><path d="M31 30.4c1-.3 2-.4 3-.4 5.9 0 10 4.2 10 11"/></svg></span>Expertise</a>
+                  <a class="ym__item" href="#compare" role="menuitem"><span class="ym__ic"><svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M24 6v36M14 42h20M9 12h30"/><path d="M9 12 3.5 25a5.5 5.5 0 0 0 11 0Z"/><path d="M39 12l-5.5 13a5.5 5.5 0 0 0 11 0Z"/></svg></span>Compare</a>
+                  <a class="ym__item" href="#launch" role="menuitem"><span class="ym__ic"><svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M31 5a11 11 0 0 0-10.3 14.8L5.6 34.9a4.4 4.4 0 0 0 6.2 6.2l15.1-15.1A11 11 0 0 0 42.6 15.6l-6.4 6.4-6.4-1.7-1.7-6.4 6.4-6.4A11 11 0 0 0 31 5Z"/></svg></span>Setup</a>
                 </div>
               </div>
             </div>
@@ -2220,30 +2315,26 @@ a.cbm__item:hover .cbm__ic{background:#d7ebe6}
             Resources
             <svg class="nav__chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
           </button>
-          <div class="mega mega--cb" data-panel role="menu">
-            <div class="cbm cbm--res">
-              <div class="cbm__panel cbm__panel--wide cbm__panel--cols">
-                <div class="cbm__group">
-                <span class="cbm__label">Learn</span>
-                <div class="cbm__items">
-                  <span class="cbm__item cbm__item--static"><span class="cbm__ic"><svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10 5h20l8 8v30H10Z"/><path d="M30 5v8h8"/><path d="M16 22h16M16 29h16M16 36h10"/></svg></span><span class="cbm__txt"><span class="cbm__t">Blog</span><span class="cbm__d">Safari sales &amp; growth insights.</span></span></span>
-                  <span class="cbm__item cbm__item--static"><span class="cbm__ic"><svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M24 12c-4-3-10-4-18-3v29c8-1 14 0 18 3 4-3 10-4 18-3V9c-8-1-14 0-18 3Z"/><path d="M24 12v29"/></svg></span><span class="cbm__txt"><span class="cbm__t">Guides</span><span class="cbm__d">Sales &amp; growth playbooks for safari operators.</span></span></span>
-                </div>
-                </div>
-                <div class="cbm__group">
-                <span class="cbm__label">Free tools</span>
-                <div class="cbm__items">
-                  <a class="cbm__item" href="feed/app.html" target="_blank" rel="noopener" role="menuitem"><span class="cbm__ic"><svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 9h24a3 3 0 0 1 3 3v12a3 3 0 0 1-3 3H18l-7 6v-6H8a3 3 0 0 1-3-3V12a3 3 0 0 1 3-3Z"/><path d="M11 16h17M11 21h10"/><circle cx="33" cy="32" r="6"/><path d="M37.3 36.3L43 42"/><path d="M42 5v4M40 7h4"/></svg></span><span class="cbm__txt"><span class="cbm__t">Live demand feed</span><span class="cbm__d">See safari planning conversations happening now.</span></span></a>
-                </div>
+          <div class="mega mega--y" data-panel role="menu">
+            <div class="ym">
+              <div class="ym__col">
+                <p class="ym__h">Learn</p>
+                <div class="ym__items">
+                  <span class="ym__item"><span class="ym__ic"><svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10 5h20l8 8v30H10Z"/><path d="M30 5v8h8"/><path d="M16 22h16M16 29h16M16 36h10"/></svg></span>Blog</span>
+                  <span class="ym__item"><span class="ym__ic"><svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M24 12c-4-3-10-4-18-3v29c8-1 14 0 18 3 4-3 10-4 18-3V9c-8-1-14 0-18 3Z"/><path d="M24 12v29"/></svg></span>Guides</span>
                 </div>
               </div>
-              <div class="cbm__panel">
-                <div class="cbm__group">
-                <span class="cbm__label">Support</span>
-                <div class="cbm__items">
-                  <a class="cbm__item" href="#faq" role="menuitem"><span class="cbm__ic"><svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 8h32a3 3 0 0 1 3 3v20a3 3 0 0 1-3 3H22l-9 7v-7H8a3 3 0 0 1-3-3V11a3 3 0 0 1 3-3Z"/><path d="M19.5 17a4.5 4.5 0 1 1 6.5 4c-1.3.7-2 1.6-2 3v1"/><circle cx="24" cy="29" r=".9" fill="currentColor"/></svg></span><span class="cbm__txt"><span class="cbm__t">FAQ</span><span class="cbm__d">Common questions.</span></span></a>
-                  <a class="cbm__item" href="#" onclick="openModal('contact');return false;" role="menuitem"><span class="cbm__ic"><svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="5" y="11" width="38" height="27" rx="3"/><path d="M6 13l18 13 18-13"/></svg></span><span class="cbm__txt"><span class="cbm__t">Contact us</span><span class="cbm__d">Talk to our team.</span></span></a>
+              <div class="ym__col">
+                <p class="ym__h">Free tools</p>
+                <div class="ym__items">
+                  <a class="ym__item" href="feed/app.html" target="_blank" rel="noopener" role="menuitem"><span class="ym__ic"><svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 9h24a3 3 0 0 1 3 3v12a3 3 0 0 1-3 3H18l-7 6v-6H8a3 3 0 0 1-3-3V12a3 3 0 0 1 3-3Z"/><path d="M11 16h17M11 21h10"/><circle cx="33" cy="32" r="6"/><path d="M37.3 36.3L43 42"/><path d="M42 5v4M40 7h4"/></svg></span>Live demand feed</a>
                 </div>
+              </div>
+              <div class="ym__col">
+                <p class="ym__h">Support</p>
+                <div class="ym__items">
+                  <a class="ym__item" href="#faq" role="menuitem"><span class="ym__ic"><svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 8h32a3 3 0 0 1 3 3v20a3 3 0 0 1-3 3H22l-9 7v-7H8a3 3 0 0 1-3-3V11a3 3 0 0 1 3-3Z"/><path d="M19.5 17a4.5 4.5 0 1 1 6.5 4c-1.3.7-2 1.6-2 3v1"/><circle cx="24" cy="29" r=".9" fill="currentColor"/></svg></span>FAQ</a>
+                  <a class="ym__item" href="#" onclick="openModal('contact');return false;" role="menuitem"><span class="ym__ic"><svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="5" y="11" width="38" height="27" rx="3"/><path d="M6 13l18 13 18-13"/></svg></span>Contact us</a>
                 </div>
               </div>
             </div>
@@ -2322,21 +2413,13 @@ a.cbm__item:hover .cbm__ic{background:#d7ebe6}
   <div class="hero__streaks" aria-hidden="true"></div>
   <div class="hero__scrim" aria-hidden="true"></div>
   <div class="hero__grain" aria-hidden="true"></div>
-  <div class="container">
+  <div class="hero__lines" aria-hidden="true"><span></span><span></span><span></span><span></span></div>
+  <div class="container hero__inner">
     <div class="hero__grid">
-      <div>
+      <div class="hero__lead">
         <p class="eyebrow hero__eyebrow">AI Sales &amp; Growth Teammates for Safari Operators</p>
-        <h1>Hire your first <em>AI Safari Sales Rep</em></h1>
-        <p class="hero__intro">A teammate that brings <strong>sales attention and discipline</strong> to every enquiry on your
-          <span class="hero__chip"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413z"/></svg>WhatsApp</span>
-          and
-          <span class="hero__chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9.5"/><path d="M2.5 12h19"/><path d="M12 2.5c2.6 2.7 3.9 5.9 3.9 9.5s-1.3 6.8-3.9 9.5c-2.6-2.7-3.9-5.9-3.9-9.5s1.3-6.8 3.9-9.5Z"/></svg>Website</span></p>
+        <h1><span class="hero__line"><span class="hero__txt">Hire your first</span></span> <em><span class="hero__line"><span class="hero__txt">AI Safari Sales Rep</span></span></em></h1>
         <p class="hero__tag">Not a chatbot.</p>
-        <div class="hero__cta">
-          <a href="#" onclick="openModal('interest');return false;" class="btn btn--mint">Interested? Let’s chat
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
-          </a>
-        </div>
       </div>
 
       <div class="demo" id="demo">
@@ -2480,6 +2563,14 @@ a.cbm__item:hover .cbm__ic{background:#d7ebe6}
           <span class="demo__brief-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="3" width="16" height="18" rx="2"/><path d="M8 8h8M8 12h8M8 16h5"/></svg></span>
           <span><b>Traveler brief sent to safari expert</b><small>Sarah · Family of four · Tanzania · ~$20k</small></span>
         </div>
+      </div>
+    </div>
+    <div class="hero__foot">
+      <p class="hero__intro">A teammate that brings <strong>consistent sales attention</strong> to every enquiry on your WhatsApp and Website 24/7.</p>
+      <div class="hero__cta">
+        <a href="#" onclick="openModal('interest');return false;" class="btn btn--mint">Interested? Let’s chat
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+        </a>
       </div>
     </div>
   </div>
@@ -3089,6 +3180,36 @@ a.cbm__item:hover .cbm__ic{background:#d7ebe6}
   }
   onScroll(); window.addEventListener('scroll', onScroll, {passive:true});
 
+  /* ── Hero frame: the white inset closes as you scroll (200px desktop, 120px mobile) ── */
+  function onHeroFrame(){
+    if(!heroEl) return;
+    var desk = window.innerWidth >= 1024;
+    var p = Math.min(Math.max(window.scrollY / (desk ? 200 : 120), 0), 1);
+    heroEl.style.setProperty('--hero-inset', ((desk ? 24 : 8) * (1 - p)) + 'px');
+    heroEl.style.setProperty('--hero-radius', ((desk ? 24 : 16) * (1 - p)) + 'px');
+  }
+  onHeroFrame();
+  window.addEventListener('scroll', onHeroFrame, {passive:true});
+  window.addEventListener('resize', onHeroFrame);
+
+  /* ── Hero fit: on desktop the hero is one screen tall; if it runs over, scale the phone down until it fits ── */
+  var heroDemo = heroEl && heroEl.querySelector('.demo');
+  function fitHero(){
+    if(!heroDemo) return;
+    heroDemo.style.zoom = '';
+    if(window.innerWidth < 901) return;
+    var over = heroEl.offsetHeight - window.innerHeight;
+    if(over > 0){
+      /* the phone's space below the top of the grid scales with zoom, so shrink by that ratio */
+      var base = parseFloat(getComputedStyle(heroDemo).zoom) || 1;
+      var used = heroDemo.getBoundingClientRect().bottom - heroDemo.parentNode.getBoundingClientRect().top;
+      heroDemo.style.zoom = Math.max(0.55, base * (used - over) / used);
+    }
+  }
+  fitHero();
+  window.addEventListener('load', fitHero);
+  window.addEventListener('resize', fitHero);
+
   /* ── Desktop dropdowns ── */
   var items = document.querySelectorAll('[data-dropdown]');
   var closeTimer;
@@ -3471,12 +3592,15 @@ a.cbm__item:hover .cbm__ic{background:#d7ebe6}
     var items = Array.prototype.slice.call(root.querySelectorAll('.hiw__item'));
     var screens = Array.prototype.slice.call(root.querySelectorAll('.hiw__screen'));
     var cur = 0;
+    /* tell the screen demos when a step's bar starts running (hiw:start) and when the section leaves view (hiw:stop) */
+    function emit(name, sc){ root.dispatchEvent(new CustomEvent(name, {detail:sc})); }
     function show(n){
       items.forEach(function(li, k){ li.classList.remove('is-active'); li.querySelector('.hiw__btn').setAttribute('aria-expanded', k === n ? 'true' : 'false'); });
       void root.offsetWidth;
       items[n].classList.add('is-active');
       screens.forEach(function(sc, k){ sc.classList.toggle('is-active', k === n); });
       cur = n;
+      if(!root.classList.contains('is-paused')) emit('hiw:start', screens[n]);
     }
     items.forEach(function(li, k){ li.querySelector('.hiw__btn').addEventListener('click', function(){ show(k); }); });
     if(window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
@@ -3486,11 +3610,13 @@ a.cbm__item:hover .cbm__ic{background:#d7ebe6}
       /* run only once most of the section is on screen (or it fills most of the screen, for tall sections on phones) */
       new IntersectionObserver(function(en){
         var e = en[0], inView = e.intersectionRatio >= .75 || e.intersectionRect.height >= window.innerHeight * .75;
+        var paused = root.classList.contains('is-paused');
         /* leaving the section resets it to the first step, so it is already there on the way back */
-        if(!inView && !root.classList.contains('is-paused')) show(0);
-        root.classList.toggle('is-paused', !inView);
+        if(!inView && !paused){ root.classList.add('is-paused'); show(0); emit('hiw:stop'); }
+        /* coming back: the bar starts again, and so does that step's screen, from the beginning */
+        else if(inView && paused){ root.classList.remove('is-paused'); emit('hiw:start', screens[cur]); }
       }, {threshold:Array.from({length:21}, function(_, i){ return i / 20; })}).observe(root);
-    } else root.classList.remove('is-paused');
+    } else { root.classList.remove('is-paused'); emit('hiw:start', screens[cur]); }
     });
   })();
 
@@ -3651,18 +3777,15 @@ a.cbm__item:hover .cbm__ic{background:#d7ebe6}
         [['s1',400],['s2',1100],['s3',3600],['s4',4400],['s5',5000],['s6',5900]].forEach(function(p){ at(p[1], function(){ g.classList.add(p[0]); }); });
       }
     };
-    var ran = false;
-    function run(sc){ ran = true; clear(); var d = demos[sc.getAttribute('data-demo')]; if(d) d(sc.querySelector('.dcard') || sc); }
-    var mo = new MutationObserver(function(muts){
-      muts.forEach(function(m){ var sc = m.target; if(sc.classList.contains('is-active') && m.oldValue.indexOf('is-active') === -1) run(sc); });
-    });
-    screens.forEach(function(sc){ mo.observe(sc, {attributes:true, attributeFilter:['class'], attributeOldValue:true}); });
-    /* first screen: start when the section comes into view */
-    var first = document.querySelector('.hiw--launch [data-demo].is-active');
-    if(first && 'IntersectionObserver' in window){
-      var started = false;
-      new IntersectionObserver(function(en, o){ if(en[0].isIntersecting && !started){ started = true; o.disconnect(); if(!ran && first.classList.contains('is-active')) run(first); } }, {threshold:.35}).observe(first.closest('.hiw'));
-    } else if(first) run(first);
+    function run(sc){ clear(); var d = demos[sc.getAttribute('data-demo')]; if(d) d(sc.querySelector('.dcard') || sc); }
+    /* each demo restarts from scratch whenever its step's bar starts (step change, or the section coming back into view),
+       and stops when the section leaves view, so it can never be found sitting in its finished state */
+    var launch = document.querySelector('.hiw--launch');
+    launch.addEventListener('hiw:start', function(e){ if(e.detail && e.detail.hasAttribute('data-demo')) run(e.detail); });
+    launch.addEventListener('hiw:stop', function(){ var a = launch.querySelector('[data-demo].is-active'); if(a) run(a); clear(); });
+    /* reduced motion: no bars run, so show the first screen's finished state straight away */
+    var first = launch.querySelector('[data-demo].is-active');
+    if(reduce && first) run(first);
   })();
 
   /* "They might…" list: scroll drives the active line. On wide screens the split pins and each
