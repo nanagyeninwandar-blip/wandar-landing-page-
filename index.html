@@ -384,13 +384,14 @@ a:focus-visible,button:focus-visible,summary:focus-visible{outline:3px solid #d8
 .hero__grain::after{opacity:.55;
   -webkit-mask-image:linear-gradient(180deg,#000 0%,rgba(0,0,0,.45) 30%,transparent 62%);mask-image:linear-gradient(180deg,#000 0%,rgba(0,0,0,.45) 30%,transparent 62%);
   background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='220'%3E%3Cfilter id='d'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='1.05' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 .55 0 0 0 0 .8 0 0 0 0 .5 0 0 0 2.4 -1.2'/%3E%3C/filter%3E%3Crect width='220' height='220' filter='url(%23d)'/%3E%3C/svg%3E")}
-.hero__eyebrow{color:#dfd6c7;font-size:.74rem;font-weight:700;letter-spacing:.12em;margin-bottom:14px}
+.hero__eyebrow{color:#dfd6c7;font-size:.74rem;font-weight:800;letter-spacing:.12em;margin-bottom:14px}
 /* text and phone sit as one group in the middle of the page, not pushed to the edges */
 .hero__grid{display:grid;grid-template-columns:minmax(0,560px) auto;justify-content:start;gap:40px;align-items:center}
 .hero h1{color:#fff;font-size:clamp(3.1rem,5.3vw,4.75rem);letter-spacing:-.045em;max-width:800px}
 .hero h1 em{display:block;font-style:normal;color:var(--mint);white-space:nowrap}
 .hero__intro{max-width:520px;margin-top:20px;font-size:1.14rem;font-weight:400;line-height:1.7;letter-spacing:-.005em;color:rgba(255,255,255,.72);text-wrap:balance}
 .hero__intro strong{font-weight:500;color:#fff}
+.hero__intro strong.hero__ch{font-weight:700}
 /* "Not a chatbot." — orange highlight block straight after the headline */
 .hero__tag{display:inline-block;margin-top:34px;margin-bottom:4px;transform:rotate(-3deg);transform-origin:left center;padding:12px 14px 15px;background:var(--safari-secondary);color:#fff;font-size:clamp(2rem,3.45vw,3.2rem);box-shadow:0 18px 40px rgba(60,20,4,.28);font-weight:800;letter-spacing:-.045em;line-height:1.12}
 /* WhatsApp / Website pills sitting inline in the sentence */
@@ -591,13 +592,13 @@ a:focus-visible,button:focus-visible,summary:focus-visible{outline:3px solid #d8
 .web__row p{flex:1}
 .web__row b{display:block;width:45%;height:8px;border-radius:4px;background:#c3ccc6}
 .web__row i{display:block;width:62%;height:7px;margin-top:8px;border-radius:4px;background:#e3e7e4}
-.web__launch{position:absolute;right:14px;bottom:14px;z-index:3;display:grid;place-items:center;width:46px;height:46px;border-radius:14px;background:#111816;color:#fff;
+.web__launch{position:absolute;right:14px;bottom:14px;z-index:3;display:grid;place-items:center;width:46px;height:46px;border-radius:14px;background:var(--safari-primary);color:#fff;
   box-shadow:0 8px 20px rgba(0,0,0,.25);transition:transform 160ms ease}
 .web__launch svg{position:absolute;width:21px;height:21px;transition:opacity 200ms ease,transform 300ms ease}
 .web__launch .web__close{opacity:0;transform:rotate(-90deg)}
 .web__launch.is-open .web__open{opacity:0;transform:rotate(90deg)}.web__launch.is-open .web__close{opacity:1;transform:none}
 .web__launch.is-press{transform:scale(.86)}
-.web__launch::after{content:"";position:absolute;inset:0;border-radius:14px;border:2px solid #111816;opacity:0}
+.web__launch::after{content:"";position:absolute;inset:0;border-radius:14px;border:2px solid var(--safari-primary);opacity:0}
 .web__launch.is-ripple::after{animation:webRipple 600ms ease-out}
 @keyframes webRipple{0%{opacity:.5;transform:scale(1)}100%{opacity:0;transform:scale(1.7)}}
 .web__cursor{position:absolute;left:0;top:0;z-index:6;width:20px;height:24px;pointer-events:none;opacity:0;transition:transform 900ms cubic-bezier(.65,0,.25,1),opacity 300ms ease}
@@ -2603,7 +2604,7 @@ span.ym__item{cursor:default}
       </div>
     </div>
     <div class="hero__foot">
-      <p class="hero__intro">A teammate that brings <strong>consistent sales attention</strong> to every enquiry on your WhatsApp and Website 24/7.</p>
+      <p class="hero__intro">A teammate that brings <strong>consistent sales attention</strong> to every enquiry on your <strong class="hero__ch">WhatsApp</strong> and <strong class="hero__ch">Website</strong> 24/7.</p>
       <div class="hero__cta">
         <a href="#" onclick="openModal('interest');return false;" class="btn btn--mint">Interested? Let’s chat
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
