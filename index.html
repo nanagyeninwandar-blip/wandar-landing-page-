@@ -891,6 +891,16 @@ a:focus-visible,button:focus-visible,summary:focus-visible{outline:3px solid #d8
 .how__pre{margin-bottom:6px;color:var(--text-primary)}
 .how__h{max-width:1000px;font-size:clamp(2.1rem,3.6vw,3.3rem);font-weight:600;line-height:1.1;letter-spacing:-.045em;text-wrap:balance}
 .how__h span{color:#8a8f8b}
+/* Greeno above "Meet your new teammate": pops up when the heading reveals, then his raised hand waves every few seconds */
+.how__mascot{position:relative;display:block;height:112px;aspect-ratio:560/548;margin-bottom:18px}
+.how__mascot img{position:absolute;inset:0;width:100%;height:100%}
+.how__mascot-hand{transform-origin:89.3% 63.9%}
+.how__head.is-in .how__mascot{animation:tmPop 650ms cubic-bezier(.34,1.56,.64,1) both}
+.how__head.is-in .how__mascot-hand{animation:tmWave 10s 650ms ease-in-out infinite}
+@keyframes tmPop{0%{opacity:0;transform:translateY(24px) scale(.7)}100%{opacity:1;transform:none}}
+@keyframes tmWave{0%,12.8%,100%{transform:rotate(0)}2.56%{transform:rotate(-14deg)}5.12%{transform:rotate(4deg)}7.68%{transform:rotate(-14deg)}10.24%{transform:rotate(4deg)}}
+@media(max-width:600px){.how__mascot{height:84px;margin-bottom:14px}}
+@media(prefers-reduced-motion:reduce){.how__head.is-in .how__mascot,.how__head.is-in .how__mascot-hand{animation:none}}
 
 .hiw--tm{grid-template-columns:minmax(0,1.05fr) minmax(0,1fr);gap:56px;border:0;border-radius:0;background:none;overflow:visible;align-items:center}
 .hiw--tm .hiw__left{padding:0}
@@ -2696,6 +2706,7 @@ span.ym__item{cursor:default}
 <section class="section hub" id="teammate">
   <div class="container">
     <div class="how__head rv">
+      <span class="how__mascot" aria-hidden="true"><img class="how__mascot-hand" src="assets/sales-rep/mascot-wave-arm.webp" alt="" width="560" height="548" loading="lazy" /><img src="assets/sales-rep/mascot-wave-body.webp" alt="" width="560" height="548" loading="lazy" /></span>
       <p class="how__h how__pre">Meet your new teammate</p>
       <h2 class="how__h"><span>Knows safari and how to sell them.</span></h2>
     </div>
