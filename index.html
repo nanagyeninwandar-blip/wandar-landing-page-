@@ -891,6 +891,7 @@ a:focus-visible,button:focus-visible,summary:focus-visible{outline:3px solid #d8
 .how__pre{margin-bottom:6px;color:var(--text-primary)}
 .how__h{max-width:1000px;font-size:clamp(2.1rem,3.6vw,3.3rem);font-weight:600;line-height:1.1;letter-spacing:-.045em;text-wrap:balance}
 .how__h span{color:#8a8f8b}
+.how__sub{max-width:600px;margin-top:18px;font-size:clamp(1.05rem,1.4vw,1.2rem);line-height:1.55;color:#5d6260;text-wrap:balance}
 /* Greeno above "Meet your new teammate": pops up when the heading reveals, then his raised hand waves every few seconds */
 .how__mascot{position:relative;display:block;height:112px;aspect-ratio:560/548;margin-bottom:18px}
 .how__mascot img{position:absolute;inset:0;width:100%;height:100%}
@@ -939,6 +940,39 @@ a:focus-visible,button:focus-visible,summary:focus-visible{outline:3px solid #d8
 .hiw--tm .hiw__screen.is-active .tmc{opacity:1;transform:none}
 .hiw--tm .hiw__screen.is-active .tmc:nth-child(2){transition-delay:.5s}
 .hiw--tm .hiw__screen.is-active .tmc:nth-child(3){transition-delay:1s}
+/* first step: two auto-sliding slides on one screen, Greeno at his desk on a white card first, then the chat */
+.tmsl{position:absolute;inset:0;padding:inherit;pointer-events:none}
+.tmsl__img{position:absolute;inset:0;display:grid;place-items:center;padding:inherit;transition:translate 600ms cubic-bezier(.65,0,.35,1)}
+.tmsl__img img{box-sizing:border-box;width:min(400px,100%);height:auto;aspect-ratio:1040/800;max-height:100%;padding:38px;object-fit:contain;border-radius:20px;background:#ededed;box-shadow:0 30px 60px rgba(4,30,26,.35)}
+.tmsl.is-chat .tmsl__img{translate:-100% 0}
+/* the chat sits on the same white card as Greeno, so its bubbles switch to colours that read on white */
+.tmc__card{box-sizing:border-box;width:min(400px,100%);aspect-ratio:1040/800;display:grid;place-items:center;padding:16px 22px;border-radius:20px;background:#ededed;box-shadow:0 30px 60px rgba(4,30,26,.35);transition:translate 600ms cubic-bezier(.65,0,.35,1)}
+.tmc__card .tmc__wrap{width:100%;gap:10px}
+.tmc__card .tmc{max-width:90%}
+.tmc__card .tmc p{font-size:13.5px;line-height:1.42;padding:9px 13px;border-radius:16px}
+.tmc__card .tmc--r small,.tmc__card .tmc--t small{margin-top:5px;font-size:11.5px}
+.tmc__card .tmc--t p{background:var(--safari-primary);border-color:var(--safari-primary)}
+.tmc__card .tmc--r p{background:#fff;box-shadow:none}
+.tmc__card .tmc--r small,.tmc__card .tmc--t small{color:#6b706c}
+.tmc__card .tmc__tav{box-shadow:0 0 0 1.5px #e9e4db}
+/* the swipe: the picture slides out to the left as the chat slides in from the right (translate, so it
+   adds to the scale phones set inline); is-reset puts a screen back on its picture without the slide */
+/* waiting chat card: half the screen + half the card + its shadow puts it fully past the panel's right edge */
+.hiw--tm .hiw__screen{container-type:inline-size;overflow:hidden;border-radius:24px}
+.hiw__screen:has(.tmsl:not(.is-chat)) .tmc__card{translate:calc(50cqw + 50% + 120px) 0}
+/* the brief step swipes the same way: its scene fills the card edge to edge, then the traveler brief comes in */
+.tmsl__img img.tmsl__full{padding:0}
+.hiw--tm .tm__brief{transition:translate 600ms cubic-bezier(.65,0,.35,1)}
+.hiw__screen:has(.tmsl:not(.is-chat)) .tm__brief{translate:calc(50cqw + 50% + 120px) 0}
+.hiw__screen:has(.tmsl.is-reset) .tm__brief{transition:none}
+.hiw--tm .hiw__screen:has(.tmsl:not(.is-chat)) .tb > *{opacity:0;transform:translateY(8px)}
+.tmsl.is-reset .tmsl__img,.hiw__screen:has(.tmsl.is-reset) .tmc__card{transition:none}
+/* hide the bubbles behind Greeno so they pop in again, one after another, each time the chat slides in */
+.hiw--tm .hiw__screen:has(.tmsl:not(.is-chat)) .tmc{opacity:0;transform:translateY(10px)}
+.tmsl__dots{position:absolute;left:50%;bottom:18px;z-index:1;display:flex;gap:8px;transform:translateX(-50%)}
+.tmsl__dots i{width:8px;height:8px;border-radius:50%;background:rgba(255,255,255,.4);transition:background-color 300ms ease,width 300ms ease}
+.tmsl__dots i:first-child,.tmsl.is-chat .tmsl__dots i:last-child{width:22px;border-radius:4px;background:#fff}
+.tmsl.is-chat .tmsl__dots i:first-child{width:8px;border-radius:50%;background:rgba(255,255,255,.4)}
 @media(max-width:1080px){.hiw--tm{grid-template-columns:1fr;gap:36px}.hiw--tm .hiw__right{min-height:460px}}
 @media(max-width:560px){.hiw--tm .hiw__screen{padding:24px}.hiw--tm .hiw__btn{font-size:1.12rem}}
 /* phones only, up to 640px so no iPad (Meet your teammate + Launch): the screen sits above the steps.
@@ -1286,14 +1320,14 @@ a:focus-visible,button:focus-visible,summary:focus-visible{outline:3px solid #d8
 @media(min-width:1081px){.hiw--tm .hiw__right{min-height:480px;max-width:620px;width:100%;justify-self:start}}
 
 /* ═══ Traveler brief — simple ═══ */
-.tb{width:min(420px,100%);padding:0!important;border-radius:18px!important;background:#fff!important;overflow:hidden;
+.tb{width:min(400px,100%);aspect-ratio:1040/800;padding:0!important;border-radius:18px!important;background:#fff!important;overflow:hidden;
   box-shadow:0 40px 80px -20px rgba(4,30,26,.55),0 0 0 1px rgba(17,24,22,.06)!important}
 .tb__top{display:flex;align-items:center;gap:12px;padding:16px 20px;border-bottom:1px solid #f0ede7}
 .tb__ph{width:36px;height:36px;border-radius:50%;object-fit:cover}
 .tb__who b{display:block;font-size:14px;font-weight:600}
 .tb__who small{display:block;margin-top:1px;font-size:12.5px;color:var(--text-muted)}
-.tb__rows{padding:4px 20px 8px}
-.tb__rows div{display:grid;grid-template-columns:150px 1fr;gap:12px;padding:12px 0;border-top:1px solid #f3f0ea;font-size:13.5px}
+.tb__rows{padding:2px 20px 4px}
+.tb__rows div{display:grid;grid-template-columns:150px 1fr;gap:10px;padding:10px 0;border-top:1px solid #f3f0ea;font-size:13px}
 .tb__rows div:first-child{border-top:0}
 .tb__rows dt{color:var(--text-muted)}
 .tb__rows dd{font-weight:600;color:var(--text-primary)}
@@ -1972,6 +2006,19 @@ span.ym__item{cursor:default}
 .cbm__ic svg{width:20px;height:20px}
 
 /* ═══ Outcome section — HubSpot-style: intro left, 2x2 cards right ═══ */
+/* ═══ Qualities — centred heading, three cards: drawing on top, title and text below ═══ */
+.q-sec{background:var(--off-white)}
+.q__head{margin-bottom:56px;text-align:center}
+.q__h{max-width:none;margin:0 auto;text-align:center;font-size:clamp(1.65rem,2.75vw,2.5rem);font-weight:600;line-height:1.1;letter-spacing:-.045em;color:var(--text-primary);text-wrap:balance}
+.q__h span{color:#8a8f8b}
+.q__sub{margin-top:14px;font-size:clamp(1.05rem,1.4vw,1.2rem);line-height:1.55;color:#5d6260}
+.q__grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:24px}
+.q__card{display:flex;flex-direction:column;padding:26px 28px 30px;border-radius:24px;background:#f4efe7}
+.q__art{display:flex;align-items:center;justify-content:center;flex-shrink:0;box-sizing:border-box;height:168px;padding:10px 24px}
+.q__art img{display:block;max-width:100%;max-height:100%;width:auto;height:auto;object-fit:contain;mix-blend-mode:multiply}
+.q__t{margin-top:22px;font-size:1.2rem;font-weight:600;line-height:1.3;letter-spacing:-.02em;color:var(--text-primary)}
+.q__p{margin-top:10px;font-size:1rem;line-height:1.6;color:#5d6260;text-wrap:pretty}
+@media(max-width:900px){.q__grid{grid-template-columns:minmax(0,1fr)}.q__art{height:180px;padding:10px 24px}}
 .oc-sec{background:var(--off-white)}
 .oc{display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.5fr);gap:56px;align-items:start}
 .oc__top{display:flex;align-items:center;gap:16px;margin-bottom:32px}
@@ -2050,6 +2097,37 @@ span.ym__item{cursor:default}
 }
 @media(max-width:1080px){.oc{grid-template-columns:minmax(0,1fr)}}
 @media(max-width:640px){.oc__tag{white-space:normal}.oc__rule{display:none}}
+/* outcome: the tag and intro text sit across the top; below, the heading and Greeno on the left, cards on the right */
+.oc__lead{margin-bottom:80px}
+/* section header: centred, the heading with the intro text under it */
+.oc__lead{text-align:center}
+.oc__lead-grid{display:grid;grid-template-columns:minmax(0,1fr);justify-items:center;gap:16px}
+.oc__lead-txt .oc__lede{font-size:clamp(1.1rem,1.5vw,1.3rem)}
+.oc__lead-txt{max-width:760px}
+/* the key line loses its side bar here: a bar on one side of centred text looks off */
+.oc__lead .oc__lede--key,.oc__lead .oc__lede--key.rv{padding-left:0;box-shadow:none;background:none}
+.oc__intro .hiw__cta{margin-top:28px}
+.oc__lead .oc__h{margin:0;font-size:clamp(1.95rem,3.4vw,3.1rem)}
+.oc__lead-txt .oc__lede:first-child{margin-top:0}
+.oc__lead-txt .oc__lede{text-wrap:pretty}
+.oc__lead .hiw__cta{margin-top:28px}
+/* left column above Greeno: one plain statement in solid dark, like the reference */
+.oc__say{max-width:500px;font-size:clamp(1.4rem,2.1vw,1.9rem);font-weight:700;line-height:1.2;letter-spacing:-.025em;color:var(--text-primary);text-wrap:balance}
+.oc__pic{display:block;width:100%;max-width:560px;height:auto;margin-top:36px}
+@media(max-width:900px){.oc__lead-grid{gap:24px}}
+@media(max-width:640px){.oc__lead{margin-bottom:52px}.oc__pic{margin-top:24px}}
+/* outcome cards as a stacked list: each drawing in a peach tile on the left, title and text on the right */
+.oc__grid{grid-template-columns:minmax(0,1fr);gap:16px}
+.oc__card,.oc__card:hover{display:grid;grid-template-columns:200px minmax(0,1fr);gap:28px;align-items:center;padding:20px 30px 20px 20px;border:0;border-radius:22px;background:#f4efe7;box-shadow:none;transform:none}
+.oc__art{display:grid;place-items:center;aspect-ratio:1.45;padding:24px 30px;border-radius:16px;background:#fdf0e5;box-shadow:inset 0 0 0 1px #f7e2d1}
+.oc__art img{width:100%;height:100%;object-fit:contain;mix-blend-mode:multiply}
+.oc__t{font-size:1.2rem}
+.oc__p{margin-top:8px}
+@media(max-width:640px){
+  .oc__card,.oc__card:hover{grid-template-columns:116px minmax(0,1fr);gap:16px;align-items:start;padding:14px 16px 16px 14px}
+  .oc__art{padding:14px 16px}
+  .oc__t{font-size:1.05rem}
+}
 @media(max-width:760px){
   .demo{justify-self:stretch}
   .demo__phone{margin-left:auto;margin-right:auto}
@@ -2171,6 +2249,24 @@ span.ym__item{cursor:default}
 .audience .vision.cta-panel>p:not(.eyebrow){margin-top:24px}
 .audience .cta-panel__btn{margin-top:36px;padding:14px 24px;font-size:.82rem;box-shadow:0 14px 30px -12px rgba(17,24,22,.45)}
 @media(max-width:760px){.audience{padding:88px 0 96px}}
+/* ═══ Final CTA — like the reference: big headline and button top left, Greeno at his desk lower right ═══ */
+.cta-sec::before,.cta-sec::after{display:none}
+/* the banner is exactly one screen tall, below the fixed menu bar (90px), with its content centred */
+.audience.cta-sec{display:flex;align-items:center;box-sizing:border-box;min-height:calc(100vh - 90px);min-height:calc(100svh - 90px);padding:40px 0}
+.cta-sec>.container{width:100%}
+.cta2{position:relative;display:grid;grid-template-columns:minmax(0,1fr) auto;gap:40px;min-height:min(340px,50vh);padding:0;text-align:left}
+.cta2__copy{align-self:start}
+.cta2__h{font-size:clamp(2.4rem,4.6vw,4.3rem);font-weight:700;line-height:1.02;letter-spacing:-.05em;color:var(--text-primary)}
+.cta2__h span{color:var(--safari-secondary)}
+.cta2 .cta-panel__btn{background:var(--safari-primary);box-shadow:0 14px 30px -12px rgba(26,115,115,.5)}
+/* Greeno sits on the section colour; a soft off-white glow behind him fades the lines out before they reach the picture */
+.cta2__pic{align-self:end;justify-self:end;box-sizing:content-box;width:min(290px,24vw);height:auto;padding:56px;margin:-56px;transform:translateY(clamp(40px,9vh,110px));background:radial-gradient(closest-side,#fdf8f0 62%,rgba(253,248,240,0) 100%)}
+@media(min-width:761px){.cta2__h{white-space:nowrap}}
+@media(max-width:760px){
+  .cta2{grid-template-columns:minmax(0,1fr);gap:28px;min-height:0}
+  .cta2__pic{justify-self:end;width:min(220px,65%)}
+  .audience.cta-sec{padding:56px 0}
+}
 </style>
 <script type="application/ld+json">
 {
@@ -2347,7 +2443,6 @@ span.ym__item{cursor:default}
                 <p class="ym__h">Everything AI Safari Sales Rep</p>
                 <div class="ym__items ym__items--2">
                   <a class="ym__item" href="#problem" role="menuitem"><span class="ym__ic"><svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 9h22a4 4 0 0 1 4 4v14a4 4 0 0 1-4 4H18l-8 7v-7H8a4 4 0 0 1-4-4V13a4 4 0 0 1 4-4Z"/><path d="M19 15v7"/><circle cx="19" cy="26" r="1" fill="currentColor"/><circle cx="38" cy="10" r="6"/><path d="M38 7v3.5l2 1.5"/></svg></span>Problem</a>
-                  <a class="ym__item" href="#outcome" role="menuitem"><span class="ym__ic"><svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 37l12-12 8 7 17-17"/><path d="M31 15h11v11"/></svg></span>Outcome</a>
                   <a class="ym__item" href="#teammate" role="menuitem"><span class="ym__ic"><svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="16" cy="16" r="6.5"/><path d="M4 41c0-7.2 5.4-12 12-12s12 4.8 12 12"/><circle cx="34" cy="18" r="5.5"/><path d="M31 30.4c1-.3 2-.4 3-.4 5.9 0 10 4.2 10 11"/></svg></span>Expertise</a>
                   <a class="ym__item" href="#compare" role="menuitem"><span class="ym__ic"><svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M24 6v36M14 42h20M9 12h30"/><path d="M9 12 3.5 25a5.5 5.5 0 0 0 11 0Z"/><path d="M39 12l-5.5 13a5.5 5.5 0 0 0 11 0Z"/></svg></span>Compare</a>
                   <a class="ym__item" href="#launch" role="menuitem"><span class="ym__ic"><svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M31 5a11 11 0 0 0-10.3 14.8L5.6 34.9a4.4 4.4 0 0 0 6.2 6.2l15.1-15.1A11 11 0 0 0 42.6 15.6l-6.4 6.4-6.4-1.7-1.7-6.4 6.4-6.4A11 11 0 0 0 31 5Z"/></svg></span>Setup</a>
@@ -2417,7 +2512,6 @@ span.ym__item{cursor:default}
           
           <span class="macc__label">Everything AI Safari Sales Rep</span>
           <a class="macc__link" href="#problem"><span class="mega__ic mega__ic--draw"><svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 9h22a4 4 0 0 1 4 4v14a4 4 0 0 1-4 4H18l-8 7v-7H8a4 4 0 0 1-4-4V13a4 4 0 0 1 4-4Z"/><path d="M19 15v7"/><circle cx="19" cy="26" r="1" fill="currentColor"/><circle cx="38" cy="10" r="6"/><path d="M38 7v3.5l2 1.5"/></svg></span>Problem</a>
-          <a class="macc__link" href="#outcome"><span class="mega__ic mega__ic--draw"><svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 37l12-12 8 7 17-17"/><path d="M31 15h11v11"/></svg></span>Outcome</a>
           <a class="macc__link" href="#teammate"><span class="mega__ic mega__ic--draw"><svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="16" cy="16" r="6.5"/><path d="M4 41c0-7.2 5.4-12 12-12s12 4.8 12 12"/><circle cx="34" cy="18" r="5.5"/><path d="M31 30.4c1-.3 2-.4 3-.4 5.9 0 10 4.2 10 11"/></svg></span>Expertise</a>
           <a class="macc__link" href="#compare"><span class="mega__ic mega__ic--draw"><svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M24 6v36M14 42h20M9 12h30"/><path d="M9 12 3.5 25a5.5 5.5 0 0 0 11 0Z"/><path d="M39 12l-5.5 13a5.5 5.5 0 0 0 11 0Z"/></svg></span>Compare</a>
           <a class="macc__link" href="#launch"><span class="mega__ic mega__ic--draw"><svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M31 5a11 11 0 0 0-10.3 14.8L5.6 34.9a4.4 4.4 0 0 0 6.2 6.2l15.1-15.1A11 11 0 0 0 42.6 15.6l-6.4 6.4-6.4-1.7-1.7-6.4 6.4-6.4A11 11 0 0 0 31 5Z"/></svg></span>Setup</a>
@@ -2709,6 +2803,7 @@ span.ym__item{cursor:default}
       <span class="how__mascot" aria-hidden="true"><img class="how__mascot-hand" src="assets/sales-rep/mascot-wave-arm.webp" alt="" width="560" height="548" loading="lazy" /><img src="assets/sales-rep/mascot-wave-body.webp" alt="" width="560" height="548" loading="lazy" /></span>
       <p class="how__h how__pre">Meet your new teammate</p>
       <h2 class="how__h"><span>Knows safari and how to sell them.</span></h2>
+      <p class="how__sub">You can&rsquo;t know which enquiry will book. That is why every enquiry needs proper sales attention from the start.</p>
     </div>
     <div class="tmscroll">
     <div class="hiw hiw--tm">
@@ -2738,10 +2833,10 @@ span.ym__item{cursor:default}
         <a href="#" onclick="openModal('interest');return false;" class="hub__cta">Interested? Let’s chat <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
       </div>
       <div class="hiw__right rv" aria-hidden="true">
-          <div class="hiw__screen is-active"><div class="tmc__wrap"><div class="tmc tmc--t"><p>Hi! We&rsquo;re thinking about a safari in Tanzania next August. Family of four.</p><small><img class="tmc__tav" src="assets/sales-rep/sarah.webp" alt="" width="96" height="96" loading="lazy" />Sarah</small></div><div class="tmc tmc--r"><p>Thanks for reaching out to KiliTrail Safaris! I&rsquo;m happy to help you find the best fit. May I know your name?</p><small><img src="assets/sales-rep/mascot-wave.webp" alt="" width="560" height="548" loading="lazy" />AI Safari Sales Rep</small></div></div></div>
-          <div class="hiw__screen"><div class="tmc__wrap"><div class="tmc tmc--r"><p>What would make this trip feel worth it for your family?</p><small><img src="assets/sales-rep/mascot-wave.webp" alt="" width="560" height="548" loading="lazy" />AI Safari Sales Rep</small></div><div class="tmc tmc--t"><p>Seeing the animals up close, and the kids actually enjoying it.</p><small><img class="tmc__tav" src="assets/sales-rep/sarah.webp" alt="" width="96" height="96" loading="lazy" />Sarah</small></div><div class="tmc tmc--r"><p>Love that. Which range feels comfortable: under $15k, $15&ndash;25k, or above $25k?</p><small><img src="assets/sales-rep/mascot-wave.webp" alt="" width="560" height="548" loading="lazy" />AI Safari Sales Rep</small></div></div></div>
-          <div class="hiw__screen"><div class="tmc__wrap"><div class="tmc tmc--t"><p>Why is one lodge $2,000 more than the other?</p><small><img class="tmc__tav" src="assets/sales-rep/sarah.webp" alt="" width="96" height="96" loading="lazy" />Sarah</small></div><div class="tmc tmc--r"><p>Good question. That camp is in a private conservancy, so fewer vehicles at each sighting. Is a quieter experience important to you?</p><small><img src="assets/sales-rep/mascot-wave.webp" alt="" width="560" height="548" loading="lazy" />AI Safari Sales Rep</small></div></div></div>
-          <div class="hiw__screen"><div class="tmc__wrap"><div class="tmc tmc--t"><p>Honestly, the price worries us. And long drives. The kids would hate that.</p><small><img class="tmc__tav" src="assets/sales-rep/sarah.webp" alt="" width="96" height="96" loading="lazy" />Sarah</small></div><div class="tmc tmc--r"><p>That makes sense. Would fewer camps, closer together, feel better?</p><small><img src="assets/sales-rep/mascot-wave.webp" alt="" width="560" height="548" loading="lazy" />AI Safari Sales Rep</small></div><div class="tmc tmc--t"><p>Yes, exactly that.</p><small><img class="tmc__tav" src="assets/sales-rep/sarah.webp" alt="" width="96" height="96" loading="lazy" />Sarah</small></div></div></div>
+          <div class="hiw__screen is-active"><div class="tmc__card"><div class="tmc__wrap"><div class="tmc tmc--t"><p>Hi! We&rsquo;re thinking about a safari in Tanzania next August. Family of four.</p><small><img class="tmc__tav" src="assets/sales-rep/sarah.webp" alt="" width="96" height="96" loading="lazy" />Sarah</small></div><div class="tmc tmc--r"><p>Thanks for reaching out to KiliTrail Safaris! I&rsquo;m happy to help you find the best fit. May I know your name?</p><small><img src="assets/sales-rep/mascot-wave.webp" alt="" width="560" height="548" loading="lazy" />AI Safari Sales Rep</small></div></div></div><div class="tmsl"><div class="tmsl__img"><img src="assets/sales-rep/greeno-desk.webp" alt="" width="1040" height="800" loading="lazy" /></div><span class="tmsl__dots"><i></i><i></i></span></div></div>
+          <div class="hiw__screen"><div class="tmc__card"><div class="tmc__wrap"><div class="tmc tmc--r"><p>What would make this trip feel worth it for your family?</p><small><img src="assets/sales-rep/mascot-wave.webp" alt="" width="560" height="548" loading="lazy" />AI Safari Sales Rep</small></div><div class="tmc tmc--t"><p>Seeing the animals up close, and the kids actually enjoying it.</p><small><img class="tmc__tav" src="assets/sales-rep/sarah.webp" alt="" width="96" height="96" loading="lazy" />Sarah</small></div><div class="tmc tmc--r"><p>Love that. Which range feels comfortable: under $15k, $15&ndash;25k, or above $25k?</p><small><img src="assets/sales-rep/mascot-wave.webp" alt="" width="560" height="548" loading="lazy" />AI Safari Sales Rep</small></div></div></div><div class="tmsl"><div class="tmsl__img"><img src="assets/sales-rep/greeno-traveler.webp" alt="" width="1250" height="962" loading="lazy" /></div><span class="tmsl__dots"><i></i><i></i></span></div></div>
+          <div class="hiw__screen"><div class="tmc__card"><div class="tmc__wrap"><div class="tmc tmc--t"><p>Why is one lodge $2,000 more than the other?</p><small><img class="tmc__tav" src="assets/sales-rep/sarah.webp" alt="" width="96" height="96" loading="lazy" />Sarah</small></div><div class="tmc tmc--r"><p>Good question. That camp is in a private conservancy, so fewer vehicles at each sighting. Is a quieter experience important to you?</p><small><img src="assets/sales-rep/mascot-wave.webp" alt="" width="560" height="548" loading="lazy" />AI Safari Sales Rep</small></div></div></div><div class="tmsl"><div class="tmsl__img"><img src="assets/sales-rep/greeno-answers.webp" alt="" width="1226" height="943" loading="lazy" /></div><span class="tmsl__dots"><i></i><i></i></span></div></div>
+          <div class="hiw__screen"><div class="tmc__card"><div class="tmc__wrap"><div class="tmc tmc--t"><p>Honestly, the price worries us. And long drives. The kids would hate that.</p><small><img class="tmc__tav" src="assets/sales-rep/sarah.webp" alt="" width="96" height="96" loading="lazy" />Sarah</small></div><div class="tmc tmc--r"><p>That makes sense. Would fewer camps, closer together, feel better?</p><small><img src="assets/sales-rep/mascot-wave.webp" alt="" width="560" height="548" loading="lazy" />AI Safari Sales Rep</small></div><div class="tmc tmc--t"><p>Yes, exactly that.</p><small><img class="tmc__tav" src="assets/sales-rep/sarah.webp" alt="" width="96" height="96" loading="lazy" />Sarah</small></div></div></div><div class="tmsl"><div class="tmsl__img"><img src="assets/sales-rep/greeno-worries.webp" alt="" width="1245" height="958" loading="lazy" /></div><span class="tmsl__dots"><i></i><i></i></span></div></div>
           <div class="hiw__screen"><div class="tm__brief tb">
               <div class="tb__top">
                 <img class="tb__ph" src="assets/sales-rep/sarah.webp" alt="" width="96" height="96" loading="lazy" />
@@ -2754,7 +2849,7 @@ span.ym__item{cursor:default}
                 <div><dt>What matters most</dt><dd>Animals up close, short drives</dd></div>
                 <div><dt>Worries talked through</dt><dd>Price, long drives</dd></div>
               </dl>
-            </div></div>
+            </div><div class="tmsl"><div class="tmsl__img"><img class="tmsl__full" src="assets/sales-rep/greeno-brief.webp" alt="" width="1272" height="978" loading="lazy" /></div><span class="tmsl__dots"><i></i><i></i></span></div></div>
       </div>
     </div>
     </div>
@@ -2788,36 +2883,29 @@ span.ym__item{cursor:default}
   </div>
 </section>
 
-<!-- ═══════════════ OUTCOME — when every enquiry gets proper sales attention (HubSpot-style: intro left, 2x2 cards right) ═══════════════ -->
-<section class="section oc-sec" id="outcome">
+<!-- ═══════════════ QUALITIES — what kind of teammate AI Safari Sales Rep is (centred heading, three cards with a drawing on top) ═══════════════ -->
+<section class="section q-sec" id="qualities">
   <div class="container">
-    <div class="oc">
-      <div class="oc__intro rv">
-        <div class="oc__top"><span class="oc__tag"><svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="18" cy="14" r="7"/><path d="M4 42c0-8 6.3-13 14-13s14 5 14 13"/><path d="M30 10h12a3 3 0 0 1 3 3v7a3 3 0 0 1-3 3h-2v4l-5-4h-5a3 3 0 0 1-3-3v-7a3 3 0 0 1 3-3Z"/><path d="M34 16.5l2 2 4-4"/></svg>When every enquiry gets proper sales attention</span><i class="oc__rule"></i></div>
-        <h2 class="oc__h">You can&rsquo;t know <span>which enquiry will book.</span></h2>
-        <p class="oc__lede">Some travelers arrive ready to plan. Others ask one question, go quiet, come back weeks later, change their dates, rethink their budget, or need several conversations before they are ready to decide.</p>
-        <p class="oc__lede">The enquiry that looks casual today can become the booking later.</p>
-        <p class="oc__lede oc__lede--key rv rv--replay">That is why every enquiry needs proper sales attention from the start.</p>
-        <a href="#" onclick="openModal('interest');return false;" class="hiw__cta">Interested? Let&rsquo;s chat <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
-      </div>
-      <div class="oc__grid rv">
-        <article class="oc__card">
-          <h3 class="oc__t"><span class="oc__ic"><svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6.5 8h21A3.5 3.5 0 0 1 31 11.5v10a3.5 3.5 0 0 1-3.5 3.5H15l-6 5v-5H6.5A3.5 3.5 0 0 1 3 21.5v-10A3.5 3.5 0 0 1 6.5 8Z"/><path d="M35 18h6.5a3.5 3.5 0 0 1 3.5 3.5v10a3.5 3.5 0 0 1-3.5 3.5H40v5l-6-5H22a3.5 3.5 0 0 1-3.5-3.5V29"/><path d="M41 4v4M39 6h4"/></svg></span>More meaningful traveler conversations</h3>
-          <p class="oc__p">Travelers get the time and attention needed to explain what they want, ask questions and work through what matters to them.</p>
-        </article>
-        <article class="oc__card">
-          <h3 class="oc__t"><span class="oc__ic"><svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="8" y="6" width="30" height="38" rx="3"/><path d="M14.5 16l2.5 2.5 4.5-4.5M14.5 26l2.5 2.5 4.5-4.5M14.5 36l2.5 2.5 4.5-4.5"/><path d="M25.5 17h7M25.5 27h7M25.5 37h5"/><path d="M43 4v4M41 6h4"/></svg></span>Better-qualified enquiries</h3>
-          <p class="oc__p">More of the important trip details are understood before the safari expert starts designing and pricing the trip.</p>
-        </article>
-        <article class="oc__card">
-          <h3 class="oc__t"><span class="oc__ic"><svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M24 5l15 6v11c0 10-6.3 17.3-15 21-8.7-3.7-15-11-15-21V11Z"/><path d="M17 24l5 5 9-10"/><path d="M43 4v4M41 6h4"/></svg></span>Fewer unanswered concerns</h3>
-          <p class="oc__p">Questions, doubts and concerns get addressed instead of sitting unanswered while the traveler decides what to do next.</p>
-        </article>
-        <article class="oc__card">
-          <h3 class="oc__t"><span class="oc__ic"><svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M26 43H10V5h18l9 9v13"/><path d="M28 5v9h9"/><path d="M16 20h14M16 27h10"/><path d="M39.5 30.5l4 4L31.5 46.5h-4v-4Z"/></svg></span>Better-prepared proposals</h3>
-          <p class="oc__p">Safari experts start with more of the information they need, instead of preparing proposals around a trip they do not yet understand well enough.</p>
-        </article>
-      </div>
+    <div class="q__head rv">
+      <h2 class="q__h">A Sales Rep <span>you can count on to do sales.</span></h2>
+      <p class="q__sub">Three reasons to hire one.</p>
+    </div>
+    <div class="q__grid rv">
+      <article class="q__card">
+        <span class="q__art"><img src="assets/sales-rep/q-always.webp" alt="" width="900" height="659" loading="lazy" /></span>
+        <h3 class="q__t">Always there</h3>
+        <p class="q__p">Enquiries arrive at all hours. Your AI Safari Sales Rep replies day or night, and gives every traveler the same attention.</p>
+      </article>
+      <article class="q__card">
+        <span class="q__art"><img src="assets/sales-rep/q-human.webp" alt="" width="873" height="862" loading="lazy" /></span>
+        <h3 class="q__t">AI-Human Collaboration</h3>
+        <p class="q__p">Some questions need a person. Your AI Safari Sales Rep knows which ones, and brings in a human safari expert to answer them.</p>
+      </article>
+      <article class="q__card">
+        <span class="q__art"><img src="assets/sales-rep/q-business.webp" alt="" width="900" height="599" loading="lazy" /></span>
+        <h3 class="q__t">Knows your business</h3>
+        <p class="q__p">Every safari company is different. Your AI Safari Sales Rep works from what you share about your business, so travelers get answers about your company, not generic AI answers.</p>
+      </article>
     </div>
   </div>
 </section>
@@ -2917,7 +3005,13 @@ span.ym__item{cursor:default}
 <section class="section section--white" id="faq"><div class="container"><div class="faq__head rv"><div><span class="pstrip__tag faq__tag"><svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 8h32a3 3 0 0 1 3 3v20a3 3 0 0 1-3 3H22l-9 7v-7H8a3 3 0 0 1-3-3V11a3 3 0 0 1 3-3Z"/><path d="M19.5 17a4.5 4.5 0 1 1 6.5 4c-1.3.7-2 1.6-2 3v1"/><circle cx="24" cy="29" r=".9" fill="currentColor"/></svg>FAQ</span><h2 class="h-section faq__h">Frequently asked <span>questions.</span></h2></div><div class="faq__ask"><span>Still have questions?</span><a href="#" onclick="openModal('contact');return false;" class="hiw__cta faq__cta">Contact us <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></div></div><div class="faq__grid"><div><div class="faq__item"><button class="faq__q">Is AI Safari Sales Rep better at selling than me?<span class="faq__sign"></span></button><div class="faq__a"><p>No, and that is not the point.</p><p>The point is that every enquiry gets the sales work it needs, done the same way every time. Including the ones that come in while you are busy, traveling, or asleep.</p></div></div><div class="faq__item"><button class="faq__q">Is Wandar just another chatbot?<span class="faq__sign"></span></button><div class="faq__a"><p>No. A chatbot answers questions or collects contact details.</p><p>AI Safari Sales Rep does the work of a salesperson: getting to know travelers, answering their questions, talking through their worries, and getting them ready to book.</p></div></div><div class="faq__item"><button class="faq__q">Do I have to train AI Safari Sales Rep?<span class="faq__sign"></span></button><div class="faq__a"><p>Not on safari, and not on selling.</p><p>Just share information about what you offer: your safaris, destinations, and experiences.</p></div></div><div class="faq__item"><button class="faq__q">Will AI Safari Sales Rep replace my team?<span class="faq__sign"></span></button><div class="faq__a"><p>No. AI Safari Sales Rep does the sales conversations. Human safari experts still design the safari and decide the price.</p><p>More sales capacity, not fewer people.</p></div></div></div><div><div class="faq__item"><button class="faq__q">Will AI Safari Sales Rep design itineraries and send quotes?<span class="faq__sign"></span></button><div class="faq__a"><p>No. Human safari experts stay responsible for itineraries, recommendations, and pricing.</p><p>AI Safari Sales Rep gathers what they need, so the first itinerary is personalized, not generic.</p></div></div><div class="faq__item"><button class="faq__q">Does AI Safari Sales Rep follow up with travelers who go quiet?<span class="faq__sign"></span></button><div class="faq__a"><p>Not yet. AI Safari Sales Rep handles the conversations travelers start on your WhatsApp and website.</p></div></div><div class="faq__item"><button class="faq__q">Where does AI Safari Sales Rep talk to travelers?<span class="faq__sign"></span></button><div class="faq__a"><p>On your WhatsApp and website.</p></div></div><div class="faq__item"><button class="faq__q">Is Wandar available now?<span class="faq__sign"></span></button><div class="faq__a"><p>We are inviting a small group of safari operators to get early access.</p><p>If you would like to see AI Safari Sales Rep in action and help shape the product, we would love to hear from you.</p></div></div></div></div></div></section>
 
 <!-- ═══════════════ FINAL CTA ═══════════════ -->
-<section class="section audience"><div class="container"><div class="vision cta-panel rv"><h2 style="text-wrap:balance">Give every enquiry the<br><span>sales attention</span> it needs.</h2><p>Extend your sales capacity and give every opportunity the consistent attention it needs to turn interested travelers into bookings.</p><a href="#" class="cta-panel__btn" onclick="openModal('interest');return false;">Interested? Let&rsquo;s chat <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></div></div></section>
+<section class="section audience cta-sec"><div class="container"><div class="cta-panel cta2 rv">
+  <div class="cta2__copy">
+    <h2 class="cta2__h">Ready to welcome<br>your <span>new sales hire</span>?</h2>
+    <a href="#" class="cta-panel__btn" onclick="openModal('interest');return false;">Let&rsquo;s chat <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+  </div>
+  <img class="cta2__pic" src="assets/sales-rep/cta-greeno.webp" alt="" width="1000" height="970" loading="lazy" />
+</div></div></section>
 
 </main>
 
@@ -2966,7 +3060,6 @@ span.ym__item{cursor:default}
       <div class="fx__col">
         <span class="footer__ch">Why AI Safari Sales Rep</span>
         <a class="footer__cl" href="#problem">Problem</a>
-        <a class="footer__cl" href="#outcome">Outcome</a>
         <a class="footer__cl" href="#teammate">Expertise</a>
         <a class="footer__cl" href="#compare">Compare</a>
         <a class="footer__cl" href="#launch">Setup</a>
@@ -3669,80 +3762,67 @@ span.ym__item{cursor:default}
     });
   })();
 
-  /* Meet your teammate: scroll drives the open item. On wide screens the split pins and each
-     scroll step opens the next item and its screen; the orange bar fills with that step. */
+  /* Meet your teammate: runs on a timer. The open step's orange bar fills by itself, then the next step
+     opens. It only runs while the section is on screen; leaving resets it to the first step, so coming
+     back starts from the top. A step with two slides (a Greeno picture, then the chat) gets one longer
+     fill that covers both. On phones the steps share one slot under the screen (is-pinned). */
   (function(){
     var track = document.querySelector('.tmscroll');
     if(!track) return;
-    var root = track.querySelector('.hiw--tm'), list = root.querySelector('.hiw__list');
+    var root = track.querySelector('.hiw--tm');
     var items = Array.prototype.slice.call(root.querySelectorAll('.hiw__item'));
     var screens = Array.prototype.slice.call(root.querySelectorAll('.hiw__screen'));
-    var cur = null, pinned = false, ticking = false;
-    /* n = -1: no item open yet (section not reached); the first screen stays up */
-    function show(n, p){
-      if(n !== cur){
-        items.forEach(function(li, k){ li.classList.toggle('is-active', k === n); li.classList.toggle('is-past', k < n); li.querySelector('.hiw__btn').setAttribute('aria-expanded', k === n ? 'true' : 'false'); });
-        screens.forEach(function(sc, k){ sc.classList.toggle('is-active', k === Math.max(n, 0)); });
-        cur = n;
-      }
-      root.style.setProperty('--tm-p', p);
-    }
+    var slides = screens.map(function(sc){ return sc.querySelector('.tmsl'); });
+    var TWO = 8000, ONE = 6500, cur = 0, raf = 0, t0 = 0, inView = !('IntersectionObserver' in window);
     var still = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    if(still){ show(0, 1); items.forEach(function(li, k){ li.querySelector('.hiw__btn').addEventListener('click', function(){ show(k, 1); }); }); return; }
-    show(-1, 0);
-    function step(){ return Math.round(window.innerHeight * .35); }
-    function pinTop(){ return parseFloat(track.style.getPropertyValue('--tmscroll-top')) || 0; }
+    function show(n){
+      items.forEach(function(li, k){ li.classList.toggle('is-active', k === n); li.classList.toggle('is-past', k < n); li.querySelector('.hiw__btn').setAttribute('aria-expanded', k === n ? 'true' : 'false'); });
+      screens.forEach(function(sc, k){ sc.classList.toggle('is-active', k === n); });
+      /* the incoming screen starts on its Greeno picture; the outgoing one keeps its slide while it fades */
+      if(slides[n] && slides[n].classList.contains('is-chat')){ slides[n].classList.add('is-reset'); slides[n].classList.remove('is-chat'); void root.offsetWidth; slides[n].classList.remove('is-reset'); }
+      cur = n;
+      run();
+    }
+    function run(){
+      cancelAnimationFrame(raf);
+      root.style.setProperty('--tm-p', still ? 1 : 0);
+      if(still || !inView) return;
+      t0 = performance.now(); raf = requestAnimationFrame(tick);
+    }
+    function tick(now){
+      var sl = slides[cur], dur = sl ? TWO : ONE, t = now - t0;
+      if(t >= dur){ show((cur + 1) % items.length); return; }
+      root.style.setProperty('--tm-p', t / dur);
+      if(sl) sl.classList.toggle('is-chat', t >= dur / 2);
+      raf = requestAnimationFrame(tick);
+    }
+    items.forEach(function(li, k){ li.querySelector('.hiw__btn').addEventListener('click', function(){ show(k); }); });
+    if(!inView){
+      /* run only once most of the section is on screen (or it fills most of the screen, for tall sections on phones) */
+      new IntersectionObserver(function(en){
+        var e = en[0], now = e.intersectionRatio >= .75 || e.intersectionRect.height >= window.innerHeight * .75;
+        if(!now && inView){ inView = false; show(0); }
+        else if(now && !inView){ inView = true; run(); }
+      }, {threshold:Array.from({length:21}, function(_, i){ return i / 20; })}).observe(root);
+    }
+    show(0);
+    /* phones: size the card so it, the open step (the longest one) and the button fit one screen,
+       with the steps sharing one slot; too short a screen falls back to the plain stacked list */
     function layout(){
+      var fit = false;
       if(window.innerWidth <= 640){
-        /* phones and tablets: size the card so it, every step header (with the longest step open) and the
-           button fit one screen, then pin the whole block like desktop; too short a screen falls back to
-           a sticky card */
-        /* the steps stack in one slot, so reserve room for the tallest open step card plus the button */
         var maxBody = Math.max.apply(null, items.map(function(li){ return li.querySelector('.hiw__body > p').scrollHeight; })) + 16;
         var maxBtn = Math.max.apply(null, items.map(function(li){ return li.querySelector('.hiw__btn').offsetHeight; }));
         var slotH = maxBtn + maxBody + 14;
         var cta = root.querySelector('.hub__cta');
         var leftH = slotH + 20 + (cta ? cta.offsetHeight : 0);
-        var top = 94, cardH = Math.min(400, Math.floor(window.innerHeight - top - leftH - 28 - 12));
-        pinned = cardH >= 180;
-        if(pinned){
-          root.style.setProperty('--tm-slot-h', slotH + 'px');
-          root.style.setProperty('--fit-card-h', cardH + 'px');
-          track.style.setProperty('--tmscroll-top', top + 'px');
-          track.style.height = (cardH + 28 + leftH + step() * items.length) + 'px';
-        } else { root.style.removeProperty('--fit-card-h'); root.style.removeProperty('--tm-slot-h'); track.style.height = ''; }
-        track.classList.toggle('is-pinned', pinned);
-        update();
-        return;
+        var cardH = Math.min(400, Math.floor(window.innerHeight - 94 - leftH - 28 - 12));
+        fit = cardH >= 180;
+        if(fit){ root.style.setProperty('--tm-slot-h', slotH + 'px'); root.style.setProperty('--fit-card-h', cardH + 'px'); }
       }
-      root.style.removeProperty('--fit-card-h'); root.style.removeProperty('--tm-slot-h');
-      pinned = window.innerWidth > 1080 && root.offsetHeight < window.innerHeight - 40;
-      track.classList.toggle('is-pinned', pinned);
-      if(pinned){
-        track.style.setProperty('--tmscroll-top', Math.max(88, Math.round((window.innerHeight - root.offsetHeight) / 2)) + 'px');
-        track.style.height = (root.offsetHeight + step() * items.length) + 'px';
-      } else track.style.height = '';
-      update();
+      if(!fit){ root.style.removeProperty('--fit-card-h'); root.style.removeProperty('--tm-slot-h'); }
+      track.classList.toggle('is-pinned', fit);
     }
-    function update(){
-      ticking = false;
-      var pos;
-      if(pinned) pos = (pinTop() - track.getBoundingClientRect().top) / step();
-      else {
-        /* screens too short to pin: the item crossing the middle of the screen is the open one */
-        var r = list.getBoundingClientRect();
-        pos = (window.innerHeight * .55 - r.top) / (r.height / items.length);
-      }
-      if(pos < 0){ show(-1, 0); return; }   /* not scrolled to the list yet: keep every item closed */
-      pos = Math.min(items.length - .0001, pos);
-      var n = Math.floor(pos);
-      show(n, Math.min(1, (pos - n) * 1.25));
-    }
-    items.forEach(function(li, k){ li.querySelector('.hiw__btn').addEventListener('click', function(){
-      if(!pinned){ show(k, 1); return; }
-      window.scrollTo({top: window.scrollY + track.getBoundingClientRect().top - pinTop() + step() * (k + .85), behavior:'smooth'});
-    }); });
-    window.addEventListener('scroll', function(){ if(!ticking){ ticking = true; requestAnimationFrame(update); } }, {passive:true});
     window.addEventListener('resize', layout);
     window.addEventListener('load', layout);
     layout();
@@ -3751,7 +3831,7 @@ span.ym__item{cursor:default}
   /* Phones and tablets: the Meet your teammate and Launch screens are short and pinned, so scale each
      screen's content down until it fits (and again whenever it grows, e.g. a file row being added) */
   (function(){
-    var els = Array.prototype.slice.call(document.querySelectorAll('.hiw--tm .hiw__screen > *, .hiw--launch .hiw__screen > *'));
+    var els = Array.prototype.slice.call(document.querySelectorAll('.hiw--tm .hiw__screen > :not(.tmsl), .hiw--launch .hiw__screen > *'));
     if(!els.length) return;
     function fit(el){
       el.style.transform = '';
