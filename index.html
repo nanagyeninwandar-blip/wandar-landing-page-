@@ -2252,8 +2252,7 @@ span.ym__item{cursor:default}
 /* ═══ Final CTA — like the reference: big headline and button top left, Greeno at his desk lower right ═══ */
 .cta-sec::before,.cta-sec::after{display:none}
 /* the banner is exactly one screen tall, below the fixed menu bar (90px), with its content centred */
-.audience.cta-sec{display:flex;align-items:center;box-sizing:border-box;min-height:calc(100vh - 90px);min-height:calc(100svh - 90px);padding:40px 0}
-.cta-sec>.container{width:100%}
+.audience.cta-sec{display:flex;align-items:center;overflow:hidden;box-sizing:border-box;min-height:calc(100vh - 90px);min-height:calc(100svh - 90px);padding:40px 0}
 .cta2{position:relative;display:grid;grid-template-columns:minmax(0,1fr) auto;gap:40px;min-height:min(340px,50vh);padding:0;text-align:left}
 .cta2__copy{align-self:start}
 .cta2__h{font-size:clamp(2.4rem,4.6vw,4.3rem);font-weight:700;line-height:1.02;letter-spacing:-.05em;color:var(--text-primary)}
@@ -2264,8 +2263,8 @@ span.ym__item{cursor:default}
 @media(min-width:761px){.cta2__h{white-space:nowrap}}
 @media(max-width:760px){
   .cta2{grid-template-columns:minmax(0,1fr);gap:28px;min-height:0}
-  .cta2__pic{justify-self:end;width:min(220px,65%)}
-  .audience.cta-sec{padding:56px 0}
+  .cta2__pic{justify-self:end;width:min(220px,65%);padding:36px;margin:-36px;transform:none}
+  .audience.cta-sec{min-height:0;padding:72px 0 40px}
 }
 </style>
 <script type="application/ld+json">
@@ -2802,7 +2801,6 @@ span.ym__item{cursor:default}
     <div class="how__head rv">
       <span class="how__mascot" aria-hidden="true"><img class="how__mascot-hand" src="assets/sales-rep/mascot-wave-arm.webp" alt="" width="560" height="548" loading="lazy" /><img src="assets/sales-rep/mascot-wave-body.webp" alt="" width="560" height="548" loading="lazy" /></span>
       <p class="how__h how__pre">Meet your new teammate</p>
-      <h2 class="how__h"><span>Knows safari and how to sell them.</span></h2>
       <p class="how__sub">You can&rsquo;t know which enquiry will book. That is why every enquiry needs proper sales attention from the start.</p>
     </div>
     <div class="tmscroll">
@@ -3007,7 +3005,7 @@ span.ym__item{cursor:default}
 <!-- ═══════════════ FINAL CTA ═══════════════ -->
 <section class="section audience cta-sec"><div class="container"><div class="cta-panel cta2 rv">
   <div class="cta2__copy">
-    <h2 class="cta2__h">Ready to welcome<br>your <span>new sales hire</span>?</h2>
+    <h2 class="cta2__h">Ready to welcome <br>your <span>new sales hire</span>?</h2>
     <a href="#" class="cta-panel__btn" onclick="openModal('interest');return false;">Let&rsquo;s chat <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
   </div>
   <img class="cta2__pic" src="assets/sales-rep/cta-greeno.webp" alt="" width="1000" height="970" loading="lazy" />
